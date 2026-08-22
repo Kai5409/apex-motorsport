@@ -12,8 +12,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="APEX">
 <title>APEX — Motorsport-Kalender 2026 | F1, MotoGP, WEC, DTM, WRC, Formel E</title>
-<meta name="description" content="Alle Renntermine und Sessionzeiten der Saison 2026 auf einen Blick: Formel 1, MotoGP, WEC, DTM, WRC und Formel E. Mit Wertungen und TV-Infos für Deutschland, Österreich und die Schweiz.">
-<meta name="keywords" content="Formel 1 Kalender 2026, MotoGP Kalender 2026, Motorsport Kalender, F1 Sessionzeiten, WEC, DTM, WRC, Formel E, Wo läuft F1 im TV, Rennkalender Deutschland">
+<meta name="description" content="Alle Renntermine und Sessionzeiten der Saison 2026: Formel 1, MotoGP, WEC, DTM, WRC und Formel E. Mit Wertungen, TV-Infos für DACH und verständlichen Regelerklärungen zu jeder Serie.">
+<meta name="keywords" content="Formel 1 Kalender 2026, MotoGP Kalender 2026, Motorsport Kalender, F1 Sessionzeiten, WEC, DTM, WRC, Formel E, Wo läuft F1 im TV, Rennkalender Deutschland, Formel 1 Qualifying erklärt, MotoGP Regeln, WRC Power Stage, Formel E Attack Mode, WEC Balance of Performance, DTM Regeln">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://kai5409.github.io/apex-motorsport/">
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn etc.) -->
@@ -238,6 +238,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .tv-l b{color:var(--paper);font-weight:600}
 .tv-c{display:inline-block;min-width:88px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);vertical-align:1px}
 .tv-note{display:block;margin-top:7px;padding-left:88px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.03em;line-height:1.6}
+.rl-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:28px 0 18px;letter-spacing:.04em;line-height:1.7}
+.rl-block{padding:22px 0;border-top:1px solid var(--rule)}
+.rl-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px}
+.rl-name{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:26px;text-transform:uppercase;line-height:1}
+.rl-kurz{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.rl-item{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:11px 0;align-items:baseline}
+.rl-item+.rl-item{border-top:1px solid var(--rule)}
+.rl-t{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+.rl-x{font-size:13.5px;color:var(--muted);line-height:1.72;max-width:66ch}
 .tv-open{display:block;color:var(--faint);font-style:italic}
 .tv-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--faint);letter-spacing:.04em;line-height:1.7;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--rule)}
 
@@ -256,6 +265,9 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .cal-row{grid-template-columns:72px 44px 1fr;gap:8px} .cal-row .cw{display:none}
   .std-row{grid-template-columns:26px 1fr auto 44px;gap:8px} .std-wins{display:none}
   .tv-row{grid-template-columns:1fr;gap:6px}
+  .rl-item{grid-template-columns:1fr;gap:4px}
+  .rl-name{font-size:22px}
+  .rl-x{font-size:13px}
   .tv-c{display:block;min-width:0;margin-bottom:2px}
   .tv-note{padding-left:0}
 }
@@ -296,12 +308,14 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
     <button class="tab" data-v="series" onclick="setView('series')">Serien</button>
     <button class="tab" data-v="standings" onclick="setView('standings')">Wertung</button>
     <button class="tab" data-v="tv" onclick="setView('tv')">Wo schauen?</button>
+    <button class="tab" data-v="rules" onclick="setView('rules')">Regeln</button>
   </nav>
   <div class="filterbar" id="filterbar"></div>
   <section class="view on" id="view-upcoming"></section>
   <section class="view" id="view-series"></section>
   <section class="view" id="view-standings"></section>
   <section class="view" id="view-tv"></section>
+  <section class="view" id="view-rules"></section>
   <footer>
 APEX · Saison 2026 · Sechs Serien · Stand 22. August 2026<br>
     Alle Zeiten in MESZ, ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.
@@ -342,6 +356,9 @@ APEX · Saison 2026 · Sechs Serien · Stand 22. August 2026<br>
     - Formel E: London I und II ohne Sessionzeiten. Tokio ist ein Event, war real ein Doppelrennen.
     - WRC: Zeitplaene Lauf 1-10 sind weiterhin Platzhalter ("Etappe 1/2/3").
       Finale Saudi-Arabien nicht bestaetigt, Entscheidung war fuer Mitte September angekuendigt.
+    - Regeln-Tab ergaenzt (22.08.): sechs Serien mit je fuenf Abschnitten.
+      Deckt gleichzeitig die fehlende Textmenge fuer SEO ab.
+      F1-Abschnitt "Neu ab 2026" bei Reglementaenderungen pruefen.
     - Sessionzeiten WEC und DTM weiterhin ungeprueft.
     - Formel-E-Sender ergaenzt (Quelle: fiaformulae.com/ways-to-watch, 22.08.2026).
       DAZN fuer DE/AT/CH, DF1 nur Deutschland, Eurosport pan-europaeisch. ORF/SRF sind dort nicht gelistet.
@@ -869,7 +886,7 @@ function renderFilter(){
   });
   chips+=`<button class="chip allbtn" onclick="allSeries()">Alle</button>`;
   el.innerHTML=chips;
-  el.style.display = (currentView==="tv")?"none":"flex";
+  el.style.display = (currentView==="tv"||currentView==="rules")?"none":"flex";
 }
 function toggleSeries(sk){
   if(ACTIVE.has(sk)){ if(ACTIVE.size>1) ACTIVE.delete(sk); } else ACTIVE.add(sk);
@@ -1038,6 +1055,87 @@ function renderCalendar(){
 }
 
 /* ═══════ TV ═══════ */
+/* ═══════ REGELN ═══════ */
+const REGELN = {
+  f1: {
+    kurz: "Zehn Teams mit je zwei Autos, 24 Rennen, Punkte für die Top 10.",
+    bloecke: [
+      ["Wochenende", "Freitag zwei freie Trainings, Samstag ein weiteres plus Qualifying, Sonntag das Rennen über rund 305 km. An sechs Wochenenden im Jahr gilt das Sprintformat: Dann gibt es nur ein freies Training, danach das Sprint-Qualifying am Freitag, den Sprint am Samstagvormittag und direkt im Anschluss das reguläre Qualifying für den Grand Prix."],
+      ["Qualifying", "Drei Abschnitte im K.o.-Verfahren. In Q1 fahren alle 20 Autos, die fünf langsamsten scheiden aus. In Q2 dasselbe mit den verbleibenden 15. Die schnellsten zehn kämpfen in Q3 um die Pole Position. Jeder Abschnitt ist kürzer als der vorherige, der Druck steigt also von Runde zu Runde."],
+      ["Punkte", "25 Punkte für den Sieg, dann 18, 15, 12, 10, 8, 6, 4, 2 und 1 für Platz zehn. Im Sprint gibt es acht Punkte für den Sieger, abwärts bis zu einem Punkt für Platz acht. Es gibt zwei getrennte Wertungen: die Fahrer-WM und die Konstrukteurs-WM, bei der die Punkte beider Autos eines Teams zusammengezählt werden."],
+      ["Reifen", "Pirelli bringt pro Rennen drei von fünf Trockenmischungen mit, dazu Intermediates und Regenreifen. Im Trockenrennen besteht Pflicht, mindestens zwei verschiedene Mischungen zu verwenden — deshalb muss jeder mindestens einmal an die Box."],
+      ["Neu ab 2026", "Ein grundlegend neues Reglement: Die Motoren leisten je etwa zur Hälfte über Verbrenner und Elektroantrieb, gefahren wird mit vollständig synthetischem Kraftstoff. Die Autos sind kleiner und leichter, und die Aerodynamik ist erstmals aktiv verstellbar — auf Geraden flacher, in Kurven mit mehr Abtrieb. Das bisherige DRS entfällt und wird durch einen Überhol-Boost ersetzt, der dem Verfolger zusätzliche Elektroleistung freigibt."]
+    ]
+  },
+  mgp: {
+    kurz: "Motorrad-WM der Königsklasse, 22 Grands Prix, Sprint an jedem Wochenende.",
+    bloecke: [
+      ["Wochenende", "Freitag ein freies Training und eine gewertete Practice-Session, Samstag ein weiteres Training, dann Qualifying und Sprint, Sonntag das Hauptrennen. Anders als in der Formel 1 gibt es den Sprint bei jedem Grand Prix, nicht nur an ausgewählten Wochenenden."],
+      ["Qualifying", "Der Weg ins Qualifying führt über die Practice am Freitag: Die zehn Schnellsten daraus sind direkt für Q2 gesetzt. Alle anderen müssen durch Q1, aus dem sich nur die beiden Besten noch für Q2 nachqualifizieren. In Q2 kämpfen dann zwölf Fahrer um die Pole. Wer am Freitag also schwach ist, muss samstags einen Umweg gehen."],
+      ["Punkte", "Im Grand Prix am Sonntag zählt dieselbe Skala wie in der Formel 1: 25 Punkte für den Sieg bis hinunter zu einem Punkt für Platz 15. Im Sprint am Samstag gibt es die halbe Ausbeute für die Top 9, also 12 Punkte für den Sieger. Weil an jedem Wochenende gesprintet wird, sammelt sich das über die Saison deutlich."],
+      ["Strafen", "Statt einer Zeitstrafe wie im Autorennsport gibt es die Long-Lap-Strafe: Der Fahrer muss an einer festgelegten Stelle einen verlängerten Kurvenradius nehmen und verliert dadurch rund eine Sekunde. Typisch ist das nach zu aggressiven Manövern oder Verlassen der Strecke."],
+      ["Technik", "Alle Motorräder haben 1000 Kubikzentimeter Hubraum und wiegen mindestens 157 Kilogramm. Ein Fahrer darf pro Saison nur eine begrenzte Zahl an Motoren verwenden. Die Aerodynamik am Motorrad ist inzwischen ein großes Thema — Flügel an der Verkleidung erzeugen Anpressdruck und erschweren gleichzeitig das Überholen."]
+    ]
+  },
+  wrc: {
+    kurz: "Rallye-WM auf Schotter, Asphalt und Schnee — gefahren wird gegen die Uhr.",
+    bloecke: [
+      ["Format", "Eine Rallye dauert von Donnerstag bis Sonntag und besteht aus 15 bis 25 Wertungsprüfungen, kurz WP. Jede WP ist ein abgesperrter Streckenabschnitt, auf dem die Autos einzeln im Abstand von ein bis zwei Minuten starten. Zwischen den Prüfungen fahren sie auf öffentlichen Straßen zur nächsten Prüfung, das nennt sich Verbindungsetappe."],
+      ["Wertung", "Es gibt kein Rennen Kopf an Kopf. Gewertet werden die addierten Bestzeiten aller Wertungsprüfungen — wer nach der letzten WP die geringste Gesamtzeit hat, gewinnt. Sekundenbruchteile entscheiden dabei regelmäßig über den Sieg."],
+      ["Startreihenfolge", "Am ersten Tag starten die Führenden der WM zuerst. Auf Schotter ist das ein echter Nachteil, weil die ersten Autos die lose Deckschicht wegfegen und den Nachfolgenden eine schnellere Linie hinterlassen. Der WM-Führende kämpft also gegen die Strecke, nicht nur gegen die Gegner."],
+      ["Punkte", "Seit 2024 gilt ein zweiteiliges System. Nach der Wertung am Samstagabend gibt es 18 Punkte für den Führenden, abwärts bis zu einem Punkt. Für die Platzierung am Sonntagabend kommen nochmals bis zu sieben Punkte dazu. Die abschließende Power Stage bringt zusätzlich bis zu fünf Punkte für die fünf schnellsten Fahrer."],
+      ["Beifahrer", "Ohne Beifahrer geht nichts. Er liest während der Fahrt den Aufschrieb vor — eine Notation aus Kurvenradien, Entfernungen und Gefahrenstellen, die beide bei der vorherigen Besichtigung selbst erstellt haben. Der Fahrer sieht die Kurve oft erst, wenn er schon eingelenkt hat."]
+    ]
+  },
+  wec: {
+    kurz: "Langstrecken-WM mit mehreren Klassen gleichzeitig auf der Strecke.",
+    bloecke: [
+      ["Format", "Acht Rennen über sechs bis vierundzwanzig Stunden, darunter die 24 Stunden von Le Mans als Höhepunkt. Pro Auto teilen sich zwei bis drei Fahrer das Steuer und wechseln sich während des Rennens ab. Vorgeschrieben sind Mindest- und Höchstfahrzeiten, damit niemand das ganze Rennen allein bestreitet."],
+      ["Klassen", "Gefahren wird in zwei Kategorien gleichzeitig: Hypercar mit den Prototypen der Hersteller und LMGT3 mit seriennahen Sportwagen. Beide fahren auf derselben Strecke, werden aber getrennt gewertet. Für die Fahrer heißt das ständiges Überrunden und Überholtwerden — ein eigener Teil der Herausforderung."],
+      ["Qualifying", "Zuerst fährt jede Klasse eine reguläre Qualifikation. Die besten Autos daraus ziehen in die Hyperpole ein, eine kurze zweite Sitzung, in der die vorderen Startplätze vergeben werden. Bei einem Rennen über sechs Stunden zählt der Startplatz allerdings weit weniger als in einem Sprintformat."],
+      ["Balance of Performance", "Damit unterschiedliche Fahrzeugkonzepte konkurrenzfähig bleiben, greift die BoP ein: Über Mindestgewicht, Leistung und Energiemenge werden die Autos aneinander angeglichen. Das sorgt für enge Rennen, ist unter Fans aber auch der am meisten diskutierte Punkt des Reglements."],
+      ["Punkte", "Bei den regulären Läufen gilt die übliche Skala mit 25 Punkten für den Sieg. In Le Mans zählt alles doppelt, dort sind also 50 Punkte zu holen. Ein einzelnes Wochenende kann die Meisterschaft damit komplett drehen."]
+    ]
+  },
+  dtm: {
+    kurz: "GT3-Sportwagen, acht Wochenenden, zwei eigenständige Rennen pro Wochenende.",
+    bloecke: [
+      ["Format", "An jedem Wochenende werden zwei getrennte Rennen über je rund 55 Minuten gefahren, samstags und sonntags. Beide sind eigenständig gewertet und haben ein eigenes Qualifying — ein schlechter Samstag lässt sich also am Sonntag direkt korrigieren."],
+      ["Qualifying", "Ein einziger Abschnitt von rund zwanzig Minuten, in dem alle Fahrer gleichzeitig auf der Strecke sind. Die schnellste Runde zählt. Kein K.o.-System wie in der Formel 1, dafür Verkehr und die Suche nach einer freien Runde als taktisches Element."],
+      ["Boxenstopp", "In jedem Rennen ist genau ein Boxenstopp mit Reifenwechsel Pflicht. Wann er erfolgt, entscheidet das Team — daraus entsteht ein großer Teil der Renntaktik. Die Stopps sind extrem kurz, wenige Sekunden Unterschied kosten Positionen."],
+      ["Fahrzeuge", "Gefahren wird mit GT3-Sportwagen, wie sie auch in anderen Serien eingesetzt werden: Ferrari, Porsche, Mercedes-AMG, BMW, Lamborghini, Aston Martin und weitere. Eine Balance of Performance gleicht die Marken aneinander an."],
+      ["Punkte", "Pro Rennen 25 Punkte für den Sieg nach der üblichen Skala. Zusätzlich gibt es Punkte für die vorderen Startplätze im Qualifying, was die Gesamtwertung spürbar beeinflusst — deshalb weichen bei manchen Fahrern Renn- und Qualifyingpunkte deutlich voneinander ab."]
+    ]
+  },
+  fe: {
+    kurz: "Elektro-Rennserie, überwiegend auf Stadtkursen, ein Rennen pro Tag.",
+    bloecke: [
+      ["Format", "Meist findet alles an einem Tag statt: Training, Qualifying und Rennen. Gefahren wird auf engen, temporären Stadtkursen mitten in Metropolen wie Monaco, Tokio, London oder Berlin. Das Rennen läuft nicht über eine feste Rundenzahl, sondern über eine festgelegte Zeit plus eine Schlussrunde."],
+      ["Qualifying", "Das mit Abstand eigenständigste Format im Feld. Zunächst fahren zwei Gruppen getrennt ihre Zeiten, die jeweils besten vier ziehen weiter. Danach folgen direkte Duelle im K.o.-System: Viertelfinale, Halbfinale, Finale — jeweils zwei Autos gleichzeitig auf der Strecke, der Schnellere kommt weiter. Die Pole entscheidet sich also in einem direkten Zweikampf."],
+      ["Attack Mode", "Jeder Fahrer muss im Rennen zweimal den Attack Mode aktivieren und bekommt dafür für eine begrenzte Zeit deutlich mehr Leistung. Der Haken: Aktiviert wird er nur, indem man abseits der Ideallinie durch eine markierte Zone fährt und dabei Zeit verliert. Wann man das tut, ist eine der zentralen taktischen Entscheidungen."],
+      ["Energie", "Alle Teams haben dieselbe Batteriekapazität, die bewusst knapp bemessen ist. Wer zu früh zu viel verbraucht, muss am Ende abheben lassen. Rekuperation beim Bremsen ist deshalb entscheidend — ein erheblicher Teil der Energie kommt so zurück in die Batterie."],
+      ["Punkte", "Die übliche Skala mit 25 Punkten für den Sieg. Dazu kommen drei Punkte für die Pole Position und ein Punkt für die schnellste Rennrunde, sofern man in den Top 10 landet. Die Saison läuft über den Jahreswechsel und wird deshalb nicht als Jahreszahl, sondern als Saisonnummer geführt."]
+    ]
+  }
+};
+
+function renderRules(){
+  const host=document.getElementById("view-rules"); if(!host)return;
+  let html=`<p class="rl-intro">Sechs Serien, sechs sehr unterschiedliche Reglements.<br>
+    Die wichtigsten Punkte je Meisterschaft — Format, Qualifying, Punkte und Besonderheiten.</p>`;
+  Object.keys(SERIES).forEach(sk=>{
+    const S0=SERIES[sk], R=REGELN[sk]; if(!R)return;
+    html+=`<div class="rl-block">
+      <div class="rl-head"><span class="rl-name" style="color:${S0.color}">${esc(S0.name)}</span>
+      <span class="rl-kurz">${esc(R.kurz)}</span></div>`;
+    R.bloecke.forEach(b=>{
+      html+=`<div class="rl-item"><span class="rl-t">${esc(b[0])}</span><span class="rl-x">${esc(b[1])}</span></div>`;
+    });
+    html+=`</div>`;
+  });
+  host.innerHTML=html;
+}
+
 function renderTV(){
   const host=document.getElementById("view-tv"); if(!host)return;
   let html=`<p class="tv-intro">Wo läuft was in Deutschland, Österreich und der Schweiz?<br>
@@ -1217,6 +1315,7 @@ function rerender(){OPEN_RES=null;
   else if(currentView==="series")renderSeries();
   else if(currentView==="standings")renderStandings();
   else if(currentView==="calendar")renderCalendar();
+  else if(currentView==="rules")renderRules();
   else renderTV();}
 function setView(v){currentView=v;
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.dataset.v===v));
