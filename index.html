@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#141210">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="APEX">
+<title>APEX — Motorsport-Kalender 2026 | F1, MotoGP, WEC, DTM, WRC, Formel E</title>
+<meta name="description" content="Alle Renntermine und Sessionzeiten der Saison 2026 auf einen Blick: Formel 1, MotoGP, WEC, DTM, WRC und Formel E. Mit Wertungen und TV-Infos für Deutschland, Österreich und die Schweiz.">
+<meta name="keywords" content="Formel 1 Kalender 2026, MotoGP Kalender 2026, Motorsport Kalender, F1 Sessionzeiten, WEC, DTM, WRC, Formel E, Wo läuft F1 im TV, Rennkalender Deutschland">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kai5409.github.io/apex-motorsport/">
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="APEX">
+<meta property="og:title" content="APEX — Motorsport-Kalender 2026">
+<meta property="og:description" content="Alle Renntermine und Sessionzeiten 2026: F1, MotoGP, WEC, DTM, WRC, Formel E — mit Wertungen und TV-Infos für DACH.">
+<meta property="og:image" content="https://kai5409.github.io/apex-motorsport/logo-apex.png">
+<meta property="og:url" content="https://kai5409.github.io/apex-motorsport/">
+<meta property="og:locale" content="de_DE">
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="APEX — Motorsport-Kalender 2026">
+<meta name="twitter:description" content="Alle Renntermine und Sessionzeiten 2026: F1, MotoGP, WEC, DTM, WRC, Formel E.">
+<meta name="twitter:image" content="https://kai5409.github.io/apex-motorsport/logo-apex.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#141210; --bg2:#1b1916; --paper:#ece7dd; --muted:#8d8678; --faint:#55504a;
+  --rule:rgba(236,231,221,.13); --rule-strong:rgba(236,231,221,.32);
+  --red:#ff3000; --green:#3fae62; --gold:#d8a84b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--paper);font-family:"Inter",system-ui,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.disp{font-family:"Anton",Impact,"Arial Narrow",sans-serif;letter-spacing:.01em;text-transform:uppercase}
+.mono{font-family:"IBM Plex Mono",monospace}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+#app{max-width:1240px;margin:0 auto;padding:0 26px 130px}
+
+/* Masthead */
+.mast{display:flex;align-items:flex-end;justify-content:space-between;padding:32px 0 14px;border-bottom:3px solid var(--paper)}
+.mast h1{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(42px,7.5vw,72px);line-height:.9;text-transform:uppercase;position:relative;width:max-content;padding-bottom:.62em}
+/* Wortmarke: Buchstaben folgen der Ideallinie */
+.mk-word{display:flex;align-items:flex-end;letter-spacing:.012em}
+.mk-word i{font-style:normal;display:inline-block;transform-origin:50% 60%}
+.mk-word i:nth-child(1){transform:rotate(10.1deg) translateY(-.036em)}
+.mk-word i:nth-child(2){transform:rotate(3.2deg)  translateY(.036em)}
+.mk-word i:nth-child(3){transform:rotate(-3.2deg) translateY(.036em)}
+.mk-word i:nth-child(4){transform:rotate(-10.1deg) translateY(-.036em)}
+.mk-line{position:absolute;left:0;top:1.04em;width:100%;height:auto;aspect-ratio:234/30;overflow:visible}
+.mast-r{text-align:right;font-size:10.5px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;line-height:1.7}
+.mast-r b{color:var(--paper);font-weight:600}
+.tzsw{display:flex;gap:4px;justify-content:flex-end;align-items:center;margin-top:9px}
+.tzsw .tzl{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;color:var(--faint);margin-right:2px}
+.tzsw button{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--muted);transition:all .15s}
+.tzsw button:hover{color:var(--paper)}
+.tzsw button.on{background:var(--paper);color:var(--bg);border-color:var(--paper);font-weight:600}
+
+/* On-Air */
+.onair{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);min-height:50px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.onair::-webkit-scrollbar{display:none}
+.onair-lab{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:13px;letter-spacing:.1em;display:flex;align-items:center;gap:7px;flex-shrink:0;text-transform:uppercase}
+.onair-lab.live{color:var(--red)} .onair-lab.soon{color:var(--gold)} .onair-lab.idle{color:var(--muted)}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+.onair-ev{display:inline-flex;align-items:baseline;gap:9px;font-size:12.5px}
+.onair-ev .nm{font-weight:600}
+.onair-ev .meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
+.onair-bar{display:inline-block;width:4px;height:13px;vertical-align:middle;margin-right:7px;border-radius:1px}
+
+/* Nav */
+.nav{display:flex;gap:26px;padding:14px 0 0;position:sticky;top:0;background:var(--bg);z-index:50;border-bottom:1px solid var(--rule)}
+.tab{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);padding:0 0 12px;position:relative;transition:color .15s}
+.tab:hover{color:var(--muted)} .tab.on{color:var(--paper)}
+.tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--red)}
+
+/* Filterbar */
+.filterbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:16px 0 2px}
+.filterbar .fl-lab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-right:4px}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;padding:5px 11px 5px 9px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--paper);display:inline-flex;align-items:center;gap:7px;transition:opacity .15s,border-color .15s,background .15s}
+.chip .cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.chip.off{opacity:.38;border-color:var(--rule);color:var(--muted)}
+.chip.off .cdot{filter:grayscale(1) brightness(.7)}
+.chip.allbtn{border-color:var(--paper);color:var(--paper);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 0 2px}
+.search{flex:1;min-width:180px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:999px;color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;padding:8px 14px;outline:none}
+.search::placeholder{color:var(--faint)}
+.search:focus{border-color:var(--muted)}
+.tbtn{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--muted);transition:all .15s;white-space:nowrap}
+.tbtn:hover{color:var(--paper)}
+.tbtn.on{background:var(--gold);color:#241a06;border-color:var(--gold);font-weight:600}
+.tbtn.gold{color:var(--gold);border-color:var(--rule-strong)}
+.tbtn.gold:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
+.searchcnt{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.05em;padding:8px 0 0}
+
+/* Favoriten-Stern */
+.favstar{font-size:16px;line-height:1;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .15s;align-self:center}
+.favstar:hover{color:var(--gold);transform:scale(1.15)}
+.favstar.on{color:var(--gold)}
+
+/* Strecken-Infos */
+.trackinfo{display:flex;flex-wrap:wrap;gap:5px 16px;padding:0 0 12px;margin-bottom:4px;border-bottom:1px solid var(--rule)}
+.trackinfo .tcircuit{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--paper);font-weight:500;width:100%}
+.trackinfo .tfact{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.03em}
+.trackinfo .tfact b{color:var(--paper);font-weight:600}
+
+.view{display:none} .view.on{display:block}
+
+/* Past toggle */
+.pastbtn{display:flex;align-items:center;gap:10px;width:100%;margin:30px 0 0;padding:13px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);transition:color .15s}
+.pastbtn:hover{color:var(--paper)}
+.pastbtn .ic{font-size:18px;color:var(--red);transition:transform .2s;display:inline-block}
+.pastbtn.open .ic{transform:rotate(180deg)}
+.pastbtn .cnt{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;color:var(--faint)}
+.pastwrap{display:none} .pastwrap.open{display:block}
+.emptyhint{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint);padding:30px 0;text-align:center}
+
+/* Timeline */
+.month{margin-top:42px}
+.month-head{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(44px,11vw,90px);line-height:.86;text-transform:uppercase;display:flex;align-items:baseline;gap:18px}
+.month-head .yr{font-size:.28em;color:var(--red);letter-spacing:.1em}
+.month.past .month-head,.month.future .month-head{color:transparent;-webkit-text-stroke:1.4px var(--faint)}
+.month.current .month-head{color:var(--paper)}
+.tl{position:relative;margin:22px 0 0;padding-left:30px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--rule-strong)}
+.wknd{position:relative;padding:18px 0;border-bottom:1px solid var(--rule)}
+.wknd::before{content:"";position:absolute;left:-26.5px;top:26px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--faint)}
+.wknd.done::before{background:var(--faint)}
+.wknd.live::before{border-color:var(--red);background:var(--red);box-shadow:0 0 0 4px rgba(255,48,0,.18)}
+.wknd.next::before{border-color:var(--red)}
+.wk-top{display:grid;grid-template-columns:74px 1fr auto;gap:16px;align-items:start}
+.wk-date{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:30px;line-height:.92;color:var(--paper);padding-top:6px}
+.wk-date .dow{display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.12em;margin-top:5px;text-transform:uppercase}
+.wk-cd{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-align:right;white-space:nowrap;padding-top:8px}
+.wk-cd.done{color:var(--faint)} .wk-cd.live{color:var(--red)} .wk-cd.soon{color:var(--gold)} .wk-cd.up{color:var(--muted)}
+
+.ev{border-top:1px solid var(--rule)} .ev:first-child{border-top:none}
+.ev-row{display:flex;align-items:center;gap:13px;padding:9px 0;cursor:pointer}
+.ev-bar{width:4px;align-self:stretch;min-height:30px;border-radius:1px;flex-shrink:0}
+.ev-body{flex:1;min-width:0}
+.ev-name{display:block;font-size:16px;font-weight:600;line-height:1.2}
+.ev-sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.04em;margin-top:6px;text-transform:uppercase}
+.ev-sub .ser{font-weight:600}
+.ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px}
+.ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600}
+.ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
+.ev-row:hover .ev-toggle{color:var(--paper)}
+.ev.open .ev-toggle{transform:rotate(45deg);color:var(--red)}
+.sessions{display:none;padding:2px 0 14px 17px} .ev.open .sessions{display:block}
+
+/* Session rows + results */
+.sess{border-bottom:1px dotted var(--rule)} .sess:last-child{border-bottom:none}
+.sess-row{display:grid;grid-template-columns:20px 1fr 66px 40px 24px;gap:10px;align-items:center;padding:7px 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px}
+.scal{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1;color:var(--faint);text-align:center;width:24px;height:20px;border-radius:5px;border:1px solid var(--rule);transition:color .15s,border-color .15s,background .15s}
+.scal:hover{color:var(--gold);border-color:var(--gold);background:rgba(216,168,75,.08)}
+.calbtn{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:999px;padding:6px 12px;margin:2px 0 12px;transition:border-color .15s,background .15s}
+.calbtn:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
+.sess-row.clk{cursor:pointer}
+.sess-row.clk:hover .sess-n{color:#fff}
+.sess-chev{color:var(--faint);font-size:10px;transition:transform .2s,color .15s;text-align:center}
+.sess.open .sess-chev{transform:rotate(90deg);color:var(--red)}
+.sess-row.clk:hover .sess-chev{color:var(--paper)}
+.sess-n{color:var(--paper);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sess-n.race{color:var(--paper)}
+.sess-n.ovr{color:var(--gold)}
+.sess-t{color:var(--paper);text-align:right}
+.sess-meta{color:var(--muted);text-align:right;letter-spacing:.03em}
+.sess-respanel{display:none;padding:6px 0 12px 30px}
+.sess.open .sess-respanel{display:block}
+.res-row{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:baseline;padding:4px 0;font-family:"IBM Plex Mono",monospace;font-size:11px;border-bottom:1px solid var(--rule)}
+.res-row:last-child{border-bottom:none}
+.res-row.p1{color:var(--gold)}
+.res-p{text-align:center;color:var(--muted)} .res-row.p1 .res-p{color:var(--gold);font-weight:600}
+.res-w{color:var(--paper)} .res-row.p1 .res-w{font-weight:600}
+.res-w .rt{color:var(--muted)}
+.res-g{color:var(--muted);text-align:right;white-space:nowrap}
+.res-note{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);padding:7px 0 2px;letter-spacing:.04em}
+.sess-flat{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);padding:6px 0 0 30px;letter-spacing:.03em}
+
+/* Serien */
+.ser-block{padding:34px 0 6px;border-bottom:1px solid var(--rule)}
+.ser-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(40px,9vw,76px);line-height:.9;text-transform:uppercase}
+.ser-meta{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.08em;margin:10px 0 18px;text-transform:uppercase}
+.ser-round{display:grid;grid-template-columns:40px 78px 1fr auto;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
+.ser-round.cancel{opacity:.4}
+.ser-round .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint)}
+.ser-round .dt{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
+.ser-round .rn{font-size:14.5px;font-weight:600}
+.ser-round .rn .loc{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);font-weight:400;margin-top:2px;letter-spacing:.04em;text-transform:uppercase}
+.ser-round .st{font-family:"IBM Plex Mono",monospace;font-size:10px;text-align:right;text-transform:uppercase;letter-spacing:.05em}
+.ser-round .st.done{color:var(--gold)} .ser-round .st.up{color:var(--faint)} .ser-round .st.next{color:var(--red)} .ser-round .st.cancel{color:var(--faint)}
+
+/* Jahr */
+.cal-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:8px 0 14px;letter-spacing:.04em}
+.cal-row{display:grid;grid-template-columns:88px 52px 1fr 110px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--rule);font-size:13px}
+.cal-row.cancel{opacity:.42}
+.cal-row .cd{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
+.cal-row .cs{font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;letter-spacing:.05em;padding:2px 6px;border-radius:2px;text-align:center;text-transform:uppercase}
+.cal-row .cn{font-weight:500}
+.cal-row .cn .strike{text-decoration:line-through;color:var(--muted)}
+.cal-row .cw{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--gold);text-align:right;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Wertung / Standings */
+.std-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:8px 0 14px;letter-spacing:.04em;line-height:1.7}
+.std-block{padding:30px 0 8px;border-bottom:1px solid var(--rule)}
+.std-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,7vw,54px);line-height:.9;text-transform:uppercase}
+.std-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.06em;margin:8px 0 4px;text-transform:uppercase}
+.std-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--faint);letter-spacing:.05em;padding:10px 0 0}
+.std-sub{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:18px 0 2px}
+.std-row{display:grid;grid-template-columns:30px 1fr auto 52px;gap:12px;align-items:baseline;padding:8px 0;border-top:1px solid var(--rule)}
+.std-row .sp{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint)}
+.std-row.lead .sp{color:var(--gold)}
+.std-nm{font-size:14.5px;font-weight:600}
+.std-nm .tm{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);font-weight:400;margin-top:2px;letter-spacing:.03em}
+.std-wins{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--gold);align-self:center}
+.std-pts{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;text-align:right;line-height:1}
+.std-row.lead .std-pts{color:var(--gold)}
+.std-pts small{font-family:"IBM Plex Mono",monospace;font-size:8.5px;color:var(--faint);display:block;font-weight:400;letter-spacing:.1em}
+
+/* TV */
+.tv-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:28px 0 18px;letter-spacing:.04em;line-height:1.7}
+.tv-row{display:grid;grid-template-columns:170px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--rule);align-items:baseline}
+.tv-row .tn{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:22px;text-transform:uppercase}
+.tv-row .tb{font-size:13px;color:var(--muted);line-height:1.6}
+.tv-l{display:block;padding:3px 0}
+.tv-l b{color:var(--paper);font-weight:600}
+.tv-c{display:inline-block;min-width:88px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);vertical-align:1px}
+.tv-note{display:block;margin-top:7px;padding-left:88px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.03em;line-height:1.6}
+.tv-open{display:block;color:var(--faint);font-style:italic}
+.tv-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--faint);letter-spacing:.04em;line-height:1.7;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--rule)}
+
+footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.05em;line-height:1.9}
+
+@media(max-width:640px){
+  #app{padding:0 16px 110px} .nav{gap:18px} .tab{font-size:13px}
+  .wk-top{grid-template-columns:58px 1fr}
+  .wk-cd{grid-column:1/-1;text-align:left;margin-top:2px;padding-top:0}
+  .wk-date{font-size:24px}
+  .ev-name{font-size:15px}
+  .sess-row{grid-template-columns:18px 1fr 58px 24px;gap:8px;font-size:11px}
+  .sess-meta{display:none}
+  .month-head{font-size:42px}
+  .ser-round{grid-template-columns:30px 1fr auto;gap:10px} .ser-round .dt{display:none}
+  .cal-row{grid-template-columns:72px 44px 1fr;gap:8px} .cal-row .cw{display:none}
+  .std-row{grid-template-columns:26px 1fr auto 44px;gap:8px} .std-wins{display:none}
+  .tv-row{grid-template-columns:1fr;gap:6px}
+  .tv-c{display:block;min-width:0;margin-bottom:2px}
+  .tv-note{padding-left:0}
+}
+
+/* ── Wochenende / Deep-Link / PWA ── */
+.installbtn{display:none;margin-top:7px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--paper);border:1px solid var(--rule-strong);padding:4px 9px;align-items:center;gap:6px}
+.installbtn:hover{border-color:var(--paper)}
+.calbtn+.calbtn{margin-left:8px}
+.feedlink{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+.wke-lead{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding:22px 0 2px}
+.wke-day{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(26px,5vw,42px);text-transform:uppercase;line-height:1;padding:28px 0 10px;border-bottom:2px solid var(--paper)}
+.wke-day .yr{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.1em;margin-left:12px}
+.wke-row{display:grid;grid-template-columns:64px 3px 1fr;gap:13px;padding:12px 0;border-bottom:1px solid var(--rule);cursor:pointer;align-items:stretch}
+.wke-row:hover .wke-sn{color:var(--red)}
+.wke-row.gone{opacity:.42}
+.wke-t{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;padding-top:1px}
+.wke-t .d{display:block;font-size:9px;color:var(--muted);font-weight:400;letter-spacing:.06em;margin-top:2px}
+.wke-bar{border-radius:1px}
+.wke-sn{font-weight:600;font-size:14.5px;line-height:1.25;transition:color .15s}
+.wke-ev{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:4px}
+.wke-tv{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.03em;margin-top:2px}
+.wke-live{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--red);border:1px solid var(--red);padding:1px 5px;margin-left:8px;letter-spacing:.12em;vertical-align:2px;animation:pulse 1.4s infinite}
+.wke-none{padding:44px 0;color:var(--muted);line-height:1.9}
+.wke-none b{color:var(--paper)}
+.ev.flash{animation:evflash 1.8s ease-out}
+@keyframes evflash{0%{background:rgba(255,48,0,.16)}100%{background:transparent}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="mast">
+    <h1 aria-label="APEX"><span class="mk-word" aria-hidden="true"><i>A</i><i>P</i><i>E</i><i>X</i></span><svg class="mk-line" viewBox="3 3 234 30" aria-hidden="true"><g fill="none" stroke-width="7.4" stroke-linecap="butt"><path d="M5.00,8.00 L5.74,8.25 L6.47,8.51 L7.21,8.76 L7.95,9.01 L8.69,9.25 L9.43,9.50 L10.17,9.74 L10.91,9.99 L11.65,10.23 L12.39,10.46 L13.14,10.70 L13.88,10.94 L14.63,11.17 L15.38,11.40" stroke="var(--red)"/><path d="M15.38,11.40 L16.13,11.63 L16.87,11.86 L17.62,12.09 L18.38,12.31 L19.13,12.53 L19.88,12.75 L20.63,12.97 L21.39,13.19 L22.14,13.41 L22.90,13.62 L23.65,13.84 L24.41,14.05 L25.17,14.26 L25.93,14.46" stroke="var(--paper)"/><path d="M25.93,14.46 L26.69,14.67 L27.45,14.87 L28.21,15.07 L28.97,15.27 L29.73,15.47 L30.50,15.67 L31.26,15.87 L32.03,16.06 L32.79,16.25 L33.56,16.44 L34.33,16.63 L35.09,16.82 L35.86,17.00 L36.63,17.18" stroke="var(--red)"/><path d="M36.63,17.18 L37.40,17.37 L38.17,17.54 L38.94,17.72 L39.72,17.90 L40.49,18.07 L41.26,18.25 L42.04,18.42 L42.81,18.59 L43.59,18.75 L44.36,18.92 L45.14,19.08 L45.92,19.25 L46.69,19.41 L47.47,19.56" stroke="var(--paper)"/><path d="M47.47,19.56 L48.25,19.72 L49.03,19.88 L49.81,20.03 L50.59,20.18 L51.37,20.33 L52.16,20.48 L52.94,20.63 L53.72,20.77 L54.51,20.92 L55.29,21.06 L56.07,21.20 L56.86,21.33 L57.65,21.47 L58.43,21.61" stroke="var(--red)"/><path d="M58.43,21.61 L59.22,21.74 L60.01,21.87 L60.79,22.00 L61.58,22.13 L62.37,22.25 L63.16,22.38 L63.95,22.50 L64.74,22.62 L65.53,22.74 L66.32,22.85 L67.11,22.97 L67.90,23.08 L68.70,23.20 L69.49,23.31" stroke="var(--paper)"/><path d="M69.49,23.31 L70.28,23.41 L71.08,23.52 L71.87,23.63 L72.67,23.73 L73.46,23.83 L74.26,23.93 L75.05,24.03 L75.85,24.13 L76.64,24.22 L77.44,24.31 L78.24,24.40 L79.03,24.49 L79.83,24.58 L80.63,24.67" stroke="var(--red)"/><path d="M80.63,24.67 L81.43,24.75 L82.23,24.83 L83.03,24.91 L83.82,24.99 L84.62,25.07 L85.42,25.15 L86.22,25.22 L87.02,25.29 L87.83,25.36 L88.63,25.43 L89.43,25.50 L90.23,25.56 L91.03,25.63 L91.83,25.69" stroke="var(--paper)"/><path d="M91.83,25.69 L92.64,25.75 L93.44,25.81 L94.24,25.86 L95.04,25.92 L95.85,25.97 L96.65,26.02 L97.45,26.07 L98.26,26.12 L99.06,26.16 L99.86,26.21 L100.67,26.25 L101.47,26.29 L102.28,26.33 L103.08,26.37" stroke="var(--red)"/><path d="M103.08,26.37 L103.89,26.40 L104.69,26.44 L105.50,26.47 L106.30,26.50 L107.11,26.53 L107.91,26.55 L108.72,26.58 L109.52,26.60 L110.33,26.63 L111.13,26.65 L111.94,26.66 L112.75,26.68 L113.55,26.69 L114.36,26.71" stroke="var(--paper)"/><path d="M114.36,26.71 L115.16,26.72 L115.97,26.73 L116.78,26.74 L117.58,26.74 L118.39,26.75 L119.19,26.75 L120.00,26.75 L120.81,26.75 L121.61,26.75 L122.42,26.74 L123.22,26.74 L124.03,26.73 L124.84,26.72 L125.64,26.71" stroke="var(--red)"/><path d="M125.64,26.71 L126.45,26.69 L127.25,26.68 L128.06,26.66 L128.87,26.65 L129.67,26.63 L130.48,26.60 L131.28,26.58 L132.09,26.55 L132.89,26.53 L133.70,26.50 L134.50,26.47 L135.31,26.44 L136.11,26.40 L136.92,26.37" stroke="var(--paper)"/><path d="M136.92,26.37 L137.72,26.33 L138.53,26.29 L139.33,26.25 L140.14,26.21 L140.94,26.16 L141.74,26.12 L142.55,26.07 L143.35,26.02 L144.15,25.97 L144.96,25.92 L145.76,25.86 L146.56,25.81 L147.36,25.75 L148.17,25.69" stroke="var(--red)"/><path d="M148.17,25.69 L148.97,25.63 L149.77,25.56 L150.57,25.50 L151.37,25.43 L152.17,25.36 L152.98,25.29 L153.78,25.22 L154.58,25.15 L155.38,25.07 L156.18,24.99 L156.97,24.91 L157.77,24.83 L158.57,24.75 L159.37,24.67" stroke="var(--paper)"/><path d="M159.37,24.67 L160.17,24.58 L160.97,24.49 L161.76,24.40 L162.56,24.31 L163.36,24.22 L164.15,24.13 L164.95,24.03 L165.74,23.93 L166.54,23.83 L167.33,23.73 L168.13,23.63 L168.92,23.52 L169.72,23.41 L170.51,23.31" stroke="var(--red)"/><path d="M170.51,23.31 L171.30,23.20 L172.10,23.08 L172.89,22.97 L173.68,22.85 L174.47,22.74 L175.26,22.62 L176.05,22.50 L176.84,22.38 L177.63,22.25 L178.42,22.13 L179.21,22.00 L179.99,21.87 L180.78,21.74 L181.57,21.61" stroke="var(--paper)"/><path d="M181.57,21.61 L182.35,21.47 L183.14,21.33 L183.93,21.20 L184.71,21.06 L185.49,20.92 L186.28,20.77 L187.06,20.63 L187.84,20.48 L188.63,20.33 L189.41,20.18 L190.19,20.03 L190.97,19.88 L191.75,19.72 L192.53,19.56" stroke="var(--red)"/><path d="M192.53,19.56 L193.31,19.41 L194.08,19.25 L194.86,19.08 L195.64,18.92 L196.41,18.75 L197.19,18.59 L197.96,18.42 L198.74,18.25 L199.51,18.07 L200.28,17.90 L201.06,17.72 L201.83,17.54 L202.60,17.37 L203.37,17.18" stroke="var(--paper)"/><path d="M203.37,17.18 L204.14,17.00 L204.91,16.82 L205.67,16.63 L206.44,16.44 L207.21,16.25 L207.97,16.06 L208.74,15.87 L209.50,15.67 L210.27,15.47 L211.03,15.27 L211.79,15.07 L212.55,14.87 L213.31,14.67 L214.07,14.46" stroke="var(--red)"/><path d="M214.07,14.46 L214.83,14.26 L215.59,14.05 L216.35,13.84 L217.10,13.62 L217.86,13.41 L218.61,13.19 L219.37,12.97 L220.12,12.75 L220.87,12.53 L221.62,12.31 L222.38,12.09 L223.13,11.86 L223.87,11.63 L224.62,11.40" stroke="var(--paper)"/><path d="M224.62,11.40 L225.37,11.17 L226.12,10.94 L226.86,10.70 L227.61,10.46 L228.35,10.23 L229.09,9.99 L229.83,9.74 L230.57,9.50 L231.31,9.25 L232.05,9.01 L232.79,8.76 L233.53,8.51 L234.26,8.25 L235.00,8.00" stroke="var(--red)"/></g><circle cx="120.0" cy="26.8" r="4.4" fill="none" stroke="var(--gold)" stroke-width="1.7"/><circle cx="120.0" cy="26.8" r="1.9" fill="var(--gold)"/></svg></h1>
+    <div class="mast-r">Motorsport-Kalender <b>2026</b><br><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ App installieren</button></div>
+  </header>
+  <div class="onair" id="onair"></div>
+  <nav class="nav">
+    <button class="tab on" data-v="upcoming" onclick="setView('upcoming')">Aktuell</button>
+    <button class="tab" data-v="series" onclick="setView('series')">Serien</button>
+    <button class="tab" data-v="standings" onclick="setView('standings')">Wertung</button>
+    <button class="tab" data-v="tv" onclick="setView('tv')">Wo schauen?</button>
+  </nav>
+  <div class="filterbar" id="filterbar"></div>
+  <section class="view on" id="view-upcoming"></section>
+  <section class="view" id="view-series"></section>
+  <section class="view" id="view-standings"></section>
+  <section class="view" id="view-tv"></section>
+  <footer>
+APEX · Saison 2026 · Sechs Serien · Stand 21. August 2026<br>
+    Alle Zeiten in MESZ, ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.
+<!-- ══════════════════════════════════════════════════════════════════════
+     INTERNER PFLEGESTAND — bewusst ausgeblendet (display:none).
+     Nicht loeschen: dient als Arbeitsliste fuer die naechste Aktualisierung.
+     ══════════════════════════════════════════════════════════════════════ -->
+    <div style="display:none" id="pflegestand" aria-hidden="true">
+    STAND 22.08.2026 — INTERNE PFLEGELISTE
+
+    VERIFIZIERT:
+    - F1: Kalender, Sprintwochenenden, Wertung (nach Ungarn).
+    - MotoGP: Kalender komplett neu aufgebaut nach motorsport-total.com (22 Laeufe, Startzeiten ME(S)Z).
+      Wertung nach Silverstone, 25 Fahrer mit Teams.
+    - WRC: Wertung nach Finnland. Zeitplaene Lauf 11-13 aus den offiziellen Itinerary-PDFs.
+    - Formel E: Endstand Saison 12 (17 Rennen), 20 Fahrer. London-Finale ergaenzt.
+    - DTM: Wertung nach Nuerburgring, alle 22 Fahrer mit offiziellen Teamnamen.
+    - WEC: Hypercar-Wertung nach Sao Paulo, alle 23 Eintraege. Kalender auf Barcelona/Monza aktualisiert.
+
+    KORRIGIERTE FEHLER (22.08.):
+    - MotoGP-Kalender war grob falsch: enthielt einen Argentinien-GP (existiert 2026 nicht),
+      Brasilien/Goiania fehlte komplett, Katar stand im April statt im November,
+      Silverstone im Mai statt im August. Nahezu alle Termine waren verschoben. Komplett ersetzt.
+    - WEC: Katar (1812 km) und Bahrain-Finale wurden wegen des Nahost-Konflikts abgesagt.
+      Ersetzt durch 6h Barcelona (16.-18.10.) und 6h Monza als Finale (6.-8.11.).
+    - WRC: Akropolis Lamia -> Loutraki, Sardinien Olbia -> Alghero, Islas Canarias -> Las Palmas.
+
+    NOCH OFFEN:
+    - MotoGP: Sieger der Laeufe 9 (Bruenn), 10 (Assen) und 11 (Sachsenring) fehlen.
+      Die Sieger der Laeufe 4-8 stammen aus dem alten, fehlerhaften Datensatz und wurden
+      nur ueber den Austragungsort zugeordnet — bitte gegenpruefen.
+    - MotoGP: pro Wochenende sind nur Sprint und Rennen hinterlegt.
+      FP1, Practice und Qualifying fehlen, weil dafuer keine gesicherten Zeiten vorlagen.
+    - DTM: Laeufe 3-6 stehen jetzt auf "done", aber ohne Sieger.
+    - F1 Lauf 10 (Belgien): Sieger Antonelli ist abgeleitet, nicht direkt belegt.
+      Quelle nannte 6 Antonelli-Siege, davon 5 namentlich (China, Japan, Miami, Kanada, Monaco);
+      Belgien blieb als einziges uebrig. Bitte gegenpruefen.
+    - Formel E: London I und II ohne Sessionzeiten. Tokio ist ein Event, war real ein Doppelrennen.
+    - WRC: Zeitplaene Lauf 1-10 sind weiterhin Platzhalter ("Etappe 1/2/3").
+      Finale Saudi-Arabien nicht bestaetigt, Entscheidung war fuer Mitte September angekuendigt.
+    - Sessionzeiten WEC und DTM weiterhin ungeprueft.
+    - Formel-E-Sender ergaenzt (Quelle: fiaformulae.com/ways-to-watch, 22.08.2026).
+      DAZN fuer DE/AT/CH, DF1 nur Deutschland, Eurosport pan-europaeisch. ORF/SRF sind dort nicht gelistet.
+    </div>
+  </footer>
+</div>
+
+<script>
+/* ═══════ SERIES ═══════ */
+const SERIES = {
+  f1 : {name:"Formel 1",  short:"F1",     color:"#ff3000", tv:"Sky / WOW · RTL (5 Rennen frei)",
+        tvd:{de:"<b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).",
+             at:"<b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.",
+             ch:"<b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.",
+             note:"F1 TV Pro: in DACH sind keine neuen Abos möglich, nur Bestandskunden sehen live."}},
+  mgp: {name:"MotoGP",    short:"MotoGP", color:"#e0354b", tv:"Sky / WOW · DF1 (12 von 22 frei)",
+        tvd:{de:"<b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2 und Moto3.",
+             at:"<b>ServusTV</b> zeigt die komplette Saison im Free-TV.",
+             ch:"<b>SRF</b> überträgt einzelne Rennen frei (SRF Info bzw. SRF zwei)."}},
+  wec: {name:"WEC",       short:"WEC",    color:"#3a86ff", tv:"Eurosport (WBD)",
+        tvd:{de:"<b>Eurosport</b> (Warner Bros. Discovery) hält die Rechte bis mindestens 2030 und zeigt alle acht Rennen inklusive der 24 Stunden von Le Mans.",
+             at:"Wie Deutschland über Eurosport.",
+             ch:"Wie Deutschland über Eurosport."}},
+  dtm: {name:"DTM",       short:"DTM",    color:"#f08a24", tv:"ProSieben (alle 16 Rennen frei)",
+        tvd:{de:"<b>ProSieben</b> zeigt alle 16 Rennen live im Free-TV, dazu <b>Joyn</b> und <b>ran.de</b>.",
+             at:"<b>ServusTV On</b> und <b>Red Bull TV</b> streamen alle Rennen kostenlos.",
+             ch:"Über ServusTV On und Red Bull TV."}},
+  wrc: {name:"WRC",       short:"WRC",    color:"#37b24d", tv:"Sky / WOW · ServusTV (Powerstage frei)",
+        tvd:{de:"<b>Sky Sport</b> bei <b>WOW</b> zeigt alle 14 Rallyes in voller Länge, live oder zeitversetzt, mit deutschem Kommentar.",
+             at:"<b>ServusTV</b> und <b>ServusTV On</b> übertragen bei jedem Lauf die Powerstage frei.",
+             ch:"Über Sky/WOW."}},
+  fe : {name:"Formel E",  short:"F·E",    color:"#19c7c0", tv:"DAZN · Eurosport · DF1 (frei)",
+        tvd:{de:"<b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.",
+             at:"<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.",
+             ch:"<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland."}},
+};
+function S(arr){ return arr.map(x=>({n:x[0],day:x[1],t:x[2],res:x[3]||null,partial:x[4]||false})); }
+function esc(str){ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function mgp(){ return [["FP1","Fr","10:45"],["Practice","Fr","15:00"],["FP2","Sa","10:10"],["Qualifying","Sa","10:50"],["Sprint","Sa","15:00"],["Warm Up","So","09:40"],["Rennen","So","14:00"]]; }
+
+/* Vollständige F1-Klassifizierungen (aus Ergebnis-Datenbank). R() = [pos,Fahrer,Team,Ergebnis] */
+function R(rows){ return rows.map(x=>({p:x[0],who:x[1],team:x[2],gap:x[3]})); }
+const F1R={
+ r1q:R([[1,"George Russell","Mercedes","1:18.518 · Pole"],[2,"Kimi Antonelli","Mercedes","1:18.811"],[3,"Isack Hadjar","Red Bull-Ford","1:19.303"],[4,"Charles Leclerc","Ferrari","1:19.327"],[5,"Oscar Piastri","McLaren","1:19.380"],[6,"Lando Norris","McLaren","1:19.475"],[7,"Lewis Hamilton","Ferrari","1:19.478"],[8,"Liam Lawson","Racing Bulls","1:19.994"],[9,"Arvid Lindblad","Racing Bulls","Q2 · 1:21.247"],[10,"Gabriel Bortoleto","Audi","Q2 · 1:20.221"],[11,"Nico Hülkenberg","Audi","Q2 · 1:20.303"],[12,"Oliver Bearman","Haas","Q2 · 1:20.311"],[13,"Esteban Ocon","Haas","Q2 · 1:20.491"],[14,"Pierre Gasly","Alpine","Q2 · 1:20.501"],[15,"Alexander Albon","Williams","Q2 · 1:20.941"],[16,"Franco Colapinto","Alpine","Q2 · 1:21.270"],[17,"Fernando Alonso","Aston Martin","Q1 · 1:21.969"],[18,"Sergio Pérez","Cadillac","Q1 · 1:22.605"],[19,"Valtteri Bottas","Cadillac","Q1 · 1:23.244"],[20,"Max Verstappen","Red Bull-Ford","Q1 · keine Zeit"],[21,"Carlos Sainz","Williams","Q1 · keine Zeit"],[22,"Lance Stroll","Aston Martin","Q1 · keine Zeit"]]),
+ r1r:R([[1,"George Russell","Mercedes","Sieger · 1:23:06.801"],[2,"Kimi Antonelli","Mercedes","+2.974"],[3,"Charles Leclerc","Ferrari","+15.519"],[4,"Lewis Hamilton","Ferrari","+16.144"],[5,"Lando Norris","McLaren","+51.741"],[6,"Max Verstappen","Red Bull-Ford","+54.617"],[7,"Oliver Bearman","Haas","+1 Rd"],[8,"Arvid Lindblad","Racing Bulls","+1 Rd"],[9,"Gabriel Bortoleto","Audi","+1 Rd"],[10,"Pierre Gasly","Alpine","+1 Rd"],[11,"Esteban Ocon","Haas","+1 Rd"],[12,"Alexander Albon","Williams","+1 Rd"],[13,"Liam Lawson","Racing Bulls","+1 Rd"],[14,"Franco Colapinto","Alpine","+2 Rd"],[15,"Carlos Sainz","Williams","+2 Rd"],[16,"Sergio Pérez","Cadillac","+3 Rd"],["NC","Lance Stroll","Aston Martin","43 Rd · n. klass."],["DNF","Fernando Alonso","Aston Martin","Vibrationen"],["DNF","Valtteri Bottas","Cadillac","Kraftstoffsystem"],["DNF","Isack Hadjar","Red Bull-Ford","Motorschaden"],["DNS","Oscar Piastri","McLaren","Unfall vor Start"],["DNS","Nico Hülkenberg","Audi","Hydraulik"]]),
+ r2sq:R([[1,"George Russell","Mercedes","1:31.520 · Pole"],[2,"Kimi Antonelli","Mercedes","+0.289"],[3,"Lando Norris","McLaren","+0.621"],[4,"Lewis Hamilton","Ferrari","+0.641"],[5,"Oscar Piastri","McLaren","+0.704"],[6,"Charles Leclerc","Ferrari","+1.008"],[7,"Pierre Gasly","Alpine","+1.368"],[8,"Max Verstappen","Red Bull-Ford","+1.734"],[9,"Oliver Bearman","Haas","+1.889"],[10,"Isack Hadjar","Red Bull-Ford","+2.203"],[11,"Nico Hülkenberg","Audi","Q2"],[12,"Esteban Ocon","Haas","Q2"],[13,"Liam Lawson","Racing Bulls","Q2"],[14,"Gabriel Bortoleto","Audi","Q2"],[15,"Arvid Lindblad","Racing Bulls","Q2"],[16,"Franco Colapinto","Alpine","Q2"],[17,"Carlos Sainz","Williams","Q1"],[18,"Alexander Albon","Williams","Q1 · Boxengasse"],[19,"Fernando Alonso","Aston Martin","Q1"],[20,"Lance Stroll","Aston Martin","Q1"],[21,"Valtteri Bottas","Cadillac","Q1"],[22,"Sergio Pérez","Cadillac","Q1 · keine Zeit"]]),
+ r2sp:R([[1,"George Russell","Mercedes","Sieger · 33:38.998"],[2,"Charles Leclerc","Ferrari","+0.674"],[3,"Lewis Hamilton","Ferrari","+2.554"],[4,"Lando Norris","McLaren","+4.433"],[5,"Kimi Antonelli","Mercedes","+5.688"],[6,"Oscar Piastri","McLaren","+6.809"],[7,"Liam Lawson","Racing Bulls","+10.900"],[8,"Oliver Bearman","Haas","+11.271"],[9,"Max Verstappen","Red Bull-Ford","+11.619"],[10,"Esteban Ocon","Haas","+13.887"],[11,"Pierre Gasly","Alpine","+14.780"],[12,"Carlos Sainz","Williams","+15.753"],[13,"Gabriel Bortoleto","Audi","+15.858"],[14,"Franco Colapinto","Alpine","+16.393"]]),
+ r2race:R([[1,"Kimi Antonelli","Mercedes","Sieger"],[2,"George Russell","Mercedes","+5.515"],[3,"Lewis Hamilton","Ferrari","Podium"],[4,"Charles Leclerc","Ferrari",""],[5,"Oliver Bearman","Haas",""]]),
+ r3q:R([[1,"Kimi Antonelli","Mercedes","1:28.778 · Pole"],[2,"George Russell","Mercedes","1:29.076"],[3,"Oscar Piastri","McLaren","1:29.132"],[4,"Charles Leclerc","Ferrari","1:29.405"],[5,"Lando Norris","McLaren","1:29.409"],[6,"Lewis Hamilton","Ferrari","1:29.567"],[7,"Pierre Gasly","Alpine","1:29.691"],[8,"Isack Hadjar","Red Bull-Ford","1:29.978"],[9,"Gabriel Bortoleto","Audi","1:30.274"],[10,"Arvid Lindblad","Racing Bulls","1:30.319"],[11,"Max Verstappen","Red Bull-Ford","Q2"],[12,"Esteban Ocon","Haas","Q2"],[13,"Nico Hülkenberg","Audi","Q2"],[14,"Liam Lawson","Racing Bulls","Q2"],[15,"Franco Colapinto","Alpine","Q2"],[16,"Carlos Sainz","Williams","Q2"],[17,"Alexander Albon","Williams","Q1"],[18,"Oliver Bearman","Haas","Q1"],[19,"Sergio Pérez","Cadillac","Q1"],[20,"Valtteri Bottas","Cadillac","Q1"],[21,"Fernando Alonso","Aston Martin","Q1"],[22,"Lance Stroll","Aston Martin","Q1"]]),
+ r3r:R([[1,"Kimi Antonelli","Mercedes","Sieger · 1:28:03.403"],[2,"Oscar Piastri","McLaren","+13.722"],[3,"Charles Leclerc","Ferrari","+15.270"],[4,"George Russell","Mercedes","+15.754"],[5,"Lando Norris","McLaren","+23.479"],[6,"Lewis Hamilton","Ferrari","+25.037"],[7,"Pierre Gasly","Alpine","+32.340"],[8,"Max Verstappen","Red Bull-Ford","+32.677"],[9,"Liam Lawson","Racing Bulls","+50.180"]]),
+ r4r:R([[1,"Kimi Antonelli","Mercedes","Sieger"],[2,"Lando Norris","McLaren","+3.264"],[3,"Oscar Piastri","McLaren","+27.092"],[4,"George Russell","Mercedes","+43.051"],[5,"Max Verstappen","Red Bull-Ford","+48.949 · 5s"],[6,"Lewis Hamilton","Ferrari","+53.753"],[7,"Franco Colapinto","Alpine","+61.871"],[8,"Charles Leclerc","Ferrari","+64.245 · 20s"],[9,"Carlos Sainz","Williams","+82.072"],[10,"Alexander Albon","Williams","+90.972"],[11,"Oliver Bearman","Haas","+1 Rd"],[12,"Gabriel Bortoleto","Audi","+1 Rd"],[13,"Esteban Ocon","Haas","+1 Rd"],[14,"Arvid Lindblad","Racing Bulls","+1 Rd"],[15,"Fernando Alonso","Aston Martin","+1 Rd"],[16,"Sergio Pérez","Cadillac","+1 Rd"],[17,"Lance Stroll","Aston Martin","+1 Rd"],[18,"Valtteri Bottas","Cadillac","+2 Rd"],["DNF","Nico Hülkenberg","Audi",""],["DNF","Liam Lawson","Racing Bulls",""],["DNF","Pierre Gasly","Alpine",""],["DNF","Isack Hadjar","Red Bull-Ford",""]]),
+ r5sq:R([[1,"George Russell","Mercedes","1:12.965 · Pole"],[2,"Kimi Antonelli","Mercedes","1:13.033"],[3,"Lando Norris","McLaren","1:13.280"],[4,"Oscar Piastri","McLaren","1:13.299"],[5,"Lewis Hamilton","Ferrari","1:13.326"],[6,"Charles Leclerc","Ferrari","1:13.410"],[7,"Max Verstappen","Red Bull-Ford","1:13.504"],[8,"Isack Hadjar","Red Bull-Ford","1:13.605"],[9,"Arvid Lindblad","Racing Bulls","1:13.737"],[10,"Carlos Sainz","Williams","1:14.536"],[11,"Nico Hülkenberg","Audi","Q2"],[12,"Gabriel Bortoleto","Audi","Q2"]]),
+ r5sp:R([[1,"George Russell","Mercedes","Sieger · 28:50.951"],[2,"Lando Norris","McLaren","+1.272"],[3,"Kimi Antonelli","Mercedes","+1.843"],[4,"Oscar Piastri","McLaren","+9.797"],[5,"Charles Leclerc","Ferrari","+9.929"],[6,"Lewis Hamilton","Ferrari","+10.545"],[7,"Max Verstappen","Red Bull-Ford","+15.935"],[8,"Arvid Lindblad","Racing Bulls","+29.710"],[9,"Franco Colapinto","Alpine","+31.621"],[10,"Carlos Sainz","Williams","+36.793"],[11,"Liam Lawson","Racing Bulls","+1:01.344"],[12,"Gabriel Bortoleto","Audi","+1:01.814"],[13,"Esteban Ocon","Haas","+1:04.209"],[14,"Sergio Pérez","Cadillac","+1:10.402 · 10s"],[15,"Nico Hülkenberg","Audi","+1:12.158 · 10s"],[16,"Lance Stroll","Aston Martin","+1 Rd"],[17,"Valtteri Bottas","Cadillac","+1 Rd"],[18,"Oliver Bearman","Haas","+1 Rd"],[19,"Alexander Albon","Williams","+1 Rd"],[20,"Pierre Gasly","Alpine","+1 Rd"],[21,"Isack Hadjar","Red Bull-Ford","+3 Rd"],["DNF","Fernando Alonso","Aston Martin","Motor"]]),
+ r5q:R([[1,"George Russell","Mercedes","1:12.578 · Pole"],[2,"Kimi Antonelli","Mercedes","1:12.646"],[3,"Lando Norris","McLaren","1:12.729"],[4,"Oscar Piastri","McLaren","1:12.781"],[5,"Lewis Hamilton","Ferrari","1:12.868"],[6,"Max Verstappen","Red Bull-Ford","1:12.907"],[7,"Isack Hadjar","Red Bull-Ford","1:12.935"],[8,"Charles Leclerc","Ferrari","1:12.976"],[9,"Arvid Lindblad","Racing Bulls","1:13.280"],[10,"Franco Colapinto","Alpine","1:13.697"]]),
+ r5r:R([[1,"Kimi Antonelli","Mercedes","Sieger · 1:28:15.758"],[2,"Lewis Hamilton","Ferrari","+10.768"],[3,"Max Verstappen","Red Bull-Ford","+11.276"],[4,"Charles Leclerc","Ferrari","+44.151"],[5,"Isack Hadjar","Red Bull-Ford","+1 Rd"],[6,"Franco Colapinto","Alpine","+1 Rd"],[7,"Liam Lawson","Racing Bulls","+1 Rd"],[8,"Pierre Gasly","Alpine","+1 Rd"],[9,"Carlos Sainz","Williams","+1 Rd"],[10,"Oliver Bearman","Haas","+1 Rd"],[11,"Oscar Piastri","McLaren","+2 Rd"],[12,"Nico Hülkenberg","Audi","+2 Rd"],[13,"Gabriel Bortoleto","Audi","+2 Rd · 5s"],[14,"Esteban Ocon","Haas","+2 Rd"],[15,"Lance Stroll","Aston Martin","+4 Rd"],[16,"Valtteri Bottas","Cadillac","+4 Rd"],["DNF","Sergio Pérez","Cadillac","Aufhängung"],["DNF","Lando Norris","McLaren","Getriebe"],["DNF","George Russell","Mercedes","Motor"],["DNF","Fernando Alonso","Aston Martin","Sitz gebrochen"],["DNF","Alexander Albon","Williams","Kollision"],["DNS","Arvid Lindblad","Racing Bulls","Getriebe"]]),
+ r6r:R([[1,"Kimi Antonelli","Mercedes","Sieger · 78 Rd"],[2,"Lewis Hamilton","Ferrari","+6.271"],[3,"Isack Hadjar","Red Bull-Ford","+23.394"],[4,"Oscar Piastri","McLaren","+24.261"],[5,"Liam Lawson","Racing Bulls","+26.553"],[6,"Arvid Lindblad","Racing Bulls","+29.010"],[7,"Pierre Gasly","Alpine","+30.369"],[8,"Alexander Albon","Williams","+33.413"],[9,"Esteban Ocon","Haas","+37.410"],[10,"Fernando Alonso","Aston Martin","+41.899"],[11,"Gabriel Bortoleto","Audi","+42.748"],[12,"George Russell","Mercedes","+43.353"],[13,"Nico Hülkenberg","Audi","+44.102"],[14,"Franco Colapinto","Alpine","+48.964"],[15,"Sergio Pérez","Cadillac","+49.153 · 10s"],["DNF","Carlos Sainz","Williams",""],["DNF","Charles Leclerc","Ferrari","Unfall"],["DNF","Lance Stroll","Aston Martin","Unfall"],["DNF","Lando Norris","McLaren","Technik"],["DNF","Oliver Bearman","Haas","Aufgabe"],["DNF","Valtteri Bottas","Cadillac",""],["DNF","Max Verstappen","Red Bull-Ford","Stand am Start"]]),
+ r7q:R([[1,"George Russell","Mercedes","1:14.679 · Pole"],[2,"Lewis Hamilton","Ferrari","+0.064"],[3,"Kimi Antonelli","Mercedes","+0.319"],[4,"Lando Norris","McLaren",""],[5,"Max Verstappen","Red Bull-Ford",""],[6,"Isack Hadjar","Red Bull-Ford",""],[7,"Oscar Piastri","McLaren",""],[8,"Liam Lawson","Racing Bulls",""],[9,"Nico Hülkenberg","Audi",""],[10,"Charles Leclerc","Ferrari","Q3 · Unfall"],[11,"Arvid Lindblad","Racing Bulls","Q2"],[12,"Gabriel Bortoleto","Audi","Q2"],[13,"Franco Colapinto","Alpine","Q2"],[14,"Pierre Gasly","Alpine","Q2"],[15,"Oliver Bearman","Haas","Q2"],[16,"Carlos Sainz","Williams","Q2"],[17,"Esteban Ocon","Haas","Q1"],[18,"Alexander Albon","Williams","Q1"],[19,"Sergio Pérez","Cadillac","Q1"],[20,"Valtteri Bottas","Cadillac","Q1"],[21,"Lance Stroll","Aston Martin","Q1"],[22,"Fernando Alonso","Aston Martin","Q1 · Boxengasse"]]),
+ r7r:R([[1,"Lewis Hamilton","Ferrari","Sieger"],[2,"George Russell","Mercedes","+19.5s"],[3,"Lando Norris","McLaren","+23.7s"],[4,"Max Verstappen","Red Bull-Ford","+40.4s"],[5,"Oscar Piastri","McLaren","+58.6s"],[6,"Isack Hadjar","Red Bull-Ford","+1 Rd"],[7,"Pierre Gasly","Alpine","+1 Rd"],[8,"Liam Lawson","Racing Bulls","+1 Rd"],[9,"Arvid Lindblad","Racing Bulls","+1 Rd"],[10,"Franco Colapinto","Alpine","+1 Rd · 10s"],[11,"Gabriel Bortoleto","Audi","+2 Rd"],[12,"Carlos Sainz","Williams","+2 Rd"],[13,"Esteban Ocon","Haas","+2 Rd"],[14,"Sergio Pérez","Cadillac","+3 Rd"],["DNF","Charles Leclerc","Ferrari","Servolenkung"],["DNF","Kimi Antonelli","Mercedes","Motor"],["DNF","Oliver Bearman","Haas",""],["DNF","Alexander Albon","Williams",""],["DNF","Fernando Alonso","Aston Martin",""],["DNF","Nico Hülkenberg","Audi",""],["DNF","Valtteri Bottas","Cadillac",""],["DNF","Lance Stroll","Aston Martin",""]]),
+};
+
+/* ═══════ EVENTS ═══════
+   status: done | live | next | up | cancel
+   resOverall: nur WRC (Rallye-Gesamtwertung)
+   session.res: [{p,who,team,gap}]  partial=Liste unvollständig (siehe Hinweis) */
+const EVENTS = [
+
+/* ───── FORMEL 1 (22 Runden – Bahrain & Saudi abgesagt) ───── */
+{s:"f1",rd:1,name:"Großer Preis von Australien",loc:"Melbourne",d0:"2026-03-06",d1:"2026-03-08",status:"done",result:"George Russell (Mercedes)",
+ sessions:S([["FP1","Fr","02:30"],["FP2","Fr","06:00"],["FP3","Sa","02:30"],
+   ["Qualifying","Sa","06:00",F1R.r1q],["Rennen","So","05:00",F1R.r1r]])},
+{s:"f1",rd:2,name:"Großer Preis von China · Sprint",loc:"Shanghai",d0:"2026-03-13",d1:"2026-03-15",status:"done",result:"Kimi Antonelli (Mercedes)",
+ sessions:S([["FP1","Fr","04:30"],["Sprint-Quali","Fr","08:30",F1R.r2sq],["Sprint","Sa","04:30",F1R.r2sp,true],
+   ["Qualifying","Sa","08:00",[{p:1,who:"Kimi Antonelli",team:"Mercedes",gap:"Pole"}],true],
+   ["Rennen","So","08:00",F1R.r2race,true]])},
+{s:"f1",rd:3,name:"Großer Preis von Japan",loc:"Suzuka",d0:"2026-03-27",d1:"2026-03-29",status:"done",result:"Kimi Antonelli (Mercedes)",
+ sessions:S([["FP1","Fr","04:30"],["FP2","Fr","08:00"],["FP3","Sa","04:30"],["Qualifying","Sa","08:00",F1R.r3q],
+   ["Rennen","So","07:00",F1R.r3r,true]])},
+{s:"f1",rd:4,name:"Großer Preis von Miami · Sprint",loc:"Miami",d0:"2026-05-01",d1:"2026-05-03",status:"done",result:"Kimi Antonelli (Mercedes)",
+ sessions:S([["FP1","Fr","18:30"],["Sprint-Quali","Fr","22:30"],["Sprint","Sa","18:00"],["Qualifying","Sa","22:00"],
+   ["Rennen","So","22:00",F1R.r4r]])},
+{s:"f1",rd:5,name:"Großer Preis von Kanada · Sprint",loc:"Montréal",d0:"2026-05-22",d1:"2026-05-24",status:"done",result:"Kimi Antonelli (Mercedes)",
+ sessions:S([["FP1","Fr","19:30"],["Sprint-Quali","Fr","23:00",F1R.r5sq,true],["Sprint","Sa","19:30",F1R.r5sp],
+   ["Qualifying","Sa","23:00",F1R.r5q,true],["Rennen","So","20:00",F1R.r5r]])},
+{s:"f1",rd:6,name:"Großer Preis von Monaco",loc:"Monte Carlo",d0:"2026-06-05",d1:"2026-06-07",status:"done",result:"Kimi Antonelli (Mercedes)",
+ sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],
+   ["Qualifying","Sa","16:00",[{p:1,who:"Kimi Antonelli",team:"Mercedes",gap:"Pole"}],true],
+   ["Rennen","So","15:00",F1R.r6r]])},
+{s:"f1",rd:7,name:"Großer Preis von Spanien",loc:"Barcelona",d0:"2026-06-12",d1:"2026-06-14",status:"done",result:"Lewis Hamilton (Ferrari)",
+ sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],
+   ["Qualifying","Sa","16:00",F1R.r7q],["Rennen","So","15:00",F1R.r7r]])},
+{s:"f1",rd:8,name:"Großer Preis von Österreich",loc:"Spielberg",d0:"2026-06-26",d1:"2026-06-28",status:"done",result:"George Russell (Mercedes)",
+ sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
+{s:"f1",rd:9,name:"Großer Preis von Großbritannien · Sprint",loc:"Silverstone",d0:"2026-07-03",d1:"2026-07-05",status:"done",result:"Charles Leclerc (Ferrari)",
+ sessions:S([["FP1","Fr","13:30"],["Sprint-Quali","Fr","17:30"],["Sprint","Sa","13:00"],["Qualifying","Sa","17:00"],["Rennen","So","16:00"]])},
+{s:"f1",rd:10,name:"Großer Preis von Belgien",loc:"Spa-Francorchamps",d0:"2026-07-17",d1:"2026-07-19",status:"done",result:"Andrea Kimi Antonelli (Mercedes)",
+ sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
+{s:"f1",rd:11,name:"Großer Preis von Ungarn",loc:"Budapest",d0:"2026-07-24",d1:"2026-07-26",status:"done",result:"Lando Norris (McLaren)",
+ sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
+{s:"f1",rd:12,name:"Großer Preis der Niederlande · Sprint",loc:"Zandvoort",d0:"2026-08-21",d1:"2026-08-23",status:"up",
+ sessions:S([["FP1","Fr","12:30"],["Sprint-Quali","Fr","16:30"],["Sprint","Sa","12:00"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
+{s:"f1",rd:13,name:"Großer Preis von Italien",loc:"Monza",d0:"2026-09-04",d1:"2026-09-06",status:"up",
+ sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
+{s:"f1",rd:14,name:"Großer Preis von Madrid",loc:"Madrid",d0:"2026-09-11",d1:"2026-09-13",status:"up",
+ sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
+{s:"f1",rd:15,name:"Großer Preis von Aserbaidschan",loc:"Baku",d0:"2026-09-25",d1:"2026-09-27",status:"up",
+ sessions:S([["FP1","Fr","11:30"],["FP2","Fr","15:00"],["FP3","Sa","11:30"],["Qualifying","Sa","15:00"],["Rennen","So","13:00"]])},
+{s:"f1",rd:16,name:"Großer Preis von Singapur · Sprint",loc:"Singapur",d0:"2026-10-09",d1:"2026-10-11",status:"up",
+ sessions:S([["FP1","Fr","11:30"],["Sprint-Quali","Fr","15:00"],["Sprint","Sa","11:30"],["Qualifying","Sa","15:00"],["Rennen","So","14:00"]])},
+{s:"f1",rd:17,name:"Großer Preis der USA",loc:"Austin",d0:"2026-10-23",d1:"2026-10-25",status:"up",
+ sessions:S([["FP1","Fr","19:30"],["FP2","Fr","23:00"],["FP3","Sa","19:30"],["Qualifying","Sa","23:00"],["Rennen","So","21:00"]])},
+{s:"f1",rd:18,name:"Großer Preis von Mexiko",loc:"Mexiko-Stadt",d0:"2026-10-30",d1:"2026-11-01",status:"up",
+ sessions:S([["FP1","Fr","20:30"],["FP2","Sa","00:00"],["FP3","Sa","19:30"],["Qualifying","Sa","23:00"],["Rennen","So","21:00"]])},
+{s:"f1",rd:19,name:"Großer Preis von São Paulo",loc:"Interlagos",d0:"2026-11-06",d1:"2026-11-08",status:"up",
+ sessions:S([["FP1","Fr","15:30"],["FP2","Fr","19:00"],["FP3","Sa","15:30"],["Qualifying","Sa","19:00"],["Rennen","So","18:00"]])},
+{s:"f1",rd:20,name:"Großer Preis von Las Vegas",loc:"Las Vegas",d0:"2026-11-20",d1:"2026-11-22",status:"up",
+ sessions:S([["FP1","Fr","05:30"],["FP2","Fr","09:00"],["FP3","Sa","05:30"],["Qualifying","Sa","09:00"],["Rennen","So","07:00"]])},
+{s:"f1",rd:21,name:"Großer Preis von Katar",loc:"Lusail",d0:"2026-11-27",d1:"2026-11-29",status:"up",
+ sessions:S([["FP1","Fr","14:30"],["FP2","Fr","18:00"],["FP3","Sa","14:30"],["Qualifying","Sa","18:00"],["Rennen","So","17:00"]])},
+{s:"f1",rd:22,name:"Großer Preis von Abu Dhabi",loc:"Yas Marina",d0:"2026-12-04",d1:"2026-12-06",status:"up",
+ sessions:S([["FP1","Fr","10:30"],["FP2","Fr","14:00"],["FP3","Sa","11:30"],["Qualifying","Sa","15:00"],["Rennen","So","14:00"]])},
+/* abgesagt */
+{s:"f1",rd:0,name:"Großer Preis von Bahrain",loc:"Sakhir",d0:"2026-04-10",d1:"2026-04-12",status:"cancel",sessions:S([])},
+{s:"f1",rd:0,name:"Großer Preis von Saudi-Arabien",loc:"Dschidda",d0:"2026-04-17",d1:"2026-04-19",status:"cancel",sessions:S([])},
+
+/* ───── MotoGP (22 Runden) ───── */
+{s:"mgp",rd:1,name:"Großer Preis von Thailand",loc:"Buriram",d0:"2026-02-27",d1:"2026-03-01",status:"done",result:"Marc Márquez (Ducati)",
+ sessions:S([["Sprint","Sa","09:00"],["Rennen","So","09:00"]])},
+{s:"mgp",rd:2,name:"Großer Preis von Brasilien",loc:"Goiânia",d0:"2026-03-20",d1:"2026-03-22",status:"done",result:"Marco Bezzecchi (Aprilia)",
+ sessions:S([["Sprint","Sa","19:00"],["Rennen","So","19:00"]])},
+{s:"mgp",rd:3,name:"Großer Preis der Amerikas",loc:"Austin",d0:"2026-03-27",d1:"2026-03-29",status:"done",result:"Marco Bezzecchi (Aprilia)",
+ sessions:S([["Sprint","Sa","21:00"],["Rennen","So","22:00"]])},
+{s:"mgp",rd:4,name:"Großer Preis von Spanien",loc:"Jerez",d0:"2026-04-24",d1:"2026-04-26",status:"done",result:"Marco Bezzecchi (Aprilia)",
+ sessions:S(mgp())},
+{s:"mgp",rd:5,name:"Großer Preis von Frankreich",loc:"Le Mans",d0:"2026-05-08",d1:"2026-05-10",status:"done",result:"Jorge Martín (Aprilia)",
+ sessions:S(mgp())},
+{s:"mgp",rd:6,name:"Großer Preis von Katalonien",loc:"Barcelona",d0:"2026-05-15",d1:"2026-05-17",status:"done",result:"Marc Márquez (Ducati)",
+ sessions:S(mgp())},
+{s:"mgp",rd:7,name:"Großer Preis von Italien",loc:"Mugello",d0:"2026-05-29",d1:"2026-05-31",status:"done",result:"Marco Bezzecchi (Aprilia)",
+ sessions:S(mgp())},
+{s:"mgp",rd:8,name:"Großer Preis von Ungarn",loc:"Balaton Park",d0:"2026-06-05",d1:"2026-06-07",status:"done",result:"Marc Márquez (Ducati)",
+ sessions:S(mgp())},
+{s:"mgp",rd:9,name:"Großer Preis von Tschechien",loc:"Brünn",d0:"2026-06-19",d1:"2026-06-21",status:"done",
+ sessions:S(mgp())},
+{s:"mgp",rd:10,name:"Großer Preis der Niederlande",loc:"Assen",d0:"2026-06-26",d1:"2026-06-28",status:"done",
+ sessions:S(mgp())},
+{s:"mgp",rd:11,name:"Großer Preis von Deutschland",loc:"Sachsenring",d0:"2026-07-10",d1:"2026-07-12",status:"done",
+ sessions:S(mgp())},
+{s:"mgp",rd:12,name:"Großer Preis von Großbritannien",loc:"Silverstone",d0:"2026-08-07",d1:"2026-08-09",status:"done",result:"Raúl Fernández (Aprilia)",
+ sessions:S(mgp().map(x=>x[0]==="Sprint"?["Sprint","Sa","17:00"]:x))},
+{s:"mgp",rd:13,name:"Großer Preis von Aragón",loc:"Aragón",d0:"2026-08-28",d1:"2026-08-30",status:"up",
+ sessions:S(mgp())},
+{s:"mgp",rd:14,name:"Großer Preis von San Marino",loc:"Misano",d0:"2026-09-11",d1:"2026-09-13",status:"up",
+ sessions:S(mgp())},
+{s:"mgp",rd:15,name:"Großer Preis von Österreich",loc:"Red Bull Ring",d0:"2026-09-18",d1:"2026-09-20",status:"up",
+ sessions:S(mgp())},
+{s:"mgp",rd:16,name:"Großer Preis von Japan",loc:"Motegi",d0:"2026-10-02",d1:"2026-10-04",status:"up",
+ sessions:S([["Sprint","Sa","08:00"],["Rennen","So","07:00"]])},
+{s:"mgp",rd:17,name:"Großer Preis von Indonesien",loc:"Mandalika",d0:"2026-10-09",d1:"2026-10-11",status:"up",
+ sessions:S([["Sprint","Sa","09:00"],["Rennen","So","09:00"]])},
+{s:"mgp",rd:18,name:"Großer Preis von Australien",loc:"Phillip Island",d0:"2026-10-23",d1:"2026-10-25",status:"up",
+ sessions:S([["Sprint","Sa","06:00"],["Rennen","So","04:00"]])},
+{s:"mgp",rd:19,name:"Großer Preis von Malaysia",loc:"Sepang",d0:"2026-10-30",d1:"2026-11-01",status:"up",
+ sessions:S([["Sprint","Sa","08:00"],["Rennen","So","08:00"]])},
+{s:"mgp",rd:20,name:"Großer Preis von Katar",loc:"Lusail",d0:"2026-11-06",d1:"2026-11-08",status:"up",
+ sessions:S([["Sprint","Sa","18:00"],["Rennen","So","18:00"]])},
+{s:"mgp",rd:21,name:"Großer Preis von Portugal",loc:"Portimão",d0:"2026-11-20",d1:"2026-11-22",status:"up",
+ sessions:S(mgp().map(x=>x[0]==="Sprint"?["Sprint","Sa","16:00"]:x))},
+{s:"mgp",rd:22,name:"Großer Preis von Valencia",loc:"Valencia",d0:"2026-11-27",d1:"2026-11-29",status:"up",
+ sessions:S(mgp())},
+{s:"wec",rd:1,name:"6 Stunden von Imola",loc:"Imola",d0:"2026-04-17",d1:"2026-04-19",status:"done",result:"Toyota #8 (Buemi/Hartley/Hirakawa)",
+ sessions:S([["FP1","Fr","13:30"],["FP2","Fr","18:00"],["FP3","Sa","09:45"],["Hyperpole","Sa","14:20"],
+   ["Rennen (6h)","So","13:00",[{p:1,who:"Toyota #8",team:"Buemi/Hartley/Hirakawa",gap:"Sieger"}]]])},
+{s:"wec",rd:2,name:"6 Stunden von Spa-Francorchamps",loc:"Spa",d0:"2026-05-07",d1:"2026-05-09",status:"done",result:"BMW #20 (van der Linde/Frijns/Rast)",
+ sessions:S([["FP1","Do","15:30"],["FP2","Fr","11:00"],["FP3","Fr","16:00"],["Hyperpole","Sa","12:00"],
+   ["Rennen (6h)","Sa","14:00",[{p:1,who:"BMW #20",team:"van der Linde/Frijns/Rast",gap:"Sieger"},{p:2,who:"Toyota #15",team:"Magnussen/Marciello/Vanthoor",gap:"P2"}]]])},
+{s:"wec",rd:3,name:"24 Stunden von Le Mans",loc:"Le Mans",d0:"2026-06-10",d1:"2026-06-14",status:"done",result:"Toyota #7 (Conway/Kobayashi/de Vries)",
+ sessions:S([["Free Practice","Mi","15:00"],["Qualifying","Mi","19:00"],["Hyperpole","Do","20:00"],["Warm Up","Sa","12:00"],
+   ["Rennen (24h)","Sa","16:00",[{p:1,who:"Toyota #7",team:"Conway/Kobayashi/de Vries",gap:"Sieger"},{p:2,who:"BMW #20",team:"Hypercar",gap:"P2"},{p:3,who:"Toyota #8",team:"Hypercar",gap:"P3"}]]])},
+{s:"wec",rd:4,name:"6 Stunden von São Paulo",loc:"Interlagos",d0:"2026-07-10",d1:"2026-07-12",status:"done",result:"BMW #15 (Magnussen/Marciello/Vanthoor)",
+ sessions:S([["FP1","Fr","16:00"],["FP2","Fr","20:30"],["FP3","Sa","15:00"],["Hyperpole","Sa","19:20"],["Rennen (6h)","So","16:00"]])},
+{s:"wec",rd:5,name:"Lone Star Le Mans (Austin)",loc:"COTA",d0:"2026-09-04",d1:"2026-09-06",status:"up",
+ sessions:S([["FP1","Fr","18:00"],["FP2","Fr","23:00"],["FP3","Sa","17:00"],["Hyperpole","Sa","21:20"],["Rennen (6h)","So","20:00"]])},
+{s:"wec",rd:6,name:"6 Stunden von Fuji",loc:"Fuji",d0:"2026-09-25",d1:"2026-09-27",status:"up",
+ sessions:S([["FP1","Fr","04:00"],["FP2","Fr","08:30"],["FP3","Sa","03:30"],["Hyperpole","Sa","07:20"],["Rennen (6h)","So","04:00"]])},
+{s:"wec",rd:7,name:"6 Stunden von Barcelona",loc:"Circuit de Barcelona-Catalunya",d0:"2026-10-16",d1:"2026-10-18",status:"up",
+ sessions:S([["FP1","Do","13:00"],["FP2","Do","18:00"],["FP3","Fr","13:00"],["Hyperpole","Fr","17:20"],["Rennen","Sa","13:00"]])},
+{s:"wec",rd:8,name:"6 Stunden von Monza (Finale)",loc:"Monza",d0:"2026-11-06",d1:"2026-11-08",status:"up",
+ sessions:S([["FP1","Do","13:00"],["FP2","Do","18:00"],["FP3","Fr","14:00"],["Hyperpole","Fr","18:20"],["Rennen (8h)","Sa","13:00"]])},
+
+/* ───── DTM (8 Wochenenden / 16 Rennen) ───── */
+{s:"dtm",rd:1,name:"DTM Spielberg",loc:"Red Bull Ring",d0:"2026-04-24",d1:"2026-04-26",status:"done",result:"Sa: Preining · So: Engel",
+ sessions:S([["Freies Training","Fr","13:30"],
+   ["Qualifying 1","Sa","09:40",[{p:1,who:"Maximilian Engel",team:"Mercedes",gap:"1:27.403 · Pole"},{p:2,who:"Ben Dörr",team:"Ferrari",gap:"+0.015"},{p:3,who:"Thomas Preining",team:"Porsche",gap:"+0.048"}]],
+   ["Rennen 1","Sa","13:30",[{p:1,who:"Thomas Preining",team:"Porsche",gap:"Sieger"},{p:2,who:"Lucas Auer",team:"Mercedes",gap:"+0.774"},{p:3,who:"Maximilian Engel",team:"Mercedes",gap:"+1.620"}]],
+   ["Qualifying 2","So","09:30",[{p:1,who:"Kelvin van der Linde",team:"BMW",gap:"1:27.575 · Pole"},{p:2,who:"Franz Wiebelhaus",team:"Audi",gap:"+0.085"},{p:3,who:"Lucas Auer",team:"Mercedes",gap:"+0.093"}]],
+   ["Rennen 2","So","13:30",[{p:1,who:"Maximilian Engel",team:"Mercedes",gap:"Sieger"},{p:2,who:"Marco Wittmann",team:"BMW",gap:"+4.857"},{p:3,who:"Lucas Auer",team:"Mercedes",gap:"+5.429"}]]])},
+{s:"dtm",rd:2,name:"DTM Zandvoort",loc:"Zandvoort",d0:"2026-05-22",d1:"2026-05-24",status:"done",result:"Kelvin van der Linde (BMW)",
+ sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:40"],
+   ["Rennen 1","Sa","13:30",[{p:1,who:"Kelvin van der Linde",team:"BMW Schubert",gap:"Sieger"}]],
+   ["Qualifying 2","So","09:30"],["Rennen 2","So","13:30"]])},
+{s:"dtm",rd:3,name:"DTM Lausitzring",loc:"Lausitzring",d0:"2026-06-19",d1:"2026-06-21",status:"done",
+ sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
+{s:"dtm",rd:4,name:"DTM Norisring",loc:"Nürnberg",d0:"2026-07-03",d1:"2026-07-05",status:"done",
+ sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
+{s:"dtm",rd:5,name:"DTM Oschersleben",loc:"Oschersleben",d0:"2026-07-24",d1:"2026-07-26",status:"done",
+ sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
+{s:"dtm",rd:6,name:"DTM Nürburgring",loc:"Nürburgring",d0:"2026-08-14",d1:"2026-08-16",status:"done",
+ sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
+{s:"dtm",rd:7,name:"DTM Sachsenring",loc:"Sachsenring",d0:"2026-09-11",d1:"2026-09-13",status:"up",
+ sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
+{s:"dtm",rd:8,name:"DTM Hockenheim (Finale)",loc:"Hockenheimring",d0:"2026-10-09",d1:"2026-10-11",status:"up",
+ sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
+
+/* ───── WRC (14 Runden) ───── */
+{s:"wrc",rd:1,name:"Rallye Monte-Carlo",loc:"Monaco",d0:"2026-01-22",d1:"2026-01-25",status:"done",result:"Oliver Solberg (Toyota)",
+ resOverall:[{p:1,who:"Oliver Solberg",team:"Toyota",gap:"Sieger"},{p:2,who:"Elfyn Evans",team:"Toyota",gap:"+51.8s"},{p:3,who:"Sébastien Ogier",team:"Toyota",gap:"P3"}],
+ sessions:S([["Shakedown","Do","09:00"],["Etappe 1","Do","18:00"],["Etappe 2","Fr","08:00"],["Etappe 3","Sa","08:00"],["Power Stage","So","12:00"]])},
+{s:"wrc",rd:2,name:"Rallye Schweden",loc:"Umeå",d0:"2026-02-12",d1:"2026-02-15",status:"done",result:"Elfyn Evans (Toyota)",
+ sessions:S([["Shakedown","Do","08:00"],["Etappe 1","Do","19:00"],["Etappe 2","Fr","08:00"],["Etappe 3","Sa","08:00"],["Power Stage","So","12:15"]])},
+{s:"wrc",rd:3,name:"Safari-Rallye Kenia",loc:"Nairobi",d0:"2026-03-12",d1:"2026-03-15",status:"done",result:"Takamoto Katsuta (Toyota)",
+ sessions:S([["Shakedown","Do","06:00"],["Etappe 1","Do","12:00"],["Etappe 2","Fr","05:00"],["Etappe 3","Sa","05:00"],["Power Stage","So","10:15"]])},
+{s:"wrc",rd:4,name:"Rallye Kroatien",loc:"Rijeka",d0:"2026-04-09",d1:"2026-04-12",status:"done",result:"Takamoto Katsuta (Toyota)",
+ sessions:S([["Shakedown","Do","08:00"],["Etappe 1","Fr","08:00"],["Etappe 2","Sa","08:00"],["Etappe 3","So","08:00"],["Power Stage","So","12:15"]])},
+{s:"wrc",rd:5,name:"Rallye Islas Canarias",loc:"Las Palmas (Gran Canaria)",d0:"2026-04-23",d1:"2026-04-26",status:"done",result:"Sébastien Ogier (Toyota)",
+ sessions:S([["Shakedown","Do","09:00"],["Etappe 1","Fr","08:00"],["Etappe 2","Sa","08:00"],["Etappe 3","So","08:00"],["Power Stage","So","12:15"]])},
+{s:"wrc",rd:6,name:"Rallye Portugal",loc:"Matosinhos",d0:"2026-05-07",d1:"2026-05-10",status:"done",result:"Thierry Neuville (Hyundai)",
+ sessions:S([["Shakedown","Do","09:00"],["Etappe 1","Fr","08:00"],["Etappe 2","Sa","08:00"],["Etappe 3","So","08:00"],["Power Stage","So","12:15"]])},
+{s:"wrc",rd:7,name:"Rallye Japan",loc:"Aichi/Gifu",d0:"2026-05-28",d1:"2026-05-31",status:"done",result:"Elfyn Evans (Toyota)",
+ sessions:S([["Shakedown","Do","02:00"],["Etappe 1","Fr","01:00"],["Etappe 2","Sa","01:00"],["Etappe 3","So","01:00"],["Power Stage","So","08:15"]])},
+{s:"wrc",rd:8,name:"Akropolis-Rallye Griechenland",loc:"Loutraki",d0:"2026-06-25",d1:"2026-06-28",status:"done",result:"Sébastien Ogier (Toyota)",
+ sessions:S([["Shakedown","Do","08:00"],["Etappe 1","Fr","07:00"],["Etappe 2","Sa","07:00"],["Etappe 3","So","07:00"],["Power Stage","So","11:15"]])},
+{s:"wrc",rd:9,name:"Rallye Estland",loc:"Tartu",d0:"2026-07-16",d1:"2026-07-19",status:"done",result:"Sami Pajari (Toyota)",
+ sessions:S([["Shakedown","Do","09:00"],["Etappe 1","Fr","08:00"],["Etappe 2","Sa","08:00"],["Etappe 3","So","08:00"],["Power Stage","So","12:15"]])},
+{s:"wrc",rd:10,name:"Rallye Finnland",loc:"Jyväskylä",d0:"2026-07-30",d1:"2026-08-02",status:"done",result:"Sami Pajari (Toyota)",
+ sessions:S([["Shakedown","Do","08:00"],["Etappe 1","Fr","07:00"],["Etappe 2","Sa","07:00"],["Etappe 3","So","07:00"],["Power Stage","So","11:15"]])},
+{s:"wrc",rd:11,name:"Rallye Paraguay",loc:"Encarnación",d0:"2026-08-27",d1:"2026-08-30",status:"up",
+ sessions:S([["WP1 Cambyreta 1","Fr","14:03"],["WP2 Nueva Alborada 1","Fr","14:56"],["WP3 Yerbateras 1","Fr","15:49"],["WP4 Autodromo 1","Fr","16:50"],
+   ["WP5 Cambyreta 2","Fr","19:19"],["WP6 Nueva Alborada 2","Fr","20:12"],["WP7 Yerbateras 2","Fr","21:05"],["WP8 Autodromo 2","Fr","22:18"],
+   ["WP9 Bella Vista 1","Sa","13:19"],["WP10 Bella Vista Sur 1","Sa","14:12"],["WP11 Hohenau 1","Sa","15:05"],["WP12 Trinidad 1","Sa","16:02"],
+   ["WP13 Bella Vista 2","Sa","19:16"],["WP14 Bella Vista Sur 2","Sa","20:09"],["WP15 Hohenau 2","Sa","21:05"],["WP16 Trinidad 2","Sa","22:02"],
+   ["WP17 Encarnación Costanera","Sa","23:05"],
+   ["WP18 Encarnación 1","So","12:05"],["WP19 Artigas 1","So","13:38"],["WP20 Artigas Oeste","So","15:51"],["WP21 Artigas 2","So","16:43"],
+   ["WP22 Encarnación 2 · Power Stage","So","19:15"]])},
+{s:"wrc",rd:12,name:"Rallye Chile Bio Bío",loc:"Concepción",d0:"2026-09-10",d1:"2026-09-13",status:"up",
+ sessions:S([["Shakedown","Do","16:01"],
+   ["WP1 Turquía 1","Fr","13:53"],["WP2 Nuevo Rere 1","Fr","14:48"],["WP3 Hualqui 1","Fr","15:36"],
+   ["WP4 Turquía 2","Fr","20:09"],["WP5 Nuevo Rere 2","Fr","21:04"],["WP6 Hualqui 2","Fr","21:52"],
+   ["WP7 Pelún 1","Sa","14:08"],["WP8 Lota 1","Sa","15:01"],["WP9 María las Cruces 1","Sa","16:05"],
+   ["WP10 Pelún 2","Sa","20:08"],["WP11 Lota 2","Sa","21:01"],["WP12 María las Cruces 2","Sa","22:05"],
+   ["WP13 Carampangue 1","So","14:00"],["WP14 BioBío 1","So","15:05"],["WP15 Carampangue 2","So","16:13"],
+   ["WP16 BioBío 2 · Power Stage","So","18:15"]])},
+{s:"wrc",rd:13,name:"Rallye Italien (Sardinien)",loc:"Alghero",d0:"2026-10-01",d1:"2026-10-04",status:"up",
+ sessions:S([["Shakedown","Do","09:01"],["WP1 Ittiri Arena Show","Do","16:05"],
+   ["WP2 Tula–Erula 1","Fr","08:01"],["WP3 Su Filigosu–Lerno 1","Fr","09:01"],["WP4 Monti di Alà 1","Fr","10:08"],
+   ["WP5 Tula–Erula 2","Fr","14:31"],["WP6 Su Filigosu–Lerno 2","Fr","15:31"],["WP7 Monti di Alà 2","Fr","16:38"],
+   ["WP8 Lerno–Monti di Alà 1","Sa","08:01"],["WP9 Coiluna–Loelle 1","Sa","09:11"],["WP10 Solorchè 1","Sa","10:07"],
+   ["WP11 Lerno–Monti di Alà 2","Sa","14:31"],["WP12 Coiluna–Loelle 2","Sa","15:41"],["WP13 Solorchè 2","Sa","16:37"],
+   ["WP14 Osilo–Tergu 1","So","08:31"],["WP15 Sassari–Argentiera 1","So","10:05"],["WP16 Osilo–Tergu 2","So","11:38"],
+   ["WP17 Sassari–Argentiera 2 · Power Stage","So","14:15"]])},
+{s:"wrc",rd:14,name:"Rallye Saudi-Arabien (Finale)",loc:"Jeddah",d0:"2026-11-11",d1:"2026-11-14",status:"up",
+ sessions:S([["Shakedown","Mi","13:00"],["Etappe 1","Do","16:00"],["Etappe 2","Fr","16:00"],["Etappe 3","Sa","16:00"],["Power Stage","Sa","19:15"]])},
+
+/* ───── Formel E · Saison 12 ───── */
+{s:"fe",rd:1,name:"São Paulo E-Prix",loc:"São Paulo",d0:"2025-12-06",d1:"2025-12-06",status:"done",result:"Jake Dennis (Andretti)",
+ sessions:S([["Freies Training","Fr","13:00"],["Qualifying","Sa","11:40"],
+   ["Rennen","Sa","17:00",[{p:1,who:"Jake Dennis",team:"Andretti",gap:"Sieger"},{p:2,who:"Oliver Rowland",team:"Nissan",gap:"P2"},{p:3,who:"Nick Cassidy",team:"Citroën",gap:"P3"}]]])},
+{s:"fe",rd:2,name:"Mexiko-Stadt E-Prix",loc:"Mexiko-Stadt",d0:"2026-01-10",d1:"2026-01-10",status:"done",
+ sessions:S([["Freies Training","Sa","16:30"],["Qualifying","Sa","18:40"],["Rennen","Sa","23:00"]])},
+{s:"fe",rd:3,name:"Miami E-Prix",loc:"Miami",d0:"2026-01-31",d1:"2026-01-31",status:"done",
+ sessions:S([["Freies Training","Sa","15:30"],["Qualifying","Sa","17:40"],["Rennen","Sa","22:00"]])},
+{s:"fe",rd:4,name:"Jeddah E-Prix I",loc:"Dschidda",d0:"2026-02-13",d1:"2026-02-13",status:"done",
+ sessions:S([["Freies Training","Fr","12:30"],["Qualifying","Fr","14:40"],["Rennen","Fr","19:00"]])},
+{s:"fe",rd:5,name:"Jeddah E-Prix II",loc:"Dschidda",d0:"2026-02-14",d1:"2026-02-14",status:"done",
+ sessions:S([["Freies Training","Sa","10:30"],["Qualifying","Sa","12:40"],["Rennen","Sa","19:00"]])},
+{s:"fe",rd:6,name:"Madrid E-Prix",loc:"Jarama",d0:"2026-03-21",d1:"2026-03-21",status:"done",
+ sessions:S([["Freies Training","Sa","09:30"],["Qualifying","Sa","11:40"],["Rennen","Sa","16:00"]])},
+{s:"fe",rd:7,name:"Berlin E-Prix I",loc:"Tempelhof",d0:"2026-05-02",d1:"2026-05-02",status:"done",
+ sessions:S([["Freies Training","Sa","09:30"],["Qualifying","Sa","11:40"],["Rennen","Sa","16:00"]])},
+{s:"fe",rd:8,name:"Berlin E-Prix II",loc:"Tempelhof",d0:"2026-05-03",d1:"2026-05-03",status:"done",
+ sessions:S([["Freies Training","So","09:30"],["Qualifying","So","11:40"],["Rennen","So","16:00"]])},
+{s:"fe",rd:9,name:"Monaco E-Prix I",loc:"Monte Carlo",d0:"2026-05-16",d1:"2026-05-16",status:"done",
+ sessions:S([["Freies Training","Sa","08:30"],["Qualifying","Sa","10:40"],["Rennen","Sa","15:00"]])},
+{s:"fe",rd:10,name:"Monaco E-Prix II",loc:"Monte Carlo",d0:"2026-05-17",d1:"2026-05-17",status:"done",
+ sessions:S([["Freies Training","So","08:30"],["Qualifying","So","10:40"],["Rennen","So","15:00"]])},
+{s:"fe",rd:11,name:"Sanya E-Prix",loc:"Sanya",d0:"2026-06-20",d1:"2026-06-20",status:"done",
+ sessions:S([["Freies Training","Sa","04:30"],["Qualifying","Sa","06:40"],["Rennen","Sa","09:00"]])},
+{s:"fe",rd:12,name:"Shanghai E-Prix I",loc:"Shanghai",d0:"2026-07-04",d1:"2026-07-04",status:"done",
+ sessions:S([["Freies Training","Sa","04:30"],["Qualifying","Sa","06:40"],["Rennen","Sa","09:00"]])},
+{s:"fe",rd:13,name:"Shanghai E-Prix II",loc:"Shanghai",d0:"2026-07-05",d1:"2026-07-05",status:"done",
+ sessions:S([["Freies Training","So","04:30"],["Qualifying","So","06:40"],["Rennen","So","09:00"]])},
+{s:"fe",rd:14,name:"Tokio E-Prix",loc:"Tokio",d0:"2026-07-25",d1:"2026-07-26",status:"done",result:"Nyck de Vries (Mahindra)",
+ sessions:S([["Freies Training","Sa","03:30"],["Qualifying","Sa","05:40"],["Rennen","Sa","08:00"]])},
+{s:"fe",rd:15,name:"London E-Prix I",loc:"London ExCeL",d0:"2026-08-15",d1:"2026-08-15",status:"done",result:"Pascal Wehrlein (Porsche)",
+ sessions:S([])},
+{s:"fe",rd:16,name:"London E-Prix II · Finale",loc:"London ExCeL",d0:"2026-08-16",d1:"2026-08-16",status:"done",result:"Taylor Barnard (DS Penske)",
+ sessions:S([])},
+];
+
+/* ═══════ STATE ═══════ */
+const ACTIVE = new Set(Object.keys(SERIES));
+let SHOW_PAST = false;
+let OPEN_RES = null;
+
+/* ═══════ HELFER ═══════ */
+const NOW = ()=> new Date();
+const MON=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+const MONABK=["JAN","FEB","MÄR","APR","MAI","JUN","JUL","AUG","SEP","OKT","NOV","DEZ"];
+const DOWf=["So","Mo","Di","Mi","Do","Fr","Sa"];
+function pd(iso){const[y,m,d]=iso.split("-").map(Number);return new Date(y,m-1,d);}
+
+/* ── Zeitzonen ── */
+let TZMODE="mesz";
+const LOCAL_TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||"Europe/Berlin";
+const TZLOC={
+ "Melbourne":"Australia/Melbourne","Shanghai":"Asia/Shanghai","Suzuka":"Asia/Tokyo","Miami":"America/New_York",
+ "Montréal":"America/Toronto","Monte Carlo":"Europe/Monaco","Barcelona":"Europe/Madrid","Spielberg":"Europe/Vienna",
+ "Silverstone":"Europe/London","Spa-Francorchamps":"Europe/Brussels","Spa":"Europe/Brussels","Budapest":"Europe/Budapest",
+ "Zandvoort":"Europe/Amsterdam","Monza":"Europe/Rome","Madrid":"Europe/Madrid","Baku":"Asia/Baku","Singapur":"Asia/Singapore",
+ "Austin":"America/Chicago","COTA":"America/Chicago","Mexiko-Stadt":"America/Mexico_City","Interlagos":"America/Sao_Paulo",
+ "Las Vegas":"America/Los_Angeles","Lusail":"Asia/Qatar","Yas Marina":"Asia/Dubai","Sakhir":"Asia/Bahrain",
+ "Dschidda":"Asia/Riyadh","Jeddah":"Asia/Riyadh","Buriram":"Asia/Bangkok","Termas de Río Hondo":"America/Argentina/Buenos_Aires",
+ "Jerez":"Europe/Madrid","Le Mans":"Europe/Paris","Mugello":"Europe/Rome","Balaton Park":"Europe/Budapest","Assen":"Europe/Amsterdam",
+ "Sachsenring":"Europe/Berlin","Brünn":"Europe/Prague","Red Bull Ring":"Europe/Vienna","Aragón":"Europe/Madrid","Misano":"Europe/Rome",
+ "Motegi":"Asia/Tokyo","Mandalika":"Asia/Makassar","Phillip Island":"Australia/Melbourne","Sepang":"Asia/Kuala_Lumpur",
+ "Portimão":"Europe/Lisbon","Valencia":"Europe/Madrid","Imola":"Europe/Rome","Fuji":"Asia/Tokyo","Lausitzring":"Europe/Berlin",
+ "Nürnberg":"Europe/Berlin","Oschersleben":"Europe/Berlin","Nürburgring":"Europe/Berlin","Hockenheimring":"Europe/Berlin",
+ "Monaco":"Europe/Monaco","Umeå":"Europe/Stockholm","Nairobi":"Africa/Nairobi","Rijeka":"Europe/Zagreb","Gran Canaria":"Atlantic/Canary",
+ "Matosinhos":"Europe/Lisbon","Aichi/Gifu":"Asia/Tokyo","Lamia":"Europe/Athens","Tartu":"Europe/Tallinn","Jyväskylä":"Europe/Helsinki",
+ "Encarnación":"America/Asuncion","Concepción":"America/Santiago","Olbia":"Europe/Rome","São Paulo":"America/Sao_Paulo",
+ "Jarama":"Europe/Madrid","Tempelhof":"Europe/Berlin","Sanya":"Asia/Shanghai","Tokio":"Asia/Tokyo"
+};
+function zoneOffsetMin(date,tz){
+  const p=new Intl.DateTimeFormat("en-US",{timeZone:tz,hour12:false,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"}).formatToParts(date).reduce((a,x)=>(a[x.type]=x.value,a),{});
+  let hh=p.hour==="24"?0:p.hour;
+  return (Date.UTC(p.year,p.month-1,p.day,hh,p.minute,p.second)-date.getTime())/60000;
+}
+function wallToInstant(y,m,d,hh,mm,tz){
+  const guess=new Date(Date.UTC(y,m-1,d,hh,mm));
+  let off=zoneOffsetMin(guess,tz);
+  let inst=new Date(guess.getTime()-off*60000);
+  const off2=zoneOffsetMin(inst,tz);
+  if(off2!==off) inst=new Date(guess.getTime()-off2*60000);
+  return inst;
+}
+function sessionAbsDate(e,s){
+  const a=pd(e.d0),b=pd(e.d1);
+  for(let dt=new Date(a);dt<=b;dt.setDate(dt.getDate()+1)){ if(DOWf[dt.getDay()]===s.day) return new Date(dt); }
+  return new Date(a);
+}
+function convTime(e,s){
+  if(TZMODE==="mesz") return {t:s.t,day:s.day};
+  const tz = TZMODE==="local"? LOCAL_TZ : (TZLOC[e.loc]||"Europe/Berlin");
+  const d=sessionAbsDate(e,s), parts=s.t.split(":").map(Number);
+  const inst=wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),parts[0],parts[1],"Europe/Berlin");
+  const t=new Intl.DateTimeFormat("de-DE",{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}).format(inst);
+  const day=new Intl.DateTimeFormat("de-DE",{timeZone:tz,weekday:"short"}).format(inst).replace(".","");
+  return {t,day};
+}
+function renderTZ(){
+  const el=document.getElementById("tzsw"); if(!el)return;
+  const opt=[["mesz","MESZ"],["local","Lokal"],["track","Strecke"]];
+  el.innerHTML='<span class="tzl">ZEIT</span>'+opt.map(o=>`<button class="${TZMODE===o[0]?'on':''}" onclick="setTZ('${o[0]}')">${o[1]}</button>`).join("");
+}
+function setTZ(m){TZMODE=m;renderTZ();rerender();}
+
+/* ── Kalender-Export (.ics) ── */
+function pad2(n){return String(n).padStart(2,"0");}
+function icsStamp(d){return d.getUTCFullYear()+pad2(d.getUTCMonth()+1)+pad2(d.getUTCDate())+"T"+pad2(d.getUTCHours())+pad2(d.getUTCMinutes())+"00Z";}
+function icsEsc(t){return String(t).replace(/([\\,;])/g,"\\$1").replace(/\n/g,"\\n");}
+function sessionInstant(e,s){const d=sessionAbsDate(e,s),p=s.t.split(":").map(Number);return wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),p[0],p[1],"Europe/Berlin");}
+function sessDuration(e,s){const n=s.n;
+  if(/\(24h\)/.test(n))return 1440; if(/\(8h\)/.test(n))return 480; if(/\(6h\)/.test(n))return 360;
+  if(/^Rennen/.test(n))return e.s==="f1"?120:(e.s==="mgp"?45:(e.s==="fe"?50:90));
+  if(/Power Stage/.test(n))return 30; if(/Etappe|Shakedown/.test(n))return 150;
+  if(/^Sprint$/.test(n))return 45; if(/Hyperpole|Qualifying|Sprint-Quali/.test(n))return 60;
+  return 60;}
+function vevent(e,s){
+  const start=sessionInstant(e,s), end=new Date(start.getTime()+sessDuration(e,s)*60000), S0=SERIES[e.s];
+  return ["BEGIN:VEVENT","UID:apex-"+e.s+e.rd+"-"+s.n.replace(/\W+/g,"")+"@apex-motorsport",
+    "DTSTAMP:"+icsStamp(new Date()),"DTSTART:"+icsStamp(start),"DTEND:"+icsStamp(end),
+    "SUMMARY:"+icsEsc(S0.short+" · "+e.name+" — "+s.n),
+    "LOCATION:"+icsEsc(e.loc),
+    "DESCRIPTION:"+icsEsc("APEX · "+S0.name+" · Lauf "+e.rd+" · "+e.loc),
+    "END:VEVENT"].join("\r\n");
+}
+function downloadICS(fn,veventsArr){
+  const cal=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//APEX//Motorsport 2026//DE","CALSCALE:GREGORIAN","METHOD:PUBLISH"].concat(veventsArr,["END:VCALENDAR"]).join("\r\n");
+  try{
+    const blob=new Blob([cal],{type:"text/calendar;charset=utf-8"});
+    const url=URL.createObjectURL(blob), a=document.createElement("a");
+    a.href=url; a.download=fn; document.body.appendChild(a); a.click();
+    setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},120);
+  }catch(err){
+    window.open("data:text/calendar;charset=utf-8,"+encodeURIComponent(cal));
+  }
+}
+function findEv(sk,rd){return EVENTS.find(e=>e.s===sk&&String(e.rd)===String(rd));}
+function exportSession(sk,rd,i){const e=findEv(sk,rd);if(!e)return;downloadICS("apex-"+sk+rd+"-s"+i+".ics",[vevent(e,e.sessions[i])]);}
+function exportEvent(sk,rd){const e=findEv(sk,rd);if(!e)return;const vs=e.sessions.filter(s=>s.t).map(s=>vevent(e,s));if(vs.length)downloadICS("apex-"+sk+rd+".ics",vs);}
+function exportSeason(){
+  const evs=actEvents().filter(e=>e.status!=="cancel"&&(!FAV_ONLY||isFav(e)));
+  let vs=[]; evs.forEach(e=>e.sessions.filter(s=>s.t).forEach(s=>vs.push(vevent(e,s))));
+  if(vs.length)downloadICS("apex-saison-2026.ics",vs);
+}
+
+/* ── Favoriten (mit abgesichertem Speicher) ── */
+let FAV_ONLY=false, SEARCH="";
+function loadFav(){try{return JSON.parse(localStorage.getItem("apex_fav")||localStorage.getItem("fullgrid_fav")||"[]");}catch(err){return [];}}
+function saveFav(){try{localStorage.setItem("apex_fav",JSON.stringify([...FAV]));}catch(err){}}
+const FAV=new Set(loadFav());
+function evKey(e){return e.s+"-"+e.rd+"-"+e.d0;}
+function evDomId(e){return e.s+e.rd+"_"+e.d0.slice(5).replace("-","");}
+function isFav(e){return FAV.has(evKey(e));}
+function toggleFav(key){FAV.has(key)?FAV.delete(key):FAV.add(key);saveFav();renderTimeline();renderToolbar();}
+function toggleFavView(){FAV_ONLY=!FAV_ONLY;renderToolbar();renderTimeline();}
+function renderToolbar(){}
+function matchEv(e){
+  if(!SEARCH)return true;const q=SEARCH;
+  if(SERIES[e.s].name.toLowerCase().includes(q))return true;
+  if((e.name+" "+e.loc).toLowerCase().includes(q))return true;
+  const ci=circuitFor(e); if(ci&&ci.name.toLowerCase().includes(q))return true;
+  if(e.result&&e.result.toLowerCase().includes(q))return true;
+  const pools=[]; if(e.resOverall)pools.push(e.resOverall);
+  e.sessions.forEach(s=>{if(s.res)pools.push(s.res);});
+  return pools.some(a=>a.some(r=>(r.who+" "+(r.team||"")).toLowerCase().includes(q)));
+}
+
+/* ── Strecken-Infos (statisch; len in km) ── */
+const CIRCUITS={
+ "Melbourne":{name:"Albert Park Circuit",len:5.278,turns:14},"Shanghai":{name:"Shanghai International Circuit",len:5.451,turns:16},
+ "Suzuka":{name:"Suzuka International Racing Course",len:5.807,turns:18},"Miami":{name:"Miami International Autodrome",len:5.412,turns:19},
+ "Montréal":{name:"Circuit Gilles Villeneuve",len:4.361,turns:14},"Monte Carlo":{name:"Circuit de Monaco",len:3.337,turns:19},
+ "Barcelona":{name:"Circuit de Barcelona-Catalunya",len:4.657,turns:14},"Spielberg":{name:"Red Bull Ring",len:4.318,turns:10},
+ "Silverstone":{name:"Silverstone Circuit",len:5.891,turns:18},"Spa-Francorchamps":{name:"Circuit de Spa-Francorchamps",len:7.004,turns:19},
+ "Budapest":{name:"Hungaroring",len:4.381,turns:14},"Zandvoort":{name:"Circuit Zandvoort",len:4.259,turns:14},
+ "Monza":{name:"Autodromo Nazionale Monza",len:5.793,turns:11},"Madrid":{name:"Madring",len:5.474,turns:22},
+ "Baku":{name:"Baku City Circuit",len:6.003,turns:20},"Singapur":{name:"Marina Bay Street Circuit",len:4.940,turns:19},
+ "Austin":{name:"Circuit of the Americas",len:5.513,turns:20},"Mexiko-Stadt":{name:"Autódromo Hermanos Rodríguez",len:4.304,turns:17},
+ "Interlagos":{name:"Autódromo José Carlos Pace",len:4.309,turns:15},"Las Vegas":{name:"Las Vegas Strip Circuit",len:6.201,turns:17},
+ "Lusail":{name:"Lusail International Circuit",len:5.419,turns:16},"Yas Marina":{name:"Yas Marina Circuit",len:5.281,turns:16},
+ "Buriram":{name:"Chang International Circuit",len:4.554,turns:12},"Termas de Río Hondo":{name:"Autódromo Termas de Río Hondo",len:4.806,turns:14},
+ "Jerez":{name:"Circuito de Jerez–Ángel Nieto",len:4.423,turns:13},"Mugello":{name:"Mugello Circuit",len:5.245,turns:15},
+ "Balaton Park":{name:"Balaton Park Circuit",len:4.115,turns:17},"Assen":{name:"TT Circuit Assen",len:4.542,turns:18},
+ "Sachsenring":{name:"Sachsenring",len:3.671,turns:13},"Brünn":{name:"Automotodrom Brno",len:5.403,turns:14},
+ "Red Bull Ring":{name:"Red Bull Ring",len:4.318,turns:10},"Aragón":{name:"MotorLand Aragón",len:5.077,turns:17},
+ "Misano":{name:"Misano World Circuit",len:4.226,turns:16},"Motegi":{name:"Mobility Resort Motegi",len:4.801,turns:14},
+ "Mandalika":{name:"Mandalika International Circuit",len:4.301,turns:17},"Phillip Island":{name:"Phillip Island Circuit",len:4.448,turns:12},
+ "Sepang":{name:"Sepang International Circuit",len:5.543,turns:15},"Portimão":{name:"Algarve International Circuit",len:4.653,turns:15},
+ "Valencia":{name:"Circuit Ricardo Tormo",len:4.005,turns:14},"Imola":{name:"Autodromo Enzo e Dino Ferrari",len:4.909,turns:19},
+ "Fuji":{name:"Fuji Speedway",len:4.563,turns:16},"Sakhir":{name:"Bahrain International Circuit",len:5.412,turns:15},
+ "Nürburgring":{name:"Nürburgring (GP-Strecke)",len:5.148,turns:15},"Hockenheimring":{name:"Hockenheimring",len:4.574,turns:17},
+ "Nürnberg":{name:"Norisring",len:2.300,turns:8},"Lausitzring":{name:"DEKRA Lausitzring",len:3.478,turns:13},
+ "Oschersleben":{name:"Motorsport Arena Oschersleben",len:3.696,turns:14}
+};
+function circuitFor(e){
+  if(e.s==="wec"&&e.loc==="Le Mans")return {name:"Circuit de la Sarthe",len:13.626,turns:38};
+  if(e.loc==="Le Mans")return {name:"Circuit Bugatti",len:4.185,turns:14};
+  return CIRCUITS[e.loc]||null;
+}
+function trackInfoHTML(e){
+  const c=circuitFor(e); if(!c)return "";
+  let facts=`<span class="tfact">Länge <b>${c.len.toFixed(3)} km</b></span>`;
+  if(c.turns)facts+=`<span class="tfact">Kurven <b>${c.turns}</b></span>`;
+  facts+=`<span class="tfact">Ort <b>${e.loc}</b></span>`;
+  return `<div class="trackinfo"><span class="tcircuit">◗ ${c.name}</span>${facts}</div>`;
+}
+
+/* ── nächste Session (Live-Countdown) ── */
+let NEXT_SESS=null;
+function computeNextSession(){
+  const now=Date.now(); let best=null;
+  actEvents().filter(e=>e.status!=="cancel").forEach(e=>{
+    e.sessions.forEach(s=>{ if(!s.t)return;
+      const inst=sessionInstant(e,s).getTime();
+      if(inst>now && (!best||inst<best.inst)) best={inst,e,s};
+    });
+  });
+  NEXT_SESS=best;
+}
+function fmtCountdown(ms){
+  if(ms<0)ms=0; const tot=Math.floor(ms/1000);
+  const d=Math.floor(tot/86400), hh=Math.floor(tot%86400/3600), mm=Math.floor(tot%3600/60), ss=tot%60;
+  const p=n=>String(n).padStart(2,"0");
+  return (d>0?d+"T ":"")+p(hh)+":"+p(mm)+":"+p(ss);
+}
+function tickCountdown(){
+  const el=document.getElementById("cd-tick");
+  if(el&&NEXT_SESS) el.textContent=fmtCountdown(NEXT_SESS.inst-Date.now());
+}
+function dayRange(e){const a=pd(e.d0),b=pd(e.d1);if(e.d0===e.d1)return String(a.getDate());
+  if(a.getMonth()===b.getMonth())return a.getDate()+"–"+b.getDate();
+  return a.getDate()+"."+(a.getMonth()+1)+"–"+b.getDate()+"."+(b.getMonth()+1);}
+function dows(e){return DOWf[pd(e.d0).getDay()]+"–"+DOWf[pd(e.d1).getDay()];}
+function startW(e){return pd(e.d0);}
+function endW(e){const b=pd(e.d1);b.setHours(23,59,59);return b;}
+function st(e){if(e.status==="cancel")return"cancel";const now=NOW();
+  if(now>endW(e))return"done";if(now>=startW(e)&&now<=endW(e))return"live";
+  if(e.status==="done")return"done";return e._next?"next":"up";}
+function countdown(e){const now=NOW(),s=startW(e),en=endW(e);
+  if(now>en)return{cls:"done",txt:"Beendet"};
+  if(now>=s&&now<=en)return{cls:"live",txt:"Läuft jetzt"};
+  const d=Math.ceil((s-now)/86400000);
+  if(d<=7)return{cls:"soon",txt:"in "+d+" Tag"+(d===1?"":"en")};
+  return{cls:"up",txt:"in "+d+" Tagen"};}
+function isRaceName(n){return /^Rennen|^Sprint$|^Rennen \(|^Power Stage/.test(n);}
+function actEvents(){return EVENTS.filter(e=>ACTIVE.has(e.s));}
+
+/* markiere je Serie das nächste Event */
+function tagNext(){
+  EVENTS.forEach(e=>e._next=false);
+  const now=NOW();
+  Object.keys(SERIES).forEach(sk=>{
+    const up=EVENTS.filter(e=>e.s===sk&&e.status!=="cancel"&&startW(e)>now).sort((a,b)=>startW(a)-startW(b));
+    if(up[0])up[0]._next=true;
+  });
+}
+
+/* ═══════ FILTERBAR ═══════ */
+function renderFilter(){
+  const el=document.getElementById("filterbar");
+  let chips=`<span class="fl-lab">Serien</span>`;
+  Object.keys(SERIES).forEach(sk=>{
+    const S0=SERIES[sk],on=ACTIVE.has(sk);
+    chips+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')"><span class="cdot" style="background:${S0.color}"></span>${S0.name}</button>`;
+  });
+  chips+=`<button class="chip allbtn" onclick="allSeries()">Alle</button>`;
+  el.innerHTML=chips;
+  el.style.display = (currentView==="tv")?"none":"flex";
+}
+function toggleSeries(sk){
+  if(ACTIVE.has(sk)){ if(ACTIVE.size>1) ACTIVE.delete(sk); } else ACTIVE.add(sk);
+  renderFilter(); rerender();
+}
+function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); renderFilter(); rerender(); }
+
+/* ═══════ ON-AIR ═══════ */
+function renderOnAir(){
+  const el=document.getElementById("onair"); if(!el)return;
+  const now=NOW();
+  const live=actEvents().filter(e=>e.status!=="cancel").find(e=>now>=startW(e)&&now<=endW(e));
+  computeNextSession();
+  if(live){
+    const S0=SERIES[live.s];
+    el.innerHTML=`<span class="onair-lab live"><span class="pulse"></span>Jetzt live</span>`+
+      `<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span><span class="nm">${live.name}</span> <span class="meta">${S0.short} · Wochenende läuft</span></span>`;
+  } else if(NEXT_SESS){
+    const e=NEXT_SESS.e,s=NEXT_SESS.s,S0=SERIES[e.s],ct=convTime(e,s);
+    el.innerHTML=`<span class="onair-lab soon">Nächste Session</span>`+
+      `<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span><span class="nm">${e.name} — ${s.n}</span> <span class="meta">${S0.short} · ${ct.day} ${ct.t} · in <span id="cd-tick" style="color:var(--paper)">–</span></span></span>`;
+    tickCountdown();
+  } else {
+    el.innerHTML=`<span class="onair-lab idle">Saison beendet</span>`;
+  }
+}
+
+/* ═══════ Sessions / Ergebnisse ═══════ */
+function fmtRes(arr,partial){
+  let h=arr.map(r=>`<div class="res-row ${r.p===1?'p1':''}"><span class="res-p">${r.p}</span><span class="res-w">${r.who}${r.team?` <span class="rt">${r.team}</span>`:''}</span><span class="res-g">${r.gap||''}</span></div>`).join("");
+  if(partial)h+=`<div class="res-note">Weitere Positionen werden ergänzt</div>`;
+  return h;
+}
+function buildSessions(e,evId,status){
+  let out="";
+  out+=trackInfoHTML(e);
+  const hasTimes=e.sessions.some(s=>s.t);
+  if(hasTimes){
+    out+=`<button class="calbtn" onclick="exportEvent('${e.s}','${e.rd}')">＋ Ganzes Wochenende in Kalender</button>`;
+  }
+  // WRC-Gesamtwertung als oberste Klappzeile
+  if(status==="done" && e.s==="wrc"){
+    const arr=e.resOverall||[{p:1,who:(e.result||"—"),gap:"Sieger"}];
+    const rid=evId+"-ovr";
+    out+=`<div class="sess" id="s-${rid}">`+
+      `<div class="sess-row clk" onclick="toggleRes('${rid}')"><span class="sess-chev">▶</span><span class="sess-n ovr">Gesamtwertung (Rallye)</span><span class="sess-t"></span><span class="sess-meta"></span><span></span></div>`+
+      `<div class="sess-respanel">${fmtRes(arr,!e.resOverall)}</div></div>`;
+  }
+  e.sessions.forEach((s,i)=>{
+    const rid=evId+"-s"+i;
+    let res=s.res;
+    let partial=!!s.partial;
+    if(!res && status==="done" && isRaceName(s.n) && e.s!=="wrc"){
+      res = e.result ? [{p:1,who:e.result,gap:"Sieger"}] : null;
+      partial = true;
+    }
+    const ct=convTime(e,s);
+    const cal=s.t?`<button class="scal" title="Diese Session in den Kalender" onclick="event.stopPropagation();exportSession('${e.s}','${e.rd}',${i})">＋</button>`:`<span></span>`;
+    if(res){
+      out+=`<div class="sess" id="s-${rid}">`+
+        `<div class="sess-row clk" onclick="toggleRes('${rid}')"><span class="sess-chev">▶</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}</span>${cal}</div>`+
+        `<div class="sess-respanel">${fmtRes(res,partial)}</div></div>`;
+    } else {
+      const note = (status==="done"&&isRaceName(s.n)) ? `<div class="sess-flat">Wertung noch nicht erfasst</div>` : "";
+      out+=`<div class="sess"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}</span>${cal}</div>${note}</div>`;
+    }
+  });
+  return out;
+}
+function toggleRes(rid){
+  const el=document.getElementById("s-"+rid);
+  if(!el)return;
+  const isOpen=el.classList.contains("open");
+  if(OPEN_RES && OPEN_RES!==rid){const prev=document.getElementById("s-"+OPEN_RES);if(prev)prev.classList.remove("open");}
+  if(isOpen){el.classList.remove("open");OPEN_RES=null;}
+  else{el.classList.add("open");OPEN_RES=rid;}
+}
+function toggleEv(id){document.getElementById("ev-"+id).classList.toggle("open");}
+
+/* ═══════ TIMELINE (Aktuell) ═══════ */
+function eventHTML(e){
+  const status=st(e),cd=countdown(e),S0=SERIES[e.s],evId=evDomId(e);
+  const win=(status==="done"&&e.result)?`<div class="ev-win">${e.result}</div>`:"";
+  return `<div class="wknd ${status}"><div class="wk-top">`+
+    `<div class="wk-date">${dayRange(e)}<span class="dow">${dows(e)}</span></div>`+
+    `<div><div class="ev" id="ev-${evId}"><div class="ev-row" onclick="toggleEv('${evId}')">`+
+      `<span class="ev-bar" style="background:${S0.color}"></span>`+
+      `<span class="ev-body"><span class="ev-name">${e.name}</span>`+
+      `<span class="ev-sub"><span class="ser" style="color:${S0.color}">${S0.name}</span> · Lauf ${e.rd} · ${e.loc}</span>${win}</span>`+
+      `<span class="ev-toggle">+</span></div>`+
+      `<div class="sessions">${buildSessions(e,evId,status)}</div></div></div>`+
+    `<div class="wk-cd ${cd.cls}">${cd.txt}</div>`+
+  `</div></div>`;
+}
+function monthGroupsHTML(list){
+  const groups={};
+  list.sort((a,b)=>startW(a)-startW(b)).forEach(e=>{const d=pd(e.d0);(groups[d.getFullYear()+"-"+d.getMonth()]=groups[d.getFullYear()+"-"+d.getMonth()]||[]).push(e);});
+  const now=NOW(),curKey=now.getFullYear()+"-"+now.getMonth();let html="";
+  Object.keys(groups).forEach(key=>{const[y,m]=key.split("-").map(Number);
+    let cls="future";if(key===curKey)cls="current";else if(new Date(y,m+1,0)<now)cls="past";
+    html+=`<div class="month ${cls}"><div class="month-head">${MON[m]}<span class="yr">${y}</span></div><div class="tl">`;
+    groups[key].forEach(e=>html+=eventHTML(e));
+    html+=`</div></div>`;});
+  return html;
+}
+function renderTimeline(){
+  const host=document.getElementById("view-upcoming");
+  const now=NOW();
+  let evs=actEvents().filter(e=>e.status!=="cancel");
+  if(FAV_ONLY) evs=evs.filter(e=>isFav(e));
+  if(SEARCH) evs=evs.filter(matchEv);
+  const future=evs.filter(e=>endW(e)>=now);
+  const past=evs.filter(e=>endW(e)<now);
+  let html="";
+  if(SEARCH||FAV_ONLY){
+    const lab=SEARCH?`${evs.length} Treffer für „${SEARCH}"`:`${evs.length} Favorit${evs.length===1?'':'en'}`;
+    html+=`<div class="searchcnt">${lab}${evs.length?'':' — nichts gefunden'}</div>`;
+  }
+  if(past.length){
+    const openPast = SHOW_PAST||SEARCH||FAV_ONLY;
+    if(!(SEARCH||FAV_ONLY))
+      html+=`<button class="pastbtn ${SHOW_PAST?'open':''}" onclick="togglePast()"><span class="ic">▾</span>Vorherige Events ${SHOW_PAST?'ausblenden':'anzeigen'}<span class="cnt">${past.length} gefahren</span></button>`;
+    html+=`<div class="pastwrap ${openPast?'open':''}">${monthGroupsHTML(past)}</div>`;
+  }
+  if(future.length) html+=monthGroupsHTML(future);
+  else if(!past.length) html+=`<div class="emptyhint">${FAV_ONLY?'Noch keine Favoriten markiert — tippe den Stern bei einem Event.':SEARCH?'Keine Treffer.':'Keine kommenden Events für die gewählten Serien.'}</div>`;
+  host.innerHTML=html;
+}
+function togglePast(){SHOW_PAST=!SHOW_PAST;OPEN_RES=null;renderTimeline();}
+
+/* ═══════ SERIEN ═══════ */
+function renderSeries(){
+  const host=document.getElementById("view-series"); if(!host)return;let html="";
+  Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)).forEach(sk=>{
+    const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk).sort((a,b)=>startW(a)-startW(b));
+    const done=evs.filter(e=>st(e)==="done").length,canc=evs.filter(e=>e.status==="cancel").length;
+    html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div>`+
+      `<div class="ser-meta">${evs.length-canc} Läufe · ${done} gefahren · ${evs.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}</div>`;
+    let n=0;
+    evs.forEach(e=>{const status=st(e);
+      if(status==="cancel"){
+        html+=`<div class="ser-round cancel"><span class="no">—</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span><span class="st cancel">Abgesagt</span></div>`;
+        return;}
+      n++;
+      let txt=status==="done"?"Beendet":status==="next"?"Als Nächstes":status==="live"?"Live":"Geplant";
+      let c=status==="done"?"done":(status==="next"||status==="live")?"next":"up";
+      const right=(status==="done"&&e.result)?`<span class="st done">${e.result}</span>`:`<span class="st ${c}">${txt}</span>`;
+      html+=`<div class="ser-round"><span class="no">${String(n).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span>${right}</div>`;});
+    html+=`</div>`;});
+  if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
+  host.innerHTML=html;
+}
+
+/* ═══════ JAHR ═══════ */
+function renderCalendar(){
+  const host=document.getElementById("view-calendar"); if(!host)return;
+  const evs=actEvents().sort((a,b)=>startW(a)-startW(b));
+  let html=`<p class="cal-intro">Alle Rennwochenenden 2026 chronologisch · Gold = Sieger · durchgestrichen = abgesagt</p>`;
+  evs.forEach(e=>{const S0=SERIES[e.s],status=st(e);
+    html+=`<div class="cal-row ${status==='cancel'?'cancel':''}">`+
+      `<span class="cd">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span>`+
+      `<span class="cs" style="background:${S0.color};color:#15110f">${S0.short}</span>`+
+      `<span class="cn">${status==='cancel'?`<span class="strike">${e.name}</span>`:e.name}</span>`+
+      `<span class="cw">${status==='done'&&e.result?e.result.split(" (")[0]:""}</span></div>`;});
+  host.innerHTML=html;
+}
+
+/* ═══════ TV ═══════ */
+function renderTV(){
+  const host=document.getElementById("view-tv"); if(!host)return;
+  let html=`<p class="tv-intro">Wo läuft was in Deutschland, Österreich und der Schweiz?<br>
+    Geprüft am 30.07.2026 — Rechte können sich kurzfristig ändern, Angaben ohne Gewähr.</p>`;
+  const LAND={de:"Deutschland",at:"Österreich",ch:"Schweiz"};
+  Object.keys(SERIES).forEach(sk=>{
+    const S0=SERIES[sk];
+    html+=`<div class="tv-row"><span class="tn" style="color:${S0.color}">${S0.name}</span><span class="tb">`;
+    if(!S0.tvd){
+      html+=`<span class="tv-open">Für diese Serie ist die Senderlage noch nicht geprüft — hier steht bewusst nichts, statt etwas Falsches.</span>`;
+    } else {
+      ["de","at","ch"].forEach(k=>{ if(!S0.tvd[k])return;
+        html+=`<span class="tv-l"><span class="tv-c">${LAND[k]}</span>${S0.tvd[k]}</span>`;});
+      if(S0.tvd.note)html+=`<span class="tv-note">${S0.tvd.note}</span>`;
+    }
+    html+=`</span></div>`;});
+  host.innerHTML=html;
+}
+
+/* ═══════ WERTUNG / STANDINGS ═══════ */
+const PTS={
+  race:{ f1:[25,18,15,12,10,8,6,4,2,1], mgp:[25,20,16,13,11,10,9,8,7,6,5,4,3,2,1],
+         wec:[25,18,15,12,10,8,6,4,2,1], dtm:[25,18,15,12,10,8,6,4,2,1],
+         wrc:[25,18,15,12,10,8,6,4,2,1], fe:[25,18,15,12,10,8,6,4,2,1] },
+  sprint:{ f1:[8,7,6,5,4,3,2,1], mgp:[12,9,7,6,5,4,3,2,1] }
+};
+function parseResult(str){
+  const m=String(str).match(/^(.*?)\s*\((.*)\)\s*$/);
+  return m?{who:m[1].trim(),team:m[2].trim()}:{who:String(str).trim(),team:""};
+}
+function eventScoring(e,sk){
+  const out=[]; let hasRace=false;
+  e.sessions.forEach(s=>{
+    if(!s.res)return;
+    if(s.n==="Sprint"){ out.push({rows:s.res,map:PTS.sprint[sk]||PTS.race[sk]||PTS.race.f1}); }
+    else if(isRaceName(s.n)){ out.push({rows:s.res,map:PTS.race[sk]||PTS.race.f1}); hasRace=true; }
+  });
+  if(sk==="wrc" && e.resOverall){ out.push({rows:e.resOverall,map:PTS.race.wrc}); hasRace=true; }
+  if(!hasRace && e.result){ out.push({rows:[Object.assign({p:1},parseResult(e.result))],map:PTS.race[sk]||PTS.race.f1}); }
+  return out;
+}
+function standings(sk){
+  const drv={},team={};
+  EVENTS.filter(e=>e.s===sk && st(e)==="done").forEach(e=>{
+    eventScoring(e,sk).forEach(r=>{
+      r.rows.forEach(row=>{
+        const pos=typeof row.p==="number"?row.p:null; if(!pos)return;
+        const pts=r.map[pos-1]||0; if(pts<=0)return;
+        const key=row.who;
+        (drv[key]=drv[key]||{name:row.who,team:row.team||"",pts:0,wins:0});
+        drv[key].pts+=pts; if(pos===1)drv[key].wins++;
+        if(row.team){ team[row.team]=(team[row.team]||0)+pts; }
+      });
+    });
+  });
+  return {
+    drv:Object.values(drv).sort((a,b)=>b.pts-a.pts||b.wins-a.wins),
+    team:Object.entries(team).map(([k,v])=>({name:k,pts:v})).sort((a,b)=>b.pts-a.pts)
+  };
+}
+const STAND = {
+  /* Quelle: motorsport-total.com, abgerufen 30.07.2026. Handgepflegt — bei
+     jedem neuen Rennen aktualisieren (Zahlen + "stand"-Text anpassen). */
+  f1: { stand:"nach 11 von 22 Rennen · Ungarn, 26.07.2026", quelle:"motorsport-total.com",
+        drv:[["Andrea Kimi Antonelli","Mercedes",219],["Lewis Hamilton","Ferrari",169],
+             ["George Russell","Mercedes",160],["Charles Leclerc","Ferrari",138],
+             ["Lando Norris","McLaren",128],["Max Verstappen","Red Bull",109],
+             ["Oscar Piastri","McLaren",92],["Isack Hadjar","Racing Bulls",68],
+             ["Liam Lawson","Racing Bulls",43],["Pierre Gasly","Alpine",42],
+             ["Arvid Lindblad","Red Bull",23],["Franco Colapinto","Alpine",19],
+             ["Oliver Bearman","Haas",18],["Gabriel Bortoleto","Audi",10],
+             ["Carlos Sainz","Williams",6],["Alexander Albon","Williams",5],
+             ["Esteban Ocon","Haas",3],["Nico Hülkenberg","Audi",2],
+             ["Fernando Alonso","Aston Martin",1]] },
+  mgp:{ stand:"nach 12 von 22 Grands Prix · Silverstone, 09.08.2026", quelle:"motogp.com",
+        drv:[["Jorge Martin","Aprilia",240],["Marco Bezzecchi","Aprilia",209],
+             ["Ai Ogura","Trackhouse",203],["Marc Marquez","Ducati Lenovo",200],
+             ["Fabio Di Giannantonio","Pertamina VR46",199],["Raul Fernandez","Trackhouse",184],
+             ["Pedro Acosta","Red Bull KTM",163],["Francesco Bagnaia","Ducati Lenovo",143],
+             ["Alex Marquez","Gresini",106],["Luca Marini","Honda HRC",86],
+             ["Fermin Aldeguer","Gresini",76],["Enea Bastianini","KTM Tech3",76],
+             ["Brad Binder","Red Bull KTM",72],["Fabio Quartararo","Monster Yamaha",55],
+             ["Diogo Moreira","Honda LCR",54],["Franco Morbidelli","Pertamina VR46",53],
+             ["Johann Zarco","Honda LCR",34],["Joan Mir","Honda HRC",29],
+             ["Jack Miller","Pramac Yamaha",23],["Alex Rins","Monster Yamaha",21],
+             ["Toprak Razgatlioglu","Pramac Yamaha",14],["Maverick Viñales","KTM Tech3",10],
+             ["Iker Lecuona","Gresini",9],["Augusto Fernandez","Yamaha Factory",6],
+             ["Pol Espargaro","KTM Tech3",3]] },
+
+  wrc:{ stand:"nach 10 von 14 Rallyes · Finnland, 02.08.2026", quelle:"autohebdo.fr",
+        drv:[["Elfyn Evans","Toyota",201],["Sami Pajari","Toyota",171],
+             ["Takamoto Katsuta","Toyota",160],["Oliver Solberg","Toyota",156],
+             ["Sébastien Ogier","Toyota",139],["Adrien Fourmaux","Hyundai",129],
+             ["Thierry Neuville","Hyundai",125],["Esapekka Lappi","Hyundai",25],
+             ["Hayden Paddon","Hyundai",21],["Josh McErlean","Ford",21],
+             ["Yohan Rossel","Lancia",20],["Léo Rossel","Citroën",18],
+             ["Jon Armstrong","Ford",16],["Robert Virves","Škoda",15],
+             ["Mārtiņš Sesks","Ford",12]] },
+  fe: { stand:"Endstand · Saison 12 (2025/26) nach 17 Rennen · London, 16.08.2026", quelle:"e-formel.de",
+        drv:[["Pascal Wehrlein","Porsche",169],["Jake Dennis","Andretti",164],
+             ["Mitch Evans","Jaguar",160],["Oliver Rowland","Nissan",137],
+             ["Edoardo Mortara","Mahindra",137],["António Félix da Costa","Porsche",128],
+             ["Nyck de Vries","Mahindra",115],["Nick Cassidy","Citroën",114],
+             ["Nico Müller","Andretti",102],["Sébastien Buemi","Envision",97],
+             ["Taylor Barnard","DS Penske",68],["Jean-Éric Vergne","DS Penske",68],
+             ["Pepe Martí","Cupra Kiro",66],["Felipe Drugovich","Envision",65],
+             ["Dan Ticktum","Cupra Kiro",62],["Joel Eriksson","Envision",55],
+             ["Lucas di Grassi","Lola Yamaha ABT",32],["Maximilian Günther","DS Penske",23],
+             ["Norman Nato","Nissan",20],["Zane Maloney","Lola Yamaha ABT",3]] },
+  dtm:{ stand:"nach 12 von 16 Rennen · Nürburgring, 16.08.2026", quelle:"dtm.com",
+        drv:[["Maro Engel","Mercedes-AMG Ravenol",160],["Thomas Preining","Manthey",159],
+             ["Nicki Thiim","Comtoyou Racing",139],["Lucas Auer","Mercedes-AMG Landgraf",136],
+             ["Marco Wittmann","Schubert Motorsport",135],["Matteo Cairoli","Emil Frey Racing",127],
+             ["Arjun Maini","HRT Ford Racing",108],["Ben Dörr","Dörr Motorsport",92],
+             ["Luca Engstler","Red Bull Team ABT",88],["Thierry Vermeulen","Emil Frey Racing",83],
+             ["Jules Gounon","Mercedes-AMG Mann-Filter",80],["Ricardo Feller","Manthey",77],
+             ["Kelvin van der Linde","Schubert Motorsport",73],["Finn Wiebelhaus","HRT Ford Racing",63],
+             ["Mirko Bortolotti","TGI by GRT",59],["Tom Kalender","Mercedes-AMG Landgraf",44],
+             ["Bastian Buus","Land-Motorsport",43],["Marco Mapelli","Red Bull Team ABT",41],
+             ["Timo Glock","Dörr Motorsport",29],["Nicolas Baert","Comtoyou Racing",7],
+             ["Maximilian Paul","TGI by GRT",5],["Christian Engelhart","TGI by GRT",2]] },
+
+  wec:{ stand:"nach 4 von 8 Rennen · São Paulo, 12.07.2026", quelle:"fiawec.com",
+        drv:[["René Rast / Robin Frijns","BMW #20",75],
+             ["Kobayashi / Conway / de Vries","Toyota #7",75],
+             ["Sheldon van der Linde","BMW #20",65],
+             ["Pier Guidi / Giovinazzi / Calado","Ferrari #51",57],
+             ["Hartley / Hirakawa / Buemi","Toyota #8",56],
+             ["Magnussen / Marciello","BMW #15",50],
+             ["Dries Vanthoor","BMW #15",44],
+             ["Nato / Stevens","Cadillac #12",42],
+             ["Hanson / Kubica / Ye","Ferrari #83",31],
+             ["Tincknell / Gamble","Aston Martin #007",30],
+             ["Fuoco / Molina / Nielsen","Ferrari #50",29],
+             ["da Costa / Milesi / Habsburg","Alpine #35",29],
+             ["Louis Delétraz","Cadillac #12",26],
+             ["Bamber / Bourdais","Cadillac #38",16],
+             ["Jack Aitken","Cadillac #38",12],
+             ["Ross Gunn","Aston Martin #007",8],
+             ["Cassidy / di Resta / Vandoorne","Peugeot #93",6],
+             ["Lotterer / Derani / Jaubert","Genesis #17",4],
+             ["Makowiecki / Gounon / Martins","Alpine #36",4],
+             ["Duval / Jakobsen / Pourchaire","Peugeot #94",3],
+             ["Riberas / Sørensen","Aston Martin #009",2],
+             ["Juncadella / Jaminet / Chatin","Genesis #19",0],
+             ["Roman de Angelis","Aston Martin #009",0]] }
+};
+function renderStandings(){
+  const host=document.getElementById("view-standings");
+  let html="", any=false;
+  Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)).forEach(sk=>{
+    const S0=SERIES[sk], D=STAND[sk];
+    if(!D){
+      html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
+        `<div class="std-tag">Wertung noch nicht gepflegt</div></div>`;
+      return;
+    }
+    any=true;
+    html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
+      `<div class="std-tag">Stand ${D.stand}</div><div class="std-sub">Fahrerwertung</div>`;
+    D.drv.forEach(([nm,tm,pts],i)=>{
+      html+=`<div class="std-row ${i===0?'lead':''}"><span class="sp">${i+1}</span>`+
+        `<span class="std-nm">${nm}${tm?`<span class="tm">${tm}</span>`:''}</span>`+
+        `<span class="std-wins"></span><span class="std-pts">${pts}<small>PKT</small></span></div>`;
+    });
+    html+=`</div>`;
+  });
+  if(!any && !html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
+  host.innerHTML=html;
+}
+
+/* ═══════ NAV / INIT ═══════ */
+let currentView="upcoming";
+function rerender(){OPEN_RES=null;
+  if(currentView==="upcoming")renderTimeline();
+  else if(currentView==="weekend")renderWeekend();
+  else if(currentView==="series")renderSeries();
+  else if(currentView==="standings")renderStandings();
+  else if(currentView==="calendar")renderCalendar();
+  else renderTV();}
+function setView(v){currentView=v;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.dataset.v===v));
+  document.querySelectorAll(".view").forEach(x=>x.classList.remove("on"));
+  document.getElementById("view-"+v).classList.add("on");
+  renderFilter();renderToolbar();rerender();try{history.replaceState(null,"","#v="+v);}catch(err){}window.scrollTo({top:0});}
+
+
+/* ═══════ DIESES WOCHENENDE ═══════ */
+function weekendWindow(base){
+  const now=base||NOW(); const d=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const dow=d.getDay(); const fri=new Date(d);
+  if(dow===6)fri.setDate(d.getDate()-1); else if(dow===0)fri.setDate(d.getDate()-2); else fri.setDate(d.getDate()+(5-dow));
+  const start=new Date(fri); start.setDate(fri.getDate()-1);           /* ab Donnerstag (WEC/WRC) */
+  const end=new Date(fri); end.setDate(fri.getDate()+2); end.setHours(23,59,59,999);
+  return {start,end};
+}
+function weekendItems(base){
+  const {start,end}=weekendWindow(base); const items=[];
+  actEvents().filter(e=>e.status!=="cancel").forEach(e=>{
+    e.sessions.forEach((s,i)=>{ if(!s.t)return;
+      const inst=sessionInstant(e,s);
+      if(inst>=start&&inst<=end)items.push({e,s,i,inst:inst.getTime()});
+    });
+  });
+  items.sort((a,b)=>a.inst-b.inst);
+  return {items,start,end};
+}
+function renderWeekend(){
+  const host=document.getElementById("view-weekend"); if(!host)return;
+  const {items,start,end}=weekendItems(); const now=Date.now();
+  const dfmt=new Intl.DateTimeFormat("de-DE",{timeZone:"Europe/Berlin",weekday:"long"});
+  const dnum=new Intl.DateTimeFormat("de-DE",{timeZone:"Europe/Berlin",day:"2-digit",month:"2-digit"});
+  const rfmt=new Intl.DateTimeFormat("de-DE",{day:"2-digit",month:"long"});
+  let html=`<div class="wke-lead">Alle Sessions · ${rfmt.format(start)} – ${rfmt.format(end)} · ${items.length} Session${items.length===1?"":"s"}</div>`;
+  if(!items.length){
+    computeNextSession();
+    const nx=NEXT_SESS?`Nächste Session: <b>${NEXT_SESS.s.n} — ${NEXT_SESS.e.name}</b> am ${new Intl.DateTimeFormat("de-DE",{weekday:"long",day:"2-digit",month:"long"}).format(NEXT_SESS.inst)}.`:"";
+    html+=`<div class="wke-none">Dieses Wochenende ist rennfrei.${nx?"<br>"+nx:""}</div>`;
+    host.innerHTML=html; return;
+  }
+  let lastDay="";
+  items.forEach(it=>{
+    const bd=dnum.format(it.inst);
+    if(bd!==lastDay){lastDay=bd;html+=`<div class="wke-day">${dfmt.format(it.inst)}<span class="yr">${bd}.</span></div>`;}
+    const S0=SERIES[it.e.s],ct=convTime(it.e,it.s);
+    const dur=sessDuration(it.e,it.s)*60000;
+    const live=it.inst<=now&&now<it.inst+dur, gone=now>=it.inst+dur;
+    html+=`<div class="wke-row ${gone?'gone':''}" onclick="gotoEvent('${it.e.s}','${it.e.rd}')">`+
+      `<span class="wke-t">${ct.t}<span class="d">${TZMODE==="mesz"?"MESZ":ct.day}</span></span>`+
+      `<span class="wke-bar" style="background:${S0.color}"></span>`+
+      `<span><span class="wke-sn ${isRaceName(it.s.n)?'race':''}">${it.s.n}${live?'<span class="wke-live">LIVE</span>':''}</span>`+
+      `<span class="wke-ev"><b style="color:${S0.color}">${S0.short}</b> · ${it.e.name} · ${it.e.loc}</span>`+
+      `<span class="wke-tv">TV: ${S0.tv}</span></span></div>`;
+  });
+  host.innerHTML=html;
+}
+
+/* ═══════ DEEP-LINKS ═══════ */
+function gotoEvent(sk,rd){
+  const e=findEv(sk,rd); if(!e)return;
+  if(currentView!=="upcoming")setView("upcoming");
+  if(endW(e)<NOW()&&!SHOW_PAST){SHOW_PAST=true;renderTimeline();}
+  let el=document.getElementById("ev-"+evDomId(e));
+  if(!el&&(SEARCH||FAV_ONLY||!ACTIVE.has(e.s))){
+    SEARCH="";const si=document.getElementById("search");if(si)si.value="";
+    FAV_ONLY=false;ACTIVE.add(e.s);
+    renderFilter();renderToolbar();renderTimeline();
+    el=document.getElementById("ev-"+evDomId(e));
+  }
+  if(el){el.classList.add("open");
+    const w=el.closest(".wknd")||el;
+    w.scrollIntoView({behavior:"smooth",block:"center"});
+    el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}
+  try{history.replaceState(null,"","#ev="+sk+"-"+rd);}catch(err){}
+}
+function copyEvLink(sk,rd,btn){
+  const url=location.href.split("#")[0]+"#ev="+sk+"-"+rd;
+  const done=()=>{if(btn){const old=btn.innerHTML;btn.innerHTML="✓ Link kopiert";setTimeout(()=>btn.innerHTML=old,1600);}};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).then(done).catch(()=>window.prompt("Link kopieren:",url));
+  else window.prompt("Link kopieren:",url);
+}
+function applyHash(){
+  const h=location.hash.replace(/^#/,""); if(!h)return;
+  let m=h.match(/^ev=([a-z]+)-(\d+)$/);
+  if(m&&findEv(m[1],m[2])){setTimeout(()=>gotoEvent(m[1],m[2]),80);return;}
+  m=h.match(/^v=(\w+)$/);
+  if(m&&document.getElementById("view-"+m[1]))setView(m[1]);
+}
+if(typeof window!=="undefined"&&window.addEventListener)window.addEventListener("hashchange",applyHash);
+
+/* ═══════ SESSION-ERINNERUNGEN (Favoriten) ═══════ */
+function loadJSON(k,f){try{const v=JSON.parse(localStorage.getItem(k));return v==null?f:v;}catch(err){return f;}}
+let REMIND_MIN=0;  /* Erinnerungs-UI entfernt — Funktion ruht */
+let FIRED=new Set(loadJSON("apex_fired",loadJSON("fullgrid_fired",[])));
+const REMIND_STEPS=[0,15,30,60];
+function renderRemind(){const b=document.getElementById("remtgl");if(!b)return;
+  b.textContent=REMIND_MIN?("Erinnerung: "+REMIND_MIN+" Min vorher"):"Erinnerung: Aus";
+  b.classList.toggle("on",!!REMIND_MIN);}
+function persistRemind(){try{localStorage.setItem("apex_remind",JSON.stringify(REMIND_MIN));}catch(err){}renderRemind();}
+function saveFired(){try{localStorage.setItem("apex_fired",JSON.stringify([...FIRED].slice(-300)));}catch(err){}}
+function cycleRemind(){
+  const next=REMIND_STEPS[(REMIND_STEPS.indexOf(REMIND_MIN)+1)%REMIND_STEPS.length];
+  if(next&&typeof Notification==="undefined"){alert("Dieser Browser unterstützt keine Benachrichtigungen.");return;}
+  if(next&&Notification.permission!=="granted"){
+    Notification.requestPermission().then(p=>{
+      if(p==="granted"){REMIND_MIN=next;persistRemind();remindHint();checkReminders();}
+      else{REMIND_MIN=0;persistRemind();alert("Benachrichtigungen sind blockiert — bitte in den Browser- bzw. App-Einstellungen erlauben.");}
+    });
+  } else {REMIND_MIN=next;persistRemind();if(next)remindHint();checkReminders();}
+}
+function remindHint(){if(REMIND_MIN&&!FAV.size)alert("Tipp: Erinnerungen gelten für deine Favoriten — markiere Events mit dem Stern ☆.");}
+function checkReminders(){
+  if(!REMIND_MIN||typeof Notification==="undefined"||Notification.permission!=="granted"||!FAV.size)return;
+  const now=Date.now(),win=REMIND_MIN*60000;
+  EVENTS.forEach(e=>{ if(e.status==="cancel"||!isFav(e))return;
+    e.sessions.forEach((s,i)=>{ if(!s.t)return;
+      const t=sessionInstant(e,s).getTime(),key=evKey(e)+"#"+i;
+      if(t>now&&t-now<=win&&!FIRED.has(key)){
+        FIRED.add(key);saveFired();
+        const mins=Math.max(1,Math.round((t-now)/60000));
+        try{new Notification("APEX · "+SERIES[e.s].short,{body:s.n+" — "+e.name+" startet in "+mins+" Min ("+s.t+" Uhr MESZ)",tag:key,icon:"icon-192.png"});}catch(err){}
+      }
+    });
+  });
+}
+
+/* ═══════ PWA ═══════ */
+let DEFERRED_INSTALL=null;
+if(typeof navigator!=="undefined"&&"serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
+  window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});
+}
+if(typeof window!=="undefined"&&window.addEventListener){
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();DEFERRED_INSTALL=e;const b=document.getElementById("installbtn");if(b)b.style.display="inline-flex";});
+  window.addEventListener("appinstalled",()=>{const b=document.getElementById("installbtn");if(b)b.style.display="none";});
+}
+function installApp(){ if(!DEFERRED_INSTALL)return; DEFERRED_INSTALL.prompt(); DEFERRED_INSTALL.userChoice.finally(()=>{DEFERRED_INSTALL=null;const b=document.getElementById("installbtn");if(b)b.style.display="none";}); }
+
+/* ═══════ SEO: STRUKTURIERTE DATEN (Schema.org Event) ═══════ */
+/* Wird rein aus EVENTS generiert -- keine Zugangsdaten, keine externen Aufrufe. */
+function injectEventSchema(){
+  try{
+    const list=EVENTS.filter(e=>e.status!=="cancel").map((e,i)=>({
+      "@type":"SportsEvent",
+      "position":i+1,
+      "name":(SERIES[e.s]?SERIES[e.s].name+" — ":"")+e.name,
+      "startDate":e.d0,
+      "endDate":e.d1||e.d0,
+      "eventStatus":e.status==="done"?"https://schema.org/EventScheduled":"https://schema.org/EventScheduled",
+      "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+      "location":{"@type":"Place","name":e.loc||""},
+      "sport":SERIES[e.s]?SERIES[e.s].name:undefined
+    }));
+    const data={"@context":"https://schema.org","@type":"ItemList","name":"APEX Motorsport-Kalender 2026","itemListElement":list};
+    const s=document.createElement("script");
+    s.type="application/ld+json";
+    s.textContent=JSON.stringify(data);
+    document.head.appendChild(s);
+  }catch(err){/* SEO-Daten sind optional -- App darf dadurch nie brechen */}
+}
+injectEventSchema();
+
+tagNext();
+document.getElementById("mast-date").textContent=NOW().toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+renderFilter();renderToolbar();renderRemind();renderTZ();renderOnAir();renderTimeline();applyHash();checkReminders();
+setInterval(()=>{tagNext();renderOnAir();checkReminders();if(currentView==="weekend")renderWeekend();},30000);
+setInterval(tickCountdown,1000);
+</script>
+</body>
+</html>

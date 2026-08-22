@@ -1,0 +1,123 @@
+APEX 2026 — Deploy-Paket (Stand 30. Juli 2026)
+================================================
+(vormals FULL/GRID — der Name wurde durchgängig auf APEX umgestellt)
+
+DATEIEN
+  index.html               Die komplette App (läuft auch einzeln per Doppelklick)
+  manifest.webmanifest     PWA-Manifest (Name, Icons, Farben)
+  sw.js                    Service Worker (Offline-Cache, Netzwerk zuerst)
+  icon-192.png             App-Icon klein
+  icon-512.png             App-Icon groß
+  icon-maskable-512.png    Android-Variante mit Sicherheitsrand (adaptive icons)
+  apple-touch-icon.png     iOS-Homescreen (180px)
+  favicon-32.png / -16.png Browser-Tab (vereinfacht: ohne Curb-Streifen,
+                           die bei 32px zu Matsch würden)
+  apex-2026.ics            Abo-Feed: alle 436 Sessions, alle 6 Serien
+  logo-apex.png            Logo als Bilddatei (für Social, README, Presse)
+
+DAS LOGO
+  Wortmarke "APEX", deren Buchstaben der Ideallinie folgen: A und X kippen am
+  stärksten (10,1°), P und E in der Kurvenmitte bleiben fast aufrecht (3,2°).
+  Darunter die Ideallinie als rot-weißes Curbing, mit goldenem Ring genau am
+  Scheitelpunkt — dem Apex. Im Header ist das echtes HTML+SVG (kein Bild),
+  skaliert also verlustfrei und nutzt die CSS-Variablen der App.
+
+  Technisch: Die Linie (.mk-line) ist absolut positioniert und mit
+  width:100% an die Wortbreite gekoppelt, das h1 hat width:max-content.
+  Dadurch misst sich die Linie IMMER am tatsächlich gerenderten Wort —
+  auch wenn Anton mal nicht lädt und eine Ersatzschrift einspringt.
+  Das padding-bottom von .62em reserviert den Platz darunter; wer den
+  Abstand ändert (top:1.04em), muss es mit anpassen.
+
+  SCHRIFT PRÜFEN: Das Logo lebt von Anton. Wenn "APEX" bei dir breit und
+  rundlich statt schmal und wuchtig aussieht, lädt Anton nicht — dann
+  fehlt die Internetverbindung beim Öffnen (die Schrift kommt von Google
+  Fonts) oder ein Blocker verhindert sie. Als Notnagel greift jetzt
+  Impact bzw. Arial Narrow, das kommt Anton am nächsten. Das betrifft
+  nicht nur das Logo, sondern auch die Monatsüberschriften.
+
+  Der Schriftgrad im Masthead wurde auf clamp(42px,7.5vw,72px) angehoben,
+  weil "APEX" in Anton nur halb so breit ist wie das frühere "FULL/GRID"
+  und der Kopf sonst leer gewirkt hätte. Rückgängig machen: in der Regel
+  ".mast h1" wieder clamp(34px,6vw,54px) eintragen.
+
+UMFANG (Stand 30.07.2026 auf Grundfunktionen reduziert)
+  Die App zeigt jetzt nur noch:
+  - den Eventkalender aller sechs Serien mit Serienfiltern
+  - den Knopf "Vorherige Events anzeigen"
+  - den Zeitplan je Event per Klick (inkl. Kalender-Export des Wochenendes)
+  - den Tab "Wertung"
+
+  ...sowie die Tabs "Serien" (Kalender je Rennserie) und "Wo schauen?".
+
+  Entfernt bleiben: Suche, Favoriten/Sterne, Session-Erinnerungen, die Ansichten
+  "Wochenende" und "Jahr", der Live-Streifen oben und der Zeitzonen-Umschalter
+  (alle Zeiten fest MESZ).
+  Der zugehörige Code ist NICHT gelöscht, nur nicht mehr verdrahtet — jede
+  dieser Funktionen lässt sich ohne Neubau wieder aktivieren.
+
+DATENSTAND — WAS GEPRÜFT IST UND WAS NICHT
+  Geprüft gegen motorsport-total.com (Abruf 30.07.2026):
+  - F1-Kalender: 22 Rennen, Reihenfolge und Orte stimmen
+  - F1-Sprintwochenenden: China, Miami, Kanada, Silverstone, Zandvoort,
+    Singapur. In der App waren vier davon falsch (Miami fehlte, Spa, Austin,
+    Interlagos und Lusail waren fälschlich als Sprint markiert) — korrigiert.
+  - F1-Fahrerwertung nach 11 von 22 Rennen (Ungarn, 26.07.2026)
+  - MotoGP-Fahrerwertung nach 11 von 22 GP (Sachsenring, 12.07.2026)
+
+  - Senderangaben (Tab "Wo schauen?") für F1, MotoGP, WEC, DTM und WRC,
+    getrennt nach Deutschland, Österreich und Schweiz. Quellen stehen unten
+    in der Ansicht selbst.
+
+  NICHT geprüft und daher mit Vorsicht zu behandeln:
+  - Sessionzeiten von MotoGP, WEC, DTM, WRC und Formel E
+  - Kalender dieser fünf Serien
+  - Senderangaben der Formel E
+  Wo nichts geprüft ist, steht das auch so da: im Tab "Wertung" erscheint
+  "Wertung noch nicht gepflegt", im Tab "Wo schauen?" bei der Formel E ein
+  entsprechender Hinweis — statt erfundener Angaben.
+
+SENDERANGABEN PFLEGEN
+  Die Daten stehen im Objekt SERIES ganz oben im Script. Pro Serie:
+    tv  = Kurzfassung (eine Zeile, wird an anderen Stellen mitbenutzt)
+    tvd = {de:"...", at:"...", ch:"...", note:"..."} für den Tab "Wo schauen?"
+  Fehlt tvd, zeigt die Ansicht automatisch den Hinweis "noch nicht geprüft" —
+  so wie aktuell bei der Formel E. Zum Ergänzen einfach ein tvd-Objekt anlegen.
+  <b>...</b> ist im Text erlaubt und hebt Sendernamen hervor.
+  Das Datum in renderTV ("Geprüft am ...") bitte mitziehen.
+
+WERTUNG AKTUALISIEREN
+  Die Tabellen stehen jetzt fest im Code (Objekt STAND, gleich über
+  renderStandings) statt aus Ergebnissen berechnet zu werden. Pro Serie:
+  Punkte anpassen und den Text bei "stand" mitziehen, z.B.
+  stand:"nach 12 von 22 Rennen · Zandvoort, 23.08.2026".
+  Eine neue Serie ergänzen: einfach einen weiteren Schlüssel in STAND anlegen
+  (wec, dtm, wrc, fe) — die Ansicht nimmt ihn automatisch auf.
+
+HOSTEN (GitHub Pages, kostenlos, ~5 Minuten)
+  1. Repository anlegen, alle Dateien in den Hauptordner
+  2. Settings -> Pages -> Branch "main" -> Save
+  3. Fertig: https://kai5409.github.io/apex-motorsport/
+  Danach automatisch aktiv: "App installieren", Offline-Nutzung,
+  Kalender-Abo unter "Wo schauen?" (webcal-Link).
+
+WICHTIG BEIM UMBENENNEN
+  - Die Abo-Datei heißt jetzt apex-2026.ics (vorher fullgrid-2026.ics).
+    Beim Hochladen die alte Datei löschen, sonst liegen beide parallel.
+  - Die Termin-IDs im Feed haben sich geändert (apex- statt fullgrid-).
+    Wer den alten Feed schon abonniert hatte, sieht die Termine einmalig
+    doppelt und muss das Abo neu einrichten. Vor dem Launch unkritisch.
+  - Gespeicherte Favoriten und Erinnerungen gehen NICHT verloren: die App
+    liest die alten Browser-Daten automatisch ein und schreibt ab dann
+    unter den neuen Schlüsseln weiter.
+
+DATEN AKTUALISIEREN
+  index.html anpassen und hochladen — Besucher bekommen beim nächsten
+  Öffnen automatisch den neuen Stand (Netzwerk-zuerst-Cache).
+  Bei geänderten Sessionzeiten auch apex-2026.ics neu erzeugen lassen,
+  sonst hinkt der Abo-Feed hinterher.
+
+ERINNERUNGEN
+  Button in der Toolbar (Tab "Aktuell"): Aus -> 15 -> 30 -> 60 Min vorher.
+  Gilt für favorisierte Events (Stern). Benachrichtigungen kommen, solange
+  App/Tab offen sind — echte Push-Nachrichten bräuchten einen Server.
