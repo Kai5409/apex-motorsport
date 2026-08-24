@@ -29,9 +29,17 @@
 <meta name="twitter:title" content="APEX — Motorsport-Kalender 2026">
 <meta name="twitter:description" content="Alle Renntermine und Sessionzeiten 2026: F1, MotoGP, WEC, DTM, WRC, Formel E.">
 <meta name="twitter:image" content="https://kai5409.github.io/apex-motorsport/logo-apex.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Schriften lokal ausgeliefert - kein Abruf von Google-Servern, keine Datenuebertragung an Dritte. */
+@font-face{font-family:"Anton";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/anton-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/ibm-plex-mono-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/inter-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/inter-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/inter-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/inter-latin-700-normal.woff2") format("woff2")}
+</style>
 <style>
 :root{
   --bg:#141210; --bg2:#1b1916; --paper:#ece7dd; --muted:#8d8678; --faint:#55504a;
@@ -247,6 +255,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .rl-item+.rl-item{border-top:1px solid var(--rule)}
 .rl-t{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
 .rl-x{font-size:13.5px;color:var(--muted);line-height:1.72;max-width:66ch}
+.legal-link{background:none;border:0;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px}
+.legal-link:hover{color:var(--paper)}
+.legal{display:none;margin:22px auto 0;max-width:74ch;text-align:left;border-top:1px solid var(--rule);padding-top:20px}
+.legal.on{display:block}
+.legal h3{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;text-transform:uppercase;margin:0 0 14px;letter-spacing:.02em}
+.legal h4{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:18px 0 5px;font-weight:400}
+.legal p{font-size:12.5px;line-height:1.72;color:var(--muted);margin:0 0 6px}
+.legal a{color:var(--muted)}
 .tv-open{display:block;color:var(--faint);font-style:italic}
 .tv-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--faint);letter-spacing:.04em;line-height:1.7;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--rule)}
 
@@ -318,7 +334,44 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <section class="view" id="view-rules"></section>
   <footer>
 APEX · Saison 2026 · Sechs Serien · Stand 22. August 2026<br>
-    Alle Zeiten in MESZ, ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.
+    Alle Zeiten in MESZ, ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
+    <button class="legal-link" onclick="toggleLegal()">Datenschutz</button>
+    <div class="legal" id="legal">
+      <h3>Datenschutzerklärung</h3>
+
+      <h4>Grundsatz</h4>
+      <p>APEX ist ein privates, nicht-kommerzielles Projekt. Es werden keine Nutzerkonten geführt,
+      keine Cookies gesetzt, keine Reichweitenmessung durchgeführt und keine Daten an Dritte
+      weitergegeben. Es findet kein Tracking statt.</p>
+
+      <h4>Hosting</h4>
+      <p>Diese Seite wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc., USA.
+      Beim Aufruf überträgt Ihr Browser technisch notwendige Daten wie IP-Adresse, Datum, Uhrzeit
+      und aufgerufene Datei an GitHub. Diese Verarbeitung ist für die Auslieferung der Seite
+      erforderlich und erfolgt auf Grundlage eines berechtigten Interesses an einem sicheren und
+      funktionsfähigen Angebot (Art. 6 Abs. 1 lit. f DSGVO). Auf Umfang und Speicherdauer dieser
+      Server-Protokolle besteht kein Einfluss.</p>
+
+      <h4>Schriftarten</h4>
+      <p>Alle Schriftarten werden direkt von dieser Seite ausgeliefert. Es erfolgt kein Abruf von
+      Google Fonts oder anderen externen Anbietern; dabei werden keine Daten an Dritte übertragen.</p>
+
+      <h4>Speicherung auf Ihrem Gerät</h4>
+      <p>Ihre Favoriten und Erinnerungseinstellungen werden ausschließlich lokal in Ihrem Browser
+      gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
+      die Einstellungen Ihres Browsers löschen. Wenn Sie Benachrichtigungen für Sessions aktivieren,
+      geschieht dies ebenfalls nur auf Ihrem Gerät.</p>
+
+      <h4>Ihre Rechte</h4>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
+      Datenübertragbarkeit und Widerspruch sowie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde
+      zu beschweren. Da über diese Seite keine personenbezogenen Daten erhoben oder gespeichert werden,
+      liegen hier keine Daten vor, die Gegenstand einer Auskunft sein könnten.</p>
+
+      <h4>Hinweis</h4>
+      <p>APEX ist ein privates, nicht-kommerzielles Projekt ohne Verbindung zu den dargestellten
+      Rennserien oder deren Rechteinhabern. Alle Angaben ohne Gewähr.</p>
+    </div>
 <!--
   INTERNER PFLEGESTAND - nicht fuer Besucher bestimmt.
   Steht bewusst als Kommentar hier: wird weder angezeigt noch von
@@ -356,6 +409,13 @@ APEX · Saison 2026 · Sechs Serien · Stand 22. August 2026<br>
     - Formel E: London I und II ohne Sessionzeiten. Tokio ist ein Event, war real ein Doppelrennen.
     - WRC: Zeitplaene Lauf 1-10 sind weiterhin Platzhalter ("Etappe 1/2/3").
       Finale Saudi-Arabien nicht bestaetigt, Entscheidung war fuer Mitte September angekuendigt.
+    - 24.08.: Schriften lokal eingebunden (fonts/, 8 Dateien via @fontsource).
+      Google Fonts komplett entfernt - kein Datenabfluss mehr, LG-Muenchen-Risiko entfaellt.
+      Cloudflare Web Analytics wieder ausgebaut (Konto wird gekuendigt).
+      Datenschutzerklaerung entsprechend auf Minimalstand, ohne Namensnennung.
+      ACHTUNG: Sobald Werbung, Verkauf oder andere Einnahmen dazukommen, werden
+      Impressum (voller Name + ladungsfaehige Anschrift) und eine erweiterte
+      Datenschutzerklaerung Pflicht.
     - Regeln-Tab ergaenzt (22.08.): sechs Serien mit je fuenf Abschnitten.
       Deckt gleichzeitig die fehlende Textmenge fuer SEO ab.
       F1-Abschnitt "Neu ab 2026" bei Reglementaenderungen pruefen.
@@ -1118,6 +1178,12 @@ const REGELN = {
     ]
   }
 };
+
+function toggleLegal(){
+  const el=document.getElementById("legal"); if(!el)return;
+  el.classList.toggle("on");
+  if(el.classList.contains("on")) el.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
 
 function renderRules(){
   const host=document.getElementById("view-rules"); if(!host)return;
