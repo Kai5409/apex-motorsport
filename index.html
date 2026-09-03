@@ -76,6 +76,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 /* On-Air */
 .onair{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);min-height:50px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.jumpnow{position:fixed;left:50%;bottom:22px;z-index:60;transform:translateX(-50%) translateY(14px);
+  background:var(--red);color:#fff;border:0;border-radius:999px;padding:11px 20px;cursor:pointer;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  box-shadow:0 6px 22px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
+.jumpnow.on{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .onair::-webkit-scrollbar{display:none}
 .onair-lab{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:13px;letter-spacing:.1em;display:flex;align-items:center;gap:7px;flex-shrink:0;text-transform:uppercase}
 .onair-lab.live{color:var(--red)} .onair-lab.soon{color:var(--gold)} .onair-lab.idle{color:var(--muted)}
@@ -337,6 +342,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <section class="view" id="view-standings"></section>
   <section class="view" id="view-tv"></section>
   <section class="view" id="view-rules"></section>
+  <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
   <footer>
 APEX · Saison 2026 · Sechs Serien · Stand 22. August 2026<br>
     Alle Zeiten in MESZ, ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
@@ -414,6 +420,27 @@ APEX · Saison 2026 · Sechs Serien · Stand 22. August 2026<br>
     - Formel E: London I und II ohne Sessionzeiten. Tokio ist ein Event, war real ein Doppelrennen.
     - WRC: Zeitplaene Lauf 1-10 sind weiterhin Platzhalter ("Etappe 1/2/3").
       Finale Saudi-Arabien nicht bestaetigt, Entscheidung war fuer Mitte September angekuendigt.
+    - 03.09. (3): Regeltexte faktengeprueft, fuenf Fehler korrigiert:
+      * WRC-Punkte: das 2024er System mit Samstagspunkten wurde 2025 wieder abgeschafft.
+        Jetzt 25 Punkte fuer den Sieger, Super Sunday nur noch Top 5, max. 35 pro Wochenende.
+      * WRC-Technik: Hybrid seit 2025 raus, dadurch ~380 statt 540 PS, 1180 statt 1260 kg.
+      * Formel E Attack Mode: bei Pit-Boost-Rennen nur EINE Aktivierung, sonst zwei.
+        Pflicht zum vollstaendigen Aufbrauchen wurde gestrichen.
+      * Formel E: Pit Boost fehlte komplett - ergaenzt.
+      * WEC: Erfolgsballast fuer Hypercars ab 2026 ergaenzt.
+      Geprueft und korrekt: Le Mans doppelte Punkte, F1-Qualifyingdauern, MotoGP-Punkte,
+      DTM-GT3-Leistung, GTWC-Aufbau.
+      NOCH UNGEPRUEFT: F1-Sprintanzahl 2026, WEC-Extrapunkt fuer Pole, DTM-Qualifyingpunkte-Skala.
+    - 03.09. (2): GTWC-Zeitplaene Laeufe 8-10 aus den offiziellen SRO-Timetables eingebaut
+      (Zandvoort Draft 3, Barcelona Draft 4, Portimao Draft 5). Portimao: Ortszeit ist WEST,
+      also +1h auf MESZ umgerechnet. Es sind Entwuerfe - vor dem Wochenende gegenpruefen.
+      Startdaten korrigiert: Zandvoort ab 18.09., Barcelona ab 02.10. (Freitag mit FP1).
+    - 03.09. (2): F1-Budgetdeckel korrigiert - 215 statt 135 Mio. USD ab 2026,
+      dazu Hinweis auf gestrichene Ausnahmen. Alte Angabe war veraltet.
+    - 03.09. (2): Live-Leiste zeigt jetzt ALLE parallel laufenden Serien, nicht nur die erste.
+      Dabei eine doppelte renderOnAir-Definition entfernt, die die neue Version ueberschrieben hat.
+    - 03.09. (2): Schwebender "Heute"-Knopf, erscheint sobald der aktuelle Monat aus dem Bild ist.
+      Ersetzt die unzuverlaessige Scrollpositions-Wiederherstellung beim Vorherige-Events-Knopf.
     - 03.09.: GT World Challenge Europe als siebte Serie ergaenzt (10 Wochenenden,
       5 Sprint Cup + 5 Endurance Cup, Termine aus dem finalisierten SRO-Kalender).
       OFFEN: Sessionzeiten fehlen komplett (SRO veroeffentlicht sie erst kurzfristig),
@@ -746,9 +773,17 @@ const EVENTS = [
 {s:"gtwc",rd:5,name:"Misano · Sprint",loc:"Misano",d0:"2026-07-18",d1:"2026-07-19",status:"done",sessions:S([])},
 {s:"gtwc",rd:6,name:"Magny-Cours · Sprint",loc:"Magny-Cours",d0:"2026-08-01",d1:"2026-08-02",status:"done",sessions:S([])},
 {s:"gtwc",rd:7,name:"Nürburgring · Endurance",loc:"Nürburgring",d0:"2026-08-29",d1:"2026-08-30",status:"up",sessions:S([])},
-{s:"gtwc",rd:8,name:"Zandvoort · Sprint",loc:"Zandvoort",d0:"2026-09-19",d1:"2026-09-20",status:"up",sessions:S([])},
-{s:"gtwc",rd:9,name:"Barcelona · Sprint",loc:"Barcelona",d0:"2026-10-03",d1:"2026-10-04",status:"up",sessions:S([])},
-{s:"gtwc",rd:10,name:"Portimão · Endurance · Finale",loc:"Portimão",d0:"2026-10-16",d1:"2026-10-18",status:"up",sessions:S([])},
+{s:"gtwc",rd:8,name:"Zandvoort · Sprint",loc:"Zandvoort",d0:"2026-09-18",d1:"2026-09-20",status:"up",
+ sessions:S([["Freies Training 1","Fr","09:00"],["Freies Training 2","Fr","13:50"],
+   ["Qualifying 1 · Gruppe A","Sa","09:50"],["Qualifying 1 · Gruppe B","Sa","10:05"],["Rennen 1","Sa","14:45"],
+   ["Qualifying 2 · Gruppe A","So","10:35"],["Qualifying 2 · Gruppe B","So","10:50"],["Rennen 2","So","14:15"]])},
+{s:"gtwc",rd:9,name:"Barcelona · Sprint",loc:"Barcelona",d0:"2026-10-02",d1:"2026-10-04",status:"up",
+ sessions:S([["Freies Training 1","Fr","09:00"],["Freies Training 2","Fr","13:55"],
+   ["Qualifying 1 · Gruppe A","Sa","09:45"],["Qualifying 1 · Gruppe B","Sa","10:00"],["Rennen 1","Sa","14:00"],
+   ["Qualifying 2 · Gruppe A","So","11:10"],["Qualifying 2 · Gruppe B","So","11:25"],["Rennen 2","So","16:00"]])},
+{s:"gtwc",rd:10,name:"Portimão · Endurance · Finale",loc:"Portimão",d0:"2026-10-16",d1:"2026-10-18",status:"up",
+ sessions:S([["Freies Training 1","Fr","09:45"],["Freies Training 2","Fr","13:45"],["Qualifying","Fr","18:55"],
+   ["Rennen (3 Stunden)","Sa","18:00"]])},
 ];
 
 /* ═══════ STATE ═══════ */
@@ -995,15 +1030,32 @@ function toggleSeries(sk){
 function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); renderFilter(); renderOnAir(); rerender(); }
 
 /* ═══════ ON-AIR ═══════ */
+function nextSessOf(e){
+  const now=Date.now(); let best=null;
+  e.sessions.forEach(x=>{ if(!x.t)return;
+    const inst=sessionInstant(e,x).getTime();
+    if(inst>now && (!best||inst<best.inst)) best={inst,s:x};
+  });
+  return best;
+}
+
 function renderOnAir(){
   const el=document.getElementById("onair"); if(!el)return;
   const now=NOW();
-  const live=actEvents().filter(e=>e.status!=="cancel").find(e=>now>=startW(e)&&now<=endW(e));
+  /* Alle Serien, deren Wochenende gerade laeuft - nicht nur die erste. */
+  const live=actEvents().filter(e=>e.status!=="cancel" && now>=startW(e) && now<=endW(e))
+                        .sort((a,b)=>startW(a)-startW(b));
   computeNextSession();
-  if(live){
-    const S0=SERIES[live.s];
-    el.innerHTML=`<span class="onair-lab live"><span class="pulse"></span>Jetzt live</span>`+
-      `<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span><span class="nm">${live.name}</span> <span class="meta">${S0.short} · Wochenende läuft</span></span>`;
+
+  if(live.length){
+    let html=`<span class="onair-lab live"><span class="pulse"></span>Jetzt live</span>`;
+    live.forEach(e=>{
+      const S0=SERIES[e.s], nx=nextSessOf(e);
+      const meta = nx ? `${S0.short} · ${nx.s.n} ${convTime(e,nx.s).t}` : `${S0.short} · Wochenende läuft`;
+      html+=`<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span>`+
+            `<span class="nm">${e.name}</span> <span class="meta">${meta}</span></span>`;
+    });
+    el.innerHTML=html;
   } else if(NEXT_SESS){
     const e=NEXT_SESS.e,s=NEXT_SESS.s,S0=SERIES[e.s],ct=convTime(e,s);
     el.innerHTML=`<span class="onair-lab soon">Nächste Session</span>`+
@@ -1013,6 +1065,72 @@ function renderOnAir(){
     el.innerHTML=`<span class="onair-lab idle">Saison beendet</span>`;
   }
 }
+
+function jumpToNow(){
+  const el=document.getElementById("month-current");
+  if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* Knopf einblenden, sobald der aktuelle Monat nicht mehr im Bild ist. */
+function updateJumpBtn(){
+  const btn=document.getElementById("jumpnow"); if(!btn)return;
+  const cur=document.getElementById("month-current");
+  if(!cur || currentView!=="upcoming"){ btn.classList.remove("on"); return; }
+  const r=cur.getBoundingClientRect();
+  const imBild = r.bottom > 60 && r.top < window.innerHeight - 40;
+  btn.classList.toggle("on", !imBild);
+  btn.textContent = r.top < 0 ? "↑ Heute" : "↓ Heute";
+}
+
+function tickCountdown(){
+  const el=document.getElementById("cd-tick");
+  if(el&&NEXT_SESS) el.textContent=fmtCountdown(NEXT_SESS.inst-Date.now());
+}
+function dayRange(e){const a=pd(e.d0),b=pd(e.d1);if(e.d0===e.d1)return String(a.getDate());
+  if(a.getMonth()===b.getMonth())return a.getDate()+"–"+b.getDate();
+  return a.getDate()+"."+(a.getMonth()+1)+"–"+b.getDate()+"."+(b.getMonth()+1);}
+function dows(e){return DOWf[pd(e.d0).getDay()]+"–"+DOWf[pd(e.d1).getDay()];}
+function startW(e){return pd(e.d0);}
+function endW(e){const b=pd(e.d1);b.setHours(23,59,59);return b;}
+function st(e){if(e.status==="cancel")return"cancel";const now=NOW();
+  if(now>endW(e))return"done";if(now>=startW(e)&&now<=endW(e))return"live";
+  if(e.status==="done")return"done";return e._next?"next":"up";}
+function countdown(e){const now=NOW(),s=startW(e),en=endW(e);
+  if(now>en)return{cls:"done",txt:"Beendet"};
+  if(now>=s&&now<=en)return{cls:"live",txt:"Läuft jetzt"};
+  const d=Math.ceil((s-now)/86400000);
+  if(d<=7)return{cls:"soon",txt:"in "+d+" Tag"+(d===1?"":"en")};
+  return{cls:"up",txt:"in "+d+" Tagen"};}
+function isRaceName(n){return /^Rennen|^Sprint$|^Rennen \(|^Power Stage/.test(n);}
+function actEvents(){return EVENTS.filter(e=>ACTIVE.has(e.s));}
+
+/* markiere je Serie das nächste Event */
+function tagNext(){
+  EVENTS.forEach(e=>e._next=false);
+  const now=NOW();
+  Object.keys(SERIES).forEach(sk=>{
+    const up=EVENTS.filter(e=>e.s===sk&&e.status!=="cancel"&&startW(e)>now).sort((a,b)=>startW(a)-startW(b));
+    if(up[0])up[0]._next=true;
+  });
+}
+
+/* ═══════ FILTERBAR ═══════ */
+function renderFilter(){
+  const el=document.getElementById("filterbar");
+  let chips=`<span class="fl-lab">Serien</span>`;
+  Object.keys(SERIES).forEach(sk=>{
+    const S0=SERIES[sk],on=ACTIVE.has(sk);
+    chips+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')"><span class="cdot" style="background:${S0.color}"></span>${S0.name}</button>`;
+  });
+  chips+=`<button class="chip allbtn" onclick="allSeries()">Alle</button>`;
+  el.innerHTML=chips;
+  el.style.display = (currentView==="tv"||currentView==="rules")?"none":"flex";
+}
+function toggleSeries(sk){
+  if(ACTIVE.has(sk)){ if(ACTIVE.size>1) ACTIVE.delete(sk); } else ACTIVE.add(sk);
+  renderFilter(); renderOnAir(); rerender();
+}
+function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); renderFilter(); renderOnAir(); rerender(); }
 
 /* ═══════ Sessions / Ergebnisse ═══════ */
 function fmtRes(arr,partial){
@@ -1087,7 +1205,7 @@ function monthGroupsHTML(list){
   const now=NOW(),curKey=now.getFullYear()+"-"+now.getMonth();let html="";
   Object.keys(groups).forEach(key=>{const[y,m]=key.split("-").map(Number);
     let cls="future";if(key===curKey)cls="current";else if(new Date(y,m+1,0)<now)cls="past";
-    html+=`<div class="month ${cls}"><div class="month-head">${MON[m]}<span class="yr">${y}</span></div><div class="tl">`;
+    html+=`<div class="month ${cls}" ${cls==="current"?'id="month-current"':""}><div class="month-head">${MON[m]}<span class="yr">${y}</span></div><div class="tl">`;
     groups[key].forEach(e=>html+=eventHTML(e));
     html+=`</div></div>`;});
   return html;
@@ -1116,6 +1234,8 @@ function renderTimeline(){
   host.innerHTML=html;
 }
 function togglePast(){
+  /* Knopf-Status nach dem Umschalten neu bewerten */
+  setTimeout(updateJumpBtn,60);
   /* Ankerpunkt merken: das erste Element, das aktuell im Blickfeld ist.
      Nach dem Neuaufbau wird dorthin zurueckgesprungen, statt an den Listenanfang. */
   const anchor=[...document.querySelectorAll("#view-upcoming .ev[id^='ev-']")]
@@ -1184,7 +1304,7 @@ const REGELN = {
       ["Punkte", "25 für den Sieg, dann 18, 15, 12, 10, 8, 6, 4, 2 und 1 für Platz zehn. Im Sprint gibt es 8 Punkte für den Sieger, abwärts bis 1 für Platz acht. Ein Zusatzpunkt für die schnellste Rennrunde wurde nach 2024 abgeschafft. Gewertet wird doppelt: die Fahrer-WM einzeln, die Konstrukteurs-WM mit den addierten Punkten beider Autos — und letztere entscheidet über die Verteilung der Preisgelder."],
       ["Reifen", "Pirelli wählt pro Rennen drei von fünf Trockenmischungen aus, die vor Ort als Soft, Medium und Hard bezeichnet werden. Dazu kommen Intermediates für feuchte und Full Wets für nasse Strecken. Im Trockenrennen müssen mindestens zwei verschiedene Mischungen zum Einsatz kommen, ein Boxenstopp ist damit zwingend. Regnet es, entfällt diese Pflicht."],
       ["Strafen", "Fünf oder zehn Sekunden werden beim nächsten Boxenstopp abgesessen oder am Ende aufaddiert. Härter sind Durchfahrtsstrafe und Stop-and-Go. Dazu kommt ein Punktesystem auf der Superlizenz: Wer binnen zwölf Monaten zwölf Strafpunkte sammelt, wird für ein Rennen gesperrt. Diese Punkte verfallen einzeln nach einem Jahr."],
-      ["Budgetdeckel", "Seit 2021 dürfen Teams nur eine begrenzte Summe pro Saison ausgeben, aktuell rund 135 Millionen Dollar. Fahrergehälter, Marketing und die drei bestbezahlten Mitarbeiter sind ausgenommen. Der Deckel soll verhindern, dass finanzstarke Rennställe das Feld dominieren — und hat tatsächlich dazu geführt, dass Entwicklungen sorgfältiger abgewogen werden."],
+      ["Budgetdeckel", "Seit 2021 dürfen Teams nur eine begrenzte Summe pro Saison ausgeben. Für 2026 wurde die Grenze von 135 auf 215 Millionen US-Dollar angehoben. Der Sprung wirkt größer, als er ist: Die FIA hat gleichzeitig zahlreiche Ausnahmen gestrichen, die vorher gar nicht in die Bilanz einflossen, und rechnet nun deutlich mehr Personalkosten mit ein. Real liegt der Anstieg damit nur knapp über der Inflation. Der Deckel soll verhindern, dass finanzstarke Rennställe das Feld dominieren, und sorgt dafür, dass Updates sorgfältiger abgewogen werden."],
       ["Parc fermé", "Ab Beginn des Qualifyings stehen die Autos unter Parc-fermé-Bedingungen: Am Set-up darf nichts mehr geändert werden. Wer doch schraubt, muss aus der Boxengasse starten. Deshalb ist die Abstimmung im letzten freien Training eine Wette auf das Wetter am Renntag."],
       ["Neu ab 2026", "Ein von Grund auf neues Reglement. Die Antriebe leisten je etwa zur Hälfte über Verbrennungsmotor und Elektroeinheit, gefahren wird mit vollständig synthetischem Kraftstoff. Die Autos sind schmaler, kürzer und leichter. Erstmals ist die Aerodynamik aktiv verstellbar — auf Geraden flach für Höchstgeschwindigkeit, in Kurven mit vollem Abtrieb. Das bisherige DRS entfällt und wird durch einen Überhol-Boost ersetzt, der dem Verfolger kurzzeitig zusätzliche Elektroleistung freigibt."]
     ]
@@ -1209,9 +1329,9 @@ const REGELN = {
       ["Wertung", "Es gibt kein Rennen Rad an Rad. Addiert werden die Zeiten aller Wertungsprüfungen, die geringste Gesamtzeit gewinnt. Weil einzelne WP oft nur um Zehntel auseinanderliegen, entscheiden über vier Tage hinweg regelmäßig wenige Sekunden. Ein Dreher, ein Reifenschaden oder eine falsche Reifenwahl kann eine ganze Rallye kosten."],
       ["Aufschrieb", "Vor der Rallye fahren Fahrer und Beifahrer die Strecken zweimal in Serienautos ab und erstellen dabei ihre Notation: Kurvenradien von 1 bis 6, Entfernungen, Kuppen, Sprünge, Gefahrenstellen. Im Rennen liest der Beifahrer diesen Aufschrieb im richtigen Rhythmus vor. Der Fahrer sieht viele Kurven erst, wenn er längst eingelenkt hat — er fährt praktisch nach Ansage."],
       ["Startreihenfolge", "Am ersten Tag starten die Führenden der WM zuerst. Auf Schotter ist das ein handfester Nachteil: Die ersten Autos fegen die lose Deckschicht weg und legen den griffigeren Untergrund für die Nachfolgenden frei. Wer die Meisterschaft anführt, kämpft also auch gegen die Strecke. Am Sonntag wird umgekehrt gestartet, in umgekehrter Reihenfolge des Zwischenstands."],
-      ["Punkte", "Seit 2024 zweigeteilt. Nach dem Stand am Samstagabend gibt es 18 Punkte für den Führenden, dann 15, 13, 10, 8, 6, 4, 3, 2 und 1. Für die Platzierung im Ziel am Sonntag kommen bis zu 7 weitere Punkte dazu. Die abschließende Power Stage bringt zusätzlich 5, 4, 3, 2 und 1 Punkt für die fünf schnellsten Fahrer. Wer am Sonntag ausfällt, behält seine Samstagspunkte."],
+      ["Punkte", "Die 2024 eingeführten Samstagspunkte wurden nach nur einer Saison wieder abgeschafft. Seit 2025 gilt: Der Rallye-Sieger bekommt 25 Punkte nach der klassischen Skala bis 1 für Platz zehn, so wie schon von 2010 bis 2023. Dazu kommt der Super Sunday, bei dem die fünf schnellsten Fahrer der Sonntagsetappe zusätzliche Punkte holen, und die Power Stage mit 5, 4, 3, 2 und 1 Punkt für die fünf Schnellsten. Maximal sind damit 35 Punkte pro Wochenende möglich. Wer vor dem Sonntag ausscheidet, kann höchstens zehn Punkte mitnehmen."],
       ["Rally2 und Reparaturen", "Fällt ein Auto aus, darf es am Folgetag unter der Rally2-Regel wieder starten — mit einer Zeitstrafe von zehn Minuten pro versäumter WP. Damit bleibt die Chance auf Power-Stage-Punkte. Repariert werden darf nur im Servicepark zu festgelegten Zeiten, meist 30 oder 45 Minuten. Zwischendurch müssen Fahrer und Beifahrer selbst Hand anlegen, mit dem Werkzeug an Bord."],
-      ["Technik", "Die Spitzenklasse Rally1 nutzt 1,6-Liter-Turbomotoren mit rund 500 PS und einem Sicherheitskäfig aus Stahlrohr, der bei den schweren Unfällen dieser Serie regelmäßig Leben rettet. Darunter fahren Rally2-Fahrzeuge, die deutlich günstiger sind und die Startfelder füllen."],
+      ["Technik", "Die Spitzenklasse Rally1 nutzt 1,6-Liter-Turbomotoren. Seit 2025 fahren die Autos ohne Hybridsystem — es war zu teuer und zu störanfällig. Zusammen mit einem kleineren Luftmengenbegrenzer sank die Leistung dadurch von rund 540 auf etwa 380 PS, das Mindestgewicht von 1260 auf 1180 Kilogramm. Ein Sicherheitskäfig aus Stahlrohr rettet bei den schweren Unfällen dieser Serie regelmäßig Leben. Darunter fahren Rally2-Fahrzeuge, die deutlich günstiger sind und die Startfelder füllen; seit 2025 dürfen sie mit einem WRC-Kit aufgerüstet werden, um den Abstand zu verkleinern."],
       ["Untergründe", "Kein anderer Motorsport wechselt die Bedingungen so stark: loser Schotter in Griechenland, Asphalt auf Korsika, Schnee und Eis in Schweden, Sand und Hitze in Kenia. Für jeden Untergrund gibt es eigene Reifen, eigene Abstimmungen und eine eigene Fahrweise. Ein Spezialist für Schotter ist nicht automatisch auf Asphalt schnell."]
     ]
   },
@@ -1224,6 +1344,7 @@ const REGELN = {
       ["Balance of Performance", "Damit Fahrzeuge mit völlig unterschiedlichen Konzepten — Hybrid, Allrad, Heckantrieb, Saugmotor, Turbo — konkurrenzfähig bleiben, greift die BoP ein. Über Mindestgewicht, freigegebene Leistung und Energiemenge pro Stint werden die Autos rechnerisch angeglichen, teils von Rennen zu Rennen. Das sorgt für enge Ergebnisse und ist zugleich der am heftigsten diskutierte Teil des Reglements."],
       ["Boxenstopps", "Beim Tanken darf nicht gleichzeitig am Auto gearbeitet werden — Reifenwechsel und Fahrerwechsel erfolgen davor oder danach. Die Zahl der Mechaniker am Auto ist begrenzt. Dadurch dauern Stopps deutlich länger als in der Formel 1, und ihre Planung wird zu einem zentralen Teil der Rennstrategie."],
       ["Full Course Yellow", "Statt eines Safety Cars wird häufig eine streckenweite Tempobegrenzung von 80 km/h verhängt. Die Abstände bleiben dabei erhalten, anders als bei einer Safety-Car-Phase, in der das Feld zusammenrückt. Wer im richtigen Moment an der Box ist, spart trotzdem erheblich Zeit — Glück ist damit ein realer Faktor."],
+      ["Erfolgsballast", "Neu ab 2026: Erfolgreiche Hypercars bekommen Zusatzgewicht, wie es in der GT-Klasse längst üblich ist. Ausgenommen sind die 24 Stunden von Le Mans. Der Ballast ergänzt die Balance of Performance, die sich 2025 als wenig treffsicher erwiesen hatte."],
       ["Punkte", "Bei den regulären Läufen 25 Punkte für den Sieg nach der üblichen Skala. In Le Mans zählt alles doppelt, dort sind 50 Punkte zu holen. Ein einzelnes Wochenende kann die Meisterschaft damit vollständig umkehren. Gewertet werden Fahrer, Teams und Hersteller getrennt."],
       ["Le Mans", "Das Rennen hat einen Sonderstatus: eigene Testtage, ein größeres Starterfeld und mit der Hunaudières eine Gerade, auf der über 300 km/h gefahren wird. Es zählt zur Triple Crown des Motorsports, zusammen mit dem Indy 500 und dem Großen Preis von Monaco."]
     ]
@@ -1259,7 +1380,8 @@ const REGELN = {
     bloecke: [
       ["Format", "Meist findet alles an einem Tag statt: Training, Qualifying und Rennen. Gefahren wird auf engen, temporären Kursen mitten in Städten wie Monaco, Tokio, London, Berlin oder São Paulo. Das Rennen läuft nicht über eine feste Rundenzahl, sondern über eine festgelegte Zeit plus eine Schlussrunde — bei Unterbrechungen wird die Distanz entsprechend angepasst."],
       ["Qualifying", "Das eigenständigste Format im gesamten Motorsport. Zunächst fahren zwei Gruppen getrennt ihre Zeiten, die jeweils besten vier ziehen weiter. Danach folgen direkte Duelle im K.-o.-System: Viertelfinale, Halbfinale, Finale, jeweils zwei Autos gleichzeitig auf der Strecke. Wer schneller ist, kommt weiter. Die Pole entscheidet sich damit in einem echten Zweikampf statt über eine anonyme Bestzeit."],
-      ["Attack Mode", "Jeder Fahrer muss im Rennen zweimal den Attack Mode aktivieren und erhält dafür befristet deutlich mehr Leistung. Aktiviert wird er nur, indem man abseits der Ideallinie durch eine markierte Zone fährt — und dabei Zeit verliert. Wie oft und wann aktiviert werden muss, gibt die Rennleitung teils erst kurz vor dem Start bekannt. Der richtige Moment ist eine der zentralen taktischen Entscheidungen."],
+      ["Attack Mode", "Aktiviert wird er, indem man abseits der Ideallinie durch eine markierte Zone fährt und dabei Zeit verliert. Dafür gibt es befristet mehr Leistung — beim aktuellen Auto wird zusätzlich der sonst abgeschaltete Vorderradantrieb freigegeben. Bei normalen Rennen sind zwei Aktivierungen vorgeschrieben, bei Rennen mit Pit Boost seit dieser Saison nur noch eine. Die frühere Pflicht, das gesamte Zeitkontingent vor Rennende aufzubrauchen, wurde gestrichen, nachdem mehrfach Zeitstrafen dafür verhängt worden waren."],
+      ["Pit Boost", "Bei ausgewählten Rennen ist ein Pflichtboxenstopp vorgeschrieben, bei dem die Batterie mit 600 Kilowatt schnellgeladen wird: 34 Sekunden Standzeit, davon 30 Sekunden Ladevorgang, dabei kommen 3,85 kWh dazu. Der Stopp darf nur erfolgen, wenn der Ladestand zwischen 60 und 40 Prozent liegt, und pro Team gibt es nur ein Ladegerät — beide Autos können also nicht gleichzeitig kommen. Eingeführt wurde das 2025 in Dschidda."],
       ["Energie", "Alle Teams haben dieselbe Batteriekapazität, die bewusst knapper bemessen ist als die Renndistanz erfordert. Wer zu früh zu viel verbraucht, muss am Ende Tempo herausnehmen. Deshalb wird im Feld häufig gezielt Windschatten gesucht, um Energie zu sparen — Rennen entscheiden sich regelmäßig in den letzten Runden, wenn die Verbrauchsrechnungen aufgehen oder eben nicht."],
       ["Rekuperation", "Beim Bremsen wird Energie zurück in die Batterie gespeist, und zwar in einem Umfang, der einen erheblichen Teil des Rennverbrauchs ausmacht. Die Autos haben deshalb an der Hinterachse kaum mechanische Bremsen im klassischen Sinn. Das verändert die Fahrweise grundlegend: Bremsen ist hier auch ein Ladevorgang."],
       ["Punkte", "Die übliche Skala mit 25 Punkten für den Sieg bis 1 für Platz zehn. Dazu drei Punkte für die Pole Position und ein Punkt für die schnellste Rennrunde, letzterer nur bei einer Platzierung unter den ersten zehn. Weil das Feld eng beieinander liegt, wechselt die Meisterschaftsführung im Saisonverlauf häufig."],
@@ -1656,6 +1778,9 @@ injectEventSchema();
 tagNext();
 document.getElementById("mast-date").textContent=NOW().toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
 renderFilter();renderToolbar();renderRemind();renderTZ();renderOnAir();renderTimeline();applyHash();checkReminders();
+window.addEventListener("scroll",updateJumpBtn,{passive:true});
+window.addEventListener("resize",updateJumpBtn,{passive:true});
+updateJumpBtn();
 setInterval(()=>{tagNext();renderOnAir();checkReminders();if(currentView==="weekend")renderWeekend();},30000);
 setInterval(tickCountdown,1000);
 </script>
