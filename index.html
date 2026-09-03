@@ -75,7 +75,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .tzsw button.on{background:var(--paper);color:var(--bg);border-color:var(--paper);font-weight:600}
 
 /* On-Air */
-.onair{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);min-height:50px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.onair{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);min-height:50px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 26px),transparent)}
+.onair::-webkit-scrollbar{display:none}
 .jumpnow{position:fixed;left:50%;bottom:22px;z-index:60;transform:translateX(-50%) translateY(14px);
   background:var(--red);color:#fff;border:0;border-radius:999px;padding:11px 20px;cursor:pointer;
   font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
@@ -1057,9 +1058,33 @@ function renderOnAir(){
     });
     el.innerHTML=html;
   } else if(NEXT_SESS){
-    const e=NEXT_SESS.e,s=NEXT_SESS.s,S0=SERIES[e.s],ct=convTime(e,s);
-    el.innerHTML=`<span class="onair-lab soon">Nächste Session</span>`+
-      `<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span><span class="nm">${e.name} — ${s.n}</span> <span class="meta">${S0.short} · ${ct.day} ${ct.t} · in <span id="cd-tick" style="color:var(--paper)">–</span></span></span>`;
+    /* Nicht nur die eine naechste Session zeigen, sondern alle Serien,
+       deren naechste Session im selben Zeitfenster liegt (72 Stunden) -
+       damit an einem Wochenende mit mehreren Serien auch alle auftauchen. */
+    const FENSTER = 72*3600*1000;
+    const proSerie = [];
+    Object.keys(SERIES).forEach(sk=>{
+      if(!ACTIVE.has(sk)) return;
+      let best=null;
+      EVENTS.filter(e=>e.s===sk && e.status!=="cancel").forEach(e=>{
+        const nx=nextSessOf(e);
+        if(nx && (!best || nx.inst<best.inst)) best={inst:nx.inst,e,s:nx.s};
+      });
+      if(best) proSerie.push(best);
+    });
+    proSerie.sort((a,b)=>a.inst-b.inst);
+    const grenze = proSerie[0].inst + FENSTER;
+    const zeigen = proSerie.filter(x=>x.inst<=grenze);
+
+    let html=`<span class="onair-lab soon">${zeigen.length>1?"Als Nächstes":"Nächste Session"}</span>`;
+    zeigen.forEach((x,i)=>{
+      const S0=SERIES[x.e.s], ct=convTime(x.e,x.s);
+      const cd = i===0 ? ` · in <span id="cd-tick" style="color:var(--paper)">–</span>` : "";
+      html+=`<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span>`+
+            `<span class="nm">${x.e.name} — ${x.s.n}</span> `+
+            `<span class="meta">${S0.short} · ${ct.day} ${ct.t}${cd}</span></span>`;
+    });
+    el.innerHTML=html;
     tickCountdown();
   } else {
     el.innerHTML=`<span class="onair-lab idle">Saison beendet</span>`;
