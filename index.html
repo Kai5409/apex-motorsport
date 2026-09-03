@@ -170,7 +170,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 /* Session rows + results */
 .sess{border-bottom:1px dotted var(--rule)} .sess:last-child{border-bottom:none}
-.sess-row{display:grid;grid-template-columns:20px 1fr 66px 40px 24px;gap:10px;align-items:center;padding:7px 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px}
+.sess-row{display:grid;grid-template-columns:20px 1fr 66px 74px 24px;gap:10px;align-items:center;padding:7px 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px}
 .scal{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1;color:var(--faint);text-align:center;width:24px;height:20px;border-radius:5px;border:1px solid var(--rule);transition:color .15s,border-color .15s,background .15s}
 .scal:hover{color:var(--gold);border-color:var(--gold);background:rgba(216,168,75,.08)}
 .calbtn{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:999px;padding:6px 12px;margin:2px 0 12px;transition:border-color .15s,background .15s}
@@ -247,10 +247,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .tv-c{display:inline-block;min-width:88px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);vertical-align:1px}
 .tv-note{display:block;margin-top:7px;padding-left:88px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.03em;line-height:1.6}
 .rl-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:28px 0 18px;letter-spacing:.04em;line-height:1.7}
-.rl-block{padding:22px 0;border-top:1px solid var(--rule)}
-.rl-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px}
+.rl-block{border-top:1px solid var(--rule)}
+.rl-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;width:100%;background:none;border:0;cursor:pointer;text-align:left;padding:20px 0;color:inherit}
+.rl-head:hover .rl-name{filter:brightness(1.25)}
+.rl-chev{color:var(--faint);font-size:11px;flex:0 0 auto}
 .rl-name{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:26px;text-transform:uppercase;line-height:1}
 .rl-kurz{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.rl-body{padding-bottom:18px}
 .rl-item{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:11px 0;align-items:baseline}
 .rl-item+.rl-item{border-top:1px solid var(--rule)}
 .rl-t{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
@@ -274,8 +277,10 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .wk-cd{grid-column:1/-1;text-align:left;margin-top:2px;padding-top:0}
   .wk-date{font-size:24px}
   .ev-name{font-size:15px}
-  .sess-row{grid-template-columns:18px 1fr 58px 24px;gap:8px;font-size:11px}
-  .sess-meta{display:none}
+  .sess-row{grid-template-columns:16px 1fr 52px 26px;gap:7px;font-size:10.5px}
+  .sess-meta{display:block;font-size:9.5px}
+  .sess-date{display:none}
+  .sess-row .calico{display:none}
   .month-head{font-size:42px}
   .ser-round{grid-template-columns:30px 1fr auto;gap:10px} .ser-round .dt{display:none}
   .cal-row{grid-template-columns:72px 44px 1fr;gap:8px} .cal-row .cw{display:none}
@@ -409,6 +414,16 @@ APEX · Saison 2026 · Sechs Serien · Stand 22. August 2026<br>
     - Formel E: London I und II ohne Sessionzeiten. Tokio ist ein Event, war real ein Doppelrennen.
     - WRC: Zeitplaene Lauf 1-10 sind weiterhin Platzhalter ("Etappe 1/2/3").
       Finale Saudi-Arabien nicht bestaetigt, Entscheidung war fuer Mitte September angekuendigt.
+    - 03.09.: GT World Challenge Europe als siebte Serie ergaenzt (10 Wochenenden,
+      5 Sprint Cup + 5 Endurance Cup, Termine aus dem finalisierten SRO-Kalender).
+      OFFEN: Sessionzeiten fehlen komplett (SRO veroeffentlicht sie erst kurzfristig),
+      Wertung nicht gepflegt, Ergebnisse der Laeufe 1-6 fehlen.
+      Hinweis: "GT World Challenge" und "GTWC Europe" sind nicht zwei Serien -
+      GTWC ist der SRO-Dachname, Europe eine von vier Regionalmeisterschaften.
+    - 03.09.: Regeln-Tab erweitert auf 8 Abschnitte je Serie, jetzt aufklappbar.
+    - 03.09.: Sessionzeilen zeigen Wochentag + Datum, auch am Handy (war dort ausgeblendet).
+    - 03.09.: Live-Leiste folgt jetzt dem Serienfilter (renderOnAir fehlte in toggleSeries).
+    - 03.09.: "Vorherige Events" haelt die Scrollposition ueber einen Ankerpunkt.
     - 24.08.: Schriften lokal eingebunden (fonts/, 8 Dateien via @fontsource).
       Google Fonts komplett entfernt - kein Datenabfluss mehr, LG-Muenchen-Risiko entfaellt.
       Cloudflare Web Analytics wieder ausgebaut (Konto wird gekuendigt).
@@ -454,6 +469,11 @@ const SERIES = {
         tvd:{de:"<b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.",
              at:"<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.",
              ch:"<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland."}},
+  gtwc:{name:"GT World Challenge Europe", short:"GTWC", color:"#a77bf3", tv:"Kostenloser Stream (YouTube)",
+        tvd:{de:"Alle Rennen laufen als <b>kostenloser Livestream</b> auf dem offiziellen YouTube-Kanal <b>GTWorld</b>, kommentiert auf Englisch.",
+             at:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld).",
+             ch:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld).",
+             note:"Deutschsprachige TV-Übertragung ist nicht bekannt."}},
 };
 function S(arr){ return arr.map(x=>({n:x[0],day:x[1],t:x[2],res:x[3]||null,partial:x[4]||false})); }
 function esc(str){ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -715,6 +735,20 @@ const EVENTS = [
  sessions:S([])},
 {s:"fe",rd:16,name:"London E-Prix II · Finale",loc:"London ExCeL",d0:"2026-08-16",d1:"2026-08-16",status:"done",result:"Taylor Barnard (DS Penske)",
  sessions:S([])},
+
+/* GT World Challenge Europe 2026 — zehn Wochenenden, fuenf Sprint Cup und fuenf Endurance Cup.
+   Termine aus dem finalisierten SRO-Kalender. Sessionzeiten werden erst kurzfristig
+   veroeffentlicht und sind daher noch nicht hinterlegt. */
+{s:"gtwc",rd:1,name:"6 Stunden von Paul Ricard · Endurance",loc:"Paul Ricard",d0:"2026-04-11",d1:"2026-04-12",status:"done",sessions:S([])},
+{s:"gtwc",rd:2,name:"Brands Hatch · Sprint",loc:"Brands Hatch",d0:"2026-05-02",d1:"2026-05-03",status:"done",sessions:S([])},
+{s:"gtwc",rd:3,name:"Monza · Endurance",loc:"Monza",d0:"2026-05-30",d1:"2026-05-31",status:"done",sessions:S([])},
+{s:"gtwc",rd:4,name:"24 Stunden von Spa · Endurance",loc:"Spa-Francorchamps",d0:"2026-06-25",d1:"2026-06-28",status:"done",sessions:S([])},
+{s:"gtwc",rd:5,name:"Misano · Sprint",loc:"Misano",d0:"2026-07-18",d1:"2026-07-19",status:"done",sessions:S([])},
+{s:"gtwc",rd:6,name:"Magny-Cours · Sprint",loc:"Magny-Cours",d0:"2026-08-01",d1:"2026-08-02",status:"done",sessions:S([])},
+{s:"gtwc",rd:7,name:"Nürburgring · Endurance",loc:"Nürburgring",d0:"2026-08-29",d1:"2026-08-30",status:"up",sessions:S([])},
+{s:"gtwc",rd:8,name:"Zandvoort · Sprint",loc:"Zandvoort",d0:"2026-09-19",d1:"2026-09-20",status:"up",sessions:S([])},
+{s:"gtwc",rd:9,name:"Barcelona · Sprint",loc:"Barcelona",d0:"2026-10-03",d1:"2026-10-04",status:"up",sessions:S([])},
+{s:"gtwc",rd:10,name:"Portimão · Endurance · Finale",loc:"Portimão",d0:"2026-10-16",d1:"2026-10-18",status:"up",sessions:S([])},
 ];
 
 /* ═══════ STATE ═══════ */
@@ -733,6 +767,8 @@ function pd(iso){const[y,m,d]=iso.split("-").map(Number);return new Date(y,m-1,d
 let TZMODE="mesz";
 const LOCAL_TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||"Europe/Berlin";
 const TZLOC={
+ "Paul Ricard":"Europe/Paris","Brands Hatch":"Europe/London","Magny-Cours":"Europe/Paris",
+ "Nürburgring":"Europe/Berlin","Portimão":"Europe/Lisbon",
  "Melbourne":"Australia/Melbourne","Shanghai":"Asia/Shanghai","Suzuka":"Asia/Tokyo","Miami":"America/New_York",
  "Montréal":"America/Toronto","Monte Carlo":"Europe/Monaco","Barcelona":"Europe/Madrid","Spielberg":"Europe/Vienna",
  "Silverstone":"Europe/London","Spa-Francorchamps":"Europe/Brussels","Spa":"Europe/Brussels","Budapest":"Europe/Budapest",
@@ -769,13 +805,17 @@ function sessionAbsDate(e,s){
   return new Date(a);
 }
 function convTime(e,s){
-  if(TZMODE==="mesz") return {t:s.t,day:s.day};
+  if(TZMODE==="mesz"){
+    const d=sessionAbsDate(e,s);
+    return {t:s.t, day:s.day, dt:`${String(d.getDate()).padStart(2,"0")}.${String(d.getMonth()+1).padStart(2,"0")}.`};
+  }
   const tz = TZMODE==="local"? LOCAL_TZ : (TZLOC[e.loc]||"Europe/Berlin");
   const d=sessionAbsDate(e,s), parts=s.t.split(":").map(Number);
   const inst=wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),parts[0],parts[1],"Europe/Berlin");
   const t=new Intl.DateTimeFormat("de-DE",{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}).format(inst);
   const day=new Intl.DateTimeFormat("de-DE",{timeZone:tz,weekday:"short"}).format(inst).replace(".","");
-  return {t,day};
+  const dt=new Intl.DateTimeFormat("de-DE",{timeZone:tz,day:"2-digit",month:"2-digit"}).format(inst);
+  return {t,day,dt};
 }
 function renderTZ(){
   const el=document.getElementById("tzsw"); if(!el)return;
@@ -950,9 +990,9 @@ function renderFilter(){
 }
 function toggleSeries(sk){
   if(ACTIVE.has(sk)){ if(ACTIVE.size>1) ACTIVE.delete(sk); } else ACTIVE.add(sk);
-  renderFilter(); rerender();
+  renderFilter(); renderOnAir(); rerender();
 }
-function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); renderFilter(); rerender(); }
+function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); renderFilter(); renderOnAir(); rerender(); }
 
 /* ═══════ ON-AIR ═══════ */
 function renderOnAir(){
@@ -1007,11 +1047,11 @@ function buildSessions(e,evId,status){
     const cal=s.t?`<button class="scal" title="Diese Session in den Kalender" onclick="event.stopPropagation();exportSession('${e.s}','${e.rd}',${i})">＋</button>`:`<span></span>`;
     if(res){
       out+=`<div class="sess" id="s-${rid}">`+
-        `<div class="sess-row clk" onclick="toggleRes('${rid}')"><span class="sess-chev">▶</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}</span>${cal}</div>`+
+        `<div class="sess-row clk" onclick="toggleRes('${rid}')"><span class="sess-chev">▶</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>`+
         `<div class="sess-respanel">${fmtRes(res,partial)}</div></div>`;
     } else {
       const note = (status==="done"&&isRaceName(s.n)) ? `<div class="sess-flat">Wertung noch nicht erfasst</div>` : "";
-      out+=`<div class="sess"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}</span>${cal}</div>${note}</div>`;
+      out+=`<div class="sess"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
     }
   });
   return out;
@@ -1075,7 +1115,26 @@ function renderTimeline(){
   else if(!past.length) html+=`<div class="emptyhint">${FAV_ONLY?'Noch keine Favoriten markiert — tippe den Stern bei einem Event.':SEARCH?'Keine Treffer.':'Keine kommenden Events für die gewählten Serien.'}</div>`;
   host.innerHTML=html;
 }
-function togglePast(){SHOW_PAST=!SHOW_PAST;OPEN_RES=null;renderTimeline();}
+function togglePast(){
+  /* Ankerpunkt merken: das erste Element, das aktuell im Blickfeld ist.
+     Nach dem Neuaufbau wird dorthin zurueckgesprungen, statt an den Listenanfang. */
+  const anchor=[...document.querySelectorAll("#view-upcoming .ev[id^='ev-']")]
+    .find(el=>el.getBoundingClientRect().top > -20);
+  const anchorId = anchor ? anchor.id : null;
+  const anchorTop = anchor ? anchor.getBoundingClientRect().top : 0;
+
+  SHOW_PAST=!SHOW_PAST; OPEN_RES=null; renderTimeline();
+
+  if(anchorId){
+    requestAnimationFrame(()=>{
+      const el=document.getElementById(anchorId);
+      if(el){
+        const delta=el.getBoundingClientRect().top - anchorTop;
+        window.scrollBy({top:delta, behavior:"instant"});
+      }
+    });
+  }
+}
 
 /* ═══════ SERIEN ═══════ */
 function renderSeries(){
@@ -1118,63 +1177,94 @@ function renderCalendar(){
 /* ═══════ REGELN ═══════ */
 const REGELN = {
   f1: {
-    kurz: "Zehn Teams mit je zwei Autos, 24 Rennen, Punkte für die Top 10.",
+    kurz: "Zehn Teams, 24 Rennen, das technisch aufwendigste Reglement im Motorsport.",
     bloecke: [
-      ["Wochenende", "Freitag zwei freie Trainings, Samstag ein weiteres plus Qualifying, Sonntag das Rennen über rund 305 km. An sechs Wochenenden im Jahr gilt das Sprintformat: Dann gibt es nur ein freies Training, danach das Sprint-Qualifying am Freitag, den Sprint am Samstagvormittag und direkt im Anschluss das reguläre Qualifying für den Grand Prix."],
-      ["Qualifying", "Drei Abschnitte im K.o.-Verfahren. In Q1 fahren alle 20 Autos, die fünf langsamsten scheiden aus. In Q2 dasselbe mit den verbleibenden 15. Die schnellsten zehn kämpfen in Q3 um die Pole Position. Jeder Abschnitt ist kürzer als der vorherige, der Druck steigt also von Runde zu Runde."],
-      ["Punkte", "25 Punkte für den Sieg, dann 18, 15, 12, 10, 8, 6, 4, 2 und 1 für Platz zehn. Im Sprint gibt es acht Punkte für den Sieger, abwärts bis zu einem Punkt für Platz acht. Es gibt zwei getrennte Wertungen: die Fahrer-WM und die Konstrukteurs-WM, bei der die Punkte beider Autos eines Teams zusammengezählt werden."],
-      ["Reifen", "Pirelli bringt pro Rennen drei von fünf Trockenmischungen mit, dazu Intermediates und Regenreifen. Im Trockenrennen besteht Pflicht, mindestens zwei verschiedene Mischungen zu verwenden — deshalb muss jeder mindestens einmal an die Box."],
-      ["Neu ab 2026", "Ein grundlegend neues Reglement: Die Motoren leisten je etwa zur Hälfte über Verbrenner und Elektroantrieb, gefahren wird mit vollständig synthetischem Kraftstoff. Die Autos sind kleiner und leichter, und die Aerodynamik ist erstmals aktiv verstellbar — auf Geraden flacher, in Kurven mit mehr Abtrieb. Das bisherige DRS entfällt und wird durch einen Überhol-Boost ersetzt, der dem Verfolger zusätzliche Elektroleistung freigibt."]
+      ["Wochenende", "Freitag zwei freie Trainings à 60 Minuten, Samstag ein drittes, danach das Qualifying. Sonntag folgt das Rennen über die Distanz, die 305 Kilometer erstmals überschreitet — meist 50 bis 70 Runden. Monaco ist die Ausnahme mit 260 Kilometern. An sechs Wochenenden gilt das Sprintformat mit nur einem freien Training: Freitag das Sprint-Qualifying, Samstagvormittag der Sprint über rund 100 Kilometer ohne Boxenstopppflicht, danach das reguläre Qualifying für den Grand Prix."],
+      ["Qualifying", "Drei Abschnitte im Ausscheidungsverfahren. Q1 dauert 18 Minuten, alle 20 Autos sind dabei, die fünf langsamsten sind raus und bilden die Startplätze 16 bis 20. Q2 läuft über 15 Minuten mit 15 Autos, wieder scheiden fünf aus. In Q3 kämpfen die verbliebenen zehn zwölf Minuten lang um die Pole. Die Reifenwahl ist dabei taktisch: Wer in Q1 einen weichen Satz verbrennt, hat ihn im Rennen nicht mehr."],
+      ["Punkte", "25 für den Sieg, dann 18, 15, 12, 10, 8, 6, 4, 2 und 1 für Platz zehn. Im Sprint gibt es 8 Punkte für den Sieger, abwärts bis 1 für Platz acht. Ein Zusatzpunkt für die schnellste Rennrunde wurde nach 2024 abgeschafft. Gewertet wird doppelt: die Fahrer-WM einzeln, die Konstrukteurs-WM mit den addierten Punkten beider Autos — und letztere entscheidet über die Verteilung der Preisgelder."],
+      ["Reifen", "Pirelli wählt pro Rennen drei von fünf Trockenmischungen aus, die vor Ort als Soft, Medium und Hard bezeichnet werden. Dazu kommen Intermediates für feuchte und Full Wets für nasse Strecken. Im Trockenrennen müssen mindestens zwei verschiedene Mischungen zum Einsatz kommen, ein Boxenstopp ist damit zwingend. Regnet es, entfällt diese Pflicht."],
+      ["Strafen", "Fünf oder zehn Sekunden werden beim nächsten Boxenstopp abgesessen oder am Ende aufaddiert. Härter sind Durchfahrtsstrafe und Stop-and-Go. Dazu kommt ein Punktesystem auf der Superlizenz: Wer binnen zwölf Monaten zwölf Strafpunkte sammelt, wird für ein Rennen gesperrt. Diese Punkte verfallen einzeln nach einem Jahr."],
+      ["Budgetdeckel", "Seit 2021 dürfen Teams nur eine begrenzte Summe pro Saison ausgeben, aktuell rund 135 Millionen Dollar. Fahrergehälter, Marketing und die drei bestbezahlten Mitarbeiter sind ausgenommen. Der Deckel soll verhindern, dass finanzstarke Rennställe das Feld dominieren — und hat tatsächlich dazu geführt, dass Entwicklungen sorgfältiger abgewogen werden."],
+      ["Parc fermé", "Ab Beginn des Qualifyings stehen die Autos unter Parc-fermé-Bedingungen: Am Set-up darf nichts mehr geändert werden. Wer doch schraubt, muss aus der Boxengasse starten. Deshalb ist die Abstimmung im letzten freien Training eine Wette auf das Wetter am Renntag."],
+      ["Neu ab 2026", "Ein von Grund auf neues Reglement. Die Antriebe leisten je etwa zur Hälfte über Verbrennungsmotor und Elektroeinheit, gefahren wird mit vollständig synthetischem Kraftstoff. Die Autos sind schmaler, kürzer und leichter. Erstmals ist die Aerodynamik aktiv verstellbar — auf Geraden flach für Höchstgeschwindigkeit, in Kurven mit vollem Abtrieb. Das bisherige DRS entfällt und wird durch einen Überhol-Boost ersetzt, der dem Verfolger kurzzeitig zusätzliche Elektroleistung freigibt."]
     ]
   },
   mgp: {
-    kurz: "Motorrad-WM der Königsklasse, 22 Grands Prix, Sprint an jedem Wochenende.",
+    kurz: "Motorrad-Königsklasse, 22 Grands Prix, Sprint an jedem Wochenende.",
     bloecke: [
-      ["Wochenende", "Freitag ein freies Training und eine gewertete Practice-Session, Samstag ein weiteres Training, dann Qualifying und Sprint, Sonntag das Hauptrennen. Anders als in der Formel 1 gibt es den Sprint bei jedem Grand Prix, nicht nur an ausgewählten Wochenenden."],
-      ["Qualifying", "Der Weg ins Qualifying führt über die Practice am Freitag: Die zehn Schnellsten daraus sind direkt für Q2 gesetzt. Alle anderen müssen durch Q1, aus dem sich nur die beiden Besten noch für Q2 nachqualifizieren. In Q2 kämpfen dann zwölf Fahrer um die Pole. Wer am Freitag also schwach ist, muss samstags einen Umweg gehen."],
-      ["Punkte", "Im Grand Prix am Sonntag zählt dieselbe Skala wie in der Formel 1: 25 Punkte für den Sieg bis hinunter zu einem Punkt für Platz 15. Im Sprint am Samstag gibt es die halbe Ausbeute für die Top 9, also 12 Punkte für den Sieger. Weil an jedem Wochenende gesprintet wird, sammelt sich das über die Saison deutlich."],
-      ["Strafen", "Statt einer Zeitstrafe wie im Autorennsport gibt es die Long-Lap-Strafe: Der Fahrer muss an einer festgelegten Stelle einen verlängerten Kurvenradius nehmen und verliert dadurch rund eine Sekunde. Typisch ist das nach zu aggressiven Manövern oder Verlassen der Strecke."],
-      ["Technik", "Alle Motorräder haben 1000 Kubikzentimeter Hubraum und wiegen mindestens 157 Kilogramm. Ein Fahrer darf pro Saison nur eine begrenzte Zahl an Motoren verwenden. Die Aerodynamik am Motorrad ist inzwischen ein großes Thema — Flügel an der Verkleidung erzeugen Anpressdruck und erschweren gleichzeitig das Überholen."]
+      ["Wochenende", "Freitag ein freies Training am Vormittag und die Practice am Nachmittag — letztere ist die wichtigste Sitzung des Wochenendes, weil ihre Zeiten über den Weg ins Qualifying entscheiden. Samstag ein kurzes Training, dann Qualifying und am Nachmittag der Sprint über die halbe Renndistanz. Sonntag Warm-up und Grand Prix. Anders als in der Formel 1 wird an jedem Wochenende gesprintet."],
+      ["Qualifying", "Die zehn Schnellsten aus der Freitags-Practice sind direkt für Q2 gesetzt. Alle übrigen müssen samstags durch Q1, aus dem sich nur die zwei Besten nachqualifizieren. In Q2 fahren also zwölf Fahrer um die Pole. Ein schwacher Freitag bedeutet damit einen Umweg — und im schlimmsten Fall Startplatz 13, obwohl man auf eine schnelle Runde konkurrenzfähig wäre."],
+      ["Punkte", "Im Grand Prix 25 Punkte für den Sieg, abwärts bis 1 für Platz 15. Im Sprint gibt es die halbe Ausbeute, aber nur für die ersten neun: 12 Punkte für den Sieger bis 1 für Platz neun. Da an allen 22 Wochenenden gesprintet wird, sind über die Saison rund 260 zusätzliche Punkte im Umlauf — genug, um eine Meisterschaft zu drehen."],
+      ["Long Lap", "Die typische MotoGP-Strafe ist keine Zeitstrafe, sondern die Long-Lap-Penalty: Der Fahrer muss an einer markierten Stelle einen verlängerten Bogen außerhalb der Ideallinie nehmen und verliert dabei rund eine Sekunde. Verhängt wird sie nach Verlassen der Strecke mit Vorteil oder nach übermotivierten Manövern. Wer sie nicht binnen weniger Runden absitzt, bekommt eine Durchfahrtsstrafe."],
+      ["Reifendruck", "Ein Detail mit großer Wirkung: Für die Vorderreifen ist ein Mindestdruck vorgeschrieben, der über einen bestimmten Anteil der Renndistanz eingehalten werden muss. Wer zu dicht hinter einem anderen Motorrad fährt, bekommt weniger Kühlluft, der Druck steigt — und die Haftung sinkt. Deshalb halten Fahrer manchmal bewusst Abstand, statt direkt anzugreifen."],
+      ["Technik", "1000 Kubikzentimeter Hubraum, mindestens 157 Kilogramm Gewicht, Einheitselektronik für alle. Pro Saison ist die Zahl der Motoren begrenzt, was Standfestigkeit über pure Spitzenleistung stellt. Hinzu kommen Absenkvorrichtungen, die das Motorrad beim Start und beim Beschleunigen tiefer legen und so das Steigen verhindern."],
+      ["Aerodynamik", "Flügel an der Verkleidung erzeugen Anpressdruck und halten das Vorderrad am Boden. Das macht die Motorräder schneller, verschärft aber ein Problem: Im Windschatten verliert das folgende Motorrad Abtrieb und Kühlung, was Überholen erschwert. Die Verkleidung darf pro Saison nur einmal grundlegend überarbeitet werden."],
+      ["Klassen", "Unter der MotoGP fahren Moto2 und Moto3 mit — beides Nachwuchsklassen mit Einheitsmotoren, die an denselben Wochenenden ausgetragen werden. Wer sich dort durchsetzt, bekommt üblicherweise die Chance auf ein MotoGP-Cockpit."]
     ]
   },
   wrc: {
     kurz: "Rallye-WM auf Schotter, Asphalt und Schnee — gefahren wird gegen die Uhr.",
     bloecke: [
-      ["Format", "Eine Rallye dauert von Donnerstag bis Sonntag und besteht aus 15 bis 25 Wertungsprüfungen, kurz WP. Jede WP ist ein abgesperrter Streckenabschnitt, auf dem die Autos einzeln im Abstand von ein bis zwei Minuten starten. Zwischen den Prüfungen fahren sie auf öffentlichen Straßen zur nächsten Prüfung, das nennt sich Verbindungsetappe."],
-      ["Wertung", "Es gibt kein Rennen Kopf an Kopf. Gewertet werden die addierten Bestzeiten aller Wertungsprüfungen — wer nach der letzten WP die geringste Gesamtzeit hat, gewinnt. Sekundenbruchteile entscheiden dabei regelmäßig über den Sieg."],
-      ["Startreihenfolge", "Am ersten Tag starten die Führenden der WM zuerst. Auf Schotter ist das ein echter Nachteil, weil die ersten Autos die lose Deckschicht wegfegen und den Nachfolgenden eine schnellere Linie hinterlassen. Der WM-Führende kämpft also gegen die Strecke, nicht nur gegen die Gegner."],
-      ["Punkte", "Seit 2024 gilt ein zweiteiliges System. Nach der Wertung am Samstagabend gibt es 18 Punkte für den Führenden, abwärts bis zu einem Punkt. Für die Platzierung am Sonntagabend kommen nochmals bis zu sieben Punkte dazu. Die abschließende Power Stage bringt zusätzlich bis zu fünf Punkte für die fünf schnellsten Fahrer."],
-      ["Beifahrer", "Ohne Beifahrer geht nichts. Er liest während der Fahrt den Aufschrieb vor — eine Notation aus Kurvenradien, Entfernungen und Gefahrenstellen, die beide bei der vorherigen Besichtigung selbst erstellt haben. Der Fahrer sieht die Kurve oft erst, wenn er schon eingelenkt hat."]
+      ["Format", "Eine Rallye läuft von Donnerstag bis Sonntag und besteht aus 15 bis 25 Wertungsprüfungen, kurz WP. Jede WP ist ein gesperrter Streckenabschnitt zwischen 2 und 35 Kilometern Länge, auf dem die Autos einzeln im Abstand von ein bis drei Minuten starten. Dazwischen fahren sie auf öffentlichen Straßen zur nächsten Prüfung — diese Verbindungsetappen haben eigene Sollzeiten, Verspätung wird mit Zeitstrafen belegt."],
+      ["Wertung", "Es gibt kein Rennen Rad an Rad. Addiert werden die Zeiten aller Wertungsprüfungen, die geringste Gesamtzeit gewinnt. Weil einzelne WP oft nur um Zehntel auseinanderliegen, entscheiden über vier Tage hinweg regelmäßig wenige Sekunden. Ein Dreher, ein Reifenschaden oder eine falsche Reifenwahl kann eine ganze Rallye kosten."],
+      ["Aufschrieb", "Vor der Rallye fahren Fahrer und Beifahrer die Strecken zweimal in Serienautos ab und erstellen dabei ihre Notation: Kurvenradien von 1 bis 6, Entfernungen, Kuppen, Sprünge, Gefahrenstellen. Im Rennen liest der Beifahrer diesen Aufschrieb im richtigen Rhythmus vor. Der Fahrer sieht viele Kurven erst, wenn er längst eingelenkt hat — er fährt praktisch nach Ansage."],
+      ["Startreihenfolge", "Am ersten Tag starten die Führenden der WM zuerst. Auf Schotter ist das ein handfester Nachteil: Die ersten Autos fegen die lose Deckschicht weg und legen den griffigeren Untergrund für die Nachfolgenden frei. Wer die Meisterschaft anführt, kämpft also auch gegen die Strecke. Am Sonntag wird umgekehrt gestartet, in umgekehrter Reihenfolge des Zwischenstands."],
+      ["Punkte", "Seit 2024 zweigeteilt. Nach dem Stand am Samstagabend gibt es 18 Punkte für den Führenden, dann 15, 13, 10, 8, 6, 4, 3, 2 und 1. Für die Platzierung im Ziel am Sonntag kommen bis zu 7 weitere Punkte dazu. Die abschließende Power Stage bringt zusätzlich 5, 4, 3, 2 und 1 Punkt für die fünf schnellsten Fahrer. Wer am Sonntag ausfällt, behält seine Samstagspunkte."],
+      ["Rally2 und Reparaturen", "Fällt ein Auto aus, darf es am Folgetag unter der Rally2-Regel wieder starten — mit einer Zeitstrafe von zehn Minuten pro versäumter WP. Damit bleibt die Chance auf Power-Stage-Punkte. Repariert werden darf nur im Servicepark zu festgelegten Zeiten, meist 30 oder 45 Minuten. Zwischendurch müssen Fahrer und Beifahrer selbst Hand anlegen, mit dem Werkzeug an Bord."],
+      ["Technik", "Die Spitzenklasse Rally1 nutzt 1,6-Liter-Turbomotoren mit rund 500 PS und einem Sicherheitskäfig aus Stahlrohr, der bei den schweren Unfällen dieser Serie regelmäßig Leben rettet. Darunter fahren Rally2-Fahrzeuge, die deutlich günstiger sind und die Startfelder füllen."],
+      ["Untergründe", "Kein anderer Motorsport wechselt die Bedingungen so stark: loser Schotter in Griechenland, Asphalt auf Korsika, Schnee und Eis in Schweden, Sand und Hitze in Kenia. Für jeden Untergrund gibt es eigene Reifen, eigene Abstimmungen und eine eigene Fahrweise. Ein Spezialist für Schotter ist nicht automatisch auf Asphalt schnell."]
     ]
   },
   wec: {
     kurz: "Langstrecken-WM mit mehreren Klassen gleichzeitig auf der Strecke.",
     bloecke: [
-      ["Format", "Acht Rennen über sechs bis vierundzwanzig Stunden, darunter die 24 Stunden von Le Mans als Höhepunkt. Pro Auto teilen sich zwei bis drei Fahrer das Steuer und wechseln sich während des Rennens ab. Vorgeschrieben sind Mindest- und Höchstfahrzeiten, damit niemand das ganze Rennen allein bestreitet."],
-      ["Klassen", "Gefahren wird in zwei Kategorien gleichzeitig: Hypercar mit den Prototypen der Hersteller und LMGT3 mit seriennahen Sportwagen. Beide fahren auf derselben Strecke, werden aber getrennt gewertet. Für die Fahrer heißt das ständiges Überrunden und Überholtwerden — ein eigener Teil der Herausforderung."],
-      ["Qualifying", "Zuerst fährt jede Klasse eine reguläre Qualifikation. Die besten Autos daraus ziehen in die Hyperpole ein, eine kurze zweite Sitzung, in der die vorderen Startplätze vergeben werden. Bei einem Rennen über sechs Stunden zählt der Startplatz allerdings weit weniger als in einem Sprintformat."],
-      ["Balance of Performance", "Damit unterschiedliche Fahrzeugkonzepte konkurrenzfähig bleiben, greift die BoP ein: Über Mindestgewicht, Leistung und Energiemenge werden die Autos aneinander angeglichen. Das sorgt für enge Rennen, ist unter Fans aber auch der am meisten diskutierte Punkt des Reglements."],
-      ["Punkte", "Bei den regulären Läufen gilt die übliche Skala mit 25 Punkten für den Sieg. In Le Mans zählt alles doppelt, dort sind also 50 Punkte zu holen. Ein einzelnes Wochenende kann die Meisterschaft damit komplett drehen."]
+      ["Format", "Acht Rennen zwischen sechs und vierundzwanzig Stunden, das bekannteste sind die 24 Stunden von Le Mans. Pro Auto teilen sich zwei bis drei Fahrer das Steuer. Vorgeschrieben sind Mindest- und Höchstfahrzeiten, damit sich niemand das Rennen allein aufteilt und keiner übermüdet weiterfährt. Gewertet wird nach zurückgelegten Runden, nicht nach Zeit."],
+      ["Klassen", "Zwei Kategorien fahren gleichzeitig auf derselben Strecke: Hypercar mit den Prototypen der Hersteller und LMGT3 mit seriennahen GT-Fahrzeugen. Der Geschwindigkeitsunterschied ist erheblich, entsprechend häufig wird überrundet. Für die Fahrer beider Klassen ist der Umgang mit dem Verkehr eine eigene Disziplin — und eine der häufigsten Ursachen für Zwischenfälle."],
+      ["Qualifying", "Zuerst fährt jede Klasse eine reguläre Qualifikation. Die schnellsten Autos daraus ziehen in die Hyperpole ein, eine kurze zweite Sitzung um die vorderen Startplätze. Bei einem Rennen über sechs oder gar vierundzwanzig Stunden zählt der Startplatz allerdings weniger als Zuverlässigkeit und Strategie."],
+      ["Balance of Performance", "Damit Fahrzeuge mit völlig unterschiedlichen Konzepten — Hybrid, Allrad, Heckantrieb, Saugmotor, Turbo — konkurrenzfähig bleiben, greift die BoP ein. Über Mindestgewicht, freigegebene Leistung und Energiemenge pro Stint werden die Autos rechnerisch angeglichen, teils von Rennen zu Rennen. Das sorgt für enge Ergebnisse und ist zugleich der am heftigsten diskutierte Teil des Reglements."],
+      ["Boxenstopps", "Beim Tanken darf nicht gleichzeitig am Auto gearbeitet werden — Reifenwechsel und Fahrerwechsel erfolgen davor oder danach. Die Zahl der Mechaniker am Auto ist begrenzt. Dadurch dauern Stopps deutlich länger als in der Formel 1, und ihre Planung wird zu einem zentralen Teil der Rennstrategie."],
+      ["Full Course Yellow", "Statt eines Safety Cars wird häufig eine streckenweite Tempobegrenzung von 80 km/h verhängt. Die Abstände bleiben dabei erhalten, anders als bei einer Safety-Car-Phase, in der das Feld zusammenrückt. Wer im richtigen Moment an der Box ist, spart trotzdem erheblich Zeit — Glück ist damit ein realer Faktor."],
+      ["Punkte", "Bei den regulären Läufen 25 Punkte für den Sieg nach der üblichen Skala. In Le Mans zählt alles doppelt, dort sind 50 Punkte zu holen. Ein einzelnes Wochenende kann die Meisterschaft damit vollständig umkehren. Gewertet werden Fahrer, Teams und Hersteller getrennt."],
+      ["Le Mans", "Das Rennen hat einen Sonderstatus: eigene Testtage, ein größeres Starterfeld und mit der Hunaudières eine Gerade, auf der über 300 km/h gefahren wird. Es zählt zur Triple Crown des Motorsports, zusammen mit dem Indy 500 und dem Großen Preis von Monaco."]
     ]
   },
   dtm: {
     kurz: "GT3-Sportwagen, acht Wochenenden, zwei eigenständige Rennen pro Wochenende.",
     bloecke: [
-      ["Format", "An jedem Wochenende werden zwei getrennte Rennen über je rund 55 Minuten gefahren, samstags und sonntags. Beide sind eigenständig gewertet und haben ein eigenes Qualifying — ein schlechter Samstag lässt sich also am Sonntag direkt korrigieren."],
-      ["Qualifying", "Ein einziger Abschnitt von rund zwanzig Minuten, in dem alle Fahrer gleichzeitig auf der Strecke sind. Die schnellste Runde zählt. Kein K.o.-System wie in der Formel 1, dafür Verkehr und die Suche nach einer freien Runde als taktisches Element."],
-      ["Boxenstopp", "In jedem Rennen ist genau ein Boxenstopp mit Reifenwechsel Pflicht. Wann er erfolgt, entscheidet das Team — daraus entsteht ein großer Teil der Renntaktik. Die Stopps sind extrem kurz, wenige Sekunden Unterschied kosten Positionen."],
-      ["Fahrzeuge", "Gefahren wird mit GT3-Sportwagen, wie sie auch in anderen Serien eingesetzt werden: Ferrari, Porsche, Mercedes-AMG, BMW, Lamborghini, Aston Martin und weitere. Eine Balance of Performance gleicht die Marken aneinander an."],
-      ["Punkte", "Pro Rennen 25 Punkte für den Sieg nach der üblichen Skala. Zusätzlich gibt es Punkte für die vorderen Startplätze im Qualifying, was die Gesamtwertung spürbar beeinflusst — deshalb weichen bei manchen Fahrern Renn- und Qualifyingpunkte deutlich voneinander ab."]
+      ["Format", "An jedem Wochenende werden zwei getrennte Rennen über je rund 55 Minuten plus eine Runde gefahren, samstags und sonntags. Beide sind vollständig eigenständig: eigenes Qualifying, eigene Punkte, eigenes Podium. Ein verpatzter Samstag lässt sich am Sonntag also unmittelbar korrigieren — das hält die Meisterschaft lange offen."],
+      ["Qualifying", "Ein einziger Abschnitt von etwa zwanzig Minuten, in dem das gesamte Feld gleichzeitig auf der Strecke ist. Die schnellste Runde zählt. Kein Ausscheidungsverfahren wie in der Formel 1, dafür ein anderes Problem: Bei über zwanzig Autos auf einer kurzen Strecke ist eine freie Runde schwer zu finden. Die Wahl des richtigen Moments entscheidet oft mehr als das reine Tempo."],
+      ["Boxenstopp", "In jedem Rennen ist genau ein Stopp mit Wechsel aller vier Reifen Pflicht. Wann er erfolgt, ist dem Team überlassen und macht einen großen Teil der Taktik aus: früh stoppen bringt freie Strecke, spät stoppen frische Reifen für die Schlussphase. Die Stopps selbst dauern nur wenige Sekunden, Unterschiede von Zehnteln kosten Positionen."],
+      ["Punkte", "Pro Rennen 25 Punkte für den Sieg nach der üblichen Skala bis Platz zehn. Zusätzlich gibt es Punkte für die vorderen Startplätze im Qualifying — deshalb weichen bei einzelnen Fahrern Renn- und Qualifyingpunkte deutlich voneinander ab. Über eine Saison summiert sich das zu einem spürbaren Faktor."],
+      ["Fahrzeuge", "Gefahren wird mit GT3-Sportwagen, wie sie auch in anderen Serien eingesetzt werden: Ferrari, Porsche, Mercedes-AMG, BMW, Lamborghini, Aston Martin, Ford und weitere. Die Autos sind seriennah, haben rund 500 PS und kein Hybridsystem. Anders als früher setzt die DTM keine eigens konstruierten Prototypen mehr ein."],
+      ["Balance of Performance", "Da die Marken technisch verschieden sind, werden sie über Gewicht, Leistung und Luftmengenbegrenzer angeglichen — angepasst anhand der Ergebnisse der vorangegangenen Rennen. Das hält die Abstände klein, führt aber regelmäßig zu Diskussionen, wenn eine Marke plötzlich stärker oder schwächer wirkt."],
+      ["Startaufstellung", "Gestartet wird stehend von der Startaufstellung, nicht rollend. In Verbindung mit vollen Feldern und teils engen Strecken wie dem Norisring führt das regelmäßig zu Positionswechseln schon vor der ersten Kurve."],
+      ["Charakter", "Die DTM ist bewusst national ausgerichtet: acht Wochenenden, überwiegend in Deutschland, alle Rennen frei empfangbar im Fernsehen. Sie ist damit die zugänglichste der hier gelisteten Serien — sowohl für Zuschauer als auch für Fahrer, weil GT3-Technik in vielen anderen Meisterschaften ebenfalls eingesetzt wird."]
+    ]
+  },
+  gtwc: {
+    kurz: "Größte GT3-Serie Europas, geteilt in Sprint Cup und Endurance Cup.",
+    bloecke: [
+      ["Aufbau", "Die GT World Challenge Europe ist keine einzelne Rennserie, sondern besteht aus zwei Meisterschaften mit je fünf Wochenenden: dem Sprint Cup mit kurzen Rennen und dem Endurance Cup mit Langstreckenläufen. Beide werden getrennt gewertet, zusätzlich gibt es eine Gesamtwertung über alle zehn Wochenenden. Veranstalter ist die SRO, die auch die Ableger in Amerika, Asien und Australien betreibt."],
+      ["Sprint Cup", "Pro Wochenende zwei Rennen über je eine Stunde, eines am Samstag und eines am Sonntag, jeweils mit eigenem Qualifying. In jedem Rennen ist ein Pflichtboxenstopp mit Fahrerwechsel vorgeschrieben, der in einem festgelegten Zeitfenster zur Rennmitte erfolgen muss. Zwei Fahrer teilen sich das Auto, beide müssen fahren."],
+      ["Endurance Cup", "Rennen über drei Stunden, dazu die 6 Stunden von Paul Ricard zum Auftakt und als Höhepunkt die 24 Stunden von Spa. Hier teilen sich drei Fahrer das Auto. Die längere Distanz verschiebt den Schwerpunkt: Zuverlässigkeit, Reifenmanagement und fehlerfreie Boxenstopps zählen mehr als eine schnelle Einzelrunde."],
+      ["24 Stunden von Spa", "Das größte GT-Rennen der Welt und das Saisonhighlight. Über sechzig Fahrzeuge starten, gefahren wird durch die Nacht auf einer der anspruchsvollsten Strecken überhaupt, mit Eau Rouge und Raidillon als bekanntestem Abschnitt. Das Rennen zählt doppelt so viele Punkte wie ein regulärer Lauf und hat für viele Teams einen höheren Stellenwert als die Meisterschaft selbst."],
+      ["Klassen", "Gestartet wird in vier Kategorien, die sich nach der FIA-Einstufung der Fahrer richten: Pro ohne Beschränkungen, dazu Gold, Silver und Bronze mit jeweils vorgeschriebenen Fahrerkombinationen. So können Profis und ambitionierte Amateure im selben Rennen antreten, ohne direkt gegeneinander gewertet zu werden. Um die Gesamtwertung fahren die Pro-Fahrzeuge."],
+      ["Technik", "Ausschließlich GT3-Fahrzeuge nach FIA-Reglement — dieselbe Technikbasis wie in der DTM und in der LMGT3-Klasse der WEC. Entsprechend groß ist die Markenvielfalt: Ferrari, Porsche, Mercedes-AMG, BMW, Audi, Lamborghini, Aston Martin, McLaren. Eine Balance of Performance gleicht die Modelle aneinander an."],
+      ["Qualifying", "Im Sprint Cup ein kurzer Abschnitt je Rennen. Im Endurance Cup fahren alle drei Fahrer nacheinander eine eigene Qualifikationsphase, aus deren Zeiten sich die Startaufstellung ergibt — die Mannschaft ist damit nur so schnell wie ihr langsamstes Glied. Für die 24 Stunden von Spa gibt es zusätzlich eine Superpole der Schnellsten."],
+      ["Bedeutung", "Wer alle zehn Wochenenden bestreitet, kann sich eine Einladung für die LMGT3-Klasse der 24 Stunden von Le Mans sichern. Die Serie ist damit für viele Teams das Sprungbrett in den internationalen Langstreckensport — und gleichzeitig die Meisterschaft mit den größten GT3-Startfeldern in Europa."]
     ]
   },
   fe: {
     kurz: "Elektro-Rennserie, überwiegend auf Stadtkursen, ein Rennen pro Tag.",
     bloecke: [
-      ["Format", "Meist findet alles an einem Tag statt: Training, Qualifying und Rennen. Gefahren wird auf engen, temporären Stadtkursen mitten in Metropolen wie Monaco, Tokio, London oder Berlin. Das Rennen läuft nicht über eine feste Rundenzahl, sondern über eine festgelegte Zeit plus eine Schlussrunde."],
-      ["Qualifying", "Das mit Abstand eigenständigste Format im Feld. Zunächst fahren zwei Gruppen getrennt ihre Zeiten, die jeweils besten vier ziehen weiter. Danach folgen direkte Duelle im K.o.-System: Viertelfinale, Halbfinale, Finale — jeweils zwei Autos gleichzeitig auf der Strecke, der Schnellere kommt weiter. Die Pole entscheidet sich also in einem direkten Zweikampf."],
-      ["Attack Mode", "Jeder Fahrer muss im Rennen zweimal den Attack Mode aktivieren und bekommt dafür für eine begrenzte Zeit deutlich mehr Leistung. Der Haken: Aktiviert wird er nur, indem man abseits der Ideallinie durch eine markierte Zone fährt und dabei Zeit verliert. Wann man das tut, ist eine der zentralen taktischen Entscheidungen."],
-      ["Energie", "Alle Teams haben dieselbe Batteriekapazität, die bewusst knapp bemessen ist. Wer zu früh zu viel verbraucht, muss am Ende abheben lassen. Rekuperation beim Bremsen ist deshalb entscheidend — ein erheblicher Teil der Energie kommt so zurück in die Batterie."],
-      ["Punkte", "Die übliche Skala mit 25 Punkten für den Sieg. Dazu kommen drei Punkte für die Pole Position und ein Punkt für die schnellste Rennrunde, sofern man in den Top 10 landet. Die Saison läuft über den Jahreswechsel und wird deshalb nicht als Jahreszahl, sondern als Saisonnummer geführt."]
+      ["Format", "Meist findet alles an einem Tag statt: Training, Qualifying und Rennen. Gefahren wird auf engen, temporären Kursen mitten in Städten wie Monaco, Tokio, London, Berlin oder São Paulo. Das Rennen läuft nicht über eine feste Rundenzahl, sondern über eine festgelegte Zeit plus eine Schlussrunde — bei Unterbrechungen wird die Distanz entsprechend angepasst."],
+      ["Qualifying", "Das eigenständigste Format im gesamten Motorsport. Zunächst fahren zwei Gruppen getrennt ihre Zeiten, die jeweils besten vier ziehen weiter. Danach folgen direkte Duelle im K.-o.-System: Viertelfinale, Halbfinale, Finale, jeweils zwei Autos gleichzeitig auf der Strecke. Wer schneller ist, kommt weiter. Die Pole entscheidet sich damit in einem echten Zweikampf statt über eine anonyme Bestzeit."],
+      ["Attack Mode", "Jeder Fahrer muss im Rennen zweimal den Attack Mode aktivieren und erhält dafür befristet deutlich mehr Leistung. Aktiviert wird er nur, indem man abseits der Ideallinie durch eine markierte Zone fährt — und dabei Zeit verliert. Wie oft und wann aktiviert werden muss, gibt die Rennleitung teils erst kurz vor dem Start bekannt. Der richtige Moment ist eine der zentralen taktischen Entscheidungen."],
+      ["Energie", "Alle Teams haben dieselbe Batteriekapazität, die bewusst knapper bemessen ist als die Renndistanz erfordert. Wer zu früh zu viel verbraucht, muss am Ende Tempo herausnehmen. Deshalb wird im Feld häufig gezielt Windschatten gesucht, um Energie zu sparen — Rennen entscheiden sich regelmäßig in den letzten Runden, wenn die Verbrauchsrechnungen aufgehen oder eben nicht."],
+      ["Rekuperation", "Beim Bremsen wird Energie zurück in die Batterie gespeist, und zwar in einem Umfang, der einen erheblichen Teil des Rennverbrauchs ausmacht. Die Autos haben deshalb an der Hinterachse kaum mechanische Bremsen im klassischen Sinn. Das verändert die Fahrweise grundlegend: Bremsen ist hier auch ein Ladevorgang."],
+      ["Punkte", "Die übliche Skala mit 25 Punkten für den Sieg bis 1 für Platz zehn. Dazu drei Punkte für die Pole Position und ein Punkt für die schnellste Rennrunde, letzterer nur bei einer Platzierung unter den ersten zehn. Weil das Feld eng beieinander liegt, wechselt die Meisterschaftsführung im Saisonverlauf häufig."],
+      ["Stadtkurse", "Die Strecken werden für das Rennwochenende aus normalen Straßen aufgebaut. Sie sind eng, haben kaum Auslaufzonen und einen Belag, der zu Beginn wenig Grip bietet und sich über den Tag deutlich verbessert. Berührungen und Safety-Car-Phasen sind entsprechend häufig — Fehler werden hier härter bestraft als auf permanenten Rennstrecken."],
+      ["Saisonzählung", "Die Meisterschaft läuft über den Jahreswechsel und wird deshalb nicht mit einer Jahreszahl geführt, sondern als Saison mit fortlaufender Nummer. Ein Titel gehört damit nicht eindeutig zu einem Kalenderjahr, was beim Nachschlagen älterer Ergebnisse regelmäßig für Verwirrung sorgt."]
     ]
   }
 };
@@ -1185,18 +1275,37 @@ function toggleLegal(){
   if(el.classList.contains("on")) el.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
 
+let RULES_OPEN = null;   /* welche Serie ist aufgeklappt */
+
+function toggleRule(sk){
+  RULES_OPEN = (RULES_OPEN===sk) ? null : sk;
+  renderRules();
+  if(RULES_OPEN){
+    const el=document.getElementById("rl-"+RULES_OPEN);
+    if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+}
+
 function renderRules(){
   const host=document.getElementById("view-rules"); if(!host)return;
-  let html=`<p class="rl-intro">Sechs Serien, sechs sehr unterschiedliche Reglements.<br>
-    Die wichtigsten Punkte je Meisterschaft — Format, Qualifying, Punkte und Besonderheiten.</p>`;
+  let html=`<p class="rl-intro">Sieben Serien, sieben sehr unterschiedliche Reglements.<br>
+    Tippe eine Serie an, um Format, Qualifying, Punkte und Besonderheiten zu lesen.</p>`;
   Object.keys(SERIES).forEach(sk=>{
     const S0=SERIES[sk], R=REGELN[sk]; if(!R)return;
-    html+=`<div class="rl-block">
-      <div class="rl-head"><span class="rl-name" style="color:${S0.color}">${esc(S0.name)}</span>
-      <span class="rl-kurz">${esc(R.kurz)}</span></div>`;
-    R.bloecke.forEach(b=>{
-      html+=`<div class="rl-item"><span class="rl-t">${esc(b[0])}</span><span class="rl-x">${esc(b[1])}</span></div>`;
-    });
+    const open = RULES_OPEN===sk;
+    html+=`<div class="rl-block ${open?'open':''}" id="rl-${sk}">
+      <button class="rl-head" onclick="toggleRule('${sk}')" aria-expanded="${open}">
+        <span class="rl-chev">${open?'▾':'▸'}</span>
+        <span class="rl-name" style="color:${S0.color}">${esc(S0.name)}</span>
+        <span class="rl-kurz">${esc(R.kurz)}</span>
+      </button>`;
+    if(open){
+      html+=`<div class="rl-body">`;
+      R.bloecke.forEach(b=>{
+        html+=`<div class="rl-item"><span class="rl-t">${esc(b[0])}</span><span class="rl-x">${esc(b[1])}</span></div>`;
+      });
+      html+=`</div>`;
+    }
     html+=`</div>`;
   });
   host.innerHTML=html;
