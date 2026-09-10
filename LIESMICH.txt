@@ -97,7 +97,7 @@ WERTUNG AKTUALISIEREN
 HOSTEN (GitHub Pages, kostenlos, ~5 Minuten)
   1. Repository anlegen, alle Dateien in den Hauptordner
   2. Settings -> Pages -> Branch "main" -> Save
-  3. Fertig: https://kai5409.github.io/apex-motorsport/
+  3. Fertig: https://apexkalender.de/
   Danach automatisch aktiv: "App installieren", Offline-Nutzung,
   Kalender-Abo unter "Wo schauen?" (webcal-Link).
 

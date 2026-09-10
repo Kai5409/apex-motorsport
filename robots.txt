@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kai5409.github.io/apex-motorsport/sitemap.xml
+Sitemap: https://apexkalender.de/sitemap.xml
