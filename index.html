@@ -345,7 +345,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <section class="view" id="view-rules"></section>
   <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
   <footer>
-APEX · Saison 2026 · Sechs Serien · Stand 22. August 2026<br>
+APEX · Saison 2026 · Sieben Serien · Stand 3. September 2026<br>
     Alle Zeiten in MESZ, ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
     <button class="legal-link" onclick="toggleLegal()">Datenschutz</button>
     <div class="legal" id="legal">
@@ -421,6 +421,17 @@ APEX · Saison 2026 · Sechs Serien · Stand 22. August 2026<br>
     - Formel E: London I und II ohne Sessionzeiten. Tokio ist ein Event, war real ein Doppelrennen.
     - WRC: Zeitplaene Lauf 1-10 sind weiterhin Platzhalter ("Etappe 1/2/3").
       Finale Saudi-Arabien nicht bestaetigt, Entscheidung war fuer Mitte September angekuendigt.
+    - 03.09. (4): Domainumzug auf apexkalender.de abgeschlossen (HTTPS aktiv, Search Console neu
+      eingerichtet, Sitemap erfolgreich eingelesen). apex-rennkalender.de liegt ungenutzt geparkt -
+      netcup bietet Weiterleitungen nur mit Webhosting-Paket an.
+    - 03.09. (4): JSON-LD erweitert um description, image, url, organizer und location.address.
+      Damit sind 4 der 6 Search-Console-Hinweise erledigt.
+      BEWUSST NICHT ergaenzt: "performer" (wir haben keine Starterlisten) und "offers"
+      (wir verkaufen keine Tickets). Beide waeren nur mit erfundenen Daten zu fuellen.
+      Diese zwei Hinweise bleiben also dauerhaft stehen - das ist korrekt so.
+      Der Sieger steht bewusst NICHT in der description: waere ein Spoiler in den
+      Suchergebnissen, und die Ergebnisse werden nicht oft genug aktualisiert.
+      Bitte nicht "nachbessern".
     - 03.09. (3): Regeltexte faktengeprueft, fuenf Fehler korrigiert:
       * WRC-Punkte: das 2024er System mit Samstagspunkten wurde 2025 wieder abgeschafft.
         Jetzt 25 Punkte fuer den Sieger, Super Sunday nur noch Top 5, max. 35 pro Wochenende.
@@ -1780,24 +1791,44 @@ function installApp(){ if(!DEFERRED_INSTALL)return; DEFERRED_INSTALL.prompt(); D
 /* Wird rein aus EVENTS generiert -- keine Zugangsdaten, keine externen Aufrufe. */
 function injectEventSchema(){
   try{
-    const list=EVENTS.filter(e=>e.status!=="cancel").map((e,i)=>({
-      "@type":"SportsEvent",
-      "position":i+1,
-      "name":(SERIES[e.s]?SERIES[e.s].name+" — ":"")+e.name,
-      "startDate":e.d0,
-      "endDate":e.d1||e.d0,
-      "eventStatus":e.status==="done"?"https://schema.org/EventScheduled":"https://schema.org/EventScheduled",
-      "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-      "location":{"@type":"Place","name":e.loc||""},
-      "sport":SERIES[e.s]?SERIES[e.s].name:undefined
-    }));
+    const BASIS="https://apexkalender.de/";
+    const list=EVENTS.filter(e=>e.status!=="cancel").map((e,i)=>{
+      const S0=SERIES[e.s];
+      const von=new Date(e.d0), bis=new Date(e.d1||e.d0);
+      const fmt=d=>`${String(d.getDate()).padStart(2,"0")}.${String(d.getMonth()+1).padStart(2,"0")}.${d.getFullYear()}`;
+      const zeitraum = e.d1&&e.d1!==e.d0 ? `${fmt(von)} bis ${fmt(bis)}` : fmt(von);
+      const rennen = e.sessions.filter(x=>x.t&&isRaceName(x.n)).length;
+      return {
+        "@type":"SportsEvent",
+        "position":i+1,
+        "name":(S0?S0.name+" — ":"")+e.name,
+        "description":`${S0?S0.name:""} in ${e.loc}, ${zeitraum}.`
+          + (rennen?` ${rennen===1?"Rennen":rennen+" Rennen"} mit Sessionzeiten in deutscher Zeit.`:""),
+        /* Bewusst OHNE Sieger: waere ein Spoiler in den Suchergebnissen,
+           und die Ergebnisse werden nicht regelmaessig genug gepflegt. */
+        "image":BASIS+"logo-apex.png",
+        "url":BASIS,
+        "startDate":e.d0,
+        "endDate":e.d1||e.d0,
+        "eventStatus":"https://schema.org/EventScheduled",
+        "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+        "location":{
+          "@type":"Place",
+          "name":e.loc||"",
+          "address":{"@type":"PostalAddress","addressLocality":e.loc||""}
+        },
+        "organizer":S0?{"@type":"Organization","name":S0.name}:undefined,
+        "sport":S0?S0.name:undefined
+      };
+    });
     const data={"@context":"https://schema.org","@type":"ItemList","name":"APEX Motorsport-Kalender 2026","itemListElement":list};
-    const s=document.createElement("script");
-    s.type="application/ld+json";
-    s.textContent=JSON.stringify(data);
-    document.head.appendChild(s);
+    const sc=document.createElement("script");
+    sc.type="application/ld+json";
+    sc.textContent=JSON.stringify(data);
+    document.head.appendChild(sc);
   }catch(err){/* SEO-Daten sind optional -- App darf dadurch nie brechen */}
 }
+
 injectEventSchema();
 
 tagNext();
