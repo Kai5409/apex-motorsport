@@ -246,6 +246,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* Wertung / Standings */
 .std-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:8px 0 14px;letter-spacing:.04em;line-height:1.7}
 .std-block{padding:30px 0 8px;border-bottom:1px solid var(--rule)}
+.std-gap{height:26px}
 .std-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,7vw,54px);line-height:.9;text-transform:uppercase}
 .std-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.06em;margin:8px 0 4px;text-transform:uppercase}
 .std-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--faint);letter-spacing:.05em;padding:10px 0 0}
@@ -438,6 +439,9 @@ APEX · Saisons 2026 &amp; 2027 · Sieben Serien · Stand 24. September 2026<br>
     - Formel E: London I und II ohne Sessionzeiten. Tokio ist ein Event, war real ein Doppelrennen.
     - WRC: Zeitplaene Lauf 1-10 sind weiterhin Platzhalter ("Etappe 1/2/3").
       Finale Saudi-Arabien nicht bestaetigt, Entscheidung war fuer Mitte September angekuendigt.
+    - 24.09. (3): Wertungen von Kai aktualisiert (F1, MotoGP, WRC, Formel E, DTM, WEC).
+      Wertung sortiert sich jetzt automatisch nach Punkten (Gleichstand: Reihenfolge der Datei).
+      Pro Serie optional zweite Klasse: klasse/drv und klasse2/drv2 - genutzt fuer WEC Hypercar + LMGT3.
     - 24.09. (2): SAISON 2027. Umschalter im Kopfbereich (Jahreszahl mit Pfeilen, beliebig viele Jahre).
       Voreinstellung: laufendes Jahr, solange dort Events offen sind, sonst naechstes Jahr mit Daten.
       Termine 2027 (alle prov:true, sz:"2027"): F1 24 (formula1.com), WEC 9 (fiawec.com, Rennstart nur
@@ -1860,13 +1864,20 @@ function renderStandings(){
       return;
     }
     any=true;
+    /* Eine Tabelle je Klasse: drv (+ optional klasse), drv2 (+ klasse2) - z. B. WEC Hypercar & LMGT3.
+       Sortiert nach Punkten; bei Gleichstand gilt die Reihenfolge aus der Datei. */
+    const tabelle=(liste,klasse)=>{
+      let t=`<div class="std-sub">Fahrerwertung${klasse?` · ${klasse}`:""}</div>`;
+      [...liste].sort((a,b)=>b[2]-a[2]).forEach(([nm,tm,pts],i)=>{
+        t+=`<div class="std-row ${i===0?'lead':''}"><span class="sp">${i+1}</span>`+
+          `<span class="std-nm">${nm}${tm?`<span class="tm">${tm}</span>`:''}</span>`+
+          `<span class="std-wins"></span><span class="std-pts">${pts}<small>PKT</small></span></div>`;
+      });
+      return t;
+    };
     html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
-      `<div class="std-tag">Stand ${D.stand}</div><div class="std-sub">Fahrerwertung</div>`;
-      [...D.drv].sort((a,b)=>b[2]-a[2]).forEach(([nm,tm,pts],i)=>{
-      html+=`<div class="std-row ${i===0?'lead':''}"><span class="sp">${i+1}</span>`+
-        `<span class="std-nm">${nm}${tm?`<span class="tm">${tm}</span>`:''}</span>`+
-        `<span class="std-wins"></span><span class="std-pts">${pts}<small>PKT</small></span></div>`;
-    });
+      `<div class="std-tag">Stand ${D.stand}</div>`+ tabelle(D.drv,D.klasse) +
+      (D.drv2&&D.drv2.length? `<div class="std-gap"></div>`+tabelle(D.drv2,D.klasse2) : "");
     html+=`</div>`;
   });
   if(!any && !html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
