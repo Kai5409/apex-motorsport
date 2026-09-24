@@ -11,23 +11,23 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="APEX">
-<title>APEX — Motorsport-Kalender 2026 | F1, MotoGP, WEC, DTM, WRC, Formel E</title>
-<meta name="description" content="Alle Renntermine und Sessionzeiten der Saison 2026: Formel 1, MotoGP, WEC, DTM, WRC und Formel E. Mit Wertungen, TV-Infos für DACH und verständlichen Regelerklärungen zu jeder Serie.">
-<meta name="keywords" content="Formel 1 Kalender 2026, MotoGP Kalender 2026, Motorsport Kalender, F1 Sessionzeiten, WEC, DTM, WRC, Formel E, Wo läuft F1 im TV, Rennkalender Deutschland, Formel 1 Qualifying erklärt, MotoGP Regeln, WRC Power Stage, Formel E Attack Mode, WEC Balance of Performance, DTM Regeln">
+<title>APEX — Motorsport-Kalender 2026 & 2027 | F1, MotoGP, WEC, DTM, WRC, Formel E, GTWC</title>
+<meta name="description" content="Motorsport-Kalender 2026 und 2027: alle Renntermine der Formel 1, MotoGP, WEC, DTM, WRC, Formel E und GT World Challenge. Der neue F1-Kalender 2027, Sessionzeiten in deutscher Zeit, Wertungen, TV-Infos für DACH und Regelerklärungen.">
+<meta name="keywords" content="Formel 1 Kalender 2027, F1 Kalender 2027, F1 2027 Termine, Formel 1 2027 Rennkalender, Motorsport Kalender 2027, WEC Kalender 2027, Le Mans 2027, DTM Kalender 2027, DTM 2027 Termine, Formel E Kalender 2027, Formel E Saison 13, GT World Challenge 2027, 24h Spa 2027, MotoGP Kalender 2027, WRC Kalender 2027, Formel 1 Kalender 2026, MotoGP Kalender 2026, Motorsport Kalender, F1 Sessionzeiten, Rennkalender Deutschland, Wo läuft F1 im TV, Formel 1 Qualifying erklärt, MotoGP Regeln, WRC Power Stage, Formel E Attack Mode, DTM Regeln">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://apexkalender.de/">
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="APEX">
-<meta property="og:title" content="APEX — Motorsport-Kalender 2026">
-<meta property="og:description" content="Alle Renntermine und Sessionzeiten 2026: F1, MotoGP, WEC, DTM, WRC, Formel E — mit Wertungen und TV-Infos für DACH.">
+<meta property="og:title" content="APEX — Motorsport-Kalender 2026 & 2027">
+<meta property="og:description" content="Alle Renntermine 2026 und die neuen Kalender 2027: F1, MotoGP, WEC, DTM, WRC, Formel E und GT World Challenge — mit Sessionzeiten, Wertungen und TV-Infos für DACH.">
 <meta property="og:image" content="https://apexkalender.de/logo-apex.png">
 <meta property="og:url" content="https://apexkalender.de/">
 <meta property="og:locale" content="de_DE">
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="APEX — Motorsport-Kalender 2026">
-<meta name="twitter:description" content="Alle Renntermine und Sessionzeiten 2026: F1, MotoGP, WEC, DTM, WRC, Formel E.">
+<meta name="twitter:title" content="APEX — Motorsport-Kalender 2026 & 2027">
+<meta name="twitter:description" content="Formel-1-Kalender 2027 und alle Termine 2026: F1, MotoGP, WEC, DTM, WRC, Formel E, GTWC.">
 <meta name="twitter:image" content="https://apexkalender.de/logo-apex.png">
 <style>
 /* Schriften lokal ausgeliefert - kein Abruf von Google-Servern, keine Datenuebertragung an Dritte. */
@@ -75,7 +75,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .tzsw button.on{background:var(--paper);color:var(--bg);border-color:var(--paper);font-weight:600}
 
 /* On-Air */
-.onair{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);min-height:50px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 26px),transparent)}
+.onair{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;padding:12px 0;border-bottom:1px solid var(--rule);min-height:50px}
+.onair>*{white-space:nowrap}
+@media(max-width:640px){.onair{flex-direction:column;align-items:flex-start;gap:7px}.onair>*{white-space:normal}}
 .onair::-webkit-scrollbar{display:none}
 .jumpnow{position:fixed;left:50%;bottom:22px;z-index:60;transform:translateX(-50%) translateY(14px);
   background:var(--red);color:#fff;border:0;border-radius:999px;padding:11px 20px;cursor:pointer;
@@ -84,6 +86,21 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .jumpnow.on{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .onair::-webkit-scrollbar{display:none}
 .onair-lab{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:13px;letter-spacing:.1em;display:flex;align-items:center;gap:7px;flex-shrink:0;text-transform:uppercase}
+.season{display:inline-flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;vertical-align:middle}
+.mast-r .ss-yr{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:23px;line-height:1;color:var(--red);font-weight:400;letter-spacing:.03em;padding:0 3px}
+.ss-btn{background:none;border:0;color:var(--paper);font-size:21px;line-height:1;cursor:pointer;min-width:34px;min-height:36px;margin:-9px -4px;padding:0;font-family:inherit}
+.ss-btn:not(:disabled):hover{color:var(--red)}
+.ss-btn:disabled{color:var(--faint);opacity:.3;cursor:default}
+.season.ss-off .ss-btn{visibility:hidden}
+.ss-prov{flex-basis:100%;text-align:right;font-size:9px;letter-spacing:.14em;color:var(--gold);margin-top:3px}
+.ev-prov{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:2px;font-weight:400}
+.ser-round.prov .rn{opacity:.85}
+.seasonnote{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.03em;line-height:1.7;margin:22px 0 6px;padding:10px 12px;border:1px dashed var(--rule-strong);border-radius:4px}
+.seasonnote b{color:var(--paper);font-weight:500}
+.linkbtn{background:none;border:0;padding:0;color:var(--red);font:inherit;text-decoration:underline;cursor:pointer}
+.nextseason{display:block;width:100%;margin:34px 0 10px;padding:18px;background:none;border:1px solid var(--rule-strong);border-radius:6px;color:var(--paper);cursor:pointer;font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:22px;letter-spacing:.04em;text-transform:uppercase}
+.nextseason span{color:var(--red)}
+.nextseason:hover{border-color:var(--red)}
 .onair-lab.live{color:var(--red)} .onair-lab.soon{color:var(--gold)} .onair-lab.idle{color:var(--muted)}
 .pulse{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.4s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
@@ -327,7 +344,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 <div id="app">
   <header class="mast">
     <h1 aria-label="APEX"><span class="mk-word" aria-hidden="true"><i>A</i><i>P</i><i>E</i><i>X</i></span><svg class="mk-line" viewBox="3 3 234 30" aria-hidden="true"><g fill="none" stroke-width="7.4" stroke-linecap="butt"><path d="M5.00,8.00 L5.74,8.25 L6.47,8.51 L7.21,8.76 L7.95,9.01 L8.69,9.25 L9.43,9.50 L10.17,9.74 L10.91,9.99 L11.65,10.23 L12.39,10.46 L13.14,10.70 L13.88,10.94 L14.63,11.17 L15.38,11.40" stroke="var(--red)"/><path d="M15.38,11.40 L16.13,11.63 L16.87,11.86 L17.62,12.09 L18.38,12.31 L19.13,12.53 L19.88,12.75 L20.63,12.97 L21.39,13.19 L22.14,13.41 L22.90,13.62 L23.65,13.84 L24.41,14.05 L25.17,14.26 L25.93,14.46" stroke="var(--paper)"/><path d="M25.93,14.46 L26.69,14.67 L27.45,14.87 L28.21,15.07 L28.97,15.27 L29.73,15.47 L30.50,15.67 L31.26,15.87 L32.03,16.06 L32.79,16.25 L33.56,16.44 L34.33,16.63 L35.09,16.82 L35.86,17.00 L36.63,17.18" stroke="var(--red)"/><path d="M36.63,17.18 L37.40,17.37 L38.17,17.54 L38.94,17.72 L39.72,17.90 L40.49,18.07 L41.26,18.25 L42.04,18.42 L42.81,18.59 L43.59,18.75 L44.36,18.92 L45.14,19.08 L45.92,19.25 L46.69,19.41 L47.47,19.56" stroke="var(--paper)"/><path d="M47.47,19.56 L48.25,19.72 L49.03,19.88 L49.81,20.03 L50.59,20.18 L51.37,20.33 L52.16,20.48 L52.94,20.63 L53.72,20.77 L54.51,20.92 L55.29,21.06 L56.07,21.20 L56.86,21.33 L57.65,21.47 L58.43,21.61" stroke="var(--red)"/><path d="M58.43,21.61 L59.22,21.74 L60.01,21.87 L60.79,22.00 L61.58,22.13 L62.37,22.25 L63.16,22.38 L63.95,22.50 L64.74,22.62 L65.53,22.74 L66.32,22.85 L67.11,22.97 L67.90,23.08 L68.70,23.20 L69.49,23.31" stroke="var(--paper)"/><path d="M69.49,23.31 L70.28,23.41 L71.08,23.52 L71.87,23.63 L72.67,23.73 L73.46,23.83 L74.26,23.93 L75.05,24.03 L75.85,24.13 L76.64,24.22 L77.44,24.31 L78.24,24.40 L79.03,24.49 L79.83,24.58 L80.63,24.67" stroke="var(--red)"/><path d="M80.63,24.67 L81.43,24.75 L82.23,24.83 L83.03,24.91 L83.82,24.99 L84.62,25.07 L85.42,25.15 L86.22,25.22 L87.02,25.29 L87.83,25.36 L88.63,25.43 L89.43,25.50 L90.23,25.56 L91.03,25.63 L91.83,25.69" stroke="var(--paper)"/><path d="M91.83,25.69 L92.64,25.75 L93.44,25.81 L94.24,25.86 L95.04,25.92 L95.85,25.97 L96.65,26.02 L97.45,26.07 L98.26,26.12 L99.06,26.16 L99.86,26.21 L100.67,26.25 L101.47,26.29 L102.28,26.33 L103.08,26.37" stroke="var(--red)"/><path d="M103.08,26.37 L103.89,26.40 L104.69,26.44 L105.50,26.47 L106.30,26.50 L107.11,26.53 L107.91,26.55 L108.72,26.58 L109.52,26.60 L110.33,26.63 L111.13,26.65 L111.94,26.66 L112.75,26.68 L113.55,26.69 L114.36,26.71" stroke="var(--paper)"/><path d="M114.36,26.71 L115.16,26.72 L115.97,26.73 L116.78,26.74 L117.58,26.74 L118.39,26.75 L119.19,26.75 L120.00,26.75 L120.81,26.75 L121.61,26.75 L122.42,26.74 L123.22,26.74 L124.03,26.73 L124.84,26.72 L125.64,26.71" stroke="var(--red)"/><path d="M125.64,26.71 L126.45,26.69 L127.25,26.68 L128.06,26.66 L128.87,26.65 L129.67,26.63 L130.48,26.60 L131.28,26.58 L132.09,26.55 L132.89,26.53 L133.70,26.50 L134.50,26.47 L135.31,26.44 L136.11,26.40 L136.92,26.37" stroke="var(--paper)"/><path d="M136.92,26.37 L137.72,26.33 L138.53,26.29 L139.33,26.25 L140.14,26.21 L140.94,26.16 L141.74,26.12 L142.55,26.07 L143.35,26.02 L144.15,25.97 L144.96,25.92 L145.76,25.86 L146.56,25.81 L147.36,25.75 L148.17,25.69" stroke="var(--red)"/><path d="M148.17,25.69 L148.97,25.63 L149.77,25.56 L150.57,25.50 L151.37,25.43 L152.17,25.36 L152.98,25.29 L153.78,25.22 L154.58,25.15 L155.38,25.07 L156.18,24.99 L156.97,24.91 L157.77,24.83 L158.57,24.75 L159.37,24.67" stroke="var(--paper)"/><path d="M159.37,24.67 L160.17,24.58 L160.97,24.49 L161.76,24.40 L162.56,24.31 L163.36,24.22 L164.15,24.13 L164.95,24.03 L165.74,23.93 L166.54,23.83 L167.33,23.73 L168.13,23.63 L168.92,23.52 L169.72,23.41 L170.51,23.31" stroke="var(--red)"/><path d="M170.51,23.31 L171.30,23.20 L172.10,23.08 L172.89,22.97 L173.68,22.85 L174.47,22.74 L175.26,22.62 L176.05,22.50 L176.84,22.38 L177.63,22.25 L178.42,22.13 L179.21,22.00 L179.99,21.87 L180.78,21.74 L181.57,21.61" stroke="var(--paper)"/><path d="M181.57,21.61 L182.35,21.47 L183.14,21.33 L183.93,21.20 L184.71,21.06 L185.49,20.92 L186.28,20.77 L187.06,20.63 L187.84,20.48 L188.63,20.33 L189.41,20.18 L190.19,20.03 L190.97,19.88 L191.75,19.72 L192.53,19.56" stroke="var(--red)"/><path d="M192.53,19.56 L193.31,19.41 L194.08,19.25 L194.86,19.08 L195.64,18.92 L196.41,18.75 L197.19,18.59 L197.96,18.42 L198.74,18.25 L199.51,18.07 L200.28,17.90 L201.06,17.72 L201.83,17.54 L202.60,17.37 L203.37,17.18" stroke="var(--paper)"/><path d="M203.37,17.18 L204.14,17.00 L204.91,16.82 L205.67,16.63 L206.44,16.44 L207.21,16.25 L207.97,16.06 L208.74,15.87 L209.50,15.67 L210.27,15.47 L211.03,15.27 L211.79,15.07 L212.55,14.87 L213.31,14.67 L214.07,14.46" stroke="var(--red)"/><path d="M214.07,14.46 L214.83,14.26 L215.59,14.05 L216.35,13.84 L217.10,13.62 L217.86,13.41 L218.61,13.19 L219.37,12.97 L220.12,12.75 L220.87,12.53 L221.62,12.31 L222.38,12.09 L223.13,11.86 L223.87,11.63 L224.62,11.40" stroke="var(--paper)"/><path d="M224.62,11.40 L225.37,11.17 L226.12,10.94 L226.86,10.70 L227.61,10.46 L228.35,10.23 L229.09,9.99 L229.83,9.74 L230.57,9.50 L231.31,9.25 L232.05,9.01 L232.79,8.76 L233.53,8.51 L234.26,8.25 L235.00,8.00" stroke="var(--red)"/></g><circle cx="120.0" cy="26.8" r="4.4" fill="none" stroke="var(--gold)" stroke-width="1.7"/><circle cx="120.0" cy="26.8" r="1.9" fill="var(--gold)"/></svg></h1>
-    <div class="mast-r">Motorsport-Kalender <b>2026</b><br><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ App installieren</button></div>
+    <div class="mast-r">Motorsport-Kalender <span class="season" id="season"><b class="ss-yr">2026</b></span><br><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ App installieren</button></div>
   </header>
   <div class="onair" id="onair"></div>
   <nav class="nav">
@@ -345,7 +362,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <section class="view" id="view-rules"></section>
   <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
   <footer>
-APEX · Saison 2026 · Sieben Serien · Stand 3. September 2026<br>
+APEX · Saisons 2026 &amp; 2027 · Sieben Serien · Stand 24. September 2026<br>
     Alle Zeiten in MESZ, ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
     <button class="legal-link" onclick="toggleLegal()">Datenschutz</button>
     <div class="legal" id="legal">
@@ -421,6 +438,27 @@ APEX · Saison 2026 · Sieben Serien · Stand 3. September 2026<br>
     - Formel E: London I und II ohne Sessionzeiten. Tokio ist ein Event, war real ein Doppelrennen.
     - WRC: Zeitplaene Lauf 1-10 sind weiterhin Platzhalter ("Etappe 1/2/3").
       Finale Saudi-Arabien nicht bestaetigt, Entscheidung war fuer Mitte September angekuendigt.
+    - 24.09. (2): SAISON 2027. Umschalter im Kopfbereich (Jahreszahl mit Pfeilen, beliebig viele Jahre).
+      Voreinstellung: laufendes Jahr, solange dort Events offen sind, sonst naechstes Jahr mit Daten.
+      Termine 2027 (alle prov:true, sz:"2027"): F1 24 (formula1.com), WEC 9 (fiawec.com, Rennstart nur
+      bei Qatar/Imola/Silverstone/Spa/Le Mans veroeffentlicht), DTM 8 (dtm.com), GTWC 10 (SRO).
+      Formel E Saison 13 (sz:"S13"): 21 Rennen, R01/R02 Dschidda 18./19.12.2026 erscheinen in der 2026-Ansicht.
+      OFFEN: MotoGP-Kalender 2027 (kommt laut Kai am Freitag), WRC-Kalender 2027 (noch nicht veroeffentlicht).
+      Sprintwochenenden F1 2027 noch nicht bekannt - nicht markiert.
+      WICHTIG fuer kuenftige Saisons: jedes neue Event braucht sz (Saisonkennung), sonst kollidieren
+      Rundennummern mit dem Vorjahr (Event-IDs, Kalender-UIDs, Links #ev=serie-runde-sz).
+      2026er Kalender-UIDs bewusst unveraendert (ohne sz), damit Abonnenten keine Dubletten bekommen.
+      Wertungen gehoeren zu STAND_SEASON (2026) - beim Saisonwechsel anpassen.
+      Aufgeraeumt: 13 doppelt vorhandene Funktionen (identischer Block) entfernt.
+      Live-Leiste: bricht am Desktop um, am Handy untereinander (kein seitliches Scrollen mehr).
+      WRC Saudi-Arabien weiterhin NICHT als abgesagt eingetragen (Kais Entscheidung).
+    - 24.09.: HOTFIX. Baku-Zeitplan korrigiert (Rennen Samstag 26.09., alles einen Tag frueher,
+      Zeiten 10:30/14:00 statt 11:30/15:00). Heute-Knopf repariert: doppelte ID month-current
+      (auch im ausgeblendeten Vergangenheitsbereich) fuehrte dazu, dass der Knopf ein unsichtbares
+      Element ansteuerte. "Vorherige Events" repariert: gleiche Ursache beim Scroll-Anker.
+      Offen fuer den naechsten Build: Saisonumschalter 2026/2027, 2027er Kalender, Leiste untereinander.
+      WRC Saudi-Arabien ist offiziell ersatzlos gestrichen (Stand 17.09.) - noch NICHT eingetragen,
+      Kai entscheidet ueber Status-Aenderungen selbst.
     - 03.09. (4): Domainumzug auf apexkalender.de abgeschlossen (HTTPS aktiv, Search Console neu
       eingerichtet, Sitemap erfolgreich eingelesen). apex-rennkalender.de liegt ungenutzt geparkt -
       netcup bietet Weiterleitungen nur mit Webhosting-Paket an.
@@ -582,8 +620,10 @@ const EVENTS = [
  sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
 {s:"f1",rd:14,name:"Großer Preis von Madrid",loc:"Madrid",d0:"2026-09-11",d1:"2026-09-13",status:"up",
  sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
-{s:"f1",rd:15,name:"Großer Preis von Aserbaidschan",loc:"Baku",d0:"2026-09-25",d1:"2026-09-27",status:"up",
- sessions:S([["FP1","Fr","11:30"],["FP2","Fr","15:00"],["FP3","Sa","11:30"],["Qualifying","Sa","15:00"],["Rennen","So","13:00"]])},
+{s:"f1",rd:15,name:"Großer Preis von Aserbaidschan",loc:"Baku",d0:"2026-09-24",d1:"2026-09-26",status:"up",
+ /* Rennen ausnahmsweise am SAMSTAG: 27.09. ist in Aserbaidschan nationaler Gedenktag.
+    Gesamter Zeitplan um einen Tag vorgezogen (Do/Fr/Sa). */
+ sessions:S([["FP1","Do","10:30"],["FP2","Do","14:00"],["FP3","Fr","10:30"],["Qualifying","Fr","14:00"],["Rennen","Sa","13:00"]])},
 {s:"f1",rd:16,name:"Großer Preis von Singapur · Sprint",loc:"Singapur",d0:"2026-10-09",d1:"2026-10-11",status:"up",
  sessions:S([["FP1","Fr","11:30"],["Sprint-Quali","Fr","15:00"],["Sprint","Sa","11:30"],["Qualifying","Sa","15:00"],["Rennen","So","14:00"]])},
 {s:"f1",rd:17,name:"Großer Preis der USA",loc:"Austin",d0:"2026-10-23",d1:"2026-10-25",status:"up",
@@ -796,6 +836,154 @@ const EVENTS = [
 {s:"gtwc",rd:10,name:"Portimão · Endurance · Finale",loc:"Portimão",d0:"2026-10-16",d1:"2026-10-18",status:"up",
  sessions:S([["Freies Training 1","Fr","09:45"],["Freies Training 2","Fr","13:45"],["Qualifying","Fr","18:55"],
    ["Rennen (3 Stunden)","Sa","18:00"]])},
+
+/* ═══════ SAISON 2027 (vorlaeufig) + Formel E Saison 13 ═══════
+   sz = Saisonkennung, damit Rundennummern nicht mit 2026 kollidieren
+   (Event-IDs, Kalender-UIDs, Links). prov = vorlaeufiger Termin. */
+{s:"f1",rd:1,sz:"2027",prov:true,name:"Großer Preis von Bahrain",loc:"Sakhir",d0:"2027-03-12",d1:"2027-03-14",status:"up",
+ sessions:S([])},
+{s:"f1",rd:2,sz:"2027",prov:true,name:"Großer Preis von Saudi-Arabien",loc:"Dschidda",d0:"2027-03-19",d1:"2027-03-21",status:"up",
+ sessions:S([])},
+{s:"f1",rd:3,sz:"2027",prov:true,name:"Großer Preis von Australien",loc:"Melbourne",d0:"2027-04-02",d1:"2027-04-04",status:"up",
+ sessions:S([])},
+{s:"f1",rd:4,sz:"2027",prov:true,name:"Großer Preis von Japan",loc:"Suzuka",d0:"2027-04-09",d1:"2027-04-11",status:"up",
+ sessions:S([])},
+{s:"f1",rd:5,sz:"2027",prov:true,name:"Großer Preis von China",loc:"Shanghai",d0:"2027-04-16",d1:"2027-04-18",status:"up",
+ sessions:S([])},
+{s:"f1",rd:6,sz:"2027",prov:true,name:"Großer Preis von Miami",loc:"Miami",d0:"2027-04-30",d1:"2027-05-02",status:"up",
+ sessions:S([])},
+{s:"f1",rd:7,sz:"2027",prov:true,name:"Großer Preis von Kanada",loc:"Montréal",d0:"2027-05-21",d1:"2027-05-23",status:"up",
+ sessions:S([])},
+{s:"f1",rd:8,sz:"2027",prov:true,name:"Großer Preis von Monaco",loc:"Monte Carlo",d0:"2027-06-04",d1:"2027-06-06",status:"up",
+ sessions:S([])},
+{s:"f1",rd:9,sz:"2027",prov:true,name:"Großer Preis von Portugal",loc:"Portimão",d0:"2027-06-18",d1:"2027-06-20",status:"up",
+ sessions:S([])},
+{s:"f1",rd:10,sz:"2027",prov:true,name:"Großer Preis von Großbritannien",loc:"Silverstone",d0:"2027-07-02",d1:"2027-07-04",status:"up",
+ sessions:S([])},
+{s:"f1",rd:11,sz:"2027",prov:true,name:"Großer Preis von Österreich",loc:"Spielberg",d0:"2027-07-09",d1:"2027-07-11",status:"up",
+ sessions:S([])},
+{s:"f1",rd:12,sz:"2027",prov:true,name:"Großer Preis von Belgien",loc:"Spa-Francorchamps",d0:"2027-07-23",d1:"2027-07-25",status:"up",
+ sessions:S([])},
+{s:"f1",rd:13,sz:"2027",prov:true,name:"Großer Preis von Ungarn",loc:"Budapest",d0:"2027-07-30",d1:"2027-08-01",status:"up",
+ sessions:S([])},
+{s:"f1",rd:14,sz:"2027",prov:true,name:"Großer Preis von Italien",loc:"Monza",d0:"2027-09-03",d1:"2027-09-05",status:"up",
+ sessions:S([])},
+{s:"f1",rd:15,sz:"2027",prov:true,name:"Großer Preis von Spanien",loc:"Madrid",d0:"2027-09-10",d1:"2027-09-12",status:"up",
+ sessions:S([])},
+{s:"f1",rd:16,sz:"2027",prov:true,name:"Großer Preis von Aserbaidschan",loc:"Baku",d0:"2027-09-24",d1:"2027-09-26",status:"up",
+ sessions:S([])},
+{s:"f1",rd:17,sz:"2027",prov:true,name:"Großer Preis der Türkei",loc:"Istanbul",d0:"2027-10-01",d1:"2027-10-03",status:"up",
+ sessions:S([])},
+{s:"f1",rd:18,sz:"2027",prov:true,name:"Großer Preis von Singapur",loc:"Singapur",d0:"2027-10-08",d1:"2027-10-10",status:"up",
+ sessions:S([])},
+{s:"f1",rd:19,sz:"2027",prov:true,name:"Großer Preis der USA",loc:"Austin",d0:"2027-10-22",d1:"2027-10-24",status:"up",
+ sessions:S([])},
+{s:"f1",rd:20,sz:"2027",prov:true,name:"Großer Preis von Mexiko",loc:"Mexiko-Stadt",d0:"2027-10-29",d1:"2027-10-31",status:"up",
+ sessions:S([])},
+{s:"f1",rd:21,sz:"2027",prov:true,name:"Großer Preis von São Paulo",loc:"Interlagos",d0:"2027-11-05",d1:"2027-11-07",status:"up",
+ sessions:S([])},
+{s:"f1",rd:22,sz:"2027",prov:true,name:"Großer Preis von Las Vegas",loc:"Las Vegas",d0:"2027-11-18",d1:"2027-11-20",status:"up",
+ sessions:S([])},
+{s:"f1",rd:23,sz:"2027",prov:true,name:"Großer Preis von Katar",loc:"Lusail",d0:"2027-12-03",d1:"2027-12-05",status:"up",
+ sessions:S([])},
+{s:"f1",rd:24,sz:"2027",prov:true,name:"Großer Preis von Abu Dhabi",loc:"Yas Marina",d0:"2027-12-10",d1:"2027-12-12",status:"up",
+ sessions:S([])},
+{s:"wec",rd:1,sz:"2027",prov:true,name:"Qatar 1812 km",loc:"Lusail",d0:"2027-03-25",d1:"2027-03-27",status:"up",
+ sessions:S([["Rennen","Sa","11:00"]])},
+{s:"wec",rd:2,sz:"2027",prov:true,name:"6 Stunden von Imola",loc:"Imola",d0:"2027-04-09",d1:"2027-04-11",status:"up",
+ sessions:S([["Rennen","So","13:00"]])},
+{s:"wec",rd:3,sz:"2027",prov:true,name:"6 Stunden von Silverstone",loc:"Silverstone",d0:"2027-04-23",d1:"2027-04-25",status:"up",
+ sessions:S([["Rennen","So","14:00"]])},
+{s:"wec",rd:4,sz:"2027",prov:true,name:"6 Stunden von Spa-Francorchamps",loc:"Spa",d0:"2027-05-13",d1:"2027-05-15",status:"up",
+ sessions:S([["Rennen","Sa","14:00"]])},
+{s:"wec",rd:5,sz:"2027",prov:true,name:"24 Stunden von Le Mans",loc:"Le Mans",d0:"2027-06-06",d1:"2027-06-13",status:"up",
+ sessions:S([["Rennen","Sa","16:00"]])},
+{s:"wec",rd:6,sz:"2027",prov:true,name:"6 Stunden von São Paulo",loc:"Interlagos",d0:"2027-07-09",d1:"2027-07-11",status:"up",
+ sessions:S([])},
+{s:"wec",rd:7,sz:"2027",prov:true,name:"Lone Star Le Mans (Austin)",loc:"COTA",d0:"2027-09-10",d1:"2027-09-12",status:"up",
+ sessions:S([])},
+{s:"wec",rd:8,sz:"2027",prov:true,name:"6 Stunden von Fuji",loc:"Fuji",d0:"2027-09-24",d1:"2027-09-26",status:"up",
+ sessions:S([])},
+{s:"wec",rd:9,sz:"2027",prov:true,name:"8 Stunden von Bahrain (Finale)",loc:"Sakhir",d0:"2027-11-04",d1:"2027-11-06",status:"up",
+ sessions:S([])},
+{s:"dtm",rd:1,sz:"2027",prov:true,name:"DTM Spielberg",loc:"Red Bull Ring",d0:"2027-04-23",d1:"2027-04-25",status:"up",
+ sessions:S([])},
+{s:"dtm",rd:2,sz:"2027",prov:true,name:"DTM Oschersleben",loc:"Oschersleben",d0:"2027-05-07",d1:"2027-05-09",status:"up",
+ sessions:S([])},
+{s:"dtm",rd:3,sz:"2027",prov:true,name:"DTM Lausitzring",loc:"Lausitzring",d0:"2027-06-18",d1:"2027-06-20",status:"up",
+ sessions:S([])},
+{s:"dtm",rd:4,sz:"2027",prov:true,name:"DTM Norisring",loc:"Nürnberg",d0:"2027-07-02",d1:"2027-07-04",status:"up",
+ sessions:S([])},
+{s:"dtm",rd:5,sz:"2027",prov:true,name:"DTM Zandvoort",loc:"Zandvoort",d0:"2027-08-06",d1:"2027-08-08",status:"up",
+ sessions:S([])},
+{s:"dtm",rd:6,sz:"2027",prov:true,name:"DTM Nürburgring",loc:"Nürburgring",d0:"2027-08-20",d1:"2027-08-22",status:"up",
+ sessions:S([])},
+{s:"dtm",rd:7,sz:"2027",prov:true,name:"DTM Sachsenring",loc:"Sachsenring",d0:"2027-09-24",d1:"2027-09-26",status:"up",
+ sessions:S([])},
+{s:"dtm",rd:8,sz:"2027",prov:true,name:"DTM Hockenheim (Finale)",loc:"Hockenheimring",d0:"2027-10-08",d1:"2027-10-10",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:1,sz:"2027",prov:true,name:"Paul Ricard · Endurance",loc:"Paul Ricard",d0:"2027-04-15",d1:"2027-04-18",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:2,sz:"2027",prov:true,name:"Brands Hatch · Sprint",loc:"Brands Hatch",d0:"2027-05-01",d1:"2027-05-02",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:3,sz:"2027",prov:true,name:"Imola · Endurance",loc:"Imola",d0:"2027-05-21",d1:"2027-05-23",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:4,sz:"2027",prov:true,name:"24 Stunden von Spa · Endurance",loc:"Spa-Francorchamps",d0:"2027-06-24",d1:"2027-06-27",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:5,sz:"2027",prov:true,name:"Misano · Sprint",loc:"Misano",d0:"2027-07-16",d1:"2027-07-18",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:6,sz:"2027",prov:true,name:"Magny-Cours · Sprint",loc:"Magny-Cours",d0:"2027-07-30",d1:"2027-08-01",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:7,sz:"2027",prov:true,name:"Nürburgring · Endurance",loc:"Nürburgring",d0:"2027-08-27",d1:"2027-08-29",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:8,sz:"2027",prov:true,name:"Zandvoort · Sprint",loc:"Zandvoort",d0:"2027-09-17",d1:"2027-09-19",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:9,sz:"2027",prov:true,name:"Budapest · Sprint",loc:"Hungaroring",d0:"2027-10-01",d1:"2027-10-03",status:"up",
+ sessions:S([])},
+{s:"gtwc",rd:10,sz:"2027",prov:true,name:"Barcelona · Endurance · Finale",loc:"Barcelona",d0:"2027-10-22",d1:"2027-10-24",status:"up",
+ sessions:S([])},
+{s:"fe",rd:1,sz:"S13",prov:true,name:"Dschidda E-Prix I · Auftakt Saison 13",loc:"Dschidda",d0:"2026-12-18",d1:"2026-12-18",status:"up",
+ sessions:S([])},
+{s:"fe",rd:2,sz:"S13",prov:true,name:"Dschidda E-Prix II",loc:"Dschidda",d0:"2026-12-19",d1:"2026-12-19",status:"up",
+ sessions:S([])},
+{s:"fe",rd:3,sz:"S13",prov:true,name:"Mexiko-Stadt E-Prix",loc:"Mexiko-Stadt",d0:"2027-01-16",d1:"2027-01-16",status:"up",
+ sessions:S([])},
+{s:"fe",rd:4,sz:"S13",prov:true,name:"Austin E-Prix",loc:"Austin",d0:"2027-02-06",d1:"2027-02-06",status:"up",
+ sessions:S([])},
+{s:"fe",rd:5,sz:"S13",prov:true,name:"Miami E-Prix",loc:"Miami",d0:"2027-02-20",d1:"2027-02-20",status:"up",
+ sessions:S([])},
+{s:"fe",rd:6,sz:"S13",prov:true,name:"São Paulo E-Prix",loc:"São Paulo",d0:"2027-03-13",d1:"2027-03-13",status:"up",
+ sessions:S([])},
+{s:"fe",rd:7,sz:"S13",prov:true,name:"Sanya E-Prix",loc:"Sanya",d0:"2027-04-17",d1:"2027-04-17",status:"up",
+ sessions:S([])},
+{s:"fe",rd:8,sz:"S13",prov:true,name:"Monaco E-Prix I",loc:"Monte Carlo",d0:"2027-05-01",d1:"2027-05-01",status:"up",
+ sessions:S([])},
+{s:"fe",rd:9,sz:"S13",prov:true,name:"Monaco E-Prix II",loc:"Monte Carlo",d0:"2027-05-02",d1:"2027-05-02",status:"up",
+ sessions:S([])},
+{s:"fe",rd:10,sz:"S13",prov:true,name:"Berlin E-Prix I",loc:"Berlin",d0:"2027-05-08",d1:"2027-05-08",status:"up",
+ sessions:S([])},
+{s:"fe",rd:11,sz:"S13",prov:true,name:"Berlin E-Prix II",loc:"Berlin",d0:"2027-05-09",d1:"2027-05-09",status:"up",
+ sessions:S([])},
+{s:"fe",rd:12,sz:"S13",prov:true,name:"London E-Prix I",loc:"London",d0:"2027-05-29",d1:"2027-05-29",status:"up",
+ sessions:S([])},
+{s:"fe",rd:13,sz:"S13",prov:true,name:"London E-Prix II",loc:"London",d0:"2027-05-30",d1:"2027-05-30",status:"up",
+ sessions:S([])},
+{s:"fe",rd:14,sz:"S13",prov:true,name:"Zandvoort E-Prix I",loc:"Zandvoort",d0:"2027-06-18",d1:"2027-06-18",status:"up",
+ sessions:S([])},
+{s:"fe",rd:15,sz:"S13",prov:true,name:"Zandvoort E-Prix II",loc:"Zandvoort",d0:"2027-06-19",d1:"2027-06-19",status:"up",
+ sessions:S([])},
+{s:"fe",rd:16,sz:"S13",prov:true,name:"Madrid E-Prix I",loc:"Madrid",d0:"2027-06-26",d1:"2027-06-26",status:"up",
+ sessions:S([])},
+{s:"fe",rd:17,sz:"S13",prov:true,name:"Madrid E-Prix II",loc:"Madrid",d0:"2027-06-27",d1:"2027-06-27",status:"up",
+ sessions:S([])},
+{s:"fe",rd:18,sz:"S13",prov:true,name:"Shanghai E-Prix I",loc:"Shanghai",d0:"2027-07-10",d1:"2027-07-10",status:"up",
+ sessions:S([])},
+{s:"fe",rd:19,sz:"S13",prov:true,name:"Shanghai E-Prix II",loc:"Shanghai",d0:"2027-07-11",d1:"2027-07-11",status:"up",
+ sessions:S([])},
+{s:"fe",rd:20,sz:"S13",prov:true,name:"Tokio E-Prix I",loc:"Tokio",d0:"2027-07-24",d1:"2027-07-24",status:"up",
+ sessions:S([])},
+{s:"fe",rd:21,sz:"S13",prov:true,name:"Tokio E-Prix II · Finale",loc:"Tokio",d0:"2027-07-25",d1:"2027-07-25",status:"up",
+ sessions:S([])},
 ];
 
 /* ═══════ STATE ═══════ */
@@ -805,6 +993,38 @@ let OPEN_RES = null;
 
 /* ═══════ HELFER ═══════ */
 const NOW = ()=> new Date();
+/* ═══════ SAISONS ═══════
+   Angezeigt wird immer ein Kalenderjahr. Voreinstellung: das laufende Jahr, solange dort
+   noch Events offen sind - danach automatisch das naechste Jahr mit Daten. */
+let SEASON=null;
+const STAND_SEASON=2026;   /* Jahr, zu dem die gepflegten Wertungen gehoeren */
+const FIRST_SEASON=2026;  /* fruehere Termine (Formel-E-Auftakt Dez. 2025) zaehlen zur ersten Saison */
+function evYear(e){return Math.max(+e.d0.slice(0,4),FIRST_SEASON);}
+function seasonsAll(){return [...new Set(EVENTS.map(evYear))].sort((a,b)=>a-b);}
+function defaultSeason(){
+  const now=NOW(), y=now.getFullYear(), ys=seasonsAll();
+  const offen=EVENTS.some(e=>evYear(e)===y&&e.status!=="cancel"&&endW(e)>=now);
+  if(offen&&ys.includes(y)) return y;
+  return ys.find(v=>v>y)||ys[ys.length-1];
+}
+function inSeason(e){ if(SEASON===null)SEASON=defaultSeason(); return evYear(e)===SEASON; }
+function seasonIsProv(y){const ev=EVENTS.filter(e=>evYear(e)===y);return ev.length>0&&ev.every(e=>e.prov);}
+function renderSeason(){
+  const el=document.getElementById("season"); if(!el)return;
+  if(SEASON===null)SEASON=defaultSeason();
+  const ys=seasonsAll(), i=ys.indexOf(SEASON);
+  el.innerHTML=
+    `<button class="ss-btn" onclick="stepSeason(-1)" ${i<=0?"disabled":""} aria-label="Vorherige Saison">‹</button>`+
+    `<b class="ss-yr">${SEASON}</b>`+
+    `<button class="ss-btn" onclick="stepSeason(1)" ${i>=ys.length-1?"disabled":""} aria-label="Nächste Saison">›</button>`+
+    (seasonIsProv(SEASON)?`<span class="ss-prov">vorläufiger Kalender</span>`:"");
+}
+function stepSeason(d){
+  const ys=seasonsAll(), i=ys.indexOf(SEASON), n=ys[i+d];
+  if(n===undefined)return;
+  SEASON=n; SHOW_PAST=false; OPEN_RES=null;
+  renderSeason(); rerender(); window.scrollTo(0,0); updateJumpBtn();
+}
 const MON=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
 const MONABK=["JAN","FEB","MÄR","APR","MAI","JUN","JUL","AUG","SEP","OKT","NOV","DEZ"];
 const DOWf=["So","Mo","Di","Mi","Do","Fr","Sa"];
@@ -884,7 +1104,7 @@ function sessDuration(e,s){const n=s.n;
   return 60;}
 function vevent(e,s){
   const start=sessionInstant(e,s), end=new Date(start.getTime()+sessDuration(e,s)*60000), S0=SERIES[e.s];
-  return ["BEGIN:VEVENT","UID:apex-"+e.s+e.rd+"-"+s.n.replace(/\W+/g,"")+"@apex-motorsport",
+  return ["BEGIN:VEVENT","UID:apex-"+e.s+e.rd+(e.sz?"-"+e.sz:"")+"-"+s.n.replace(/\W+/g,"")+"@apex-motorsport",
     "DTSTAMP:"+icsStamp(new Date()),"DTSTART:"+icsStamp(start),"DTEND:"+icsStamp(end),
     "SUMMARY:"+icsEsc(S0.short+" · "+e.name+" — "+s.n),
     "LOCATION:"+icsEsc(e.loc),
@@ -892,7 +1112,7 @@ function vevent(e,s){
     "END:VEVENT"].join("\r\n");
 }
 function downloadICS(fn,veventsArr){
-  const cal=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//APEX//Motorsport 2026//DE","CALSCALE:GREGORIAN","METHOD:PUBLISH"].concat(veventsArr,["END:VCALENDAR"]).join("\r\n");
+  const cal=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//APEX//Motorsport-Kalender//DE","CALSCALE:GREGORIAN","METHOD:PUBLISH"].concat(veventsArr,["END:VCALENDAR"]).join("\r\n");
   try{
     const blob=new Blob([cal],{type:"text/calendar;charset=utf-8"});
     const url=URL.createObjectURL(blob), a=document.createElement("a");
@@ -902,9 +1122,9 @@ function downloadICS(fn,veventsArr){
     window.open("data:text/calendar;charset=utf-8,"+encodeURIComponent(cal));
   }
 }
-function findEv(sk,rd){return EVENTS.find(e=>e.s===sk&&String(e.rd)===String(rd));}
-function exportSession(sk,rd,i){const e=findEv(sk,rd);if(!e)return;downloadICS("apex-"+sk+rd+"-s"+i+".ics",[vevent(e,e.sessions[i])]);}
-function exportEvent(sk,rd){const e=findEv(sk,rd);if(!e)return;const vs=e.sessions.filter(s=>s.t).map(s=>vevent(e,s));if(vs.length)downloadICS("apex-"+sk+rd+".ics",vs);}
+function findEv(sk,rd,sz){return EVENTS.find(e=>e.s===sk&&String(e.rd)===String(rd)&&(e.sz||"")===(sz||""));}
+function exportSession(sk,rd,i,sz){const e=findEv(sk,rd,sz);if(!e)return;downloadICS("apex-"+sk+rd+(sz?"-"+sz:"")+"-s"+i+".ics",[vevent(e,e.sessions[i])]);}
+function exportEvent(sk,rd,sz){const e=findEv(sk,rd,sz);if(!e)return;const vs=e.sessions.filter(s=>s.t).map(s=>vevent(e,s));if(vs.length)downloadICS("apex-"+sk+rd+(sz?"-"+sz:"")+".ics",vs);}
 function exportSeason(){
   const evs=actEvents().filter(e=>e.status!=="cancel"&&(!FAV_ONLY||isFav(e)));
   let vs=[]; evs.forEach(e=>e.sessions.filter(s=>s.t).forEach(s=>vs.push(vevent(e,s))));
@@ -917,7 +1137,7 @@ function loadFav(){try{return JSON.parse(localStorage.getItem("apex_fav")||local
 function saveFav(){try{localStorage.setItem("apex_fav",JSON.stringify([...FAV]));}catch(err){}}
 const FAV=new Set(loadFav());
 function evKey(e){return e.s+"-"+e.rd+"-"+e.d0;}
-function evDomId(e){return e.s+e.rd+"_"+e.d0.slice(5).replace("-","");}
+function evDomId(e){return e.s+e.rd+"_"+(e.sz?e.sz:"")+e.d0.slice(5).replace("-","");}
 function isFav(e){return FAV.has(evKey(e));}
 function toggleFav(key){FAV.has(key)?FAV.delete(key):FAV.add(key);saveFav();renderTimeline();renderToolbar();}
 function toggleFavView(){FAV_ONLY=!FAV_ONLY;renderToolbar();renderTimeline();}
@@ -1034,6 +1254,8 @@ function renderFilter(){
   chips+=`<button class="chip allbtn" onclick="allSeries()">Alle</button>`;
   el.innerHTML=chips;
   el.style.display = (currentView==="tv"||currentView==="rules")?"none":"flex";
+  /* Saisonpfeile dort ausblenden, wo die Saison keine Rolle spielt */
+  const se=document.getElementById("season"); if(se) se.classList.toggle("ss-off",currentView==="tv"||currentView==="rules");
 }
 function toggleSeries(sk){
   if(ACTIVE.has(sk)){ if(ACTIVE.size>1) ACTIVE.delete(sk); } else ACTIVE.add(sk);
@@ -1102,71 +1324,30 @@ function renderOnAir(){
   }
 }
 
+/* "Heute" = aktueller Monat in der Liste der KOMMENDEN Events (direkte Kinder von
+   #view-upcoming). Liegt im aktuellen Monat nichts mehr an, der naechste Monat mit Events.
+   Frueher wurde per ID gesucht - die gab es aber doppelt (auch im ausgeblendeten
+   Bereich der vergangenen Events), deshalb war der Knopf dort funktionslos. */
+function currentMonthEl(){
+  return document.querySelector("#view-upcoming > .month.current")
+      || document.querySelector("#view-upcoming > .month");
+}
 function jumpToNow(){
-  const el=document.getElementById("month-current");
+  const el=currentMonthEl();
   if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
 /* Knopf einblenden, sobald der aktuelle Monat nicht mehr im Bild ist. */
 function updateJumpBtn(){
   const btn=document.getElementById("jumpnow"); if(!btn)return;
-  const cur=document.getElementById("month-current");
-  if(!cur || currentView!=="upcoming"){ btn.classList.remove("on"); return; }
+  const cur=currentMonthEl();
+  if(!cur || currentView!=="upcoming" || SEASON!==NOW().getFullYear()){ btn.classList.remove("on"); return; }
   const r=cur.getBoundingClientRect();
   const imBild = r.bottom > 60 && r.top < window.innerHeight - 40;
   btn.classList.toggle("on", !imBild);
   btn.textContent = r.top < 0 ? "↑ Heute" : "↓ Heute";
 }
 
-function tickCountdown(){
-  const el=document.getElementById("cd-tick");
-  if(el&&NEXT_SESS) el.textContent=fmtCountdown(NEXT_SESS.inst-Date.now());
-}
-function dayRange(e){const a=pd(e.d0),b=pd(e.d1);if(e.d0===e.d1)return String(a.getDate());
-  if(a.getMonth()===b.getMonth())return a.getDate()+"–"+b.getDate();
-  return a.getDate()+"."+(a.getMonth()+1)+"–"+b.getDate()+"."+(b.getMonth()+1);}
-function dows(e){return DOWf[pd(e.d0).getDay()]+"–"+DOWf[pd(e.d1).getDay()];}
-function startW(e){return pd(e.d0);}
-function endW(e){const b=pd(e.d1);b.setHours(23,59,59);return b;}
-function st(e){if(e.status==="cancel")return"cancel";const now=NOW();
-  if(now>endW(e))return"done";if(now>=startW(e)&&now<=endW(e))return"live";
-  if(e.status==="done")return"done";return e._next?"next":"up";}
-function countdown(e){const now=NOW(),s=startW(e),en=endW(e);
-  if(now>en)return{cls:"done",txt:"Beendet"};
-  if(now>=s&&now<=en)return{cls:"live",txt:"Läuft jetzt"};
-  const d=Math.ceil((s-now)/86400000);
-  if(d<=7)return{cls:"soon",txt:"in "+d+" Tag"+(d===1?"":"en")};
-  return{cls:"up",txt:"in "+d+" Tagen"};}
-function isRaceName(n){return /^Rennen|^Sprint$|^Rennen \(|^Power Stage/.test(n);}
-function actEvents(){return EVENTS.filter(e=>ACTIVE.has(e.s));}
-
-/* markiere je Serie das nächste Event */
-function tagNext(){
-  EVENTS.forEach(e=>e._next=false);
-  const now=NOW();
-  Object.keys(SERIES).forEach(sk=>{
-    const up=EVENTS.filter(e=>e.s===sk&&e.status!=="cancel"&&startW(e)>now).sort((a,b)=>startW(a)-startW(b));
-    if(up[0])up[0]._next=true;
-  });
-}
-
-/* ═══════ FILTERBAR ═══════ */
-function renderFilter(){
-  const el=document.getElementById("filterbar");
-  let chips=`<span class="fl-lab">Serien</span>`;
-  Object.keys(SERIES).forEach(sk=>{
-    const S0=SERIES[sk],on=ACTIVE.has(sk);
-    chips+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')"><span class="cdot" style="background:${S0.color}"></span>${S0.name}</button>`;
-  });
-  chips+=`<button class="chip allbtn" onclick="allSeries()">Alle</button>`;
-  el.innerHTML=chips;
-  el.style.display = (currentView==="tv"||currentView==="rules")?"none":"flex";
-}
-function toggleSeries(sk){
-  if(ACTIVE.has(sk)){ if(ACTIVE.size>1) ACTIVE.delete(sk); } else ACTIVE.add(sk);
-  renderFilter(); renderOnAir(); rerender();
-}
-function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); renderFilter(); renderOnAir(); rerender(); }
 
 /* ═══════ Sessions / Ergebnisse ═══════ */
 function fmtRes(arr,partial){
@@ -1179,8 +1360,9 @@ function buildSessions(e,evId,status){
   out+=trackInfoHTML(e);
   const hasTimes=e.sessions.some(s=>s.t);
   if(hasTimes){
-    out+=`<button class="calbtn" onclick="exportEvent('${e.s}','${e.rd}')">＋ Ganzes Wochenende in Kalender</button>`;
+    out+=`<button class="calbtn" onclick="exportEvent('${e.s}','${e.rd}','${e.sz||""}')">＋ Ganzes Wochenende in Kalender</button>`;
   }
+  if(e.prov) out+=`<div class="sess-flat prov-note">Vorläufiger Termin – ${hasTimes?"weitere Sessionzeiten folgen":"Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt"}.</div>`;
   // WRC-Gesamtwertung als oberste Klappzeile
   if(status==="done" && e.s==="wrc"){
     const arr=e.resOverall||[{p:1,who:(e.result||"—"),gap:"Sieger"}];
@@ -1198,7 +1380,7 @@ function buildSessions(e,evId,status){
       partial = true;
     }
     const ct=convTime(e,s);
-    const cal=s.t?`<button class="scal" title="Diese Session in den Kalender" onclick="event.stopPropagation();exportSession('${e.s}','${e.rd}',${i})">＋</button>`:`<span></span>`;
+    const cal=s.t?`<button class="scal" title="Diese Session in den Kalender" onclick="event.stopPropagation();exportSession('${e.s}','${e.rd}',${i},'${e.sz||""}')">＋</button>`:`<span></span>`;
     if(res){
       out+=`<div class="sess" id="s-${rid}">`+
         `<div class="sess-row clk" onclick="toggleRes('${rid}')"><span class="sess-chev">▶</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>`+
@@ -1227,8 +1409,8 @@ function eventHTML(e){
   return `<div class="wknd ${status}"><div class="wk-top">`+
     `<div class="wk-date">${dayRange(e)}<span class="dow">${dows(e)}</span></div>`+
     `<div><div class="ev" id="ev-${evId}"><div class="ev-row" onclick="toggleEv('${evId}')">`+
-      `<span class="ev-bar" style="background:${S0.color}"></span>`+
-      `<span class="ev-body"><span class="ev-name">${e.name}</span>`+
+      `<span class="ev-bar" style="background:${e.prov?`repeating-linear-gradient(180deg,${S0.color} 0 4px,transparent 4px 8px)`:S0.color}"></span>`+
+      `<span class="ev-body"><span class="ev-name">${e.name}${e.prov?'<span class="ev-prov">vorläufig</span>':''}</span>`+
       `<span class="ev-sub"><span class="ser" style="color:${S0.color}">${S0.name}</span> · Lauf ${e.rd} · ${e.loc}</span>${win}</span>`+
       `<span class="ev-toggle">+</span></div>`+
       `<div class="sessions">${buildSessions(e,evId,status)}</div></div></div>`+
@@ -1241,7 +1423,7 @@ function monthGroupsHTML(list){
   const now=NOW(),curKey=now.getFullYear()+"-"+now.getMonth();let html="";
   Object.keys(groups).forEach(key=>{const[y,m]=key.split("-").map(Number);
     let cls="future";if(key===curKey)cls="current";else if(new Date(y,m+1,0)<now)cls="past";
-    html+=`<div class="month ${cls}" ${cls==="current"?'id="month-current"':""}><div class="month-head">${MON[m]}<span class="yr">${y}</span></div><div class="tl">`;
+    html+=`<div class="month ${cls}"><div class="month-head">${MON[m]}<span class="yr">${y}</span></div><div class="tl">`;
     groups[key].forEach(e=>html+=eventHTML(e));
     html+=`</div></div>`;});
   return html;
@@ -1249,12 +1431,15 @@ function monthGroupsHTML(list){
 function renderTimeline(){
   const host=document.getElementById("view-upcoming");
   const now=NOW();
-  let evs=actEvents().filter(e=>e.status!=="cancel");
+  let evs=actEvents().filter(e=>e.status!=="cancel"&&inSeason(e));
   if(FAV_ONLY) evs=evs.filter(e=>isFav(e));
   if(SEARCH) evs=evs.filter(matchEv);
   const future=evs.filter(e=>endW(e)>=now);
   const past=evs.filter(e=>endW(e)<now);
   let html="";
+  /* Aktive Serien ohne einen einzigen Termin in dieser Saison */
+  const fehlen=Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)&&!EVENTS.some(e=>e.s===sk&&inSeason(e)));
+  if(fehlen.length) html+=`<div class="seasonnote">Kalender ${SEASON} noch nicht veröffentlicht: <b>${fehlen.map(k=>SERIES[k].name).join(", ")}</b></div>`;
   if(SEARCH||FAV_ONLY){
     const lab=SEARCH?`${evs.length} Treffer für „${SEARCH}"`:`${evs.length} Favorit${evs.length===1?'':'en'}`;
     html+=`<div class="searchcnt">${lab}${evs.length?'':' — nichts gefunden'}</div>`;
@@ -1266,37 +1451,38 @@ function renderTimeline(){
     html+=`<div class="pastwrap ${openPast?'open':''}">${monthGroupsHTML(past)}</div>`;
   }
   if(future.length) html+=monthGroupsHTML(future);
+  const ys=seasonsAll(), nxt=ys[ys.indexOf(SEASON)+1];
+  if(nxt&&!(SEARCH||FAV_ONLY)) html+=`<button class="nextseason" onclick="stepSeason(1)">Weiter zur Saison ${nxt} <span>→</span></button>`;
   else if(!past.length) html+=`<div class="emptyhint">${FAV_ONLY?'Noch keine Favoriten markiert — tippe den Stern bei einem Event.':SEARCH?'Keine Treffer.':'Keine kommenden Events für die gewählten Serien.'}</div>`;
   host.innerHTML=html;
 }
 function togglePast(){
-  /* Knopf-Status nach dem Umschalten neu bewerten */
-  setTimeout(updateJumpBtn,60);
-  /* Ankerpunkt merken: das erste Element, das aktuell im Blickfeld ist.
-     Nach dem Neuaufbau wird dorthin zurueckgesprungen, statt an den Listenanfang. */
-  const anchor=[...document.querySelectorAll("#view-upcoming .ev[id^='ev-']")]
-    .find(el=>el.getBoundingClientRect().top > -20);
-  const anchorId = anchor ? anchor.id : null;
-  const anchorTop = anchor ? anchor.getBoundingClientRect().top : 0;
+  /* Ankerpunkt: erstes SICHTBARES kommendes Event. Nur kommende Events kommen in Frage,
+     weil die vergangenen beim Aufklappen noch ausgeblendet sind und dann faelschlich an
+     Position 0 liegen - genau das hat frueher in den Januar geschickt. */
+  const kandidaten=[...document.querySelectorAll("#view-upcoming > .month .ev[id^='ev-']")];
+  const anker=kandidaten.find(el=>el.getBoundingClientRect().bottom>0);
+  const ankerId=anker?anker.id:null;
+  const ankerTop=anker?anker.getBoundingClientRect().top:0;
 
   SHOW_PAST=!SHOW_PAST; OPEN_RES=null; renderTimeline();
 
-  if(anchorId){
-    requestAnimationFrame(()=>{
-      const el=document.getElementById(anchorId);
-      if(el){
-        const delta=el.getBoundingClientRect().top - anchorTop;
-        window.scrollBy({top:delta, behavior:"instant"});
-      }
-    });
+  const el=ankerId?document.getElementById(ankerId):null;
+  if(el){
+    /* genau so weit verschieben, wie die eingeblendeten Inhalte oben hinzugekommen sind */
+    window.scrollBy(0, el.getBoundingClientRect().top-ankerTop);
+  } else {
+    const cur=currentMonthEl(); if(cur) cur.scrollIntoView({block:"start"});
   }
+  updateJumpBtn();
 }
 
 /* ═══════ SERIEN ═══════ */
 function renderSeries(){
   const host=document.getElementById("view-series"); if(!host)return;let html="";
   Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)).forEach(sk=>{
-    const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk).sort((a,b)=>startW(a)-startW(b));
+    const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
+    if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div><div class="ser-meta">Kalender ${SEASON} noch nicht veröffentlicht</div></div>`;return;}
     const done=evs.filter(e=>st(e)==="done").length,canc=evs.filter(e=>e.status==="cancel").length;
     html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div>`+
       `<div class="ser-meta">${evs.length-canc} Läufe · ${done} gefahren · ${evs.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}</div>`;
@@ -1309,7 +1495,7 @@ function renderSeries(){
       let txt=status==="done"?"Beendet":status==="next"?"Als Nächstes":status==="live"?"Live":"Geplant";
       let c=status==="done"?"done":(status==="next"||status==="live")?"next":"up";
       const right=(status==="done"&&e.result)?`<span class="st done">${e.result}</span>`:`<span class="st ${c}">${txt}</span>`;
-      html+=`<div class="ser-round"><span class="no">${String(n).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span>${right}</div>`;});
+      html+=`<div class="ser-round${e.prov?" prov":""}"><span class="no">${String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span>${right}</div>`;});
     html+=`</div>`;});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
   host.innerHTML=html;
@@ -1618,6 +1804,10 @@ const STAND = {
 };
 function renderStandings(){
   const host=document.getElementById("view-standings");
+  if(SEASON!==null&&SEASON!==STAND_SEASON){
+    host.innerHTML=`<div class="seasonnote">Die Saison ${SEASON} hat noch nicht begonnen – Wertungen erscheinen nach den ersten Rennen. Die aktuellen Stände findest du unter <button class="linkbtn" onclick="SEASON=${STAND_SEASON};renderSeason();rerender();">${STAND_SEASON}</button>.</div>`;
+    return;
+  }
   let html="", any=false;
   Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)).forEach(sk=>{
     const S0=SERIES[sk], D=STAND[sk];
@@ -1708,8 +1898,9 @@ function renderWeekend(){
 }
 
 /* ═══════ DEEP-LINKS ═══════ */
-function gotoEvent(sk,rd){
-  const e=findEv(sk,rd); if(!e)return;
+function gotoEvent(sk,rd,sz){
+  const e=findEv(sk,rd,sz); if(!e)return;
+  if(evYear(e)!==SEASON){SEASON=evYear(e);SHOW_PAST=false;renderSeason();renderTimeline();}
   if(currentView!=="upcoming")setView("upcoming");
   if(endW(e)<NOW()&&!SHOW_PAST){SHOW_PAST=true;renderTimeline();}
   let el=document.getElementById("ev-"+evDomId(e));
@@ -1723,18 +1914,18 @@ function gotoEvent(sk,rd){
     const w=el.closest(".wknd")||el;
     w.scrollIntoView({behavior:"smooth",block:"center"});
     el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}
-  try{history.replaceState(null,"","#ev="+sk+"-"+rd);}catch(err){}
+  try{history.replaceState(null,"","#ev="+sk+"-"+rd+(sz?"-"+sz:""));}catch(err){}
 }
-function copyEvLink(sk,rd,btn){
-  const url=location.href.split("#")[0]+"#ev="+sk+"-"+rd;
+function copyEvLink(sk,rd,btn,sz){
+  const url=location.href.split("#")[0]+"#ev="+sk+"-"+rd+(sz?"-"+sz:"");
   const done=()=>{if(btn){const old=btn.innerHTML;btn.innerHTML="✓ Link kopiert";setTimeout(()=>btn.innerHTML=old,1600);}};
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).then(done).catch(()=>window.prompt("Link kopieren:",url));
   else window.prompt("Link kopieren:",url);
 }
 function applyHash(){
   const h=location.hash.replace(/^#/,""); if(!h)return;
-  let m=h.match(/^ev=([a-z]+)-(\d+)$/);
-  if(m&&findEv(m[1],m[2])){setTimeout(()=>gotoEvent(m[1],m[2]),80);return;}
+  let m=h.match(/^ev=([a-z0-9]+)-(\d+)(?:-(\w+))?$/);
+  if(m&&findEv(m[1],m[2],m[3])){setTimeout(()=>gotoEvent(m[1],m[2],m[3]),80);return;}
   m=h.match(/^v=(\w+)$/);
   if(m&&document.getElementById("view-"+m[1]))setView(m[1]);
 }
@@ -1802,7 +1993,7 @@ function injectEventSchema(){
         "@type":"SportsEvent",
         "position":i+1,
         "name":(S0?S0.name+" — ":"")+e.name,
-        "description":`${S0?S0.name:""} in ${e.loc}, ${zeitraum}.`
+        "description":`${S0?S0.name:""} ${evYear(e)} in ${e.loc}, ${zeitraum}.${e.prov?" Vorläufiger Termin.":""}`
           + (rennen?` ${rennen===1?"Rennen":rennen+" Rennen"} mit Sessionzeiten in deutscher Zeit.`:""),
         /* Bewusst OHNE Sieger: waere ein Spoiler in den Suchergebnissen,
            und die Ergebnisse werden nicht regelmaessig genug gepflegt. */
@@ -1821,7 +2012,7 @@ function injectEventSchema(){
         "sport":S0?S0.name:undefined
       };
     });
-    const data={"@context":"https://schema.org","@type":"ItemList","name":"APEX Motorsport-Kalender 2026","itemListElement":list};
+    const data={"@context":"https://schema.org","@type":"ItemList","name":"APEX Motorsport-Kalender 2026 und 2027","itemListElement":list};
     const sc=document.createElement("script");
     sc.type="application/ld+json";
     sc.textContent=JSON.stringify(data);
@@ -1833,7 +2024,7 @@ injectEventSchema();
 
 tagNext();
 document.getElementById("mast-date").textContent=NOW().toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
-renderFilter();renderToolbar();renderRemind();renderTZ();renderOnAir();renderTimeline();applyHash();checkReminders();
+SEASON=defaultSeason();renderSeason();renderFilter();renderToolbar();renderRemind();renderTZ();renderOnAir();renderTimeline();applyHash();checkReminders();
 window.addEventListener("scroll",updateJumpBtn,{passive:true});
 window.addEventListener("resize",updateJumpBtn,{passive:true});
 updateJumpBtn();
