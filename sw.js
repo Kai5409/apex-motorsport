@@ -1,5 +1,5 @@
 /* APEX Service Worker — Netzwerk zuerst (frische Daten), Cache als Offline-Fallback */
-const CACHE = "apex-v17";
+const CACHE = "apex-v18";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png",
               "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon-32.png",
               "./favicon-16.png", "./apex-2026.ics",
