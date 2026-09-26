@@ -2329,11 +2329,11 @@ LOCATION:Circuit de Barcelona-Catalunya
 DESCRIPTION:APEX · WEC · Lauf 7 · Circuit de Barcelona-Catalunya
 END:VEVENT
 BEGIN:VEVENT
-UID:apex-wec7-Rennen@apex-motorsport
-DTSTAMP:20260925T230300Z
+UID:apex-wec7-Rennen6h@apex-motorsport
+DTSTAMP:20260926T154700Z
 DTSTART:20261017T110000Z
-DTEND:20261017T123000Z
-SUMMARY:WEC · 6 Stunden von Barcelona — Rennen
+DTEND:20261017T170000Z
+SUMMARY:WEC · 6 Stunden von Barcelona — Rennen (6h)
 LOCATION:Circuit de Barcelona-Catalunya
 DESCRIPTION:APEX · WEC · Lauf 7 · Circuit de Barcelona-Catalunya
 END:VEVENT
@@ -2374,11 +2374,11 @@ LOCATION:Monza
 DESCRIPTION:APEX · WEC · Lauf 8 · Monza
 END:VEVENT
 BEGIN:VEVENT
-UID:apex-wec8-Rennen8h@apex-motorsport
-DTSTAMP:20260925T230300Z
+UID:apex-wec8-Rennen6h@apex-motorsport
+DTSTAMP:20260926T154700Z
 DTSTART:20261107T120000Z
-DTEND:20261107T200000Z
-SUMMARY:WEC · 6 Stunden von Monza (Finale) — Rennen (8h)
+DTEND:20261107T180000Z
+SUMMARY:WEC · 6 Stunden von Monza (Finale) — Rennen (6h)
 LOCATION:Monza
 DESCRIPTION:APEX · WEC · Lauf 8 · Monza
 END:VEVENT

@@ -93,8 +93,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ss-btn:disabled{color:var(--faint);opacity:.3;cursor:default}
 .season.ss-off .ss-btn{visibility:hidden}
 .ss-prov{flex-basis:100%;text-align:right;font-size:9px;letter-spacing:.14em;color:var(--gold);margin-top:3px}
-.ev-prov{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:2px;font-weight:400}
-.ser-round.prov .rn{opacity:.85}
 .seasonnote{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.03em;line-height:1.7;margin:22px 0 6px;padding:10px 12px;border:1px dashed var(--rule-strong);border-radius:4px}
 .seasonnote b{color:var(--paper);font-weight:500}
 .linkbtn{background:none;border:0;padding:0;color:var(--red);font:inherit;text-decoration:underline;cursor:pointer}
@@ -590,9 +588,9 @@ const EVENTS = [
 {s:"wec",rd:6,name:"6 Stunden von Fuji",loc:"Fuji",d0:"2026-09-25",d1:"2026-09-27",status:"up",
  sessions:S([["FP1","Fr","04:00"],["FP2","Fr","08:30"],["FP3","Sa","03:30"],["Hyperpole","Sa","07:20"],["Rennen (6h)","So","04:00"]])},
 {s:"wec",rd:7,name:"6 Stunden von Barcelona",loc:"Circuit de Barcelona-Catalunya",d0:"2026-10-16",d1:"2026-10-18",status:"up",
- sessions:S([["FP1","Do","13:00"],["FP2","Do","18:00"],["FP3","Fr","13:00"],["Hyperpole","Fr","17:20"],["Rennen","Sa","13:00"]])},
+ sessions:S([["FP1","Do","13:00"],["FP2","Do","18:00"],["FP3","Fr","13:00"],["Hyperpole","Fr","17:20"],["Rennen (6h)","Sa","13:00"]])},
 {s:"wec",rd:8,name:"6 Stunden von Monza (Finale)",loc:"Monza",d0:"2026-11-06",d1:"2026-11-08",status:"up",
- sessions:S([["FP1","Do","13:00"],["FP2","Do","18:00"],["FP3","Fr","14:00"],["Hyperpole","Fr","18:20"],["Rennen (8h)","Sa","13:00"]])},
+ sessions:S([["FP1","Do","13:00"],["FP2","Do","18:00"],["FP3","Fr","14:00"],["Hyperpole","Fr","18:20"],["Rennen (6h)","Sa","13:00"]])},
 
 /* ───── DTM (8 Wochenenden / 16 Rennen) ───── */
 {s:"dtm",rd:1,name:"DTM Spielberg",loc:"Red Bull Ring",d0:"2026-04-24",d1:"2026-04-26",status:"done",result:"Sa: Preining · So: Engel",
@@ -1294,7 +1292,7 @@ function buildSessions(e,evId,status){
   if(hasTimes){
     out+=`<button class="calbtn" onclick="exportEvent('${e.s}','${e.rd}','${e.sz||""}')">＋ Ganzes Wochenende in Kalender</button>`;
   }
-  if(e.prov) out+=`<div class="sess-flat prov-note">Vorläufiger Termin – ${hasTimes?"weitere Sessionzeiten folgen":"Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt"}.</div>`;
+  if(e.prov) out+=`<div class="sess-flat prov-note">${hasTimes?"Weitere Sessionzeiten folgen":"Sessionzeiten folgen"}, sobald der offizielle Zeitplan vorliegt.</div>`;
   // WRC-Gesamtwertung als oberste Klappzeile
   if(status==="done" && e.s==="wrc"){
     const arr=e.resOverall||[{p:1,who:(e.result||"—"),gap:"Sieger"}];
@@ -1341,8 +1339,8 @@ function eventHTML(e){
   return `<div class="wknd ${status}"><div class="wk-top">`+
     `<div class="wk-date">${dayRange(e)}<span class="dow">${dows(e)}</span></div>`+
     `<div><div class="ev" id="ev-${evId}"><div class="ev-row" onclick="toggleEv('${evId}')">`+
-      `<span class="ev-bar" style="background:${e.prov?`repeating-linear-gradient(180deg,${S0.color} 0 4px,transparent 4px 8px)`:S0.color}"></span>`+
-      `<span class="ev-body"><span class="ev-name">${e.name}${e.prov?'<span class="ev-prov">vorläufig</span>':''}</span>`+
+      `<span class="ev-bar" style="background:${S0.color}"></span>`+
+      `<span class="ev-body"><span class="ev-name">${e.name}</span>`+
       `<span class="ev-sub"><span class="ser" style="color:${S0.color}">${S0.name}</span> · Lauf ${e.rd} · ${e.loc}</span>${win}</span>`+
       `<span class="ev-toggle">+</span></div>`+
       `<div class="sessions">${buildSessions(e,evId,status)}</div></div></div>`+
@@ -1427,7 +1425,7 @@ function renderSeries(){
       let txt=status==="done"?"Beendet":status==="next"?"Als Nächstes":status==="live"?"Live":"Geplant";
       let c=status==="done"?"done":(status==="next"||status==="live")?"next":"up";
       const right=(status==="done"&&e.result)?`<span class="st done">${e.result}</span>`:`<span class="st ${c}">${txt}</span>`;
-      html+=`<div class="ser-round${e.prov?" prov":""}"><span class="no">${String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span>${right}</div>`;});
+      html+=`<div class="ser-round"><span class="no">${String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span>${right}</div>`;});
     html+=`</div>`;});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
   host.innerHTML=html;
