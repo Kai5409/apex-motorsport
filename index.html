@@ -432,10 +432,10 @@ const SERIES = {
              at:"<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.",
              ch:"<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland."}},
   gtwc:{name:"GT World Challenge Europe", short:"GTWC", color:"#a77bf3", tv:"Kostenloser Stream (YouTube)",
-        tvd:{de:"Alle Rennen laufen als <b>kostenloser Livestream</b> auf dem offiziellen YouTube-Kanal <b>GTWorld</b>, kommentiert auf Englisch.",
-             at:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld).",
-             ch:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld).",
-             note:"Deutschsprachige TV-Übertragung ist nicht bekannt."}},
+        tvd:{de:"Alle Qualifyings und Rennen laufen als <b>kostenloser Livestream</b>: auf Englisch beim offiziellen YouTube-Kanal <b>GTWorld</b>, mit <b>deutschem Kommentar</b> auf der offiziellen Serienseite gt-world-challenge-europe.com.",
+             at:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld), deutscher Kommentar auf der Serienseite.",
+             ch:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld), deutscher Kommentar auf der Serienseite.",
+             note:"Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."}},
 };
 function S(arr){ return arr.map(x=>({n:x[0],day:x[1],t:x[2],res:x[3]||null,partial:x[4]||false})); }
 function esc(str){ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -716,8 +716,8 @@ const EVENTS = [
    ["Qualifying 2 · Gruppe A","So","10:35"],["Qualifying 2 · Gruppe B","So","10:50"],["Rennen 2","So","14:15"]])},
 {s:"gtwc",rd:9,name:"Barcelona · Sprint",loc:"Barcelona",d0:"2026-10-02",d1:"2026-10-04",status:"up",
  sessions:S([["Freies Training 1","Fr","09:00"],["Freies Training 2","Fr","13:55"],
-   ["Qualifying 1 · Gruppe A","Sa","09:45"],["Qualifying 1 · Gruppe B","Sa","10:00"],["Rennen 1","Sa","14:00"],
-   ["Qualifying 2 · Gruppe A","So","11:10"],["Qualifying 2 · Gruppe B","So","11:25"],["Rennen 2","So","16:00"]])},
+   ["Qualifying 1 · Gruppe A","Sa","09:50"],["Qualifying 1 · Gruppe B","Sa","10:05"],["Rennen 1","Sa","14:00"],
+   ["Qualifying 2 · Gruppe A","So","11:15"],["Qualifying 2 · Gruppe B","So","11:30"],["Rennen 2","So","16:00"]])},
 {s:"gtwc",rd:10,name:"Portimão · Endurance · Finale",loc:"Portimão",d0:"2026-10-16",d1:"2026-10-18",status:"up",
  sessions:S([["Freies Training 1","Fr","09:45"],["Freies Training 2","Fr","13:45"],["Qualifying","Fr","18:55"],
    ["Rennen (3 Stunden)","Sa","18:00"]])},
@@ -968,7 +968,7 @@ const TZLOC={
  "Nürburgring":"Europe/Berlin","Portimão":"Europe/Lisbon",
  "Melbourne":"Australia/Melbourne","Shanghai":"Asia/Shanghai","Suzuka":"Asia/Tokyo","Miami":"America/New_York",
  "Montréal":"America/Toronto","Monte Carlo":"Europe/Monaco","Barcelona":"Europe/Madrid","Spielberg":"Europe/Vienna",
- "Silverstone":"Europe/London","Spa-Francorchamps":"Europe/Brussels","Spa":"Europe/Brussels","Budapest":"Europe/Budapest",
+ "Silverstone":"Europe/London","Spa-Francorchamps":"Europe/Brussels","Spa":"Europe/Brussels","Budapest":"Europe/Budapest","Hungaroring":"Europe/Budapest",
  "Zandvoort":"Europe/Amsterdam","Monza":"Europe/Rome","Madrid":"Europe/Madrid","Baku":"Asia/Baku","Singapur":"Asia/Singapore",
  "Austin":"America/Chicago","COTA":"America/Chicago","Mexiko-Stadt":"America/Mexico_City","Interlagos":"America/Sao_Paulo",
  "Las Vegas":"America/Los_Angeles","Lusail":"Asia/Qatar","Yas Marina":"Asia/Dubai","Sakhir":"Asia/Bahrain",
@@ -1028,7 +1028,8 @@ function icsEsc(t){return String(t).replace(/([\\,;])/g,"\\$1").replace(/\n/g,"\
 function sessionInstant(e,s){const d=sessionAbsDate(e,s),p=s.t.split(":").map(Number);return wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),p[0],p[1],"Europe/Berlin");}
 function sessDuration(e,s){const n=s.n;
   if(/\(24h\)/.test(n))return 1440; if(/\(8h\)/.test(n))return 480; if(/\(6h\)/.test(n))return 360;
-  if(/^Rennen/.test(n))return e.s==="f1"?120:(e.s==="mgp"?45:(e.s==="fe"?50:90));
+  if(/\(3 Stunden\)/.test(n))return 180;
+  if(/^Rennen/.test(n))return e.s==="f1"?120:(e.s==="mgp"?45:(e.s==="fe"?50:(e.s==="gtwc"?60:90)));
   if(/Power Stage/.test(n))return 30; if(/Etappe|Shakedown/.test(n))return 150;
   if(/^Sprint$/.test(n))return 45; if(/Hyperpole|Qualifying|Sprint-Quali/.test(n))return 60;
   return 60;}
@@ -1090,7 +1091,7 @@ const CIRCUITS={
  "Montréal":{name:"Circuit Gilles Villeneuve",len:4.361,turns:14},"Monte Carlo":{name:"Circuit de Monaco",len:3.337,turns:19},
  "Barcelona":{name:"Circuit de Barcelona-Catalunya",len:4.657,turns:14},"Spielberg":{name:"Red Bull Ring",len:4.318,turns:10},
  "Silverstone":{name:"Silverstone Circuit",len:5.891,turns:18},"Spa-Francorchamps":{name:"Circuit de Spa-Francorchamps",len:7.004,turns:19},
- "Budapest":{name:"Hungaroring",len:4.381,turns:14},"Zandvoort":{name:"Circuit Zandvoort",len:4.259,turns:14},
+ "Budapest":{name:"Hungaroring",len:4.381,turns:14},"Hungaroring":{name:"Hungaroring",len:4.381,turns:14},"Zandvoort":{name:"Circuit Zandvoort",len:4.259,turns:14},
  "Monza":{name:"Autodromo Nazionale Monza",len:5.793,turns:11},"Madrid":{name:"Madring",len:5.474,turns:22},
  "Baku":{name:"Baku City Circuit",len:6.003,turns:20},"Singapur":{name:"Marina Bay Street Circuit",len:4.940,turns:19},
  "Austin":{name:"Circuit of the Americas",len:5.513,turns:20},"Mexiko-Stadt":{name:"Autódromo Hermanos Rodríguez",len:4.304,turns:17},
@@ -1520,11 +1521,12 @@ const REGELN = {
       ["Aufbau", "Die GT World Challenge Europe ist keine einzelne Rennserie, sondern besteht aus zwei Meisterschaften mit je fünf Wochenenden: dem Sprint Cup mit kurzen Rennen und dem Endurance Cup mit Langstreckenläufen. Beide werden getrennt gewertet, zusätzlich gibt es eine Gesamtwertung über alle zehn Wochenenden. Veranstalter ist die SRO, die auch die Ableger in Amerika, Asien und Australien betreibt."],
       ["Sprint Cup", "Pro Wochenende zwei Rennen über je eine Stunde, eines am Samstag und eines am Sonntag, jeweils mit eigenem Qualifying. In jedem Rennen ist ein Pflichtboxenstopp mit Fahrerwechsel vorgeschrieben, der in einem festgelegten Zeitfenster zur Rennmitte erfolgen muss. Zwei Fahrer teilen sich das Auto, beide müssen fahren."],
       ["Endurance Cup", "Rennen über drei Stunden, dazu die 6 Stunden von Paul Ricard zum Auftakt und als Höhepunkt die 24 Stunden von Spa. Hier teilen sich drei Fahrer das Auto. Die längere Distanz verschiebt den Schwerpunkt: Zuverlässigkeit, Reifenmanagement und fehlerfreie Boxenstopps zählen mehr als eine schnelle Einzelrunde."],
-      ["24 Stunden von Spa", "Das größte GT-Rennen der Welt und das Saisonhighlight. Über sechzig Fahrzeuge starten, gefahren wird durch die Nacht auf einer der anspruchsvollsten Strecken überhaupt, mit Eau Rouge und Raidillon als bekanntestem Abschnitt. Das Rennen zählt doppelt so viele Punkte wie ein regulärer Lauf und hat für viele Teams einen höheren Stellenwert als die Meisterschaft selbst."],
-      ["Klassen", "Gestartet wird in vier Kategorien, die sich nach der FIA-Einstufung der Fahrer richten: Pro ohne Beschränkungen, dazu Gold, Silver und Bronze mit jeweils vorgeschriebenen Fahrerkombinationen. So können Profis und ambitionierte Amateure im selben Rennen antreten, ohne direkt gegeneinander gewertet zu werden. Um die Gesamtwertung fahren die Pro-Fahrzeuge."],
-      ["Technik", "Ausschließlich GT3-Fahrzeuge nach FIA-Reglement — dieselbe Technikbasis wie in der DTM und in der LMGT3-Klasse der WEC. Entsprechend groß ist die Markenvielfalt: Ferrari, Porsche, Mercedes-AMG, BMW, Audi, Lamborghini, Aston Martin, McLaren. Eine Balance of Performance gleicht die Modelle aneinander an."],
-      ["Qualifying", "Im Sprint Cup ein kurzer Abschnitt je Rennen. Im Endurance Cup fahren alle drei Fahrer nacheinander eine eigene Qualifikationsphase, aus deren Zeiten sich die Startaufstellung ergibt — die Mannschaft ist damit nur so schnell wie ihr langsamstes Glied. Für die 24 Stunden von Spa gibt es zusätzlich eine Superpole der Schnellsten."],
-      ["Bedeutung", "Wer alle zehn Wochenenden bestreitet, kann sich eine Einladung für die LMGT3-Klasse der 24 Stunden von Le Mans sichern. Die Serie ist damit für viele Teams das Sprungbrett in den internationalen Langstreckensport — und gleichzeitig die Meisterschaft mit den größten GT3-Startfeldern in Europa."]
+      ["24 Stunden von Spa", "Das größte GT-Rennen der Welt und das Saisonhighlight. Über sechzig Fahrzeuge starten, gefahren wird durch die Nacht auf einer der anspruchsvollsten Strecken überhaupt, mit Eau Rouge und Raidillon als bekanntestem Abschnitt. Punkte gibt es nicht nur im Ziel, sondern schon nach sechs und nach zwölf Stunden — zusammen fast doppelt so viele wie bei einem Drei-Stunden-Rennen. Für viele Teams hat der Sieg hier einen höheren Stellenwert als die Meisterschaft selbst."],
+      ["Punkte", "Gewertet werden die ersten zehn, die Skala richtet sich nach der Renndauer. Im Sprint Cup bekommt der Sieger 16,5 Punkte, abwärts bis 0,5 für Platz zehn — daher die halben Punkte in der Tabelle. Die Drei-Stunden-Rennen bringen 25 Punkte für den Sieg, die sechs Stunden von Paul Ricard 33. Die Pole ist einen Zusatzpunkt wert. Gold, Silver und Bronze haben zusätzlich eigene Wertungen, dazu kommen getrennte Titel für Sprint Cup und Endurance Cup."],
+      ["Klassen", "Gestartet wird in vier Kategorien, die sich nach der FIA-Einstufung der Fahrer richten: Pro ohne Beschränkungen, dazu Gold, Silver und Bronze mit jeweils vorgeschriebenen Fahrerkombinationen, in Spa zusätzlich Pro-Am. So können Profis und ambitionierte Amateure im selben Rennen antreten, ohne direkt gegeneinander gewertet zu werden. Die Gesamtwertung richtet sich nach dem Gesamtergebnis — den Sieg machen meist die Pro-Fahrzeuge unter sich aus, gelegentlich setzt sich aber auch ein Gold-Auto durch."],
+      ["Technik", "Ausschließlich GT3-Fahrzeuge nach FIA-Reglement — dieselbe Technikbasis wie in der DTM und in der LMGT3-Klasse der WEC. Entsprechend groß ist die Markenvielfalt: Ferrari, Porsche, Mercedes-AMG, BMW, Audi, Lamborghini, Aston Martin, McLaren, Ford und Chevrolet. Eine Balance of Performance gleicht die Modelle aneinander an."],
+      ["Qualifying", "Wegen der großen Felder wird in zwei Gruppen qualifiziert, damit sich die Autos weniger im Weg stehen. Im Sprint Cup gibt es vor jedem Rennen ein eigenes Qualifying. Im Endurance Cup fährt jeder der drei Fahrer einen eigenen Abschnitt, seit 2026 ebenfalls getrennt nach Silver und Bronze sowie Pro und Gold; die Startaufstellung ergibt sich aus allen drei Zeiten zusammen — die Mannschaft ist damit nur so schnell wie ihr langsamstes Glied. In Spa kämpfen die 32 Schnellsten danach in einer K.-o.-Superpole um die Pole."],
+      ["Bedeutung", "Der Meister des Bronze Cups erhielt zuletzt eine Einladung für die LMGT3-Klasse der 24 Stunden von Le Mans — für Teams mit Amateurfahrern ein begehrtes Ziel. Die Serie ist damit für viele Teams das Sprungbrett in den internationalen Langstreckensport und gleichzeitig die Meisterschaft mit den größten GT3-Startfeldern in Europa."]
     ]
   },
   fe: {
@@ -1773,7 +1775,30 @@ const STAND = {
               ["Nicolás Varrone","Corvette #33",4],
               ["Kobe Pauwels","Aston Martin #23",3],
               ["Rigon / Castellacci / Flohr","Ferrari #54",1],
-              ["Esteban Masson","Lexus #78",1]] }
+              ["Esteban Masson","Lexus #78",1]] },
+
+  gtwc:{ stand:"nach 8 von 10 Wochenenden · Zandvoort, 20.09.2026", quelle:"gt-world-challenge-europe.com",
+        klasse:"Gesamt",
+        drv:[["Auer / Engel","Winward Racing #48",128.5],
+             ["van der Linde / Weerts","Team WRT #32",92],
+             ["Buus / Feller","Lionspeed GP #80",89],
+             ["Luca Stolz","Winward Racing #48",86],
+             ["Daniel Juncadella","Mercedes-AMG Team Verstappen Racing #3",74],
+             ["Nicki Thiim","Comtoyou Racing #7",72.5],
+             ["Arthur Leclerc","AF Corse #50",63.5],
+             ["Drudi / Sørensen","Comtoyou Racing #7",59],
+             ["Jordan Pepper","Team WRT #31/#32",56],
+             ["Jules Gounon","Mercedes-AMG Team Verstappen Racing #3",53.5],
+             ["Thomas Neubauer","AF Corse #50",53.5],
+             ["Fleming / Prette","Garage 59 #58",51.5],
+             ["Hesse / Rossi","Team WRT #46",46.5],
+             ["Dorian Boccolacci","Boutsen VDS #2",45],
+             ["Morris Schuring","Boutsen VDS #2",44],
+             ["Chris Lulham","Mercedes-AMG Team Verstappen Racing #3",41.5],
+             ["Vermeulen / Green","Emil Frey Racing #69",40],
+             ["Benjamin Goethe","Garage 59 #58",32],
+             ["Kirchhöfer / MacDonald","Garage 59 #59",31],
+             ["Thomas Preining","Lionspeed GP #80",30]] }
 };
 function renderStandings(){
   const host=document.getElementById("view-standings");
@@ -1797,7 +1822,7 @@ function renderStandings(){
       [...liste].sort((a,b)=>b[2]-a[2]).forEach(([nm,tm,pts],i)=>{
         t+=`<div class="std-row ${i===0?'lead':''}"><span class="sp">${i+1}</span>`+
           `<span class="std-nm">${nm}${tm?`<span class="tm">${tm}</span>`:''}</span>`+
-          `<span class="std-wins"></span><span class="std-pts">${pts}<small>PKT</small></span></div>`;
+          `<span class="std-wins"></span><span class="std-pts">${String(pts).replace(".",",")}<small>PKT</small></span></div>`;
       });
       return t;
     };
