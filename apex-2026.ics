@@ -4,7 +4,7 @@ PRODID:-//APEX//Motorsport-Kalender//DE
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:APEX Motorsport-Kalender
-X-WR-CALDESC:Sieben Rennserien — Sessions 2026 und 2027 in deutscher Zeit
+X-WR-CALDESC:Acht Rennserien — Sessions 2026 und 2027 in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VEVENT
 UID:apex-f11-FP1@apex-motorsport
@@ -4211,9 +4211,9 @@ DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwc8-Rennen1@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20260927T224800Z
 DTSTART:20260919T124500Z
-DTEND:20260919T141500Z
+DTEND:20260919T134500Z
 SUMMARY:GTWC · Zandvoort · Sprint — Rennen 1
 LOCATION:Zandvoort
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
@@ -4238,9 +4238,9 @@ DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwc8-Rennen2@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20260927T224800Z
 DTSTART:20260920T121500Z
-DTEND:20260920T134500Z
+DTEND:20260920T131500Z
 SUMMARY:GTWC · Zandvoort · Sprint — Rennen 2
 LOCATION:Zandvoort
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
@@ -4265,54 +4265,54 @@ DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwc9-Qualifying1GruppeA@apex-motorsport
-DTSTAMP:20260925T230300Z
-DTSTART:20261003T074500Z
-DTEND:20261003T084500Z
+DTSTAMP:20260927T224800Z
+DTSTART:20261003T075000Z
+DTEND:20261003T085000Z
 SUMMARY:GTWC · Barcelona · Sprint — Qualifying 1 · Gruppe A
 LOCATION:Barcelona
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwc9-Qualifying1GruppeB@apex-motorsport
-DTSTAMP:20260925T230300Z
-DTSTART:20261003T080000Z
-DTEND:20261003T090000Z
+DTSTAMP:20260927T224800Z
+DTSTART:20261003T080500Z
+DTEND:20261003T090500Z
 SUMMARY:GTWC · Barcelona · Sprint — Qualifying 1 · Gruppe B
 LOCATION:Barcelona
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwc9-Rennen1@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20260927T224800Z
 DTSTART:20261003T120000Z
-DTEND:20261003T133000Z
+DTEND:20261003T130000Z
 SUMMARY:GTWC · Barcelona · Sprint — Rennen 1
 LOCATION:Barcelona
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwc9-Qualifying2GruppeA@apex-motorsport
-DTSTAMP:20260925T230300Z
-DTSTART:20261004T091000Z
-DTEND:20261004T101000Z
+DTSTAMP:20260927T224800Z
+DTSTART:20261004T091500Z
+DTEND:20261004T101500Z
 SUMMARY:GTWC · Barcelona · Sprint — Qualifying 2 · Gruppe A
 LOCATION:Barcelona
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwc9-Qualifying2GruppeB@apex-motorsport
-DTSTAMP:20260925T230300Z
-DTSTART:20261004T092500Z
-DTEND:20261004T102500Z
+DTSTAMP:20260927T224800Z
+DTSTART:20261004T093000Z
+DTEND:20261004T103000Z
 SUMMARY:GTWC · Barcelona · Sprint — Qualifying 2 · Gruppe B
 LOCATION:Barcelona
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwc9-Rennen2@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20260927T224800Z
 DTSTART:20261004T140000Z
-DTEND:20261004T153000Z
+DTEND:20261004T150000Z
 SUMMARY:GTWC · Barcelona · Sprint — Rennen 2
 LOCATION:Barcelona
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
@@ -4346,12 +4346,192 @@ DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwc10-Rennen3Stunden@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20260927T224800Z
 DTSTART:20261017T160000Z
-DTEND:20261017T173000Z
+DTEND:20261017T190000Z
 SUMMARY:GTWC · Portimão · Endurance · Finale — Rennen (3 Stunden)
 LOCATION:Portimão
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls2-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260321T073000Z
+DTEND:20260321T090000Z
+SUMMARY:NLS · 58. ADAC Barbarossapreis — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 2 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls2-Rennen4h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260321T110000Z
+DTEND:20260321T150000Z
+SUMMARY:NLS · 58. ADAC Barbarossapreis — Rennen (4h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 2 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls3-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260411T063000Z
+DTEND:20260411T080000Z
+SUMMARY:NLS · 57. Adenauer ADAC Rundstrecken-Trophy — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 3 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls3-Rennen4h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260411T100000Z
+DTEND:20260411T140000Z
+SUMMARY:NLS · 57. Adenauer ADAC Rundstrecken-Trophy — Rennen (4h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 3 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls4-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260418T063000Z
+DTEND:20260418T080000Z
+SUMMARY:NLS · ADAC 24h Nürburgring Qualifiers · Rennen 1 — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 4 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls4-Rennen4h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260418T153000Z
+DTEND:20260418T193000Z
+SUMMARY:NLS · ADAC 24h Nürburgring Qualifiers · Rennen 1 — Rennen (4h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 4 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls5-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260419T061500Z
+DTEND:20260419T074500Z
+SUMMARY:NLS · ADAC 24h Nürburgring Qualifiers · Rennen 2 — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 5 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls5-TopQualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260419T084000Z
+DTEND:20260419T094000Z
+SUMMARY:NLS · ADAC 24h Nürburgring Qualifiers · Rennen 2 — Top-Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 5 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls5-Rennen4h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260419T110000Z
+DTEND:20260419T150000Z
+SUMMARY:NLS · ADAC 24h Nürburgring Qualifiers · Rennen 2 — Rennen (4h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 5 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls0-Rennen24h@apex-motorsport
+DTSTAMP:20260927T231300Z
+DTSTART:20260516T130000Z
+DTEND:20260517T130000Z
+SUMMARY:NLS · 54. ADAC RAVENOL 24h Nürburgring — Rennen (24h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Eigenständiges Rennen – zählt nicht zur NLS-Wertung · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls6-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260620T063000Z
+DTEND:20260620T080000Z
+SUMMARY:NLS · 1. ADAC Eifel Trophy — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 6 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls6-Rennen4h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260620T100000Z
+DTEND:20260620T140000Z
+SUMMARY:NLS · 1. ADAC Eifel Trophy — Rennen (4h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 6 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls7-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260801T063000Z
+DTEND:20260801T080000Z
+SUMMARY:NLS · KW 6h ADAC Ruhr-Pokal-Rennen — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 7 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls7-Rennen6h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260801T100000Z
+DTEND:20260801T160000Z
+SUMMARY:NLS · KW 6h ADAC Ruhr-Pokal-Rennen — Rennen (6h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 7 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls8-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260912T063000Z
+DTEND:20260912T080000Z
+SUMMARY:NLS · 65. ADAC Reinoldus-Langstreckenrennen — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 8 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls8-Rennen4h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260912T100000Z
+DTEND:20260912T140000Z
+SUMMARY:NLS · 65. ADAC Reinoldus-Langstreckenrennen — Rennen (4h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 8 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls9-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260913T063000Z
+DTEND:20260913T080000Z
+SUMMARY:NLS · 66. ADAC ACAS Cup — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 9 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls9-Rennen4h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260913T100000Z
+DTEND:20260913T140000Z
+SUMMARY:NLS · 66. ADAC ACAS Cup — Rennen (4h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 9 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls10-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20261010T063000Z
+DTEND:20261010T080000Z
+SUMMARY:NLS · 2. NLS Sportwarte-Trophy · Finale — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 10 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls10-Rennen4h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20261010T100000Z
+DTEND:20261010T140000Z
+SUMMARY:NLS · 2. NLS Sportwarte-Trophy · Finale — Rennen (4h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 10 · Nürburgring
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-wec1-2027-Rennen@apex-motorsport
