@@ -11,23 +11,23 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="APEX">
-<title>APEX — Motorsport-Kalender 2026 & 2027 | F1, MotoGP, WEC, DTM, WRC, Formel E, GTWC</title>
-<meta name="description" content="Motorsport-Kalender 2026 und 2027: alle Renntermine der Formel 1, MotoGP, WEC, DTM, WRC, Formel E und GT World Challenge. Der neue F1-Kalender 2027, Sessionzeiten in deutscher Zeit, Wertungen, TV-Infos für DACH und Regelerklärungen.">
-<meta name="keywords" content="Formel 1 Kalender 2027, F1 Kalender 2027, F1 2027 Termine, Formel 1 2027 Rennkalender, Motorsport Kalender 2027, WEC Kalender 2027, Le Mans 2027, DTM Kalender 2027, DTM 2027 Termine, Formel E Kalender 2027, Formel E Saison 13, GT World Challenge 2027, 24h Spa 2027, MotoGP Kalender 2027, WRC Kalender 2027, Formel 1 Kalender 2026, MotoGP Kalender 2026, Motorsport Kalender, F1 Sessionzeiten, Rennkalender Deutschland, Wo läuft F1 im TV, Formel 1 Qualifying erklärt, MotoGP Regeln, WRC Power Stage, Formel E Attack Mode, DTM Regeln">
+<title>APEX — Motorsport-Kalender 2026 & 2027 | F1, MotoGP, WEC, DTM, WRC, Formel E, GTWC, NLS, 24h Nürburgring</title>
+<meta name="description" content="Motorsport-Kalender 2026 und 2027 für acht Serien: alle Renntermine der Formel 1, MotoGP, WEC, DTM, WRC, Formel E, GT World Challenge und der Nürburgring Langstrecken-Serie (NLS) auf der Nordschleife, dazu das 24h-Rennen am Nürburgring. Der neue F1-Kalender 2027, Sessionzeiten in deutscher Zeit, Wertungen, TV-Infos für DACH und Regelerklärungen.">
+<meta name="keywords" content="Formel 1 Kalender 2027, F1 Kalender 2027, F1 2027 Termine, Formel 1 2027 Rennkalender, Motorsport Kalender 2027, WEC Kalender 2027, Le Mans 2027, DTM Kalender 2027, DTM 2027 Termine, Formel E Kalender 2027, Formel E Saison 13, GT World Challenge 2027, 24h Spa 2027, NLS Kalender 2026, NLS Kalender 2027, Nürburgring Langstrecken-Serie, Nordschleife Rennen, 24h Nürburgring 2026, 24h Nürburgring 2027, 24h Qualifiers, NLS Speed-Trophäe, MotoGP Kalender 2027, WRC Kalender 2027, Formel 1 Kalender 2026, MotoGP Kalender 2026, Motorsport Kalender, F1 Sessionzeiten, Rennkalender Deutschland, Wo läuft F1 im TV, Formel 1 Qualifying erklärt, MotoGP Regeln, WRC Power Stage, Formel E Attack Mode, DTM Regeln">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://apexkalender.de/">
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="APEX">
 <meta property="og:title" content="APEX — Motorsport-Kalender 2026 & 2027">
-<meta property="og:description" content="Alle Renntermine 2026 und die neuen Kalender 2027: F1, MotoGP, WEC, DTM, WRC, Formel E und GT World Challenge — mit Sessionzeiten, Wertungen und TV-Infos für DACH.">
+<meta property="og:description" content="Alle Renntermine 2026 und die neuen Kalender 2027: F1, MotoGP, WEC, DTM, WRC, Formel E, GT World Challenge und NLS mit dem 24h-Rennen am Nürburgring — mit Sessionzeiten, Wertungen und TV-Infos für DACH.">
 <meta property="og:image" content="https://apexkalender.de/logo-apex.png">
 <meta property="og:url" content="https://apexkalender.de/">
 <meta property="og:locale" content="de_DE">
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="APEX — Motorsport-Kalender 2026 & 2027">
-<meta name="twitter:description" content="Formel-1-Kalender 2027 und alle Termine 2026: F1, MotoGP, WEC, DTM, WRC, Formel E, GTWC.">
+<meta name="twitter:description" content="Formel-1-Kalender 2027 und alle Termine 2026: F1, MotoGP, WEC, DTM, WRC, Formel E, GTWC, NLS und 24h Nürburgring.">
 <meta name="twitter:image" content="https://apexkalender.de/logo-apex.png">
 <style>
 /* Schriften lokal ausgeliefert - kein Abruf von Google-Servern, keine Datenuebertragung an Dritte. */
@@ -118,6 +118,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .filterbar .fl-lab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-right:4px}
 .chip{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;padding:5px 11px 5px 9px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--paper);display:inline-flex;align-items:center;gap:7px;transition:opacity .15s,border-color .15s,background .15s}
 .chip .cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.chip{white-space:nowrap} .chip .cn-s{display:none}
 .chip.off{opacity:.38;border-color:var(--rule);color:var(--muted)}
 .chip.off .cdot{filter:grayscale(1) brightness(.7)}
 .chip.allbtn{border-color:var(--paper);color:var(--paper);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px}
@@ -170,6 +171,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .wknd.live::before{border-color:var(--red);background:var(--red);box-shadow:0 0 0 4px rgba(255,48,0,.18)}
 .wknd.next::before{border-color:var(--red)}
 .wk-top{display:grid;grid-template-columns:74px 1fr auto;gap:16px;align-items:start}
+.wk-top>div{min-width:0}
 .wk-date{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:30px;line-height:.92;color:var(--paper);padding-top:6px}
 .wk-date .dow{display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.12em;margin-top:5px;text-transform:uppercase}
 .wk-cd{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-align:right;white-space:nowrap;padding-top:8px}
@@ -183,9 +185,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ev-sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.04em;margin-top:6px;text-transform:uppercase}
 .ev-sub .ser{font-weight:600}
 .ev-sub .sonder{color:var(--paper)}
-.ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px}
+.ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px;overflow-wrap:anywhere}
 .ev-note{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-top:4px}
-.ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600}
+.ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600;white-space:nowrap;flex-shrink:0;overflow-wrap:normal}
 .ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
 .ev-row:hover .ev-toggle{color:var(--paper)}
 .ev.open .ev-toggle{transform:rotate(45deg);color:var(--red)}
@@ -307,6 +309,8 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .sess-row .calico{display:none}
   .month-head{font-size:42px}
   .ser-round{grid-template-columns:30px 1fr auto;gap:10px} .ser-round .dt{display:none}
+  .chip .cn-l{display:none} .chip .cn-s{display:inline}
+  .filterbar{gap:6px} .filterbar .fl-lab{margin-right:0} .chip{padding:5px 9px 5px 8px;gap:6px}
   .cal-row{grid-template-columns:72px 44px 1fr;gap:8px} .cal-row .cw{display:none}
   .std-row{grid-template-columns:26px 1fr auto 44px;gap:8px} .std-wins{display:none}
   .tv-row{grid-template-columns:1fr;gap:6px}
@@ -363,7 +367,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <section class="view" id="view-rules"></section>
   <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
   <footer>
-APEX · Saisons 2026 &amp; 2027 · Sieben Serien · Stand 25. September 2026<br>
+APEX · Saisons 2026 &amp; 2027 · Acht Serien · Stand 25. September 2026<br>
     Alle Zeiten in MESZ, ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
     <button class="legal-link" onclick="toggleLegal()">Datenschutz</button>
     <div class="legal" id="legal">
@@ -904,6 +908,25 @@ const EVENTS = [
  sessions:S([])},
 {s:"gtwc",rd:10,sz:"2027",prov:true,name:"Barcelona · Endurance · Finale",loc:"Barcelona",d0:"2027-10-22",d1:"2027-10-24",status:"up",
  sessions:S([])},
+/* NLS 2027 - vorläufige Termine der Serie, veröffentlicht 11.09.2026 */
+{s:"nls",rd:1,sz:"2027",prov:true,name:"NLS1",loc:"Nürburgring",d0:"2027-03-20",d1:"2027-03-20",status:"up",
+ sessions:S([])},
+{s:"nls",rd:2,sz:"2027",prov:true,name:"NLS2",loc:"Nürburgring",d0:"2027-04-17",d1:"2027-04-17",status:"up",
+ sessions:S([])},
+{s:"nls",rd:0,sz:"2027",prov:true,sonder:"24h",veranstalter:"ADAC Nordrhein",name:"ADAC RAVENOL 24h Nürburgring",loc:"Nürburgring",d0:"2027-05-27",d1:"2027-05-30",status:"up",
+ sessions:S([])},
+{s:"nls",rd:3,sz:"2027",prov:true,name:"NLS3",loc:"Nürburgring",d0:"2027-07-03",d1:"2027-07-03",status:"up",
+ sessions:S([])},
+{s:"nls",rd:4,sz:"2027",prov:true,name:"NLS4 · 6h-Rennen",loc:"Nürburgring",d0:"2027-08-07",d1:"2027-08-07",status:"up",
+ sessions:S([])},
+{s:"nls",rd:5,sz:"2027",prov:true,name:"NLS5",loc:"Nürburgring",d0:"2027-09-11",d1:"2027-09-11",status:"up",
+ sessions:S([])},
+{s:"nls",rd:6,sz:"2027",prov:true,name:"NLS6",loc:"Nürburgring",d0:"2027-09-12",d1:"2027-09-12",status:"up",
+ sessions:S([])},
+{s:"nls",rd:7,sz:"2027",prov:true,name:"NLS7",loc:"Nürburgring",d0:"2027-09-25",d1:"2027-09-25",status:"up",
+ sessions:S([])},
+{s:"nls",rd:8,sz:"2027",prov:true,name:"NLS8 · Finale",loc:"Nürburgring",d0:"2027-10-09",d1:"2027-10-09",status:"up",
+ sessions:S([])},
 {s:"fe",rd:1,sz:"S13",prov:true,name:"Dschidda E-Prix I · Auftakt Saison 13",loc:"Dschidda",d0:"2026-12-18",d1:"2026-12-18",status:"up",
  sessions:S([])},
 {s:"fe",rd:2,sz:"S13",prov:true,name:"Dschidda E-Prix II",loc:"Dschidda",d0:"2026-12-19",d1:"2026-12-19",status:"up",
@@ -1217,7 +1240,7 @@ function renderFilter(){
   let chips=`<span class="fl-lab">Serien</span>`;
   Object.keys(SERIES).forEach(sk=>{
     const S0=SERIES[sk],on=ACTIVE.has(sk);
-    chips+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')"><span class="cdot" style="background:${S0.color}"></span>${S0.name}</button>`;
+    chips+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
   });
   chips+=`<button class="chip allbtn" onclick="allSeries()">Alle</button>`;
   el.innerHTML=chips;
@@ -1616,7 +1639,7 @@ function toggleRule(sk){
 
 function renderRules(){
   const host=document.getElementById("view-rules"); if(!host)return;
-  let html=`<p class="rl-intro">Sieben Serien, sieben sehr unterschiedliche Reglements.<br>
+  let html=`<p class="rl-intro">Acht Serien, acht sehr unterschiedliche Reglements.<br>
     Tippe eine Serie an, um Format, Qualifying, Punkte und Besonderheiten zu lesen.</p>`;
   Object.keys(SERIES).forEach(sk=>{
     const S0=SERIES[sk], R=REGELN[sk]; if(!R)return;
