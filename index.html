@@ -182,6 +182,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ev-name{display:block;font-size:16px;font-weight:600;line-height:1.2}
 .ev-sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.04em;margin-top:6px;text-transform:uppercase}
 .ev-sub .ser{font-weight:600}
+.ev-sub .sonder{color:var(--paper)}
 .ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px}
 .ev-note{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-top:4px}
 .ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600}
@@ -738,6 +739,10 @@ const EVENTS = [
  sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","17:30"]])},
 {s:"nls",rd:5,name:"ADAC 24h Nürburgring Qualifiers · Rennen 2",loc:"Nürburgring",d0:"2026-04-19",d1:"2026-04-19",status:"done",result:"Audi #16 (Haase/Sims/Green)",
  sessions:S([["Qualifying","So","08:15"],["Top-Qualifying","So","10:40"],["Rennen (4h)","So","13:00"]])},
+/* 24h-Rennen: eigenständige Veranstaltung (ADAC Nordrhein), nicht Teil der NLS-Meisterschaft.
+   sonder = Anzeige statt Rundennummer; rd:0, damit Rundenzählung, IDs und Kalender-UIDs unberührt bleiben. */
+{s:"nls",rd:0,sonder:"24h",veranstalter:"ADAC Nordrhein",name:"54. ADAC RAVENOL 24h Nürburgring",loc:"Nürburgring",d0:"2026-05-14",d1:"2026-05-17",status:"done",result:"Mercedes-AMG #80 (Engel/Stolz/Schiller/Martin)",
+ sessions:S([["Rennen (24h)","Sa","15:00"]])},
 {s:"nls",rd:6,name:"1. ADAC Eifel Trophy",loc:"Nürburgring",d0:"2026-06-20",d1:"2026-06-20",status:"done",result:"Porsche #17 (Menzel/Müller)",
  sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
 {s:"nls",rd:7,name:"KW 6h ADAC Ruhr-Pokal-Rennen",loc:"Nürburgring",d0:"2026-08-01",d1:"2026-08-01",status:"done",result:"Mercedes-AMG #80 (Stolz/Aron)",
@@ -1067,7 +1072,7 @@ function vevent(e,s){
     "DTSTAMP:"+icsStamp(new Date()),"DTSTART:"+icsStamp(start),"DTEND:"+icsStamp(end),
     "SUMMARY:"+icsEsc(S0.short+" · "+e.name+" — "+s.n),
     "LOCATION:"+icsEsc(e.loc),
-    "DESCRIPTION:"+icsEsc("APEX · "+S0.name+" · Lauf "+e.rd+" · "+e.loc),
+    "DESCRIPTION:"+icsEsc("APEX · "+S0.name+" · "+(e.sonder?sonderText(e):"Lauf "+e.rd)+" · "+e.loc),
     "END:VEVENT"].join("\r\n");
 }
 function downloadICS(fn,veventsArr){
@@ -1191,6 +1196,8 @@ function countdown(e){const now=NOW(),s=startW(e),en=endW(e);
   if(d<=7)return{cls:"soon",txt:"in "+d+" Tag"+(d===1?"":"en")};
   return{cls:"up",txt:"in "+d+" Tagen"};}
 const ABBRUCH="Rennen abgebrochen – nicht gewertet";
+/* Eigenständige Rennen ohne Meisterschaftswertung (z. B. 24h Nürburgring unter NLS) */
+function sonderText(e){return "Eigenständiges Rennen – zählt nicht zur "+SERIES[e.s].short+"-Wertung";}
 function isRaceName(n){return /^Rennen|^Sprint$|^Rennen \(|^Power Stage/.test(n);}
 function actEvents(){return EVENTS.filter(e=>ACTIVE.has(e.s));}
 
@@ -1372,7 +1379,7 @@ function eventHTML(e){
     `<div><div class="ev" id="ev-${evId}"><div class="ev-row" onclick="toggleEv('${evId}')">`+
       `<span class="ev-bar" style="background:${S0.color}"></span>`+
       `<span class="ev-body"><span class="ev-name">${e.name}</span>`+
-      `<span class="ev-sub"><span class="ser" style="color:${S0.color}">${S0.name}</span> · Lauf ${e.rd} · ${e.loc}</span>${win}</span>`+
+      `<span class="ev-sub"><span class="ser" style="color:${S0.color}">${S0.name}</span> · ${e.sonder?`<span class="sonder">${sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}</span>`+
       `<span class="ev-toggle">+</span></div>`+
       `<div class="sessions">${buildSessions(e,evId,status)}</div></div></div>`+
     `<div class="wk-cd ${cd.cls}">${cd.txt}</div>`+
@@ -1399,7 +1406,7 @@ function renderTimeline(){
   const past=evs.filter(e=>endW(e)<now);
   let html="";
   /* Aktive Serien ohne einen einzigen Termin in dieser Saison */
-  const fehlen=Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)&&!EVENTS.some(e=>e.s===sk&&inSeason(e)));
+  const fehlen=Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)&&!EVENTS.some(e=>e.s===sk&&inSeason(e)&&!e.sonder));
   if(fehlen.length) html+=`<div class="seasonnote">Kalender ${SEASON} noch nicht veröffentlicht: <b>${fehlen.map(k=>SERIES[k].name).join(", ")}</b></div>`;
   if(SEARCH||FAV_ONLY){
     const lab=SEARCH?`${evs.length} Treffer für „${SEARCH}"`:`${evs.length} Favorit${evs.length===1?'':'en'}`;
@@ -1444,9 +1451,11 @@ function renderSeries(){
   Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)).forEach(sk=>{
     const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
     if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div><div class="ser-meta">Kalender ${SEASON} noch nicht veröffentlicht</div></div>`;return;}
-    const done=evs.filter(e=>st(e)==="done").length,canc=evs.filter(e=>e.status==="cancel").length;
+    /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
+    const lauf=evs.filter(e=>!e.sonder);
+    const done=lauf.filter(e=>st(e)==="done").length,canc=lauf.filter(e=>e.status==="cancel").length;
     html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div>`+
-      `<div class="ser-meta">${evs.length-canc} Läufe · ${done} gefahren · ${evs.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}</div>`;
+      `<div class="ser-meta">${lauf.length?`${lauf.length-canc} Läufe · ${done} gefahren · ${lauf.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}`:`Kalender ${SEASON} noch nicht veröffentlicht`}</div>`;
     let n=0;
     evs.forEach(e=>{const status=st(e);
       if(status==="cancel"){
@@ -1456,7 +1465,7 @@ function renderSeries(){
       let txt=status==="done"?"Beendet":status==="next"?"Als Nächstes":status==="live"?"Live":"Geplant";
       let c=status==="done"?"done":(status==="next"||status==="live")?"next":"up";
       const right=(status==="done"&&e.result)?`<span class="st done">${e.result}</span>`:(status==="done"&&e.abbruch)?`<span class="st up">Abgebrochen</span>`:`<span class="st ${c}">${txt}</span>`;
-      html+=`<div class="ser-round"><span class="no">${String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span>${right}</div>`;});
+      html+=`<div class="ser-round"><span class="no">${e.sonder||String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}${e.sonder?` · ${sonderText(e)}`:""}</span></span>${right}</div>`;});
     html+=`</div>`;});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
   host.innerHTML=html;
@@ -2076,8 +2085,8 @@ function injectEventSchema(){
       return {
         "@type":"SportsEvent",
         "position":i+1,
-        "name":(S0?S0.name+" — ":"")+e.name,
-        "description":`${S0?S0.name:""} ${evYear(e)} in ${e.loc}, ${zeitraum}.${e.prov?" Vorläufiger Termin.":""}`
+        "name":(S0&&!e.sonder?S0.name+" — ":"")+e.name,
+        "description":`${e.sonder?e.name:(S0?S0.name:"")} ${evYear(e)} in ${e.loc}, ${zeitraum}.${e.prov?" Vorläufiger Termin.":""}`
           + (rennen?` ${rennen===1?"Rennen":rennen+" Rennen"} mit Sessionzeiten in deutscher Zeit.`:""),
         /* Bewusst OHNE Sieger: waere ein Spoiler in den Suchergebnissen,
            und die Ergebnisse werden nicht regelmaessig genug gepflegt. */
@@ -2092,7 +2101,7 @@ function injectEventSchema(){
           "name":e.loc||"",
           "address":{"@type":"PostalAddress","addressLocality":e.loc||""}
         },
-        "organizer":S0?{"@type":"Organization","name":S0.name}:undefined,
+        "organizer":e.veranstalter?{"@type":"Organization","name":e.veranstalter}:(S0?{"@type":"Organization","name":S0.name}:undefined),
         "sport":S0?S0.name:undefined
       };
     });
