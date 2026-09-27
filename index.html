@@ -183,6 +183,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ev-sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.04em;margin-top:6px;text-transform:uppercase}
 .ev-sub .ser{font-weight:600}
 .ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px}
+.ev-note{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-top:4px}
 .ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600}
 .ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
 .ev-row:hover .ev-toggle{color:var(--paper)}
@@ -435,6 +436,11 @@ const SERIES = {
         tvd:{de:"Alle Qualifyings und Rennen laufen als <b>kostenloser Livestream</b>: auf Englisch beim offiziellen YouTube-Kanal <b>GTWorld</b>, mit <b>deutschem Kommentar</b> auf der offiziellen Serienseite gt-world-challenge-europe.com.",
              at:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld), deutscher Kommentar auf der Serienseite.",
              ch:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld), deutscher Kommentar auf der Serienseite.",
+             note:"Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."}},
+  nls:{name:"Nürburgring Langstrecken-Serie", short:"NLS", color:"#d8f828", tv:"Kostenloser Stream (VLN.de / YouTube)",
+        tvd:{de:"Alle Rennen laufen als <b>kostenloser Livestream</b> mit deutschem Kommentar auf <b>VLN.de</b> und dem offiziellen <b>YouTube-Kanal der NLS</b>, dazu Onboard-Kanäle aus einzelnen Fahrzeugen.",
+             at:"Wie in Deutschland: <b>kostenloser Livestream</b> auf VLN.de und YouTube.",
+             ch:"Wie in Deutschland: <b>kostenloser Livestream</b> auf VLN.de und YouTube.",
              note:"Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."}},
 };
 function S(arr){ return arr.map(x=>({n:x[0],day:x[1],t:x[2],res:x[3]||null,partial:x[4]||false})); }
@@ -721,6 +727,27 @@ const EVENTS = [
 {s:"gtwc",rd:10,name:"Portimão · Endurance · Finale",loc:"Portimão",d0:"2026-10-16",d1:"2026-10-18",status:"up",
  sessions:S([["Freies Training 1","Fr","09:45"],["Freies Training 2","Fr","13:45"],["Qualifying","Fr","18:55"],
    ["Rennen (3 Stunden)","Sa","18:00"]])},
+
+/* ───── Nürburgring Langstrecken-Serie (10 Rennen, ein Event pro Rennen) ───── */
+{s:"nls",rd:1,name:"71. ADAC Westfalenfahrt",loc:"Nürburgring",d0:"2026-03-14",d1:"2026-03-14",status:"cancel",sessions:S([])},
+{s:"nls",rd:2,name:"58. ADAC Barbarossapreis",loc:"Nürburgring",d0:"2026-03-21",d1:"2026-03-21",status:"done",result:"BMW #99 (Harper/Pepper)",
+ sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
+{s:"nls",rd:3,name:"57. Adenauer ADAC Rundstrecken-Trophy",loc:"Nürburgring",d0:"2026-04-11",d1:"2026-04-11",status:"done",result:"BMW #77 (Wittmann/Eng/Frijns)",
+ sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
+{s:"nls",rd:4,name:"ADAC 24h Nürburgring Qualifiers · Rennen 1",loc:"Nürburgring",d0:"2026-04-18",d1:"2026-04-18",status:"done",abbruch:true,
+ sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","17:30"]])},
+{s:"nls",rd:5,name:"ADAC 24h Nürburgring Qualifiers · Rennen 2",loc:"Nürburgring",d0:"2026-04-19",d1:"2026-04-19",status:"done",result:"Audi #16 (Haase/Sims/Green)",
+ sessions:S([["Qualifying","So","08:15"],["Top-Qualifying","So","10:40"],["Rennen (4h)","So","13:00"]])},
+{s:"nls",rd:6,name:"1. ADAC Eifel Trophy",loc:"Nürburgring",d0:"2026-06-20",d1:"2026-06-20",status:"done",result:"Porsche #17 (Menzel/Müller)",
+ sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
+{s:"nls",rd:7,name:"KW 6h ADAC Ruhr-Pokal-Rennen",loc:"Nürburgring",d0:"2026-08-01",d1:"2026-08-01",status:"done",result:"Mercedes-AMG #80 (Stolz/Aron)",
+ sessions:S([["Qualifying","Sa","08:30"],["Rennen (6h)","Sa","12:00"]])},
+{s:"nls",rd:8,name:"65. ADAC Reinoldus-Langstreckenrennen",loc:"Nürburgring",d0:"2026-09-12",d1:"2026-09-12",status:"done",result:"BMW #77 (Klingmann/Pepper/de Wilde)",
+ sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
+{s:"nls",rd:9,name:"66. ADAC ACAS Cup",loc:"Nürburgring",d0:"2026-09-13",d1:"2026-09-13",status:"up",
+ sessions:S([["Qualifying","So","08:30"],["Rennen (4h)","So","12:00"]])},
+{s:"nls",rd:10,name:"2. NLS Sportwarte-Trophy · Finale",loc:"Nürburgring",d0:"2026-10-10",d1:"2026-10-10",status:"up",
+ sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
 
 /* ═══════ SAISON 2027 (vorlaeufig) + Formel E Saison 13 ═══════
    sz = Saisonkennung, damit Rundennummern nicht mit 2026 kollidieren
@@ -1028,7 +1055,8 @@ function icsEsc(t){return String(t).replace(/([\\,;])/g,"\\$1").replace(/\n/g,"\
 function sessionInstant(e,s){const d=sessionAbsDate(e,s),p=s.t.split(":").map(Number);return wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),p[0],p[1],"Europe/Berlin");}
 function sessDuration(e,s){const n=s.n;
   if(/\(24h\)/.test(n))return 1440; if(/\(8h\)/.test(n))return 480; if(/\(6h\)/.test(n))return 360;
-  if(/\(3 Stunden\)/.test(n))return 180;
+  if(/\(4h\)/.test(n))return 240; if(/\(3 Stunden\)/.test(n))return 180;
+  if(e.s==="nls"&&n==="Qualifying")return 90;
   if(/^Rennen/.test(n))return e.s==="f1"?120:(e.s==="mgp"?45:(e.s==="fe"?50:(e.s==="gtwc"?60:90)));
   if(/Power Stage/.test(n))return 30; if(/Etappe|Shakedown/.test(n))return 150;
   if(/^Sprint$/.test(n))return 45; if(/Hyperpole|Qualifying|Sprint-Quali/.test(n))return 60;
@@ -1114,6 +1142,7 @@ const CIRCUITS={
 function circuitFor(e){
   if(e.s==="wec"&&e.loc==="Le Mans")return {name:"Circuit de la Sarthe",len:13.626,turns:38};
   if(e.loc==="Le Mans")return {name:"Circuit Bugatti",len:4.185,turns:14};
+  if(e.s==="nls")return /24h/.test(e.name)?{name:"Nordschleife + Grand-Prix-Kurs (24h-Variante)",len:25.378}:{name:"Nordschleife + Grand-Prix-Kurs (Kurzanbindung)",len:24.358};
   return CIRCUITS[e.loc]||null;
 }
 function trackInfoHTML(e){
@@ -1161,6 +1190,7 @@ function countdown(e){const now=NOW(),s=startW(e),en=endW(e);
   const d=Math.ceil((s-now)/86400000);
   if(d<=7)return{cls:"soon",txt:"in "+d+" Tag"+(d===1?"":"en")};
   return{cls:"up",txt:"in "+d+" Tagen"};}
+const ABBRUCH="Rennen abgebrochen – nicht gewertet";
 function isRaceName(n){return /^Rennen|^Sprint$|^Rennen \(|^Power Stage/.test(n);}
 function actEvents(){return EVENTS.filter(e=>ACTIVE.has(e.s));}
 
@@ -1317,7 +1347,7 @@ function buildSessions(e,evId,status){
         `<div class="sess-row clk" onclick="toggleRes('${rid}')"><span class="sess-chev">▶</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>`+
         `<div class="sess-respanel">${fmtRes(res,partial)}</div></div>`;
     } else {
-      const note = (status==="done"&&isRaceName(s.n)) ? `<div class="sess-flat">Wertung noch nicht erfasst</div>` : "";
+      const note = (status==="done"&&isRaceName(s.n)) ? `<div class="sess-flat">${e.abbruch?ABBRUCH:"Wertung noch nicht erfasst"}</div>` : "";
       out+=`<div class="sess"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
     }
   });
@@ -1336,7 +1366,7 @@ function toggleEv(id){document.getElementById("ev-"+id).classList.toggle("open")
 /* ═══════ TIMELINE (Aktuell) ═══════ */
 function eventHTML(e){
   const status=st(e),cd=countdown(e),S0=SERIES[e.s],evId=evDomId(e);
-  const win=(status==="done"&&e.result)?`<div class="ev-win">${e.result}</div>`:"";
+  const win=(status==="done"&&e.result)?`<div class="ev-win">${e.result}</div>`:(status==="done"&&e.abbruch)?`<div class="ev-note">${ABBRUCH}</div>`:"";
   return `<div class="wknd ${status}"><div class="wk-top">`+
     `<div class="wk-date">${dayRange(e)}<span class="dow">${dows(e)}</span></div>`+
     `<div><div class="ev" id="ev-${evId}"><div class="ev-row" onclick="toggleEv('${evId}')">`+
@@ -1425,7 +1455,7 @@ function renderSeries(){
       n++;
       let txt=status==="done"?"Beendet":status==="next"?"Als Nächstes":status==="live"?"Live":"Geplant";
       let c=status==="done"?"done":(status==="next"||status==="live")?"next":"up";
-      const right=(status==="done"&&e.result)?`<span class="st done">${e.result}</span>`:`<span class="st ${c}">${txt}</span>`;
+      const right=(status==="done"&&e.result)?`<span class="st done">${e.result}</span>`:(status==="done"&&e.abbruch)?`<span class="st up">Abgebrochen</span>`:`<span class="st ${c}">${txt}</span>`;
       html+=`<div class="ser-round"><span class="no">${String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span>${right}</div>`;});
     html+=`</div>`;});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
@@ -1527,6 +1557,19 @@ const REGELN = {
       ["Technik", "Ausschließlich GT3-Fahrzeuge nach FIA-Reglement — dieselbe Technikbasis wie in der DTM und in der LMGT3-Klasse der WEC. Entsprechend groß ist die Markenvielfalt: Ferrari, Porsche, Mercedes-AMG, BMW, Audi, Lamborghini, Aston Martin, McLaren, Ford und Chevrolet. Eine Balance of Performance gleicht die Modelle aneinander an."],
       ["Qualifying", "Wegen der großen Felder wird in zwei Gruppen qualifiziert, damit sich die Autos weniger im Weg stehen. Im Sprint Cup gibt es vor jedem Rennen ein eigenes Qualifying. Im Endurance Cup fährt jeder der drei Fahrer einen eigenen Abschnitt, seit 2026 ebenfalls getrennt nach Silver und Bronze sowie Pro und Gold; die Startaufstellung ergibt sich aus allen drei Zeiten zusammen — die Mannschaft ist damit nur so schnell wie ihr langsamstes Glied. In Spa kämpfen die 32 Schnellsten danach in einer K.-o.-Superpole um die Pole."],
       ["Bedeutung", "Der Meister des Bronze Cups erhielt zuletzt eine Einladung für die LMGT3-Klasse der 24 Stunden von Le Mans — für Teams mit Amateurfahrern ein begehrtes Ziel. Die Serie ist damit für viele Teams das Sprungbrett in den internationalen Langstreckensport und gleichzeitig die Meisterschaft mit den größten GT3-Startfeldern in Europa."]
+    ]
+  },
+  nls: {
+    kurz: "Langstrecke auf der Nordschleife — über hundert Autos vom Serienwagen bis zum GT3 gleichzeitig.",
+    bloecke: [
+      ["Strecke", "Gefahren wird auf der Kombination aus Nordschleife und Kurzanbindung des Grand-Prix-Kurses: 24,358 Kilometer pro Runde, davon 20,8 Kilometer Nordschleife mit 73 Kurven und rund 300 Metern Höhenunterschied. Die schnellsten GT3-Autos brauchen knapp acht Minuten für eine Runde. Ein Rennen ist an einem Tag erledigt: Zeittraining von 08:30 bis 10:00 Uhr, Start um 12:00 Uhr, dann vier Stunden Rennen — beim Ruhr-Pokal-Rennen im Sommer sechs."],
+      ["Klassen", "Rund zwei Dutzend Wertungsklassen teilen sich die Strecke. An der Spitze fährt die SP9 mit GT3-Fahrzeugen, unterteilt in Pro, Pro-Am und Am. Die SP10 gehört den GT4-Autos. Dazu kommen Markenpokale wie Cup 2 für den Porsche 911 GT3 Cup, Cup 3 für den Porsche 718 Cayman GT4 und die BMW-Cups mit M240i und seit 2026 dem M2 Racing, außerdem TCR-Tourenwagen, die AT-Klassen für alternative Kraftstoffe und seriennahe Produktionswagen in den V- und VT-Klassen."],
+      ["Permit Nordschleife", "Wer hier Rennen fährt, braucht neben der normalen Rennlizenz die DMSB Permit Nordschleife, einen zusätzlichen Nachweis für genau diese Strecke. Sie ist zweistufig: Mit Stufe B beginnen Neulinge in leistungsschwächeren Autos. Erst wer auf der Nordschleife Erfahrung gesammelt hat, bekommt Stufe A, die für die schnellen Klassen wie GT3, GT4 oder den Porsche 911 GT3 Cup nötig ist. Niemand soll sein erstes Nordschleifen-Rennen gleich im schnellsten Auto bestreiten."],
+      ["Code 60", "Ein Safety Car gibt es wegen der Streckenlänge nicht. Stattdessen gelten örtliche Tempolimits: Bei doppelt geschwenkten gelben Flaggen sind höchstens 120 km/h erlaubt, in einer Code-60-Zone — etwa wenn Streckenposten auf der Fahrbahn arbeiten — höchstens 60 km/h. Überholt werden darf in beiden Fällen nicht, erst die grüne Flagge hebt die Beschränkung auf. Verstöße kosten Zeitstrafen, die schnell über Sieg und Niederlage entscheiden."],
+      ["Startgruppen", "Damit sich nicht über hundert Autos gleichzeitig in die erste Kurve drängen, wird in drei Startgruppen gestartet, die schnellsten Klassen zuerst. Jede Gruppe fährt ihre eigene Einführungsrunde, der fliegende Start folgt im Abstand weniger Minuten — noch bevor die GT3-Spitze ihre erste Runde beendet. Danach wird ständig überrundet — der dichte Verkehr ist auf der Nordschleife die eigentliche Herausforderung."],
+      ["Meisterschaft", "Der Fahrertitel wird nicht über das Gesamtergebnis vergeben, sondern über die Platzierung in der eigenen Klasse. Wie viele Punkte es gibt, hängt außerdem davon ab, wie viele Autos in der Klasse starten: Ein Klassensieg bringt bei sieben oder mehr Startern 15 Punkte im Vier-Stunden-Rennen und 19 im Sechs-Stunden-Rennen, bei nur einem Starter zwei. Deshalb führen meist Fahrer aus gut besetzten Cup- oder Serienklassen, die Rennen für Rennen gewinnen. In der dicht besetzten GT3-Klasse gelingt das kaum jemandem dauerhaft, und viele GT3-Fahrer bestreiten ohnehin nicht alle Läufe."],
+      ["Speed-Trophäe", "Wer ganz vorne fährt, bekommt eine eigene Wertung: die NLS Speed-Trophäe. Sie zählt nach dem Gesamtergebnis und wird pro Team und Fahrzeug geführt, nicht pro Fahrer. Der Gesamtsieger erhält 35 Punkte, die drei Schnellsten im Zeittraining bekommen drei, zwei und einen Bonuspunkt. Um die Spitze kämpfen die GT3-Autos der SP9, dahinter sammeln auch die Cup-Porsche Punkte."],
+      ["24h und Qualifiers", "Das 24-Stunden-Rennen im Mai ist eine eigene Veranstaltung des ADAC Nordrhein und zählt nicht zur NLS — viele Teams nutzen die NLS-Läufe aber als Vorbereitung darauf. Verbunden sind beide über die ADAC 24h Nürburgring Qualifiers im April: zwei Vier-Stunden-Rennen, die 2026 als NLS4 und NLS5 in die Meisterschaft eingehen. Gefahren wird dort wie beim 24h-Rennen auf der 25,378 Kilometer langen Variante mit Müllenbachschleife und ohne AMG-Arena, am Sonntag entscheidet zusätzlich ein Top-Qualifying über die vorderen Startplätze."]
     ]
   },
   fe: {
@@ -1798,7 +1841,42 @@ const STAND = {
              ["Vermeulen / Green","Emil Frey Racing #69",40],
              ["Benjamin Goethe","Garage 59 #58",32],
              ["Kirchhöfer / MacDonald","Garage 59 #59",31],
-             ["Thomas Preining","Lionspeed GP #80",30]] }
+             ["Thomas Preining","Lionspeed GP #80",30]] },
+
+  nls:{ stand:"nach 8 von 9 Rennen · Nürburgring, 13.09.2026 · vorläufig", quelle:"nuerburgring-langstrecken-serie.de",
+        wertung:"Gesamtwertung", klasse:"Fahrer",
+        drv:[["Bugane / Fübrich / Markert","Adrenalin Motorsport Team Mainhattan Wheels #650 · BMW M240i",94],
+             ["Fielenbach / Sandberg","Smyrlis Racing #953 · CUP3",90],
+             ["Alexandru Vasilescu","AV Racing by BLACK FALCON #177 · SP10",80],
+             ["Assenheimer / Müller / Pereira","48 LOSCH Motorsport by BLACK FALCON #48 · SP9 Pro-Am",72],
+             ["'Russ Turner'","AV Racing by BLACK FALCON #177 · SP10",70],
+             ["Benjamin Albers","Adrenalin Motorsport Team Mainhattan Wheels · BMW M240i/M2",70],
+             ["Patrik Grütter","SRS Team Sorg Rennsport #901 · CUP2",69],
+             ["Abée / Himmels","PROsport racing #176/#181 · SP10",67],
+             ["Ooms / Timis","SRS Team Sorg Rennsport #524 · VT2-RWD",64],
+             ["'Benjamin Hites' / Hardt / Koslowski","BLACK FALCON Team ZIMMERMANN #900 · CUP2",63],
+             ["Raphael Rennhofer","Team LIQUI MOLY by BLACK FALCON #902 · CUP2",63]],
+        wertung2:"Speed-Trophäe", klasse2:"Team-/Fahrzeugwertung",
+        drv2:[["Schubert Motorsport #77","BMW M4 GT3 EVO",158],
+              ["48 LOSCH Motorsport by BLACK FALCON #48","Porsche 911 GT3 R EVO",120],
+              ["Dunlop Motorsport #17","Porsche 911 GT3 R",98],
+              ["Falken Motorsports #44","Porsche 911 GT3 R",95],
+              ["Gamota Racing #23","BMW M4 GT3 EVO",86],
+              ["Mercedes-AMG Team Ravenol #80","Mercedes-AMG GT3",82],
+              ["BLACK FALCON Team EAE #5","Porsche 911 GT3 R",74],
+              ["Walkenhorst Motorsport #35","Aston Martin Vantage GT3 EVO",68],
+              ["Max Kruse Racing #75","Audi R8 LMS GT3 EVO II",55],
+              ["ROWE RACING #99","BMW M4 GT3 EVO",55],
+              ["KCMG #47","Mercedes-AMG GT3",54],
+              ["Manthey #911","Porsche 911 GT3 R",53],
+              ["Toyo Tires with Ring Racing #32","Mercedes-AMG GT3",47],
+              ["Renazzo Motorsport #786","Lamborghini Huracan GT3 EVO II",41],
+              ["Red Bull Team ABT #130","Lamborghini Huracan GT3 EVO II",40],
+              ["Mühlner Motorsport #904","Porsche 911 GT3 Cup",40],
+              ["BLACK FALCON Team ZIMMERMANN #900","Porsche 911 GT3 Cup",36],
+              ["SRS Team Sorg Rennsport #901","Porsche 911 GT3 Cup",36],
+              ["Goroyan RT by Car Collection #4","Porsche 911 GT3 R",30],
+              ["Team LIQUI MOLY by BLACK FALCON #902","Porsche 911 GT3 Cup",25]] }
 };
 function renderStandings(){
   const host=document.getElementById("view-standings");
@@ -1816,9 +1894,10 @@ function renderStandings(){
     }
     any=true;
     /* Eine Tabelle je Klasse: drv (+ optional klasse), drv2 (+ klasse2) - z. B. WEC Hypercar & LMGT3.
+       wertung/wertung2 ersetzen "Fahrerwertung" in der Unterüberschrift (z. B. Team-/Fahrzeugwertung).
        Sortiert nach Punkten; bei Gleichstand gilt die Reihenfolge aus der Datei. */
-    const tabelle=(liste,klasse)=>{
-      let t=`<div class="std-sub">Fahrerwertung${klasse?` · ${klasse}`:""}</div>`;
+    const tabelle=(liste,klasse,wertung)=>{
+      let t=`<div class="std-sub">${wertung||"Fahrerwertung"}${klasse?` · ${klasse}`:""}</div>`;
       [...liste].sort((a,b)=>b[2]-a[2]).forEach(([nm,tm,pts],i)=>{
         t+=`<div class="std-row ${i===0?'lead':''}"><span class="sp">${i+1}</span>`+
           `<span class="std-nm">${nm}${tm?`<span class="tm">${tm}</span>`:''}</span>`+
@@ -1827,8 +1906,8 @@ function renderStandings(){
       return t;
     };
     html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
-      `<div class="std-tag">Stand ${D.stand}</div>`+ tabelle(D.drv,D.klasse) +
-      (D.drv2&&D.drv2.length? `<div class="std-gap"></div>`+tabelle(D.drv2,D.klasse2) : "");
+      `<div class="std-tag">Stand ${D.stand}</div>`+ tabelle(D.drv,D.klasse,D.wertung) +
+      (D.drv2&&D.drv2.length? `<div class="std-gap"></div>`+tabelle(D.drv2,D.klasse2,D.wertung2) : "");
     html+=`</div>`;
   });
   if(!any && !html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
