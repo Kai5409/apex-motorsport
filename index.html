@@ -292,7 +292,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ser-block{padding:34px 0 6px;border-bottom:1px solid var(--rule)}
 .ser-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(40px,9vw,76px);line-height:.9;text-transform:uppercase}
 .ser-meta{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.08em;margin:10px 0 18px;text-transform:uppercase}
-.ser-round{display:grid;grid-template-columns:40px 78px 1fr auto;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
+.ser-round{display:grid;grid-template-columns:40px 78px 1fr auto 14px;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
 .ser-round.cancel{opacity:.4}
 .ser-round .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint)}
 .ser-round .dt{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
@@ -300,6 +300,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ser-round .rn .loc{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);font-weight:400;margin-top:2px;letter-spacing:.04em;text-transform:uppercase}
 .ser-round .st{font-family:"IBM Plex Mono",monospace;font-size:10px;text-align:right;text-transform:uppercase;letter-spacing:.05em}
 .ser-round .st.done{color:var(--gold)} .ser-round .st.up{color:var(--faint)} .ser-round .st.next{color:var(--red)} .ser-round .st.cancel{color:var(--faint)}
+/* Gefahrene Runden klappen das Ergebnis auf (wie in der Zeitleiste) */
+.ser-round .sch{font-size:10px;color:var(--faint);text-align:center;transition:transform .2s,color .15s}
+.ser-round.clk{cursor:pointer}
+.ser-round.clk:hover .rn,.ser-round.clk:focus-visible .rn{color:#fff}
+.ser-round.clk:hover .sch{color:var(--paper)}
+.ser-round.offen .sch{transform:rotate(90deg);color:var(--red)}
+.ser-erg{padding:0 0 14px 54px}
+.ser-erg-h{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:12px 0 4px}
+.ser-erg-h:first-child{padding-top:2px}
 
 /* Jahr */
 .cal-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:8px 0 14px;letter-spacing:.04em}
@@ -399,7 +408,8 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .sess-date{display:none}
   .sess-row .calico{display:none}
   .month-head{font-size:42px}
-  .ser-round{grid-template-columns:30px 1fr auto;gap:10px} .ser-round .dt{display:none}
+  .ser-round{grid-template-columns:30px 1fr auto 12px;gap:10px} .ser-round .dt{display:none}
+  .ser-erg{padding-left:0}
   .chip .cn-l{display:none} .chip .cn-s{display:inline}
   .grp-n-l{display:none} .grp-n-s{display:inline}
   .filterbar{gap:6px} .filterbar .fl-lab{margin-right:0} .chip{padding:5px 9px 5px 8px;gap:6px}
@@ -1308,6 +1318,27 @@ function aboHTML(datei,text){
   return `<div class="abo"><a class="abo-a" href="${esc(url.replace(/^https?:/,"webcal:"))}">＋ ${esc(text)}</a>`+
     `<button class="abo-k" onclick="kopieren('${esc(url)}')">Link kopieren</button></div>`;
 }
+/* Ergebnis einer gefahrenen Runde im Serien-Tab: alle Listen des Events (bei mehreren mit Überschrift).
+   Geladen wird wie in der Zeitleiste erst beim Aufklappen. */
+const SER_OFFEN=new Set();   /* aufgeklappte Runden (Event-Link-ID), bleiben beim Neuzeichnen offen */
+function serPanel(e){
+  const erg=ergStand(e);
+  if(erg.listen.length)return erg.listen.map(l=>(erg.listen.length>1?`<div class="ser-erg-h">${esc(e.s==="wrc"&&l.n==="Gesamtwertung"?"Gesamtwertung (Rallye)":l.n)}</div>`:"")+fmtListe(l)).join("");
+  return ergPanel(e,"",erg,e.resOverall||null,!e.resOverall);
+}
+function serErgebnis(sk,rd,sz){
+  const e=findEv(sk,rd,sz); if(!e)return;
+  const k=ergKey(e), id=evDomId(e);
+  if(SER_OFFEN.has(k))SER_OFFEN.delete(k); else SER_OFFEN.add(k);
+  const auf=SER_OFFEN.has(k), row=document.getElementById("sr-"+id), box=document.getElementById("se-"+id);
+  if(row){row.classList.toggle("offen",auf);row.setAttribute("aria-expanded",String(auf));}
+  if(!box)return;
+  box.hidden=!auf;
+  if(!auf)return;
+  if(["offen","fehlt"].includes(ergStand(e).zustand))
+    ladeErgebnisse(e).then(()=>{const b=document.getElementById("se-"+id);if(b&&SER_OFFEN.has(k))b.innerHTML=serPanel(e);});
+  box.innerHTML=serPanel(e);
+}
 function renderSeries(){
   const host=document.getElementById("view-series"); if(!host)return;let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
   if(Object.keys(SERIES).length)html+=`<div class="abo-box"><p><b>Kalender-Abo</b> · Alle Sessions in deutscher Zeit direkt im eigenen Kalender – aktualisiert sich selbst. Für alle Serien oder unten je Serie.</p>${aboHTML("apex-2026.ics","Alle Serien abonnieren")}</div>`;
@@ -1324,13 +1355,17 @@ function renderSeries(){
     let n=0;
     evs.forEach(e=>{const status=st(e);
       if(status==="cancel"){
-        html+=`<div class="ser-round cancel"><span class="no">—</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span><span class="st cancel">Abgesagt</span></div>`;
+        html+=`<div class="ser-round cancel"><span class="no">—</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span><span class="st cancel">Abgesagt</span><span></span></div>`;
         return;}
       n++;
       let txt=status==="done"?"Beendet":status==="next"?"Als Nächstes":status==="live"?"Live":"Geplant";
       let c=status==="done"?"done":(status==="next"||status==="live")?"next":"up";
       const right=(status==="done"&&(e.result||e.abbruch))?siegerSerie(e):`<span class="st ${c}">${txt}</span>`;
-      html+=`<div class="ser-round"><span class="no">${e.sonder||String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}${e.sonder?` · ${sonderText(e)}`:""}</span></span>${right}</div>`;});
+      /* Runden mit Sieger klappen ihr Ergebnis auf */
+      const erg=status==="done"&&!!e.result, id=evDomId(e), auf=erg&&SER_OFFEN.has(ergKey(e));
+      const klick=erg?` id="sr-${id}" role="button" tabindex="0" aria-expanded="${auf}" aria-controls="se-${id}" onclick="serErgebnis('${e.s}','${e.rd}','${e.sz||""}')" onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();serErgebnis('${e.s}','${e.rd}','${e.sz||""}');}"`:"";
+      html+=`<div class="ser-round${erg?" clk":""}${auf?" offen":""}"${klick}><span class="no">${e.sonder||String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}${e.sonder?` · ${sonderText(e)}`:""}</span></span>${right}<span class="sch">${erg?"▶":""}</span></div>`;
+      if(erg)html+=`<div class="ser-erg" id="se-${id}"${auf?"":" hidden"}>${auf?serPanel(e):""}</div>`;});
     html+=`</div>`;});});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
   host.innerHTML=html;
