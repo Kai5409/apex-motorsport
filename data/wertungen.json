@@ -411,7 +411,69 @@
         ["Axel Bassani", "bimota by Kawasaki Racing Team", 184],
         ["Garrett Gerloff", "Kawasaki WorldSBK Team", 145],
         ["Alberto Surra", "Motocorsa Racing", 140],
-        ["Álvaro Bautista", "Barni Spark Racing Team", 125]
+        ["Álvaro Bautista", "Barni Spark Racing Team", 125],
+        ["Andrea Locatelli", "Pata Maxus Yamaha", 118],
+        ["Miguel Oliveira", "ROKiT BMW Motorrad WorldSBK Team", 109],
+        ["Xavi Vierge", "Pata Maxus Yamaha", 95],
+        ["Tarran Mackenzie", "MGM Optical Express Racing", 81],
+        ["Tommy Bridewell", "Superbike Advocates", 66],
+        ["Danilo Petrucci", "ROKiT BMW Motorrad WorldSBK Team", 61],
+        ["Remy Gardner", "GYTR GRT Yamaha WorldSBK Team", 57],
+        ["Stefano Manzi", "GYTR GRT Yamaha WorldSBK Team", 44],
+        ["Jake Dixon", "Honda HRC", 23],
+        ["Michael van der Mark", "ROKiT BMW Motorrad WorldSBK Team", 23]
+      ]
+    },
+    "moto2": {
+      "stand": "nach 15 von 22 Grands Prix · Red Bull Ring, 20.09.2026",
+      "quelle": "motogp.com",
+      "drv": [
+        ["Manuel González", "LIQUI MOLY Dynavolt Intact GP", 245.5],
+        ["Izan Guevara", "BLU CRU Pramac Yamaha Moto2", 210],
+        ["Iván Ortolá", "QJMOTOR - Campolor - MSI", 168.5],
+        ["David Alonso", "CFMOTO Inde Team", 155],
+        ["Senna Agius", "LIQUI MOLY Dynavolt Intact GP", 149],
+        ["Daniel Holgado", "CFMOTO Inde Team", 146],
+        ["Filip Salač", "OnlyFans American Racing Team", 128],
+        ["Celestino Vietti", "BETA Tools SpeedRS Team", 123],
+        ["Alonso López", "ITALJET Gresini Moto2", 110.5],
+        ["Collin Veijer", "Red Bull KTM Ajo", 75.5],
+        ["Daniel Muñoz", "Italtrans Racing Team", 68],
+        ["Álex Escrig", "KLINT Racing Team", 63],
+        ["Barry Baltus", "REDS Fantic Racing", 60],
+        ["Tony Arbolino", "REDS Fantic Racing", 55.5],
+        ["Joe Roberts", "OnlyFans American Racing Team", 44],
+        ["Deniz Öncü", "ELF Marc VDS Racing Team", 38.5],
+        ["Adrián Huertas", "Italtrans Racing Team", 37],
+        ["José Antonio Rueda", "Red Bull KTM Ajo", 31],
+        ["Luca Lunetta", "BETA Tools SpeedRS Team", 23],
+        ["Ayumu Sasaki", "Momoven Idrofoglia RW Racing Team", 19]
+      ]
+    },
+    "moto3": {
+      "stand": "nach 15 von 22 Grands Prix · Red Bull Ring, 20.09.2026",
+      "quelle": "motogp.com",
+      "drv": [
+        ["Máximo Quiles", "CFMOTO Gaviota Aspar Team", 306],
+        ["Álvaro Carpe", "Red Bull KTM Ajo", 175],
+        ["David Almansa", "Liqui Moly Dynavolt Intact GP", 174],
+        ["Brian Uriarte", "Red Bull KTM Ajo", 174],
+        ["Marco Morelli", "CFMOTO Gaviota Aspar Team", 146],
+        ["Valentín Perrone", "Red Bull KTM Tech3", 118],
+        ["Hakim Danish", "AEON Credit - MT Helmets - MSI", 101],
+        ["Veda Pratama", "Honda Team Asia", 100],
+        ["Matteo Bertelle", "LEVEL UP - MTA", 86],
+        ["Adrián Cruces", "CIP Green Power", 73],
+        ["Guido Pini", "Leopard Racing", 70],
+        ["Rico Salmela", "Red Bull KTM Tech3", 70],
+        ["Casey O'Gorman", "SIC58 Squadra Corse", 69],
+        ["Joel Kelso", "GRYD Racing", 67],
+        ["Eddie O'Shea", "GRYD Racing", 65],
+        ["Adrián Fernández", "Leopard Racing", 59],
+        ["Joel Esteban", "LEVEL UP - MTA", 59],
+        ["David Muñoz", "Liqui Moly Dynavolt Intact GP", 52],
+        ["Jesús Ríos", "Rivacold Snipers Team", 49],
+        ["Ryusei Yamanaka", "AEON Credit - MT Helmets - MSI", 31]
       ]
     }
   }
