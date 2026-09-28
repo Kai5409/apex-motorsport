@@ -319,6 +319,32 @@
         ["Romain Grosjean", "Dale Coyne Racing", 259],
         ["Nolan Siegel", "Arrow McLaren", 259]
       ]
+    },
+    "f2": {
+      "stand": "nach 12 von 14 Wochenenden · Baku, 26.09.2026",
+      "quelle": "fiaformula2.com",
+      "drv": [
+        ["Rafael Câmara", "Invicta Racing", 207],
+        ["Nikola Tsolov", "Campos Racing", 200],
+        ["Alex Dunne", "Rodin Motorsport", 189],
+        ["Gabriele Minì", "MP Motorsport", 163],
+        ["Dino Beganovic", "DAMS Lucas Oil", 137],
+        ["Noel León", "Campos Racing", 133],
+        ["Martinius Stenshorne", "Rodin Motorsport", 107],
+        ["Joshua Dürksen", "Invicta Racing", 90],
+        ["Kush Maini", "ART Grand Prix", 90],
+        ["Laurens van Hoepen", "Trident", 90],
+        ["Tasanapol Inthraphuvasak", "ART Grand Prix", 71],
+        ["Ritomo Miyata", "Hitech", 70],
+        ["Rafael Villagómez", "Van Amersfoort Racing", 42],
+        ["John Bennett", "Trident", 38],
+        ["Oliver Goethe", "MP Motorsport", 37],
+        ["Roman Bilinski", "DAMS Lucas Oil", 36],
+        ["Sebastián Montoya", "Prema Racing", 30],
+        ["Emerson Fittipaldi Jr.", "AIX Racing", 28],
+        ["Colton Herta", "Hitech", 26],
+        ["Mari Boya", "Prema Racing", 21]
+      ]
     }
   }
 }

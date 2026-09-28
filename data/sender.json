@@ -76,6 +76,15 @@
         "ch": "Wie in Deutschland: <b>Sky Sport</b>, <b>Motorvision+</b> und der offizielle Stream <b>INDYCAR LIVE</b>.",
         "note": "Alle Angebote sind kostenpflichtig, eine Übertragung im Free-TV gibt es nicht. Geprüft am 28.09.2026."
       }
+    },
+    "f2": {
+      "tv": "Sky · ServusTV/ORF (AT)",
+      "tvd": {
+        "de": "<b>Sky Deutschland</b> zeigt die Formel 2 live auf Sky Sport F1, auch bei <b>WOW</b>.",
+        "at": "<b>ServusTV</b> und <b>ORF</b> übertragen die Rennen, meist im Stream (ServusTV On, ORF ON), teils auf ORF SPORT+.",
+        "ch": "Die Serie nennt für die Schweiz keinen eigenen Sender.",
+        "note": "Die Formel 2 ist auch bei F1 TV Pro enthalten — in DACH sind dort aber keine neuen Abos möglich. Geprüft am 28.09.2026."
+      }
     }
   }
 }
