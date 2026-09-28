@@ -478,7 +478,7 @@ const F1R={
    session.res: [{p,who,team,gap}]  partial=Liste unvollständig (siehe Hinweis) */
 const EVENTS = [
 
-/* ───── FORMEL 1 (22 Runden – Bahrain & Saudi abgesagt) ───── */
+/* ───── FORMEL 1 (23 Runden – Bahrain nach Sepang verlegt, Saudi abgesagt) ───── */
 {s:"f1",rd:1,name:"Großer Preis von Australien",loc:"Melbourne",d0:"2026-03-06",d1:"2026-03-08",status:"done",result:"George Russell (Mercedes)",
  sessions:S([["FP1","Fr","02:30"],["FP2","Fr","06:00"],["FP3","Sa","02:30"],
    ["Qualifying","Sa","06:00",F1R.r1q],["Rennen","So","05:00",F1R.r1r]])},
@@ -520,19 +520,21 @@ const EVENTS = [
  /* Rennen ausnahmsweise am SAMSTAG: 27.09. ist in Aserbaidschan nationaler Gedenktag.
     Gesamter Zeitplan um einen Tag vorgezogen (Do/Fr/Sa). */
  sessions:S([["FP1","Do","10:30"],["FP2","Do","14:00"],["FP3","Fr","10:30"],["Qualifying","Fr","14:00"],["Rennen","Sa","13:00"]])},
-{s:"f1",rd:16,name:"Großer Preis von Singapur · Sprint",loc:"Singapur",d0:"2026-10-09",d1:"2026-10-11",status:"up",
+{s:"f1",rd:16,name:"Großer Preis von Bahrain",loc:"Sepang",d0:"2026-10-02",d1:"2026-10-04",status:"up",
+ sessions:S([["FP1","Fr","06:30"],["FP2","Fr","10:00"],["FP3","Sa","06:30"],["Qualifying","Sa","10:00"],["Rennen","So","09:00"]])},
+{s:"f1",rd:17,name:"Großer Preis von Singapur · Sprint",loc:"Singapur",d0:"2026-10-09",d1:"2026-10-11",status:"up",
  sessions:S([["FP1","Fr","11:30"],["Sprint-Quali","Fr","15:00"],["Sprint","Sa","11:30"],["Qualifying","Sa","15:00"],["Rennen","So","14:00"]])},
-{s:"f1",rd:17,name:"Großer Preis der USA",loc:"Austin",d0:"2026-10-23",d1:"2026-10-25",status:"up",
+{s:"f1",rd:18,name:"Großer Preis der USA",loc:"Austin",d0:"2026-10-23",d1:"2026-10-25",status:"up",
  sessions:S([["FP1","Fr","19:30"],["FP2","Fr","23:00"],["FP3","Sa","19:30"],["Qualifying","Sa","23:00"],["Rennen","So","21:00"]])},
-{s:"f1",rd:18,name:"Großer Preis von Mexiko",loc:"Mexiko-Stadt",d0:"2026-10-30",d1:"2026-11-01",status:"up",
+{s:"f1",rd:19,name:"Großer Preis von Mexiko",loc:"Mexiko-Stadt",d0:"2026-10-30",d1:"2026-11-01",status:"up",
  sessions:S([["FP1","Fr","20:30"],["FP2","Sa","00:00"],["FP3","Sa","19:30"],["Qualifying","Sa","23:00"],["Rennen","So","21:00"]])},
-{s:"f1",rd:19,name:"Großer Preis von São Paulo",loc:"Interlagos",d0:"2026-11-06",d1:"2026-11-08",status:"up",
+{s:"f1",rd:20,name:"Großer Preis von São Paulo",loc:"Interlagos",d0:"2026-11-06",d1:"2026-11-08",status:"up",
  sessions:S([["FP1","Fr","15:30"],["FP2","Fr","19:00"],["FP3","Sa","15:30"],["Qualifying","Sa","19:00"],["Rennen","So","18:00"]])},
-{s:"f1",rd:20,name:"Großer Preis von Las Vegas",loc:"Las Vegas",d0:"2026-11-20",d1:"2026-11-22",status:"up",
+{s:"f1",rd:21,name:"Großer Preis von Las Vegas",loc:"Las Vegas",d0:"2026-11-20",d1:"2026-11-22",status:"up",
  sessions:S([["FP1","Fr","05:30"],["FP2","Fr","09:00"],["FP3","Sa","05:30"],["Qualifying","Sa","09:00"],["Rennen","So","07:00"]])},
-{s:"f1",rd:21,name:"Großer Preis von Katar",loc:"Lusail",d0:"2026-11-27",d1:"2026-11-29",status:"up",
+{s:"f1",rd:22,name:"Großer Preis von Katar",loc:"Lusail",d0:"2026-11-27",d1:"2026-11-29",status:"up",
  sessions:S([["FP1","Fr","14:30"],["FP2","Fr","18:00"],["FP3","Sa","14:30"],["Qualifying","Sa","18:00"],["Rennen","So","17:00"]])},
-{s:"f1",rd:22,name:"Großer Preis von Abu Dhabi",loc:"Yas Marina",d0:"2026-12-04",d1:"2026-12-06",status:"up",
+{s:"f1",rd:23,name:"Großer Preis von Abu Dhabi",loc:"Yas Marina",d0:"2026-12-04",d1:"2026-12-06",status:"up",
  sessions:S([["FP1","Fr","10:30"],["FP2","Fr","14:00"],["FP3","Sa","11:30"],["Qualifying","Sa","15:00"],["Rennen","So","14:00"]])},
 /* abgesagt */
 {s:"f1",rd:0,name:"Großer Preis von Bahrain",loc:"Sakhir",d0:"2026-04-10",d1:"2026-04-12",status:"cancel",sessions:S([])},
@@ -1725,7 +1727,7 @@ function standings(sk){
 const STAND = {
   /* Quelle: motorsport-total.com, abgerufen 30.07.2026. Handgepflegt — bei
      jedem neuen Rennen aktualisieren (Zahlen + "stand"-Text anpassen). */
-  f1: { stand:"nach 14 von 22 Rennen · Madrid, 13.09.2026", quelle:"motorsport-total.com",
+  f1: { stand:"nach 14 von 23 Rennen · Madrid, 13.09.2026", quelle:"motorsport-total.com",
         drv:[["Kimi Antonelli","Mercedes",292],["Lewis Hamilton","Ferrari",191],
              ["George Russell","Mercedes",211],["Charles Leclerc","Ferrari",167],
              ["Lando Norris","McLaren",186],["Max Verstappen","Red Bull",145],
