@@ -1102,7 +1102,7 @@ function fmtRes(arr,partial){
 }
 /* ═══════ ERGEBNISLISTEN ═══════
    Je Serie und Saisondatei eine Datei data/ergebnisse/<serie>-<jahr>.json (z. B. f1-2026.json):
-   { "f1-1": [ {n:"Rennen", quelle, gekuerzt, zeilen:[[Platz,"Fahrer","Team/Fahrzeug","Klasse"?], …]}, … ], … }
+   { "f1-1": [ {n:"Rennen", quelle, gekuerzt, unvollstaendig, zeilen:[[Platz,"Fahrer","Team/Fahrzeug","Klasse"?], …]}, … ], … }
    Schlüssel = Serie-Runde(-Saisonkennung) wie im Event-Link, n = Name der Session (sonst eigene Zeile).
    Geladen wird erst, wenn ein Ergebnis aufgeklappt wird. Fehlt die Datei oder ist sie kaputt,
    zeigt nur das aufgeklappte Ergebnis einen Hinweis (und den Sieger, falls bekannt). */
@@ -1132,6 +1132,7 @@ function ergStand(e){const o=ERG[ergDatei(e)];return {zustand:o?o.zustand:"offen
 function fmtListe(l){
   let h=l.zeilen.map(z=>`<div class="res-row ${z[0]===1?'p1':''}"><span class="res-p">${z[0]}</span><span class="res-w">${esc(z[1])}${z[2]?` <span class="rt">${esc(z[2])}</span>`:''}</span><span class="res-g">${z[3]?esc(z[3]):''}</span></div>`).join("");
   if(l.gekuerzt)h+=`<div class="res-note">Gezeigt sind die ersten ${l.zeilen.length} Plätze</div>`;
+  else if(l.unvollstaendig)h+=`<div class="res-note">Weitere Plätze werden ergänzt</div>`;
   if(l.quelle)h+=`<div class="res-note">Quelle: ${esc(l.quelle)}</div>`;
   return h;
 }
