@@ -1,10 +1,18 @@
 {
-  "f1": {"name": "Formel 1", "short": "F1", "color": "#ff3000"},
-  "mgp": {"name": "MotoGP", "short": "MotoGP", "color": "#e0354b"},
-  "wec": {"name": "WEC", "short": "WEC", "color": "#3a86ff"},
-  "dtm": {"name": "DTM", "short": "DTM", "color": "#f08a24"},
-  "wrc": {"name": "WRC", "short": "WRC", "color": "#37b24d"},
-  "fe": {"name": "Formel E", "short": "F·E", "color": "#19c7c0"},
-  "gtwc": {"name": "GT World Challenge Europe", "short": "GTWC", "color": "#a77bf3"},
-  "nls": {"name": "Nürburgring Langstrecken-Serie", "short": "NLS", "color": "#d8f828"}
+  "gruppen": {
+    "formel": {"name": "Formel", "short": "Formel", "farben": ["#ff3000", "#fe958e", "#ff782b", "#fe6277", "#ffc0ab", "#d16458"]},
+    "motorrad": {"name": "Motorrad", "short": "Motorrad", "farben": ["#e172db", "#ad88fe", "#f3abec", "#b95cdc", "#d950aa", "#d18fbe"]},
+    "sportwagen": {"name": "Sportwagen & GT", "short": "Sportwagen", "farben": ["#3a86ff", "#03c4c6", "#6de5f7", "#98bafe", "#03a6c6", "#33b4fe"]},
+    "rallye": {"name": "Rallye", "short": "Rallye", "farben": ["#37b24d", "#a1e848", "#5be8ac", "#9fcd85", "#99be03", "#2fd281"]}
+  },
+  "serien": {
+    "f1": {"name": "Formel 1", "short": "F1", "gruppe": "formel", "color": "#ff3000"},
+    "fe": {"name": "Formel E", "short": "F·E", "gruppe": "formel", "color": "#fe958e"},
+    "mgp": {"name": "MotoGP", "short": "MotoGP", "gruppe": "motorrad", "color": "#e172db"},
+    "wec": {"name": "WEC", "short": "WEC", "gruppe": "sportwagen", "color": "#3a86ff"},
+    "gtwc": {"name": "GT World Challenge Europe", "short": "GTWC", "gruppe": "sportwagen", "color": "#03c4c6"},
+    "dtm": {"name": "DTM", "short": "DTM", "gruppe": "sportwagen", "color": "#6de5f7"},
+    "nls": {"name": "Nürburgring Langstrecken-Serie", "short": "NLS", "gruppe": "sportwagen", "color": "#98bafe"},
+    "wrc": {"name": "WRC", "short": "WRC", "gruppe": "rallye", "color": "#37b24d"}
+  }
 }
