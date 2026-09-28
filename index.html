@@ -263,6 +263,31 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .res-note{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);padding:7px 0 2px;letter-spacing:.04em}
 .sess-flat{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);padding:6px 0 0 30px;letter-spacing:.03em}
 
+/* Spoilerschutz: Schalter in der Tab-Zeile, verdeckte Sieger und Wertungen */
+.spoiler{margin-left:auto;display:inline-flex;align-items:center;gap:8px;padding:0 0 12px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;transition:color .15s}
+.spoiler:hover{color:var(--paper)}
+.spoiler svg{width:17px;height:17px;flex-shrink:0}
+.spoiler .sp-zu{display:none}
+.spoiler.an{color:var(--gold)} .spoiler.an .sp-auf{display:none} .spoiler.an .sp-zu{display:inline}
+.sp-sw{position:relative;width:24px;height:13px;border-radius:999px;border:1px solid currentColor;flex-shrink:0}
+.sp-sw::after{content:"";position:absolute;top:2px;left:2px;width:7px;height:7px;border-radius:50%;background:currentColor;transition:transform .15s}
+.spoiler.an .sp-sw::after{transform:translateX(11px)}
+.aufdecken{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:12px;padding:3px 9px;margin-top:5px;text-align:left;transition:border-color .15s,background .15s}
+.aufdecken:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
+.ser-round .aufdecken,.std-block .aufdecken{margin-top:0}
+.std-block .aufdecken{margin:12px 0 10px}
+
+/* Kalender-Abos im Serien-Tab */
+.abo{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:-8px 0 16px}
+.abo-a{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:999px;padding:6px 12px;text-decoration:none;transition:border-color .15s,background .15s}
+.abo-a:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
+.abo-k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.abo-k:hover{color:var(--paper)}
+.abo-box{margin:26px 0 0;padding:14px 14px 2px;border:1px solid var(--rule-strong);border-radius:6px}
+.abo-box p{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.03em;line-height:1.7;margin:0 0 14px}
+.abo-box p b{color:var(--paper);font-weight:500}
+.abo-box .abo{margin:0 0 12px}
+
 /* Serien */
 .ser-block{padding:34px 0 6px;border-bottom:1px solid var(--rule)}
 .ser-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(40px,9vw,76px);line-height:.9;text-transform:uppercase}
@@ -386,10 +411,12 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .rl-x{font-size:13px}
   .tv-c{display:block;min-width:0;margin-bottom:2px}
   .tv-note{padding-left:0}
+  .spoiler .sp-l,.spoiler .sp-sw{display:none}
 }
 /* Sehr schmal (320 px): Tabs und Gruppen etwas kleiner, damit alles in je eine Zeile passt */
 @media(max-width:359px){
-  .nav{gap:12px} .tab{font-size:12px}
+  .nav{gap:10px} .tab{font-size:12px;white-space:nowrap}
+  .spoiler svg{width:15px;height:15px}
   .grp-an{font-size:10px;padding-left:5px} .grp-pfeil{width:17px}
 }
 
@@ -431,6 +458,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
     <button class="tab" data-v="standings" onclick="setView('standings')">Wertung</button>
     <button class="tab" data-v="tv" onclick="setView('tv')">Wo schauen?</button>
     <button class="tab" data-v="rules" onclick="setView('rules')">Regeln</button>
+    <button class="spoiler" id="spoiler" role="switch" aria-checked="false" aria-label="Ergebnisse verbergen" title="Ergebnisse verbergen" onclick="spoilerUmschalten()"><svg class="sp-auf" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><svg class="sp-zu" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 8.2C3 10 2 12 2 12s3.6 6.5 10 6.5c1.9 0 3.5-.6 4.9-1.4M9.6 5.8c.8-.2 1.6-.3 2.4-.3 6.4 0 10 6.5 10 6.5s-.9 1.6-2.5 3.3M3 3l18 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sp-l">Ergebnisse verbergen</span><span class="sp-sw" aria-hidden="true"></span></button>
   </nav>
   <div class="filterbar" id="filterbar"></div>
   </div>
@@ -459,14 +487,15 @@ APEX · Saisons 2026 &amp; 2027 · Acht Serien · Stand 25. September 2026<br>
       und aufgerufene Datei an GitHub. Diese Verarbeitung ist für die Auslieferung der Seite
       erforderlich und erfolgt auf Grundlage eines berechtigten Interesses an einem sicheren und
       funktionsfähigen Angebot (Art. 6 Abs. 1 lit. f DSGVO). Auf Umfang und Speicherdauer dieser
-      Server-Protokolle besteht kein Einfluss.</p>
+      Server-Protokolle besteht kein Einfluss. Abonnieren Sie einen Kalender, ruft Ihre Kalender-App die
+      Abo-Datei regelmäßig auf dieselbe Weise von GitHub ab.</p>
 
       <h4>Schriftarten</h4>
       <p>Alle Schriftarten werden direkt von dieser Seite ausgeliefert. Es erfolgt kein Abruf von
       Google Fonts oder anderen externen Anbietern; dabei werden keine Daten an Dritte übertragen.</p>
 
       <h4>Speicherung auf Ihrem Gerät</h4>
-      <p>Ihre Serienauswahl im Filter sowie Favoriten und Erinnerungseinstellungen werden ausschließlich
+      <p>Ihre Serienauswahl im Filter, die Einstellung „Ergebnisse verbergen“ sowie Favoriten und Erinnerungseinstellungen werden ausschließlich
       lokal in Ihrem Browser gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
       die Einstellungen Ihres Browsers löschen. Wenn Sie Benachrichtigungen für Sessions aktivieren,
       geschieht dies ebenfalls nur auf Ihrem Gerät.</p>
@@ -542,7 +571,8 @@ function pruefeEvent(e,n){
       sessions.push({n:s.n,day:s.day,t:s.t,res:s.res||null,partial:s.partial||false});
     else DATEN_LUECKE.add(n);
   });
-  return Object.assign({},e,{sessions});
+  /* _jahr: Saisondatei, aus der das Event stammt – die Ergebnislisten liegen in der gleichnamigen Datei */
+  return Object.assign({},e,{sessions,_jahr:n.slice(8)});
 }
 function uebernehmeDaten(d){
   const teil=(n,f)=>{ if(d[n]==null)return; try{ if(f(d[n])===false)DATEN_FEHLT.add(n); }catch(err){DATEN_FEHLT.add(n);} };
@@ -614,6 +644,37 @@ function esc(str){ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&
 /* ═══════ STATE ═══════ */
 const ACTIVE = new Set();   /* wird nach dem Laden der Daten mit allen Serien gefuellt */
 let OPEN_RES = null;
+
+/* ═══════ SPOILERSCHUTZ ═══════
+   „Ergebnisse verbergen“: Sieger (Karten, Serien-Tab) und Wertungen erscheinen erst auf Tippen,
+   Ergebnislisten ohnehin nur aufgeklappt. Die Einstellung liegt nur lokal im Browser. */
+const SPOILER_SPEICHER="apex_spoiler";
+let SPOILER=false;
+const AUFGEDECKT=new Set();   /* in dieser Sitzung aufgedeckt: Event-Link-ID („f1-1“) bzw. „wertung-f1“ */
+function spoilerLaden(){try{SPOILER=localStorage.getItem(SPOILER_SPEICHER)==="1";}catch(err){SPOILER=false;}}
+function renderSpoiler(){
+  const b=document.getElementById("spoiler"); if(!b)return;
+  b.setAttribute("aria-checked",String(SPOILER)); b.classList.toggle("an",SPOILER);
+}
+function spoilerUmschalten(){
+  SPOILER=!SPOILER; AUFGEDECKT.clear();
+  try{localStorage.setItem(SPOILER_SPEICHER,SPOILER?"1":"0");}catch(err){}
+  renderSpoiler();
+  const a=ankerMerken(); rerender(); ankerHalten(a);
+  kurzerHinweis(SPOILER?"Ergebnisse verborgen":"Ergebnisse sichtbar");
+}
+function verborgen(key){return SPOILER&&!AUFGEDECKT.has(key);}
+/* Sieger eines Events aufdecken: nur die angetippte Stelle ändert sich, aufgeklappte Events bleiben offen */
+function aufdecken(btn,sk,rd,sz,art){
+  const e=findEv(sk,rd,sz); if(!e)return;
+  AUFGEDECKT.add(ergKey(e));
+  if(btn&&btn.parentNode)btn.outerHTML=art==="serie"?siegerSerie(e):siegerKarte(e);
+  if(art!=="serie")ergNeuZeichnen(e,null);
+}
+function aufdeckenWertung(sk){AUFGEDECKT.add("wertung-"+sk);renderStandings();}
+function aufdeckenKnopf(e,art){
+  return `<button class="aufdecken" onclick="event.stopPropagation();aufdecken(this,'${e.s}','${e.rd}','${e.sz||""}','${art}')">Ergebnis anzeigen</button>`;
+}
 
 /* ═══════ HELFER ═══════ */
 const NOW = ()=> new Date();
@@ -1039,6 +1100,57 @@ function fmtRes(arr,partial){
   if(partial)h+=`<div class="res-note">Weitere Positionen werden ergänzt</div>`;
   return h;
 }
+/* ═══════ ERGEBNISLISTEN ═══════
+   Je Serie und Saisondatei eine Datei data/ergebnisse/<serie>-<jahr>.json (z. B. f1-2026.json):
+   { "f1-1": [ {n:"Rennen", quelle, gekuerzt, zeilen:[[Platz,"Fahrer","Team/Fahrzeug","Klasse"?], …]}, … ], … }
+   Schlüssel = Serie-Runde(-Saisonkennung) wie im Event-Link, n = Name der Session (sonst eigene Zeile).
+   Geladen wird erst, wenn ein Ergebnis aufgeklappt wird. Fehlt die Datei oder ist sie kaputt,
+   zeigt nur das aufgeklappte Ergebnis einen Hinweis (und den Sieger, falls bekannt). */
+const ERG={};   /* "f1-2026" → {zustand:"laedt"|"da"|"keine"|"fehlt", listen:{"f1-1":[…]}, p:Promise} */
+function ergDatei(e){return e.s+"-"+(e._jahr||FIRST_SEASON);}
+function ergKey(e){return e.s+"-"+e.rd+(e.sz?"-"+e.sz:"");}
+const zeileOK=z=>Array.isArray(z)&&(z.length===3||z.length===4)&&Number.isInteger(z[0])&&z[0]>0&&istText(z[1])&&istText(z[2])&&(z.length===3||istText(z[3]));
+const listeOK=l=>istObj(l)&&istText(l.n)&&Array.isArray(l.zeilen)&&l.zeilen.length>0&&l.zeilen.every(zeileOK)&&(l.quelle==null||istText(l.quelle));
+function ladeErgebnisse(e){
+  const d=ergDatei(e);
+  if(ERG[d]&&ERG[d].zustand!=="fehlt")return ERG[d].p;   /* nach Fehlern beim nächsten Tippen neu versuchen */
+  const o=ERG[d]={zustand:"laedt",listen:{}};
+  o.p=Promise.resolve()
+    .then(()=>fetch("data/ergebnisse/"+d+".json",{cache:"no-cache"}))
+    .then(r=>{if(r.status===404)return null;if(!r.ok)throw new Error("HTTP "+r.status);return r.text();})
+    .then(t=>{
+      if(t==null){o.zustand="keine";return;}
+      const x=JSON.parse(t); if(!istObj(x))throw new Error("kein Objekt");
+      Object.keys(x).forEach(k=>{if(Array.isArray(x[k]))o.listen[k]=x[k].filter(listeOK);});
+      o.zustand="da";
+    })
+    .catch(()=>{o.zustand="fehlt";o.listen={};});
+  return o.p;
+}
+/* Stand der Ergebnislisten für ein Event: zustand "offen" = noch nicht geladen */
+function ergStand(e){const o=ERG[ergDatei(e)];return {zustand:o?o.zustand:"offen",listen:(o&&o.listen[ergKey(e)])||[]};}
+function fmtListe(l){
+  let h=l.zeilen.map(z=>`<div class="res-row ${z[0]===1?'p1':''}"><span class="res-p">${z[0]}</span><span class="res-w">${esc(z[1])}${z[2]?` <span class="rt">${esc(z[2])}</span>`:''}</span><span class="res-g">${z[3]?esc(z[3]):''}</span></div>`).join("");
+  if(l.gekuerzt)h+=`<div class="res-note">Gezeigt sind die ersten ${l.zeilen.length} Plätze</div>`;
+  if(l.quelle)h+=`<div class="res-note">Quelle: ${esc(l.quelle)}</div>`;
+  return h;
+}
+/* Inhalt eines aufgeklappten Rennergebnisses: Liste, sonst Session-Ergebnis oder Sieger */
+function ergPanel(e,n,erg,res,partial){
+  const l=erg.listen.find(x=>x.n===n);
+  if(l)return fmtListe(l);
+  if(erg.zustand==="offen"||erg.zustand==="laedt")return `<div class="res-note">Ergebnis wird geladen …</div>`;
+  let h=erg.zustand==="fehlt"?`<div class="res-note">Die Ergebnisliste konnte gerade nicht geladen werden.</div>`:"";
+  if(res)h+=fmtRes(res,partial);
+  else if(e.result)h+=fmtRes([{p:1,who:e.result,gap:"Sieger"}],true);
+  return h;
+}
+/* Aufklappbare Ergebniszeile; laden=true: beim Öffnen die Ergebnisliste der Serie laden */
+function ergZeile(e,rid,kopf,panel,laden){
+  const auf=laden?`,'${e.s}','${e.rd}','${e.sz||""}'`:"";
+  return `<div class="sess" id="s-${rid}"><div class="sess-row clk" onclick="toggleRes('${rid}'${auf})">${kopf}</div>`+
+    `<div class="sess-respanel">${panel}</div></div>`;
+}
 function buildSessions(e,evId,status){
   let out="";
   out+=trackInfoHTML(e);
@@ -1047,50 +1159,80 @@ function buildSessions(e,evId,status){
     out+=`<button class="calbtn" onclick="exportEvent('${e.s}','${e.rd}','${e.sz||""}')">＋ Ganzes Wochenende in Kalender</button>`;
   }
   if(e.prov) out+=`<div class="sess-flat prov-note">${hasTimes?"Weitere Sessionzeiten folgen":"Sessionzeiten folgen"}, sobald der offizielle Zeitplan vorliegt.</div>`;
-  // WRC-Gesamtwertung als oberste Klappzeile
-  if(status==="done" && e.s==="wrc"){
-    const arr=e.resOverall||[{p:1,who:(e.result||"—"),gap:"Sieger"}];
-    const rid=evId+"-ovr";
-    out+=`<div class="sess" id="s-${rid}">`+
-      `<div class="sess-row clk" onclick="toggleRes('${rid}')"><span class="sess-chev">▶</span><span class="sess-n ovr">Gesamtwertung (Rallye)</span><span class="sess-t"></span><span class="sess-meta"></span><span></span></div>`+
-      `<div class="sess-respanel">${fmtRes(arr,!e.resOverall)}</div></div>`;
+  /* Ergebnislisten gibt es nur für gewertete Events mit Sieger */
+  const fertig=status==="done"&&!!e.result;
+  const erg=fertig?ergStand(e):{zustand:"keine",listen:[]};
+  const namen=new Set(e.sessions.map(s=>s.n));
+  if(fertig){
+    /* Ergebnisse ohne eigene Session: WRC-Gesamtwertung (Rallye) oben, Rennen ohne Zeitplan */
+    let extra=erg.listen.filter(l=>!namen.has(l.n)).map(l=>l.n);
+    if(!extra.length&&e.s==="wrc")extra=["Gesamtwertung"];
+    else if(!extra.length&&!e.sessions.some(s=>isRaceName(s.n)))extra=["Ergebnis"];
+    extra.forEach(n=>{
+      const titel=e.s==="wrc"&&n==="Gesamtwertung"?"Gesamtwertung (Rallye)":n;
+      const res=e.s==="wrc"&&n==="Gesamtwertung"?e.resOverall:null;
+      out+=ergZeile(e,evId+"-r-"+n.replace(/\W+/g,""),
+        `<span class="sess-chev">▶</span><span class="sess-n ovr">${esc(titel)}</span><span class="sess-t"></span><span class="sess-meta"></span><span></span>`,
+        ergPanel(e,n,erg,res,!res),true);
+    });
   }
   e.sessions.forEach((s,i)=>{
     const rid=evId+"-s"+i;
-    let res=s.res;
-    let partial=!!s.partial;
-    if(!res && status==="done" && isRaceName(s.n) && e.s!=="wrc"){
-      res = e.result ? [{p:1,who:e.result,gap:"Sieger"}] : null;
-      partial = true;
-    }
+    const liste=erg.listen.some(l=>l.n===s.n);
+    /* Rennen (außer WRC-Wertungsprüfungen ohne Liste) klappen das Ergebnis auf */
+    const rennen=fertig&&isRaceName(s.n)&&(e.s!=="wrc"||liste||!!s.res);
     const ct=convTime(e,s);
     const cal=s.t?`<button class="scal" title="Diese Session in den Kalender" onclick="event.stopPropagation();exportSession('${e.s}','${e.rd}',${i},'${e.sz||""}')">＋</button>`:`<span></span>`;
-    if(res){
-      out+=`<div class="sess" id="s-${rid}">`+
-        `<div class="sess-row clk" onclick="toggleRes('${rid}')"><span class="sess-chev">▶</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>`+
-        `<div class="sess-respanel">${fmtRes(res,partial)}</div></div>`;
+    const kopf=`<span class="sess-chev">▶</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}`;
+    if(rennen){
+      out+=ergZeile(e,rid,kopf,ergPanel(e,s.n,erg,s.res,!!s.partial||!s.res),true);
+    } else if(s.res){
+      out+=ergZeile(e,rid,kopf,fmtRes(s.res,!!s.partial),false);
     } else {
-      const note = (status==="done"&&isRaceName(s.n)) ? `<div class="sess-flat">${e.abbruch?ABBRUCH:"Wertung noch nicht erfasst"}</div>` : "";
+      const note = (status==="done"&&isRaceName(s.n)&&!(e.abbruch&&verborgen(ergKey(e)))) ? `<div class="sess-flat">${e.abbruch?ABBRUCH:"Wertung noch nicht erfasst"}</div>` : "";
       out+=`<div class="sess"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
     }
   });
   return out;
 }
-function toggleRes(rid){
+/* sk/rd/sz gesetzt: beim ersten Öffnen die Ergebnisliste laden und das Event neu zeichnen */
+function toggleRes(rid,sk,rd,sz){
   const el=document.getElementById("s-"+rid);
   if(!el)return;
   const isOpen=el.classList.contains("open");
   if(OPEN_RES && OPEN_RES!==rid){const prev=document.getElementById("s-"+OPEN_RES);if(prev)prev.classList.remove("open");}
-  if(isOpen){el.classList.remove("open");OPEN_RES=null;}
-  else{el.classList.add("open");OPEN_RES=rid;}
+  if(isOpen){el.classList.remove("open");OPEN_RES=null;return;}
+  el.classList.add("open");OPEN_RES=rid;
+  const e=sk!=null?findEv(sk,rd,sz):null;
+  if(e&&["offen","fehlt"].includes(ergStand(e).zustand)){
+    ladeErgebnisse(e).then(()=>ergNeuZeichnen(e,rid));
+    ergNeuZeichnen(e,rid);   /* „wird geladen …“ bzw. nach einem Fehler erneut */
+  }
+}
+/* Aufgeklappte Sessionliste eines Events neu zeichnen, die geöffnete Zeile bleibt offen */
+function ergNeuZeichnen(e,rid){
+  const evId=evDomId(e), ev=document.getElementById("ev-"+evId), box=ev&&ev.querySelector&&ev.querySelector(".sessions");
+  if(!box)return;
+  box.innerHTML=buildSessions(e,evId,st(e));
+  if(!OPEN_RES)return;
+  let el=document.getElementById("s-"+OPEN_RES);
+  /* Platzhalter „Ergebnis“ wurde durch die Listen ersetzt: erste Liste öffnen */
+  if(!el&&OPEN_RES===rid){const erste=box.querySelector(".sess-row.clk");el=erste&&erste.parentNode;OPEN_RES=el?el.id.slice(2):null;}
+  if(el)el.classList.add("open");
 }
 function toggleEv(id){document.getElementById("ev-"+id).classList.toggle("open");}
 
 /* ═══════ TIMELINE (Aktuell) ═══════ */
 const TEILEN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 10.7 16.5 5.9M7.5 13.3l9 4.8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="18" cy="5" r="2.7" fill="currentColor"/><circle cx="6" cy="12" r="2.7" fill="currentColor"/><circle cx="18" cy="19" r="2.7" fill="currentColor"/></svg>';
+/* Sieger bzw. Abbruch auf der Karte – bei „Ergebnisse verbergen“ erst auf Tippen */
+function siegerKarte(e){
+  if(!e.result&&!e.abbruch)return "";
+  if(verborgen(ergKey(e)))return aufdeckenKnopf(e,"karte");
+  return e.result?`<div class="ev-win">${e.result}</div>`:`<div class="ev-note">${ABBRUCH}</div>`;
+}
 function eventHTML(e){
   const status=st(e),S0=SERIES[e.s],evId=evDomId(e);
-  const win=(status==="done"&&e.result)?`<div class="ev-win">${e.result}</div>`:(status==="done"&&e.abbruch)?`<div class="ev-note">${ABBRUCH}</div>`:"";
+  const win=status==="done"?siegerKarte(e):"";
   return `<div class="wknd ${status}"><div class="wk-top">`+
     `<div class="wk-date">${dayRange(e)}<span class="dow">${dows(e)}</span></div>`+
     `<div><div class="ev" id="ev-${evId}"><div class="ev-row" onclick="toggleEv('${evId}')">`+
@@ -1148,17 +1290,32 @@ function renderTimeline(){
 }
 
 /* ═══════ SERIEN ═══════ */
+/* Sieger bzw. Abbruch in der Rundenliste – bei „Ergebnisse verbergen“ erst auf Tippen */
+function siegerSerie(e){
+  if(verborgen(ergKey(e)))return aufdeckenKnopf(e,"serie");
+  return e.result?`<span class="st done">${e.result}</span>`:`<span class="st up">Abgebrochen</span>`;
+}
+/* Kalender-Abos: apex-2026.ics (alle Serien) und kalender/<serie>.ics erzeugt das Prüfskript.
+   webcal:// öffnet den Abo-Dialog der Kalender-App; „Link kopieren“ für Kalender, die eine Adresse brauchen. */
+function aboUrl(datei){return location.href.split("#")[0].split("?")[0].replace(/[^/]*$/,"")+datei;}
+function aboHTML(datei,text){
+  const url=aboUrl(datei);
+  return `<div class="abo"><a class="abo-a" href="${esc(url.replace(/^https?:/,"webcal:"))}">＋ ${esc(text)}</a>`+
+    `<button class="abo-k" onclick="kopieren('${esc(url)}')">Link kopieren</button></div>`;
+}
 function renderSeries(){
   const host=document.getElementById("view-series"); if(!host)return;let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
+  if(Object.keys(SERIES).length)html+=`<div class="abo-box"><p><b>Kalender-Abo</b> · Alle Sessions in deutscher Zeit direkt im eigenen Kalender – aktualisiert sich selbst. Für alle Serien oder unten je Serie.</p>${aboHTML("apex-2026.ics","Alle Serien abonnieren")}</div>`;
   const leer=termineFehlen(SEASON)?"Termine gerade nicht verfügbar":`Kalender ${SEASON} noch nicht veröffentlicht`;
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
-    if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div><div class="ser-meta">${leer}</div></div>`;return;}
+    const abo=aboHTML("kalender/"+sk+".ics","Kalender abonnieren");
+    if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div><div class="ser-meta">${leer}</div>${abo}</div>`;return;}
     /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
     const lauf=evs.filter(e=>!e.sonder);
     const done=lauf.filter(e=>st(e)==="done").length,canc=lauf.filter(e=>e.status==="cancel").length;
     html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div>`+
-      `<div class="ser-meta">${lauf.length?`${lauf.length-canc} Läufe · ${done} gefahren · ${lauf.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}`:leer}</div>`;
+      `<div class="ser-meta">${lauf.length?`${lauf.length-canc} Läufe · ${done} gefahren · ${lauf.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}`:leer}</div>`+abo;
     let n=0;
     evs.forEach(e=>{const status=st(e);
       if(status==="cancel"){
@@ -1167,7 +1324,7 @@ function renderSeries(){
       n++;
       let txt=status==="done"?"Beendet":status==="next"?"Als Nächstes":status==="live"?"Live":"Geplant";
       let c=status==="done"?"done":(status==="next"||status==="live")?"next":"up";
-      const right=(status==="done"&&e.result)?`<span class="st done">${e.result}</span>`:(status==="done"&&e.abbruch)?`<span class="st up">Abgebrochen</span>`:`<span class="st ${c}">${txt}</span>`;
+      const right=(status==="done"&&(e.result||e.abbruch))?siegerSerie(e):`<span class="st ${c}">${txt}</span>`;
       html+=`<div class="ser-round"><span class="no">${e.sonder||String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}${e.sonder?` · ${sonderText(e)}`:""}</span></span>${right}</div>`;});
     html+=`</div>`;});});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
@@ -1310,6 +1467,11 @@ function renderStandings(){
       return;
     }
     any=true;
+    if(verborgen("wertung-"+sk)){
+      html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
+        `<div class="std-tag">Stand ${D.stand}</div><button class="aufdecken" onclick="aufdeckenWertung('${sk}')">Wertung anzeigen</button></div>`;
+      return;
+    }
     /* Eine Tabelle je Klasse: drv (+ optional klasse), drv2 (+ klasse2) - z. B. WEC Hypercar & LMGT3.
        wertung/wertung2 ersetzen "Fahrerwertung" in der Unterüberschrift (z. B. Team-/Fahrzeugwertung).
        Sortiert nach Punkten; bei Gleichstand gilt die Reihenfolge aus der Datei. */
@@ -1601,8 +1763,8 @@ function injectEventSchema(){
 document.getElementById("mast-date").textContent=NOW().toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
 function start(){
   BEREIT=true;
-  filterLaden();
-  [injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
+  filterLaden(); spoilerLaden();
+  [injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});
