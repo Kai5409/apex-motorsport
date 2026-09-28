@@ -58,7 +58,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* Kopfbereich: bleibt oben stehen. Beim Scrollen gleitet er um die Höhe der großen Logozeile
    nach oben (top wird per JS gesetzt), das Logo schrumpft dabei auf die kompakte Version. */
 .kopf{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--rule)}
-.kopf::before{content:"";position:absolute;top:0;bottom:-1px;left:-100vmax;right:-100vmax;background:var(--bg);border-bottom:1px solid var(--rule);z-index:-1}
+/* Hintergrund und Linie über die ganze Fensterbreite: als Schatten, damit die Seite nicht breiter wird */
+.kopf::before{content:"";position:absolute;inset:0 0 -1px;z-index:-1;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg),0 1px 0 100vmax #302e2b;clip-path:inset(0 -100vmax -1px)}
 .kopf.ohne-filter .nav{border-bottom-color:transparent}
 
 /* Masthead */
@@ -224,6 +225,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600;white-space:nowrap;flex-shrink:0;overflow-wrap:normal}
 .ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
 .ev-row:hover .ev-toggle{color:var(--paper)}
+/* Teilen: nur das Symbol (drei verbundene Punkte) */
+.ev-teilen{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;margin-right:-6px;border-radius:50%;color:var(--faint);transition:color .15s,background .15s}
+.ev-teilen:hover,.ev-teilen:focus-visible{color:var(--paper);background:rgba(236,231,221,.08)}
+.ev-teilen svg{width:17px;height:17px}
+.toast{position:fixed;left:50%;bottom:78px;z-index:70;transform:translateX(-50%) translateY(8px);background:var(--paper);color:var(--bg);font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;border-radius:999px;box-shadow:0 6px 22px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 .ev.open .ev-toggle{transform:rotate(45deg);color:var(--red)}
 .sessions{display:none;padding:2px 0 14px 17px} .ev.open .sessions{display:block}
 
@@ -420,6 +427,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <section class="view" id="view-tv"></section>
   <section class="view" id="view-rules"></section>
   <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <footer>
 APEX · Saisons 2026 &amp; 2027 · Acht Serien · Stand 25. September 2026<br>
     Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
@@ -1066,6 +1074,7 @@ function toggleRes(rid){
 function toggleEv(id){document.getElementById("ev-"+id).classList.toggle("open");}
 
 /* ═══════ TIMELINE (Aktuell) ═══════ */
+const TEILEN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 10.7 16.5 5.9M7.5 13.3l9 4.8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="18" cy="5" r="2.7" fill="currentColor"/><circle cx="6" cy="12" r="2.7" fill="currentColor"/><circle cx="18" cy="19" r="2.7" fill="currentColor"/></svg>';
 function eventHTML(e){
   const status=st(e),S0=SERIES[e.s],evId=evDomId(e);
   const win=(status==="done"&&e.result)?`<div class="ev-win">${e.result}</div>`:(status==="done"&&e.abbruch)?`<div class="ev-note">${ABBRUCH}</div>`:"";
@@ -1075,6 +1084,7 @@ function eventHTML(e){
       `<span class="ev-bar" style="background:${S0.color}"></span>`+
       `<span class="ev-body"><span class="ev-name">${e.name}</span>`+
       `<span class="ev-sub"><span class="ser" style="color:${S0.color}">${S0.name}</span> · ${e.sonder?`<span class="sonder">${sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}</span>`+
+      `<button class="ev-teilen" aria-label="Teilen" title="Teilen" onclick="event.stopPropagation();teilen('${e.s}','${e.rd}','${e.sz||""}')">${TEILEN_SVG}</button>`+
       `<span class="ev-toggle">+</span></div>`+
       `<div class="sessions">${buildSessions(e,evId,status)}</div></div></div>`+
   `</div></div>`;
@@ -1443,11 +1453,36 @@ function gotoEvent(sk,rd,sz,sofort){
     el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}
   try{history.replaceState(null,"","#ev="+sk+"-"+rd+(sz?"-"+sz:""));}catch(err){}
 }
-function copyEvLink(sk,rd,btn,sz){
-  const url=location.href.split("#")[0]+"#ev="+sk+"-"+rd+(sz?"-"+sz:"");
-  const done=()=>{if(btn){const old=btn.innerHTML;btn.innerHTML="✓ Link kopiert";setTimeout(()=>btn.innerHTML=old,1600);}};
-  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).then(done).catch(()=>window.prompt("Link kopieren:",url));
-  else window.prompt("Link kopieren:",url);
+/* Teilen: Handy (Touch) → System-Teilen-Menü mit dem Event-Link; sonst oder wenn das nicht geht:
+   Link in die Zwischenablage und kurz „Link kopiert“ einblenden. Es wird nichts übertragen. */
+function evLink(sk,rd,sz){return location.href.split("#")[0]+"#ev="+sk+"-"+rd+(sz?"-"+sz:"");}
+function teilen(sk,rd,sz){
+  const e=findEv(sk,rd,sz); if(!e)return;
+  const url=evLink(sk,rd,sz), handy=typeof matchMedia==="function"&&matchMedia("(pointer: coarse)").matches;
+  if(handy&&navigator.share){
+    navigator.share({title:e.name+" · "+SERIES[e.s].name,url}).catch(err=>{if(!err||err.name!=="AbortError")kopieren(url);});
+    return;
+  }
+  kopieren(url);
+}
+function kopieren(url){
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).then(()=>kurzerHinweis("Link kopiert"),()=>kopierenAlt(url));
+  else kopierenAlt(url);
+}
+function kopierenAlt(url){
+  try{
+    const t=document.createElement("textarea"); t.value=url; t.setAttribute("readonly","");
+    t.style.cssText="position:fixed;top:0;left:0;opacity:0"; document.body.appendChild(t); t.select();
+    const ok=document.execCommand("copy"); document.body.removeChild(t);
+    if(ok){kurzerHinweis("Link kopiert");return;}
+  }catch(err){}
+  window.prompt("Link kopieren:",url);
+}
+let HINWEIS_UHR=0;
+function kurzerHinweis(txt){
+  const el=document.getElementById("toast"); if(!el)return;
+  el.textContent=txt; el.classList.add("on");
+  clearTimeout(HINWEIS_UHR); HINWEIS_UHR=setTimeout(()=>el.classList.remove("on"),1800);
 }
 function applyHash(sofort){
   const h=location.hash.replace(/^#/,""); if(!h)return;
