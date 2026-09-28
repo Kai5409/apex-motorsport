@@ -47,7 +47,7 @@
   --red:#ff3000; --green:#3fae62; --gold:#d8a84b;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--kopf-h,0px) + 12px)}
 body{background:var(--bg);color:var(--paper);font-family:"Inter",system-ui,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .disp{font-family:"Anton",Impact,"Arial Narrow",sans-serif;letter-spacing:.01em;text-transform:uppercase}
@@ -155,13 +155,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 .view{display:none} .view.on{display:block}
 
-/* Past toggle */
-.pastbtn{display:flex;align-items:center;gap:10px;width:100%;margin:30px 0 0;padding:13px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);transition:color .15s}
-.pastbtn:hover{color:var(--paper)}
-.pastbtn .ic{font-size:18px;color:var(--red);transition:transform .2s;display:inline-block}
-.pastbtn.open .ic{transform:rotate(180deg)}
-.pastbtn .cnt{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;color:var(--faint)}
-.pastwrap{display:none} .pastwrap.open{display:block}
 .emptyhint{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint);padding:30px 0;text-align:center}
 
 /* Timeline */
@@ -177,12 +170,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .wknd.done::before{background:var(--faint)}
 .wknd.live::before{border-color:var(--red);background:var(--red);box-shadow:0 0 0 4px rgba(255,48,0,.18)}
 .wknd.next::before{border-color:var(--red)}
-.wk-top{display:grid;grid-template-columns:74px 1fr auto;gap:16px;align-items:start}
+.wk-top{display:grid;grid-template-columns:74px 1fr;gap:16px;align-items:start}
 .wk-top>div{min-width:0}
 .wk-date{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:30px;line-height:.92;color:var(--paper);padding-top:6px}
 .wk-date .dow{display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.12em;margin-top:5px;text-transform:uppercase}
-.wk-cd{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-align:right;white-space:nowrap;padding-top:8px}
-.wk-cd.done{color:var(--faint)} .wk-cd.live{color:var(--red)} .wk-cd.soon{color:var(--gold)} .wk-cd.up{color:var(--muted)}
+/* Heute-Linie: trennt Vergangenheit und Zukunft; am Handy steht darunter die Live-Info */
+.heute{position:relative;margin:16px 0 0 -30px;border-top:1px solid rgba(255,48,0,.45);scroll-margin-top:calc(var(--kopf-h,0px) + 18px)}
+.heute::before{content:"";position:absolute;left:2px;top:-5px;width:9px;height:9px;border-radius:50%;background:var(--red)}
+.heute-lab{position:absolute;left:24px;top:-8px;padding:0 8px 0 6px;background:var(--bg);font-family:"IBM Plex Mono",monospace;font-size:9.5px;line-height:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.tl-heute{margin-top:26px;padding-bottom:4px}
+.tl-heute::before{top:-8px;bottom:0}
+.jetzt{display:none;flex-direction:column;align-items:flex-start;gap:7px;padding:16px 0 8px}
+.jetzt>*{white-space:normal}
+.jetzt .onair-ev{display:block;line-height:1.45}
 
 .ev{border-top:1px solid var(--rule)} .ev:first-child{border-top:none}
 .ev-row{display:flex;align-items:center;gap:13px;padding:9px 0;cursor:pointer}
@@ -309,6 +309,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 @media(max-width:899px),(max-height:599px){
   .mast{padding:22px 0 12px}
   .kopf .onair{display:none}
+  .jetzt{display:flex}
   .nav{padding-top:10px}
   .tab{padding-bottom:9px}
 }
@@ -316,7 +317,6 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 @media(max-width:640px){
   #app{padding:0 16px 110px} .nav{gap:18px} .tab{font-size:13px}
   .wk-top{grid-template-columns:58px 1fr}
-  .wk-cd{grid-column:1/-1;text-align:left;margin-top:2px;padding-top:0}
   .wk-date{font-size:24px}
   .ev-name{font-size:15px}
   .sess-row{grid-template-columns:16px 1fr 52px 26px;gap:7px;font-size:10.5px}
@@ -548,7 +548,6 @@ function esc(str){ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&
 
 /* ═══════ STATE ═══════ */
 const ACTIVE = new Set();   /* wird nach dem Laden der Daten mit allen Serien gefuellt */
-let SHOW_PAST = false;
 let OPEN_RES = null;
 
 /* ═══════ HELFER ═══════ */
@@ -586,8 +585,8 @@ function renderSeason(){
 function stepSeason(d){
   const ys=seasonsAll(), i=ys.indexOf(SEASON), n=ys[i+d];
   if(n===undefined)return;
-  SEASON=n; SHOW_PAST=false; OPEN_RES=null;
-  renderSeason(); rerender(); window.scrollTo(0,0); updateJumpBtn();
+  SEASON=n; OPEN_RES=null;
+  renderSeason(); rerender(); zumStart(); updateJumpBtn();
 }
 const MON=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
 const MONABK=["JAN","FEB","MÄR","APR","MAI","JUN","JUL","AUG","SEP","OKT","NOV","DEZ"];
@@ -716,7 +715,7 @@ function trackInfoHTML(e){
   return `<div class="trackinfo"><span class="tcircuit">◗ ${c.name}</span>${facts}</div>`;
 }
 
-/* ── nächste Session (Live-Countdown) ── */
+/* ── nächste Session ── */
 let NEXT_SESS=null;
 function computeNextSession(){
   const now=Date.now(); let best=null;
@@ -728,16 +727,6 @@ function computeNextSession(){
   });
   NEXT_SESS=best;
 }
-function fmtCountdown(ms){
-  if(ms<0)ms=0; const tot=Math.floor(ms/1000);
-  const d=Math.floor(tot/86400), hh=Math.floor(tot%86400/3600), mm=Math.floor(tot%3600/60), ss=tot%60;
-  const p=n=>String(n).padStart(2,"0");
-  return (d>0?d+"T ":"")+p(hh)+":"+p(mm)+":"+p(ss);
-}
-function tickCountdown(){
-  const el=document.getElementById("cd-tick");
-  if(el&&NEXT_SESS) el.textContent=fmtCountdown(NEXT_SESS.inst-Date.now());
-}
 function dayRange(e){const a=pd(e.d0),b=pd(e.d1);if(e.d0===e.d1)return String(a.getDate());
   if(a.getMonth()===b.getMonth())return a.getDate()+"–"+b.getDate();
   return a.getDate()+"."+(a.getMonth()+1)+"–"+b.getDate()+"."+(b.getMonth()+1);}
@@ -747,12 +736,6 @@ function endW(e){const b=pd(e.d1);b.setHours(23,59,59);return b;}
 function st(e){if(e.status==="cancel")return"cancel";const now=NOW();
   if(now>endW(e))return"done";if(now>=startW(e)&&now<=endW(e))return"live";
   if(e.status==="done")return"done";return e._next?"next":"up";}
-function countdown(e){const now=NOW(),s=startW(e),en=endW(e);
-  if(now>en)return{cls:"done",txt:"Beendet"};
-  if(now>=s&&now<=en)return{cls:"live",txt:"Läuft jetzt"};
-  const d=Math.ceil((s-now)/86400000);
-  if(d<=7)return{cls:"soon",txt:"in "+d+" Tag"+(d===1?"":"en")};
-  return{cls:"up",txt:"in "+d+" Tagen"};}
 const ABBRUCH="Rennen abgebrochen – nicht gewertet";
 /* Eigenständige Rennen ohne Meisterschaftswertung (z. B. 24h Nürburgring unter NLS) */
 function sonderText(e){return "Eigenständiges Rennen – zählt nicht zur "+SERIES[e.s].short+"-Wertung";}
@@ -801,8 +784,12 @@ function nextSessOf(e){
   return best;
 }
 
+/* Live-Info: breit im Kopf (#onair), schmal an der Heute-Linie der Zeitleiste (#jetzt) */
 function renderOnAir(){
-  const el=document.getElementById("onair"); if(!el)return;
+  const html=onAirHTML();
+  ["onair","jetzt"].forEach(id=>{const el=document.getElementById(id); if(el)el.innerHTML=html;});
+}
+function onAirHTML(){
   const now=NOW();
   /* Alle Serien, deren Wochenende gerade laeuft - nicht nur die erste. */
   const live=actEvents().filter(e=>e.status!=="cancel" && now>=startW(e) && now<=endW(e))
@@ -817,7 +804,7 @@ function renderOnAir(){
       html+=`<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span>`+
             `<span class="nm">${e.name}</span> <span class="meta">${meta}</span></span>`;
     });
-    el.innerHTML=html;
+    return html;
   } else if(NEXT_SESS){
     /* Nicht nur die eine naechste Session zeigen, sondern alle Serien,
        deren naechste Session im selben Zeitfenster liegt (72 Stunden) -
@@ -838,43 +825,67 @@ function renderOnAir(){
     const zeigen = proSerie.filter(x=>x.inst<=grenze);
 
     let html=`<span class="onair-lab soon">${zeigen.length>1?"Als Nächstes":"Nächste Session"}</span>`;
-    zeigen.forEach((x,i)=>{
+    zeigen.forEach(x=>{
       const S0=SERIES[x.e.s], ct=convTime(x.e,x.s);
-      const cd = i===0 ? ` · in <span id="cd-tick" style="color:var(--paper)">–</span>` : "";
       html+=`<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span>`+
             `<span class="nm">${x.e.name} — ${x.s.n}</span> `+
-            `<span class="meta">${S0.short} · ${ct.day} ${ct.t}${cd}</span></span>`;
+            `<span class="meta">${S0.short} · ${ct.day} ${ct.t}</span></span>`;
     });
-    el.innerHTML=html;
-    tickCountdown();
+    return html;
   } else {
     const fehlt=DATEN.some(n=>n.startsWith("termine-")&&DATEN_FEHLT.has(n));
-    el.innerHTML=`<span class="onair-lab idle">${fehlt?"Termine gerade nicht verfügbar":"Saison beendet"}</span>`;
+    return `<span class="onair-lab idle">${fehlt?"Termine gerade nicht verfügbar":"Saison beendet"}</span>`;
   }
 }
 
-/* "Heute" = aktueller Monat in der Liste der KOMMENDEN Events (direkte Kinder von
-   #view-upcoming). Liegt im aktuellen Monat nichts mehr an, der naechste Monat mit Events.
-   Frueher wurde per ID gesucht - die gab es aber doppelt (auch im ausgeblendeten
-   Bereich der vergangenen Events), deshalb war der Knopf dort funktionslos. */
-function currentMonthEl(){
-  return document.querySelector("#view-upcoming > .month.current")
-      || document.querySelector("#view-upcoming > .month");
+/* ═══════ HEUTE ═══════
+   Die Heute-Linie (#heute) steht in der Zeitleiste der laufenden Saison. Beim Öffnen springt
+   die Ansicht dorthin (knapp unter den festen Kopf); andere Saisons beginnen oben. */
+function heuteImBlick(){ if(SEASON===null)SEASON=defaultSeason(); return SEASON===NOW().getFullYear()||SEASON===defaultSeason(); }
+/* sanft=false: sofort springen, auch wenn im CSS weiches Scrollen eingestellt ist */
+function ohneAnimation(f){
+  const h=document.documentElement, alt=h.style.scrollBehavior;
+  h.style.scrollBehavior="auto"; if(typeof getComputedStyle==="function")void getComputedStyle(h).scrollBehavior;
+  try{f();}finally{h.style.scrollBehavior=alt;}
 }
-function jumpToNow(){
-  const el=currentMonthEl();
-  if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+function scrollen(y,sanft){
+  if(sanft){window.scrollTo({top:y,behavior:"smooth"});return;}
+  ohneAnimation(()=>{try{window.scrollTo({top:y,behavior:"instant"});}catch(err){window.scrollTo(0,y);}});
 }
+function springeZuHeute(sanft){
+  const el=document.getElementById("heute");
+  if(!el||currentView!=="upcoming"||!el.getBoundingClientRect)return false;
+  const y=el.getBoundingClientRect().top+(window.scrollY||0)-(KOPF.fest||0)-18;
+  if(!isFinite(y))return false;
+  scrollen(Math.max(0,y),sanft); return true;
+}
+/* Anfang der Ansicht: in der laufenden Saison die Heute-Linie, sonst ganz oben */
+function zumStart(){ if(!springeZuHeute(false))scrollen(0,false); }
+function jumpToNow(){ springeZuHeute(true); }
 
-/* Knopf einblenden, sobald der aktuelle Monat nicht mehr im Bild ist. */
+/* Knopf einblenden, sobald die Heute-Linie nicht im Bild ist – mit Pfeil in ihre Richtung. */
 function updateJumpBtn(){
   const btn=document.getElementById("jumpnow"); if(!btn)return;
-  const cur=currentMonthEl();
-  if(!cur || currentView!=="upcoming" || SEASON!==NOW().getFullYear()){ btn.classList.remove("on"); return; }
-  const r=cur.getBoundingClientRect();
-  const imBild = r.bottom > 60 && r.top < window.innerHeight - 40;
+  const el=document.getElementById("heute");
+  if(!el||!el.getBoundingClientRect||currentView!=="upcoming"){ btn.classList.remove("on"); return; }
+  const r=el.getBoundingClientRect(), oben=KOPF.fest||0;
+  const imBild = r.top >= oben-2 && r.top < window.innerHeight - 60;
   btn.classList.toggle("on", !imBild);
-  btn.textContent = r.top < 0 ? "↑ Heute" : "↓ Heute";
+  btn.textContent = r.top < oben ? "↑ Heute" : "↓ Heute";
+}
+
+/* Scrollposition bei Filteränderungen halten: erstes sichtbares Event (oder die Heute-Linie)
+   bleibt an seiner Stelle; ist es weggefiltert, das nächste danach, das noch da ist. */
+function ankerMerken(){
+  if(currentView!=="upcoming"||!document.querySelectorAll)return null;
+  const oben=KOPF.fest||0, alle=[...document.querySelectorAll("#view-upcoming .ev[id^='ev-'], #heute")];
+  const i=alle.findIndex(el=>el.getBoundingClientRect().bottom>oben);
+  if(i<0)return null;
+  return {ids:alle.slice(i).map(el=>el.id),top:alle[i].getBoundingClientRect().top};
+}
+function ankerHalten(a){
+  if(!a)return;
+  for(const id of a.ids){const el=document.getElementById(id); if(el){scrollen((window.scrollY||0)+el.getBoundingClientRect().top-a.top,false);return;}}
 }
 
 
@@ -933,7 +944,7 @@ function toggleEv(id){document.getElementById("ev-"+id).classList.toggle("open")
 
 /* ═══════ TIMELINE (Aktuell) ═══════ */
 function eventHTML(e){
-  const status=st(e),cd=countdown(e),S0=SERIES[e.s],evId=evDomId(e);
+  const status=st(e),S0=SERIES[e.s],evId=evDomId(e);
   const win=(status==="done"&&e.result)?`<div class="ev-win">${e.result}</div>`:(status==="done"&&e.abbruch)?`<div class="ev-note">${ABBRUCH}</div>`:"";
   return `<div class="wknd ${status}"><div class="wk-top">`+
     `<div class="wk-date">${dayRange(e)}<span class="dow">${dows(e)}</span></div>`+
@@ -943,28 +954,37 @@ function eventHTML(e){
       `<span class="ev-sub"><span class="ser" style="color:${S0.color}">${S0.name}</span> · ${e.sonder?`<span class="sonder">${sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}</span>`+
       `<span class="ev-toggle">+</span></div>`+
       `<div class="sessions">${buildSessions(e,evId,status)}</div></div></div>`+
-    `<div class="wk-cd ${cd.cls}">${cd.txt}</div>`+
   `</div></div>`;
 }
-function monthGroupsHTML(list){
+/* heute=true: Heute-Linie vor dem ersten Event, das noch nicht vorbei ist – im laufenden Monat,
+   sonst zwischen den Monaten (bzw. am Ende). Darunter am Handy die Live-Info. */
+function heuteHTML(){
+  const lab=NOW().toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"}).replace(".,",",");
+  return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div><div class="jetzt" id="jetzt">${onAirHTML()}</div>`;
+}
+function monthGroupsHTML(list,heute){
   const groups={};
   list.sort((a,b)=>startW(a)-startW(b)).forEach(e=>{const d=pd(e.d0);(groups[d.getFullYear()+"-"+d.getMonth()]=groups[d.getFullYear()+"-"+d.getMonth()]||[]).push(e);});
-  const now=NOW(),curKey=now.getFullYear()+"-"+now.getMonth();let html="";
+  const now=NOW(),curKey=now.getFullYear()+"-"+now.getMonth(),curNr=now.getFullYear()*12+now.getMonth();let html="";
+  let offen=!!heute;
+  const linieAllein=()=>{offen=false;return `<div class="tl tl-heute">${heuteHTML()}</div>`;};
   Object.keys(groups).forEach(key=>{const[y,m]=key.split("-").map(Number);
+    if(offen&&y*12+m>curNr&&!groups[curKey])html+=linieAllein();
     let cls="future";if(key===curKey)cls="current";else if(new Date(y,m+1,0)<now)cls="past";
     html+=`<div class="month ${cls}"><div class="month-head">${MON[m]}<span class="yr">${y}</span></div><div class="tl">`;
-    groups[key].forEach(e=>html+=eventHTML(e));
+    groups[key].forEach(e=>{
+      if(offen&&endW(e)>=now&&y*12+m<=curNr){offen=false;html+=heuteHTML();}
+      html+=eventHTML(e);});
+    if(offen&&key===curKey){offen=false;html+=heuteHTML();}
     html+=`</div></div>`;});
+  if(offen)html+=linieAllein();
   return html;
 }
 function renderTimeline(){
   const host=document.getElementById("view-upcoming");
-  const now=NOW();
   let evs=actEvents().filter(e=>e.status!=="cancel"&&inSeason(e));
   if(FAV_ONLY) evs=evs.filter(e=>isFav(e));
   if(SEARCH) evs=evs.filter(matchEv);
-  const future=evs.filter(e=>endW(e)>=now);
-  const past=evs.filter(e=>endW(e)<now);
   let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
   /* Aktive Serien ohne einen einzigen Termin in dieser Saison */
   const fehlen=termineFehlen(SEASON)?[]:Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)&&!EVENTS.some(e=>e.s===sk&&inSeason(e)&&!e.sonder));
@@ -973,37 +993,12 @@ function renderTimeline(){
     const lab=SEARCH?`${evs.length} Treffer für „${SEARCH}"`:`${evs.length} Favorit${evs.length===1?'':'en'}`;
     html+=`<div class="searchcnt">${lab}${evs.length?'':' — nichts gefunden'}</div>`;
   }
-  if(past.length){
-    const openPast = SHOW_PAST||SEARCH||FAV_ONLY;
-    if(!(SEARCH||FAV_ONLY))
-      html+=`<button class="pastbtn ${SHOW_PAST?'open':''}" onclick="togglePast()"><span class="ic">▾</span>Vorherige Events ${SHOW_PAST?'ausblenden':'anzeigen'}<span class="cnt">${past.length} gefahren</span></button>`;
-    html+=`<div class="pastwrap ${openPast?'open':''}">${monthGroupsHTML(past)}</div>`;
-  }
-  if(future.length) html+=monthGroupsHTML(future);
+  /* Das ganze Jahr: vergangene und kommende Events, dazwischen die Heute-Linie */
+  if(evs.length||heuteImBlick()) html+=monthGroupsHTML(evs,heuteImBlick()&&!termineFehlen(SEASON));
   const ys=seasonsAll(), nxt=ys[ys.indexOf(SEASON)+1];
   if(nxt&&!(SEARCH||FAV_ONLY)) html+=`<button class="nextseason" onclick="stepSeason(1)">Weiter zur Saison ${nxt} <span>→</span></button>`;
-  else if(!past.length&&!termineFehlen(SEASON)) html+=`<div class="emptyhint">${FAV_ONLY?'Noch keine Favoriten markiert — tippe den Stern bei einem Event.':SEARCH?'Keine Treffer.':'Keine kommenden Events für die gewählten Serien.'}</div>`;
+  else if(!evs.length&&!termineFehlen(SEASON)) html+=`<div class="emptyhint">${FAV_ONLY?'Noch keine Favoriten markiert — tippe den Stern bei einem Event.':SEARCH?'Keine Treffer.':'Keine Events für die gewählten Serien.'}</div>`;
   host.innerHTML=html;
-}
-function togglePast(){
-  /* Ankerpunkt: erstes SICHTBARES kommendes Event. Nur kommende Events kommen in Frage,
-     weil die vergangenen beim Aufklappen noch ausgeblendet sind und dann faelschlich an
-     Position 0 liegen - genau das hat frueher in den Januar geschickt. */
-  const kandidaten=[...document.querySelectorAll("#view-upcoming > .month .ev[id^='ev-']")];
-  const anker=kandidaten.find(el=>el.getBoundingClientRect().bottom>0);
-  const ankerId=anker?anker.id:null;
-  const ankerTop=anker?anker.getBoundingClientRect().top:0;
-
-  SHOW_PAST=!SHOW_PAST; OPEN_RES=null; renderTimeline();
-
-  const el=ankerId?document.getElementById(ankerId):null;
-  if(el){
-    /* genau so weit verschieben, wie die eingeblendeten Inhalte oben hinzugekommen sind */
-    window.scrollBy(0, el.getBoundingClientRect().top-ankerTop);
-  } else {
-    const cur=currentMonthEl(); if(cur) cur.scrollIntoView({block:"start"});
-  }
-  updateJumpBtn();
 }
 
 /* ═══════ SERIEN ═══════ */
@@ -1250,7 +1245,9 @@ function setView(v){currentView=v;
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.dataset.v===v));
   document.querySelectorAll(".view").forEach(x=>x.classList.remove("on"));
   document.getElementById("view-"+v).classList.add("on");
-  renderFilter();renderToolbar();rerender();try{history.replaceState(null,"","#v="+v);}catch(err){}window.scrollTo({top:0});}
+  renderFilter();renderToolbar();rerender();try{history.replaceState(null,"","#v="+v);}catch(err){}
+  if(v==="upcoming")zumStart(); else scrollen(0,false);
+  updateJumpBtn();}
 
 
 /* ═══════ DIESES WOCHENENDE ═══════ */
@@ -1304,11 +1301,10 @@ function renderWeekend(){
 }
 
 /* ═══════ DEEP-LINKS ═══════ */
-function gotoEvent(sk,rd,sz){
+function gotoEvent(sk,rd,sz,sofort){
   const e=findEv(sk,rd,sz); if(!e)return;
-  if(evYear(e)!==SEASON){SEASON=evYear(e);SHOW_PAST=false;renderSeason();renderTimeline();}
+  if(evYear(e)!==SEASON){SEASON=evYear(e);renderSeason();renderTimeline();}
   if(currentView!=="upcoming")setView("upcoming");
-  if(endW(e)<NOW()&&!SHOW_PAST){SHOW_PAST=true;renderTimeline();}
   let el=document.getElementById("ev-"+evDomId(e));
   if(!el&&(SEARCH||FAV_ONLY||!ACTIVE.has(e.s))){
     SEARCH="";const si=document.getElementById("search");if(si)si.value="";
@@ -1318,7 +1314,9 @@ function gotoEvent(sk,rd,sz){
   }
   if(el){el.classList.add("open");
     const w=el.closest(".wknd")||el;
-    w.scrollIntoView({behavior:"smooth",block:"center"});
+    /* Oberkante knapp unter den festen Kopf (scroll-padding-top) */
+    if(sofort===true)ohneAnimation(()=>{try{w.scrollIntoView({behavior:"instant",block:"start"});}catch(err){w.scrollIntoView(true);}});
+    else w.scrollIntoView({behavior:"smooth",block:"start"});
     el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}
   try{history.replaceState(null,"","#ev="+sk+"-"+rd+(sz?"-"+sz:""));}catch(err){}
 }
@@ -1328,10 +1326,10 @@ function copyEvLink(sk,rd,btn,sz){
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).then(done).catch(()=>window.prompt("Link kopieren:",url));
   else window.prompt("Link kopieren:",url);
 }
-function applyHash(){
+function applyHash(sofort){
   const h=location.hash.replace(/^#/,""); if(!h)return;
   let m=h.match(/^ev=([a-z0-9]+)-(\d+)(?:-(\w+))?$/);
-  if(m&&findEv(m[1],m[2],m[3])){setTimeout(()=>gotoEvent(m[1],m[2],m[3]),80);return;}
+  if(m&&findEv(m[1],m[2],m[3])){setTimeout(()=>gotoEvent(m[1],m[2],m[3],sofort===true),80);return;}
   m=h.match(/^v=(\w+)$/);
   if(m&&document.getElementById("view-"+m[1]))setView(m[1]);
 }
@@ -1433,21 +1431,31 @@ document.getElementById("mast-date").textContent=NOW().toLocaleDateString("de-DE
 function start(){
   BEREIT=true;
   Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk));
-  [injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,applyHash,checkReminders]
+  [injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});
   window.addEventListener("scroll",kopfBeimScrollen,{passive:true});
   window.addEventListener("resize",kopfMessen,{passive:true});
   try{
-    kopfMessen();
     if(typeof ResizeObserver!=="undefined")new ResizeObserver(kopfMessen).observe(document.getElementById("kopf"));
-    const fr=document.fonts&&document.fonts.ready; if(fr&&typeof fr.then==="function")fr.then(kopfMessen);
+    /* Nach dem Laden der Schriften verschieben sich die Höhen – Sprung wiederholen, solange
+       noch nicht selbst gescrollt wurde */
+    const fr=document.fonts&&document.fonts.ready;
+    if(fr&&typeof fr.then==="function")fr.then(()=>{kopfMessen();if(!SELBST_GESCROLLT)startPosition();updateJumpBtn();});
+    ["wheel","touchstart","keydown","mousedown"].forEach(t=>window.addEventListener(t,()=>{SELBST_GESCROLLT=true;},{passive:true,once:true}));
   }catch(err){console.error(err);}
   updateJumpBtn();
   setInterval(()=>{tagNext();renderOnAir();checkReminders();if(currentView==="weekend")renderWeekend();},30000);
-  setInterval(tickCountdown,1000);
 }
+/* Beim Öffnen: Event-Link (#ev=…) hat Vorrang, sonst Heute-Linie der laufenden Saison */
+let SELBST_GESCROLLT=false;
+function evLinkZiel(){const m=(location.hash||"").match(/^#ev=([a-z0-9]+)-(\d+)(?:-(\w+))?$/);return m?findEv(m[1],m[2],m[3]):null;}
+function startPosition(){
+  if(evLinkZiel())return;            /* gotoEvent übernimmt */
+  if(currentView==="upcoming")zumStart();
+}
+try{if("scrollRestoration" in history)history.scrollRestoration="manual";}catch(err){}
 const APP_START=ladeDaten().then(start);
 </script>
 </body>
