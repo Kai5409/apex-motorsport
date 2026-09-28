@@ -516,7 +516,7 @@ const EVENTS = [
  sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
 {s:"f1",rd:14,name:"Großer Preis von Spanien",loc:"Madrid",d0:"2026-09-11",d1:"2026-09-13",status:"done",result:"Kimi Antonelli (Mercedes)",
  sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
-{s:"f1",rd:15,name:"Großer Preis von Aserbaidschan",loc:"Baku",d0:"2026-09-24",d1:"2026-09-26",status:"up",
+{s:"f1",rd:15,name:"Großer Preis von Aserbaidschan",loc:"Baku",d0:"2026-09-24",d1:"2026-09-26",status:"done",result:"George Russell (Mercedes)",
  /* Rennen ausnahmsweise am SAMSTAG: 27.09. ist in Aserbaidschan nationaler Gedenktag.
     Gesamter Zeitplan um einen Tag vorgezogen (Do/Fr/Sa). */
  sessions:S([["FP1","Do","10:30"],["FP2","Do","14:00"],["FP3","Fr","10:30"],["Qualifying","Fr","14:00"],["Rennen","Sa","13:00"]])},
@@ -1727,16 +1727,16 @@ function standings(sk){
 const STAND = {
   /* Quelle: motorsport-total.com, abgerufen 30.07.2026. Handgepflegt — bei
      jedem neuen Rennen aktualisieren (Zahlen + "stand"-Text anpassen). */
-  f1: { stand:"nach 14 von 23 Rennen · Madrid, 13.09.2026", quelle:"motorsport-total.com",
-        drv:[["Kimi Antonelli","Mercedes",292],["Lewis Hamilton","Ferrari",191],
-             ["George Russell","Mercedes",211],["Charles Leclerc","Ferrari",167],
-             ["Lando Norris","McLaren",186],["Max Verstappen","Red Bull",145],
-             ["Oscar Piastri","McLaren",120],["Isack Hadjar","Red Bull",71],
+  f1: { stand:"nach 15 von 23 Rennen · Baku, 26.09.2026", quelle:"formula1.com",
+        drv:[["Kimi Antonelli","Mercedes",302],["Lewis Hamilton","Ferrari",199],
+             ["George Russell","Mercedes",236],["Charles Leclerc","Ferrari",179],
+             ["Lando Norris","McLaren",186],["Max Verstappen","Red Bull",163],
+             ["Oscar Piastri","McLaren",120],["Isack Hadjar","Red Bull",86],
              ["Liam Lawson","Racing Bulls",59],["Pierre Gasly","Alpine",41],
-             ["Arvid Lindblad","Racing Bulls",31],["Franco Colapinto","Alpine",27],
-             ["Oliver Bearman","Haas",18],["Gabriel Bortoleto","Audi",10],
-             ["Carlos Sainz","Williams",6],["Alexander Albon","Williams",5],
-             ["Esteban Ocon","Haas",3],["Nico Hülkenberg","Audi",7],
+             ["Arvid Lindblad","Racing Bulls",37],["Franco Colapinto","Alpine",27],
+             ["Oliver Bearman","Haas",20],["Gabriel Bortoleto","Audi",10],
+             ["Carlos Sainz","Williams",7],["Alexander Albon","Williams",5],
+             ["Esteban Ocon","Haas",7],["Nico Hülkenberg","Audi",7],
              ["Fernando Alonso","Aston Martin",3],["Yuki Tsunoda","Racing Bulls",1],
              ["Lance Stroll","Aston Martin",0],["Valtteri Bottas","Cadillac",0],
              ["Sergio Perez","Cadillac",0]] },
