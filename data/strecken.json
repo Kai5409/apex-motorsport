@@ -1,0 +1,62 @@
+{
+  "orte": {
+    "Melbourne": {"name": "Albert Park Circuit", "len": 5.278, "turns": 14},
+    "Shanghai": {"name": "Shanghai International Circuit", "len": 5.451, "turns": 16},
+    "Suzuka": {"name": "Suzuka International Racing Course", "len": 5.807, "turns": 18},
+    "Miami": {"name": "Miami International Autodrome", "len": 5.412, "turns": 19},
+    "Montréal": {"name": "Circuit Gilles Villeneuve", "len": 4.361, "turns": 14},
+    "Monte Carlo": {"name": "Circuit de Monaco", "len": 3.337, "turns": 19},
+    "Barcelona": {"name": "Circuit de Barcelona-Catalunya", "len": 4.657, "turns": 14},
+    "Spielberg": {"name": "Red Bull Ring", "len": 4.318, "turns": 10},
+    "Silverstone": {"name": "Silverstone Circuit", "len": 5.891, "turns": 18},
+    "Spa-Francorchamps": {"name": "Circuit de Spa-Francorchamps", "len": 7.004, "turns": 19},
+    "Budapest": {"name": "Hungaroring", "len": 4.381, "turns": 14},
+    "Hungaroring": {"name": "Hungaroring", "len": 4.381, "turns": 14},
+    "Zandvoort": {"name": "Circuit Zandvoort", "len": 4.259, "turns": 14},
+    "Monza": {"name": "Autodromo Nazionale Monza", "len": 5.793, "turns": 11},
+    "Madrid": {"name": "Madring", "len": 5.474, "turns": 22},
+    "Baku": {"name": "Baku City Circuit", "len": 6.003, "turns": 20},
+    "Singapur": {"name": "Marina Bay Street Circuit", "len": 4.94, "turns": 19},
+    "Austin": {"name": "Circuit of the Americas", "len": 5.513, "turns": 20},
+    "Mexiko-Stadt": {"name": "Autódromo Hermanos Rodríguez", "len": 4.304, "turns": 17},
+    "Interlagos": {"name": "Autódromo José Carlos Pace", "len": 4.309, "turns": 15},
+    "Las Vegas": {"name": "Las Vegas Strip Circuit", "len": 6.201, "turns": 17},
+    "Lusail": {"name": "Lusail International Circuit", "len": 5.419, "turns": 16},
+    "Yas Marina": {"name": "Yas Marina Circuit", "len": 5.281, "turns": 16},
+    "Buriram": {"name": "Chang International Circuit", "len": 4.554, "turns": 12},
+    "Termas de Río Hondo": {"name": "Autódromo Termas de Río Hondo", "len": 4.806, "turns": 14},
+    "Jerez": {"name": "Circuito de Jerez–Ángel Nieto", "len": 4.423, "turns": 13},
+    "Mugello": {"name": "Mugello Circuit", "len": 5.245, "turns": 15},
+    "Balaton Park": {"name": "Balaton Park Circuit", "len": 4.115, "turns": 17},
+    "Assen": {"name": "TT Circuit Assen", "len": 4.542, "turns": 18},
+    "Sachsenring": {"name": "Sachsenring", "len": 3.671, "turns": 13},
+    "Brünn": {"name": "Automotodrom Brno", "len": 5.403, "turns": 14},
+    "Red Bull Ring": {"name": "Red Bull Ring", "len": 4.318, "turns": 10},
+    "Aragón": {"name": "MotorLand Aragón", "len": 5.077, "turns": 17},
+    "Misano": {"name": "Misano World Circuit", "len": 4.226, "turns": 16},
+    "Motegi": {"name": "Mobility Resort Motegi", "len": 4.801, "turns": 14},
+    "Mandalika": {"name": "Mandalika International Circuit", "len": 4.301, "turns": 17},
+    "Phillip Island": {"name": "Phillip Island Circuit", "len": 4.448, "turns": 12},
+    "Sepang": {"name": "Sepang International Circuit", "len": 5.543, "turns": 15},
+    "Portimão": {"name": "Algarve International Circuit", "len": 4.653, "turns": 15},
+    "Valencia": {"name": "Circuit Ricardo Tormo", "len": 4.005, "turns": 14},
+    "Imola": {"name": "Autodromo Enzo e Dino Ferrari", "len": 4.909, "turns": 19},
+    "Fuji": {"name": "Fuji Speedway", "len": 4.563, "turns": 16},
+    "Sakhir": {"name": "Bahrain International Circuit", "len": 5.412, "turns": 15},
+    "Nürburgring": {"name": "Nürburgring (GP-Strecke)", "len": 5.148, "turns": 15},
+    "Hockenheimring": {"name": "Hockenheimring", "len": 4.574, "turns": 17},
+    "Nürnberg": {"name": "Norisring", "len": 2.3, "turns": 8},
+    "Lausitzring": {"name": "DEKRA Lausitzring", "len": 3.478, "turns": 13},
+    "Oschersleben": {"name": "Motorsport Arena Oschersleben", "len": 3.696, "turns": 14},
+    "Le Mans": {"name": "Circuit Bugatti", "len": 4.185, "turns": 14}
+  },
+  "serien": {
+    "wec": {
+      "Le Mans": {"name": "Circuit de la Sarthe", "len": 13.626, "turns": 38}
+    },
+    "nls": {
+      "Nürburgring": {"name": "Nordschleife + Grand-Prix-Kurs (Kurzanbindung)", "len": 24.358},
+      "Nürburgring · 24h": {"name": "Nordschleife + Grand-Prix-Kurs (24h-Variante)", "len": 25.378}
+    }
+  }
+}

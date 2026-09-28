@@ -410,571 +410,126 @@ APEX · Saisons 2026 &amp; 2027 · Acht Serien · Stand 25. September 2026<br>
 </div>
 
 <script>
-/* ═══════ SERIES ═══════ */
-const SERIES = {
-  f1 : {name:"Formel 1",  short:"F1",     color:"#ff3000", tv:"Sky / WOW · RTL (5 Rennen frei)",
-        tvd:{de:"<b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).",
-             at:"<b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.",
-             ch:"<b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.",
-             note:"F1 TV Pro: in DACH sind keine neuen Abos möglich, nur Bestandskunden sehen live."}},
-  mgp: {name:"MotoGP",    short:"MotoGP", color:"#e0354b", tv:"Sky / WOW · DF1 (12 von 22 frei)",
-        tvd:{de:"<b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2 und Moto3.",
-             at:"<b>ServusTV</b> zeigt die komplette Saison im Free-TV.",
-             ch:"<b>SRF</b> überträgt einzelne Rennen frei (SRF Info bzw. SRF zwei)."}},
-  wec: {name:"WEC",       short:"WEC",    color:"#3a86ff", tv:"Eurosport (WBD)",
-        tvd:{de:"<b>Eurosport</b> (Warner Bros. Discovery) hält die Rechte bis mindestens 2030 und zeigt alle acht Rennen inklusive der 24 Stunden von Le Mans.",
-             at:"Wie Deutschland über Eurosport.",
-             ch:"Wie Deutschland über Eurosport."}},
-  dtm: {name:"DTM",       short:"DTM",    color:"#f08a24", tv:"ProSieben (alle 16 Rennen frei)",
-        tvd:{de:"<b>ProSieben</b> zeigt alle 16 Rennen live im Free-TV, dazu <b>Joyn</b> und <b>ran.de</b>.",
-             at:"<b>ServusTV On</b> und <b>Red Bull TV</b> streamen alle Rennen kostenlos.",
-             ch:"Über ServusTV On und Red Bull TV."}},
-  wrc: {name:"WRC",       short:"WRC",    color:"#37b24d", tv:"Sky / WOW · ServusTV (Powerstage frei)",
-        tvd:{de:"<b>Sky Sport</b> bei <b>WOW</b> zeigt alle 14 Rallyes in voller Länge, live oder zeitversetzt, mit deutschem Kommentar.",
-             at:"<b>ServusTV</b> und <b>ServusTV On</b> übertragen bei jedem Lauf die Powerstage frei.",
-             ch:"Über Sky/WOW."}},
-  fe : {name:"Formel E",  short:"F·E",    color:"#19c7c0", tv:"DAZN · Eurosport · DF1 (frei)",
-        tvd:{de:"<b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.",
-             at:"<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.",
-             ch:"<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland."}},
-  gtwc:{name:"GT World Challenge Europe", short:"GTWC", color:"#a77bf3", tv:"Kostenloser Stream (YouTube)",
-        tvd:{de:"Alle Qualifyings und Rennen laufen als <b>kostenloser Livestream</b>: auf Englisch beim offiziellen YouTube-Kanal <b>GTWorld</b>, mit <b>deutschem Kommentar</b> auf der offiziellen Serienseite gt-world-challenge-europe.com.",
-             at:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld), deutscher Kommentar auf der Serienseite.",
-             ch:"Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld), deutscher Kommentar auf der Serienseite.",
-             note:"Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."}},
-  nls:{name:"Nürburgring Langstrecken-Serie", short:"NLS", color:"#d8f828", tv:"Kostenloser Stream (VLN.de / YouTube)",
-        tvd:{de:"Alle Rennen laufen als <b>kostenloser Livestream</b> mit deutschem Kommentar auf <b>VLN.de</b> und dem offiziellen <b>YouTube-Kanal der NLS</b>, dazu Onboard-Kanäle aus einzelnen Fahrzeugen.",
-             at:"Wie in Deutschland: <b>kostenloser Livestream</b> auf VLN.de und YouTube.",
-             ch:"Wie in Deutschland: <b>kostenloser Livestream</b> auf VLN.de und YouTube.",
-             note:"Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."}},
-};
-function S(arr){ return arr.map(x=>({n:x[0],day:x[1],t:x[2],res:x[3]||null,partial:x[4]||false})); }
+/* ═══════ DATEN ═══════
+   Alle Inhalte liegen als JSON-Dateien im Ordner data/ und werden beim Start einzeln geladen
+   und geprüft. Fehlt eine Datei oder ist sie fehlerhaft, fehlt nur der zugehörige Teil
+   (mit kurzem Hinweis) – der Rest der App läuft normal. Einzelne unlesbare Einträge werden
+   übersprungen. */
+const DATEN=["serien","sender","termine-2026","termine-2027","wertungen","regeln","zeitzonen","strecken"];
+const SERIES={}, EVENTS=[], STAND={}, REGELN={}, TZLOC={}, CIRCUITS={}, STRECKEN_SERIE={};
+let STAND_SEASON=null;     /* Jahr, zu dem die gepflegten Wertungen gehoeren (aus wertungen.json) */
+let TV_GEPRUEFT="";        /* Prüfdatum der Senderangaben (aus sender.json) */
+const DATEN_FEHLT=new Set();   /* Dateien, die nicht geladen oder nicht gelesen werden konnten */
+const DATEN_LUECKE=new Set();  /* Dateien, aus denen einzelne Einträge übersprungen wurden */
+const STAND_LUECKE=new Set();  /* Serien, deren Wertung übersprungen wurde */
+let BEREIT=false;
+
+const istObj=x=>!!x&&typeof x==="object"&&!Array.isArray(x);
+const istText=x=>typeof x==="string";
+const istDatum=x=>istText(x)&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&!isNaN(Date.parse(x));
+const istZeit=x=>istText(x)&&/^([01]\d|2[0-3]):[0-5]\d$/.test(x);
+const istTag=x=>["Mo","Di","Mi","Do","Fr","Sa","So"].includes(x);
+const istKey=x=>istText(x)&&/^[a-z0-9]+$/.test(x);
+const ergebnisOK=a=>Array.isArray(a)&&a.every(r=>istObj(r)&&istText(r.who)&&(typeof r.p==="number"||istText(r.p)));
+const tabelleOK=a=>Array.isArray(a)&&a.every(r=>Array.isArray(r)&&istText(r[0])&&istText(r[1])&&typeof r[2]==="number"&&isFinite(r[2]));
+const streckeOK=v=>istObj(v)&&istText(v.name)&&typeof v.len==="number"&&(v.turns==null||Number.isInteger(v.turns));
+
+function ladeDatei(n){
+  return Promise.resolve()
+    .then(()=>fetch("data/"+n+".json",{cache:"no-cache"}))
+    .then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.text();})
+    .then(t=>JSON.parse(t))
+    .catch(()=>{DATEN_FEHLT.add(n);return null;});
+}
+function ladeDaten(){
+  return Promise.all(DATEN.map(ladeDatei)).then(werte=>{
+    const d={}; DATEN.forEach((n,i)=>d[n]=werte[i]);
+    uebernehmeDaten(d);
+  });
+}
+/* Ein Event aus termine-*.json prüfen; ungültige Sessions fallen einzeln weg */
+function pruefeEvent(e,n){
+  if(!istObj(e)||!istText(e.s)||!Number.isInteger(e.rd)||e.rd<0||!istText(e.name)||!istText(e.loc)
+     ||!istDatum(e.d0)||!istDatum(e.d1)||e.d0>e.d1||!["done","live","next","up","cancel"].includes(e.status)
+     ||!Array.isArray(e.sessions))return null;
+  if(["sz","result","sonder","veranstalter"].some(k=>k in e&&!istText(e[k])))return null;
+  if("resOverall" in e&&!ergebnisOK(e.resOverall))return null;
+  if(!SERIES[e.s]){
+    /* Ohne Seriendaten: Termine trotzdem zeigen, mit Kürzel statt Name und neutraler Farbe */
+    if(!DATEN_FEHLT.has("serien")||!istKey(e.s))return null;
+    SERIES[e.s]={name:e.s.toUpperCase(),short:e.s.toUpperCase(),color:"#8d8678"};
+  }
+  const sessions=[];
+  e.sessions.forEach(s=>{
+    if(istObj(s)&&istText(s.n)&&istTag(s.day)&&istZeit(s.t)&&(s.res==null||ergebnisOK(s.res)))
+      sessions.push({n:s.n,day:s.day,t:s.t,res:s.res||null,partial:s.partial||false});
+    else DATEN_LUECKE.add(n);
+  });
+  return Object.assign({},e,{sessions});
+}
+function uebernehmeDaten(d){
+  const teil=(n,f)=>{ if(d[n]==null)return; try{ if(f(d[n])===false)DATEN_FEHLT.add(n); }catch(err){DATEN_FEHLT.add(n);} };
+  const luecke=(n,ok)=>{ if(!ok)DATEN_LUECKE.add(n); return ok; };
+  teil("serien",x=>{
+    if(!istObj(x))return false;
+    Object.keys(x).forEach(k=>{const v=x[k];
+      if(luecke("serien",istKey(k)&&istObj(v)&&istText(v.name)&&istText(v.short)&&istText(v.color)&&/^#[0-9a-fA-F]{3,8}$/.test(v.color)))
+        SERIES[k]={name:v.name,short:v.short,color:v.color};});
+    return Object.keys(SERIES).length>0;
+  });
+  DATEN.filter(n=>n.startsWith("termine-")).forEach(n=>teil(n,x=>{
+    if(!Array.isArray(x))return false;
+    x.forEach(e=>{const ev=pruefeEvent(e,n); if(luecke(n,!!ev))EVENTS.push(ev);});
+  }));
+  teil("sender",x=>{
+    if(!istObj(x)||!istText(x.geprueft)||!istObj(x.serien))return false;
+    TV_GEPRUEFT=x.geprueft;
+    Object.keys(x.serien).forEach(k=>{const v=x.serien[k];
+      if(luecke("sender",!!SERIES[k]&&istObj(v)&&istText(v.tv)&&(v.tvd==null||istObj(v.tvd)&&Object.values(v.tvd).every(istText)))){
+        SERIES[k].tv=v.tv; if(v.tvd)SERIES[k].tvd=v.tvd;}});
+  });
+  teil("wertungen",x=>{
+    if(!istObj(x)||!Number.isInteger(x.saison)||!istObj(x.serien))return false;
+    STAND_SEASON=x.saison;
+    Object.keys(x.serien).forEach(k=>{const v=x.serien[k];
+      const ok=istObj(v)&&istText(v.stand)&&tabelleOK(v.drv)&&(v.drv2==null||tabelleOK(v.drv2))
+        &&["quelle","klasse","klasse2","wertung","wertung2"].every(f=>v[f]==null||istText(v[f]));
+      if(luecke("wertungen",ok))STAND[k]=v; else STAND_LUECKE.add(k);});
+  });
+  teil("regeln",x=>{
+    if(!istObj(x))return false;
+    Object.keys(x).forEach(k=>{const v=x[k];
+      if(luecke("regeln",istObj(v)&&istText(v.kurz)&&Array.isArray(v.bloecke)&&v.bloecke.every(b=>Array.isArray(b)&&istText(b[0])&&istText(b[1]))))
+        REGELN[k]=v;});
+  });
+  teil("zeitzonen",x=>{
+    if(!istObj(x))return false;
+    Object.keys(x).forEach(k=>{let ok=istText(x[k]);
+      if(ok)try{new Intl.DateTimeFormat("en-US",{timeZone:x[k]});}catch(err){ok=false;}
+      if(luecke("zeitzonen",ok))TZLOC[k]=x[k];});
+  });
+  teil("strecken",x=>{
+    if(!istObj(x)||!istObj(x.orte))return false;
+    Object.keys(x.orte).forEach(k=>{if(luecke("strecken",streckeOK(x.orte[k])))CIRCUITS[k]=x.orte[k];});
+    if(x.serien!=null&&luecke("strecken",istObj(x.serien)))Object.keys(x.serien).forEach(s=>{const o=x.serien[s];
+      if(!luecke("strecken",istObj(o)))return;
+      STRECKEN_SERIE[s]={};
+      Object.keys(o).forEach(k=>{if(luecke("strecken",streckeOK(o[k])))STRECKEN_SERIE[s][k]=o[k];});});
+  });
+}
+/* Kurzer Hinweis statt Inhalt, wenn eine Datendatei fehlt oder Einträge übersprungen wurden */
+const DATEN_TEXT={serien:"Die Seriendaten",sender:"Die Senderangaben",wertungen:"Die Wertungen",regeln:"Die Regeltexte"};
+function ladeHinweis(n){
+  const was=n.startsWith("termine-")?"Die Termine "+n.slice(8):DATEN_TEXT[n];
+  if(DATEN_FEHLT.has(n))return `<div class="seasonnote">${was} konnten gerade nicht geladen werden. Bitte die Seite später neu laden.</div>`;
+  if(DATEN_LUECKE.has(n))return `<div class="seasonnote">${was} konnten nicht vollständig gelesen werden – einzelne Einträge fehlen.</div>`;
+  return "";
+}
+function termineFehlen(y){return DATEN_FEHLT.has("termine-"+y);}
 function esc(str){ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-function mgp(){ return [["FP1","Fr","10:45"],["Practice","Fr","15:00"],["FP2","Sa","10:10"],["Qualifying","Sa","10:50"],["Sprint","Sa","15:00"],["Warm Up","So","09:40"],["Rennen","So","14:00"]]; }
-
-/* Vollständige F1-Klassifizierungen (aus Ergebnis-Datenbank). R() = [pos,Fahrer,Team,Ergebnis] */
-function R(rows){ return rows.map(x=>({p:x[0],who:x[1],team:x[2],gap:x[3]})); }
-const F1R={
- r1q:R([[1,"George Russell","Mercedes","1:18.518 · Pole"],[2,"Kimi Antonelli","Mercedes","1:18.811"],[3,"Isack Hadjar","Red Bull-Ford","1:19.303"],[4,"Charles Leclerc","Ferrari","1:19.327"],[5,"Oscar Piastri","McLaren","1:19.380"],[6,"Lando Norris","McLaren","1:19.475"],[7,"Lewis Hamilton","Ferrari","1:19.478"],[8,"Liam Lawson","Racing Bulls","1:19.994"],[9,"Arvid Lindblad","Racing Bulls","Q2 · 1:21.247"],[10,"Gabriel Bortoleto","Audi","Q2 · 1:20.221"],[11,"Nico Hülkenberg","Audi","Q2 · 1:20.303"],[12,"Oliver Bearman","Haas","Q2 · 1:20.311"],[13,"Esteban Ocon","Haas","Q2 · 1:20.491"],[14,"Pierre Gasly","Alpine","Q2 · 1:20.501"],[15,"Alexander Albon","Williams","Q2 · 1:20.941"],[16,"Franco Colapinto","Alpine","Q2 · 1:21.270"],[17,"Fernando Alonso","Aston Martin","Q1 · 1:21.969"],[18,"Sergio Pérez","Cadillac","Q1 · 1:22.605"],[19,"Valtteri Bottas","Cadillac","Q1 · 1:23.244"],[20,"Max Verstappen","Red Bull-Ford","Q1 · keine Zeit"],[21,"Carlos Sainz","Williams","Q1 · keine Zeit"],[22,"Lance Stroll","Aston Martin","Q1 · keine Zeit"]]),
- r1r:R([[1,"George Russell","Mercedes","Sieger · 1:23:06.801"],[2,"Kimi Antonelli","Mercedes","+2.974"],[3,"Charles Leclerc","Ferrari","+15.519"],[4,"Lewis Hamilton","Ferrari","+16.144"],[5,"Lando Norris","McLaren","+51.741"],[6,"Max Verstappen","Red Bull-Ford","+54.617"],[7,"Oliver Bearman","Haas","+1 Rd"],[8,"Arvid Lindblad","Racing Bulls","+1 Rd"],[9,"Gabriel Bortoleto","Audi","+1 Rd"],[10,"Pierre Gasly","Alpine","+1 Rd"],[11,"Esteban Ocon","Haas","+1 Rd"],[12,"Alexander Albon","Williams","+1 Rd"],[13,"Liam Lawson","Racing Bulls","+1 Rd"],[14,"Franco Colapinto","Alpine","+2 Rd"],[15,"Carlos Sainz","Williams","+2 Rd"],[16,"Sergio Pérez","Cadillac","+3 Rd"],["NC","Lance Stroll","Aston Martin","43 Rd · n. klass."],["DNF","Fernando Alonso","Aston Martin","Vibrationen"],["DNF","Valtteri Bottas","Cadillac","Kraftstoffsystem"],["DNF","Isack Hadjar","Red Bull-Ford","Motorschaden"],["DNS","Oscar Piastri","McLaren","Unfall vor Start"],["DNS","Nico Hülkenberg","Audi","Hydraulik"]]),
- r2sq:R([[1,"George Russell","Mercedes","1:31.520 · Pole"],[2,"Kimi Antonelli","Mercedes","+0.289"],[3,"Lando Norris","McLaren","+0.621"],[4,"Lewis Hamilton","Ferrari","+0.641"],[5,"Oscar Piastri","McLaren","+0.704"],[6,"Charles Leclerc","Ferrari","+1.008"],[7,"Pierre Gasly","Alpine","+1.368"],[8,"Max Verstappen","Red Bull-Ford","+1.734"],[9,"Oliver Bearman","Haas","+1.889"],[10,"Isack Hadjar","Red Bull-Ford","+2.203"],[11,"Nico Hülkenberg","Audi","Q2"],[12,"Esteban Ocon","Haas","Q2"],[13,"Liam Lawson","Racing Bulls","Q2"],[14,"Gabriel Bortoleto","Audi","Q2"],[15,"Arvid Lindblad","Racing Bulls","Q2"],[16,"Franco Colapinto","Alpine","Q2"],[17,"Carlos Sainz","Williams","Q1"],[18,"Alexander Albon","Williams","Q1 · Boxengasse"],[19,"Fernando Alonso","Aston Martin","Q1"],[20,"Lance Stroll","Aston Martin","Q1"],[21,"Valtteri Bottas","Cadillac","Q1"],[22,"Sergio Pérez","Cadillac","Q1 · keine Zeit"]]),
- r2sp:R([[1,"George Russell","Mercedes","Sieger · 33:38.998"],[2,"Charles Leclerc","Ferrari","+0.674"],[3,"Lewis Hamilton","Ferrari","+2.554"],[4,"Lando Norris","McLaren","+4.433"],[5,"Kimi Antonelli","Mercedes","+5.688"],[6,"Oscar Piastri","McLaren","+6.809"],[7,"Liam Lawson","Racing Bulls","+10.900"],[8,"Oliver Bearman","Haas","+11.271"],[9,"Max Verstappen","Red Bull-Ford","+11.619"],[10,"Esteban Ocon","Haas","+13.887"],[11,"Pierre Gasly","Alpine","+14.780"],[12,"Carlos Sainz","Williams","+15.753"],[13,"Gabriel Bortoleto","Audi","+15.858"],[14,"Franco Colapinto","Alpine","+16.393"]]),
- r2race:R([[1,"Kimi Antonelli","Mercedes","Sieger"],[2,"George Russell","Mercedes","+5.515"],[3,"Lewis Hamilton","Ferrari","Podium"],[4,"Charles Leclerc","Ferrari",""],[5,"Oliver Bearman","Haas",""]]),
- r3q:R([[1,"Kimi Antonelli","Mercedes","1:28.778 · Pole"],[2,"George Russell","Mercedes","1:29.076"],[3,"Oscar Piastri","McLaren","1:29.132"],[4,"Charles Leclerc","Ferrari","1:29.405"],[5,"Lando Norris","McLaren","1:29.409"],[6,"Lewis Hamilton","Ferrari","1:29.567"],[7,"Pierre Gasly","Alpine","1:29.691"],[8,"Isack Hadjar","Red Bull-Ford","1:29.978"],[9,"Gabriel Bortoleto","Audi","1:30.274"],[10,"Arvid Lindblad","Racing Bulls","1:30.319"],[11,"Max Verstappen","Red Bull-Ford","Q2"],[12,"Esteban Ocon","Haas","Q2"],[13,"Nico Hülkenberg","Audi","Q2"],[14,"Liam Lawson","Racing Bulls","Q2"],[15,"Franco Colapinto","Alpine","Q2"],[16,"Carlos Sainz","Williams","Q2"],[17,"Alexander Albon","Williams","Q1"],[18,"Oliver Bearman","Haas","Q1"],[19,"Sergio Pérez","Cadillac","Q1"],[20,"Valtteri Bottas","Cadillac","Q1"],[21,"Fernando Alonso","Aston Martin","Q1"],[22,"Lance Stroll","Aston Martin","Q1"]]),
- r3r:R([[1,"Kimi Antonelli","Mercedes","Sieger · 1:28:03.403"],[2,"Oscar Piastri","McLaren","+13.722"],[3,"Charles Leclerc","Ferrari","+15.270"],[4,"George Russell","Mercedes","+15.754"],[5,"Lando Norris","McLaren","+23.479"],[6,"Lewis Hamilton","Ferrari","+25.037"],[7,"Pierre Gasly","Alpine","+32.340"],[8,"Max Verstappen","Red Bull-Ford","+32.677"],[9,"Liam Lawson","Racing Bulls","+50.180"]]),
- r4r:R([[1,"Kimi Antonelli","Mercedes","Sieger"],[2,"Lando Norris","McLaren","+3.264"],[3,"Oscar Piastri","McLaren","+27.092"],[4,"George Russell","Mercedes","+43.051"],[5,"Max Verstappen","Red Bull-Ford","+48.949 · 5s"],[6,"Lewis Hamilton","Ferrari","+53.753"],[7,"Franco Colapinto","Alpine","+61.871"],[8,"Charles Leclerc","Ferrari","+64.245 · 20s"],[9,"Carlos Sainz","Williams","+82.072"],[10,"Alexander Albon","Williams","+90.972"],[11,"Oliver Bearman","Haas","+1 Rd"],[12,"Gabriel Bortoleto","Audi","+1 Rd"],[13,"Esteban Ocon","Haas","+1 Rd"],[14,"Arvid Lindblad","Racing Bulls","+1 Rd"],[15,"Fernando Alonso","Aston Martin","+1 Rd"],[16,"Sergio Pérez","Cadillac","+1 Rd"],[17,"Lance Stroll","Aston Martin","+1 Rd"],[18,"Valtteri Bottas","Cadillac","+2 Rd"],["DNF","Nico Hülkenberg","Audi",""],["DNF","Liam Lawson","Racing Bulls",""],["DNF","Pierre Gasly","Alpine",""],["DNF","Isack Hadjar","Red Bull-Ford",""]]),
- r5sq:R([[1,"George Russell","Mercedes","1:12.965 · Pole"],[2,"Kimi Antonelli","Mercedes","1:13.033"],[3,"Lando Norris","McLaren","1:13.280"],[4,"Oscar Piastri","McLaren","1:13.299"],[5,"Lewis Hamilton","Ferrari","1:13.326"],[6,"Charles Leclerc","Ferrari","1:13.410"],[7,"Max Verstappen","Red Bull-Ford","1:13.504"],[8,"Isack Hadjar","Red Bull-Ford","1:13.605"],[9,"Arvid Lindblad","Racing Bulls","1:13.737"],[10,"Carlos Sainz","Williams","1:14.536"],[11,"Nico Hülkenberg","Audi","Q2"],[12,"Gabriel Bortoleto","Audi","Q2"]]),
- r5sp:R([[1,"George Russell","Mercedes","Sieger · 28:50.951"],[2,"Lando Norris","McLaren","+1.272"],[3,"Kimi Antonelli","Mercedes","+1.843"],[4,"Oscar Piastri","McLaren","+9.797"],[5,"Charles Leclerc","Ferrari","+9.929"],[6,"Lewis Hamilton","Ferrari","+10.545"],[7,"Max Verstappen","Red Bull-Ford","+15.935"],[8,"Arvid Lindblad","Racing Bulls","+29.710"],[9,"Franco Colapinto","Alpine","+31.621"],[10,"Carlos Sainz","Williams","+36.793"],[11,"Liam Lawson","Racing Bulls","+1:01.344"],[12,"Gabriel Bortoleto","Audi","+1:01.814"],[13,"Esteban Ocon","Haas","+1:04.209"],[14,"Sergio Pérez","Cadillac","+1:10.402 · 10s"],[15,"Nico Hülkenberg","Audi","+1:12.158 · 10s"],[16,"Lance Stroll","Aston Martin","+1 Rd"],[17,"Valtteri Bottas","Cadillac","+1 Rd"],[18,"Oliver Bearman","Haas","+1 Rd"],[19,"Alexander Albon","Williams","+1 Rd"],[20,"Pierre Gasly","Alpine","+1 Rd"],[21,"Isack Hadjar","Red Bull-Ford","+3 Rd"],["DNF","Fernando Alonso","Aston Martin","Motor"]]),
- r5q:R([[1,"George Russell","Mercedes","1:12.578 · Pole"],[2,"Kimi Antonelli","Mercedes","1:12.646"],[3,"Lando Norris","McLaren","1:12.729"],[4,"Oscar Piastri","McLaren","1:12.781"],[5,"Lewis Hamilton","Ferrari","1:12.868"],[6,"Max Verstappen","Red Bull-Ford","1:12.907"],[7,"Isack Hadjar","Red Bull-Ford","1:12.935"],[8,"Charles Leclerc","Ferrari","1:12.976"],[9,"Arvid Lindblad","Racing Bulls","1:13.280"],[10,"Franco Colapinto","Alpine","1:13.697"]]),
- r5r:R([[1,"Kimi Antonelli","Mercedes","Sieger · 1:28:15.758"],[2,"Lewis Hamilton","Ferrari","+10.768"],[3,"Max Verstappen","Red Bull-Ford","+11.276"],[4,"Charles Leclerc","Ferrari","+44.151"],[5,"Isack Hadjar","Red Bull-Ford","+1 Rd"],[6,"Franco Colapinto","Alpine","+1 Rd"],[7,"Liam Lawson","Racing Bulls","+1 Rd"],[8,"Pierre Gasly","Alpine","+1 Rd"],[9,"Carlos Sainz","Williams","+1 Rd"],[10,"Oliver Bearman","Haas","+1 Rd"],[11,"Oscar Piastri","McLaren","+2 Rd"],[12,"Nico Hülkenberg","Audi","+2 Rd"],[13,"Gabriel Bortoleto","Audi","+2 Rd · 5s"],[14,"Esteban Ocon","Haas","+2 Rd"],[15,"Lance Stroll","Aston Martin","+4 Rd"],[16,"Valtteri Bottas","Cadillac","+4 Rd"],["DNF","Sergio Pérez","Cadillac","Aufhängung"],["DNF","Lando Norris","McLaren","Getriebe"],["DNF","George Russell","Mercedes","Motor"],["DNF","Fernando Alonso","Aston Martin","Sitz gebrochen"],["DNF","Alexander Albon","Williams","Kollision"],["DNS","Arvid Lindblad","Racing Bulls","Getriebe"]]),
- r6r:R([[1,"Kimi Antonelli","Mercedes","Sieger · 78 Rd"],[2,"Lewis Hamilton","Ferrari","+6.271"],[3,"Isack Hadjar","Red Bull-Ford","+23.394"],[4,"Oscar Piastri","McLaren","+24.261"],[5,"Liam Lawson","Racing Bulls","+26.553"],[6,"Arvid Lindblad","Racing Bulls","+29.010"],[7,"Pierre Gasly","Alpine","+30.369"],[8,"Alexander Albon","Williams","+33.413"],[9,"Esteban Ocon","Haas","+37.410"],[10,"Fernando Alonso","Aston Martin","+41.899"],[11,"Gabriel Bortoleto","Audi","+42.748"],[12,"George Russell","Mercedes","+43.353"],[13,"Nico Hülkenberg","Audi","+44.102"],[14,"Franco Colapinto","Alpine","+48.964"],[15,"Sergio Pérez","Cadillac","+49.153 · 10s"],["DNF","Carlos Sainz","Williams",""],["DNF","Charles Leclerc","Ferrari","Unfall"],["DNF","Lance Stroll","Aston Martin","Unfall"],["DNF","Lando Norris","McLaren","Technik"],["DNF","Oliver Bearman","Haas","Aufgabe"],["DNF","Valtteri Bottas","Cadillac",""],["DNF","Max Verstappen","Red Bull-Ford","Stand am Start"]]),
- r7q:R([[1,"George Russell","Mercedes","1:14.679 · Pole"],[2,"Lewis Hamilton","Ferrari","+0.064"],[3,"Kimi Antonelli","Mercedes","+0.319"],[4,"Lando Norris","McLaren",""],[5,"Max Verstappen","Red Bull-Ford",""],[6,"Isack Hadjar","Red Bull-Ford",""],[7,"Oscar Piastri","McLaren",""],[8,"Liam Lawson","Racing Bulls",""],[9,"Nico Hülkenberg","Audi",""],[10,"Charles Leclerc","Ferrari","Q3 · Unfall"],[11,"Arvid Lindblad","Racing Bulls","Q2"],[12,"Gabriel Bortoleto","Audi","Q2"],[13,"Franco Colapinto","Alpine","Q2"],[14,"Pierre Gasly","Alpine","Q2"],[15,"Oliver Bearman","Haas","Q2"],[16,"Carlos Sainz","Williams","Q2"],[17,"Esteban Ocon","Haas","Q1"],[18,"Alexander Albon","Williams","Q1"],[19,"Sergio Pérez","Cadillac","Q1"],[20,"Valtteri Bottas","Cadillac","Q1"],[21,"Lance Stroll","Aston Martin","Q1"],[22,"Fernando Alonso","Aston Martin","Q1 · Boxengasse"]]),
- r7r:R([[1,"Lewis Hamilton","Ferrari","Sieger"],[2,"George Russell","Mercedes","+19.5s"],[3,"Lando Norris","McLaren","+23.7s"],[4,"Max Verstappen","Red Bull-Ford","+40.4s"],[5,"Oscar Piastri","McLaren","+58.6s"],[6,"Isack Hadjar","Red Bull-Ford","+1 Rd"],[7,"Pierre Gasly","Alpine","+1 Rd"],[8,"Liam Lawson","Racing Bulls","+1 Rd"],[9,"Arvid Lindblad","Racing Bulls","+1 Rd"],[10,"Franco Colapinto","Alpine","+1 Rd · 10s"],[11,"Gabriel Bortoleto","Audi","+2 Rd"],[12,"Carlos Sainz","Williams","+2 Rd"],[13,"Esteban Ocon","Haas","+2 Rd"],[14,"Sergio Pérez","Cadillac","+3 Rd"],["DNF","Charles Leclerc","Ferrari","Servolenkung"],["DNF","Kimi Antonelli","Mercedes","Motor"],["DNF","Oliver Bearman","Haas",""],["DNF","Alexander Albon","Williams",""],["DNF","Fernando Alonso","Aston Martin",""],["DNF","Nico Hülkenberg","Audi",""],["DNF","Valtteri Bottas","Cadillac",""],["DNF","Lance Stroll","Aston Martin",""]]),
-};
-
-/* ═══════ EVENTS ═══════
-   status: done | live | next | up | cancel
-   resOverall: nur WRC (Rallye-Gesamtwertung)
-   session.res: [{p,who,team,gap}]  partial=Liste unvollständig (siehe Hinweis) */
-const EVENTS = [
-
-/* ───── FORMEL 1 (23 Runden – Bahrain nach Sepang verlegt, Saudi abgesagt) ───── */
-{s:"f1",rd:1,name:"Großer Preis von Australien",loc:"Melbourne",d0:"2026-03-06",d1:"2026-03-08",status:"done",result:"George Russell (Mercedes)",
- sessions:S([["FP1","Fr","02:30"],["FP2","Fr","06:00"],["FP3","Sa","02:30"],
-   ["Qualifying","Sa","06:00",F1R.r1q],["Rennen","So","05:00",F1R.r1r]])},
-{s:"f1",rd:2,name:"Großer Preis von China · Sprint",loc:"Shanghai",d0:"2026-03-13",d1:"2026-03-15",status:"done",result:"Kimi Antonelli (Mercedes)",
- sessions:S([["FP1","Fr","04:30"],["Sprint-Quali","Fr","08:30",F1R.r2sq],["Sprint","Sa","04:30",F1R.r2sp,true],
-   ["Qualifying","Sa","08:00",[{p:1,who:"Kimi Antonelli",team:"Mercedes",gap:"Pole"}],true],
-   ["Rennen","So","08:00",F1R.r2race,true]])},
-{s:"f1",rd:3,name:"Großer Preis von Japan",loc:"Suzuka",d0:"2026-03-27",d1:"2026-03-29",status:"done",result:"Kimi Antonelli (Mercedes)",
- sessions:S([["FP1","Fr","04:30"],["FP2","Fr","08:00"],["FP3","Sa","04:30"],["Qualifying","Sa","08:00",F1R.r3q],
-   ["Rennen","So","07:00",F1R.r3r,true]])},
-{s:"f1",rd:4,name:"Großer Preis von Miami · Sprint",loc:"Miami",d0:"2026-05-01",d1:"2026-05-03",status:"done",result:"Kimi Antonelli (Mercedes)",
- sessions:S([["FP1","Fr","18:30"],["Sprint-Quali","Fr","22:30"],["Sprint","Sa","18:00"],["Qualifying","Sa","22:00"],
-   ["Rennen","So","22:00",F1R.r4r]])},
-{s:"f1",rd:5,name:"Großer Preis von Kanada · Sprint",loc:"Montréal",d0:"2026-05-22",d1:"2026-05-24",status:"done",result:"Kimi Antonelli (Mercedes)",
- sessions:S([["FP1","Fr","19:30"],["Sprint-Quali","Fr","23:00",F1R.r5sq,true],["Sprint","Sa","19:30",F1R.r5sp],
-   ["Qualifying","Sa","23:00",F1R.r5q,true],["Rennen","So","20:00",F1R.r5r]])},
-{s:"f1",rd:6,name:"Großer Preis von Monaco",loc:"Monte Carlo",d0:"2026-06-05",d1:"2026-06-07",status:"done",result:"Kimi Antonelli (Mercedes)",
- sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],
-   ["Qualifying","Sa","16:00",[{p:1,who:"Kimi Antonelli",team:"Mercedes",gap:"Pole"}],true],
-   ["Rennen","So","15:00",F1R.r6r]])},
-{s:"f1",rd:7,name:"Großer Preis von Barcelona-Katalonien",loc:"Barcelona",d0:"2026-06-12",d1:"2026-06-14",status:"done",result:"Lewis Hamilton (Ferrari)",
- sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],
-   ["Qualifying","Sa","16:00",F1R.r7q],["Rennen","So","15:00",F1R.r7r]])},
-{s:"f1",rd:8,name:"Großer Preis von Österreich",loc:"Spielberg",d0:"2026-06-26",d1:"2026-06-28",status:"done",result:"George Russell (Mercedes)",
- sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
-{s:"f1",rd:9,name:"Großer Preis von Großbritannien · Sprint",loc:"Silverstone",d0:"2026-07-03",d1:"2026-07-05",status:"done",result:"Charles Leclerc (Ferrari)",
- sessions:S([["FP1","Fr","13:30"],["Sprint-Quali","Fr","17:30"],["Sprint","Sa","13:00"],["Qualifying","Sa","17:00"],["Rennen","So","16:00"]])},
-{s:"f1",rd:10,name:"Großer Preis von Belgien",loc:"Spa-Francorchamps",d0:"2026-07-17",d1:"2026-07-19",status:"done",result:"Kimi Antonelli (Mercedes)",
- sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
-{s:"f1",rd:11,name:"Großer Preis von Ungarn",loc:"Budapest",d0:"2026-07-24",d1:"2026-07-26",status:"done",result:"Lando Norris (McLaren)",
- sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
-{s:"f1",rd:12,name:"Großer Preis der Niederlande · Sprint",loc:"Zandvoort",d0:"2026-08-21",d1:"2026-08-23",status:"done",result:"Lando Norris (McLaren)",
- sessions:S([["FP1","Fr","12:30"],["Sprint-Quali","Fr","16:30"],["Sprint","Sa","12:00"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
-{s:"f1",rd:13,name:"Großer Preis von Italien",loc:"Monza",d0:"2026-09-04",d1:"2026-09-06",status:"done",result:"Kimi Antonelli (Mercedes)",
- sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
-{s:"f1",rd:14,name:"Großer Preis von Spanien",loc:"Madrid",d0:"2026-09-11",d1:"2026-09-13",status:"done",result:"Kimi Antonelli (Mercedes)",
- sessions:S([["FP1","Fr","13:30"],["FP2","Fr","17:00"],["FP3","Sa","12:30"],["Qualifying","Sa","16:00"],["Rennen","So","15:00"]])},
-{s:"f1",rd:15,name:"Großer Preis von Aserbaidschan",loc:"Baku",d0:"2026-09-24",d1:"2026-09-26",status:"up",
- /* Rennen ausnahmsweise am SAMSTAG: 27.09. ist in Aserbaidschan nationaler Gedenktag.
-    Gesamter Zeitplan um einen Tag vorgezogen (Do/Fr/Sa). */
- sessions:S([["FP1","Do","10:30"],["FP2","Do","14:00"],["FP3","Fr","10:30"],["Qualifying","Fr","14:00"],["Rennen","Sa","13:00"]])},
-{s:"f1",rd:16,name:"Großer Preis von Bahrain",loc:"Sepang",d0:"2026-10-02",d1:"2026-10-04",status:"up",
- sessions:S([["FP1","Fr","06:30"],["FP2","Fr","10:00"],["FP3","Sa","06:30"],["Qualifying","Sa","10:00"],["Rennen","So","09:00"]])},
-{s:"f1",rd:17,name:"Großer Preis von Singapur · Sprint",loc:"Singapur",d0:"2026-10-09",d1:"2026-10-11",status:"up",
- sessions:S([["FP1","Fr","11:30"],["Sprint-Quali","Fr","15:00"],["Sprint","Sa","11:30"],["Qualifying","Sa","15:00"],["Rennen","So","14:00"]])},
-{s:"f1",rd:18,name:"Großer Preis der USA",loc:"Austin",d0:"2026-10-23",d1:"2026-10-25",status:"up",
- sessions:S([["FP1","Fr","19:30"],["FP2","Fr","23:00"],["FP3","Sa","19:30"],["Qualifying","Sa","23:00"],["Rennen","So","21:00"]])},
-{s:"f1",rd:19,name:"Großer Preis von Mexiko",loc:"Mexiko-Stadt",d0:"2026-10-30",d1:"2026-11-01",status:"up",
- sessions:S([["FP1","Fr","20:30"],["FP2","Sa","00:00"],["FP3","Sa","19:30"],["Qualifying","Sa","23:00"],["Rennen","So","21:00"]])},
-{s:"f1",rd:20,name:"Großer Preis von São Paulo",loc:"Interlagos",d0:"2026-11-06",d1:"2026-11-08",status:"up",
- sessions:S([["FP1","Fr","15:30"],["FP2","Fr","19:00"],["FP3","Sa","15:30"],["Qualifying","Sa","19:00"],["Rennen","So","18:00"]])},
-{s:"f1",rd:21,name:"Großer Preis von Las Vegas",loc:"Las Vegas",d0:"2026-11-20",d1:"2026-11-22",status:"up",
- sessions:S([["FP1","Fr","05:30"],["FP2","Fr","09:00"],["FP3","Sa","05:30"],["Qualifying","Sa","09:00"],["Rennen","So","07:00"]])},
-{s:"f1",rd:22,name:"Großer Preis von Katar",loc:"Lusail",d0:"2026-11-27",d1:"2026-11-29",status:"up",
- sessions:S([["FP1","Fr","14:30"],["FP2","Fr","18:00"],["FP3","Sa","14:30"],["Qualifying","Sa","18:00"],["Rennen","So","17:00"]])},
-{s:"f1",rd:23,name:"Großer Preis von Abu Dhabi",loc:"Yas Marina",d0:"2026-12-04",d1:"2026-12-06",status:"up",
- sessions:S([["FP1","Fr","10:30"],["FP2","Fr","14:00"],["FP3","Sa","11:30"],["Qualifying","Sa","15:00"],["Rennen","So","14:00"]])},
-/* abgesagt */
-{s:"f1",rd:0,name:"Großer Preis von Bahrain",loc:"Sakhir",d0:"2026-04-10",d1:"2026-04-12",status:"cancel",sessions:S([])},
-{s:"f1",rd:0,name:"Großer Preis von Saudi-Arabien",loc:"Dschidda",d0:"2026-04-17",d1:"2026-04-19",status:"cancel",sessions:S([])},
-
-/* ───── MotoGP (22 Runden) ───── */
-{s:"mgp",rd:1,name:"Großer Preis von Thailand",loc:"Buriram",d0:"2026-02-27",d1:"2026-03-01",status:"done",result:"Marco Bezzecchi (Aprilia)",
- sessions:S([["Sprint","Sa","09:00"],["Rennen","So","09:00"]])},
-{s:"mgp",rd:2,name:"Großer Preis von Brasilien",loc:"Goiânia",d0:"2026-03-20",d1:"2026-03-22",status:"done",result:"Marco Bezzecchi (Aprilia)",
- sessions:S([["Sprint","Sa","19:00"],["Rennen","So","19:00"]])},
-{s:"mgp",rd:3,name:"Großer Preis der Amerikas",loc:"Austin",d0:"2026-03-27",d1:"2026-03-29",status:"done",result:"Marco Bezzecchi (Aprilia)",
- sessions:S([["Sprint","Sa","21:00"],["Rennen","So","22:00"]])},
-{s:"mgp",rd:4,name:"Großer Preis von Spanien",loc:"Jerez",d0:"2026-04-24",d1:"2026-04-26",status:"done",result:"Álex Márquez (Ducati)",
- sessions:S(mgp())},
-{s:"mgp",rd:5,name:"Großer Preis von Frankreich",loc:"Le Mans",d0:"2026-05-08",d1:"2026-05-10",status:"done",result:"Jorge Martín (Aprilia)",
- sessions:S(mgp())},
-{s:"mgp",rd:6,name:"Großer Preis von Katalonien",loc:"Barcelona",d0:"2026-05-15",d1:"2026-05-17",status:"done",result:"Fabio Di Giannantonio (Ducati)",
- sessions:S(mgp())},
-{s:"mgp",rd:7,name:"Großer Preis von Italien",loc:"Mugello",d0:"2026-05-29",d1:"2026-05-31",status:"done",result:"Marco Bezzecchi (Aprilia)",
- sessions:S(mgp())},
-{s:"mgp",rd:8,name:"Großer Preis von Ungarn",loc:"Balaton Park",d0:"2026-06-05",d1:"2026-06-07",status:"done",result:"Marc Márquez (Ducati)",
- sessions:S(mgp())},
-{s:"mgp",rd:9,name:"Großer Preis von Tschechien",loc:"Brünn",d0:"2026-06-19",d1:"2026-06-21",status:"done",result:"Marc Márquez (Ducati)",
- sessions:S(mgp())},
-{s:"mgp",rd:10,name:"Großer Preis der Niederlande",loc:"Assen",d0:"2026-06-26",d1:"2026-06-28",status:"done",result:"Ai Ogura (Aprilia)",
- sessions:S(mgp())},
-{s:"mgp",rd:11,name:"Großer Preis von Deutschland",loc:"Sachsenring",d0:"2026-07-10",d1:"2026-07-12",status:"done",result:"Marc Márquez (Ducati)",
- sessions:S(mgp())},
-{s:"mgp",rd:12,name:"Großer Preis von Großbritannien",loc:"Silverstone",d0:"2026-08-07",d1:"2026-08-09",status:"done",result:"Raúl Fernández (Aprilia)",
- sessions:S(mgp().map(x=>x[0]==="Sprint"?["Sprint","Sa","17:00"]:x))},
-{s:"mgp",rd:13,name:"Großer Preis von Aragón",loc:"Aragón",d0:"2026-08-28",d1:"2026-08-30",status:"done",result:"Marc Márquez (Ducati)",
- sessions:S(mgp())},
-{s:"mgp",rd:14,name:"Großer Preis von San Marino",loc:"Misano",d0:"2026-09-11",d1:"2026-09-13",status:"done",result:"Marc Márquez (Ducati)",
- sessions:S(mgp())},
-{s:"mgp",rd:15,name:"Großer Preis von Österreich",loc:"Red Bull Ring",d0:"2026-09-18",d1:"2026-09-20",status:"done",result:"Pedro Acosta (KTM)",
- sessions:S(mgp())},
-{s:"mgp",rd:16,name:"Großer Preis von Japan",loc:"Motegi",d0:"2026-10-02",d1:"2026-10-04",status:"up",
- sessions:S([["FP1","Fr","03:45"],["Practice","Fr","08:00"],["FP2","Sa","03:10"],["Qualifying","Sa","03:50"],["Sprint","Sa","08:00"],["Warm Up","So","02:40"],["Rennen","So","07:00"]])},
-{s:"mgp",rd:17,name:"Großer Preis von Indonesien",loc:"Mandalika",d0:"2026-10-09",d1:"2026-10-11",status:"up",
- sessions:S([["FP1","Fr","04:45"],["Practice","Fr","09:00"],["FP2","Sa","04:10"],["Qualifying","Sa","04:50"],["Sprint","Sa","09:00"],["Warm Up","So","04:40"],["Rennen","So","09:00"]])},
-{s:"mgp",rd:18,name:"Großer Preis von Australien",loc:"Phillip Island",d0:"2026-10-23",d1:"2026-10-25",status:"up",
- sessions:S([["Sprint","Sa","06:00"],["Rennen","So","04:00"]])},
-{s:"mgp",rd:19,name:"Großer Preis von Malaysia",loc:"Sepang",d0:"2026-10-30",d1:"2026-11-01",status:"up",
- sessions:S([["Sprint","Sa","08:00"],["Rennen","So","08:00"]])},
-{s:"mgp",rd:20,name:"Großer Preis von Katar",loc:"Lusail",d0:"2026-11-06",d1:"2026-11-08",status:"up",
- sessions:S([["Sprint","Sa","18:00"],["Rennen","So","18:00"]])},
-{s:"mgp",rd:21,name:"Großer Preis von Portugal",loc:"Portimão",d0:"2026-11-20",d1:"2026-11-22",status:"up",
- sessions:S(mgp().map(x=>x[0]==="Sprint"?["Sprint","Sa","16:00"]:x))},
-{s:"mgp",rd:22,name:"Großer Preis von Valencia",loc:"Valencia",d0:"2026-11-27",d1:"2026-11-29",status:"up",
- sessions:S(mgp())},
-{s:"wec",rd:1,name:"6 Stunden von Imola",loc:"Imola",d0:"2026-04-17",d1:"2026-04-19",status:"done",result:"Toyota #8 (Buemi/Hartley/Hirakawa)",
- sessions:S([["FP1","Fr","13:30"],["FP2","Fr","18:00"],["FP3","Sa","09:45"],["Hyperpole","Sa","14:20"],
-   ["Rennen (6h)","So","13:00",[{p:1,who:"Toyota #8",team:"Buemi/Hartley/Hirakawa",gap:"Sieger"}]]])},
-{s:"wec",rd:2,name:"6 Stunden von Spa-Francorchamps",loc:"Spa",d0:"2026-05-07",d1:"2026-05-09",status:"done",result:"BMW #20 (van der Linde/Frijns/Rast)",
- sessions:S([["FP1","Do","15:30"],["FP2","Fr","11:00"],["FP3","Fr","16:00"],["Hyperpole","Sa","12:00"],
-   ["Rennen (6h)","Sa","14:00",[{p:1,who:"BMW #20",team:"van der Linde/Frijns/Rast",gap:"Sieger"},{p:2,who:"Toyota #15",team:"Magnussen/Marciello/Vanthoor",gap:"P2"}]]])},
-{s:"wec",rd:3,name:"24 Stunden von Le Mans",loc:"Le Mans",d0:"2026-06-10",d1:"2026-06-14",status:"done",result:"Toyota #7 (Conway/Kobayashi/de Vries)",
- sessions:S([["Free Practice","Mi","15:00"],["Qualifying","Mi","19:00"],["Hyperpole","Do","20:00"],["Warm Up","Sa","12:00"],
-   ["Rennen (24h)","Sa","16:00",[{p:1,who:"Toyota #7",team:"Conway/Kobayashi/de Vries",gap:"Sieger"},{p:2,who:"BMW #20",team:"Hypercar",gap:"P2"},{p:3,who:"Toyota #8",team:"Hypercar",gap:"P3"}]]])},
-{s:"wec",rd:4,name:"6 Stunden von São Paulo",loc:"Interlagos",d0:"2026-07-10",d1:"2026-07-12",status:"done",result:"BMW #15 (Magnussen/Marciello/Vanthoor)",
- sessions:S([["FP1","Fr","16:00"],["FP2","Fr","20:30"],["FP3","Sa","15:00"],["Hyperpole","Sa","19:20"],["Rennen (6h)","So","16:00"]])},
-{s:"wec",rd:5,name:"Lone Star Le Mans (Austin)",loc:"COTA",d0:"2026-09-04",d1:"2026-09-06",status:"done",result:"Ferrari #50 (Fuoco/Molina/Nielsen)",
- sessions:S([["FP1","Fr","18:00"],["FP2","Fr","23:00"],["FP3","Sa","17:00"],["Hyperpole","Sa","21:20"],["Rennen (6h)","So","20:00"]])},
-{s:"wec",rd:6,name:"6 Stunden von Fuji",loc:"Fuji",d0:"2026-09-25",d1:"2026-09-27",status:"up",
- sessions:S([["FP1","Fr","04:00"],["FP2","Fr","08:30"],["FP3","Sa","03:30"],["Hyperpole","Sa","07:20"],["Rennen (6h)","So","04:00"]])},
-{s:"wec",rd:7,name:"6 Stunden von Barcelona",loc:"Circuit de Barcelona-Catalunya",d0:"2026-10-16",d1:"2026-10-18",status:"up",
- sessions:S([["FP1","Do","13:00"],["FP2","Do","18:00"],["FP3","Fr","13:00"],["Hyperpole","Fr","17:20"],["Rennen (6h)","Sa","13:00"]])},
-{s:"wec",rd:8,name:"6 Stunden von Monza (Finale)",loc:"Monza",d0:"2026-11-06",d1:"2026-11-08",status:"up",
- sessions:S([["FP1","Do","13:00"],["FP2","Do","18:00"],["FP3","Fr","14:00"],["Hyperpole","Fr","18:20"],["Rennen (6h)","Sa","13:00"]])},
-
-/* ───── DTM (8 Wochenenden / 16 Rennen) ───── */
-{s:"dtm",rd:1,name:"DTM Spielberg",loc:"Red Bull Ring",d0:"2026-04-24",d1:"2026-04-26",status:"done",result:"Sa: Preining · So: Engel",
- sessions:S([["Freies Training","Fr","13:30"],
-   ["Qualifying 1","Sa","09:40",[{p:1,who:"Maximilian Engel",team:"Mercedes",gap:"1:27.403 · Pole"},{p:2,who:"Ben Dörr",team:"Ferrari",gap:"+0.015"},{p:3,who:"Thomas Preining",team:"Porsche",gap:"+0.048"}]],
-   ["Rennen 1","Sa","13:30",[{p:1,who:"Thomas Preining",team:"Porsche",gap:"Sieger"},{p:2,who:"Lucas Auer",team:"Mercedes",gap:"+0.774"},{p:3,who:"Maximilian Engel",team:"Mercedes",gap:"+1.620"}]],
-   ["Qualifying 2","So","09:30",[{p:1,who:"Kelvin van der Linde",team:"BMW",gap:"1:27.575 · Pole"},{p:2,who:"Franz Wiebelhaus",team:"Audi",gap:"+0.085"},{p:3,who:"Lucas Auer",team:"Mercedes",gap:"+0.093"}]],
-   ["Rennen 2","So","13:30",[{p:1,who:"Maximilian Engel",team:"Mercedes",gap:"Sieger"},{p:2,who:"Marco Wittmann",team:"BMW",gap:"+4.857"},{p:3,who:"Lucas Auer",team:"Mercedes",gap:"+5.429"}]]])},
-{s:"dtm",rd:2,name:"DTM Zandvoort",loc:"Zandvoort",d0:"2026-05-22",d1:"2026-05-24",status:"done",result:"Sa: Cairoli · So: K. van der Linde",
- sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:40"],
-   ["Rennen 1","Sa","13:30",[{p:1,who:"Kelvin van der Linde",team:"BMW Schubert",gap:"Sieger"}]],
-   ["Qualifying 2","So","09:30"],["Rennen 2","So","13:30"]])},
-{s:"dtm",rd:3,name:"DTM Lausitzring",loc:"Lausitzring",d0:"2026-06-19",d1:"2026-06-21",status:"done",result:"Sa: Dörr · So: Cairoli",
- sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
-{s:"dtm",rd:4,name:"DTM Norisring",loc:"Nürnberg",d0:"2026-07-03",d1:"2026-07-05",status:"done",result:"Sa: Thiim · So: Thiim",
- sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
-{s:"dtm",rd:5,name:"DTM Oschersleben",loc:"Oschersleben",d0:"2026-07-24",d1:"2026-07-26",status:"done",result:"Sa: Preining · So: Engel",
- sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
-{s:"dtm",rd:6,name:"DTM Nürburgring",loc:"Nürburgring",d0:"2026-08-14",d1:"2026-08-16",status:"done",result:"Sa: Cairoli · So: Wittmann",
- sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
-{s:"dtm",rd:7,name:"DTM Sachsenring",loc:"Sachsenring",d0:"2026-09-11",d1:"2026-09-13",status:"done",result:"Sa: Wittmann · So: Dörr",
- sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
-{s:"dtm",rd:8,name:"DTM Hockenheim (Finale)",loc:"Hockenheimring",d0:"2026-10-09",d1:"2026-10-11",status:"up",
- sessions:S([["Freies Training","Fr","13:30"],["Qualifying 1","Sa","09:00"],["Rennen 1","Sa","13:30"],["Qualifying 2","So","09:05"],["Rennen 2","So","13:30"]])},
-
-/* ───── WRC (14 Runden) ───── */
-{s:"wrc",rd:1,name:"Rallye Monte-Carlo",loc:"Monaco",d0:"2026-01-22",d1:"2026-01-25",status:"done",result:"Oliver Solberg (Toyota)",
- resOverall:[{p:1,who:"Oliver Solberg",team:"Toyota",gap:"Sieger"},{p:2,who:"Elfyn Evans",team:"Toyota",gap:"+51.8s"},{p:3,who:"Sébastien Ogier",team:"Toyota",gap:"P3"}],
- sessions:S([["Shakedown","Do","09:00"],["Etappe 1","Do","18:00"],["Etappe 2","Fr","08:00"],["Etappe 3","Sa","08:00"],["Power Stage","So","12:00"]])},
-{s:"wrc",rd:2,name:"Rallye Schweden",loc:"Umeå",d0:"2026-02-12",d1:"2026-02-15",status:"done",result:"Elfyn Evans (Toyota)",
- sessions:S([["Shakedown","Do","08:00"],["Etappe 1","Do","19:00"],["Etappe 2","Fr","08:00"],["Etappe 3","Sa","08:00"],["Power Stage","So","12:15"]])},
-{s:"wrc",rd:3,name:"Safari-Rallye Kenia",loc:"Nairobi",d0:"2026-03-12",d1:"2026-03-15",status:"done",result:"Takamoto Katsuta (Toyota)",
- sessions:S([["Shakedown","Do","06:00"],["Etappe 1","Do","12:00"],["Etappe 2","Fr","05:00"],["Etappe 3","Sa","05:00"],["Power Stage","So","10:15"]])},
-{s:"wrc",rd:4,name:"Rallye Kroatien",loc:"Rijeka",d0:"2026-04-09",d1:"2026-04-12",status:"done",result:"Takamoto Katsuta (Toyota)",
- sessions:S([["Shakedown","Do","08:00"],["Etappe 1","Fr","08:00"],["Etappe 2","Sa","08:00"],["Etappe 3","So","08:00"],["Power Stage","So","12:15"]])},
-{s:"wrc",rd:5,name:"Rallye Islas Canarias",loc:"Las Palmas (Gran Canaria)",d0:"2026-04-23",d1:"2026-04-26",status:"done",result:"Sébastien Ogier (Toyota)",
- sessions:S([["Shakedown","Do","09:00"],["Etappe 1","Fr","08:00"],["Etappe 2","Sa","08:00"],["Etappe 3","So","08:00"],["Power Stage","So","12:15"]])},
-{s:"wrc",rd:6,name:"Rallye Portugal",loc:"Matosinhos",d0:"2026-05-07",d1:"2026-05-10",status:"done",result:"Thierry Neuville (Hyundai)",
- sessions:S([["Shakedown","Do","09:00"],["Etappe 1","Fr","08:00"],["Etappe 2","Sa","08:00"],["Etappe 3","So","08:00"],["Power Stage","So","12:15"]])},
-{s:"wrc",rd:7,name:"Rallye Japan",loc:"Aichi/Gifu",d0:"2026-05-28",d1:"2026-05-31",status:"done",result:"Elfyn Evans (Toyota)",
- sessions:S([["Shakedown","Do","02:00"],["Etappe 1","Fr","01:00"],["Etappe 2","Sa","01:00"],["Etappe 3","So","01:00"],["Power Stage","So","08:15"]])},
-{s:"wrc",rd:8,name:"Akropolis-Rallye Griechenland",loc:"Loutraki",d0:"2026-06-25",d1:"2026-06-28",status:"done",result:"Sébastien Ogier (Toyota)",
- sessions:S([["Shakedown","Do","08:00"],["Etappe 1","Fr","07:00"],["Etappe 2","Sa","07:00"],["Etappe 3","So","07:00"],["Power Stage","So","11:15"]])},
-{s:"wrc",rd:9,name:"Rallye Estland",loc:"Tartu",d0:"2026-07-16",d1:"2026-07-19",status:"done",result:"Sami Pajari (Toyota)",
- sessions:S([["Shakedown","Do","09:00"],["Etappe 1","Fr","08:00"],["Etappe 2","Sa","08:00"],["Etappe 3","So","08:00"],["Power Stage","So","12:15"]])},
-{s:"wrc",rd:10,name:"Rallye Finnland",loc:"Jyväskylä",d0:"2026-07-30",d1:"2026-08-02",status:"done",result:"Sami Pajari (Toyota)",
- sessions:S([["Shakedown","Do","08:00"],["Etappe 1","Fr","07:00"],["Etappe 2","Sa","07:00"],["Etappe 3","So","07:00"],["Power Stage","So","11:15"]])},
-{s:"wrc",rd:11,name:"Rallye Paraguay",loc:"Encarnación",d0:"2026-08-27",d1:"2026-08-30",status:"done",result:"Sami Pajari (Toyota)",
- sessions:S([["WP1 Cambyreta 1","Fr","14:03"],["WP2 Nueva Alborada 1","Fr","14:56"],["WP3 Yerbateras 1","Fr","15:49"],["WP4 Autodromo 1","Fr","16:50"],
-   ["WP5 Cambyreta 2","Fr","19:19"],["WP6 Nueva Alborada 2","Fr","20:12"],["WP7 Yerbateras 2","Fr","21:05"],["WP8 Autodromo 2","Fr","22:18"],
-   ["WP9 Bella Vista 1","Sa","13:19"],["WP10 Bella Vista Sur 1","Sa","14:12"],["WP11 Hohenau 1","Sa","15:05"],["WP12 Trinidad 1","Sa","16:02"],
-   ["WP13 Bella Vista 2","Sa","19:16"],["WP14 Bella Vista Sur 2","Sa","20:09"],["WP15 Hohenau 2","Sa","21:05"],["WP16 Trinidad 2","Sa","22:02"],
-   ["WP17 Encarnación Costanera","Sa","23:05"],
-   ["WP18 Encarnación 1","So","12:05"],["WP19 Artigas 1","So","13:38"],["WP20 Artigas Oeste","So","15:51"],["WP21 Artigas 2","So","16:43"],
-   ["WP22 Encarnación 2 · Power Stage","So","19:15"]])},
-{s:"wrc",rd:12,name:"Rallye Chile Bio Bío",loc:"Concepción",d0:"2026-09-10",d1:"2026-09-13",status:"done",result:"Oliver Solberg (Toyota)",
- sessions:S([["Shakedown","Do","16:01"],
-   ["WP1 Turquía 1","Fr","13:53"],["WP2 Nuevo Rere 1","Fr","14:48"],["WP3 Hualqui 1","Fr","15:36"],
-   ["WP4 Turquía 2","Fr","20:09"],["WP5 Nuevo Rere 2","Fr","21:04"],["WP6 Hualqui 2","Fr","21:52"],
-   ["WP7 Pelún 1","Sa","14:08"],["WP8 Lota 1","Sa","15:01"],["WP9 María las Cruces 1","Sa","16:05"],
-   ["WP10 Pelún 2","Sa","20:08"],["WP11 Lota 2","Sa","21:01"],["WP12 María las Cruces 2","Sa","22:05"],
-   ["WP13 Carampangue 1","So","14:00"],["WP14 BioBío 1","So","15:05"],["WP15 Carampangue 2","So","16:13"],
-   ["WP16 BioBío 2 · Power Stage","So","18:15"]])},
-{s:"wrc",rd:13,name:"Rallye Italien (Sardinien) · Finale",loc:"Alghero",d0:"2026-10-01",d1:"2026-10-04",status:"up",
- sessions:S([["Shakedown","Do","09:01"],["WP1 Ittiri Arena Show","Do","16:05"],
-   ["WP2 Tula–Erula 1","Fr","08:01"],["WP3 Su Filigosu–Lerno 1","Fr","09:01"],["WP4 Monti di Alà 1","Fr","10:08"],
-   ["WP5 Tula–Erula 2","Fr","14:31"],["WP6 Su Filigosu–Lerno 2","Fr","15:31"],["WP7 Monti di Alà 2","Fr","16:38"],
-   ["WP8 Lerno–Monti di Alà 1","Sa","08:01"],["WP9 Coiluna–Loelle 1","Sa","09:11"],["WP10 Solorchè 1","Sa","10:07"],
-   ["WP11 Lerno–Monti di Alà 2","Sa","14:31"],["WP12 Coiluna–Loelle 2","Sa","15:41"],["WP13 Solorchè 2","Sa","16:37"],
-   ["WP14 Osilo–Tergu 1","So","08:31"],["WP15 Sassari–Argentiera 1","So","10:05"],["WP16 Osilo–Tergu 2","So","11:38"],
-   ["WP17 Sassari–Argentiera 2 · Power Stage","So","14:15"]])},
-{s:"wrc",rd:14,name:"Rallye Saudi-Arabien (abgesagt)",loc:"Jeddah",d0:"2026-11-11",d1:"2026-11-14",status:"cancel",
- sessions:S([["Shakedown","Mi","13:00"],["Etappe 1","Do","16:00"],["Etappe 2","Fr","16:00"],["Etappe 3","Sa","16:00"],["Power Stage","Sa","19:15"]])},
-
-/* ───── Formel E · Saison 12 ───── */
-{s:"fe",rd:1,name:"São Paulo E-Prix",loc:"São Paulo",d0:"2025-12-06",d1:"2025-12-06",status:"done",result:"Jake Dennis (Andretti)",
- sessions:S([["Freies Training","Fr","13:00"],["Qualifying","Sa","11:40"],
-   ["Rennen","Sa","17:00",[{p:1,who:"Jake Dennis",team:"Andretti",gap:"Sieger"},{p:2,who:"Oliver Rowland",team:"Nissan",gap:"P2"},{p:3,who:"Nick Cassidy",team:"Citroën",gap:"P3"}]]])},
-{s:"fe",rd:2,name:"Mexiko-Stadt E-Prix",loc:"Mexiko-Stadt",d0:"2026-01-10",d1:"2026-01-10",status:"done",result:"Nick Cassidy (Citroën)",
- sessions:S([["Freies Training","Sa","16:30"],["Qualifying","Sa","18:40"],["Rennen","Sa","23:00"]])},
-{s:"fe",rd:3,name:"Miami E-Prix",loc:"Miami",d0:"2026-01-31",d1:"2026-01-31",status:"done",result:"Mitch Evans (Jaguar)",
- sessions:S([["Freies Training","Sa","15:30"],["Qualifying","Sa","17:40"],["Rennen","Sa","22:00"]])},
-{s:"fe",rd:4,name:"Jeddah E-Prix I",loc:"Dschidda",d0:"2026-02-13",d1:"2026-02-13",status:"done",result:"Pascal Wehrlein (Porsche)",
- sessions:S([["Freies Training","Fr","12:30"],["Qualifying","Fr","14:40"],["Rennen","Fr","19:00"]])},
-{s:"fe",rd:5,name:"Jeddah E-Prix II",loc:"Dschidda",d0:"2026-02-14",d1:"2026-02-14",status:"done",result:"António Félix da Costa (Jaguar)",
- sessions:S([["Freies Training","Sa","10:30"],["Qualifying","Sa","12:40"],["Rennen","Sa","19:00"]])},
-{s:"fe",rd:6,name:"Madrid E-Prix",loc:"Jarama",d0:"2026-03-21",d1:"2026-03-21",status:"done",result:"António Félix da Costa (Jaguar)",
- sessions:S([["Freies Training","Sa","09:30"],["Qualifying","Sa","11:40"],["Rennen","Sa","16:00"]])},
-{s:"fe",rd:7,name:"Berlin E-Prix I",loc:"Tempelhof",d0:"2026-05-02",d1:"2026-05-02",status:"done",result:"Nico Müller (Porsche)",
- sessions:S([["Freies Training","Sa","09:30"],["Qualifying","Sa","11:40"],["Rennen","Sa","16:00"]])},
-{s:"fe",rd:8,name:"Berlin E-Prix II",loc:"Tempelhof",d0:"2026-05-03",d1:"2026-05-03",status:"done",result:"Mitch Evans (Jaguar)",
- sessions:S([["Freies Training","So","09:30"],["Qualifying","So","11:40"],["Rennen","So","16:00"]])},
-{s:"fe",rd:9,name:"Monaco E-Prix I",loc:"Monte Carlo",d0:"2026-05-16",d1:"2026-05-16",status:"done",result:"Nyck de Vries (Mahindra)",
- sessions:S([["Freies Training","Sa","08:30"],["Qualifying","Sa","10:40"],["Rennen","Sa","15:00"]])},
-{s:"fe",rd:10,name:"Monaco E-Prix II",loc:"Monte Carlo",d0:"2026-05-17",d1:"2026-05-17",status:"done",result:"Oliver Rowland (Nissan)",
- sessions:S([["Freies Training","So","08:30"],["Qualifying","So","10:40"],["Rennen","So","15:00"]])},
-{s:"fe",rd:11,name:"Sanya E-Prix",loc:"Sanya",d0:"2026-06-20",d1:"2026-06-20",status:"done",result:"Jake Dennis (Andretti)",
- sessions:S([["Freies Training","Sa","04:30"],["Qualifying","Sa","06:40"],["Rennen","Sa","09:00"]])},
-{s:"fe",rd:12,name:"Shanghai E-Prix I",loc:"Shanghai",d0:"2026-07-04",d1:"2026-07-04",status:"done",result:"Pascal Wehrlein (Porsche)",
- sessions:S([["Freies Training","Sa","04:30"],["Qualifying","Sa","06:40"],["Rennen","Sa","09:00"]])},
-{s:"fe",rd:13,name:"Shanghai E-Prix II",loc:"Shanghai",d0:"2026-07-05",d1:"2026-07-05",status:"done",result:"Lucas di Grassi (Lola Yamaha ABT)",
- sessions:S([["Freies Training","So","04:30"],["Qualifying","So","06:40"],["Rennen","So","09:00"]])},
-{s:"fe",rd:14,name:"Tokio E-Prix",loc:"Tokio",d0:"2026-07-25",d1:"2026-07-26",status:"done",result:"Sa: Ticktum · So: de Vries",
- sessions:S([["Freies Training","Sa","03:30"],["Qualifying","Sa","05:40"],["Rennen","Sa","08:00"]])},
-{s:"fe",rd:15,name:"London E-Prix I",loc:"London ExCeL",d0:"2026-08-15",d1:"2026-08-15",status:"done",result:"Pascal Wehrlein (Porsche)",
- sessions:S([])},
-{s:"fe",rd:16,name:"London E-Prix II · Finale",loc:"London ExCeL",d0:"2026-08-16",d1:"2026-08-16",status:"done",result:"Taylor Barnard (DS Penske)",
- sessions:S([])},
-
-/* GT World Challenge Europe 2026 — zehn Wochenenden, fuenf Sprint Cup und fuenf Endurance Cup.
-   Termine aus dem finalisierten SRO-Kalender. Sessionzeiten werden erst kurzfristig
-   veroeffentlicht und sind daher noch nicht hinterlegt. */
-{s:"gtwc",rd:1,name:"6 Stunden von Paul Ricard · Endurance",loc:"Paul Ricard",d0:"2026-04-11",d1:"2026-04-12",status:"done",result:"Aston Martin #7 (Drudi/Sørensen/Thiim)",sessions:S([])},
-{s:"gtwc",rd:2,name:"Brands Hatch · Sprint",loc:"Brands Hatch",d0:"2026-05-02",d1:"2026-05-03",status:"done",result:"Sa: Leclerc/Neubauer (Ferrari) · So: Buus/Feller (Porsche)",sessions:S([])},
-{s:"gtwc",rd:3,name:"Monza · Endurance",loc:"Monza",d0:"2026-05-30",d1:"2026-05-31",status:"done",result:"Audi #66 (Levi/Mazzola/Øgaard)",sessions:S([])},
-{s:"gtwc",rd:4,name:"24 Stunden von Spa · Endurance",loc:"Spa-Francorchamps",d0:"2026-06-25",d1:"2026-06-28",status:"done",result:"Porsche #80 (Buus/Feller/Preining)",sessions:S([])},
-{s:"gtwc",rd:5,name:"Misano · Sprint",loc:"Misano",d0:"2026-07-18",d1:"2026-07-19",status:"done",result:"Sa: van der Linde/Weerts (BMW) · So: van der Linde/Weerts (BMW)",sessions:S([])},
-{s:"gtwc",rd:6,name:"Magny-Cours · Sprint",loc:"Magny-Cours",d0:"2026-08-01",d1:"2026-08-02",status:"done",result:"Sa: Gounon/Juncadella (Mercedes-AMG) · So: Buus/Feller (Porsche)",sessions:S([])},
-{s:"gtwc",rd:7,name:"Nürburgring · Endurance",loc:"Nürburgring",d0:"2026-08-29",d1:"2026-08-30",status:"done",result:"Aston Martin #7 (Drudi/Sørensen/Thiim)",sessions:S([])},
-{s:"gtwc",rd:8,name:"Zandvoort · Sprint",loc:"Zandvoort",d0:"2026-09-18",d1:"2026-09-20",status:"done",result:"Sa: Fleming/Prette (McLaren) · So: Green/Vermeulen (Ferrari)",
- sessions:S([["Freies Training 1","Fr","09:00"],["Freies Training 2","Fr","13:50"],
-   ["Qualifying 1 · Gruppe A","Sa","09:50"],["Qualifying 1 · Gruppe B","Sa","10:05"],["Rennen 1","Sa","14:45"],
-   ["Qualifying 2 · Gruppe A","So","10:35"],["Qualifying 2 · Gruppe B","So","10:50"],["Rennen 2","So","14:15"]])},
-{s:"gtwc",rd:9,name:"Barcelona · Sprint",loc:"Barcelona",d0:"2026-10-02",d1:"2026-10-04",status:"up",
- sessions:S([["Freies Training 1","Fr","09:00"],["Freies Training 2","Fr","13:55"],
-   ["Qualifying 1 · Gruppe A","Sa","09:50"],["Qualifying 1 · Gruppe B","Sa","10:05"],["Rennen 1","Sa","14:00"],
-   ["Qualifying 2 · Gruppe A","So","11:15"],["Qualifying 2 · Gruppe B","So","11:30"],["Rennen 2","So","16:00"]])},
-{s:"gtwc",rd:10,name:"Portimão · Endurance · Finale",loc:"Portimão",d0:"2026-10-16",d1:"2026-10-18",status:"up",
- sessions:S([["Freies Training 1","Fr","09:45"],["Freies Training 2","Fr","13:45"],["Qualifying","Fr","18:55"],
-   ["Rennen (3 Stunden)","Sa","18:00"]])},
-
-/* ───── Nürburgring Langstrecken-Serie (10 Rennen, ein Event pro Rennen) ───── */
-{s:"nls",rd:1,name:"71. ADAC Westfalenfahrt",loc:"Nürburgring",d0:"2026-03-14",d1:"2026-03-14",status:"cancel",sessions:S([])},
-{s:"nls",rd:2,name:"58. ADAC Barbarossapreis",loc:"Nürburgring",d0:"2026-03-21",d1:"2026-03-21",status:"done",result:"BMW #99 (Harper/Pepper)",
- sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
-{s:"nls",rd:3,name:"57. Adenauer ADAC Rundstrecken-Trophy",loc:"Nürburgring",d0:"2026-04-11",d1:"2026-04-11",status:"done",result:"BMW #77 (Wittmann/Eng/Frijns)",
- sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
-{s:"nls",rd:4,name:"ADAC 24h Nürburgring Qualifiers · Rennen 1",loc:"Nürburgring",d0:"2026-04-18",d1:"2026-04-18",status:"done",abbruch:true,
- sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","17:30"]])},
-{s:"nls",rd:5,name:"ADAC 24h Nürburgring Qualifiers · Rennen 2",loc:"Nürburgring",d0:"2026-04-19",d1:"2026-04-19",status:"done",result:"Audi #16 (Haase/Sims/Green)",
- sessions:S([["Qualifying","So","08:15"],["Top-Qualifying","So","10:40"],["Rennen (4h)","So","13:00"]])},
-/* 24h-Rennen: eigenständige Veranstaltung (ADAC Nordrhein), nicht Teil der NLS-Meisterschaft.
-   sonder = Anzeige statt Rundennummer; rd:0, damit Rundenzählung, IDs und Kalender-UIDs unberührt bleiben. */
-{s:"nls",rd:0,sonder:"24h",veranstalter:"ADAC Nordrhein",name:"54. ADAC RAVENOL 24h Nürburgring",loc:"Nürburgring",d0:"2026-05-14",d1:"2026-05-17",status:"done",result:"Mercedes-AMG #80 (Engel/Stolz/Schiller/Martin)",
- sessions:S([["Rennen (24h)","Sa","15:00"]])},
-{s:"nls",rd:6,name:"1. ADAC Eifel Trophy",loc:"Nürburgring",d0:"2026-06-20",d1:"2026-06-20",status:"done",result:"Porsche #17 (Menzel/Müller)",
- sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
-{s:"nls",rd:7,name:"KW 6h ADAC Ruhr-Pokal-Rennen",loc:"Nürburgring",d0:"2026-08-01",d1:"2026-08-01",status:"done",result:"Mercedes-AMG #80 (Stolz/Aron)",
- sessions:S([["Qualifying","Sa","08:30"],["Rennen (6h)","Sa","12:00"]])},
-{s:"nls",rd:8,name:"65. ADAC Reinoldus-Langstreckenrennen",loc:"Nürburgring",d0:"2026-09-12",d1:"2026-09-12",status:"done",result:"BMW #77 (Klingmann/Pepper/de Wilde)",
- sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
-{s:"nls",rd:9,name:"66. ADAC ACAS Cup",loc:"Nürburgring",d0:"2026-09-13",d1:"2026-09-13",status:"up",
- sessions:S([["Qualifying","So","08:30"],["Rennen (4h)","So","12:00"]])},
-{s:"nls",rd:10,name:"2. NLS Sportwarte-Trophy · Finale",loc:"Nürburgring",d0:"2026-10-10",d1:"2026-10-10",status:"up",
- sessions:S([["Qualifying","Sa","08:30"],["Rennen (4h)","Sa","12:00"]])},
-
-/* ═══════ SAISON 2027 (vorlaeufig) + Formel E Saison 13 ═══════
-   sz = Saisonkennung, damit Rundennummern nicht mit 2026 kollidieren
-   (Event-IDs, Kalender-UIDs, Links). prov = vorlaeufiger Termin. */
-{s:"f1",rd:1,sz:"2027",prov:true,name:"Großer Preis von Bahrain",loc:"Sakhir",d0:"2027-03-12",d1:"2027-03-14",status:"up",
- sessions:S([])},
-{s:"f1",rd:2,sz:"2027",prov:true,name:"Großer Preis von Saudi-Arabien",loc:"Dschidda",d0:"2027-03-19",d1:"2027-03-21",status:"up",
- sessions:S([])},
-{s:"f1",rd:3,sz:"2027",prov:true,name:"Großer Preis von Australien",loc:"Melbourne",d0:"2027-04-02",d1:"2027-04-04",status:"up",
- sessions:S([])},
-{s:"f1",rd:4,sz:"2027",prov:true,name:"Großer Preis von Japan",loc:"Suzuka",d0:"2027-04-09",d1:"2027-04-11",status:"up",
- sessions:S([])},
-{s:"f1",rd:5,sz:"2027",prov:true,name:"Großer Preis von China",loc:"Shanghai",d0:"2027-04-16",d1:"2027-04-18",status:"up",
- sessions:S([])},
-{s:"f1",rd:6,sz:"2027",prov:true,name:"Großer Preis von Miami",loc:"Miami",d0:"2027-04-30",d1:"2027-05-02",status:"up",
- sessions:S([])},
-{s:"f1",rd:7,sz:"2027",prov:true,name:"Großer Preis von Kanada",loc:"Montréal",d0:"2027-05-21",d1:"2027-05-23",status:"up",
- sessions:S([])},
-{s:"f1",rd:8,sz:"2027",prov:true,name:"Großer Preis von Monaco",loc:"Monte Carlo",d0:"2027-06-04",d1:"2027-06-06",status:"up",
- sessions:S([])},
-{s:"f1",rd:9,sz:"2027",prov:true,name:"Großer Preis von Portugal",loc:"Portimão",d0:"2027-06-18",d1:"2027-06-20",status:"up",
- sessions:S([])},
-{s:"f1",rd:10,sz:"2027",prov:true,name:"Großer Preis von Großbritannien",loc:"Silverstone",d0:"2027-07-02",d1:"2027-07-04",status:"up",
- sessions:S([])},
-{s:"f1",rd:11,sz:"2027",prov:true,name:"Großer Preis von Österreich",loc:"Spielberg",d0:"2027-07-09",d1:"2027-07-11",status:"up",
- sessions:S([])},
-{s:"f1",rd:12,sz:"2027",prov:true,name:"Großer Preis von Belgien",loc:"Spa-Francorchamps",d0:"2027-07-23",d1:"2027-07-25",status:"up",
- sessions:S([])},
-{s:"f1",rd:13,sz:"2027",prov:true,name:"Großer Preis von Ungarn",loc:"Budapest",d0:"2027-07-30",d1:"2027-08-01",status:"up",
- sessions:S([])},
-{s:"f1",rd:14,sz:"2027",prov:true,name:"Großer Preis von Italien",loc:"Monza",d0:"2027-09-03",d1:"2027-09-05",status:"up",
- sessions:S([])},
-{s:"f1",rd:15,sz:"2027",prov:true,name:"Großer Preis von Spanien",loc:"Madrid",d0:"2027-09-10",d1:"2027-09-12",status:"up",
- sessions:S([])},
-{s:"f1",rd:16,sz:"2027",prov:true,name:"Großer Preis von Aserbaidschan",loc:"Baku",d0:"2027-09-24",d1:"2027-09-26",status:"up",
- sessions:S([])},
-{s:"f1",rd:17,sz:"2027",prov:true,name:"Großer Preis der Türkei",loc:"Istanbul",d0:"2027-10-01",d1:"2027-10-03",status:"up",
- sessions:S([])},
-{s:"f1",rd:18,sz:"2027",prov:true,name:"Großer Preis von Singapur",loc:"Singapur",d0:"2027-10-08",d1:"2027-10-10",status:"up",
- sessions:S([])},
-{s:"f1",rd:19,sz:"2027",prov:true,name:"Großer Preis der USA",loc:"Austin",d0:"2027-10-22",d1:"2027-10-24",status:"up",
- sessions:S([])},
-{s:"f1",rd:20,sz:"2027",prov:true,name:"Großer Preis von Mexiko",loc:"Mexiko-Stadt",d0:"2027-10-29",d1:"2027-10-31",status:"up",
- sessions:S([])},
-{s:"f1",rd:21,sz:"2027",prov:true,name:"Großer Preis von São Paulo",loc:"Interlagos",d0:"2027-11-05",d1:"2027-11-07",status:"up",
- sessions:S([])},
-{s:"f1",rd:22,sz:"2027",prov:true,name:"Großer Preis von Las Vegas",loc:"Las Vegas",d0:"2027-11-18",d1:"2027-11-20",status:"up",
- sessions:S([])},
-{s:"f1",rd:23,sz:"2027",prov:true,name:"Großer Preis von Katar",loc:"Lusail",d0:"2027-12-03",d1:"2027-12-05",status:"up",
- sessions:S([])},
-{s:"f1",rd:24,sz:"2027",prov:true,name:"Großer Preis von Abu Dhabi",loc:"Yas Marina",d0:"2027-12-10",d1:"2027-12-12",status:"up",
- sessions:S([])},
-{s:"wec",rd:1,sz:"2027",prov:true,name:"Qatar 1812 km",loc:"Lusail",d0:"2027-03-25",d1:"2027-03-27",status:"up",
- sessions:S([["Rennen","Sa","11:00"]])},
-{s:"wec",rd:2,sz:"2027",prov:true,name:"6 Stunden von Imola",loc:"Imola",d0:"2027-04-09",d1:"2027-04-11",status:"up",
- sessions:S([["Rennen","So","13:00"]])},
-{s:"wec",rd:3,sz:"2027",prov:true,name:"6 Stunden von Silverstone",loc:"Silverstone",d0:"2027-04-23",d1:"2027-04-25",status:"up",
- sessions:S([["Rennen","So","14:00"]])},
-{s:"wec",rd:4,sz:"2027",prov:true,name:"6 Stunden von Spa-Francorchamps",loc:"Spa",d0:"2027-05-13",d1:"2027-05-15",status:"up",
- sessions:S([["Rennen","Sa","14:00"]])},
-{s:"wec",rd:5,sz:"2027",prov:true,name:"24 Stunden von Le Mans",loc:"Le Mans",d0:"2027-06-06",d1:"2027-06-13",status:"up",
- sessions:S([["Rennen","Sa","16:00"]])},
-{s:"wec",rd:6,sz:"2027",prov:true,name:"6 Stunden von São Paulo",loc:"Interlagos",d0:"2027-07-09",d1:"2027-07-11",status:"up",
- sessions:S([])},
-{s:"wec",rd:7,sz:"2027",prov:true,name:"Lone Star Le Mans (Austin)",loc:"COTA",d0:"2027-09-10",d1:"2027-09-12",status:"up",
- sessions:S([])},
-{s:"wec",rd:8,sz:"2027",prov:true,name:"6 Stunden von Fuji",loc:"Fuji",d0:"2027-09-24",d1:"2027-09-26",status:"up",
- sessions:S([])},
-{s:"wec",rd:9,sz:"2027",prov:true,name:"8 Stunden von Bahrain (Finale)",loc:"Sakhir",d0:"2027-11-04",d1:"2027-11-06",status:"up",
- sessions:S([])},
-{s:"dtm",rd:1,sz:"2027",prov:true,name:"DTM Spielberg",loc:"Red Bull Ring",d0:"2027-04-23",d1:"2027-04-25",status:"up",
- sessions:S([])},
-{s:"dtm",rd:2,sz:"2027",prov:true,name:"DTM Oschersleben",loc:"Oschersleben",d0:"2027-05-07",d1:"2027-05-09",status:"up",
- sessions:S([])},
-{s:"dtm",rd:3,sz:"2027",prov:true,name:"DTM Lausitzring",loc:"Lausitzring",d0:"2027-06-18",d1:"2027-06-20",status:"up",
- sessions:S([])},
-{s:"dtm",rd:4,sz:"2027",prov:true,name:"DTM Norisring",loc:"Nürnberg",d0:"2027-07-02",d1:"2027-07-04",status:"up",
- sessions:S([])},
-{s:"dtm",rd:5,sz:"2027",prov:true,name:"DTM Zandvoort",loc:"Zandvoort",d0:"2027-08-06",d1:"2027-08-08",status:"up",
- sessions:S([])},
-{s:"dtm",rd:6,sz:"2027",prov:true,name:"DTM Nürburgring",loc:"Nürburgring",d0:"2027-08-20",d1:"2027-08-22",status:"up",
- sessions:S([])},
-{s:"dtm",rd:7,sz:"2027",prov:true,name:"DTM Sachsenring",loc:"Sachsenring",d0:"2027-09-24",d1:"2027-09-26",status:"up",
- sessions:S([])},
-{s:"dtm",rd:8,sz:"2027",prov:true,name:"DTM Hockenheim (Finale)",loc:"Hockenheimring",d0:"2027-10-08",d1:"2027-10-10",status:"up",
- sessions:S([])},
-/* MotoGP 2027 - offizieller Kalender, veroeffentlicht 25.09.2026 */
-{s:"mgp",rd:1,sz:"2027",prov:true,name:"Großer Preis von Thailand",loc:"Buriram",d0:"2027-03-05",d1:"2027-03-07",status:"up",
- sessions:S([])},
-{s:"mgp",rd:2,sz:"2027",prov:true,name:"Großer Preis von Katar",loc:"Lusail",d0:"2027-03-12",d1:"2027-03-14",status:"up",
- sessions:S([])},
-{s:"mgp",rd:3,sz:"2027",prov:true,name:"Großer Preis von Brasilien",loc:"Goiânia",d0:"2027-04-02",d1:"2027-04-04",status:"up",
- sessions:S([])},
-{s:"mgp",rd:4,sz:"2027",prov:true,name:"Großer Preis von Argentinien",loc:"Buenos Aires",d0:"2027-04-09",d1:"2027-04-11",status:"up",
- sessions:S([])},
-{s:"mgp",rd:5,sz:"2027",prov:true,name:"Großer Preis der Amerikas",loc:"Austin",d0:"2027-04-23",d1:"2027-04-25",status:"up",
- sessions:S([])},
-{s:"mgp",rd:6,sz:"2027",prov:true,name:"Großer Preis von Spanien",loc:"Jerez",d0:"2027-05-07",d1:"2027-05-09",status:"up",
- sessions:S([])},
-{s:"mgp",rd:7,sz:"2027",prov:true,name:"Großer Preis von Frankreich",loc:"Le Mans",d0:"2027-05-14",d1:"2027-05-16",status:"up",
- sessions:S([])},
-{s:"mgp",rd:8,sz:"2027",prov:true,name:"Großer Preis von Italien",loc:"Mugello",d0:"2027-05-28",d1:"2027-05-30",status:"up",
- sessions:S([])},
-{s:"mgp",rd:9,sz:"2027",prov:true,name:"Großer Preis von Katalonien",loc:"Barcelona",d0:"2027-06-11",d1:"2027-06-13",status:"up",
- sessions:S([])},
-{s:"mgp",rd:10,sz:"2027",prov:true,name:"Großer Preis der Niederlande",loc:"Assen",d0:"2027-06-25",d1:"2027-06-27",status:"up",
- sessions:S([])},
-{s:"mgp",rd:11,sz:"2027",prov:true,name:"Großer Preis von Deutschland",loc:"Sachsenring",d0:"2027-07-09",d1:"2027-07-11",status:"up",
- sessions:S([])},
-{s:"mgp",rd:12,sz:"2027",prov:true,name:"Großer Preis von Tschechien",loc:"Brünn",d0:"2027-07-16",d1:"2027-07-18",status:"up",
- sessions:S([])},
-{s:"mgp",rd:13,sz:"2027",prov:true,name:"Großer Preis von Großbritannien",loc:"Silverstone",d0:"2027-08-13",d1:"2027-08-15",status:"up",
- sessions:S([])},
-{s:"mgp",rd:14,sz:"2027",prov:true,name:"Großer Preis von Österreich",loc:"Red Bull Ring",d0:"2027-08-27",d1:"2027-08-29",status:"up",
- sessions:S([])},
-{s:"mgp",rd:15,sz:"2027",prov:true,name:"Großer Preis von San Marino",loc:"Misano",d0:"2027-09-10",d1:"2027-09-12",status:"up",
- sessions:S([])},
-{s:"mgp",rd:16,sz:"2027",prov:true,name:"Großer Preis von Aragón",loc:"Aragón",d0:"2027-09-17",d1:"2027-09-19",status:"up",
- sessions:S([])},
-{s:"mgp",rd:17,sz:"2027",prov:true,name:"Großer Preis von Portugal",loc:"Portimão",d0:"2027-10-01",d1:"2027-10-03",status:"up",
- sessions:S([])},
-{s:"mgp",rd:18,sz:"2027",prov:true,name:"Großer Preis von Japan",loc:"Motegi",d0:"2027-10-15",d1:"2027-10-17",status:"up",
- sessions:S([])},
-{s:"mgp",rd:19,sz:"2027",prov:true,name:"Großer Preis von Malaysia",loc:"Sepang",d0:"2027-10-22",d1:"2027-10-24",status:"up",
- sessions:S([])},
-{s:"mgp",rd:20,sz:"2027",prov:true,name:"Großer Preis von Indonesien",loc:"Mandalika",d0:"2027-10-29",d1:"2027-10-31",status:"up",
- sessions:S([])},
-{s:"mgp",rd:21,sz:"2027",prov:true,name:"Großer Preis von Australien",loc:"Adelaide",d0:"2027-11-12",d1:"2027-11-14",status:"up",
- sessions:S([])},
-{s:"mgp",rd:22,sz:"2027",prov:true,name:"Großer Preis von Valencia (Finale)",loc:"Valencia",d0:"2027-11-26",d1:"2027-11-28",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:1,sz:"2027",prov:true,name:"Paul Ricard · Endurance",loc:"Paul Ricard",d0:"2027-04-15",d1:"2027-04-18",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:2,sz:"2027",prov:true,name:"Brands Hatch · Sprint",loc:"Brands Hatch",d0:"2027-05-01",d1:"2027-05-02",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:3,sz:"2027",prov:true,name:"Imola · Endurance",loc:"Imola",d0:"2027-05-21",d1:"2027-05-23",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:4,sz:"2027",prov:true,name:"24 Stunden von Spa · Endurance",loc:"Spa-Francorchamps",d0:"2027-06-24",d1:"2027-06-27",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:5,sz:"2027",prov:true,name:"Misano · Sprint",loc:"Misano",d0:"2027-07-16",d1:"2027-07-18",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:6,sz:"2027",prov:true,name:"Magny-Cours · Sprint",loc:"Magny-Cours",d0:"2027-07-30",d1:"2027-08-01",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:7,sz:"2027",prov:true,name:"Nürburgring · Endurance",loc:"Nürburgring",d0:"2027-08-27",d1:"2027-08-29",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:8,sz:"2027",prov:true,name:"Zandvoort · Sprint",loc:"Zandvoort",d0:"2027-09-17",d1:"2027-09-19",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:9,sz:"2027",prov:true,name:"Budapest · Sprint",loc:"Hungaroring",d0:"2027-10-01",d1:"2027-10-03",status:"up",
- sessions:S([])},
-{s:"gtwc",rd:10,sz:"2027",prov:true,name:"Barcelona · Endurance · Finale",loc:"Barcelona",d0:"2027-10-22",d1:"2027-10-24",status:"up",
- sessions:S([])},
-/* NLS 2027 - vorläufige Termine der Serie, veröffentlicht 11.09.2026 */
-{s:"nls",rd:1,sz:"2027",prov:true,name:"NLS1",loc:"Nürburgring",d0:"2027-03-20",d1:"2027-03-20",status:"up",
- sessions:S([])},
-{s:"nls",rd:2,sz:"2027",prov:true,name:"NLS2",loc:"Nürburgring",d0:"2027-04-17",d1:"2027-04-17",status:"up",
- sessions:S([])},
-{s:"nls",rd:0,sz:"2027",prov:true,sonder:"24h",veranstalter:"ADAC Nordrhein",name:"ADAC RAVENOL 24h Nürburgring",loc:"Nürburgring",d0:"2027-05-27",d1:"2027-05-30",status:"up",
- sessions:S([])},
-{s:"nls",rd:3,sz:"2027",prov:true,name:"NLS3",loc:"Nürburgring",d0:"2027-07-03",d1:"2027-07-03",status:"up",
- sessions:S([])},
-{s:"nls",rd:4,sz:"2027",prov:true,name:"NLS4 · 6h-Rennen",loc:"Nürburgring",d0:"2027-08-07",d1:"2027-08-07",status:"up",
- sessions:S([])},
-{s:"nls",rd:5,sz:"2027",prov:true,name:"NLS5",loc:"Nürburgring",d0:"2027-09-11",d1:"2027-09-11",status:"up",
- sessions:S([])},
-{s:"nls",rd:6,sz:"2027",prov:true,name:"NLS6",loc:"Nürburgring",d0:"2027-09-12",d1:"2027-09-12",status:"up",
- sessions:S([])},
-{s:"nls",rd:7,sz:"2027",prov:true,name:"NLS7",loc:"Nürburgring",d0:"2027-09-25",d1:"2027-09-25",status:"up",
- sessions:S([])},
-{s:"nls",rd:8,sz:"2027",prov:true,name:"NLS8 · Finale",loc:"Nürburgring",d0:"2027-10-09",d1:"2027-10-09",status:"up",
- sessions:S([])},
-{s:"fe",rd:1,sz:"S13",prov:true,name:"Dschidda E-Prix I · Auftakt Saison 13",loc:"Dschidda",d0:"2026-12-18",d1:"2026-12-18",status:"up",
- sessions:S([])},
-{s:"fe",rd:2,sz:"S13",prov:true,name:"Dschidda E-Prix II",loc:"Dschidda",d0:"2026-12-19",d1:"2026-12-19",status:"up",
- sessions:S([])},
-{s:"fe",rd:3,sz:"S13",prov:true,name:"Mexiko-Stadt E-Prix",loc:"Mexiko-Stadt",d0:"2027-01-16",d1:"2027-01-16",status:"up",
- sessions:S([])},
-{s:"fe",rd:4,sz:"S13",prov:true,name:"Austin E-Prix",loc:"Austin",d0:"2027-02-06",d1:"2027-02-06",status:"up",
- sessions:S([])},
-{s:"fe",rd:5,sz:"S13",prov:true,name:"Miami E-Prix",loc:"Miami",d0:"2027-02-20",d1:"2027-02-20",status:"up",
- sessions:S([])},
-{s:"fe",rd:6,sz:"S13",prov:true,name:"São Paulo E-Prix",loc:"São Paulo",d0:"2027-03-13",d1:"2027-03-13",status:"up",
- sessions:S([])},
-{s:"fe",rd:7,sz:"S13",prov:true,name:"Sanya E-Prix",loc:"Sanya",d0:"2027-04-17",d1:"2027-04-17",status:"up",
- sessions:S([])},
-{s:"fe",rd:8,sz:"S13",prov:true,name:"Monaco E-Prix I",loc:"Monte Carlo",d0:"2027-05-01",d1:"2027-05-01",status:"up",
- sessions:S([])},
-{s:"fe",rd:9,sz:"S13",prov:true,name:"Monaco E-Prix II",loc:"Monte Carlo",d0:"2027-05-02",d1:"2027-05-02",status:"up",
- sessions:S([])},
-{s:"fe",rd:10,sz:"S13",prov:true,name:"Berlin E-Prix I",loc:"Berlin",d0:"2027-05-08",d1:"2027-05-08",status:"up",
- sessions:S([])},
-{s:"fe",rd:11,sz:"S13",prov:true,name:"Berlin E-Prix II",loc:"Berlin",d0:"2027-05-09",d1:"2027-05-09",status:"up",
- sessions:S([])},
-{s:"fe",rd:12,sz:"S13",prov:true,name:"London E-Prix I",loc:"London",d0:"2027-05-29",d1:"2027-05-29",status:"up",
- sessions:S([])},
-{s:"fe",rd:13,sz:"S13",prov:true,name:"London E-Prix II",loc:"London",d0:"2027-05-30",d1:"2027-05-30",status:"up",
- sessions:S([])},
-{s:"fe",rd:14,sz:"S13",prov:true,name:"Zandvoort E-Prix I",loc:"Zandvoort",d0:"2027-06-18",d1:"2027-06-18",status:"up",
- sessions:S([])},
-{s:"fe",rd:15,sz:"S13",prov:true,name:"Zandvoort E-Prix II",loc:"Zandvoort",d0:"2027-06-19",d1:"2027-06-19",status:"up",
- sessions:S([])},
-{s:"fe",rd:16,sz:"S13",prov:true,name:"Madrid E-Prix I",loc:"Madrid",d0:"2027-06-26",d1:"2027-06-26",status:"up",
- sessions:S([])},
-{s:"fe",rd:17,sz:"S13",prov:true,name:"Madrid E-Prix II",loc:"Madrid",d0:"2027-06-27",d1:"2027-06-27",status:"up",
- sessions:S([])},
-{s:"fe",rd:18,sz:"S13",prov:true,name:"Shanghai E-Prix I",loc:"Shanghai",d0:"2027-07-10",d1:"2027-07-10",status:"up",
- sessions:S([])},
-{s:"fe",rd:19,sz:"S13",prov:true,name:"Shanghai E-Prix II",loc:"Shanghai",d0:"2027-07-11",d1:"2027-07-11",status:"up",
- sessions:S([])},
-{s:"fe",rd:20,sz:"S13",prov:true,name:"Tokio E-Prix I",loc:"Tokio",d0:"2027-07-24",d1:"2027-07-24",status:"up",
- sessions:S([])},
-{s:"fe",rd:21,sz:"S13",prov:true,name:"Tokio E-Prix II · Finale",loc:"Tokio",d0:"2027-07-25",d1:"2027-07-25",status:"up",
- sessions:S([])},
-];
 
 /* ═══════ STATE ═══════ */
-const ACTIVE = new Set(Object.keys(SERIES));
+const ACTIVE = new Set();   /* wird nach dem Laden der Daten mit allen Serien gefuellt */
 let SHOW_PAST = false;
 let OPEN_RES = null;
 
@@ -984,15 +539,19 @@ const NOW = ()=> new Date();
    Angezeigt wird immer ein Kalenderjahr. Voreinstellung: das laufende Jahr, solange dort
    noch Events offen sind - danach automatisch das naechste Jahr mit Daten. */
 let SEASON=null;
-const STAND_SEASON=2026;   /* Jahr, zu dem die gepflegten Wertungen gehoeren */
 const FIRST_SEASON=2026;  /* fruehere Termine (Formel-E-Auftakt Dez. 2025) zaehlen zur ersten Saison */
 function evYear(e){return Math.max(+e.d0.slice(0,4),FIRST_SEASON);}
-function seasonsAll(){return [...new Set(EVENTS.map(evYear))].sort((a,b)=>a-b);}
+function seasonsAll(){
+  /* Saisons, deren Termindatei fehlt, bleiben waehlbar (dort steht dann ein Hinweis) */
+  const fehlt=DATEN.filter(n=>n.startsWith("termine-")&&DATEN_FEHLT.has(n)).map(n=>+n.slice(8));
+  return [...new Set(EVENTS.map(evYear).concat(fehlt))].sort((a,b)=>a-b);
+}
 function defaultSeason(){
   const now=NOW(), y=now.getFullYear(), ys=seasonsAll();
+  if(termineFehlen(y)) return y;
   const offen=EVENTS.some(e=>evYear(e)===y&&e.status!=="cancel"&&endW(e)>=now);
   if(offen&&ys.includes(y)) return y;
-  return ys.find(v=>v>y)||ys[ys.length-1];
+  return ys.find(v=>v>y)||ys[ys.length-1]||y;
 }
 function inSeason(e){ if(SEASON===null)SEASON=defaultSeason(); return evYear(e)===SEASON; }
 function seasonIsProv(y){const ev=EVENTS.filter(e=>evYear(e)===y);return ev.length>0&&ev.every(e=>e.prov);}
@@ -1020,26 +579,6 @@ function pd(iso){const[y,m,d]=iso.split("-").map(Number);return new Date(y,m-1,d
 /* ── Zeitzonen ── */
 let TZMODE="mesz";
 const LOCAL_TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||"Europe/Berlin";
-const TZLOC={
- "Paul Ricard":"Europe/Paris","Brands Hatch":"Europe/London","Magny-Cours":"Europe/Paris",
- "Nürburgring":"Europe/Berlin","Portimão":"Europe/Lisbon",
- "Melbourne":"Australia/Melbourne","Shanghai":"Asia/Shanghai","Suzuka":"Asia/Tokyo","Miami":"America/New_York",
- "Montréal":"America/Toronto","Monte Carlo":"Europe/Monaco","Barcelona":"Europe/Madrid","Spielberg":"Europe/Vienna",
- "Silverstone":"Europe/London","Spa-Francorchamps":"Europe/Brussels","Spa":"Europe/Brussels","Budapest":"Europe/Budapest","Hungaroring":"Europe/Budapest",
- "Zandvoort":"Europe/Amsterdam","Monza":"Europe/Rome","Madrid":"Europe/Madrid","Baku":"Asia/Baku","Singapur":"Asia/Singapore",
- "Austin":"America/Chicago","COTA":"America/Chicago","Mexiko-Stadt":"America/Mexico_City","Interlagos":"America/Sao_Paulo",
- "Las Vegas":"America/Los_Angeles","Lusail":"Asia/Qatar","Yas Marina":"Asia/Dubai","Sakhir":"Asia/Bahrain",
- "Dschidda":"Asia/Riyadh","Jeddah":"Asia/Riyadh","Buriram":"Asia/Bangkok","Termas de Río Hondo":"America/Argentina/Buenos_Aires",
- "Jerez":"Europe/Madrid","Le Mans":"Europe/Paris","Mugello":"Europe/Rome","Balaton Park":"Europe/Budapest","Assen":"Europe/Amsterdam",
- "Sachsenring":"Europe/Berlin","Brünn":"Europe/Prague","Red Bull Ring":"Europe/Vienna","Aragón":"Europe/Madrid","Misano":"Europe/Rome",
- "Motegi":"Asia/Tokyo","Mandalika":"Asia/Makassar","Phillip Island":"Australia/Melbourne","Sepang":"Asia/Kuala_Lumpur",
- "Portimão":"Europe/Lisbon","Valencia":"Europe/Madrid","Imola":"Europe/Rome","Fuji":"Asia/Tokyo","Lausitzring":"Europe/Berlin",
- "Nürnberg":"Europe/Berlin","Oschersleben":"Europe/Berlin","Nürburgring":"Europe/Berlin","Hockenheimring":"Europe/Berlin",
- "Monaco":"Europe/Monaco","Umeå":"Europe/Stockholm","Nairobi":"Africa/Nairobi","Rijeka":"Europe/Zagreb","Gran Canaria":"Atlantic/Canary",
- "Matosinhos":"Europe/Lisbon","Aichi/Gifu":"Asia/Tokyo","Lamia":"Europe/Athens","Tartu":"Europe/Tallinn","Jyväskylä":"Europe/Helsinki",
- "Encarnación":"America/Asuncion","Concepción":"America/Santiago","Olbia":"Europe/Rome","São Paulo":"America/Sao_Paulo",
- "Jarama":"Europe/Madrid","Tempelhof":"Europe/Berlin","Sanya":"Asia/Shanghai","Tokio":"Asia/Tokyo"
-};
 function zoneOffsetMin(date,tz){
   const p=new Intl.DateTimeFormat("en-US",{timeZone:tz,hour12:false,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"}).formatToParts(date).reduce((a,x)=>(a[x.type]=x.value,a),{});
   let hh=p.hour==="24"?0:p.hour;
@@ -1143,39 +682,13 @@ function matchEv(e){
 }
 
 /* ── Strecken-Infos (statisch; len in km) ── */
-const CIRCUITS={
- "Melbourne":{name:"Albert Park Circuit",len:5.278,turns:14},"Shanghai":{name:"Shanghai International Circuit",len:5.451,turns:16},
- "Suzuka":{name:"Suzuka International Racing Course",len:5.807,turns:18},"Miami":{name:"Miami International Autodrome",len:5.412,turns:19},
- "Montréal":{name:"Circuit Gilles Villeneuve",len:4.361,turns:14},"Monte Carlo":{name:"Circuit de Monaco",len:3.337,turns:19},
- "Barcelona":{name:"Circuit de Barcelona-Catalunya",len:4.657,turns:14},"Spielberg":{name:"Red Bull Ring",len:4.318,turns:10},
- "Silverstone":{name:"Silverstone Circuit",len:5.891,turns:18},"Spa-Francorchamps":{name:"Circuit de Spa-Francorchamps",len:7.004,turns:19},
- "Budapest":{name:"Hungaroring",len:4.381,turns:14},"Hungaroring":{name:"Hungaroring",len:4.381,turns:14},"Zandvoort":{name:"Circuit Zandvoort",len:4.259,turns:14},
- "Monza":{name:"Autodromo Nazionale Monza",len:5.793,turns:11},"Madrid":{name:"Madring",len:5.474,turns:22},
- "Baku":{name:"Baku City Circuit",len:6.003,turns:20},"Singapur":{name:"Marina Bay Street Circuit",len:4.940,turns:19},
- "Austin":{name:"Circuit of the Americas",len:5.513,turns:20},"Mexiko-Stadt":{name:"Autódromo Hermanos Rodríguez",len:4.304,turns:17},
- "Interlagos":{name:"Autódromo José Carlos Pace",len:4.309,turns:15},"Las Vegas":{name:"Las Vegas Strip Circuit",len:6.201,turns:17},
- "Lusail":{name:"Lusail International Circuit",len:5.419,turns:16},"Yas Marina":{name:"Yas Marina Circuit",len:5.281,turns:16},
- "Buriram":{name:"Chang International Circuit",len:4.554,turns:12},"Termas de Río Hondo":{name:"Autódromo Termas de Río Hondo",len:4.806,turns:14},
- "Jerez":{name:"Circuito de Jerez–Ángel Nieto",len:4.423,turns:13},"Mugello":{name:"Mugello Circuit",len:5.245,turns:15},
- "Balaton Park":{name:"Balaton Park Circuit",len:4.115,turns:17},"Assen":{name:"TT Circuit Assen",len:4.542,turns:18},
- "Sachsenring":{name:"Sachsenring",len:3.671,turns:13},"Brünn":{name:"Automotodrom Brno",len:5.403,turns:14},
- "Red Bull Ring":{name:"Red Bull Ring",len:4.318,turns:10},"Aragón":{name:"MotorLand Aragón",len:5.077,turns:17},
- "Misano":{name:"Misano World Circuit",len:4.226,turns:16},"Motegi":{name:"Mobility Resort Motegi",len:4.801,turns:14},
- "Mandalika":{name:"Mandalika International Circuit",len:4.301,turns:17},"Phillip Island":{name:"Phillip Island Circuit",len:4.448,turns:12},
- "Sepang":{name:"Sepang International Circuit",len:5.543,turns:15},"Portimão":{name:"Algarve International Circuit",len:4.653,turns:15},
- "Valencia":{name:"Circuit Ricardo Tormo",len:4.005,turns:14},"Imola":{name:"Autodromo Enzo e Dino Ferrari",len:4.909,turns:19},
- "Fuji":{name:"Fuji Speedway",len:4.563,turns:16},"Sakhir":{name:"Bahrain International Circuit",len:5.412,turns:15},
- "Nürburgring":{name:"Nürburgring (GP-Strecke)",len:5.148,turns:15},"Hockenheimring":{name:"Hockenheimring",len:4.574,turns:17},
- "Nürnberg":{name:"Norisring",len:2.300,turns:8},"Lausitzring":{name:"DEKRA Lausitzring",len:3.478,turns:13},
- "Oschersleben":{name:"Motorsport Arena Oschersleben",len:3.696,turns:14}
-};
 function circuitFor(e){
-  if(e.s==="wec"&&e.loc==="Le Mans")return {name:"Circuit de la Sarthe",len:13.626,turns:38};
-  if(e.loc==="Le Mans")return {name:"Circuit Bugatti",len:4.185,turns:14};
-  if(e.s==="nls")return /24h/.test(e.name)?{name:"Nordschleife + Grand-Prix-Kurs (24h-Variante)",len:25.378}:{name:"Nordschleife + Grand-Prix-Kurs (Kurzanbindung)",len:24.358};
-  return CIRCUITS[e.loc]||null;
+  const sv=STRECKEN_SERIE[e.s]||{};
+  if(/24h/.test(e.name)&&sv[e.loc+" · 24h"])return sv[e.loc+" · 24h"];
+  return sv[e.loc]||CIRCUITS[e.loc]||null;
 }
 function trackInfoHTML(e){
+  if(DATEN_FEHLT.has("strecken"))return `<div class="trackinfo"><span class="tfact">Streckeninfo konnte gerade nicht geladen werden</span></div>`;
   const c=circuitFor(e); if(!c)return "";
   let facts=`<span class="tfact">Länge <b>${c.len.toFixed(3)} km</b></span>`;
   if(c.turns)facts+=`<span class="tfact">Kurven <b>${c.turns}</b></span>`;
@@ -1238,6 +751,7 @@ function tagNext(){
 
 /* ═══════ FILTERBAR ═══════ */
 function renderFilter(){
+  if(!BEREIT)return;
   const el=document.getElementById("filterbar");
   let chips=`<span class="fl-lab">Serien</span>`;
   Object.keys(SERIES).forEach(sk=>{
@@ -1313,7 +827,8 @@ function renderOnAir(){
     el.innerHTML=html;
     tickCountdown();
   } else {
-    el.innerHTML=`<span class="onair-lab idle">Saison beendet</span>`;
+    const fehlt=DATEN.some(n=>n.startsWith("termine-")&&DATEN_FEHLT.has(n));
+    el.innerHTML=`<span class="onair-lab idle">${fehlt?"Termine gerade nicht verfügbar":"Saison beendet"}</span>`;
   }
 }
 
@@ -1429,9 +944,9 @@ function renderTimeline(){
   if(SEARCH) evs=evs.filter(matchEv);
   const future=evs.filter(e=>endW(e)>=now);
   const past=evs.filter(e=>endW(e)<now);
-  let html="";
+  let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
   /* Aktive Serien ohne einen einzigen Termin in dieser Saison */
-  const fehlen=Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)&&!EVENTS.some(e=>e.s===sk&&inSeason(e)&&!e.sonder));
+  const fehlen=termineFehlen(SEASON)?[]:Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)&&!EVENTS.some(e=>e.s===sk&&inSeason(e)&&!e.sonder));
   if(fehlen.length) html+=`<div class="seasonnote">Kalender ${SEASON} noch nicht veröffentlicht: <b>${fehlen.map(k=>SERIES[k].name).join(", ")}</b></div>`;
   if(SEARCH||FAV_ONLY){
     const lab=SEARCH?`${evs.length} Treffer für „${SEARCH}"`:`${evs.length} Favorit${evs.length===1?'':'en'}`;
@@ -1446,7 +961,7 @@ function renderTimeline(){
   if(future.length) html+=monthGroupsHTML(future);
   const ys=seasonsAll(), nxt=ys[ys.indexOf(SEASON)+1];
   if(nxt&&!(SEARCH||FAV_ONLY)) html+=`<button class="nextseason" onclick="stepSeason(1)">Weiter zur Saison ${nxt} <span>→</span></button>`;
-  else if(!past.length) html+=`<div class="emptyhint">${FAV_ONLY?'Noch keine Favoriten markiert — tippe den Stern bei einem Event.':SEARCH?'Keine Treffer.':'Keine kommenden Events für die gewählten Serien.'}</div>`;
+  else if(!past.length&&!termineFehlen(SEASON)) html+=`<div class="emptyhint">${FAV_ONLY?'Noch keine Favoriten markiert — tippe den Stern bei einem Event.':SEARCH?'Keine Treffer.':'Keine kommenden Events für die gewählten Serien.'}</div>`;
   host.innerHTML=html;
 }
 function togglePast(){
@@ -1472,15 +987,16 @@ function togglePast(){
 
 /* ═══════ SERIEN ═══════ */
 function renderSeries(){
-  const host=document.getElementById("view-series"); if(!host)return;let html="";
+  const host=document.getElementById("view-series"); if(!host)return;let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
+  const leer=termineFehlen(SEASON)?"Termine gerade nicht verfügbar":`Kalender ${SEASON} noch nicht veröffentlicht`;
   Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)).forEach(sk=>{
     const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
-    if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div><div class="ser-meta">Kalender ${SEASON} noch nicht veröffentlicht</div></div>`;return;}
+    if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div><div class="ser-meta">${leer}</div></div>`;return;}
     /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
     const lauf=evs.filter(e=>!e.sonder);
     const done=lauf.filter(e=>st(e)==="done").length,canc=lauf.filter(e=>e.status==="cancel").length;
     html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div>`+
-      `<div class="ser-meta">${lauf.length?`${lauf.length-canc} Läufe · ${done} gefahren · ${lauf.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}`:`Kalender ${SEASON} noch nicht veröffentlicht`}</div>`;
+      `<div class="ser-meta">${lauf.length?`${lauf.length-canc} Läufe · ${done} gefahren · ${lauf.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}`:leer}</div>`;
     let n=0;
     evs.forEach(e=>{const status=st(e);
       if(status==="cancel"){
@@ -1512,115 +1028,6 @@ function renderCalendar(){
 
 /* ═══════ TV ═══════ */
 /* ═══════ REGELN ═══════ */
-const REGELN = {
-  f1: {
-    kurz: "Elf Teams, 24 Rennen, das technisch aufwendigste Reglement im Motorsport.",
-    bloecke: [
-      ["Wochenende", "Freitag zwei freie Trainings à 60 Minuten, Samstag ein drittes, danach das Qualifying. Sonntag folgt das Rennen über die Distanz, die 305 Kilometer erstmals überschreitet — meist 50 bis 70 Runden. Monaco ist die Ausnahme mit 260 Kilometern. An sechs Wochenenden gilt das Sprintformat mit nur einem freien Training: Freitag das Sprint-Qualifying, Samstagvormittag der Sprint über rund 100 Kilometer ohne Boxenstopppflicht, danach das reguläre Qualifying für den Grand Prix."],
-      ["Qualifying", "Drei Abschnitte im Ausscheidungsverfahren. Q1 dauert 18 Minuten, alle 20 Autos sind dabei, die fünf langsamsten sind raus und bilden die Startplätze 16 bis 20. Q2 läuft über 15 Minuten mit 15 Autos, wieder scheiden fünf aus. In Q3 kämpfen die verbliebenen zehn zwölf Minuten lang um die Pole. Die Reifenwahl ist dabei taktisch: Wer in Q1 einen weichen Satz verbrennt, hat ihn im Rennen nicht mehr."],
-      ["Punkte", "25 für den Sieg, dann 18, 15, 12, 10, 8, 6, 4, 2 und 1 für Platz zehn. Im Sprint gibt es 8 Punkte für den Sieger, abwärts bis 1 für Platz acht. Ein Zusatzpunkt für die schnellste Rennrunde wurde nach 2024 abgeschafft. Gewertet wird doppelt: die Fahrer-WM einzeln, die Konstrukteurs-WM mit den addierten Punkten beider Autos — und letztere entscheidet über die Verteilung der Preisgelder."],
-      ["Reifen", "Pirelli wählt pro Rennen drei von fünf Trockenmischungen aus, die vor Ort als Soft, Medium und Hard bezeichnet werden. Dazu kommen Intermediates für feuchte und Full Wets für nasse Strecken. Im Trockenrennen müssen mindestens zwei verschiedene Mischungen zum Einsatz kommen, ein Boxenstopp ist damit zwingend. Regnet es, entfällt diese Pflicht."],
-      ["Strafen", "Fünf oder zehn Sekunden werden beim nächsten Boxenstopp abgesessen oder am Ende aufaddiert. Härter sind Durchfahrtsstrafe und Stop-and-Go. Dazu kommt ein Punktesystem auf der Superlizenz: Wer binnen zwölf Monaten zwölf Strafpunkte sammelt, wird für ein Rennen gesperrt. Diese Punkte verfallen einzeln nach einem Jahr."],
-      ["Budgetdeckel", "Seit 2021 dürfen Teams nur eine begrenzte Summe pro Saison ausgeben. Für 2026 wurde die Grenze von 135 auf 215 Millionen US-Dollar angehoben. Der Sprung wirkt größer, als er ist: Die FIA hat gleichzeitig zahlreiche Ausnahmen gestrichen, die vorher gar nicht in die Bilanz einflossen, und rechnet nun deutlich mehr Personalkosten mit ein. Real liegt der Anstieg damit nur knapp über der Inflation. Der Deckel soll verhindern, dass finanzstarke Rennställe das Feld dominieren, und sorgt dafür, dass Updates sorgfältiger abgewogen werden."],
-      ["Parc fermé", "Ab Beginn des Qualifyings stehen die Autos unter Parc-fermé-Bedingungen: Am Set-up darf nichts mehr geändert werden. Wer doch schraubt, muss aus der Boxengasse starten. Deshalb ist die Abstimmung im letzten freien Training eine Wette auf das Wetter am Renntag."],
-      ["Neu ab 2026", "Ein von Grund auf neues Reglement. Die Antriebe leisten je etwa zur Hälfte über Verbrennungsmotor und Elektroeinheit, gefahren wird mit vollständig synthetischem Kraftstoff. Die Autos sind schmaler, kürzer und leichter. Erstmals ist die Aerodynamik aktiv verstellbar — auf Geraden flach für Höchstgeschwindigkeit, in Kurven mit vollem Abtrieb. Das bisherige DRS entfällt und wird durch einen Überhol-Boost ersetzt, der dem Verfolger kurzzeitig zusätzliche Elektroleistung freigibt."]
-    ]
-  },
-  mgp: {
-    kurz: "Motorrad-Königsklasse, 22 Grands Prix, Sprint an jedem Wochenende.",
-    bloecke: [
-      ["Wochenende", "Freitag ein freies Training am Vormittag und die Practice am Nachmittag — letztere ist die wichtigste Sitzung des Wochenendes, weil ihre Zeiten über den Weg ins Qualifying entscheiden. Samstag ein kurzes Training, dann Qualifying und am Nachmittag der Sprint über die halbe Renndistanz. Sonntag Warm-up und Grand Prix. Anders als in der Formel 1 wird an jedem Wochenende gesprintet."],
-      ["Qualifying", "Die zehn Schnellsten aus der Freitags-Practice sind direkt für Q2 gesetzt. Alle übrigen müssen samstags durch Q1, aus dem sich nur die zwei Besten nachqualifizieren. In Q2 fahren also zwölf Fahrer um die Pole. Ein schwacher Freitag bedeutet damit einen Umweg — und im schlimmsten Fall Startplatz 13, obwohl man auf eine schnelle Runde konkurrenzfähig wäre."],
-      ["Punkte", "Im Grand Prix 25 Punkte für den Sieg, abwärts bis 1 für Platz 15. Im Sprint gibt es die halbe Ausbeute, aber nur für die ersten neun: 12 Punkte für den Sieger bis 1 für Platz neun. Da an allen 22 Wochenenden gesprintet wird, sind über die Saison rund 260 zusätzliche Punkte im Umlauf — genug, um eine Meisterschaft zu drehen."],
-      ["Long Lap", "Die typische MotoGP-Strafe ist keine Zeitstrafe, sondern die Long-Lap-Penalty: Der Fahrer muss an einer markierten Stelle einen verlängerten Bogen außerhalb der Ideallinie nehmen und verliert dabei rund eine Sekunde. Verhängt wird sie nach Verlassen der Strecke mit Vorteil oder nach übermotivierten Manövern. Wer sie nicht binnen weniger Runden absitzt, bekommt eine Durchfahrtsstrafe."],
-      ["Reifendruck", "Ein Detail mit großer Wirkung: Für die Vorderreifen ist ein Mindestdruck vorgeschrieben, der über einen bestimmten Anteil der Renndistanz eingehalten werden muss. Wer zu dicht hinter einem anderen Motorrad fährt, bekommt weniger Kühlluft, der Druck steigt — und die Haftung sinkt. Deshalb halten Fahrer manchmal bewusst Abstand, statt direkt anzugreifen."],
-      ["Technik", "1000 Kubikzentimeter Hubraum, mindestens 157 Kilogramm Gewicht, Einheitselektronik für alle. Pro Saison ist die Zahl der Motoren begrenzt, was Standfestigkeit über pure Spitzenleistung stellt. Hinzu kommen Absenkvorrichtungen, die das Motorrad beim Start und beim Beschleunigen tiefer legen und so das Steigen verhindern."],
-      ["Aerodynamik", "Flügel an der Verkleidung erzeugen Anpressdruck und halten das Vorderrad am Boden. Das macht die Motorräder schneller, verschärft aber ein Problem: Im Windschatten verliert das folgende Motorrad Abtrieb und Kühlung, was Überholen erschwert. Die Verkleidung darf pro Saison nur einmal grundlegend überarbeitet werden."],
-      ["Klassen", "Unter der MotoGP fahren Moto2 und Moto3 mit — beides Nachwuchsklassen mit Einheitsmotoren, die an denselben Wochenenden ausgetragen werden. Wer sich dort durchsetzt, bekommt üblicherweise die Chance auf ein MotoGP-Cockpit."]
-    ]
-  },
-  wrc: {
-    kurz: "Rallye-WM auf Schotter, Asphalt und Schnee — gefahren wird gegen die Uhr.",
-    bloecke: [
-      ["Format", "Eine Rallye läuft von Donnerstag bis Sonntag und besteht aus 15 bis 25 Wertungsprüfungen, kurz WP. Jede WP ist ein gesperrter Streckenabschnitt zwischen 2 und 35 Kilometern Länge, auf dem die Autos einzeln im Abstand von ein bis drei Minuten starten. Dazwischen fahren sie auf öffentlichen Straßen zur nächsten Prüfung — diese Verbindungsetappen haben eigene Sollzeiten, Verspätung wird mit Zeitstrafen belegt."],
-      ["Wertung", "Es gibt kein Rennen Rad an Rad. Addiert werden die Zeiten aller Wertungsprüfungen, die geringste Gesamtzeit gewinnt. Weil einzelne WP oft nur um Zehntel auseinanderliegen, entscheiden über vier Tage hinweg regelmäßig wenige Sekunden. Ein Dreher, ein Reifenschaden oder eine falsche Reifenwahl kann eine ganze Rallye kosten."],
-      ["Aufschrieb", "Vor der Rallye fahren Fahrer und Beifahrer die Strecken zweimal in Serienautos ab und erstellen dabei ihre Notation: Kurvenradien von 1 bis 6, Entfernungen, Kuppen, Sprünge, Gefahrenstellen. Im Rennen liest der Beifahrer diesen Aufschrieb im richtigen Rhythmus vor. Der Fahrer sieht viele Kurven erst, wenn er längst eingelenkt hat — er fährt praktisch nach Ansage."],
-      ["Startreihenfolge", "Am ersten Tag starten die Führenden der WM zuerst. Auf Schotter ist das ein handfester Nachteil: Die ersten Autos fegen die lose Deckschicht weg und legen den griffigeren Untergrund für die Nachfolgenden frei. Wer die Meisterschaft anführt, kämpft also auch gegen die Strecke. Am Sonntag wird umgekehrt gestartet, in umgekehrter Reihenfolge des Zwischenstands."],
-      ["Punkte", "Die 2024 eingeführten Samstagspunkte wurden nach nur einer Saison wieder abgeschafft. Seit 2025 gilt: Der Rallye-Sieger bekommt 25 Punkte nach der klassischen Skala bis 1 für Platz zehn, so wie schon von 2010 bis 2023. Dazu kommt der Super Sunday, bei dem die fünf schnellsten Fahrer der Sonntagsetappe zusätzliche Punkte holen, und die Power Stage mit 5, 4, 3, 2 und 1 Punkt für die fünf Schnellsten. Maximal sind damit 35 Punkte pro Wochenende möglich. Wer vor dem Sonntag ausscheidet, kann höchstens zehn Punkte mitnehmen."],
-      ["Rally2 und Reparaturen", "Fällt ein Auto aus, darf es am Folgetag unter der Rally2-Regel wieder starten — mit einer Zeitstrafe von zehn Minuten pro versäumter WP. Damit bleibt die Chance auf Power-Stage-Punkte. Repariert werden darf nur im Servicepark zu festgelegten Zeiten, meist 30 oder 45 Minuten. Zwischendurch müssen Fahrer und Beifahrer selbst Hand anlegen, mit dem Werkzeug an Bord."],
-      ["Technik", "Die Spitzenklasse Rally1 nutzt 1,6-Liter-Turbomotoren. Seit 2025 fahren die Autos ohne Hybridsystem — es war zu teuer und zu störanfällig. Zusammen mit einem kleineren Luftmengenbegrenzer sank die Leistung dadurch von rund 540 auf etwa 380 PS, das Mindestgewicht von 1260 auf 1180 Kilogramm. Ein Sicherheitskäfig aus Stahlrohr rettet bei den schweren Unfällen dieser Serie regelmäßig Leben. Darunter fahren Rally2-Fahrzeuge, die deutlich günstiger sind und die Startfelder füllen; seit 2025 dürfen sie mit einem WRC-Kit aufgerüstet werden, um den Abstand zu verkleinern."],
-      ["Untergründe", "Kein anderer Motorsport wechselt die Bedingungen so stark: loser Schotter in Griechenland, Asphalt auf Korsika, Schnee und Eis in Schweden, Sand und Hitze in Kenia. Für jeden Untergrund gibt es eigene Reifen, eigene Abstimmungen und eine eigene Fahrweise. Ein Spezialist für Schotter ist nicht automatisch auf Asphalt schnell."]
-    ]
-  },
-  wec: {
-    kurz: "Langstrecken-WM mit mehreren Klassen gleichzeitig auf der Strecke.",
-    bloecke: [
-      ["Format", "Acht Rennen zwischen sechs und vierundzwanzig Stunden, das bekannteste sind die 24 Stunden von Le Mans. Pro Auto teilen sich zwei bis drei Fahrer das Steuer. Vorgeschrieben sind Mindest- und Höchstfahrzeiten, damit sich niemand das Rennen allein aufteilt und keiner übermüdet weiterfährt. Gewertet wird nach zurückgelegten Runden, nicht nach Zeit."],
-      ["Klassen", "Zwei Kategorien fahren gleichzeitig auf derselben Strecke: Hypercar mit den Prototypen der Hersteller und LMGT3 mit seriennahen GT-Fahrzeugen. Der Geschwindigkeitsunterschied ist erheblich, entsprechend häufig wird überrundet. Für die Fahrer beider Klassen ist der Umgang mit dem Verkehr eine eigene Disziplin — und eine der häufigsten Ursachen für Zwischenfälle."],
-      ["Qualifying", "Zuerst fährt jede Klasse eine reguläre Qualifikation. Die schnellsten Autos daraus ziehen in die Hyperpole ein, eine kurze zweite Sitzung um die vorderen Startplätze. Bei einem Rennen über sechs oder gar vierundzwanzig Stunden zählt der Startplatz allerdings weniger als Zuverlässigkeit und Strategie."],
-      ["Balance of Performance", "Damit Fahrzeuge mit völlig unterschiedlichen Konzepten — Hybrid, Allrad, Heckantrieb, Saugmotor, Turbo — konkurrenzfähig bleiben, greift die BoP ein. Über Mindestgewicht, freigegebene Leistung und Energiemenge pro Stint werden die Autos rechnerisch angeglichen, teils von Rennen zu Rennen. Das sorgt für enge Ergebnisse und ist zugleich der am heftigsten diskutierte Teil des Reglements."],
-      ["Boxenstopps", "Beim Tanken darf nicht gleichzeitig am Auto gearbeitet werden — Reifenwechsel und Fahrerwechsel erfolgen davor oder danach. Die Zahl der Mechaniker am Auto ist begrenzt. Dadurch dauern Stopps deutlich länger als in der Formel 1, und ihre Planung wird zu einem zentralen Teil der Rennstrategie."],
-      ["Full Course Yellow", "Statt eines Safety Cars wird häufig eine streckenweite Tempobegrenzung von 80 km/h verhängt. Die Abstände bleiben dabei erhalten, anders als bei einer Safety-Car-Phase, in der das Feld zusammenrückt. Wer im richtigen Moment an der Box ist, spart trotzdem erheblich Zeit — Glück ist damit ein realer Faktor."],
-      ["Erfolgsballast", "Neu ab 2026: Erfolgreiche Hypercars bekommen Zusatzgewicht, wie es in der GT-Klasse längst üblich ist. Ausgenommen sind die 24 Stunden von Le Mans. Der Ballast ergänzt die Balance of Performance, die sich 2025 als wenig treffsicher erwiesen hatte."],
-      ["Punkte", "Bei den regulären Läufen 25 Punkte für den Sieg nach der üblichen Skala. In Le Mans zählt alles doppelt, dort sind 50 Punkte zu holen. Ein einzelnes Wochenende kann die Meisterschaft damit vollständig umkehren. Gewertet werden Fahrer, Teams und Hersteller getrennt."],
-      ["Le Mans", "Das Rennen hat einen Sonderstatus: eigene Testtage, ein größeres Starterfeld und mit der Hunaudières eine Gerade, auf der über 300 km/h gefahren wird. Es zählt zur Triple Crown des Motorsports, zusammen mit dem Indy 500 und dem Großen Preis von Monaco."]
-    ]
-  },
-  dtm: {
-    kurz: "GT3-Sportwagen, acht Wochenenden, zwei eigenständige Rennen pro Wochenende.",
-    bloecke: [
-      ["Format", "An jedem Wochenende werden zwei getrennte Rennen über je rund 55 Minuten plus eine Runde gefahren, samstags und sonntags. Beide sind vollständig eigenständig: eigenes Qualifying, eigene Punkte, eigenes Podium. Ein verpatzter Samstag lässt sich am Sonntag also unmittelbar korrigieren — das hält die Meisterschaft lange offen."],
-      ["Qualifying", "Ein einziger Abschnitt von etwa zwanzig Minuten, in dem das gesamte Feld gleichzeitig auf der Strecke ist. Die schnellste Runde zählt. Kein Ausscheidungsverfahren wie in der Formel 1, dafür ein anderes Problem: Bei über zwanzig Autos auf einer kurzen Strecke ist eine freie Runde schwer zu finden. Die Wahl des richtigen Moments entscheidet oft mehr als das reine Tempo."],
-      ["Boxenstopp", "In jedem Rennen ist genau ein Stopp mit Wechsel aller vier Reifen Pflicht. Wann er erfolgt, ist dem Team überlassen und macht einen großen Teil der Taktik aus: früh stoppen bringt freie Strecke, spät stoppen frische Reifen für die Schlussphase. Die Stopps selbst dauern nur wenige Sekunden, Unterschiede von Zehnteln kosten Positionen."],
-      ["Punkte", "Pro Rennen 25 Punkte für den Sieg nach der üblichen Skala bis Platz zehn. Zusätzlich gibt es Punkte für die vorderen Startplätze im Qualifying — deshalb weichen bei einzelnen Fahrern Renn- und Qualifyingpunkte deutlich voneinander ab. Über eine Saison summiert sich das zu einem spürbaren Faktor."],
-      ["Fahrzeuge", "Gefahren wird mit GT3-Sportwagen, wie sie auch in anderen Serien eingesetzt werden: Ferrari, Porsche, Mercedes-AMG, BMW, Lamborghini, Aston Martin, Ford und weitere. Die Autos sind seriennah, haben rund 500 PS und kein Hybridsystem. Anders als früher setzt die DTM keine eigens konstruierten Prototypen mehr ein."],
-      ["Balance of Performance", "Da die Marken technisch verschieden sind, werden sie über Gewicht, Leistung und Luftmengenbegrenzer angeglichen — angepasst anhand der Ergebnisse der vorangegangenen Rennen. Das hält die Abstände klein, führt aber regelmäßig zu Diskussionen, wenn eine Marke plötzlich stärker oder schwächer wirkt."],
-      ["Startaufstellung", "Gestartet wird stehend von der Startaufstellung, nicht rollend. In Verbindung mit vollen Feldern und teils engen Strecken wie dem Norisring führt das regelmäßig zu Positionswechseln schon vor der ersten Kurve."],
-      ["Charakter", "Die DTM ist bewusst national ausgerichtet: acht Wochenenden, überwiegend in Deutschland, alle Rennen frei empfangbar im Fernsehen. Sie ist damit die zugänglichste der hier gelisteten Serien — sowohl für Zuschauer als auch für Fahrer, weil GT3-Technik in vielen anderen Meisterschaften ebenfalls eingesetzt wird."]
-    ]
-  },
-  gtwc: {
-    kurz: "Größte GT3-Serie Europas, geteilt in Sprint Cup und Endurance Cup.",
-    bloecke: [
-      ["Aufbau", "Die GT World Challenge Europe ist keine einzelne Rennserie, sondern besteht aus zwei Meisterschaften mit je fünf Wochenenden: dem Sprint Cup mit kurzen Rennen und dem Endurance Cup mit Langstreckenläufen. Beide werden getrennt gewertet, zusätzlich gibt es eine Gesamtwertung über alle zehn Wochenenden. Veranstalter ist die SRO, die auch die Ableger in Amerika, Asien und Australien betreibt."],
-      ["Sprint Cup", "Pro Wochenende zwei Rennen über je eine Stunde, eines am Samstag und eines am Sonntag, jeweils mit eigenem Qualifying. In jedem Rennen ist ein Pflichtboxenstopp mit Fahrerwechsel vorgeschrieben, der in einem festgelegten Zeitfenster zur Rennmitte erfolgen muss. Zwei Fahrer teilen sich das Auto, beide müssen fahren."],
-      ["Endurance Cup", "Rennen über drei Stunden, dazu die 6 Stunden von Paul Ricard zum Auftakt und als Höhepunkt die 24 Stunden von Spa. Hier teilen sich drei Fahrer das Auto. Die längere Distanz verschiebt den Schwerpunkt: Zuverlässigkeit, Reifenmanagement und fehlerfreie Boxenstopps zählen mehr als eine schnelle Einzelrunde."],
-      ["24 Stunden von Spa", "Das größte GT-Rennen der Welt und das Saisonhighlight. Über sechzig Fahrzeuge starten, gefahren wird durch die Nacht auf einer der anspruchsvollsten Strecken überhaupt, mit Eau Rouge und Raidillon als bekanntestem Abschnitt. Punkte gibt es nicht nur im Ziel, sondern schon nach sechs und nach zwölf Stunden — zusammen fast doppelt so viele wie bei einem Drei-Stunden-Rennen. Für viele Teams hat der Sieg hier einen höheren Stellenwert als die Meisterschaft selbst."],
-      ["Punkte", "Gewertet werden die ersten zehn, die Skala richtet sich nach der Renndauer. Im Sprint Cup bekommt der Sieger 16,5 Punkte, abwärts bis 0,5 für Platz zehn — daher die halben Punkte in der Tabelle. Die Drei-Stunden-Rennen bringen 25 Punkte für den Sieg, die sechs Stunden von Paul Ricard 33. Die Pole ist einen Zusatzpunkt wert. Gold, Silver und Bronze haben zusätzlich eigene Wertungen, dazu kommen getrennte Titel für Sprint Cup und Endurance Cup."],
-      ["Klassen", "Gestartet wird in vier Kategorien, die sich nach der FIA-Einstufung der Fahrer richten: Pro ohne Beschränkungen, dazu Gold, Silver und Bronze mit jeweils vorgeschriebenen Fahrerkombinationen, in Spa zusätzlich Pro-Am. So können Profis und ambitionierte Amateure im selben Rennen antreten, ohne direkt gegeneinander gewertet zu werden. Die Gesamtwertung richtet sich nach dem Gesamtergebnis — den Sieg machen meist die Pro-Fahrzeuge unter sich aus, gelegentlich setzt sich aber auch ein Gold-Auto durch."],
-      ["Technik", "Ausschließlich GT3-Fahrzeuge nach FIA-Reglement — dieselbe Technikbasis wie in der DTM und in der LMGT3-Klasse der WEC. Entsprechend groß ist die Markenvielfalt: Ferrari, Porsche, Mercedes-AMG, BMW, Audi, Lamborghini, Aston Martin, McLaren, Ford und Chevrolet. Eine Balance of Performance gleicht die Modelle aneinander an."],
-      ["Qualifying", "Wegen der großen Felder wird in zwei Gruppen qualifiziert, damit sich die Autos weniger im Weg stehen. Im Sprint Cup gibt es vor jedem Rennen ein eigenes Qualifying. Im Endurance Cup fährt jeder der drei Fahrer einen eigenen Abschnitt, seit 2026 ebenfalls getrennt nach Silver und Bronze sowie Pro und Gold; die Startaufstellung ergibt sich aus allen drei Zeiten zusammen — die Mannschaft ist damit nur so schnell wie ihr langsamstes Glied. In Spa kämpfen die 32 Schnellsten danach in einer K.-o.-Superpole um die Pole."],
-      ["Bedeutung", "Der Meister des Bronze Cups erhielt zuletzt eine Einladung für die LMGT3-Klasse der 24 Stunden von Le Mans — für Teams mit Amateurfahrern ein begehrtes Ziel. Die Serie ist damit für viele Teams das Sprungbrett in den internationalen Langstreckensport und gleichzeitig die Meisterschaft mit den größten GT3-Startfeldern in Europa."]
-    ]
-  },
-  nls: {
-    kurz: "Langstrecke auf der Nordschleife — über hundert Autos vom Serienwagen bis zum GT3 gleichzeitig.",
-    bloecke: [
-      ["Strecke", "Gefahren wird auf der Kombination aus Nordschleife und Kurzanbindung des Grand-Prix-Kurses: 24,358 Kilometer pro Runde, davon 20,8 Kilometer Nordschleife mit 73 Kurven und rund 300 Metern Höhenunterschied. Die schnellsten GT3-Autos brauchen knapp acht Minuten für eine Runde. Ein Rennen ist an einem Tag erledigt: Zeittraining von 08:30 bis 10:00 Uhr, Start um 12:00 Uhr, dann vier Stunden Rennen — beim Ruhr-Pokal-Rennen im Sommer sechs."],
-      ["Klassen", "Rund zwei Dutzend Wertungsklassen teilen sich die Strecke. An der Spitze fährt die SP9 mit GT3-Fahrzeugen, unterteilt in Pro, Pro-Am und Am. Die SP10 gehört den GT4-Autos. Dazu kommen Markenpokale wie Cup 2 für den Porsche 911 GT3 Cup, Cup 3 für den Porsche 718 Cayman GT4 und die BMW-Cups mit M240i und seit 2026 dem M2 Racing, außerdem TCR-Tourenwagen, die AT-Klassen für alternative Kraftstoffe und seriennahe Produktionswagen in den V- und VT-Klassen."],
-      ["Permit Nordschleife", "Wer hier Rennen fährt, braucht neben der normalen Rennlizenz die DMSB Permit Nordschleife, einen zusätzlichen Nachweis für genau diese Strecke. Sie ist zweistufig: Mit Stufe B beginnen Neulinge in leistungsschwächeren Autos. Erst wer auf der Nordschleife Erfahrung gesammelt hat, bekommt Stufe A, die für die schnellen Klassen wie GT3, GT4 oder den Porsche 911 GT3 Cup nötig ist. Niemand soll sein erstes Nordschleifen-Rennen gleich im schnellsten Auto bestreiten."],
-      ["Code 60", "Ein Safety Car gibt es wegen der Streckenlänge nicht. Stattdessen gelten örtliche Tempolimits: Bei doppelt geschwenkten gelben Flaggen sind höchstens 120 km/h erlaubt, in einer Code-60-Zone — etwa wenn Streckenposten auf der Fahrbahn arbeiten — höchstens 60 km/h. Überholt werden darf in beiden Fällen nicht, erst die grüne Flagge hebt die Beschränkung auf. Verstöße kosten Zeitstrafen, die schnell über Sieg und Niederlage entscheiden."],
-      ["Startgruppen", "Damit sich nicht über hundert Autos gleichzeitig in die erste Kurve drängen, wird in drei Startgruppen gestartet, die schnellsten Klassen zuerst. Jede Gruppe fährt ihre eigene Einführungsrunde, der fliegende Start folgt im Abstand weniger Minuten — noch bevor die GT3-Spitze ihre erste Runde beendet. Danach wird ständig überrundet — der dichte Verkehr ist auf der Nordschleife die eigentliche Herausforderung."],
-      ["Meisterschaft", "Der Fahrertitel wird nicht über das Gesamtergebnis vergeben, sondern über die Platzierung in der eigenen Klasse. Wie viele Punkte es gibt, hängt außerdem davon ab, wie viele Autos in der Klasse starten: Ein Klassensieg bringt bei sieben oder mehr Startern 15 Punkte im Vier-Stunden-Rennen und 19 im Sechs-Stunden-Rennen, bei nur einem Starter zwei. Deshalb führen meist Fahrer aus gut besetzten Cup- oder Serienklassen, die Rennen für Rennen gewinnen. In der dicht besetzten GT3-Klasse gelingt das kaum jemandem dauerhaft, und viele GT3-Fahrer bestreiten ohnehin nicht alle Läufe."],
-      ["Speed-Trophäe", "Wer ganz vorne fährt, bekommt eine eigene Wertung: die NLS Speed-Trophäe. Sie zählt nach dem Gesamtergebnis und wird pro Team und Fahrzeug geführt, nicht pro Fahrer. Der Gesamtsieger erhält 35 Punkte, die drei Schnellsten im Zeittraining bekommen drei, zwei und einen Bonuspunkt. Um die Spitze kämpfen die GT3-Autos der SP9, dahinter sammeln auch die Cup-Porsche Punkte."],
-      ["24h und Qualifiers", "Das 24-Stunden-Rennen im Mai ist eine eigene Veranstaltung des ADAC Nordrhein und zählt nicht zur NLS — viele Teams nutzen die NLS-Läufe aber als Vorbereitung darauf. Verbunden sind beide über die ADAC 24h Nürburgring Qualifiers im April: zwei Vier-Stunden-Rennen, die 2026 als NLS4 und NLS5 in die Meisterschaft eingehen. Gefahren wird dort wie beim 24h-Rennen auf der 25,378 Kilometer langen Variante mit Müllenbachschleife und ohne AMG-Arena, am Sonntag entscheidet zusätzlich ein Top-Qualifying über die vorderen Startplätze."]
-    ]
-  },
-  fe: {
-    kurz: "Elektro-Rennserie, überwiegend auf Stadtkursen, ein Rennen pro Tag.",
-    bloecke: [
-      ["Format", "Meist findet alles an einem Tag statt: Training, Qualifying und Rennen. Gefahren wird auf engen, temporären Kursen mitten in Städten wie Monaco, Tokio, London, Berlin oder São Paulo. Das Rennen läuft nicht über eine feste Rundenzahl, sondern über eine festgelegte Zeit plus eine Schlussrunde — bei Unterbrechungen wird die Distanz entsprechend angepasst."],
-      ["Qualifying", "Das eigenständigste Format im gesamten Motorsport. Zunächst fahren zwei Gruppen getrennt ihre Zeiten, die jeweils besten vier ziehen weiter. Danach folgen direkte Duelle im K.-o.-System: Viertelfinale, Halbfinale, Finale, jeweils zwei Autos gleichzeitig auf der Strecke. Wer schneller ist, kommt weiter. Die Pole entscheidet sich damit in einem echten Zweikampf statt über eine anonyme Bestzeit."],
-      ["Attack Mode", "Aktiviert wird er, indem man abseits der Ideallinie durch eine markierte Zone fährt und dabei Zeit verliert. Dafür gibt es befristet mehr Leistung — beim aktuellen Auto wird zusätzlich der sonst abgeschaltete Vorderradantrieb freigegeben. Bei normalen Rennen sind zwei Aktivierungen vorgeschrieben, bei Rennen mit Pit Boost seit dieser Saison nur noch eine. Die frühere Pflicht, das gesamte Zeitkontingent vor Rennende aufzubrauchen, wurde gestrichen, nachdem mehrfach Zeitstrafen dafür verhängt worden waren."],
-      ["Pit Boost", "Bei ausgewählten Rennen ist ein Pflichtboxenstopp vorgeschrieben, bei dem die Batterie mit 600 Kilowatt schnellgeladen wird: 34 Sekunden Standzeit, davon 30 Sekunden Ladevorgang, dabei kommen 3,85 kWh dazu. Der Stopp darf nur erfolgen, wenn der Ladestand zwischen 60 und 40 Prozent liegt, und pro Team gibt es nur ein Ladegerät — beide Autos können also nicht gleichzeitig kommen. Eingeführt wurde das 2025 in Dschidda."],
-      ["Energie", "Alle Teams haben dieselbe Batteriekapazität, die bewusst knapper bemessen ist als die Renndistanz erfordert. Wer zu früh zu viel verbraucht, muss am Ende Tempo herausnehmen. Deshalb wird im Feld häufig gezielt Windschatten gesucht, um Energie zu sparen — Rennen entscheiden sich regelmäßig in den letzten Runden, wenn die Verbrauchsrechnungen aufgehen oder eben nicht."],
-      ["Rekuperation", "Beim Bremsen wird Energie zurück in die Batterie gespeist, und zwar in einem Umfang, der einen erheblichen Teil des Rennverbrauchs ausmacht. Die Autos haben deshalb an der Hinterachse kaum mechanische Bremsen im klassischen Sinn. Das verändert die Fahrweise grundlegend: Bremsen ist hier auch ein Ladevorgang."],
-      ["Punkte", "Die übliche Skala mit 25 Punkten für den Sieg bis 1 für Platz zehn. Dazu drei Punkte für die Pole Position und ein Punkt für die schnellste Rennrunde, letzterer nur bei einer Platzierung unter den ersten zehn. Weil das Feld eng beieinander liegt, wechselt die Meisterschaftsführung im Saisonverlauf häufig."],
-      ["Stadtkurse", "Die Strecken werden für das Rennwochenende aus normalen Straßen aufgebaut. Sie sind eng, haben kaum Auslaufzonen und einen Belag, der zu Beginn wenig Grip bietet und sich über den Tag deutlich verbessert. Berührungen und Safety-Car-Phasen sind entsprechend häufig — Fehler werden hier härter bestraft als auf permanenten Rennstrecken."],
-      ["Saisonzählung", "Die Meisterschaft läuft über den Jahreswechsel und wird deshalb nicht mit einer Jahreszahl geführt, sondern als Saison mit fortlaufender Nummer. Ein Titel gehört damit nicht eindeutig zu einem Kalenderjahr, was beim Nachschlagen älterer Ergebnisse regelmäßig für Verwirrung sorgt."]
-    ]
-  }
-};
 
 function toggleLegal(){
   const el=document.getElementById("legal"); if(!el)return;
@@ -1642,7 +1049,7 @@ function toggleRule(sk){
 function renderRules(){
   const host=document.getElementById("view-rules"); if(!host)return;
   let html=`<p class="rl-intro">Acht Serien, acht sehr unterschiedliche Reglements.<br>
-    Tippe eine Serie an, um Format, Qualifying, Punkte und Besonderheiten zu lesen.</p>`;
+    Tippe eine Serie an, um Format, Qualifying, Punkte und Besonderheiten zu lesen.</p>`+ladeHinweis("regeln");
   Object.keys(SERIES).forEach(sk=>{
     const S0=SERIES[sk], R=REGELN[sk]; if(!R)return;
     const open = RULES_OPEN===sk;
@@ -1666,8 +1073,9 @@ function renderRules(){
 
 function renderTV(){
   const host=document.getElementById("view-tv"); if(!host)return;
+  if(DATEN_FEHLT.has("sender")){host.innerHTML=ladeHinweis("sender");return;}
   let html=`<p class="tv-intro">Wo läuft was in Deutschland, Österreich und der Schweiz?<br>
-    Geprüft am 30.07.2026 — Rechte können sich kurzfristig ändern, Angaben ohne Gewähr.</p>`;
+    Geprüft am ${TV_GEPRUEFT} — Rechte können sich kurzfristig ändern, Angaben ohne Gewähr.</p>`+ladeHinweis("sender");
   const LAND={de:"Deutschland",at:"Österreich",ch:"Schweiz"};
   Object.keys(SERIES).forEach(sk=>{
     const S0=SERIES[sk];
@@ -1724,206 +1132,19 @@ function standings(sk){
     team:Object.entries(team).map(([k,v])=>({name:k,pts:v})).sort((a,b)=>b.pts-a.pts)
   };
 }
-const STAND = {
-  /* Quelle: motorsport-total.com, abgerufen 30.07.2026. Handgepflegt — bei
-     jedem neuen Rennen aktualisieren (Zahlen + "stand"-Text anpassen). */
-  f1: { stand:"nach 14 von 23 Rennen · Madrid, 13.09.2026", quelle:"motorsport-total.com",
-        drv:[["Kimi Antonelli","Mercedes",292],["Lewis Hamilton","Ferrari",191],
-             ["George Russell","Mercedes",211],["Charles Leclerc","Ferrari",167],
-             ["Lando Norris","McLaren",186],["Max Verstappen","Red Bull",145],
-             ["Oscar Piastri","McLaren",120],["Isack Hadjar","Red Bull",71],
-             ["Liam Lawson","Racing Bulls",59],["Pierre Gasly","Alpine",41],
-             ["Arvid Lindblad","Racing Bulls",31],["Franco Colapinto","Alpine",27],
-             ["Oliver Bearman","Haas",18],["Gabriel Bortoleto","Audi",10],
-             ["Carlos Sainz","Williams",6],["Alexander Albon","Williams",5],
-             ["Esteban Ocon","Haas",3],["Nico Hülkenberg","Audi",7],
-             ["Fernando Alonso","Aston Martin",3],["Yuki Tsunoda","Racing Bulls",1],
-             ["Lance Stroll","Aston Martin",0],["Valtteri Bottas","Cadillac",0],
-             ["Sergio Perez","Cadillac",0]] },
-  mgp:{ stand:"nach 15 von 22 Grands Prix · Red Bull Ring, 20.09.2026", quelle:"motogp.com",
-        drv:[["Jorge Martin","Aprilia Racing",306],["Marco Bezzecchi","Aprilia",264],
-             ["Ai Ogura","SuperFile Trackhouse MotoGP Team",222],["Marc Marquez","Ducati Lenovo Team",294],
-             ["Fabio Di Giannantonio","Pertamina Enduro VR46 Racing Team",230],["Raul Fernandez","SuperFile Trackhouse MotoGP Team",203],
-             ["Pedro Acosta","Red Bull KTM Factory Racing",234],["Francesco Bagnaia","Ducati Lenovo Team",156],
-             ["Alex Marquez","BK8 Gresini Racing MotoGP",158],["Luca Marini","Honda HRC Castrol",98],
-             ["Fermin Aldeguer","BK8 Gresini Racing MotoGP",115],["Enea Bastianini","Red Bull KTM Tech3",97],
-             ["Brad Binder","Red Bull KTM Factory Racing",94],["Fabio Quartararo","Monster Energy Yamaha MotoGP Team",61],
-             ["Diogo Moreira","Pro Honda LCR",65],["Franco Morbidelli","Pertamina Enduro VR46 Racing Team",56],
-             ["Johann Zarco","Castrol Honda LCR",45],["Joan Mir","Honda HRC Castrol",33],
-             ["Jack Miller","Prima Pramac Yamaha MotoGP",28],["Alex Rins","Monster Energy Yamaha MotoGP Team",24],
-             ["Toprak Razgatlioglu","Prima Pramac Yamaha MotoGP",18],["Maverick Viñales","Red Bull KTM Tech3",10],
-             ["Iker Lecuona","BK8 Gresini Racing MotoGP",9],["Augusto Fernandez","Yamaha Factory Racing",6],
-             ["Pol Espargaro","Red Bull KTM Tech3",5],["Takaaki Nakagami","Honda HRC Castrol",3],
-             ["Cal Crutchlow","Castrol Honda LCR",0],["Jonas Folger","Red Bull KTM Tech3",0],
-             ["Lorenzo Savadori","SuperFile Trackhouse MotoGP Team",0],["Michele Pirro","BK8 Gresini Racing MotoGP",0]] },
-
-  wrc:{ stand:"nach 12 von 13 Rallyes · Chile, 13.09.2026", quelle:"autohebdo.fr",
-        drv:[["Elfyn Evans","Toyota",230],["Sami Pajari","Toyota",213],
-             ["Takamoto Katsuta","Toyota",163],["Oliver Solberg","Toyota",209],
-             ["Sébastien Ogier","Toyota",171],["Adrien Fourmaux","Hyundai",167],
-             ["Thierry Neuville","Hyundai",129],["Esapekka Lappi","Hyundai",33],
-             ["Hayden Paddon","Hyundai",38],["Josh McErlean","Ford",35],
-             ["Yohan Rossel","Lancia",24],["Léo Rossel","Citroën",18],
-             ["Jon Armstrong","Ford",16],["Robert Virves","Škoda",17],
-             ["Mārtiņš Sesks","Ford",12],["Gus Greensmith","Toyota",13],
-             ["Nikolay Gryazin","Lancia",10],["Daniel Sordo","Hyundai",10],
-             ["Diego Dominguez","Toyota",8],["Alejandro Cachon","Toyota",7],
-             ["Fau Zaldivar","Škoda",6],["Roberto Dapra","Škoda",6],
-             ["Rope Korhonen","Toyota",5],["Andreas Mikkelsen","Škoda",5],
-             ["Jari-Matti Latvala","Toyota",4],["Alejandro Galanti","Toyota",2],
-             ["Arthur Pelamourgues","Hyundai",2],["Teemu Suninen","Toyota",2],
-             ["Matteo Fontana","Ford",2],["Eric Camilli","Škoda",1],
-             ["Emil Lindholm","Škoda",1],["Taylor Gill","Škoda",1],
-             ["Gregoire Munster","Ford",0],["Jourdan Serderidis","Ford",0],
-             ["Romet Jürgenson","Ford",0],["Lorenzo Bertelli","Toyota",0]] },
-  fe: { stand:"Endstand · Saison 12 (2025/26) nach 17 Rennen · London, 16.08.2026", quelle:"e-formel.de",
-        drv:[["Pascal Wehrlein","Porsche Formula E Team",169],["Jake Dennis","Andretti Formula E",164],
-             ["Mitch Evans","Jaguar TCS Racing",160],["Oliver Rowland","Nissan Formula E Team",137],
-             ["Edoardo Mortara","Mahindra Racing",137],["António Félix da Costa","Jaguar TCS Racing",128],
-             ["Nyck de Vries","Mahindra Racing",115],["Nick Cassidy","Citroën Racing",114],
-             ["Nico Müller","Porsche Formula E Team",102],["Sébastien Buemi","Envision Racing",97],
-             ["Taylor Barnard","DS Penske",68],["Jean-Éric Vergne","Citroën Racing",68],
-             ["Pepe Martí","Cupra KIRO",66],["Felipe Drugovich","Andretti Formula E",65],
-             ["Dan Ticktum","Cupra KIRO",62],["Joel Eriksson","Envision Racing",55],
-             ["Lucas di Grassi","Lola Yamaha ABT Formula E Team",32],["Maximilian Günther","DS Penske",23],
-             ["Norman Nato","Nissan Formula E Team",20],["Zane Maloney","Lola Yamaha ABT Formula E Team",3]] },
-  dtm:{ stand:"nach 14 von 16 Rennen · Sachsenring, 13.09.2026", quelle:"dtm.com",
-        drv:[["Maro Engel","Mercedes-AMG Ravenol",174],["Thomas Preining","Manthey",197],
-             ["Nicki Thiim","Comtoyou Racing",147],["Lucas Auer","Mercedes-AMG Landgraf",152],
-             ["Marco Wittmann","Schubert Motorsport",173],["Matteo Cairoli","Emil Frey Racing",150],
-             ["Arjun Maini","HRT Ford Racing",117],["Ben Dörr","Dörr Motorsport",123],
-             ["Luca Engstler","Red Bull Team ABT",96],["Thierry Vermeulen","Emil Frey Racing",99],
-             ["Jules Gounon","Mercedes-AMG Mann-Filter",102],["Ricardo Feller","Manthey",98],
-             ["Kelvin van der Linde","Schubert Motorsport",86],["Finn Wiebelhaus","HRT Ford Racing",67],
-             ["Mirko Bortolotti","TGI by GRT",71],["Tom Kalender","Mercedes-AMG Landgraf",46],
-             ["Bastian Buus","Land-Motorsport",50],["Marco Mapelli","Red Bull Team ABT",43],
-             ["Timo Glock","Dörr Motorsport",30],["Nicolas Baert","Comtoyou Racing",8],
-             ["Maximilian Paul","TGI by GRT",11],["Christian Engelhart","TGI by GRT",2]] },
-
- wec:{ stand:"nach 5 von 8 Rennen · Austin, 06.09.2026", quelle:"fiawec.com",
-        klasse:"Hypercar",
-        drv:[["René Rast / Robin Frijns","BMW #20",75],
-             ["Kobayashi / Conway / de Vries","Toyota #7",75],
-             ["Sheldon van der Linde","BMW #20",65],
-             ["Hartley / Hirakawa / Buemi","Toyota #8",64],
-             ["Pier Guidi / Giovinazzi / Calado","Ferrari #51",58],
-             ["Magnussen / Marciello","BMW #15",54],
-             ["Fuoco / Molina / Nielsen","Ferrari #50",54],
-             ["Dries Vanthoor","BMW #15",48],
-             ["da Costa / Milesi / Habsburg","Alpine #35",44],
-             ["Nato / Stevens","Cadillac #12",44],
-             ["Tincknell / Gamble","Aston Martin #007",42],
-             ["Bamber / Bourdais","Cadillac #38",34],
-             ["Hanson / Kubica / Ye","Ferrari #83",31],
-             ["Jack Aitken","Cadillac #38",30],
-             ["Louis Delétraz","Cadillac #12",26],
-             ["Makowiecki / Gounon / Martins","Alpine #36",14],
-             ["Lotterer / Derani / Jaubert","Genesis #17",10],
-             ["Ross Gunn","Aston Martin #007",8],
-             ["Cassidy / di Resta / Vandoorne","Peugeot #93",6],
-             ["Duval / Jakobsen / Pourchaire","Peugeot #94",4],
-             ["Ricky Taylor","Cadillac #101",2],
-             ["Riberas / Sørensen","Aston Martin #009",2],
-             ["Juncadella / Jaminet / Chatin","Genesis #19",0],
-             ["Roman de Angelis","Aston Martin #009",0]],
-        klasse2:"LMGT3",
-        drv2:[["Jonny Edgar","Corvette #33",76],
-              ["Nicky Catsburg","Corvette #33",72],
-              ["Ben Keating","Corvette #33",54],
-              ["Rovera / Hériau / Mann","Ferrari #21",54],
-              ["Pera / Lietz / Shahin","Porsche #92",49],
-              ["Newell / Adam","Aston Martin #23",49],
-              ["Güven / Cottingham / Boguslavskiy","Porsche #91",48],
-              ["Eduardo Barrichello","Aston Martin #23",46],
-              ["James / Drudi / Robichon","Aston Martin #27",44],
-              ["McIntosh / Harper / Thompson","BMW #69",43],
-              ["Eastwood / Dempsey / Yoluç","Corvette #34",43],
-              ["Schmid / López / Umbrărescu","Lexus #87",38],
-              ["David / van Rompuy","Lexus #78",37],
-              ["Jack Hawksworth","Lexus #78",36],
-              ["Au / Kirchhöfer / Fleming","McLaren #10",34],
-              ["Blake McDonald","Corvette #33",22],
-              ["West / Goethe / Gehrsitz","McLaren #58",22],
-              ["Farfus / Leung / Gelael","BMW #32",22],
-              ["Berry / Martin / Andrade","Mercedes-AMG #61",17],
-              ["Levorato / Sargeant / Gattuso","Ford #88",16],
-              ["Tuck / Powell / Priaulx","Ford #77",12],
-              ["Zelger / Hodenius / Cressoni","Mercedes-AMG #79",6],
-              ["Nicolás Varrone","Corvette #33",4],
-              ["Kobe Pauwels","Aston Martin #23",3],
-              ["Rigon / Castellacci / Flohr","Ferrari #54",1],
-              ["Esteban Masson","Lexus #78",1]] },
-
-  gtwc:{ stand:"nach 8 von 10 Wochenenden · Zandvoort, 20.09.2026", quelle:"gt-world-challenge-europe.com",
-        klasse:"Gesamt",
-        drv:[["Auer / Engel","Winward Racing #48",128.5],
-             ["van der Linde / Weerts","Team WRT #32",92],
-             ["Buus / Feller","Lionspeed GP #80",89],
-             ["Luca Stolz","Winward Racing #48",86],
-             ["Daniel Juncadella","Mercedes-AMG Team Verstappen Racing #3",74],
-             ["Nicki Thiim","Comtoyou Racing #7",72.5],
-             ["Arthur Leclerc","AF Corse #50",63.5],
-             ["Drudi / Sørensen","Comtoyou Racing #7",59],
-             ["Jordan Pepper","Team WRT #31/#32",56],
-             ["Jules Gounon","Mercedes-AMG Team Verstappen Racing #3",53.5],
-             ["Thomas Neubauer","AF Corse #50",53.5],
-             ["Fleming / Prette","Garage 59 #58",51.5],
-             ["Hesse / Rossi","Team WRT #46",46.5],
-             ["Dorian Boccolacci","Boutsen VDS #2",45],
-             ["Morris Schuring","Boutsen VDS #2",44],
-             ["Chris Lulham","Mercedes-AMG Team Verstappen Racing #3",41.5],
-             ["Vermeulen / Green","Emil Frey Racing #69",40],
-             ["Benjamin Goethe","Garage 59 #58",32],
-             ["Kirchhöfer / MacDonald","Garage 59 #59",31],
-             ["Thomas Preining","Lionspeed GP #80",30]] },
-
-  nls:{ stand:"nach 8 von 9 Rennen · Nürburgring, 13.09.2026 · vorläufig", quelle:"nuerburgring-langstrecken-serie.de",
-        wertung:"Gesamtwertung", klasse:"Fahrer",
-        drv:[["Bugane / Fübrich / Markert","Adrenalin Motorsport Team Mainhattan Wheels #650 · BMW M240i",94],
-             ["Fielenbach / Sandberg","Smyrlis Racing #953 · CUP3",90],
-             ["Alexandru Vasilescu","AV Racing by BLACK FALCON #177 · SP10",80],
-             ["Assenheimer / Müller / Pereira","48 LOSCH Motorsport by BLACK FALCON #48 · SP9 Pro-Am",72],
-             ["'Russ Turner'","AV Racing by BLACK FALCON #177 · SP10",70],
-             ["Benjamin Albers","Adrenalin Motorsport Team Mainhattan Wheels · BMW M240i/M2",70],
-             ["Patrik Grütter","SRS Team Sorg Rennsport #901 · CUP2",69],
-             ["Abée / Himmels","PROsport racing #176/#181 · SP10",67],
-             ["Ooms / Timis","SRS Team Sorg Rennsport #524 · VT2-RWD",64],
-             ["'Benjamin Hites' / Hardt / Koslowski","BLACK FALCON Team ZIMMERMANN #900 · CUP2",63],
-             ["Raphael Rennhofer","Team LIQUI MOLY by BLACK FALCON #902 · CUP2",63]],
-        wertung2:"Speed-Trophäe", klasse2:"Team-/Fahrzeugwertung",
-        drv2:[["Schubert Motorsport #77","BMW M4 GT3 EVO",158],
-              ["48 LOSCH Motorsport by BLACK FALCON #48","Porsche 911 GT3 R EVO",120],
-              ["Dunlop Motorsport #17","Porsche 911 GT3 R",98],
-              ["Falken Motorsports #44","Porsche 911 GT3 R",95],
-              ["Gamota Racing #23","BMW M4 GT3 EVO",86],
-              ["Mercedes-AMG Team Ravenol #80","Mercedes-AMG GT3",82],
-              ["BLACK FALCON Team EAE #5","Porsche 911 GT3 R",74],
-              ["Walkenhorst Motorsport #35","Aston Martin Vantage GT3 EVO",68],
-              ["Max Kruse Racing #75","Audi R8 LMS GT3 EVO II",55],
-              ["ROWE RACING #99","BMW M4 GT3 EVO",55],
-              ["KCMG #47","Mercedes-AMG GT3",54],
-              ["Manthey #911","Porsche 911 GT3 R",53],
-              ["Toyo Tires with Ring Racing #32","Mercedes-AMG GT3",47],
-              ["Renazzo Motorsport #786","Lamborghini Huracan GT3 EVO II",41],
-              ["Red Bull Team ABT #130","Lamborghini Huracan GT3 EVO II",40],
-              ["Mühlner Motorsport #904","Porsche 911 GT3 Cup",40],
-              ["BLACK FALCON Team ZIMMERMANN #900","Porsche 911 GT3 Cup",36],
-              ["SRS Team Sorg Rennsport #901","Porsche 911 GT3 Cup",36],
-              ["Goroyan RT by Car Collection #4","Porsche 911 GT3 R",30],
-              ["Team LIQUI MOLY by BLACK FALCON #902","Porsche 911 GT3 Cup",25]] }
-};
 function renderStandings(){
   const host=document.getElementById("view-standings");
+  if(DATEN_FEHLT.has("wertungen")){host.innerHTML=ladeHinweis("serien")+ladeHinweis("wertungen");return;}
   if(SEASON!==null&&SEASON!==STAND_SEASON){
     host.innerHTML=`<div class="seasonnote">Die Saison ${SEASON} hat noch nicht begonnen – Wertungen erscheinen nach den ersten Rennen. Die aktuellen Stände findest du unter <button class="linkbtn" onclick="SEASON=${STAND_SEASON};renderSeason();rerender();">${STAND_SEASON}</button>.</div>`;
     return;
   }
-  let html="", any=false;
+  let html=ladeHinweis("serien")+ladeHinweis("wertungen"), any=false;
   Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)).forEach(sk=>{
     const S0=SERIES[sk], D=STAND[sk];
     if(!D){
       html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
-        `<div class="std-tag">Wertung noch nicht gepflegt</div></div>`;
+        `<div class="std-tag">${STAND_LUECKE.has(sk)?"Wertung konnte gerade nicht geladen werden":"Wertung noch nicht gepflegt"}</div></div>`;
       return;
     }
     any=true;
@@ -1950,7 +1171,7 @@ function renderStandings(){
 
 /* ═══════ NAV / INIT ═══════ */
 let currentView="upcoming";
-function rerender(){OPEN_RES=null;
+function rerender(){if(!BEREIT)return;OPEN_RES=null;
   if(currentView==="upcoming")renderTimeline();
   else if(currentView==="weekend")renderWeekend();
   else if(currentView==="series")renderSeries();
@@ -2138,16 +1359,22 @@ function injectEventSchema(){
   }catch(err){/* SEO-Daten sind optional -- App darf dadurch nie brechen */}
 }
 
-injectEventSchema();
-
-tagNext();
+/* ═══════ START ═══════
+   Erst wenn alle Datendateien geladen (oder als fehlend erkannt) sind, wird gerendert.
+   Jeder Schritt läuft für sich – ein Fehler in einem Teil hält die übrigen nicht auf. */
 document.getElementById("mast-date").textContent=NOW().toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
-SEASON=defaultSeason();renderSeason();renderFilter();renderToolbar();renderRemind();renderTZ();renderOnAir();renderTimeline();applyHash();checkReminders();
-window.addEventListener("scroll",updateJumpBtn,{passive:true});
-window.addEventListener("resize",updateJumpBtn,{passive:true});
-updateJumpBtn();
-setInterval(()=>{tagNext();renderOnAir();checkReminders();if(currentView==="weekend")renderWeekend();},30000);
-setInterval(tickCountdown,1000);
+function start(){
+  BEREIT=true;
+  Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk));
+  [injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,applyHash,checkReminders]
+    .forEach(f=>{try{f();}catch(err){console.error(err);}});
+  window.addEventListener("scroll",updateJumpBtn,{passive:true});
+  window.addEventListener("resize",updateJumpBtn,{passive:true});
+  updateJumpBtn();
+  setInterval(()=>{tagNext();renderOnAir();checkReminders();if(currentView==="weekend")renderWeekend();},30000);
+  setInterval(tickCountdown,1000);
+}
+const APP_START=ladeDaten().then(start);
 </script>
 </body>
 </html>

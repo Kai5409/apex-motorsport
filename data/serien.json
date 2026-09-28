@@ -1,0 +1,10 @@
+{
+  "f1": {"name": "Formel 1", "short": "F1", "color": "#ff3000"},
+  "mgp": {"name": "MotoGP", "short": "MotoGP", "color": "#e0354b"},
+  "wec": {"name": "WEC", "short": "WEC", "color": "#3a86ff"},
+  "dtm": {"name": "DTM", "short": "DTM", "color": "#f08a24"},
+  "wrc": {"name": "WRC", "short": "WRC", "color": "#37b24d"},
+  "fe": {"name": "Formel E", "short": "F·E", "color": "#19c7c0"},
+  "gtwc": {"name": "GT World Challenge Europe", "short": "GTWC", "color": "#a77bf3"},
+  "nls": {"name": "Nürburgring Langstrecken-Serie", "short": "NLS", "color": "#d8f828"}
+}
