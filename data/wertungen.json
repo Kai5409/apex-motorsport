@@ -371,6 +371,32 @@
         ["Nicola Lacorte", "DAMS Lucas Oil", 33],
         ["Kanato Le", "ART Grand Prix", 30]
       ]
+    },
+    "f1academy": {
+      "stand": "nach 4 von 6 Wochenenden · Zandvoort, 23.08.2026",
+      "quelle": "f1academy.com",
+      "drv": [
+        ["Alisha Palmowski", "Campos Racing", 136],
+        ["Emma Felbermayr", "Rodin Motorsport", 88],
+        ["Nina Gademan", "MP Motorsport", 71],
+        ["Alba Larsen", "MP Motorsport", 50],
+        ["Payton Westcott", "Prema Racing", 49],
+        ["Megan Bruce", "Campos Racing", 49],
+        ["Ella Lloyd", "Rodin Motorsport", 47],
+        ["Mathilda Paatz", "Prema Racing", 35],
+        ["Natalia Granada", "Prema Racing", 35],
+        ["Rafaela Ferreira", "Campos Racing", 27],
+        ["Chiara Bättig", "Hitech", 22],
+        ["Rachel Robertson", "Hitech", 22],
+        ["Lisa Billard", "ART Grand Prix", 15],
+        ["Kaylee Countryman", "ART Grand Prix", 14],
+        ["Ava Dobson", "Hitech", 8],
+        ["Esmee Kosterman", "MP Motorsport", 6],
+        ["Ella Stevens", "Rodin Motorsport", 4],
+        ["Jade Jacquet", "ART Grand Prix", 0],
+        ["Autumn Fisher", "Hitech", 0],
+        ["Zoe Florescu", "Hitech", 0]
+      ]
     }
   }
 }

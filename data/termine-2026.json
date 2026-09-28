@@ -1051,5 +1051,23 @@
   {"s": "f3", "rd": 8, "name": "Großer Preis von Italien", "loc": "Monza", "d0": "2026-09-04", "d1": "2026-09-06", "status": "done", "result": "Nicola Lacorte (DAMS Lucas Oil)",
     "sessions": []},
   {"s": "f3", "rd": 9, "name": "Großer Preis von Spanien · Finale", "loc": "Madrid", "d0": "2026-09-11", "d1": "2026-09-13", "status": "done", "result": "Sa: Pedro Clerot (Rodin Motorsport) · So: Tuukka Taponen (MP Motorsport)",
+    "sessions": []},
+  {"s": "f1academy", "rd": 1, "name": "Großer Preis von China", "loc": "Shanghai", "d0": "2026-03-13", "d1": "2026-03-15", "status": "done", "result": "Emma Felbermayr (Rodin Motorsport)",
+    "sessions": []},
+  {"s": "f1academy", "rd": 2, "name": "Großer Preis von Kanada", "loc": "Montréal", "d0": "2026-05-22", "d1": "2026-05-24", "status": "done", "result": "Sa: Alisha Palmowski (Campos Racing) · So: Alisha Palmowski (Campos Racing)",
+    "sessions": []},
+  {"s": "f1academy", "rd": 3, "name": "Großer Preis von Großbritannien", "loc": "Silverstone", "d0": "2026-07-03", "d1": "2026-07-05", "status": "done", "result": "Alisha Palmowski (Campos Racing)",
+    "sessions": []},
+  {"s": "f1academy", "rd": 4, "name": "Großer Preis der Niederlande", "loc": "Zandvoort", "d0": "2026-08-21", "d1": "2026-08-23", "status": "done", "result": "Alisha Palmowski (Campos Racing)",
+    "sessions": []},
+  {"s": "f1academy", "rd": 5, "name": "Großer Preis der USA", "loc": "Austin", "d0": "2026-10-22", "d1": "2026-10-25", "status": "up",
+    "sessions": [
+      {"n": "Freies Training", "day": "Do", "t": "19:25"},
+      {"n": "Qualifying", "day": "Do", "t": "23:30"},
+      {"n": "Rennen 1", "day": "Sa", "t": "00:50"},
+      {"n": "Sprint", "day": "Sa", "t": "21:45"},
+      {"n": "Rennen 2", "day": "So", "t": "16:40"}
+    ]},
+  {"s": "f1academy", "rd": 6, "name": "Großer Preis von Las Vegas · Finale", "loc": "Las Vegas", "d0": "2026-11-19", "d1": "2026-11-21", "status": "up",
     "sessions": []}
 ]

@@ -94,6 +94,15 @@
         "ch": "Die Serie nennt für die Schweiz keinen eigenen Sender.",
         "note": "Die Formel 3 ist auch bei F1 TV Pro enthalten — in DACH sind dort aber keine neuen Abos möglich. Geprüft am 28.09.2026."
       }
+    },
+    "f1academy": {
+      "tv": "Sky · YouTube (frei)",
+      "tvd": {
+        "de": "<b>Sky Deutschland</b> zeigt die F1 Academy live auf Sky Sport F1, auch bei <b>WOW</b>. Qualifying und Rennen laufen außerdem <b>kostenlos</b> im offiziellen YouTube-Kanal und auf X.",
+        "at": "<b>ORF</b> und <b>Sky</b>, dazu der kostenlose Livestream auf YouTube und X.",
+        "ch": "<b>Sky</b> und <b>Canal+</b>, dazu der kostenlose Livestream auf YouTube und X.",
+        "note": "Auch bei F1 TV enthalten — in DACH sind dort aber keine neuen Abos möglich. Geprüft am 28.09.2026."
+      }
     }
   }
 }

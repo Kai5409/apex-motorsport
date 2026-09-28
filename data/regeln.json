@@ -138,5 +138,15 @@
       ["Reifen", "Einheitslieferant ist Pirelli mit 16-Zoll-Reifen und drei eigens für die Formel 3 entwickelten Mischungen, von denen je Strecke die passende gewählt wird. Pro Veranstaltung hat jeder Fahrer nur vier Sätze Trockenreifen und zwei Sätze Regenreifen — Schonen gehört dazu."],
       ["Technik", "Alle 30 Autos sind gleich: Chassis von Dallara mit Halo, dazu ein 3,4-Liter-Sechszylinder-Saugmotor von Mecachrome mit 380 PS. Die Autos erreichen rund 300 km/h. Wer sich in der Formel 3 durchsetzt, steigt meist in die Formel 2 auf — die letzte Stufe vor der Formel 1."]
     ]
+  },
+  "f1academy": {
+    "kurz": "Nachwuchsserie der Formel 1 nur für Fahrerinnen, auf Formel-4-Niveau.",
+    "bloecke": [
+      ["Idee", "Die Formel 1 hat die F1 Academy 2023 gegründet, um junge Fahrerinnen auf höhere Klassen vorzubereiten. 18 identische Autos in sechs Teams, eines davon als Wildcard für ausgewählte Fahrerinnen einzelner Rennwochenenden. Startberechtigt sind Frauen zwischen 16 und 25 Jahren, jede darf höchstens zwei Saisons fahren. Alle Läufe finden im Rahmenprogramm der Formel 1 statt."],
+      ["Wochenende", "Bis zu zwei freie Trainings über je 40 Minuten und ein Qualifying über 30 Minuten, danach zwei Rennen: das Reverse-Grid-Rennen (hier „Sprint“) und das Hauptrennen am Grand-Prix-Sonntag. An ausgewählten Wochenenden — 2026 in Montréal und Austin — kommt ein drittes, vollwertiges Rennen dazu, das „Opening Race“. Jedes Rennen dauert höchstens 30 Minuten."],
+      ["Startaufstellung", "Die schnellste Runde jeder Fahrerin im Qualifying bestimmt die Startaufstellung für das Hauptrennen. Im Reverse-Grid-Rennen werden die ersten acht umgedreht, die Achte startet also von der Pole. Für das Opening Race zählt die zweitschnellste Runde aus dem Qualifying."],
+      ["Punkte", "Hauptrennen und Opening Race bringen 25, 18, 15, 12, 10, 8, 6, 4, 2 und 1 Punkte für die ersten zehn, das Reverse-Grid-Rennen 10, 8, 6, 5, 4, 3, 2 und 1 für die ersten acht. Die Pole für das Hauptrennen ist zwei Punkte wert, die schnellste Runde einen — aber nur für eine Fahrerin in den Punkterängen."],
+      ["Technik", "Gefahren wird ein Einheitsauto von Tatuus mit Halo, angetrieben von einem 1,4-Liter-Vierzylinder-Turbo von Autotecnica mit 174 PS. Die Autos erreichen rund 240 km/h und fahren auf Pirelli-Reifen. Das entspricht dem Niveau der Formel 4 — die Stufe darüber ist die Formel 3."]
+    ]
   }
 }
