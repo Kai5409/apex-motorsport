@@ -1223,5 +1223,7 @@
   {"s": "erc", "rd": 6, "name": "Rallye Ceredigion (Wales)", "loc": "Aberystwyth", "d0": "2026-09-04", "d1": "2026-09-06", "status": "done", "result": "Kris Meeke (Toyota)",
     "sessions": []},
   {"s": "erc", "rd": 7, "name": "Rallye Nordportugal · Finale", "loc": "Fafe", "d0": "2026-10-23", "d1": "2026-10-25", "status": "up",
+    "sessions": []},
+  {"s": "dakar", "rd": 1, "name": "48. Rallye Dakar", "loc": "Saudi-Arabien", "d0": "2026-01-03", "d1": "2026-01-17", "status": "done", "result": "Autos: Nasser Al-Attiyah (Dacia) · Motorräder: Luciano Benavides (KTM)",
     "sessions": []}
 ]

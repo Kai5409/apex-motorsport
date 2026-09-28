@@ -230,5 +230,7 @@
   {"s": "indycar", "rd": 7, "sz": "2027", "prov": true, "name": "111. Indianapolis 500", "loc": "Indianapolis", "d0": "2027-05-30", "d1": "2027-05-30", "status": "up",
     "sessions": []},
   {"s": "indycar", "rd": 8, "sz": "2027", "prov": true, "name": "Grand Prix von Detroit", "loc": "Detroit", "d0": "2027-06-06", "d1": "2027-06-06", "status": "up",
+    "sessions": []},
+  {"s": "dakar", "rd": 1, "sz": "2027", "prov": true, "name": "49. Rallye Dakar", "loc": "Saudi-Arabien", "d0": "2027-01-01", "d1": "2027-01-15", "status": "up",
     "sessions": []}
 ]

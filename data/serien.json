@@ -22,6 +22,7 @@
     "nls": {"name": "Nürburgring Langstrecken-Serie", "short": "NLS", "gruppe": "sportwagen", "color": "#98bafe"},
     "supercup": {"name": "Porsche Supercup", "short": "Supercup", "gruppe": "sportwagen", "color": "#03a6c6", "ausgeblendet": true},
     "wrc": {"name": "WRC", "short": "WRC", "gruppe": "rallye", "color": "#37b24d"},
-    "erc": {"name": "ERC", "short": "ERC", "gruppe": "rallye", "color": "#a1e848"}
+    "erc": {"name": "ERC", "short": "ERC", "gruppe": "rallye", "color": "#a1e848"},
+    "dakar": {"name": "Rallye Dakar", "short": "Dakar", "gruppe": "rallye", "color": "#5be8ac"}
   }
 }

@@ -201,5 +201,15 @@
       ["Reifen", "Anders als in der WRC treten mehrere Reifenhersteller gegeneinander an, 2026 etwa Pirelli, Michelin, MRF und Hankook. Für sie gibt es eine eigene Wertung, in die jeweils die zwei bestplatzierten Rally2-Autos eingehen."],
       ["Klassen", "Neben der Hauptwertung gibt es ERC3 für Rally3-Autos, ERC4 für Autos mit Frontantrieb (Rally4 bis Rally6) und die Junior ERC für Fahrer bis 27 Jahre. Roberto Daprà war 2026 bereits der achte frühere Junior-Fahrer mit einem Gesamtsieg in der ERC."]
     ]
+  },
+  "dakar": {
+    "kurz": "Langstrecken-Rallye durch die Wüste Saudi-Arabiens — zwei Wochen für Autos, Motorräder und Lkw.",
+    "bloecke": [
+      ["Rallye", "Der Veranstalter nennt die Dakar die prestigeträchtigste Rallye-Raid der Welt, seit 2020 findet sie in Saudi-Arabien statt. Sie dauert rund zwei Wochen: Auf einen Prolog folgen etwa ein Dutzend Etappen mit langen Wertungsprüfungen durch Sand, Dünen und Geröll. Es gewinnt, wer über alle Etappen die kürzeste Gesamtzeit hat — Strafzeiten werden aufgeschlagen."],
+      ["Klassen", "Gewertet wird in getrennten Klassen: Autos (Ultimate), Motorräder, seriennahe Autos (Stock), leichte Prototypen (Challenger), SSV, Lkw sowie die Dakar Classic für historische Fahrzeuge. In der Mission 1000 fahren Fahrzeuge mit alternativen Antrieben."],
+      ["Navigation", "Gefahren wird nach dem Roadbook des Veranstalters, nicht auf abgesperrten Rundstrecken. Wer sich verfährt oder einen Wegpunkt verpasst, verliert viel Zeit — Navigation zählt deshalb so viel wie Tempo. In der Motorradklasse „Original by Motul“ fahren Teilnehmer zudem fast ohne Unterstützung eines Teams."],
+      ["Marathon-Etappen", "An Marathon-Etappen übernachten die Teilnehmer in einem einfachen Biwak ohne die gewohnte Hilfe ihrer Teams und müssen ihre Fahrzeuge weitgehend selbst in Schuss halten. 2027 gibt es eine Nacht im Refuge-Biwak und eine klassische Marathon-Etappe."],
+      ["2027", "Die 49. Dakar läuft vom 1. bis 15. Januar 2027 mit Start und Ziel in King Abdullah Economic City am Roten Meer. Mit 5320 Kilometern Wertungsprüfungen wird sie die längste der Ära in Saudi-Arabien. Die Dakar ist zugleich erster Lauf der Rallye-Raid-Weltmeisterschaft (W2RC)."]
+    ]
   }
 }
