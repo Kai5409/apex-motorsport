@@ -341,7 +341,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 /* Schmale (und sehr niedrige) Bildschirme: fest bleiben nur Logozeile, Tabs und Filter.
    Datumszeile und Beschriftung blenden beim Scrollen aus, die Live-Info steht in der Zeitleiste. */
 @media(max-width:899px),(max-height:599px){
-  .filterbar{padding:9px 0 7px}
+  .filterbar{padding:8px 0 6px}
   .filterbar .fl-lab{display:none}
   .grp-leiste{flex:1 1 auto;gap:4px}
   .grp{flex:1 1 auto}
@@ -352,8 +352,16 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .mast{padding:22px 0 12px}
   .kopf .onair{display:none}
   .jetzt{display:flex}
-  .nav{padding-top:10px}
-  .tab{padding-bottom:9px}
+  .nav{padding-top:8px}
+  .tab{padding-bottom:8px}
+}
+/* Breit, aber niedrig (Handy quer): Tabs und Gruppen nebeneinander in einer Zeile */
+@media(max-height:599px) and (min-width:700px){
+  .kopf{display:flex;flex-wrap:wrap;align-items:stretch}
+  .kopf>.mast,.kopf>.onair{flex:0 0 100%}
+  .kopf>.nav{flex:0 0 auto;padding-right:18px}
+  .kopf>.filterbar{flex:1 1 0;min-width:0;border-bottom:1px solid var(--rule)}
+  .grp-n-l{display:none} .grp-n-s{display:inline}
 }
 
 @media(max-width:640px){
@@ -378,6 +386,11 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .rl-x{font-size:13px}
   .tv-c{display:block;min-width:0;margin-bottom:2px}
   .tv-note{padding-left:0}
+}
+/* Sehr schmal (320 px): Tabs und Gruppen etwas kleiner, damit alles in je eine Zeile passt */
+@media(max-width:359px){
+  .nav{gap:12px} .tab{font-size:12px}
+  .grp-an{font-size:10px;padding-left:5px} .grp-pfeil{width:17px}
 }
 
 /* ── Wochenende / Deep-Link / PWA ── */
@@ -453,8 +466,8 @@ APEX · Saisons 2026 &amp; 2027 · Acht Serien · Stand 25. September 2026<br>
       Google Fonts oder anderen externen Anbietern; dabei werden keine Daten an Dritte übertragen.</p>
 
       <h4>Speicherung auf Ihrem Gerät</h4>
-      <p>Ihre Favoriten und Erinnerungseinstellungen werden ausschließlich lokal in Ihrem Browser
-      gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
+      <p>Ihre Serienauswahl im Filter sowie Favoriten und Erinnerungseinstellungen werden ausschließlich
+      lokal in Ihrem Browser gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
       die Einstellungen Ihres Browsers löschen. Wenn Sie Benachrichtigungen für Sessions aktivieren,
       geschieht dies ebenfalls nur auf Ihrem Gerät.</p>
 
@@ -1332,7 +1345,7 @@ function kopfMessen(){
   const mast=kopf.querySelector(".mast"), logo=mast&&mast.querySelector("h1"), rechts=mast&&mast.querySelector(".mast-r"), ss=document.getElementById("season");
   if(!mast||!logo||!rechts||!ss||!(mast.offsetHeight>0))return;
   const kompakt=istKompakt();
-  const band=kompakt?44:64, rand=3;                 /* Höhe der festen Logozeile inkl. Linie */
+  const band=kompakt?40:60, rand=3;                 /* Höhe der festen Logozeile inkl. Linie */
   const mh=mast.offsetHeight, D=Math.max(0,mh-band);
   const mitte=D+(band-rand)/2;
   /* Lage ohne Verschiebung messen (relativ zur Oberkante der Logozeile) */
@@ -1374,7 +1387,7 @@ function rerender(){if(!BEREIT)return;OPEN_RES=null;
   else if(currentView==="calendar")renderCalendar();
   else if(currentView==="rules")renderRules();
   else renderTV();}
-function setView(v){currentView=v;
+function setView(v){currentView=v;FILTER_OFFEN=null;
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.dataset.v===v));
   document.querySelectorAll(".view").forEach(x=>x.classList.remove("on"));
   document.getElementById("view-"+v).classList.add("on");
