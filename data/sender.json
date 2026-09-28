@@ -112,6 +112,24 @@
         "ch": "<b>Kostenlos</b> als Livestream bei <b>ServusTV On</b>.",
         "note": "Alle Sessions live gibt es mit dem kostenpflichtigen WorldSBK VideoPass der Serie (englischer Kommentar). Geprüft am 28.09.2026."
       }
+    },
+    "moto2": {
+      "tv": "Sky / WOW · DF1 (12 von 22 frei)",
+      "tvd": {
+        "de": "<b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2.",
+        "at": "<b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.",
+        "ch": "Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.",
+        "note": "Alle Sessions live und auf Abruf mit dem kostenpflichtigen MotoGP VideoPass. Geprüft am 28.09.2026."
+      }
+    },
+    "moto3": {
+      "tv": "Sky / WOW · DF1 (12 von 22 frei)",
+      "tvd": {
+        "de": "<b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto3.",
+        "at": "<b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.",
+        "ch": "Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.",
+        "note": "Alle Sessions live und auf Abruf mit dem kostenpflichtigen MotoGP VideoPass. Geprüft am 28.09.2026."
+      }
     }
   }
 }

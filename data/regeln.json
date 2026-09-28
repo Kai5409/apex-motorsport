@@ -161,5 +161,25 @@
       ["Testbeschränkung", "Zwischen zwei Saisons dürfen Teams höchstens zehn private Testtage nutzen. In den elf Tagen vor einem Rennwochenende sind Tests auf der jeweiligen Strecke verboten, zwischen dem 21. Dezember und dem 4. Januar ruht der Testbetrieb ganz."],
       ["Klassen", "Im Rahmenprogramm fahren die Supersport-WM (mittelgroße Motorräder), seit 2026 die Sportbike-WM als Nachfolger der Supersport 300 und die Frauen-WM WorldWCR mit einheitlichen Yamaha R7. In der Superbike-WM gilt ein Mindestalter von 18 Jahren."]
     ]
+  },
+  "moto2": {
+    "kurz": "Mittlere Klasse der Motorrad-WM — Einheitsmotor von Triumph, Rennen an allen 22 Grands Prix.",
+    "bloecke": [
+      ["Wochenende", "Die Moto2 fährt an jedem Grand Prix der MotoGP mit. Freitags gibt es das erste freie Training und am Nachmittag die Practice, samstags ein zweites freies Training und das Qualifying. Am Sonntag folgt das Rennen — einen Sprint wie in der MotoGP gibt es nicht."],
+      ["Qualifying", "Die 14 Schnellsten aus den Freitagstrainings stehen direkt in Q2. Alle anderen fahren Q1 über 15 Minuten, die vier Besten daraus steigen auf. In Q2 kämpfen dann 18 Fahrer ebenfalls 15 Minuten lang um die Pole und die ersten Startplätze."],
+      ["Punkte", "Im Rennen gibt es 25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 und 1 Punkt für die ersten 15. Weil es keinen Sprint gibt, zählt jedes Wochenende genau ein Ergebnis."],
+      ["Technik", "Alle fahren mit demselben Motor: einem 765-Kubikzentimeter-Dreizylinder von Triumph. Die Fahrwerke kommen 2026 von Kalex, Boscoscuro und Forward, die Einheitsreifen von Pirelli. Die Moto2 hat 2010 die frühere 250er-Klasse abgelöst."],
+      ["Sprungbrett", "Die Moto2 ist die letzte Stufe vor der MotoGP. Wer hier vorne fährt, bekommt häufig ein Angebot aus der Königsklasse — so wechselt Izan Guevara 2027 zu Pramac Yamaha in die MotoGP."]
+    ]
+  },
+  "moto3": {
+    "kurz": "Einstiegsklasse der Motorrad-WM — 250er-Einzylinder, oft Entscheidungen in der letzten Kurve.",
+    "bloecke": [
+      ["Wochenende", "Die Moto3 fährt an jedem Grand Prix der MotoGP mit. Freitags gibt es das erste freie Training und die Practice, samstags ein zweites freies Training und das Qualifying. Am Sonntag eröffnet sie den Renntag mit ihrem Rennen — ohne Sprint."],
+      ["Qualifying", "Wie in der Moto2 stehen die 14 Schnellsten aus den Freitagstrainings direkt in Q2. Die übrigen fahren Q1 über 15 Minuten, die vier Besten steigen auf. In Q2 geht es 15 Minuten lang um die Pole."],
+      ["Punkte", "Im Rennen gibt es 25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 und 1 Punkt für die ersten 15."],
+      ["Technik", "Gefahren wird mit 250-Kubikzentimeter-Einzylinder-Viertaktern, 2026 von KTM und Honda. Einheitsreifen kommen von Pirelli. Die Moto3 hat 2012 die frühere 125er-Klasse abgelöst."],
+      ["Windschatten", "Die leichten, vergleichsweise schwach motorisierten Maschinen profitieren stark vom Windschatten. Deshalb fahren oft große Gruppen um den Sieg, und viele Rennen werden erst in der letzten Runde oder der letzten Kurve entschieden."]
+    ]
   }
 }
