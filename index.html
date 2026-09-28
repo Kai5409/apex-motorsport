@@ -130,6 +130,33 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .chip.off .cdot{filter:grayscale(1) brightness(.7)}
 .chip.allbtn{border-color:var(--paper);color:var(--paper);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px}
 
+/* Gruppenfilter: Knopf schaltet die Gruppe, Pfeil klappt ihre Serien auf (--gf = Farbe der Gruppe).
+   Teilauswahl als kleines Abzeichen an der Ecke, damit die Zeile am Handy nicht breiter wird. */
+.filterbar{position:relative;flex-wrap:nowrap;padding:14px 0 12px}
+.grp-leiste{display:flex;gap:6px;min-width:0}
+.grp{position:relative;display:inline-flex;align-items:stretch;min-width:0;border:1px solid var(--rule-strong);border-color:color-mix(in srgb,var(--gf,#ece7dd) 60%,transparent);border-radius:999px;transition:opacity .15s,border-color .15s}
+.grp-an{display:inline-flex;align-items:center;gap:7px;min-width:0;height:32px;padding:0 2px 0 12px;font-family:"Inter",system-ui,sans-serif;font-size:12px;font-weight:600;color:var(--paper);white-space:nowrap}
+.grp-an::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gf,var(--muted));flex-shrink:0}
+.grp-n-l,.grp-n-s{overflow:hidden;text-overflow:ellipsis}
+.grp-n-s{display:none}
+.grp-z{position:absolute;top:-8px;right:8px;font-family:"IBM Plex Mono",monospace;font-size:9px;font-weight:600;line-height:1;padding:2px 4px;border-radius:999px;background:var(--gf,var(--paper));color:#141210;letter-spacing:.02em;pointer-events:none}
+.grp-pfeil{display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;color:var(--muted);border-radius:0 999px 999px 0}
+.grp-pfeil span{display:inline-block;font-size:11px;transition:transform .2s}
+.grp-pfeil:hover,.grp-an:hover{color:var(--paper)}
+.grp.offen{border-color:var(--paper)}
+.grp.offen .grp-pfeil{color:var(--red)} .grp.offen .grp-pfeil span{transform:rotate(180deg)}
+.grp.aus{border-color:var(--rule)}
+.grp.aus .grp-an{color:var(--muted);opacity:.5}
+.grp.aus .grp-an::before{filter:grayscale(1) brightness(.7)}
+.grp-panel{position:absolute;left:0;right:0;top:calc(100% - 6px);z-index:5;display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:8px;box-shadow:0 14px 34px rgba(0,0,0,.55)}
+
+/* Gruppen als Zwischenüberschriften in Serien, Wertung, Wo schauen?, Regeln */
+.grp-h{display:flex;align-items:center;gap:10px;margin:40px 0 0;padding:0 0 9px;border-bottom:1px solid var(--rule-strong);font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper)}
+.grp-h::before{content:"";width:18px;height:3px;border-radius:1px;background:var(--gf,var(--muted))}
+.grp-h+.ser-block,.grp-h+.std-block{padding-top:18px}
+.grp-h+.tv-row,.grp-h+.rl-block{border-top:0}
+.tv-intro+.grp-h,.rl-intro+.grp-h{margin-top:8px}
+
 /* Toolbar */
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 0 2px}
 .search{flex:1;min-width:180px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:999px;color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;padding:8px 14px;outline:none}
@@ -307,6 +334,14 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 /* Schmale (und sehr niedrige) Bildschirme: fest bleiben nur Logozeile, Tabs und Filter.
    Datumszeile und Beschriftung blenden beim Scrollen aus, die Live-Info steht in der Zeitleiste. */
 @media(max-width:899px),(max-height:599px){
+  .filterbar{padding:9px 0 7px}
+  .filterbar .fl-lab{display:none}
+  .grp-leiste{flex:1 1 auto;gap:4px}
+  .grp{flex:1 1 auto}
+  .grp-an{flex:1 1 auto;justify-content:center;padding-left:7px;font-size:11px}
+  .grp-an::before{display:none}
+  .grp-pfeil{width:20px}
+  .grp-z{right:4px}
   .mast{padding:22px 0 12px}
   .kopf .onair{display:none}
   .jetzt{display:flex}
@@ -326,6 +361,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .month-head{font-size:42px}
   .ser-round{grid-template-columns:30px 1fr auto;gap:10px} .ser-round .dt{display:none}
   .chip .cn-l{display:none} .chip .cn-s{display:inline}
+  .grp-n-l{display:none} .grp-n-s{display:inline}
   .filterbar{gap:6px} .filterbar .fl-lab{margin-right:0} .chip{padding:5px 9px 5px 8px;gap:6px}
   .cal-row{grid-template-columns:72px 44px 1fr;gap:8px} .cal-row .cw{display:none}
   .std-row{grid-template-columns:26px 1fr auto 44px;gap:8px} .std-wins{display:none}
@@ -435,6 +471,7 @@ APEX · Saisons 2026 &amp; 2027 · Acht Serien · Stand 25. September 2026<br>
    übersprungen. */
 const DATEN=["serien","sender","termine-2026","termine-2027","wertungen","regeln","zeitzonen","strecken"];
 const SERIES={}, EVENTS=[], STAND={}, REGELN={}, TZLOC={}, CIRCUITS={}, STRECKEN_SERIE={};
+const GRUPPEN={};              /* Seriengruppen aus serien.json (Reihenfolge = Reihenfolge in der App) */
 let STAND_SEASON=null;     /* Jahr, zu dem die gepflegten Wertungen gehoeren (aus wertungen.json) */
 let TV_GEPRUEFT="";        /* Prüfdatum der Senderangaben (aus sender.json) */
 const DATEN_FEHLT=new Set();   /* Dateien, die nicht geladen oder nicht gelesen werden konnten */
@@ -450,6 +487,7 @@ const istTag=x=>["Mo","Di","Mi","Do","Fr","Sa","So"].includes(x);
 const istKey=x=>istText(x)&&/^[a-z0-9]+$/.test(x);
 const ergebnisOK=a=>Array.isArray(a)&&a.every(r=>istObj(r)&&istText(r.who)&&(typeof r.p==="number"||istText(r.p)));
 const tabelleOK=a=>Array.isArray(a)&&a.every(r=>Array.isArray(r)&&istText(r[0])&&istText(r[1])&&typeof r[2]==="number"&&isFinite(r[2]));
+const istFarbe=x=>istText(x)&&/^#[0-9a-fA-F]{3,8}$/.test(x);
 const streckeOK=v=>istObj(v)&&istText(v.name)&&typeof v.len==="number"&&(v.turns==null||Number.isInteger(v.turns));
 
 function ladeDatei(n){
@@ -489,10 +527,16 @@ function uebernehmeDaten(d){
   const teil=(n,f)=>{ if(d[n]==null)return; try{ if(f(d[n])===false)DATEN_FEHLT.add(n); }catch(err){DATEN_FEHLT.add(n);} };
   const luecke=(n,ok)=>{ if(!ok)DATEN_LUECKE.add(n); return ok; };
   teil("serien",x=>{
-    if(!istObj(x))return false;
-    Object.keys(x).forEach(k=>{const v=x[k];
-      if(luecke("serien",istKey(k)&&istObj(v)&&istText(v.name)&&istText(v.short)&&istText(v.color)&&/^#[0-9a-fA-F]{3,8}$/.test(v.color)))
-        SERIES[k]={name:v.name,short:v.short,color:v.color};});
+    if(!istObj(x)||!istObj(x.serien))return false;
+    /* Gruppen (Formel, Motorrad …): name, short, optional farben (Farbfamilie der Gruppe) */
+    if(x.gruppen!=null&&luecke("serien",istObj(x.gruppen)))Object.keys(x.gruppen).forEach(g=>{const v=x.gruppen[g];
+      if(luecke("serien",istKey(g)&&istObj(v)&&istText(v.name)&&istText(v.short)&&(v.farben==null||Array.isArray(v.farben)&&v.farben.every(istFarbe))))
+        GRUPPEN[g]={name:v.name,short:v.short,farben:v.farben||[]};});
+    /* Serien: gruppe = Kürzel der Gruppe, ausgeblendet = im Filter standardmäßig aus */
+    Object.keys(x.serien).forEach(k=>{const v=x.serien[k];
+      if(luecke("serien",istKey(k)&&istObj(v)&&istText(v.name)&&istText(v.short)&&istFarbe(v.color)
+          &&(v.gruppe==null||istText(v.gruppe))&&(v.ausgeblendet==null||typeof v.ausgeblendet==="boolean")))
+        SERIES[k]={name:v.name,short:v.short,color:v.color,gruppe:v.gruppe||"",aus:v.ausgeblendet===true};});
     return Object.keys(SERIES).length>0;
   });
   DATEN.filter(n=>n.startsWith("termine-")).forEach(n=>teil(n,x=>{
@@ -752,17 +796,56 @@ function tagNext(){
   });
 }
 
-/* ═══════ FILTERBAR ═══════ */
+/* ═══════ GRUPPEN ═══════
+   Serien in der Reihenfolge ihrer Gruppen (serien.json). Serien ohne bekannte Gruppe landen in
+   „Weitere“; fehlen die Gruppen ganz (serien.json nicht lesbar), gibt es eine Gruppe ohne Überschrift. */
+function gruppenListe(){
+  const liste=Object.keys(GRUPPEN).map(g=>({key:g,name:GRUPPEN[g].name,short:GRUPPEN[g].short,farbe:GRUPPEN[g].farben[0]||"",serien:[]}));
+  const rest={key:"weitere",name:liste.length?"Weitere":"Serien",short:liste.length?"Weitere":"Serien",farbe:"",serien:[],ohneTitel:!liste.length};
+  Object.keys(SERIES).forEach(sk=>{const g=liste.find(x=>x.key===SERIES[sk].gruppe);(g||rest).serien.push(sk);});
+  return liste.concat(rest).filter(g=>g.serien.length);
+}
+/* Zwischenüberschrift je Gruppe in Serien-, Wertungs-, Regeln- und TV-Tab */
+function gruppenKopf(g){
+  if(g.ohneTitel)return "";
+  return `<div class="grp-h"${g.farbe?` style="--gf:${g.farbe}"`:""}>${esc(g.name)}</div>`;
+}
+/* Gruppen mit den Serien, die gezeigt werden (Filter f); Gruppen ohne Serie fallen weg */
+function serienGruppiert(f){
+  return gruppenListe().map(g=>({g,sks:g.serien.filter(f)})).filter(x=>x.sks.length);
+}
+
+/* ═══════ FILTERBAR ═══════
+   Eine Zeile Gruppenknöpfe: Tippen schaltet die Gruppe an/aus, der Pfeil klappt die Serien
+   der Gruppe zum Feinauswählen auf. Teilauswahl steht am Knopf („2/4“). */
+let FILTER_OFFEN=null;   /* Gruppe, deren Serien gerade aufgeklappt sind */
 function renderFilter(){
   if(!BEREIT)return;
   const el=document.getElementById("filterbar");
-  let chips=`<span class="fl-lab">Serien</span>`;
-  Object.keys(SERIES).forEach(sk=>{
-    const S0=SERIES[sk],on=ACTIVE.has(sk);
-    chips+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
+  const gl=gruppenListe();
+  if(FILTER_OFFEN&&!gl.some(g=>g.key===FILTER_OFFEN))FILTER_OFFEN=null;
+  let html=`<span class="fl-lab">Serien</span><div class="grp-leiste">`;
+  gl.forEach(g=>{
+    const an=g.serien.filter(sk=>ACTIVE.has(sk)).length, n=g.serien.length;
+    const zustand=an===0?"aus":an<n?"teil":"an", offen=FILTER_OFFEN===g.key;
+    html+=`<div class="grp ${zustand}${offen?" offen":""}"${g.farbe?` style="--gf:${g.farbe}"`:""}>`+
+      `<button class="grp-an" onclick="toggleGruppe('${g.key}')" aria-pressed="${zustand==="an"?"true":zustand==="teil"?"mixed":"false"}" title="${esc(g.name)}">`+
+        `<span class="grp-n-l">${esc(g.name)}</span><span class="grp-n-s">${esc(g.short)}</span>`+
+        (zustand==="teil"?`<span class="grp-z">${an}/${n}</span>`:"")+`</button>`+
+      `<button class="grp-pfeil" onclick="klappeGruppe('${g.key}')" aria-expanded="${offen}" aria-label="Serien der Gruppe ${esc(g.name)} einzeln auswählen"><span>▾</span></button>`+
+      `</div>`;
   });
-  chips+=`<button class="chip allbtn" onclick="allSeries()">Alle</button>`;
-  el.innerHTML=chips;
+  html+=`</div>`;
+  const g=gl.find(x=>x.key===FILTER_OFFEN);
+  if(g){
+    html+=`<div class="grp-panel" role="group" aria-label="${esc(g.name)}">`;
+    g.serien.forEach(sk=>{
+      const S0=SERIES[sk],on=ACTIVE.has(sk);
+      html+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
+    });
+    html+=`<button class="chip allbtn" onclick="allSeries()">Alle Serien</button></div>`;
+  }
+  el.innerHTML=html;
   el.style.display = (currentView==="tv"||currentView==="rules")?"none":"flex";
   const kopf=document.getElementById("kopf"); if(kopf&&kopf.classList) kopf.classList.toggle("ohne-filter",el.style.display==="none");
   /* Saisonpfeile dort ausblenden, wo die Saison keine Rolle spielt */
@@ -770,9 +853,49 @@ function renderFilter(){
 }
 function toggleSeries(sk){
   if(ACTIVE.has(sk)){ if(ACTIVE.size>1) ACTIVE.delete(sk); } else ACTIVE.add(sk);
-  renderFilter(); renderOnAir(); rerender();
+  filterGeaendert();
 }
-function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); renderFilter(); renderOnAir(); rerender(); }
+/* Gruppe an/aus: ist mindestens eine Serie der Gruppe an, gehen alle aus – sonst alle an.
+   Mindestens eine Serie bleibt immer ausgewählt. */
+function toggleGruppe(key){
+  const g=gruppenListe().find(x=>x.key===key); if(!g)return;
+  if(g.serien.some(sk=>ACTIVE.has(sk))){
+    if(g.serien.filter(sk=>ACTIVE.has(sk)).length>=ACTIVE.size)return;
+    g.serien.forEach(sk=>ACTIVE.delete(sk));
+  } else g.serien.forEach(sk=>ACTIVE.add(sk));
+  filterGeaendert();
+}
+function klappeGruppe(key){ FILTER_OFFEN=FILTER_OFFEN===key?null:key; renderFilter(); }
+function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); filterGeaendert(); }
+function filterGeaendert(){
+  const a=ankerMerken();
+  filterSpeichern(); renderFilter(); renderOnAir(); rerender();
+  ankerHalten(a); updateJumpBtn();
+}
+/* Auswahl lokal im Browser speichern ({kürzel: an/aus}). Serien, die in einer gespeicherten
+   Auswahl noch nicht vorkommen, folgen ihrer Standardeinstellung (ausgeblendet). */
+const FILTER_SPEICHER="apex_filter";
+function filterSpeichern(){
+  try{const o={};Object.keys(SERIES).forEach(sk=>o[sk]=ACTIVE.has(sk));localStorage.setItem(FILTER_SPEICHER,JSON.stringify(o));}catch(err){}
+}
+function filterLaden(){
+  let alt=null;
+  try{alt=JSON.parse(localStorage.getItem(FILTER_SPEICHER)||"null");}catch(err){alt=null;}
+  if(!istObj(alt))alt={};
+  ACTIVE.clear();
+  Object.keys(SERIES).forEach(sk=>{if(typeof alt[sk]==="boolean"?alt[sk]:!SERIES[sk].aus)ACTIVE.add(sk);});
+  if(!ACTIVE.size)Object.keys(SERIES).forEach(sk=>{if(!SERIES[sk].aus)ACTIVE.add(sk);});
+  if(!ACTIVE.size)Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk));
+}
+/* Aufgeklappte Feinauswahl schließen: Tippen außerhalb der Filterleiste oder Esc */
+if(typeof document!=="undefined"&&document.addEventListener){
+  document.addEventListener("click",ev=>{
+    if(!FILTER_OFFEN)return;
+    const fb=document.getElementById("filterbar");
+    if(fb&&fb.contains&&!fb.contains(ev.target)){FILTER_OFFEN=null;renderFilter();}
+  },true);
+  document.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&FILTER_OFFEN){FILTER_OFFEN=null;renderFilter();}});
+}
 
 /* ═══════ ON-AIR ═══════ */
 function nextSessOf(e){
@@ -1005,7 +1128,7 @@ function renderTimeline(){
 function renderSeries(){
   const host=document.getElementById("view-series"); if(!host)return;let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
   const leer=termineFehlen(SEASON)?"Termine gerade nicht verfügbar":`Kalender ${SEASON} noch nicht veröffentlicht`;
-  Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)).forEach(sk=>{
+  serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
     if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div><div class="ser-meta">${leer}</div></div>`;return;}
     /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
@@ -1023,7 +1146,7 @@ function renderSeries(){
       let c=status==="done"?"done":(status==="next"||status==="live")?"next":"up";
       const right=(status==="done"&&e.result)?`<span class="st done">${e.result}</span>`:(status==="done"&&e.abbruch)?`<span class="st up">Abgebrochen</span>`:`<span class="st ${c}">${txt}</span>`;
       html+=`<div class="ser-round"><span class="no">${e.sonder||String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}${e.sonder?` · ${sonderText(e)}`:""}</span></span>${right}</div>`;});
-    html+=`</div>`;});
+    html+=`</div>`;});});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
   host.innerHTML=html;
 }
@@ -1066,7 +1189,7 @@ function renderRules(){
   const host=document.getElementById("view-rules"); if(!host)return;
   let html=`<p class="rl-intro">Acht Serien, acht sehr unterschiedliche Reglements.<br>
     Tippe eine Serie an, um Format, Qualifying, Punkte und Besonderheiten zu lesen.</p>`+ladeHinweis("regeln");
-  Object.keys(SERIES).forEach(sk=>{
+  serienGruppiert(sk=>!!REGELN[sk]).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk], R=REGELN[sk]; if(!R)return;
     const open = RULES_OPEN===sk;
     html+=`<div class="rl-block ${open?'open':''}" id="rl-${sk}">
@@ -1083,7 +1206,7 @@ function renderRules(){
       html+=`</div>`;
     }
     html+=`</div>`;
-  });
+  });});
   host.innerHTML=html;
 }
 
@@ -1093,7 +1216,7 @@ function renderTV(){
   let html=`<p class="tv-intro">Wo läuft was in Deutschland, Österreich und der Schweiz?<br>
     Geprüft am ${TV_GEPRUEFT} — Rechte können sich kurzfristig ändern, Angaben ohne Gewähr.</p>`+ladeHinweis("sender");
   const LAND={de:"Deutschland",at:"Österreich",ch:"Schweiz"};
-  Object.keys(SERIES).forEach(sk=>{
+  serienGruppiert(()=>true).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk];
     html+=`<div class="tv-row"><span class="tn" style="color:${S0.color}">${S0.name}</span><span class="tb">`;
     if(!S0.tvd){
@@ -1103,7 +1226,7 @@ function renderTV(){
         html+=`<span class="tv-l"><span class="tv-c">${LAND[k]}</span>${S0.tvd[k]}</span>`;});
       if(S0.tvd.note)html+=`<span class="tv-note">${S0.tvd.note}</span>`;
     }
-    html+=`</span></div>`;});
+    html+=`</span></div>`;});});
   host.innerHTML=html;
 }
 
@@ -1156,7 +1279,7 @@ function renderStandings(){
     return;
   }
   let html=ladeHinweis("serien")+ladeHinweis("wertungen"), any=false;
-  Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)).forEach(sk=>{
+  serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk], D=STAND[sk];
     if(!D){
       html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
@@ -1180,7 +1303,7 @@ function renderStandings(){
       `<div class="std-tag">Stand ${D.stand}</div>`+ tabelle(D.drv,D.klasse,D.wertung) +
       (D.drv2&&D.drv2.length? `<div class="std-gap"></div>`+tabelle(D.drv2,D.klasse2,D.wertung2) : "");
     html+=`</div>`;
-  });
+  });});
   if(!any && !html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
   host.innerHTML=html;
 }
@@ -1430,7 +1553,7 @@ function injectEventSchema(){
 document.getElementById("mast-date").textContent=NOW().toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
 function start(){
   BEREIT=true;
-  Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk));
+  filterLaden();
   [injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
