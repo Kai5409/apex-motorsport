@@ -191,5 +191,15 @@
       ["Auto", "Alle fahren den Porsche 911 Cup, seit 2026 in der neuen Generation 992.2: ein 4,0-Liter-Sechszylinder-Boxermotor ohne Turbo mit 382 kW (520 PS), überarbeitete Aerodynamik und erstmals ein Renn-ABS. Getankt wird ein Kraftstoff mit 80 Prozent erneuerbaren Anteilen, überwiegend eFuel."],
       ["Wertungen", "Neben der Fahrerwertung gibt es eine Rookie-Wertung für Fahrer bis 25 Jahre und eine Teamwertung. Porsche fördert zudem ausgewählte Nachwuchsfahrer als „Porsche Junior“ — 2026 wurde mit Flynt Schuring ein Junior Gesamtsieger."]
     ]
+  },
+  "erc": {
+    "kurz": "Rallye-Europameisterschaft mit Rally2-Autos auf Asphalt und Schotter.",
+    "bloecke": [
+      ["Format", "Die ERC fährt 2026 ihre 74. Saison mit sieben Rallyes, fünf auf Asphalt und zwei auf Schotter. Jede Rallye läuft von Freitag bis Sonntag über gut ein Dutzend Wertungsprüfungen gegen die Uhr, die Zeiten werden addiert. Am Sonntag endet sie mit der Power Stage."],
+      ["Autos", "In der Hauptwertung starten Rally2-Autos wie Škoda Fabia RS, Toyota GR Yaris, Hyundai i20 N, Lancia Ypsilon oder Citroën C3 — die Klasse, die in der WRC als WRC2 fährt. Die stärkeren Rally1-Autos der Weltmeisterschaft gibt es in der ERC nicht."],
+      ["Punkte", "Für die Gesamtwertung gibt es 30, 24, 21, 19, 17, 15, 13, 11, 9, 7, 5, 4, 3, 2 und 1 Punkt für die ersten 15. Die Power Stage bringt zusätzlich 5 bis 1 Punkt für die fünf Schnellsten. In die Meisterschaft zählen die besten sechs von sieben Ergebnissen."],
+      ["Reifen", "Anders als in der WRC treten mehrere Reifenhersteller gegeneinander an, 2026 etwa Pirelli, Michelin, MRF und Hankook. Für sie gibt es eine eigene Wertung, in die jeweils die zwei bestplatzierten Rally2-Autos eingehen."],
+      ["Klassen", "Neben der Hauptwertung gibt es ERC3 für Rally3-Autos, ERC4 für Autos mit Frontantrieb (Rally4 bis Rally6) und die Junior ERC für Fahrer bis 27 Jahre. Roberto Daprà war 2026 bereits der achte frühere Junior-Fahrer mit einem Gesamtsieg in der ERC."]
+    ]
   }
 }

@@ -139,6 +139,15 @@
         "ch": "Wie in Deutschland über <b>Sky</b>.",
         "note": "Auch bei F1 TV — in DACH sind dort aber keine neuen Abos möglich. Freies Training und Qualifying zeigt das offizielle Live-Timing. Geprüft am 28.09.2026."
       }
+    },
+    "erc": {
+      "tv": "Rally.TV (Stream)",
+      "tvd": {
+        "de": "Die Serie überträgt die Rallyes live beim Streamingdienst <b>Rally.TV</b>.",
+        "at": "Wie in Deutschland über <b>Rally.TV</b>.",
+        "ch": "Wie in Deutschland über <b>Rally.TV</b>.",
+        "note": "Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."
+      }
     }
   }
 }
