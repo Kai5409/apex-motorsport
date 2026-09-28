@@ -67,6 +67,87 @@
         "ch": "Wie in Deutschland: <b>kostenloser Livestream</b> auf VLN.de und YouTube.",
         "note": "Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."
       }
+    },
+    "indycar": {
+      "tv": "Sky · Motorvision+ · INDYCAR LIVE",
+      "tvd": {
+        "de": "<b>Sky Sport</b> (auch bei <b>WOW</b>) und <b>Motorvision+</b> zeigen die Rennen live, Motorvision+ mit deutschem Kommentar. Dazu kommt der offizielle Stream <b>INDYCAR LIVE</b> mit Trainings, Qualifying und Rennen.",
+        "at": "Wie in Deutschland: <b>Sky Sport</b>, <b>Motorvision+</b> und der offizielle Stream <b>INDYCAR LIVE</b>.",
+        "ch": "Wie in Deutschland: <b>Sky Sport</b>, <b>Motorvision+</b> und der offizielle Stream <b>INDYCAR LIVE</b>.",
+        "note": "Alle Angebote sind kostenpflichtig, eine Übertragung im Free-TV gibt es nicht. Geprüft am 28.09.2026."
+      }
+    },
+    "f2": {
+      "tv": "Sky · ServusTV/ORF (AT)",
+      "tvd": {
+        "de": "<b>Sky Deutschland</b> zeigt die Formel 2 live auf Sky Sport F1, auch bei <b>WOW</b>.",
+        "at": "<b>ServusTV</b> und <b>ORF</b> übertragen die Rennen, meist im Stream (ServusTV On, ORF ON), teils auf ORF SPORT+.",
+        "ch": "Die Serie nennt für die Schweiz keinen eigenen Sender.",
+        "note": "Die Formel 2 ist auch bei F1 TV Pro enthalten — in DACH sind dort aber keine neuen Abos möglich. Geprüft am 28.09.2026."
+      }
+    },
+    "f3": {
+      "tv": "Sky · ServusTV/ORF (AT)",
+      "tvd": {
+        "de": "<b>Sky Deutschland</b> zeigt die Formel 3 live auf Sky Sport F1, auch bei <b>WOW</b>.",
+        "at": "<b>ServusTV</b> und <b>ORF</b> übertragen die Rennen, meist im Stream (ServusTV On, ORF ON), teils auf ORF SPORT+.",
+        "ch": "Die Serie nennt für die Schweiz keinen eigenen Sender.",
+        "note": "Die Formel 3 ist auch bei F1 TV Pro enthalten — in DACH sind dort aber keine neuen Abos möglich. Geprüft am 28.09.2026."
+      }
+    },
+    "f1academy": {
+      "tv": "Sky · YouTube (frei)",
+      "tvd": {
+        "de": "<b>Sky Deutschland</b> zeigt die F1 Academy live auf Sky Sport F1, auch bei <b>WOW</b>. Qualifying und Rennen laufen außerdem <b>kostenlos</b> im offiziellen YouTube-Kanal und auf X.",
+        "at": "<b>ORF</b> und <b>Sky</b>, dazu der kostenlose Livestream auf YouTube und X.",
+        "ch": "<b>Sky</b> und <b>Canal+</b>, dazu der kostenlose Livestream auf YouTube und X.",
+        "note": "Auch bei F1 TV enthalten — in DACH sind dort aber keine neuen Abos möglich. Geprüft am 28.09.2026."
+      }
+    },
+    "wsbk": {
+      "tv": "ServusTV (AT) · ServusTV On (frei)",
+      "tvd": {
+        "de": "<b>ServusTV On</b> zeigt die Superbike-WM <b>kostenlos</b> als Livestream. Eurosport überträgt seit 2026 nicht mehr.",
+        "at": "<b>ServusTV</b> überträgt im <b>Free-TV</b>, dazu der Livestream bei ServusTV On.",
+        "ch": "<b>Kostenlos</b> als Livestream bei <b>ServusTV On</b>.",
+        "note": "Alle Sessions live gibt es mit dem kostenpflichtigen WorldSBK VideoPass der Serie (englischer Kommentar). Geprüft am 28.09.2026."
+      }
+    },
+    "moto2": {
+      "tv": "Sky / WOW · DF1 (12 von 22 frei)",
+      "tvd": {
+        "de": "<b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2.",
+        "at": "<b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.",
+        "ch": "Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.",
+        "note": "Alle Sessions live und auf Abruf mit dem kostenpflichtigen MotoGP VideoPass. Geprüft am 28.09.2026."
+      }
+    },
+    "moto3": {
+      "tv": "Sky / WOW · DF1 (12 von 22 frei)",
+      "tvd": {
+        "de": "<b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto3.",
+        "at": "<b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.",
+        "ch": "Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.",
+        "note": "Alle Sessions live und auf Abruf mit dem kostenpflichtigen MotoGP VideoPass. Geprüft am 28.09.2026."
+      }
+    },
+    "supercup": {
+      "tv": "Sky",
+      "tvd": {
+        "de": "<b>Sky</b> zeigt die Supercup-Rennen im deutschsprachigen Raum live.",
+        "at": "Wie in Deutschland über <b>Sky</b>.",
+        "ch": "Wie in Deutschland über <b>Sky</b>.",
+        "note": "Auch bei F1 TV — in DACH sind dort aber keine neuen Abos möglich. Freies Training und Qualifying zeigt das offizielle Live-Timing. Geprüft am 28.09.2026."
+      }
+    },
+    "erc": {
+      "tv": "Rally.TV (Stream)",
+      "tvd": {
+        "de": "Die Serie überträgt die Rallyes live beim Streamingdienst <b>Rally.TV</b>.",
+        "at": "Wie in Deutschland über <b>Rally.TV</b>.",
+        "ch": "Wie in Deutschland über <b>Rally.TV</b>.",
+        "note": "Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."
+      }
     }
   }
 }

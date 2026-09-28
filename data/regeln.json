@@ -105,5 +105,111 @@
       ["Stadtkurse", "Die Strecken werden für das Rennwochenende aus normalen Straßen aufgebaut. Sie sind eng, haben kaum Auslaufzonen und einen Belag, der zu Beginn wenig Grip bietet und sich über den Tag deutlich verbessert. Berührungen und Safety-Car-Phasen sind entsprechend häufig — Fehler werden hier härter bestraft als auf permanenten Rennstrecken."],
       ["Saisonzählung", "Die Meisterschaft läuft über den Jahreswechsel und wird deshalb nicht mit einer Jahreszahl geführt, sondern als Saison mit fortlaufender Nummer. Ein Titel gehört damit nicht eindeutig zu einem Kalenderjahr, was beim Nachschlagen älterer Ergebnisse regelmäßig für Verwirrung sorgt."]
     ]
+  },
+  "indycar": {
+    "kurz": "Amerikas Formelserie auf Ovalen, Rund- und Stadtkursen — Höhepunkt ist das Indy 500.",
+    "bloecke": [
+      ["Strecken", "Kaum eine Serie wechselt so stark zwischen Streckentypen: große Ovale wie Indianapolis, kurze Ovale wie Phoenix oder Milwaukee, permanente Rundkurse wie Road America und enge Stadtkurse wie St. Petersburg oder Long Beach. Für jede Streckenart gibt es ein eigenes Aerodynamik-Paket — viel Abtrieb auf Rund- und Stadtkursen, möglichst wenig Luftwiderstand auf den großen Ovalen, wo mehr als 370 km/h erreicht werden. Im Windschatten fahren und im Pulk bestehen gehört dort zum Handwerk."],
+      ["Qualifying", "Auf Rund- und Stadtkursen in drei Abschnitten: Das Feld fährt in zwei Gruppen je zehn Minuten, die sechs Schnellsten jeder Gruppe kommen weiter. Die zwölf verbliebenen Autos fahren erneut zehn Minuten, die besten sechs erreichen die „Firestone Fast Six“, in denen die Pole ausgefahren wird. Auf Ovalen fährt jedes Auto allein zwei gezeitete Runden, die Summe entscheidet. Beim Doppelrennen in Milwaukee legt die erste Runde die Startaufstellung für Rennen 1 fest, die zweite die für Rennen 2."],
+      ["Indy 500", "Das 500-Meilen-Rennen auf dem 2,5-Meilen-Oval in Indianapolis ist der Saisonhöhepunkt im Mai. Qualifiziert wird über ein Wochenende mit vier gezeiteten Runden je Versuch: Der erste Tag legt die Plätze 13 bis 30 fest, am zweiten Tag fahren die zwölf Schnellsten erst um die Plätze 7 bis 12 und dann in den Fast Six um die Pole. Gibt es mehr als 33 Meldungen, entscheidet ein Last Chance Qualifying über die letzten drei Startplätze — wer dort scheitert, ist nicht dabei."],
+      ["Punkte", "50 Punkte für den Sieg, dann 40, 35, 32, 30 und abwärts bis 5 Punkte für jeden Platz ab 25. Dazu kommen Bonuspunkte: einer für die Pole (außer beim Indy 500), einer für jeden Fahrer, der mindestens eine Runde anführt, und zwei zusätzliche für die meisten Führungsrunden. Beim Indy 500 bringt schon das Qualifying Punkte: 12 für die Pole bis 1 für Platz zwölf. Ein vorzeitiger Motorwechsel kostet zehn Punkte."],
+      ["Hybrid und Push-to-Pass", "Angetrieben werden die Autos von 2,2-Liter-V6-Motoren mit zwei Turboladern, geliefert von Honda und Chevrolet. Seit Mitte 2024 sammelt ein Hybridsystem beim Bremsen Energie und gibt sie auf Knopfdruck wieder ab. Auf Rund- und Stadtkursen gibt es zusätzlich Push-to-Pass: Für eine begrenzte Gesamtzeit pro Rennen steht kurzzeitig mehr Motorleistung bereit — zum Überholen oder Verteidigen. Wann man sie einsetzt, ist Teil der Taktik."],
+      ["Reifen", "Einheitslieferant ist Firestone. Auf Rund- und Stadtkursen gibt es zwei Trockenreifen: die haltbarere Primärmischung mit schwarzer Flanke und die weichere, schnellere Alternativmischung mit roter Flanke. Beide müssen im Rennen gefahren werden, was Boxenstopps und Stintlängen bestimmt. Regenreifen tragen graue Flanken. Für jedes Oval entwickelt Firestone eine eigene Mischung."],
+      ["Technik", "Alle fahren dasselbe Chassis von Dallara mit Aeroscreen, einem Cockpitschutz aus Polycarbonat und Titan. Es gibt keine Servolenkung, keine Traktionskontrolle und kein ABS — die Lenkkräfte sind vor allem auf Stadtkursen enorm. 2027 ist die letzte Saison dieses Autos, 2028 folgt das neue IR-28 mit 2,4-Liter-V6 und stärkerem Hybridsystem."],
+      ["Rennleitung", "Seit 2026 überwacht die unabhängige Organisation INDYCAR Officiating den Sport. Ihr Aufsichtsgremium hat drei Mitglieder: zwei wählen die Teambesitzer, eines benennt die FIA. In der Rennleitung prüfen der Renndirektor und zwei Stewards Zwischenfälle; mögliche Strafen reichen von Verwarnung und Durchfahrt über „Stop and Hold“ an der Box und Rückversetzung ans Ende des Feldes bis zu Punktabzug und Disqualifikation."]
+    ]
+  },
+  "f2": {
+    "kurz": "Letzte Stufe vor der Formel 1 — 22 identische Autos, Sprint und Hauptrennen an jedem Wochenende.",
+    "bloecke": [
+      ["Wochenende", "Alle Läufe finden im Rahmenprogramm der Formel 1 statt. Am Freitag gibt es ein freies Training über 45 Minuten und das Qualifying über 30 Minuten. Samstags folgt der Sprint über 120 Kilometer oder höchstens 45 Minuten, am Sonntagvormittag vor dem Grand Prix das Hauptrennen („Feature Race“) über 170 Kilometer oder höchstens 60 Minuten."],
+      ["Startaufstellung", "Das Qualifying legt die Startaufstellung für das Hauptrennen fest. Für den Sprint werden die ersten zehn des Qualifyings umgedreht: Der Zehnte startet von der Pole, der Schnellste von Platz zehn. So müssen die Schnellsten im Sprint durchs Feld nach vorn."],
+      ["Punkte", "Im Hauptrennen gibt es 25, 18, 15, 12, 10, 8, 6, 4, 2 und 1 Punkte für die ersten zehn, im Sprint 10, 8, 6, 5, 4, 3, 2 und 1 für die ersten acht. Die Pole für das Hauptrennen bringt zwei Punkte, die schnellste Runde in jedem Rennen einen — aber nur, wenn der Fahrer unter den ersten zehn ins Ziel kommt."],
+      ["Reifen und Boxenstopp", "Im Hauptrennen ist ein Boxenstopp mit Wechsel aller vier Reifen Pflicht, und beide Trockenmischungen müssen gefahren werden (außer es kommen Regenreifen zum Einsatz). Pro Wochenende hat jeder Fahrer fünf Sätze Trockenreifen — drei der härteren und zwei der weicheren Mischung — plus drei Sätze Regenreifen."],
+      ["Technik", "Alle fahren dasselbe Auto: ein Dallara-Chassis, seit 2024 im Einsatz und nach den Sicherheitsstandards der Formel 1 mit Halo gebaut, dazu ein 3,4-Liter-V6-Turbo von Mecachrome und Einheitsreifen von Pirelli. Das Auto wiegt mit Fahrer 795 Kilogramm, erreicht bis zu 335 km/h und hat keine Servolenkung. Unterschiede machen Fahrer, Abstimmung und Team."]
+    ]
+  },
+  "f3": {
+    "kurz": "Nachwuchsserie im Rahmen der Formel 1 — 30 identische Autos, Sprint und Hauptrennen.",
+    "bloecke": [
+      ["Wochenende", "Die Formel 3 fährt an einem Teil der europäischen Formel-1-Wochenenden und zum Auftakt in Melbourne. Freitags gibt es ein freies Training über 45 Minuten und das Qualifying über 30 Minuten. Am Samstag folgt der Sprint über 40 Minuten plus eine Runde, am Sonntagvormittag vor dem Grand Prix das Hauptrennen über 45 Minuten plus eine Runde."],
+      ["Startaufstellung", "Das Qualifying bestimmt die Startaufstellung des Hauptrennens. Für den Sprint werden die ersten zwölf des Qualifyings umgedreht: Der Zwölfte startet von der Pole. Mit 30 Autos auf der Strecke sind freie Runden im Qualifying knapp — das richtige Timing ist oft so wichtig wie das Tempo."],
+      ["Punkte", "Im Hauptrennen gibt es 25, 18, 15, 12, 10, 8, 6, 4, 2 und 1 Punkte für die ersten zehn, im Sprint 10 bis 1 Punkt für die ersten zehn. Die Pole für das Hauptrennen bringt zwei Punkte, die schnellste Runde in jedem Rennen einen — sofern der Fahrer unter den ersten zehn ins Ziel kommt."],
+      ["Reifen", "Einheitslieferant ist Pirelli mit 16-Zoll-Reifen und drei eigens für die Formel 3 entwickelten Mischungen, von denen je Strecke die passende gewählt wird. Pro Veranstaltung hat jeder Fahrer nur vier Sätze Trockenreifen und zwei Sätze Regenreifen — Schonen gehört dazu."],
+      ["Technik", "Alle 30 Autos sind gleich: Chassis von Dallara mit Halo, dazu ein 3,4-Liter-Sechszylinder-Saugmotor von Mecachrome mit 380 PS. Die Autos erreichen rund 300 km/h. Wer sich in der Formel 3 durchsetzt, steigt meist in die Formel 2 auf — die letzte Stufe vor der Formel 1."]
+    ]
+  },
+  "f1academy": {
+    "kurz": "Nachwuchsserie der Formel 1 nur für Fahrerinnen, auf Formel-4-Niveau.",
+    "bloecke": [
+      ["Idee", "Die Formel 1 hat die F1 Academy 2023 gegründet, um junge Fahrerinnen auf höhere Klassen vorzubereiten. 18 identische Autos in sechs Teams, eines davon als Wildcard für ausgewählte Fahrerinnen einzelner Rennwochenenden. Startberechtigt sind Frauen zwischen 16 und 25 Jahren, jede darf höchstens zwei Saisons fahren. Alle Läufe finden im Rahmenprogramm der Formel 1 statt."],
+      ["Wochenende", "Bis zu zwei freie Trainings über je 40 Minuten und ein Qualifying über 30 Minuten, danach zwei Rennen: das Reverse-Grid-Rennen (hier „Sprint“) und das Hauptrennen am Grand-Prix-Sonntag. An ausgewählten Wochenenden — 2026 in Montréal und Austin — kommt ein drittes, vollwertiges Rennen dazu, das „Opening Race“. Jedes Rennen dauert höchstens 30 Minuten."],
+      ["Startaufstellung", "Die schnellste Runde jeder Fahrerin im Qualifying bestimmt die Startaufstellung für das Hauptrennen. Im Reverse-Grid-Rennen werden die ersten acht umgedreht, die Achte startet also von der Pole. Für das Opening Race zählt die zweitschnellste Runde aus dem Qualifying."],
+      ["Punkte", "Hauptrennen und Opening Race bringen 25, 18, 15, 12, 10, 8, 6, 4, 2 und 1 Punkte für die ersten zehn, das Reverse-Grid-Rennen 10, 8, 6, 5, 4, 3, 2 und 1 für die ersten acht. Die Pole für das Hauptrennen ist zwei Punkte wert, die schnellste Runde einen — aber nur für eine Fahrerin in den Punkterängen."],
+      ["Technik", "Gefahren wird ein Einheitsauto von Tatuus mit Halo, angetrieben von einem 1,4-Liter-Vierzylinder-Turbo von Autotecnica mit 174 PS. Die Autos erreichen rund 240 km/h und fahren auf Pirelli-Reifen. Das entspricht dem Niveau der Formel 4 — die Stufe darüber ist die Formel 3."]
+    ]
+  },
+  "wsbk": {
+    "kurz": "WM für seriennahe Superbikes — drei Rennen an jedem Wochenende.",
+    "bloecke": [
+      ["Wochenende", "Freitags zwei freie Trainings über je 45 Minuten, samstags ein drittes über 30 Minuten, danach die Tissot Superpole als Qualifying und am Nachmittag Rennen 1. Am Sonntag folgen das Tissot-Superpole-Rennen über zehn Runden (hier „Sprint“) und Rennen 2."],
+      ["Startaufstellung", "Die Superpole bestimmt die Startaufstellung für Rennen 1 und für das Superpole-Rennen. In Rennen 2 besetzen die ersten neun des Superpole-Rennens die ersten drei Startreihen, ab Platz zehn gilt wieder das Ergebnis der Superpole. Gestartet wird mit drei Fahrern pro Reihe."],
+      ["Punkte", "Rennen 1 und Rennen 2 bringen je 25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 und 1 Punkt für die ersten 15. Im Superpole-Rennen gibt es 12, 9, 7, 6, 5, 4, 3, 2 und 1 Punkt für die ersten neun. Ein perfektes Wochenende bringt damit 62 Punkte."],
+      ["Motorräder", "Gefahren wird mit seriennahen Motorrädern, die man in ähnlicher Form kaufen kann. Erlaubt sind Änderungen an Motorelektronik, Auspuff, Fahrwerk, Bremsen und einigen Motorteilen. Je nach Zylinderzahl haben die Maschinen 750 bis 1200 Kubikzentimeter Hubraum und wiegen mindestens 168 Kilogramm. 2026 sind Ducati, Bimota, Kawasaki, Yamaha, BMW und Honda vertreten."],
+      ["Reifen", "Seit 2004 gibt es einen Einheitsreifen-Lieferanten, um Kosten zu senken. 2026 ist die letzte Saison mit Pirelli, ab 2027 liefert Michelin."],
+      ["Strafen", "Die Rennleitung aus FIM und Veranstalter kann eine Long-Lap-Strafe verhängen — der Fahrer muss einen markierten, längeren Bogen fahren — oder eine Durchfahrt durch die Boxengasse mit 60 km/h. Auch Frühstarts werden bestraft."],
+      ["Testbeschränkung", "Zwischen zwei Saisons dürfen Teams höchstens zehn private Testtage nutzen. In den elf Tagen vor einem Rennwochenende sind Tests auf der jeweiligen Strecke verboten, zwischen dem 21. Dezember und dem 4. Januar ruht der Testbetrieb ganz."],
+      ["Klassen", "Im Rahmenprogramm fahren die Supersport-WM (mittelgroße Motorräder), seit 2026 die Sportbike-WM als Nachfolger der Supersport 300 und die Frauen-WM WorldWCR mit einheitlichen Yamaha R7. In der Superbike-WM gilt ein Mindestalter von 18 Jahren."]
+    ]
+  },
+  "moto2": {
+    "kurz": "Mittlere Klasse der Motorrad-WM — Einheitsmotor von Triumph, Rennen an allen 22 Grands Prix.",
+    "bloecke": [
+      ["Wochenende", "Die Moto2 fährt an jedem Grand Prix der MotoGP mit. Freitags gibt es das erste freie Training und am Nachmittag die Practice, samstags ein zweites freies Training und das Qualifying. Am Sonntag folgt das Rennen — einen Sprint wie in der MotoGP gibt es nicht."],
+      ["Qualifying", "Die 14 Schnellsten aus den Freitagstrainings stehen direkt in Q2. Alle anderen fahren Q1 über 15 Minuten, die vier Besten daraus steigen auf. In Q2 kämpfen dann 18 Fahrer ebenfalls 15 Minuten lang um die Pole und die ersten Startplätze."],
+      ["Punkte", "Im Rennen gibt es 25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 und 1 Punkt für die ersten 15. Weil es keinen Sprint gibt, zählt jedes Wochenende genau ein Ergebnis."],
+      ["Technik", "Alle fahren mit demselben Motor: einem 765-Kubikzentimeter-Dreizylinder von Triumph. Die Fahrwerke kommen 2026 von Kalex, Boscoscuro und Forward, die Einheitsreifen von Pirelli. Die Moto2 hat 2010 die frühere 250er-Klasse abgelöst."],
+      ["Sprungbrett", "Die Moto2 ist die letzte Stufe vor der MotoGP. Wer hier vorne fährt, bekommt häufig ein Angebot aus der Königsklasse — so wechselt Izan Guevara 2027 zu Pramac Yamaha in die MotoGP."]
+    ]
+  },
+  "moto3": {
+    "kurz": "Einstiegsklasse der Motorrad-WM — 250er-Einzylinder, oft Entscheidungen in der letzten Kurve.",
+    "bloecke": [
+      ["Wochenende", "Die Moto3 fährt an jedem Grand Prix der MotoGP mit. Freitags gibt es das erste freie Training und die Practice, samstags ein zweites freies Training und das Qualifying. Am Sonntag eröffnet sie den Renntag mit ihrem Rennen — ohne Sprint."],
+      ["Qualifying", "Wie in der Moto2 stehen die 14 Schnellsten aus den Freitagstrainings direkt in Q2. Die übrigen fahren Q1 über 15 Minuten, die vier Besten steigen auf. In Q2 geht es 15 Minuten lang um die Pole."],
+      ["Punkte", "Im Rennen gibt es 25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 und 1 Punkt für die ersten 15."],
+      ["Technik", "Gefahren wird mit 250-Kubikzentimeter-Einzylinder-Viertaktern, 2026 von KTM und Honda. Einheitsreifen kommen von Pirelli. Die Moto3 hat 2012 die frühere 125er-Klasse abgelöst."],
+      ["Windschatten", "Die leichten, vergleichsweise schwach motorisierten Maschinen profitieren stark vom Windschatten. Deshalb fahren oft große Gruppen um den Sieg, und viele Rennen werden erst in der letzten Runde oder der letzten Kurve entschieden."]
+    ]
+  },
+  "supercup": {
+    "kurz": "Porsches internationaler Markenpokal im Rahmen der Formel 1 — alle fahren den 911 Cup.",
+    "bloecke": [
+      ["Serie", "Den Porsche Mobil 1 Supercup gibt es seit 1993. Er ist die Spitze von weltweit mehr als 30 Carrera Cups und fährt ausschließlich an Formel-1-Wochenenden in Europa, 2026 acht Rennen von Monaco bis Monza. Zehn Teams teilen sich 28 feste Startplätze, dazu kommen Gaststarter — außer in Monaco, wo höchstens 28 Autos starten dürfen."],
+      ["Wochenende", "Auf ein freies Training und das Qualifying folgt ein Rennen, meist am Sonntag vor dem Grand Prix. In Zandvoort wurden 2026 zwei Rennen an einem Wochenende gefahren. Das Qualifying bestimmt die Startaufstellung."],
+      ["Punkte", "Die ersten 15 bekommen 25, 20, 17, 14, 12, 10, 9, 8, 7, 6, 5, 4, 3, 2 und 1 Punkt. Gaststarter sind nicht punkteberechtigt, die Punkte rücken dann nach. Fährt der Sieger weniger als die Hälfte der geplanten Distanz, gibt es nur halbe Punkte."],
+      ["Auto", "Alle fahren den Porsche 911 Cup, seit 2026 in der neuen Generation 992.2: ein 4,0-Liter-Sechszylinder-Boxermotor ohne Turbo mit 382 kW (520 PS), überarbeitete Aerodynamik und erstmals ein Renn-ABS. Getankt wird ein Kraftstoff mit 80 Prozent erneuerbaren Anteilen, überwiegend eFuel."],
+      ["Wertungen", "Neben der Fahrerwertung gibt es eine Rookie-Wertung für Fahrer bis 25 Jahre und eine Teamwertung. Porsche fördert zudem ausgewählte Nachwuchsfahrer als „Porsche Junior“ — 2026 wurde mit Flynt Schuring ein Junior Gesamtsieger."]
+    ]
+  },
+  "erc": {
+    "kurz": "Rallye-Europameisterschaft mit Rally2-Autos auf Asphalt und Schotter.",
+    "bloecke": [
+      ["Format", "Die ERC fährt 2026 ihre 74. Saison mit sieben Rallyes, fünf auf Asphalt und zwei auf Schotter. Jede Rallye läuft von Freitag bis Sonntag über gut ein Dutzend Wertungsprüfungen gegen die Uhr, die Zeiten werden addiert. Am Sonntag endet sie mit der Power Stage."],
+      ["Autos", "In der Hauptwertung starten Rally2-Autos wie Škoda Fabia RS, Toyota GR Yaris, Hyundai i20 N, Lancia Ypsilon oder Citroën C3 — die Klasse, die in der WRC als WRC2 fährt. Die stärkeren Rally1-Autos der Weltmeisterschaft gibt es in der ERC nicht."],
+      ["Punkte", "Für die Gesamtwertung gibt es 30, 24, 21, 19, 17, 15, 13, 11, 9, 7, 5, 4, 3, 2 und 1 Punkt für die ersten 15. Die Power Stage bringt zusätzlich 5 bis 1 Punkt für die fünf Schnellsten. In die Meisterschaft zählen die besten sechs von sieben Ergebnissen."],
+      ["Reifen", "Anders als in der WRC treten mehrere Reifenhersteller gegeneinander an, 2026 etwa Pirelli, Michelin, MRF und Hankook. Für sie gibt es eine eigene Wertung, in die jeweils die zwei bestplatzierten Rally2-Autos eingehen."],
+      ["Klassen", "Neben der Hauptwertung gibt es ERC3 für Rally3-Autos, ERC4 für Autos mit Frontantrieb (Rally4 bis Rally6) und die Junior ERC für Fahrer bis 27 Jahre. Roberto Daprà war 2026 bereits der achte frühere Junior-Fahrer mit einem Gesamtsieg in der ERC."]
+    ]
+  },
+  "dakar": {
+    "kurz": "Langstrecken-Rallye durch die Wüste Saudi-Arabiens — zwei Wochen für Autos, Motorräder und Lkw.",
+    "bloecke": [
+      ["Rallye", "Der Veranstalter nennt die Dakar die prestigeträchtigste Rallye-Raid der Welt, seit 2020 findet sie in Saudi-Arabien statt. Sie dauert rund zwei Wochen: Auf einen Prolog folgen etwa ein Dutzend Etappen mit langen Wertungsprüfungen durch Sand, Dünen und Geröll. Es gewinnt, wer über alle Etappen die kürzeste Gesamtzeit hat — Strafzeiten werden aufgeschlagen."],
+      ["Klassen", "Gewertet wird in getrennten Klassen: Autos (Ultimate), Motorräder, seriennahe Autos (Stock), leichte Prototypen (Challenger), SSV, Lkw sowie die Dakar Classic für historische Fahrzeuge. In der Mission 1000 fahren Fahrzeuge mit alternativen Antrieben."],
+      ["Navigation", "Gefahren wird nach dem Roadbook des Veranstalters, nicht auf abgesperrten Rundstrecken. Wer sich verfährt oder einen Wegpunkt verpasst, verliert viel Zeit — Navigation zählt deshalb so viel wie Tempo. In der Motorradklasse „Original by Motul“ fahren Teilnehmer zudem fast ohne Unterstützung eines Teams."],
+      ["Marathon-Etappen", "An Marathon-Etappen übernachten die Teilnehmer in einem einfachen Biwak ohne die gewohnte Hilfe ihrer Teams und müssen ihre Fahrzeuge weitgehend selbst in Schuss halten. 2027 gibt es eine Nacht im Refuge-Biwak und eine klassische Marathon-Etappe."],
+      ["2027", "Die 49. Dakar läuft vom 1. bis 15. Januar 2027 mit Start und Ziel in King Abdullah Economic City am Roten Meer. Mit 5320 Kilometern Wertungsprüfungen wird sie die längste der Ära in Saudi-Arabien. Die Dakar ist zugleich erster Lauf der Rallye-Raid-Weltmeisterschaft (W2RC)."]
+    ]
   }
 }

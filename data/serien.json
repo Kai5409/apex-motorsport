@@ -8,11 +8,21 @@
   "serien": {
     "f1": {"name": "Formel 1", "short": "F1", "gruppe": "formel", "color": "#ff3000"},
     "fe": {"name": "Formel E", "short": "F·E", "gruppe": "formel", "color": "#fe958e"},
+    "indycar": {"name": "IndyCar", "short": "IndyCar", "gruppe": "formel", "color": "#ff782b"},
+    "f2": {"name": "Formel 2", "short": "F2", "gruppe": "formel", "color": "#fe6277", "ausgeblendet": true},
+    "f3": {"name": "Formel 3", "short": "F3", "gruppe": "formel", "color": "#ffc0ab", "ausgeblendet": true},
+    "f1academy": {"name": "F1 Academy", "short": "F1 Academy", "gruppe": "formel", "color": "#d16458", "ausgeblendet": true},
     "mgp": {"name": "MotoGP", "short": "MotoGP", "gruppe": "motorrad", "color": "#e172db"},
+    "wsbk": {"name": "Superbike-WM", "short": "WSBK", "gruppe": "motorrad", "color": "#ad88fe"},
+    "moto2": {"name": "Moto2", "short": "Moto2", "gruppe": "motorrad", "color": "#f3abec", "ausgeblendet": true},
+    "moto3": {"name": "Moto3", "short": "Moto3", "gruppe": "motorrad", "color": "#b95cdc", "ausgeblendet": true},
     "wec": {"name": "WEC", "short": "WEC", "gruppe": "sportwagen", "color": "#3a86ff"},
     "gtwc": {"name": "GT World Challenge Europe", "short": "GTWC", "gruppe": "sportwagen", "color": "#03c4c6"},
     "dtm": {"name": "DTM", "short": "DTM", "gruppe": "sportwagen", "color": "#6de5f7"},
     "nls": {"name": "Nürburgring Langstrecken-Serie", "short": "NLS", "gruppe": "sportwagen", "color": "#98bafe"},
-    "wrc": {"name": "WRC", "short": "WRC", "gruppe": "rallye", "color": "#37b24d"}
+    "supercup": {"name": "Porsche Supercup", "short": "Supercup", "gruppe": "sportwagen", "color": "#03a6c6", "ausgeblendet": true},
+    "wrc": {"name": "WRC", "short": "WRC", "gruppe": "rallye", "color": "#37b24d"},
+    "erc": {"name": "ERC", "short": "ERC", "gruppe": "rallye", "color": "#a1e848"},
+    "dakar": {"name": "Rallye Dakar", "short": "Dakar", "gruppe": "rallye", "color": "#5be8ac"}
   }
 }

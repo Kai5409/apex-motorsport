@@ -1,0 +1,9 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:APEX · Porsche Supercup
+X-WR-CALDESC:Porsche Supercup — alle Sessions in deutscher Zeit
+X-WR-TIMEZONE:Europe/Berlin
+END:VCALENDAR

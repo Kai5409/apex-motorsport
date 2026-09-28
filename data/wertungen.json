@@ -293,6 +293,126 @@
         ["Goroyan RT by Car Collection #4", "Porsche 911 GT3 R", 30],
         ["Team LIQUI MOLY by BLACK FALCON #902", "Porsche 911 GT3 Cup", 25]
       ]
+    },
+    "indycar": {
+      "stand": "Endstand · nach 18 Rennen · Laguna Seca, 06.09.2026",
+      "quelle": "indycar.com",
+      "drv": [
+        ["Álex Palou", "Chip Ganassi Racing", 631],
+        ["Kyle Kirkwood", "Andretti Global", 545],
+        ["Christian Lundgaard", "Arrow McLaren", 535],
+        ["Pato O'Ward", "Arrow McLaren", 522],
+        ["David Malukas", "Team Penske", 514],
+        ["Scott McLaughlin", "Team Penske", 482],
+        ["Marcus Ericsson", "Andretti Global", 429],
+        ["Josef Newgarden", "Team Penske", 423],
+        ["Felix Rosenqvist", "Meyer Shank Racing", 412],
+        ["Rinus VeeKay", "Juncos Hollinger Racing", 378],
+        ["Will Power", "Andretti Global", 368],
+        ["Scott Dixon", "Chip Ganassi Racing", 331],
+        ["Kyffin Simpson", "Chip Ganassi Racing", 327],
+        ["Marcus Armstrong", "Meyer Shank Racing", 320],
+        ["Alexander Rossi", "ECR", 307],
+        ["Graham Rahal", "Rahal Letterman Lanigan Racing", 302],
+        ["Santino Ferrucci", "A.J. Foyt Enterprises", 280],
+        ["Louis Foster", "Rahal Letterman Lanigan Racing", 267],
+        ["Romain Grosjean", "Dale Coyne Racing", 259],
+        ["Nolan Siegel", "Arrow McLaren", 259]
+      ]
+    },
+    "f2": {
+      "stand": "nach 12 von 14 Wochenenden · Baku, 26.09.2026",
+      "quelle": "fiaformula2.com",
+      "drv": [
+        ["Rafael Câmara", "Invicta Racing", 207],
+        ["Nikola Tsolov", "Campos Racing", 200],
+        ["Alex Dunne", "Rodin Motorsport", 189],
+        ["Gabriele Minì", "MP Motorsport", 163],
+        ["Dino Beganovic", "DAMS Lucas Oil", 137],
+        ["Noel León", "Campos Racing", 133],
+        ["Martinius Stenshorne", "Rodin Motorsport", 107],
+        ["Joshua Dürksen", "Invicta Racing", 90],
+        ["Kush Maini", "ART Grand Prix", 90],
+        ["Laurens van Hoepen", "Trident", 90],
+        ["Tasanapol Inthraphuvasak", "ART Grand Prix", 71],
+        ["Ritomo Miyata", "Hitech", 70],
+        ["Rafael Villagómez", "Van Amersfoort Racing", 42],
+        ["John Bennett", "Trident", 38],
+        ["Oliver Goethe", "MP Motorsport", 37],
+        ["Roman Bilinski", "DAMS Lucas Oil", 36],
+        ["Sebastián Montoya", "Prema Racing", 30],
+        ["Emerson Fittipaldi Jr.", "AIX Racing", 28],
+        ["Colton Herta", "Hitech", 26],
+        ["Mari Boya", "Prema Racing", 21]
+      ]
+    },
+    "f3": {
+      "stand": "Endstand · nach 9 Wochenenden · Madrid, 13.09.2026",
+      "quelle": "fiaformula3.com",
+      "drv": [
+        ["Ugo Ugochukwu", "Campos Racing", 159],
+        ["Freddie Slater", "Trident", 145],
+        ["Tuukka Taponen", "MP Motorsport", 109],
+        ["Taito Kato", "ART Grand Prix", 105],
+        ["Théophile Naël", "Campos Racing", 88],
+        ["Pedro Clerot", "Rodin Motorsport", 88],
+        ["Ernesto Rivera", "Campos Racing", 87],
+        ["Brando Badoer", "Rodin Motorsport", 71],
+        ["Hiyu Yamakoshi", "Van Amersfoort Racing", 71],
+        ["Noah Strømsted", "Trident", 65],
+        ["Bruno del Pino", "Van Amersfoort Racing", 57],
+        ["Maciej Gładysz", "ART Grand Prix", 54],
+        ["Mattia Colnaghi", "MP Motorsport", 54],
+        ["Jin Nakamura", "Hitech", 53],
+        ["Alessandro Giusti", "MP Motorsport", 45],
+        ["Enzo Deligny", "Van Amersfoort Racing", 40],
+        ["James Wharton", "Prema Racing", 39],
+        ["Yevan David", "AIX Racing", 35],
+        ["Nicola Lacorte", "DAMS Lucas Oil", 33],
+        ["Kanato Le", "ART Grand Prix", 30]
+      ]
+    },
+    "f1academy": {
+      "stand": "nach 4 von 6 Wochenenden · Zandvoort, 23.08.2026",
+      "quelle": "f1academy.com",
+      "drv": [
+        ["Alisha Palmowski", "Campos Racing", 136],
+        ["Emma Felbermayr", "Rodin Motorsport", 88],
+        ["Nina Gademan", "MP Motorsport", 71],
+        ["Alba Larsen", "MP Motorsport", 50],
+        ["Payton Westcott", "Prema Racing", 49],
+        ["Megan Bruce", "Campos Racing", 49],
+        ["Ella Lloyd", "Rodin Motorsport", 47],
+        ["Mathilda Paatz", "Prema Racing", 35],
+        ["Natalia Granada", "Prema Racing", 35],
+        ["Rafaela Ferreira", "Campos Racing", 27],
+        ["Chiara Bättig", "Hitech", 22],
+        ["Rachel Robertson", "Hitech", 22],
+        ["Lisa Billard", "ART Grand Prix", 15],
+        ["Kaylee Countryman", "ART Grand Prix", 14],
+        ["Ava Dobson", "Hitech", 8],
+        ["Esmee Kosterman", "MP Motorsport", 6],
+        ["Ella Stevens", "Rodin Motorsport", 4],
+        ["Jade Jacquet", "ART Grand Prix", 0],
+        ["Autumn Fisher", "Hitech", 0],
+        ["Zoe Florescu", "Hitech", 0]
+      ]
+    },
+    "wsbk": {
+      "stand": "nach 10 von 12 Wochenenden · Cremona, 27.09.2026",
+      "quelle": "worldsbk.com",
+      "drv": [
+        ["Nicolò Bulega", "Aruba.it Racing - Ducati", 602],
+        ["Iker Lecuona", "Aruba.it Racing - Ducati", 469],
+        ["Yari Montella", "Barni Spark Racing Team", 269],
+        ["Alex Lowes", "bimota by Kawasaki Racing Team", 226],
+        ["Sam Lowes", "ELF Marc VDS Racing Team", 219],
+        ["Lorenzo Baldassarri", "Team GoEleven", 193],
+        ["Axel Bassani", "bimota by Kawasaki Racing Team", 184],
+        ["Garrett Gerloff", "Kawasaki WorldSBK Team", 145],
+        ["Alberto Surra", "Motocorsa Racing", 140],
+        ["Álvaro Bautista", "Barni Spark Racing Team", 125]
+      ]
     }
   }
 }
