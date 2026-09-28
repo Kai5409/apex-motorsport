@@ -1,0 +1,1170 @@
+[
+  {"s": "f1", "rd": 1, "name": "Großer Preis von Australien", "loc": "Melbourne", "d0": "2026-03-06", "d1": "2026-03-08", "status": "done", "result": "George Russell (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "02:30"},
+      {"n": "FP2", "day": "Fr", "t": "06:00"},
+      {"n": "FP3", "day": "Sa", "t": "02:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "06:00", "res": [
+        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "1:18.518 · Pole"},
+        {"p": 2, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "1:18.811"},
+        {"p": 3, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "1:19.303"},
+        {"p": 4, "who": "Charles Leclerc", "team": "Ferrari", "gap": "1:19.327"},
+        {"p": 5, "who": "Oscar Piastri", "team": "McLaren", "gap": "1:19.380"},
+        {"p": 6, "who": "Lando Norris", "team": "McLaren", "gap": "1:19.475"},
+        {"p": 7, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "1:19.478"},
+        {"p": 8, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "1:19.994"},
+        {"p": 9, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "Q2 · 1:21.247"},
+        {"p": 10, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "Q2 · 1:20.221"},
+        {"p": 11, "who": "Nico Hülkenberg", "team": "Audi", "gap": "Q2 · 1:20.303"},
+        {"p": 12, "who": "Oliver Bearman", "team": "Haas", "gap": "Q2 · 1:20.311"},
+        {"p": 13, "who": "Esteban Ocon", "team": "Haas", "gap": "Q2 · 1:20.491"},
+        {"p": 14, "who": "Pierre Gasly", "team": "Alpine", "gap": "Q2 · 1:20.501"},
+        {"p": 15, "who": "Alexander Albon", "team": "Williams", "gap": "Q2 · 1:20.941"},
+        {"p": 16, "who": "Franco Colapinto", "team": "Alpine", "gap": "Q2 · 1:21.270"},
+        {"p": 17, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Q1 · 1:21.969"},
+        {"p": 18, "who": "Sergio Pérez", "team": "Cadillac", "gap": "Q1 · 1:22.605"},
+        {"p": 19, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "Q1 · 1:23.244"},
+        {"p": 20, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "Q1 · keine Zeit"},
+        {"p": 21, "who": "Carlos Sainz", "team": "Williams", "gap": "Q1 · keine Zeit"},
+        {"p": 22, "who": "Lance Stroll", "team": "Aston Martin", "gap": "Q1 · keine Zeit"}
+      ]},
+      {"n": "Rennen", "day": "So", "t": "05:00", "res": [
+        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "Sieger · 1:23:06.801"},
+        {"p": 2, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "+2.974"},
+        {"p": 3, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+15.519"},
+        {"p": 4, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+16.144"},
+        {"p": 5, "who": "Lando Norris", "team": "McLaren", "gap": "+51.741"},
+        {"p": 6, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+54.617"},
+        {"p": 7, "who": "Oliver Bearman", "team": "Haas", "gap": "+1 Rd"},
+        {"p": 8, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+1 Rd"},
+        {"p": 9, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+1 Rd"},
+        {"p": 10, "who": "Pierre Gasly", "team": "Alpine", "gap": "+1 Rd"},
+        {"p": 11, "who": "Esteban Ocon", "team": "Haas", "gap": "+1 Rd"},
+        {"p": 12, "who": "Alexander Albon", "team": "Williams", "gap": "+1 Rd"},
+        {"p": 13, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+1 Rd"},
+        {"p": 14, "who": "Franco Colapinto", "team": "Alpine", "gap": "+2 Rd"},
+        {"p": 15, "who": "Carlos Sainz", "team": "Williams", "gap": "+2 Rd"},
+        {"p": 16, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+3 Rd"},
+        {"p": "NC", "who": "Lance Stroll", "team": "Aston Martin", "gap": "43 Rd · n. klass."},
+        {"p": "DNF", "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Vibrationen"},
+        {"p": "DNF", "who": "Valtteri Bottas", "team": "Cadillac", "gap": "Kraftstoffsystem"},
+        {"p": "DNF", "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "Motorschaden"},
+        {"p": "DNS", "who": "Oscar Piastri", "team": "McLaren", "gap": "Unfall vor Start"},
+        {"p": "DNS", "who": "Nico Hülkenberg", "team": "Audi", "gap": "Hydraulik"}
+      ]}
+    ]},
+  {"s": "f1", "rd": 2, "name": "Großer Preis von China · Sprint", "loc": "Shanghai", "d0": "2026-03-13", "d1": "2026-03-15", "status": "done", "result": "Kimi Antonelli (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "04:30"},
+      {"n": "Sprint-Quali", "day": "Fr", "t": "08:30", "res": [
+        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "1:31.520 · Pole"},
+        {"p": 2, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "+0.289"},
+        {"p": 3, "who": "Lando Norris", "team": "McLaren", "gap": "+0.621"},
+        {"p": 4, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+0.641"},
+        {"p": 5, "who": "Oscar Piastri", "team": "McLaren", "gap": "+0.704"},
+        {"p": 6, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+1.008"},
+        {"p": 7, "who": "Pierre Gasly", "team": "Alpine", "gap": "+1.368"},
+        {"p": 8, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+1.734"},
+        {"p": 9, "who": "Oliver Bearman", "team": "Haas", "gap": "+1.889"},
+        {"p": 10, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "+2.203"},
+        {"p": 11, "who": "Nico Hülkenberg", "team": "Audi", "gap": "Q2"},
+        {"p": 12, "who": "Esteban Ocon", "team": "Haas", "gap": "Q2"},
+        {"p": 13, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "Q2"},
+        {"p": 14, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "Q2"},
+        {"p": 15, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "Q2"},
+        {"p": 16, "who": "Franco Colapinto", "team": "Alpine", "gap": "Q2"},
+        {"p": 17, "who": "Carlos Sainz", "team": "Williams", "gap": "Q1"},
+        {"p": 18, "who": "Alexander Albon", "team": "Williams", "gap": "Q1 · Boxengasse"},
+        {"p": 19, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Q1"},
+        {"p": 20, "who": "Lance Stroll", "team": "Aston Martin", "gap": "Q1"},
+        {"p": 21, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "Q1"},
+        {"p": 22, "who": "Sergio Pérez", "team": "Cadillac", "gap": "Q1 · keine Zeit"}
+      ]},
+      {"n": "Sprint", "day": "Sa", "t": "04:30", "partial": true, "res": [
+        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "Sieger · 33:38.998"},
+        {"p": 2, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+0.674"},
+        {"p": 3, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+2.554"},
+        {"p": 4, "who": "Lando Norris", "team": "McLaren", "gap": "+4.433"},
+        {"p": 5, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "+5.688"},
+        {"p": 6, "who": "Oscar Piastri", "team": "McLaren", "gap": "+6.809"},
+        {"p": 7, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+10.900"},
+        {"p": 8, "who": "Oliver Bearman", "team": "Haas", "gap": "+11.271"},
+        {"p": 9, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+11.619"},
+        {"p": 10, "who": "Esteban Ocon", "team": "Haas", "gap": "+13.887"},
+        {"p": 11, "who": "Pierre Gasly", "team": "Alpine", "gap": "+14.780"},
+        {"p": 12, "who": "Carlos Sainz", "team": "Williams", "gap": "+15.753"},
+        {"p": 13, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+15.858"},
+        {"p": 14, "who": "Franco Colapinto", "team": "Alpine", "gap": "+16.393"}
+      ]},
+      {"n": "Qualifying", "day": "Sa", "t": "08:00", "partial": true, "res": [
+        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Pole"}
+      ]},
+      {"n": "Rennen", "day": "So", "t": "08:00", "partial": true, "res": [
+        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger"},
+        {"p": 2, "who": "George Russell", "team": "Mercedes", "gap": "+5.515"},
+        {"p": 3, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "Podium"},
+        {"p": 4, "who": "Charles Leclerc", "team": "Ferrari", "gap": ""},
+        {"p": 5, "who": "Oliver Bearman", "team": "Haas", "gap": ""}
+      ]}
+    ]},
+  {"s": "f1", "rd": 3, "name": "Großer Preis von Japan", "loc": "Suzuka", "d0": "2026-03-27", "d1": "2026-03-29", "status": "done", "result": "Kimi Antonelli (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "04:30"},
+      {"n": "FP2", "day": "Fr", "t": "08:00"},
+      {"n": "FP3", "day": "Sa", "t": "04:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "08:00", "res": [
+        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "1:28.778 · Pole"},
+        {"p": 2, "who": "George Russell", "team": "Mercedes", "gap": "1:29.076"},
+        {"p": 3, "who": "Oscar Piastri", "team": "McLaren", "gap": "1:29.132"},
+        {"p": 4, "who": "Charles Leclerc", "team": "Ferrari", "gap": "1:29.405"},
+        {"p": 5, "who": "Lando Norris", "team": "McLaren", "gap": "1:29.409"},
+        {"p": 6, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "1:29.567"},
+        {"p": 7, "who": "Pierre Gasly", "team": "Alpine", "gap": "1:29.691"},
+        {"p": 8, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "1:29.978"},
+        {"p": 9, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "1:30.274"},
+        {"p": 10, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "1:30.319"},
+        {"p": 11, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "Q2"},
+        {"p": 12, "who": "Esteban Ocon", "team": "Haas", "gap": "Q2"},
+        {"p": 13, "who": "Nico Hülkenberg", "team": "Audi", "gap": "Q2"},
+        {"p": 14, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "Q2"},
+        {"p": 15, "who": "Franco Colapinto", "team": "Alpine", "gap": "Q2"},
+        {"p": 16, "who": "Carlos Sainz", "team": "Williams", "gap": "Q2"},
+        {"p": 17, "who": "Alexander Albon", "team": "Williams", "gap": "Q1"},
+        {"p": 18, "who": "Oliver Bearman", "team": "Haas", "gap": "Q1"},
+        {"p": 19, "who": "Sergio Pérez", "team": "Cadillac", "gap": "Q1"},
+        {"p": 20, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "Q1"},
+        {"p": 21, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Q1"},
+        {"p": 22, "who": "Lance Stroll", "team": "Aston Martin", "gap": "Q1"}
+      ]},
+      {"n": "Rennen", "day": "So", "t": "07:00", "partial": true, "res": [
+        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger · 1:28:03.403"},
+        {"p": 2, "who": "Oscar Piastri", "team": "McLaren", "gap": "+13.722"},
+        {"p": 3, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+15.270"},
+        {"p": 4, "who": "George Russell", "team": "Mercedes", "gap": "+15.754"},
+        {"p": 5, "who": "Lando Norris", "team": "McLaren", "gap": "+23.479"},
+        {"p": 6, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+25.037"},
+        {"p": 7, "who": "Pierre Gasly", "team": "Alpine", "gap": "+32.340"},
+        {"p": 8, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+32.677"},
+        {"p": 9, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+50.180"}
+      ]}
+    ]},
+  {"s": "f1", "rd": 4, "name": "Großer Preis von Miami · Sprint", "loc": "Miami", "d0": "2026-05-01", "d1": "2026-05-03", "status": "done", "result": "Kimi Antonelli (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "18:30"},
+      {"n": "Sprint-Quali", "day": "Fr", "t": "22:30"},
+      {"n": "Sprint", "day": "Sa", "t": "18:00"},
+      {"n": "Qualifying", "day": "Sa", "t": "22:00"},
+      {"n": "Rennen", "day": "So", "t": "22:00", "res": [
+        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger"},
+        {"p": 2, "who": "Lando Norris", "team": "McLaren", "gap": "+3.264"},
+        {"p": 3, "who": "Oscar Piastri", "team": "McLaren", "gap": "+27.092"},
+        {"p": 4, "who": "George Russell", "team": "Mercedes", "gap": "+43.051"},
+        {"p": 5, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+48.949 · 5s"},
+        {"p": 6, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+53.753"},
+        {"p": 7, "who": "Franco Colapinto", "team": "Alpine", "gap": "+61.871"},
+        {"p": 8, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+64.245 · 20s"},
+        {"p": 9, "who": "Carlos Sainz", "team": "Williams", "gap": "+82.072"},
+        {"p": 10, "who": "Alexander Albon", "team": "Williams", "gap": "+90.972"},
+        {"p": 11, "who": "Oliver Bearman", "team": "Haas", "gap": "+1 Rd"},
+        {"p": 12, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+1 Rd"},
+        {"p": 13, "who": "Esteban Ocon", "team": "Haas", "gap": "+1 Rd"},
+        {"p": 14, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+1 Rd"},
+        {"p": 15, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "+1 Rd"},
+        {"p": 16, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+1 Rd"},
+        {"p": 17, "who": "Lance Stroll", "team": "Aston Martin", "gap": "+1 Rd"},
+        {"p": 18, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "+2 Rd"},
+        {"p": "DNF", "who": "Nico Hülkenberg", "team": "Audi", "gap": ""},
+        {"p": "DNF", "who": "Liam Lawson", "team": "Racing Bulls", "gap": ""},
+        {"p": "DNF", "who": "Pierre Gasly", "team": "Alpine", "gap": ""},
+        {"p": "DNF", "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": ""}
+      ]}
+    ]},
+  {"s": "f1", "rd": 5, "name": "Großer Preis von Kanada · Sprint", "loc": "Montréal", "d0": "2026-05-22", "d1": "2026-05-24", "status": "done", "result": "Kimi Antonelli (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "19:30"},
+      {"n": "Sprint-Quali", "day": "Fr", "t": "23:00", "partial": true, "res": [
+        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "1:12.965 · Pole"},
+        {"p": 2, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "1:13.033"},
+        {"p": 3, "who": "Lando Norris", "team": "McLaren", "gap": "1:13.280"},
+        {"p": 4, "who": "Oscar Piastri", "team": "McLaren", "gap": "1:13.299"},
+        {"p": 5, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "1:13.326"},
+        {"p": 6, "who": "Charles Leclerc", "team": "Ferrari", "gap": "1:13.410"},
+        {"p": 7, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "1:13.504"},
+        {"p": 8, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "1:13.605"},
+        {"p": 9, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "1:13.737"},
+        {"p": 10, "who": "Carlos Sainz", "team": "Williams", "gap": "1:14.536"},
+        {"p": 11, "who": "Nico Hülkenberg", "team": "Audi", "gap": "Q2"},
+        {"p": 12, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "Q2"}
+      ]},
+      {"n": "Sprint", "day": "Sa", "t": "19:30", "res": [
+        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "Sieger · 28:50.951"},
+        {"p": 2, "who": "Lando Norris", "team": "McLaren", "gap": "+1.272"},
+        {"p": 3, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "+1.843"},
+        {"p": 4, "who": "Oscar Piastri", "team": "McLaren", "gap": "+9.797"},
+        {"p": 5, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+9.929"},
+        {"p": 6, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+10.545"},
+        {"p": 7, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+15.935"},
+        {"p": 8, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+29.710"},
+        {"p": 9, "who": "Franco Colapinto", "team": "Alpine", "gap": "+31.621"},
+        {"p": 10, "who": "Carlos Sainz", "team": "Williams", "gap": "+36.793"},
+        {"p": 11, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+1:01.344"},
+        {"p": 12, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+1:01.814"},
+        {"p": 13, "who": "Esteban Ocon", "team": "Haas", "gap": "+1:04.209"},
+        {"p": 14, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+1:10.402 · 10s"},
+        {"p": 15, "who": "Nico Hülkenberg", "team": "Audi", "gap": "+1:12.158 · 10s"},
+        {"p": 16, "who": "Lance Stroll", "team": "Aston Martin", "gap": "+1 Rd"},
+        {"p": 17, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "+1 Rd"},
+        {"p": 18, "who": "Oliver Bearman", "team": "Haas", "gap": "+1 Rd"},
+        {"p": 19, "who": "Alexander Albon", "team": "Williams", "gap": "+1 Rd"},
+        {"p": 20, "who": "Pierre Gasly", "team": "Alpine", "gap": "+1 Rd"},
+        {"p": 21, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "+3 Rd"},
+        {"p": "DNF", "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Motor"}
+      ]},
+      {"n": "Qualifying", "day": "Sa", "t": "23:00", "partial": true, "res": [
+        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "1:12.578 · Pole"},
+        {"p": 2, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "1:12.646"},
+        {"p": 3, "who": "Lando Norris", "team": "McLaren", "gap": "1:12.729"},
+        {"p": 4, "who": "Oscar Piastri", "team": "McLaren", "gap": "1:12.781"},
+        {"p": 5, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "1:12.868"},
+        {"p": 6, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "1:12.907"},
+        {"p": 7, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "1:12.935"},
+        {"p": 8, "who": "Charles Leclerc", "team": "Ferrari", "gap": "1:12.976"},
+        {"p": 9, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "1:13.280"},
+        {"p": 10, "who": "Franco Colapinto", "team": "Alpine", "gap": "1:13.697"}
+      ]},
+      {"n": "Rennen", "day": "So", "t": "20:00", "res": [
+        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger · 1:28:15.758"},
+        {"p": 2, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+10.768"},
+        {"p": 3, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+11.276"},
+        {"p": 4, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+44.151"},
+        {"p": 5, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "+1 Rd"},
+        {"p": 6, "who": "Franco Colapinto", "team": "Alpine", "gap": "+1 Rd"},
+        {"p": 7, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+1 Rd"},
+        {"p": 8, "who": "Pierre Gasly", "team": "Alpine", "gap": "+1 Rd"},
+        {"p": 9, "who": "Carlos Sainz", "team": "Williams", "gap": "+1 Rd"},
+        {"p": 10, "who": "Oliver Bearman", "team": "Haas", "gap": "+1 Rd"},
+        {"p": 11, "who": "Oscar Piastri", "team": "McLaren", "gap": "+2 Rd"},
+        {"p": 12, "who": "Nico Hülkenberg", "team": "Audi", "gap": "+2 Rd"},
+        {"p": 13, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+2 Rd · 5s"},
+        {"p": 14, "who": "Esteban Ocon", "team": "Haas", "gap": "+2 Rd"},
+        {"p": 15, "who": "Lance Stroll", "team": "Aston Martin", "gap": "+4 Rd"},
+        {"p": 16, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "+4 Rd"},
+        {"p": "DNF", "who": "Sergio Pérez", "team": "Cadillac", "gap": "Aufhängung"},
+        {"p": "DNF", "who": "Lando Norris", "team": "McLaren", "gap": "Getriebe"},
+        {"p": "DNF", "who": "George Russell", "team": "Mercedes", "gap": "Motor"},
+        {"p": "DNF", "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Sitz gebrochen"},
+        {"p": "DNF", "who": "Alexander Albon", "team": "Williams", "gap": "Kollision"},
+        {"p": "DNS", "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "Getriebe"}
+      ]}
+    ]},
+  {"s": "f1", "rd": 6, "name": "Großer Preis von Monaco", "loc": "Monte Carlo", "d0": "2026-06-05", "d1": "2026-06-07", "status": "done", "result": "Kimi Antonelli (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:30"},
+      {"n": "FP2", "day": "Fr", "t": "17:00"},
+      {"n": "FP3", "day": "Sa", "t": "12:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "16:00", "partial": true, "res": [
+        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Pole"}
+      ]},
+      {"n": "Rennen", "day": "So", "t": "15:00", "res": [
+        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger · 78 Rd"},
+        {"p": 2, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+6.271"},
+        {"p": 3, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "+23.394"},
+        {"p": 4, "who": "Oscar Piastri", "team": "McLaren", "gap": "+24.261"},
+        {"p": 5, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+26.553"},
+        {"p": 6, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+29.010"},
+        {"p": 7, "who": "Pierre Gasly", "team": "Alpine", "gap": "+30.369"},
+        {"p": 8, "who": "Alexander Albon", "team": "Williams", "gap": "+33.413"},
+        {"p": 9, "who": "Esteban Ocon", "team": "Haas", "gap": "+37.410"},
+        {"p": 10, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "+41.899"},
+        {"p": 11, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+42.748"},
+        {"p": 12, "who": "George Russell", "team": "Mercedes", "gap": "+43.353"},
+        {"p": 13, "who": "Nico Hülkenberg", "team": "Audi", "gap": "+44.102"},
+        {"p": 14, "who": "Franco Colapinto", "team": "Alpine", "gap": "+48.964"},
+        {"p": 15, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+49.153 · 10s"},
+        {"p": "DNF", "who": "Carlos Sainz", "team": "Williams", "gap": ""},
+        {"p": "DNF", "who": "Charles Leclerc", "team": "Ferrari", "gap": "Unfall"},
+        {"p": "DNF", "who": "Lance Stroll", "team": "Aston Martin", "gap": "Unfall"},
+        {"p": "DNF", "who": "Lando Norris", "team": "McLaren", "gap": "Technik"},
+        {"p": "DNF", "who": "Oliver Bearman", "team": "Haas", "gap": "Aufgabe"},
+        {"p": "DNF", "who": "Valtteri Bottas", "team": "Cadillac", "gap": ""},
+        {"p": "DNF", "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "Stand am Start"}
+      ]}
+    ]},
+  {"s": "f1", "rd": 7, "name": "Großer Preis von Barcelona-Katalonien", "loc": "Barcelona", "d0": "2026-06-12", "d1": "2026-06-14", "status": "done", "result": "Lewis Hamilton (Ferrari)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:30"},
+      {"n": "FP2", "day": "Fr", "t": "17:00"},
+      {"n": "FP3", "day": "Sa", "t": "12:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "16:00", "res": [
+        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "1:14.679 · Pole"},
+        {"p": 2, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+0.064"},
+        {"p": 3, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "+0.319"},
+        {"p": 4, "who": "Lando Norris", "team": "McLaren", "gap": ""},
+        {"p": 5, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": ""},
+        {"p": 6, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": ""},
+        {"p": 7, "who": "Oscar Piastri", "team": "McLaren", "gap": ""},
+        {"p": 8, "who": "Liam Lawson", "team": "Racing Bulls", "gap": ""},
+        {"p": 9, "who": "Nico Hülkenberg", "team": "Audi", "gap": ""},
+        {"p": 10, "who": "Charles Leclerc", "team": "Ferrari", "gap": "Q3 · Unfall"},
+        {"p": 11, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "Q2"},
+        {"p": 12, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "Q2"},
+        {"p": 13, "who": "Franco Colapinto", "team": "Alpine", "gap": "Q2"},
+        {"p": 14, "who": "Pierre Gasly", "team": "Alpine", "gap": "Q2"},
+        {"p": 15, "who": "Oliver Bearman", "team": "Haas", "gap": "Q2"},
+        {"p": 16, "who": "Carlos Sainz", "team": "Williams", "gap": "Q2"},
+        {"p": 17, "who": "Esteban Ocon", "team": "Haas", "gap": "Q1"},
+        {"p": 18, "who": "Alexander Albon", "team": "Williams", "gap": "Q1"},
+        {"p": 19, "who": "Sergio Pérez", "team": "Cadillac", "gap": "Q1"},
+        {"p": 20, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "Q1"},
+        {"p": 21, "who": "Lance Stroll", "team": "Aston Martin", "gap": "Q1"},
+        {"p": 22, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Q1 · Boxengasse"}
+      ]},
+      {"n": "Rennen", "day": "So", "t": "15:00", "res": [
+        {"p": 1, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "Sieger"},
+        {"p": 2, "who": "George Russell", "team": "Mercedes", "gap": "+19.5s"},
+        {"p": 3, "who": "Lando Norris", "team": "McLaren", "gap": "+23.7s"},
+        {"p": 4, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+40.4s"},
+        {"p": 5, "who": "Oscar Piastri", "team": "McLaren", "gap": "+58.6s"},
+        {"p": 6, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "+1 Rd"},
+        {"p": 7, "who": "Pierre Gasly", "team": "Alpine", "gap": "+1 Rd"},
+        {"p": 8, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+1 Rd"},
+        {"p": 9, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+1 Rd"},
+        {"p": 10, "who": "Franco Colapinto", "team": "Alpine", "gap": "+1 Rd · 10s"},
+        {"p": 11, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+2 Rd"},
+        {"p": 12, "who": "Carlos Sainz", "team": "Williams", "gap": "+2 Rd"},
+        {"p": 13, "who": "Esteban Ocon", "team": "Haas", "gap": "+2 Rd"},
+        {"p": 14, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+3 Rd"},
+        {"p": "DNF", "who": "Charles Leclerc", "team": "Ferrari", "gap": "Servolenkung"},
+        {"p": "DNF", "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Motor"},
+        {"p": "DNF", "who": "Oliver Bearman", "team": "Haas", "gap": ""},
+        {"p": "DNF", "who": "Alexander Albon", "team": "Williams", "gap": ""},
+        {"p": "DNF", "who": "Fernando Alonso", "team": "Aston Martin", "gap": ""},
+        {"p": "DNF", "who": "Nico Hülkenberg", "team": "Audi", "gap": ""},
+        {"p": "DNF", "who": "Valtteri Bottas", "team": "Cadillac", "gap": ""},
+        {"p": "DNF", "who": "Lance Stroll", "team": "Aston Martin", "gap": ""}
+      ]}
+    ]},
+  {"s": "f1", "rd": 8, "name": "Großer Preis von Österreich", "loc": "Spielberg", "d0": "2026-06-26", "d1": "2026-06-28", "status": "done", "result": "George Russell (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:30"},
+      {"n": "FP2", "day": "Fr", "t": "17:00"},
+      {"n": "FP3", "day": "Sa", "t": "12:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "16:00"},
+      {"n": "Rennen", "day": "So", "t": "15:00"}
+    ]},
+  {"s": "f1", "rd": 9, "name": "Großer Preis von Großbritannien · Sprint", "loc": "Silverstone", "d0": "2026-07-03", "d1": "2026-07-05", "status": "done", "result": "Charles Leclerc (Ferrari)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:30"},
+      {"n": "Sprint-Quali", "day": "Fr", "t": "17:30"},
+      {"n": "Sprint", "day": "Sa", "t": "13:00"},
+      {"n": "Qualifying", "day": "Sa", "t": "17:00"},
+      {"n": "Rennen", "day": "So", "t": "16:00"}
+    ]},
+  {"s": "f1", "rd": 10, "name": "Großer Preis von Belgien", "loc": "Spa-Francorchamps", "d0": "2026-07-17", "d1": "2026-07-19", "status": "done", "result": "Kimi Antonelli (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:30"},
+      {"n": "FP2", "day": "Fr", "t": "17:00"},
+      {"n": "FP3", "day": "Sa", "t": "12:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "16:00"},
+      {"n": "Rennen", "day": "So", "t": "15:00"}
+    ]},
+  {"s": "f1", "rd": 11, "name": "Großer Preis von Ungarn", "loc": "Budapest", "d0": "2026-07-24", "d1": "2026-07-26", "status": "done", "result": "Lando Norris (McLaren)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:30"},
+      {"n": "FP2", "day": "Fr", "t": "17:00"},
+      {"n": "FP3", "day": "Sa", "t": "12:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "16:00"},
+      {"n": "Rennen", "day": "So", "t": "15:00"}
+    ]},
+  {"s": "f1", "rd": 12, "name": "Großer Preis der Niederlande · Sprint", "loc": "Zandvoort", "d0": "2026-08-21", "d1": "2026-08-23", "status": "done", "result": "Lando Norris (McLaren)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "12:30"},
+      {"n": "Sprint-Quali", "day": "Fr", "t": "16:30"},
+      {"n": "Sprint", "day": "Sa", "t": "12:00"},
+      {"n": "Qualifying", "day": "Sa", "t": "16:00"},
+      {"n": "Rennen", "day": "So", "t": "15:00"}
+    ]},
+  {"s": "f1", "rd": 13, "name": "Großer Preis von Italien", "loc": "Monza", "d0": "2026-09-04", "d1": "2026-09-06", "status": "done", "result": "Kimi Antonelli (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:30"},
+      {"n": "FP2", "day": "Fr", "t": "17:00"},
+      {"n": "FP3", "day": "Sa", "t": "12:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "16:00"},
+      {"n": "Rennen", "day": "So", "t": "15:00"}
+    ]},
+  {"s": "f1", "rd": 14, "name": "Großer Preis von Spanien", "loc": "Madrid", "d0": "2026-09-11", "d1": "2026-09-13", "status": "done", "result": "Kimi Antonelli (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:30"},
+      {"n": "FP2", "day": "Fr", "t": "17:00"},
+      {"n": "FP3", "day": "Sa", "t": "12:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "16:00"},
+      {"n": "Rennen", "day": "So", "t": "15:00"}
+    ]},
+  {"s": "f1", "rd": 15, "name": "Großer Preis von Aserbaidschan", "loc": "Baku", "d0": "2026-09-24", "d1": "2026-09-26", "status": "done", "result": "George Russell (Mercedes)",
+    "sessions": [
+      {"n": "FP1", "day": "Do", "t": "10:30"},
+      {"n": "FP2", "day": "Do", "t": "14:00"},
+      {"n": "FP3", "day": "Fr", "t": "10:30"},
+      {"n": "Qualifying", "day": "Fr", "t": "14:00"},
+      {"n": "Rennen", "day": "Sa", "t": "13:00"}
+    ]},
+  {"s": "f1", "rd": 16, "name": "Großer Preis von Bahrain", "loc": "Sepang", "d0": "2026-10-02", "d1": "2026-10-04", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "06:30"},
+      {"n": "FP2", "day": "Fr", "t": "10:00"},
+      {"n": "FP3", "day": "Sa", "t": "06:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:00"},
+      {"n": "Rennen", "day": "So", "t": "09:00"}
+    ]},
+  {"s": "f1", "rd": 17, "name": "Großer Preis von Singapur · Sprint", "loc": "Singapur", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "11:30"},
+      {"n": "Sprint-Quali", "day": "Fr", "t": "15:00"},
+      {"n": "Sprint", "day": "Sa", "t": "11:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "15:00"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "f1", "rd": 18, "name": "Großer Preis der USA", "loc": "Austin", "d0": "2026-10-23", "d1": "2026-10-25", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "19:30"},
+      {"n": "FP2", "day": "Fr", "t": "23:00"},
+      {"n": "FP3", "day": "Sa", "t": "19:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "23:00"},
+      {"n": "Rennen", "day": "So", "t": "21:00"}
+    ]},
+  {"s": "f1", "rd": 19, "name": "Großer Preis von Mexiko", "loc": "Mexiko-Stadt", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "20:30"},
+      {"n": "FP2", "day": "Sa", "t": "00:00"},
+      {"n": "FP3", "day": "Sa", "t": "19:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "23:00"},
+      {"n": "Rennen", "day": "So", "t": "21:00"}
+    ]},
+  {"s": "f1", "rd": 20, "name": "Großer Preis von São Paulo", "loc": "Interlagos", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "15:30"},
+      {"n": "FP2", "day": "Fr", "t": "19:00"},
+      {"n": "FP3", "day": "Sa", "t": "15:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "19:00"},
+      {"n": "Rennen", "day": "So", "t": "18:00"}
+    ]},
+  {"s": "f1", "rd": 21, "name": "Großer Preis von Las Vegas", "loc": "Las Vegas", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "05:30"},
+      {"n": "FP2", "day": "Fr", "t": "09:00"},
+      {"n": "FP3", "day": "Sa", "t": "05:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "09:00"},
+      {"n": "Rennen", "day": "So", "t": "07:00"}
+    ]},
+  {"s": "f1", "rd": 22, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-27", "d1": "2026-11-29", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "14:30"},
+      {"n": "FP2", "day": "Fr", "t": "18:00"},
+      {"n": "FP3", "day": "Sa", "t": "14:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "18:00"},
+      {"n": "Rennen", "day": "So", "t": "17:00"}
+    ]},
+  {"s": "f1", "rd": 23, "name": "Großer Preis von Abu Dhabi", "loc": "Yas Marina", "d0": "2026-12-04", "d1": "2026-12-06", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:30"},
+      {"n": "FP2", "day": "Fr", "t": "14:00"},
+      {"n": "FP3", "day": "Sa", "t": "11:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "15:00"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "f1", "rd": 0, "name": "Großer Preis von Bahrain", "loc": "Sakhir", "d0": "2026-04-10", "d1": "2026-04-12", "status": "cancel",
+    "sessions": []},
+  {"s": "f1", "rd": 0, "name": "Großer Preis von Saudi-Arabien", "loc": "Dschidda", "d0": "2026-04-17", "d1": "2026-04-19", "status": "cancel",
+    "sessions": []},
+  {"s": "mgp", "rd": 1, "name": "Großer Preis von Thailand", "loc": "Buriram", "d0": "2026-02-27", "d1": "2026-03-01", "status": "done", "result": "Marco Bezzecchi (Aprilia)",
+    "sessions": [
+      {"n": "Sprint", "day": "Sa", "t": "09:00"},
+      {"n": "Rennen", "day": "So", "t": "09:00"}
+    ]},
+  {"s": "mgp", "rd": 2, "name": "Großer Preis von Brasilien", "loc": "Goiânia", "d0": "2026-03-20", "d1": "2026-03-22", "status": "done", "result": "Marco Bezzecchi (Aprilia)",
+    "sessions": [
+      {"n": "Sprint", "day": "Sa", "t": "19:00"},
+      {"n": "Rennen", "day": "So", "t": "19:00"}
+    ]},
+  {"s": "mgp", "rd": 3, "name": "Großer Preis der Amerikas", "loc": "Austin", "d0": "2026-03-27", "d1": "2026-03-29", "status": "done", "result": "Marco Bezzecchi (Aprilia)",
+    "sessions": [
+      {"n": "Sprint", "day": "Sa", "t": "21:00"},
+      {"n": "Rennen", "day": "So", "t": "22:00"}
+    ]},
+  {"s": "mgp", "rd": 4, "name": "Großer Preis von Spanien", "loc": "Jerez", "d0": "2026-04-24", "d1": "2026-04-26", "status": "done", "result": "Álex Márquez (Ducati)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 5, "name": "Großer Preis von Frankreich", "loc": "Le Mans", "d0": "2026-05-08", "d1": "2026-05-10", "status": "done", "result": "Jorge Martín (Aprilia)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 6, "name": "Großer Preis von Katalonien", "loc": "Barcelona", "d0": "2026-05-15", "d1": "2026-05-17", "status": "done", "result": "Fabio Di Giannantonio (Ducati)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 7, "name": "Großer Preis von Italien", "loc": "Mugello", "d0": "2026-05-29", "d1": "2026-05-31", "status": "done", "result": "Marco Bezzecchi (Aprilia)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 8, "name": "Großer Preis von Ungarn", "loc": "Balaton Park", "d0": "2026-06-05", "d1": "2026-06-07", "status": "done", "result": "Marc Márquez (Ducati)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 9, "name": "Großer Preis von Tschechien", "loc": "Brünn", "d0": "2026-06-19", "d1": "2026-06-21", "status": "done", "result": "Marc Márquez (Ducati)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 10, "name": "Großer Preis der Niederlande", "loc": "Assen", "d0": "2026-06-26", "d1": "2026-06-28", "status": "done", "result": "Ai Ogura (Aprilia)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 11, "name": "Großer Preis von Deutschland", "loc": "Sachsenring", "d0": "2026-07-10", "d1": "2026-07-12", "status": "done", "result": "Marc Márquez (Ducati)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 12, "name": "Großer Preis von Großbritannien", "loc": "Silverstone", "d0": "2026-08-07", "d1": "2026-08-09", "status": "done", "result": "Raúl Fernández (Aprilia)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "17:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 13, "name": "Großer Preis von Aragón", "loc": "Aragón", "d0": "2026-08-28", "d1": "2026-08-30", "status": "done", "result": "Marc Márquez (Ducati)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 14, "name": "Großer Preis von San Marino", "loc": "Misano", "d0": "2026-09-11", "d1": "2026-09-13", "status": "done", "result": "Marc Márquez (Ducati)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 15, "name": "Großer Preis von Österreich", "loc": "Red Bull Ring", "d0": "2026-09-18", "d1": "2026-09-20", "status": "done", "result": "Pedro Acosta (KTM)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 16, "name": "Großer Preis von Japan", "loc": "Motegi", "d0": "2026-10-02", "d1": "2026-10-04", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "03:45"},
+      {"n": "Practice", "day": "Fr", "t": "08:00"},
+      {"n": "FP2", "day": "Sa", "t": "03:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "03:50"},
+      {"n": "Sprint", "day": "Sa", "t": "08:00"},
+      {"n": "Warm Up", "day": "So", "t": "02:40"},
+      {"n": "Rennen", "day": "So", "t": "07:00"}
+    ]},
+  {"s": "mgp", "rd": 17, "name": "Großer Preis von Indonesien", "loc": "Mandalika", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "04:45"},
+      {"n": "Practice", "day": "Fr", "t": "09:00"},
+      {"n": "FP2", "day": "Sa", "t": "04:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "04:50"},
+      {"n": "Sprint", "day": "Sa", "t": "09:00"},
+      {"n": "Warm Up", "day": "So", "t": "04:40"},
+      {"n": "Rennen", "day": "So", "t": "09:00"}
+    ]},
+  {"s": "mgp", "rd": 18, "name": "Großer Preis von Australien", "loc": "Phillip Island", "d0": "2026-10-23", "d1": "2026-10-25", "status": "up",
+    "sessions": [
+      {"n": "Sprint", "day": "Sa", "t": "06:00"},
+      {"n": "Rennen", "day": "So", "t": "04:00"}
+    ]},
+  {"s": "mgp", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
+    "sessions": [
+      {"n": "Sprint", "day": "Sa", "t": "08:00"},
+      {"n": "Rennen", "day": "So", "t": "08:00"}
+    ]},
+  {"s": "mgp", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
+    "sessions": [
+      {"n": "Sprint", "day": "Sa", "t": "18:00"},
+      {"n": "Rennen", "day": "So", "t": "18:00"}
+    ]},
+  {"s": "mgp", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "16:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "mgp", "rd": 22, "name": "Großer Preis von Valencia", "loc": "Valencia", "d0": "2026-11-27", "d1": "2026-11-29", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "10:45"},
+      {"n": "Practice", "day": "Fr", "t": "15:00"},
+      {"n": "FP2", "day": "Sa", "t": "10:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:50"},
+      {"n": "Sprint", "day": "Sa", "t": "15:00"},
+      {"n": "Warm Up", "day": "So", "t": "09:40"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
+    ]},
+  {"s": "wec", "rd": 1, "name": "6 Stunden von Imola", "loc": "Imola", "d0": "2026-04-17", "d1": "2026-04-19", "status": "done", "result": "Toyota #8 (Buemi/Hartley/Hirakawa)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:30"},
+      {"n": "FP2", "day": "Fr", "t": "18:00"},
+      {"n": "FP3", "day": "Sa", "t": "09:45"},
+      {"n": "Hyperpole", "day": "Sa", "t": "14:20"},
+      {"n": "Rennen (6h)", "day": "So", "t": "13:00", "res": [
+        {"p": 1, "who": "Toyota #8", "team": "Buemi/Hartley/Hirakawa", "gap": "Sieger"}
+      ]}
+    ]},
+  {"s": "wec", "rd": 2, "name": "6 Stunden von Spa-Francorchamps", "loc": "Spa", "d0": "2026-05-07", "d1": "2026-05-09", "status": "done", "result": "BMW #20 (van der Linde/Frijns/Rast)",
+    "sessions": [
+      {"n": "FP1", "day": "Do", "t": "15:30"},
+      {"n": "FP2", "day": "Fr", "t": "11:00"},
+      {"n": "FP3", "day": "Fr", "t": "16:00"},
+      {"n": "Hyperpole", "day": "Sa", "t": "12:00"},
+      {"n": "Rennen (6h)", "day": "Sa", "t": "14:00", "res": [
+        {"p": 1, "who": "BMW #20", "team": "van der Linde/Frijns/Rast", "gap": "Sieger"},
+        {"p": 2, "who": "Toyota #15", "team": "Magnussen/Marciello/Vanthoor", "gap": "P2"}
+      ]}
+    ]},
+  {"s": "wec", "rd": 3, "name": "24 Stunden von Le Mans", "loc": "Le Mans", "d0": "2026-06-10", "d1": "2026-06-14", "status": "done", "result": "Toyota #7 (Conway/Kobayashi/de Vries)",
+    "sessions": [
+      {"n": "Free Practice", "day": "Mi", "t": "15:00"},
+      {"n": "Qualifying", "day": "Mi", "t": "19:00"},
+      {"n": "Hyperpole", "day": "Do", "t": "20:00"},
+      {"n": "Warm Up", "day": "Sa", "t": "12:00"},
+      {"n": "Rennen (24h)", "day": "Sa", "t": "16:00", "res": [
+        {"p": 1, "who": "Toyota #7", "team": "Conway/Kobayashi/de Vries", "gap": "Sieger"},
+        {"p": 2, "who": "BMW #20", "team": "Hypercar", "gap": "P2"},
+        {"p": 3, "who": "Toyota #8", "team": "Hypercar", "gap": "P3"}
+      ]}
+    ]},
+  {"s": "wec", "rd": 4, "name": "6 Stunden von São Paulo", "loc": "Interlagos", "d0": "2026-07-10", "d1": "2026-07-12", "status": "done", "result": "BMW #15 (Magnussen/Marciello/Vanthoor)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "16:00"},
+      {"n": "FP2", "day": "Fr", "t": "20:30"},
+      {"n": "FP3", "day": "Sa", "t": "15:00"},
+      {"n": "Hyperpole", "day": "Sa", "t": "19:20"},
+      {"n": "Rennen (6h)", "day": "So", "t": "16:00"}
+    ]},
+  {"s": "wec", "rd": 5, "name": "Lone Star Le Mans (Austin)", "loc": "COTA", "d0": "2026-09-04", "d1": "2026-09-06", "status": "done", "result": "Ferrari #50 (Fuoco/Molina/Nielsen)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "18:00"},
+      {"n": "FP2", "day": "Fr", "t": "23:00"},
+      {"n": "FP3", "day": "Sa", "t": "17:00"},
+      {"n": "Hyperpole", "day": "Sa", "t": "21:20"},
+      {"n": "Rennen (6h)", "day": "So", "t": "20:00"}
+    ]},
+  {"s": "wec", "rd": 6, "name": "6 Stunden von Fuji", "loc": "Fuji", "d0": "2026-09-25", "d1": "2026-09-27", "status": "done", "result": "Toyota #8 (Buemi/Hartley/Hirakawa)",
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "04:00"},
+      {"n": "FP2", "day": "Fr", "t": "08:30"},
+      {"n": "FP3", "day": "Sa", "t": "03:30"},
+      {"n": "Hyperpole", "day": "Sa", "t": "07:20"},
+      {"n": "Rennen (6h)", "day": "So", "t": "04:00"}
+    ]},
+  {"s": "wec", "rd": 7, "name": "6 Stunden von Barcelona", "loc": "Circuit de Barcelona-Catalunya", "d0": "2026-10-16", "d1": "2026-10-18", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Do", "t": "13:00"},
+      {"n": "FP2", "day": "Do", "t": "18:00"},
+      {"n": "FP3", "day": "Fr", "t": "13:00"},
+      {"n": "Hyperpole", "day": "Fr", "t": "17:20"},
+      {"n": "Rennen (6h)", "day": "Sa", "t": "13:00"}
+    ]},
+  {"s": "wec", "rd": 8, "name": "6 Stunden von Monza (Finale)", "loc": "Monza", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
+    "sessions": [
+      {"n": "FP1", "day": "Do", "t": "13:00"},
+      {"n": "FP2", "day": "Do", "t": "18:00"},
+      {"n": "FP3", "day": "Fr", "t": "14:00"},
+      {"n": "Hyperpole", "day": "Fr", "t": "18:20"},
+      {"n": "Rennen (6h)", "day": "Sa", "t": "13:00"}
+    ]},
+  {"s": "dtm", "rd": 1, "name": "DTM Spielberg", "loc": "Red Bull Ring", "d0": "2026-04-24", "d1": "2026-04-26", "status": "done", "result": "Sa: Preining · So: Engel",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "13:30"},
+      {"n": "Qualifying 1", "day": "Sa", "t": "09:40", "res": [
+        {"p": 1, "who": "Maximilian Engel", "team": "Mercedes", "gap": "1:27.403 · Pole"},
+        {"p": 2, "who": "Ben Dörr", "team": "Ferrari", "gap": "+0.015"},
+        {"p": 3, "who": "Thomas Preining", "team": "Porsche", "gap": "+0.048"}
+      ]},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30", "res": [
+        {"p": 1, "who": "Thomas Preining", "team": "Porsche", "gap": "Sieger"},
+        {"p": 2, "who": "Lucas Auer", "team": "Mercedes", "gap": "+0.774"},
+        {"p": 3, "who": "Maximilian Engel", "team": "Mercedes", "gap": "+1.620"}
+      ]},
+      {"n": "Qualifying 2", "day": "So", "t": "09:30", "res": [
+        {"p": 1, "who": "Kelvin van der Linde", "team": "BMW", "gap": "1:27.575 · Pole"},
+        {"p": 2, "who": "Franz Wiebelhaus", "team": "Audi", "gap": "+0.085"},
+        {"p": 3, "who": "Lucas Auer", "team": "Mercedes", "gap": "+0.093"}
+      ]},
+      {"n": "Rennen 2", "day": "So", "t": "13:30", "res": [
+        {"p": 1, "who": "Maximilian Engel", "team": "Mercedes", "gap": "Sieger"},
+        {"p": 2, "who": "Marco Wittmann", "team": "BMW", "gap": "+4.857"},
+        {"p": 3, "who": "Lucas Auer", "team": "Mercedes", "gap": "+5.429"}
+      ]}
+    ]},
+  {"s": "dtm", "rd": 2, "name": "DTM Zandvoort", "loc": "Zandvoort", "d0": "2026-05-22", "d1": "2026-05-24", "status": "done", "result": "Sa: Cairoli · So: K. van der Linde",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "13:30"},
+      {"n": "Qualifying 1", "day": "Sa", "t": "09:40"},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30", "res": [
+        {"p": 1, "who": "Kelvin van der Linde", "team": "BMW Schubert", "gap": "Sieger"}
+      ]},
+      {"n": "Qualifying 2", "day": "So", "t": "09:30"},
+      {"n": "Rennen 2", "day": "So", "t": "13:30"}
+    ]},
+  {"s": "dtm", "rd": 3, "name": "DTM Lausitzring", "loc": "Lausitzring", "d0": "2026-06-19", "d1": "2026-06-21", "status": "done", "result": "Sa: Dörr · So: Cairoli",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "13:30"},
+      {"n": "Qualifying 1", "day": "Sa", "t": "09:00"},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
+      {"n": "Qualifying 2", "day": "So", "t": "09:05"},
+      {"n": "Rennen 2", "day": "So", "t": "13:30"}
+    ]},
+  {"s": "dtm", "rd": 4, "name": "DTM Norisring", "loc": "Nürnberg", "d0": "2026-07-03", "d1": "2026-07-05", "status": "done", "result": "Sa: Thiim · So: Thiim",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "13:30"},
+      {"n": "Qualifying 1", "day": "Sa", "t": "09:00"},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
+      {"n": "Qualifying 2", "day": "So", "t": "09:05"},
+      {"n": "Rennen 2", "day": "So", "t": "13:30"}
+    ]},
+  {"s": "dtm", "rd": 5, "name": "DTM Oschersleben", "loc": "Oschersleben", "d0": "2026-07-24", "d1": "2026-07-26", "status": "done", "result": "Sa: Preining · So: Engel",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "13:30"},
+      {"n": "Qualifying 1", "day": "Sa", "t": "09:00"},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
+      {"n": "Qualifying 2", "day": "So", "t": "09:05"},
+      {"n": "Rennen 2", "day": "So", "t": "13:30"}
+    ]},
+  {"s": "dtm", "rd": 6, "name": "DTM Nürburgring", "loc": "Nürburgring", "d0": "2026-08-14", "d1": "2026-08-16", "status": "done", "result": "Sa: Cairoli · So: Wittmann",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "13:30"},
+      {"n": "Qualifying 1", "day": "Sa", "t": "09:00"},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
+      {"n": "Qualifying 2", "day": "So", "t": "09:05"},
+      {"n": "Rennen 2", "day": "So", "t": "13:30"}
+    ]},
+  {"s": "dtm", "rd": 7, "name": "DTM Sachsenring", "loc": "Sachsenring", "d0": "2026-09-11", "d1": "2026-09-13", "status": "done", "result": "Sa: Wittmann · So: Dörr",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "13:30"},
+      {"n": "Qualifying 1", "day": "Sa", "t": "09:00"},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
+      {"n": "Qualifying 2", "day": "So", "t": "09:05"},
+      {"n": "Rennen 2", "day": "So", "t": "13:30"}
+    ]},
+  {"s": "dtm", "rd": 8, "name": "DTM Hockenheim (Finale)", "loc": "Hockenheimring", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "13:30"},
+      {"n": "Qualifying 1", "day": "Sa", "t": "09:00"},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
+      {"n": "Qualifying 2", "day": "So", "t": "09:05"},
+      {"n": "Rennen 2", "day": "So", "t": "13:30"}
+    ]},
+  {"s": "wrc", "rd": 1, "name": "Rallye Monte-Carlo", "loc": "Monaco", "d0": "2026-01-22", "d1": "2026-01-25", "status": "done", "result": "Oliver Solberg (Toyota)",
+    "resOverall": [
+      {"p": 1, "who": "Oliver Solberg", "team": "Toyota", "gap": "Sieger"},
+      {"p": 2, "who": "Elfyn Evans", "team": "Toyota", "gap": "+51.8s"},
+      {"p": 3, "who": "Sébastien Ogier", "team": "Toyota", "gap": "P3"}
+    ],
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "09:00"},
+      {"n": "Etappe 1", "day": "Do", "t": "18:00"},
+      {"n": "Etappe 2", "day": "Fr", "t": "08:00"},
+      {"n": "Etappe 3", "day": "Sa", "t": "08:00"},
+      {"n": "Power Stage", "day": "So", "t": "12:00"}
+    ]},
+  {"s": "wrc", "rd": 2, "name": "Rallye Schweden", "loc": "Umeå", "d0": "2026-02-12", "d1": "2026-02-15", "status": "done", "result": "Elfyn Evans (Toyota)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "08:00"},
+      {"n": "Etappe 1", "day": "Do", "t": "19:00"},
+      {"n": "Etappe 2", "day": "Fr", "t": "08:00"},
+      {"n": "Etappe 3", "day": "Sa", "t": "08:00"},
+      {"n": "Power Stage", "day": "So", "t": "12:15"}
+    ]},
+  {"s": "wrc", "rd": 3, "name": "Safari-Rallye Kenia", "loc": "Nairobi", "d0": "2026-03-12", "d1": "2026-03-15", "status": "done", "result": "Takamoto Katsuta (Toyota)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "06:00"},
+      {"n": "Etappe 1", "day": "Do", "t": "12:00"},
+      {"n": "Etappe 2", "day": "Fr", "t": "05:00"},
+      {"n": "Etappe 3", "day": "Sa", "t": "05:00"},
+      {"n": "Power Stage", "day": "So", "t": "10:15"}
+    ]},
+  {"s": "wrc", "rd": 4, "name": "Rallye Kroatien", "loc": "Rijeka", "d0": "2026-04-09", "d1": "2026-04-12", "status": "done", "result": "Takamoto Katsuta (Toyota)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "08:00"},
+      {"n": "Etappe 1", "day": "Fr", "t": "08:00"},
+      {"n": "Etappe 2", "day": "Sa", "t": "08:00"},
+      {"n": "Etappe 3", "day": "So", "t": "08:00"},
+      {"n": "Power Stage", "day": "So", "t": "12:15"}
+    ]},
+  {"s": "wrc", "rd": 5, "name": "Rallye Islas Canarias", "loc": "Las Palmas (Gran Canaria)", "d0": "2026-04-23", "d1": "2026-04-26", "status": "done", "result": "Sébastien Ogier (Toyota)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "09:00"},
+      {"n": "Etappe 1", "day": "Fr", "t": "08:00"},
+      {"n": "Etappe 2", "day": "Sa", "t": "08:00"},
+      {"n": "Etappe 3", "day": "So", "t": "08:00"},
+      {"n": "Power Stage", "day": "So", "t": "12:15"}
+    ]},
+  {"s": "wrc", "rd": 6, "name": "Rallye Portugal", "loc": "Matosinhos", "d0": "2026-05-07", "d1": "2026-05-10", "status": "done", "result": "Thierry Neuville (Hyundai)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "09:00"},
+      {"n": "Etappe 1", "day": "Fr", "t": "08:00"},
+      {"n": "Etappe 2", "day": "Sa", "t": "08:00"},
+      {"n": "Etappe 3", "day": "So", "t": "08:00"},
+      {"n": "Power Stage", "day": "So", "t": "12:15"}
+    ]},
+  {"s": "wrc", "rd": 7, "name": "Rallye Japan", "loc": "Aichi/Gifu", "d0": "2026-05-28", "d1": "2026-05-31", "status": "done", "result": "Elfyn Evans (Toyota)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "02:00"},
+      {"n": "Etappe 1", "day": "Fr", "t": "01:00"},
+      {"n": "Etappe 2", "day": "Sa", "t": "01:00"},
+      {"n": "Etappe 3", "day": "So", "t": "01:00"},
+      {"n": "Power Stage", "day": "So", "t": "08:15"}
+    ]},
+  {"s": "wrc", "rd": 8, "name": "Akropolis-Rallye Griechenland", "loc": "Loutraki", "d0": "2026-06-25", "d1": "2026-06-28", "status": "done", "result": "Sébastien Ogier (Toyota)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "08:00"},
+      {"n": "Etappe 1", "day": "Fr", "t": "07:00"},
+      {"n": "Etappe 2", "day": "Sa", "t": "07:00"},
+      {"n": "Etappe 3", "day": "So", "t": "07:00"},
+      {"n": "Power Stage", "day": "So", "t": "11:15"}
+    ]},
+  {"s": "wrc", "rd": 9, "name": "Rallye Estland", "loc": "Tartu", "d0": "2026-07-16", "d1": "2026-07-19", "status": "done", "result": "Sami Pajari (Toyota)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "09:00"},
+      {"n": "Etappe 1", "day": "Fr", "t": "08:00"},
+      {"n": "Etappe 2", "day": "Sa", "t": "08:00"},
+      {"n": "Etappe 3", "day": "So", "t": "08:00"},
+      {"n": "Power Stage", "day": "So", "t": "12:15"}
+    ]},
+  {"s": "wrc", "rd": 10, "name": "Rallye Finnland", "loc": "Jyväskylä", "d0": "2026-07-30", "d1": "2026-08-02", "status": "done", "result": "Sami Pajari (Toyota)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "08:00"},
+      {"n": "Etappe 1", "day": "Fr", "t": "07:00"},
+      {"n": "Etappe 2", "day": "Sa", "t": "07:00"},
+      {"n": "Etappe 3", "day": "So", "t": "07:00"},
+      {"n": "Power Stage", "day": "So", "t": "11:15"}
+    ]},
+  {"s": "wrc", "rd": 11, "name": "Rallye Paraguay", "loc": "Encarnación", "d0": "2026-08-27", "d1": "2026-08-30", "status": "done", "result": "Sami Pajari (Toyota)",
+    "sessions": [
+      {"n": "WP1 Cambyreta 1", "day": "Fr", "t": "14:03"},
+      {"n": "WP2 Nueva Alborada 1", "day": "Fr", "t": "14:56"},
+      {"n": "WP3 Yerbateras 1", "day": "Fr", "t": "15:49"},
+      {"n": "WP4 Autodromo 1", "day": "Fr", "t": "16:50"},
+      {"n": "WP5 Cambyreta 2", "day": "Fr", "t": "19:19"},
+      {"n": "WP6 Nueva Alborada 2", "day": "Fr", "t": "20:12"},
+      {"n": "WP7 Yerbateras 2", "day": "Fr", "t": "21:05"},
+      {"n": "WP8 Autodromo 2", "day": "Fr", "t": "22:18"},
+      {"n": "WP9 Bella Vista 1", "day": "Sa", "t": "13:19"},
+      {"n": "WP10 Bella Vista Sur 1", "day": "Sa", "t": "14:12"},
+      {"n": "WP11 Hohenau 1", "day": "Sa", "t": "15:05"},
+      {"n": "WP12 Trinidad 1", "day": "Sa", "t": "16:02"},
+      {"n": "WP13 Bella Vista 2", "day": "Sa", "t": "19:16"},
+      {"n": "WP14 Bella Vista Sur 2", "day": "Sa", "t": "20:09"},
+      {"n": "WP15 Hohenau 2", "day": "Sa", "t": "21:05"},
+      {"n": "WP16 Trinidad 2", "day": "Sa", "t": "22:02"},
+      {"n": "WP17 Encarnación Costanera", "day": "Sa", "t": "23:05"},
+      {"n": "WP18 Encarnación 1", "day": "So", "t": "12:05"},
+      {"n": "WP19 Artigas 1", "day": "So", "t": "13:38"},
+      {"n": "WP20 Artigas Oeste", "day": "So", "t": "15:51"},
+      {"n": "WP21 Artigas 2", "day": "So", "t": "16:43"},
+      {"n": "WP22 Encarnación 2 · Power Stage", "day": "So", "t": "19:15"}
+    ]},
+  {"s": "wrc", "rd": 12, "name": "Rallye Chile Bio Bío", "loc": "Concepción", "d0": "2026-09-10", "d1": "2026-09-13", "status": "done", "result": "Oliver Solberg (Toyota)",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "16:01"},
+      {"n": "WP1 Turquía 1", "day": "Fr", "t": "13:53"},
+      {"n": "WP2 Nuevo Rere 1", "day": "Fr", "t": "14:48"},
+      {"n": "WP3 Hualqui 1", "day": "Fr", "t": "15:36"},
+      {"n": "WP4 Turquía 2", "day": "Fr", "t": "20:09"},
+      {"n": "WP5 Nuevo Rere 2", "day": "Fr", "t": "21:04"},
+      {"n": "WP6 Hualqui 2", "day": "Fr", "t": "21:52"},
+      {"n": "WP7 Pelún 1", "day": "Sa", "t": "14:08"},
+      {"n": "WP8 Lota 1", "day": "Sa", "t": "15:01"},
+      {"n": "WP9 María las Cruces 1", "day": "Sa", "t": "16:05"},
+      {"n": "WP10 Pelún 2", "day": "Sa", "t": "20:08"},
+      {"n": "WP11 Lota 2", "day": "Sa", "t": "21:01"},
+      {"n": "WP12 María las Cruces 2", "day": "Sa", "t": "22:05"},
+      {"n": "WP13 Carampangue 1", "day": "So", "t": "14:00"},
+      {"n": "WP14 BioBío 1", "day": "So", "t": "15:05"},
+      {"n": "WP15 Carampangue 2", "day": "So", "t": "16:13"},
+      {"n": "WP16 BioBío 2 · Power Stage", "day": "So", "t": "18:15"}
+    ]},
+  {"s": "wrc", "rd": 13, "name": "Rallye Italien (Sardinien) · Finale", "loc": "Alghero", "d0": "2026-10-01", "d1": "2026-10-04", "status": "up",
+    "sessions": [
+      {"n": "Shakedown", "day": "Do", "t": "09:01"},
+      {"n": "WP1 Ittiri Arena Show", "day": "Do", "t": "16:05"},
+      {"n": "WP2 Tula–Erula 1", "day": "Fr", "t": "08:01"},
+      {"n": "WP3 Su Filigosu–Lerno 1", "day": "Fr", "t": "09:01"},
+      {"n": "WP4 Monti di Alà 1", "day": "Fr", "t": "10:08"},
+      {"n": "WP5 Tula–Erula 2", "day": "Fr", "t": "14:31"},
+      {"n": "WP6 Su Filigosu–Lerno 2", "day": "Fr", "t": "15:31"},
+      {"n": "WP7 Monti di Alà 2", "day": "Fr", "t": "16:38"},
+      {"n": "WP8 Lerno–Monti di Alà 1", "day": "Sa", "t": "08:01"},
+      {"n": "WP9 Coiluna–Loelle 1", "day": "Sa", "t": "09:11"},
+      {"n": "WP10 Solorchè 1", "day": "Sa", "t": "10:07"},
+      {"n": "WP11 Lerno–Monti di Alà 2", "day": "Sa", "t": "14:31"},
+      {"n": "WP12 Coiluna–Loelle 2", "day": "Sa", "t": "15:41"},
+      {"n": "WP13 Solorchè 2", "day": "Sa", "t": "16:37"},
+      {"n": "WP14 Osilo–Tergu 1", "day": "So", "t": "08:31"},
+      {"n": "WP15 Sassari–Argentiera 1", "day": "So", "t": "10:05"},
+      {"n": "WP16 Osilo–Tergu 2", "day": "So", "t": "11:38"},
+      {"n": "WP17 Sassari–Argentiera 2 · Power Stage", "day": "So", "t": "14:15"}
+    ]},
+  {"s": "wrc", "rd": 14, "name": "Rallye Saudi-Arabien (abgesagt)", "loc": "Jeddah", "d0": "2026-11-11", "d1": "2026-11-14", "status": "cancel",
+    "sessions": [
+      {"n": "Shakedown", "day": "Mi", "t": "13:00"},
+      {"n": "Etappe 1", "day": "Do", "t": "16:00"},
+      {"n": "Etappe 2", "day": "Fr", "t": "16:00"},
+      {"n": "Etappe 3", "day": "Sa", "t": "16:00"},
+      {"n": "Power Stage", "day": "Sa", "t": "19:15"}
+    ]},
+  {"s": "fe", "rd": 1, "name": "São Paulo E-Prix", "loc": "São Paulo", "d0": "2025-12-06", "d1": "2025-12-06", "status": "done", "result": "Jake Dennis (Andretti)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "13:00"},
+      {"n": "Qualifying", "day": "Sa", "t": "11:40"},
+      {"n": "Rennen", "day": "Sa", "t": "17:00", "res": [
+        {"p": 1, "who": "Jake Dennis", "team": "Andretti", "gap": "Sieger"},
+        {"p": 2, "who": "Oliver Rowland", "team": "Nissan", "gap": "P2"},
+        {"p": 3, "who": "Nick Cassidy", "team": "Citroën", "gap": "P3"}
+      ]}
+    ]},
+  {"s": "fe", "rd": 2, "name": "Mexiko-Stadt E-Prix", "loc": "Mexiko-Stadt", "d0": "2026-01-10", "d1": "2026-01-10", "status": "done", "result": "Nick Cassidy (Citroën)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Sa", "t": "16:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "18:40"},
+      {"n": "Rennen", "day": "Sa", "t": "23:00"}
+    ]},
+  {"s": "fe", "rd": 3, "name": "Miami E-Prix", "loc": "Miami", "d0": "2026-01-31", "d1": "2026-01-31", "status": "done", "result": "Mitch Evans (Jaguar)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Sa", "t": "15:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "17:40"},
+      {"n": "Rennen", "day": "Sa", "t": "22:00"}
+    ]},
+  {"s": "fe", "rd": 4, "name": "Jeddah E-Prix I", "loc": "Dschidda", "d0": "2026-02-13", "d1": "2026-02-13", "status": "done", "result": "Pascal Wehrlein (Porsche)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "12:30"},
+      {"n": "Qualifying", "day": "Fr", "t": "14:40"},
+      {"n": "Rennen", "day": "Fr", "t": "19:00"}
+    ]},
+  {"s": "fe", "rd": 5, "name": "Jeddah E-Prix II", "loc": "Dschidda", "d0": "2026-02-14", "d1": "2026-02-14", "status": "done", "result": "António Félix da Costa (Jaguar)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Sa", "t": "10:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "12:40"},
+      {"n": "Rennen", "day": "Sa", "t": "19:00"}
+    ]},
+  {"s": "fe", "rd": 6, "name": "Madrid E-Prix", "loc": "Jarama", "d0": "2026-03-21", "d1": "2026-03-21", "status": "done", "result": "António Félix da Costa (Jaguar)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Sa", "t": "09:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "11:40"},
+      {"n": "Rennen", "day": "Sa", "t": "16:00"}
+    ]},
+  {"s": "fe", "rd": 7, "name": "Berlin E-Prix I", "loc": "Tempelhof", "d0": "2026-05-02", "d1": "2026-05-02", "status": "done", "result": "Nico Müller (Porsche)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Sa", "t": "09:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "11:40"},
+      {"n": "Rennen", "day": "Sa", "t": "16:00"}
+    ]},
+  {"s": "fe", "rd": 8, "name": "Berlin E-Prix II", "loc": "Tempelhof", "d0": "2026-05-03", "d1": "2026-05-03", "status": "done", "result": "Mitch Evans (Jaguar)",
+    "sessions": [
+      {"n": "Freies Training", "day": "So", "t": "09:30"},
+      {"n": "Qualifying", "day": "So", "t": "11:40"},
+      {"n": "Rennen", "day": "So", "t": "16:00"}
+    ]},
+  {"s": "fe", "rd": 9, "name": "Monaco E-Prix I", "loc": "Monte Carlo", "d0": "2026-05-16", "d1": "2026-05-16", "status": "done", "result": "Nyck de Vries (Mahindra)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Sa", "t": "08:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "10:40"},
+      {"n": "Rennen", "day": "Sa", "t": "15:00"}
+    ]},
+  {"s": "fe", "rd": 10, "name": "Monaco E-Prix II", "loc": "Monte Carlo", "d0": "2026-05-17", "d1": "2026-05-17", "status": "done", "result": "Oliver Rowland (Nissan)",
+    "sessions": [
+      {"n": "Freies Training", "day": "So", "t": "08:30"},
+      {"n": "Qualifying", "day": "So", "t": "10:40"},
+      {"n": "Rennen", "day": "So", "t": "15:00"}
+    ]},
+  {"s": "fe", "rd": 11, "name": "Sanya E-Prix", "loc": "Sanya", "d0": "2026-06-20", "d1": "2026-06-20", "status": "done", "result": "Jake Dennis (Andretti)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Sa", "t": "04:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "06:40"},
+      {"n": "Rennen", "day": "Sa", "t": "09:00"}
+    ]},
+  {"s": "fe", "rd": 12, "name": "Shanghai E-Prix I", "loc": "Shanghai", "d0": "2026-07-04", "d1": "2026-07-04", "status": "done", "result": "Pascal Wehrlein (Porsche)",
+    "sessions": [
+      {"n": "Freies Training", "day": "Sa", "t": "04:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "06:40"},
+      {"n": "Rennen", "day": "Sa", "t": "09:00"}
+    ]},
+  {"s": "fe", "rd": 13, "name": "Shanghai E-Prix II", "loc": "Shanghai", "d0": "2026-07-05", "d1": "2026-07-05", "status": "done", "result": "Lucas di Grassi (Lola Yamaha ABT)",
+    "sessions": [
+      {"n": "Freies Training", "day": "So", "t": "04:30"},
+      {"n": "Qualifying", "day": "So", "t": "06:40"},
+      {"n": "Rennen", "day": "So", "t": "09:00"}
+    ]},
+  {"s": "fe", "rd": 14, "name": "Tokio E-Prix", "loc": "Tokio", "d0": "2026-07-25", "d1": "2026-07-26", "status": "done", "result": "Sa: Ticktum · So: de Vries",
+    "sessions": [
+      {"n": "Freies Training", "day": "Sa", "t": "03:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "05:40"},
+      {"n": "Rennen", "day": "Sa", "t": "08:00"}
+    ]},
+  {"s": "fe", "rd": 15, "name": "London E-Prix I", "loc": "London ExCeL", "d0": "2026-08-15", "d1": "2026-08-15", "status": "done", "result": "Pascal Wehrlein (Porsche)",
+    "sessions": []},
+  {"s": "fe", "rd": 16, "name": "London E-Prix II · Finale", "loc": "London ExCeL", "d0": "2026-08-16", "d1": "2026-08-16", "status": "done", "result": "Taylor Barnard (DS Penske)",
+    "sessions": []},
+  {"s": "gtwc", "rd": 1, "name": "6 Stunden von Paul Ricard · Endurance", "loc": "Paul Ricard", "d0": "2026-04-11", "d1": "2026-04-12", "status": "done", "result": "Aston Martin #7 (Drudi/Sørensen/Thiim)",
+    "sessions": []},
+  {"s": "gtwc", "rd": 2, "name": "Brands Hatch · Sprint", "loc": "Brands Hatch", "d0": "2026-05-02", "d1": "2026-05-03", "status": "done", "result": "Sa: Leclerc/Neubauer (Ferrari) · So: Buus/Feller (Porsche)",
+    "sessions": []},
+  {"s": "gtwc", "rd": 3, "name": "Monza · Endurance", "loc": "Monza", "d0": "2026-05-30", "d1": "2026-05-31", "status": "done", "result": "Audi #66 (Levi/Mazzola/Øgaard)",
+    "sessions": []},
+  {"s": "gtwc", "rd": 4, "name": "24 Stunden von Spa · Endurance", "loc": "Spa-Francorchamps", "d0": "2026-06-25", "d1": "2026-06-28", "status": "done", "result": "Porsche #80 (Buus/Feller/Preining)",
+    "sessions": []},
+  {"s": "gtwc", "rd": 5, "name": "Misano · Sprint", "loc": "Misano", "d0": "2026-07-18", "d1": "2026-07-19", "status": "done", "result": "Sa: van der Linde/Weerts (BMW) · So: van der Linde/Weerts (BMW)",
+    "sessions": []},
+  {"s": "gtwc", "rd": 6, "name": "Magny-Cours · Sprint", "loc": "Magny-Cours", "d0": "2026-08-01", "d1": "2026-08-02", "status": "done", "result": "Sa: Gounon/Juncadella (Mercedes-AMG) · So: Buus/Feller (Porsche)",
+    "sessions": []},
+  {"s": "gtwc", "rd": 7, "name": "Nürburgring · Endurance", "loc": "Nürburgring", "d0": "2026-08-29", "d1": "2026-08-30", "status": "done", "result": "Aston Martin #7 (Drudi/Sørensen/Thiim)",
+    "sessions": []},
+  {"s": "gtwc", "rd": 8, "name": "Zandvoort · Sprint", "loc": "Zandvoort", "d0": "2026-09-18", "d1": "2026-09-20", "status": "done", "result": "Sa: Fleming/Prette (McLaren) · So: Green/Vermeulen (Ferrari)",
+    "sessions": [
+      {"n": "Freies Training 1", "day": "Fr", "t": "09:00"},
+      {"n": "Freies Training 2", "day": "Fr", "t": "13:50"},
+      {"n": "Qualifying 1 · Gruppe A", "day": "Sa", "t": "09:50"},
+      {"n": "Qualifying 1 · Gruppe B", "day": "Sa", "t": "10:05"},
+      {"n": "Rennen 1", "day": "Sa", "t": "14:45"},
+      {"n": "Qualifying 2 · Gruppe A", "day": "So", "t": "10:35"},
+      {"n": "Qualifying 2 · Gruppe B", "day": "So", "t": "10:50"},
+      {"n": "Rennen 2", "day": "So", "t": "14:15"}
+    ]},
+  {"s": "gtwc", "rd": 9, "name": "Barcelona · Sprint", "loc": "Barcelona", "d0": "2026-10-02", "d1": "2026-10-04", "status": "up",
+    "sessions": [
+      {"n": "Freies Training 1", "day": "Fr", "t": "09:00"},
+      {"n": "Freies Training 2", "day": "Fr", "t": "13:55"},
+      {"n": "Qualifying 1 · Gruppe A", "day": "Sa", "t": "09:50"},
+      {"n": "Qualifying 1 · Gruppe B", "day": "Sa", "t": "10:05"},
+      {"n": "Rennen 1", "day": "Sa", "t": "14:00"},
+      {"n": "Qualifying 2 · Gruppe A", "day": "So", "t": "11:15"},
+      {"n": "Qualifying 2 · Gruppe B", "day": "So", "t": "11:30"},
+      {"n": "Rennen 2", "day": "So", "t": "16:00"}
+    ]},
+  {"s": "gtwc", "rd": 10, "name": "Portimão · Endurance · Finale", "loc": "Portimão", "d0": "2026-10-16", "d1": "2026-10-18", "status": "up",
+    "sessions": [
+      {"n": "Freies Training 1", "day": "Fr", "t": "09:45"},
+      {"n": "Freies Training 2", "day": "Fr", "t": "13:45"},
+      {"n": "Qualifying", "day": "Fr", "t": "18:55"},
+      {"n": "Rennen (3 Stunden)", "day": "Sa", "t": "18:00"}
+    ]},
+  {"s": "nls", "rd": 1, "name": "71. ADAC Westfalenfahrt", "loc": "Nürburgring", "d0": "2026-03-14", "d1": "2026-03-14", "status": "cancel",
+    "sessions": []},
+  {"s": "nls", "rd": 2, "name": "58. ADAC Barbarossapreis", "loc": "Nürburgring", "d0": "2026-03-21", "d1": "2026-03-21", "status": "done", "result": "BMW #99 (Harper/Pepper)",
+    "sessions": [
+      {"n": "Qualifying", "day": "Sa", "t": "08:30"},
+      {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
+    ]},
+  {"s": "nls", "rd": 3, "name": "57. Adenauer ADAC Rundstrecken-Trophy", "loc": "Nürburgring", "d0": "2026-04-11", "d1": "2026-04-11", "status": "done", "result": "BMW #77 (Wittmann/Eng/Frijns)",
+    "sessions": [
+      {"n": "Qualifying", "day": "Sa", "t": "08:30"},
+      {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
+    ]},
+  {"s": "nls", "rd": 4, "name": "ADAC 24h Nürburgring Qualifiers · Rennen 1", "loc": "Nürburgring", "d0": "2026-04-18", "d1": "2026-04-18", "status": "done", "abbruch": true,
+    "sessions": [
+      {"n": "Qualifying", "day": "Sa", "t": "08:30"},
+      {"n": "Rennen (4h)", "day": "Sa", "t": "17:30"}
+    ]},
+  {"s": "nls", "rd": 5, "name": "ADAC 24h Nürburgring Qualifiers · Rennen 2", "loc": "Nürburgring", "d0": "2026-04-19", "d1": "2026-04-19", "status": "done", "result": "Audi #16 (Haase/Sims/Green)",
+    "sessions": [
+      {"n": "Qualifying", "day": "So", "t": "08:15"},
+      {"n": "Top-Qualifying", "day": "So", "t": "10:40"},
+      {"n": "Rennen (4h)", "day": "So", "t": "13:00"}
+    ]},
+  {"s": "nls", "rd": 0, "sonder": "24h", "veranstalter": "ADAC Nordrhein", "name": "54. ADAC RAVENOL 24h Nürburgring", "loc": "Nürburgring", "d0": "2026-05-14", "d1": "2026-05-17", "status": "done", "result": "Mercedes-AMG #80 (Engel/Stolz/Schiller/Martin)",
+    "sessions": [
+      {"n": "Rennen (24h)", "day": "Sa", "t": "15:00"}
+    ]},
+  {"s": "nls", "rd": 6, "name": "1. ADAC Eifel Trophy", "loc": "Nürburgring", "d0": "2026-06-20", "d1": "2026-06-20", "status": "done", "result": "Porsche #17 (Menzel/Müller)",
+    "sessions": [
+      {"n": "Qualifying", "day": "Sa", "t": "08:30"},
+      {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
+    ]},
+  {"s": "nls", "rd": 7, "name": "KW 6h ADAC Ruhr-Pokal-Rennen", "loc": "Nürburgring", "d0": "2026-08-01", "d1": "2026-08-01", "status": "done", "result": "Mercedes-AMG #80 (Stolz/Aron)",
+    "sessions": [
+      {"n": "Qualifying", "day": "Sa", "t": "08:30"},
+      {"n": "Rennen (6h)", "day": "Sa", "t": "12:00"}
+    ]},
+  {"s": "nls", "rd": 8, "name": "65. ADAC Reinoldus-Langstreckenrennen", "loc": "Nürburgring", "d0": "2026-09-12", "d1": "2026-09-12", "status": "done", "result": "BMW #77 (Klingmann/Pepper/de Wilde)",
+    "sessions": [
+      {"n": "Qualifying", "day": "Sa", "t": "08:30"},
+      {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
+    ]},
+  {"s": "nls", "rd": 9, "name": "66. ADAC ACAS Cup", "loc": "Nürburgring", "d0": "2026-09-13", "d1": "2026-09-13", "status": "up",
+    "sessions": [
+      {"n": "Qualifying", "day": "So", "t": "08:30"},
+      {"n": "Rennen (4h)", "day": "So", "t": "12:00"}
+    ]},
+  {"s": "nls", "rd": 10, "name": "2. NLS Sportwarte-Trophy · Finale", "loc": "Nürburgring", "d0": "2026-10-10", "d1": "2026-10-10", "status": "up",
+    "sessions": [
+      {"n": "Qualifying", "day": "Sa", "t": "08:30"},
+      {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
+    ]}
+]

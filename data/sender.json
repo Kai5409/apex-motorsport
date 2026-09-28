@@ -1,0 +1,72 @@
+{
+  "geprueft": "30.07.2026",
+  "serien": {
+    "f1": {
+      "tv": "Sky / WOW · RTL (5 Rennen frei)",
+      "tvd": {
+        "de": "<b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).",
+        "at": "<b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.",
+        "ch": "<b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.",
+        "note": "F1 TV Pro: in DACH sind keine neuen Abos möglich, nur Bestandskunden sehen live."
+      }
+    },
+    "mgp": {
+      "tv": "Sky / WOW · DF1 (12 von 22 frei)",
+      "tvd": {
+        "de": "<b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2 und Moto3.",
+        "at": "<b>ServusTV</b> zeigt die komplette Saison im Free-TV.",
+        "ch": "<b>SRF</b> überträgt einzelne Rennen frei (SRF Info bzw. SRF zwei)."
+      }
+    },
+    "wec": {
+      "tv": "Eurosport (WBD)",
+      "tvd": {
+        "de": "<b>Eurosport</b> (Warner Bros. Discovery) hält die Rechte bis mindestens 2030 und zeigt alle acht Rennen inklusive der 24 Stunden von Le Mans.",
+        "at": "Wie Deutschland über Eurosport.",
+        "ch": "Wie Deutschland über Eurosport."
+      }
+    },
+    "dtm": {
+      "tv": "ProSieben (alle 16 Rennen frei)",
+      "tvd": {
+        "de": "<b>ProSieben</b> zeigt alle 16 Rennen live im Free-TV, dazu <b>Joyn</b> und <b>ran.de</b>.",
+        "at": "<b>ServusTV On</b> und <b>Red Bull TV</b> streamen alle Rennen kostenlos.",
+        "ch": "Über ServusTV On und Red Bull TV."
+      }
+    },
+    "wrc": {
+      "tv": "Sky / WOW · ServusTV (Powerstage frei)",
+      "tvd": {
+        "de": "<b>Sky Sport</b> bei <b>WOW</b> zeigt alle 14 Rallyes in voller Länge, live oder zeitversetzt, mit deutschem Kommentar.",
+        "at": "<b>ServusTV</b> und <b>ServusTV On</b> übertragen bei jedem Lauf die Powerstage frei.",
+        "ch": "Über Sky/WOW."
+      }
+    },
+    "fe": {
+      "tv": "DAZN · Eurosport · DF1 (frei)",
+      "tvd": {
+        "de": "<b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.",
+        "at": "<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.",
+        "ch": "<b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland."
+      }
+    },
+    "gtwc": {
+      "tv": "Kostenloser Stream (YouTube)",
+      "tvd": {
+        "de": "Alle Qualifyings und Rennen laufen als <b>kostenloser Livestream</b>: auf Englisch beim offiziellen YouTube-Kanal <b>GTWorld</b>, mit <b>deutschem Kommentar</b> auf der offiziellen Serienseite gt-world-challenge-europe.com.",
+        "at": "Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld), deutscher Kommentar auf der Serienseite.",
+        "ch": "Wie in Deutschland: <b>kostenloser Livestream</b> auf YouTube (GTWorld), deutscher Kommentar auf der Serienseite.",
+        "note": "Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."
+      }
+    },
+    "nls": {
+      "tv": "Kostenloser Stream (VLN.de / YouTube)",
+      "tvd": {
+        "de": "Alle Rennen laufen als <b>kostenloser Livestream</b> mit deutschem Kommentar auf <b>VLN.de</b> und dem offiziellen <b>YouTube-Kanal der NLS</b>, dazu Onboard-Kanäle aus einzelnen Fahrzeugen.",
+        "at": "Wie in Deutschland: <b>kostenloser Livestream</b> auf VLN.de und YouTube.",
+        "ch": "Wie in Deutschland: <b>kostenloser Livestream</b> auf VLN.de und YouTube.",
+        "note": "Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."
+      }
+    }
+  }
+}
