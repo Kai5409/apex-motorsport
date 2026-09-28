@@ -55,9 +55,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 #app{max-width:1240px;margin:0 auto;padding:0 26px 130px}
 
+/* Kopfbereich: bleibt oben stehen. Beim Scrollen gleitet er um die Höhe der großen Logozeile
+   nach oben (top wird per JS gesetzt), das Logo schrumpft dabei auf die kompakte Version. */
+.kopf{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--rule)}
+.kopf::before{content:"";position:absolute;top:0;bottom:-1px;left:-100vmax;right:-100vmax;background:var(--bg);border-bottom:1px solid var(--rule);z-index:-1}
+.kopf.ohne-filter .nav{border-bottom-color:transparent}
+
 /* Masthead */
-.mast{display:flex;align-items:flex-end;justify-content:space-between;padding:32px 0 14px;border-bottom:3px solid var(--paper)}
-.mast h1{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(42px,7.5vw,72px);line-height:.9;text-transform:uppercase;position:relative;width:max-content;padding-bottom:.62em}
+.mast{position:relative;display:flex;align-items:flex-end;justify-content:space-between;padding:32px 0 14px;border-bottom:3px solid var(--paper)}
+.mast h1{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(42px,7.5vw,72px);line-height:.9;text-transform:uppercase;position:relative;width:max-content;padding-bottom:.62em;transform-origin:0 0}
 /* Wortmarke: Buchstaben folgen der Ideallinie */
 .mk-word{display:flex;align-items:flex-end;letter-spacing:.012em}
 .mk-word i{font-style:normal;display:inline-block;transform-origin:50% 60%}
@@ -68,6 +74,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .mk-line{position:absolute;left:0;top:1.04em;width:100%;height:auto;aspect-ratio:234/30;overflow:visible}
 .mast-r{text-align:right;font-size:10.5px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;line-height:1.7}
 .mast-r b{color:var(--paper);font-weight:600}
+.mast-z2{min-height:1.7em}
 .tzsw{display:flex;gap:4px;justify-content:flex-end;align-items:center;margin-top:9px}
 .tzsw .tzl{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;color:var(--faint);margin-right:2px}
 .tzsw button{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--muted);transition:all .15s}
@@ -108,7 +115,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .onair-bar{display:inline-block;width:4px;height:13px;vertical-align:middle;margin-right:7px;border-radius:1px}
 
 /* Nav */
-.nav{display:flex;gap:26px;padding:14px 0 0;position:sticky;top:0;background:var(--bg);z-index:50;border-bottom:1px solid var(--rule)}
+.nav{display:flex;gap:26px;padding:14px 0 0;border-bottom:1px solid var(--rule)}
 .tab{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);padding:0 0 12px;position:relative;transition:color .15s}
 .tab:hover{color:var(--muted)} .tab.on{color:var(--paper)}
 .tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--red)}
@@ -297,6 +304,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.05em;line-height:1.9}
 
+/* Schmale (und sehr niedrige) Bildschirme: fest bleiben nur Logozeile, Tabs und Filter.
+   Datumszeile und Beschriftung blenden beim Scrollen aus, die Live-Info steht in der Zeitleiste. */
+@media(max-width:899px),(max-height:599px){
+  .mast{padding:22px 0 12px}
+  .kopf .onair{display:none}
+  .nav{padding-top:10px}
+  .tab{padding-bottom:9px}
+}
+
 @media(max-width:640px){
   #app{padding:0 16px 110px} .nav{gap:18px} .tab{font-size:13px}
   .wk-top{grid-template-columns:58px 1fr}
@@ -347,9 +363,10 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 </head>
 <body>
 <div id="app">
+  <div class="kopf" id="kopf">
   <header class="mast">
     <h1 aria-label="APEX"><span class="mk-word" aria-hidden="true"><i>A</i><i>P</i><i>E</i><i>X</i></span><svg class="mk-line" viewBox="3 3 234 30" aria-hidden="true"><g fill="none" stroke-width="7.4" stroke-linecap="butt"><path d="M5.00,8.00 L5.74,8.25 L6.47,8.51 L7.21,8.76 L7.95,9.01 L8.69,9.25 L9.43,9.50 L10.17,9.74 L10.91,9.99 L11.65,10.23 L12.39,10.46 L13.14,10.70 L13.88,10.94 L14.63,11.17 L15.38,11.40" stroke="var(--red)"/><path d="M15.38,11.40 L16.13,11.63 L16.87,11.86 L17.62,12.09 L18.38,12.31 L19.13,12.53 L19.88,12.75 L20.63,12.97 L21.39,13.19 L22.14,13.41 L22.90,13.62 L23.65,13.84 L24.41,14.05 L25.17,14.26 L25.93,14.46" stroke="var(--paper)"/><path d="M25.93,14.46 L26.69,14.67 L27.45,14.87 L28.21,15.07 L28.97,15.27 L29.73,15.47 L30.50,15.67 L31.26,15.87 L32.03,16.06 L32.79,16.25 L33.56,16.44 L34.33,16.63 L35.09,16.82 L35.86,17.00 L36.63,17.18" stroke="var(--red)"/><path d="M36.63,17.18 L37.40,17.37 L38.17,17.54 L38.94,17.72 L39.72,17.90 L40.49,18.07 L41.26,18.25 L42.04,18.42 L42.81,18.59 L43.59,18.75 L44.36,18.92 L45.14,19.08 L45.92,19.25 L46.69,19.41 L47.47,19.56" stroke="var(--paper)"/><path d="M47.47,19.56 L48.25,19.72 L49.03,19.88 L49.81,20.03 L50.59,20.18 L51.37,20.33 L52.16,20.48 L52.94,20.63 L53.72,20.77 L54.51,20.92 L55.29,21.06 L56.07,21.20 L56.86,21.33 L57.65,21.47 L58.43,21.61" stroke="var(--red)"/><path d="M58.43,21.61 L59.22,21.74 L60.01,21.87 L60.79,22.00 L61.58,22.13 L62.37,22.25 L63.16,22.38 L63.95,22.50 L64.74,22.62 L65.53,22.74 L66.32,22.85 L67.11,22.97 L67.90,23.08 L68.70,23.20 L69.49,23.31" stroke="var(--paper)"/><path d="M69.49,23.31 L70.28,23.41 L71.08,23.52 L71.87,23.63 L72.67,23.73 L73.46,23.83 L74.26,23.93 L75.05,24.03 L75.85,24.13 L76.64,24.22 L77.44,24.31 L78.24,24.40 L79.03,24.49 L79.83,24.58 L80.63,24.67" stroke="var(--red)"/><path d="M80.63,24.67 L81.43,24.75 L82.23,24.83 L83.03,24.91 L83.82,24.99 L84.62,25.07 L85.42,25.15 L86.22,25.22 L87.02,25.29 L87.83,25.36 L88.63,25.43 L89.43,25.50 L90.23,25.56 L91.03,25.63 L91.83,25.69" stroke="var(--paper)"/><path d="M91.83,25.69 L92.64,25.75 L93.44,25.81 L94.24,25.86 L95.04,25.92 L95.85,25.97 L96.65,26.02 L97.45,26.07 L98.26,26.12 L99.06,26.16 L99.86,26.21 L100.67,26.25 L101.47,26.29 L102.28,26.33 L103.08,26.37" stroke="var(--red)"/><path d="M103.08,26.37 L103.89,26.40 L104.69,26.44 L105.50,26.47 L106.30,26.50 L107.11,26.53 L107.91,26.55 L108.72,26.58 L109.52,26.60 L110.33,26.63 L111.13,26.65 L111.94,26.66 L112.75,26.68 L113.55,26.69 L114.36,26.71" stroke="var(--paper)"/><path d="M114.36,26.71 L115.16,26.72 L115.97,26.73 L116.78,26.74 L117.58,26.74 L118.39,26.75 L119.19,26.75 L120.00,26.75 L120.81,26.75 L121.61,26.75 L122.42,26.74 L123.22,26.74 L124.03,26.73 L124.84,26.72 L125.64,26.71" stroke="var(--red)"/><path d="M125.64,26.71 L126.45,26.69 L127.25,26.68 L128.06,26.66 L128.87,26.65 L129.67,26.63 L130.48,26.60 L131.28,26.58 L132.09,26.55 L132.89,26.53 L133.70,26.50 L134.50,26.47 L135.31,26.44 L136.11,26.40 L136.92,26.37" stroke="var(--paper)"/><path d="M136.92,26.37 L137.72,26.33 L138.53,26.29 L139.33,26.25 L140.14,26.21 L140.94,26.16 L141.74,26.12 L142.55,26.07 L143.35,26.02 L144.15,25.97 L144.96,25.92 L145.76,25.86 L146.56,25.81 L147.36,25.75 L148.17,25.69" stroke="var(--red)"/><path d="M148.17,25.69 L148.97,25.63 L149.77,25.56 L150.57,25.50 L151.37,25.43 L152.17,25.36 L152.98,25.29 L153.78,25.22 L154.58,25.15 L155.38,25.07 L156.18,24.99 L156.97,24.91 L157.77,24.83 L158.57,24.75 L159.37,24.67" stroke="var(--paper)"/><path d="M159.37,24.67 L160.17,24.58 L160.97,24.49 L161.76,24.40 L162.56,24.31 L163.36,24.22 L164.15,24.13 L164.95,24.03 L165.74,23.93 L166.54,23.83 L167.33,23.73 L168.13,23.63 L168.92,23.52 L169.72,23.41 L170.51,23.31" stroke="var(--red)"/><path d="M170.51,23.31 L171.30,23.20 L172.10,23.08 L172.89,22.97 L173.68,22.85 L174.47,22.74 L175.26,22.62 L176.05,22.50 L176.84,22.38 L177.63,22.25 L178.42,22.13 L179.21,22.00 L179.99,21.87 L180.78,21.74 L181.57,21.61" stroke="var(--paper)"/><path d="M181.57,21.61 L182.35,21.47 L183.14,21.33 L183.93,21.20 L184.71,21.06 L185.49,20.92 L186.28,20.77 L187.06,20.63 L187.84,20.48 L188.63,20.33 L189.41,20.18 L190.19,20.03 L190.97,19.88 L191.75,19.72 L192.53,19.56" stroke="var(--red)"/><path d="M192.53,19.56 L193.31,19.41 L194.08,19.25 L194.86,19.08 L195.64,18.92 L196.41,18.75 L197.19,18.59 L197.96,18.42 L198.74,18.25 L199.51,18.07 L200.28,17.90 L201.06,17.72 L201.83,17.54 L202.60,17.37 L203.37,17.18" stroke="var(--paper)"/><path d="M203.37,17.18 L204.14,17.00 L204.91,16.82 L205.67,16.63 L206.44,16.44 L207.21,16.25 L207.97,16.06 L208.74,15.87 L209.50,15.67 L210.27,15.47 L211.03,15.27 L211.79,15.07 L212.55,14.87 L213.31,14.67 L214.07,14.46" stroke="var(--red)"/><path d="M214.07,14.46 L214.83,14.26 L215.59,14.05 L216.35,13.84 L217.10,13.62 L217.86,13.41 L218.61,13.19 L219.37,12.97 L220.12,12.75 L220.87,12.53 L221.62,12.31 L222.38,12.09 L223.13,11.86 L223.87,11.63 L224.62,11.40" stroke="var(--paper)"/><path d="M224.62,11.40 L225.37,11.17 L226.12,10.94 L226.86,10.70 L227.61,10.46 L228.35,10.23 L229.09,9.99 L229.83,9.74 L230.57,9.50 L231.31,9.25 L232.05,9.01 L232.79,8.76 L233.53,8.51 L234.26,8.25 L235.00,8.00" stroke="var(--red)"/></g><circle cx="120.0" cy="26.8" r="4.4" fill="none" stroke="var(--gold)" stroke-width="1.7"/><circle cx="120.0" cy="26.8" r="1.9" fill="var(--gold)"/></svg></h1>
-    <div class="mast-r">Motorsport-Kalender <span class="season" id="season"><b class="ss-yr">2026</b></span><br><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ App installieren</button></div>
+    <div class="mast-r"><span class="mast-lab">Motorsport-Kalender</span> <span class="season" id="season"><b class="ss-yr">2026</b></span><div class="mast-z2"><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ App installieren</button></div></div>
   </header>
   <div class="onair" id="onair"></div>
   <nav class="nav">
@@ -360,6 +377,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
     <button class="tab" data-v="rules" onclick="setView('rules')">Regeln</button>
   </nav>
   <div class="filterbar" id="filterbar"></div>
+  </div>
   <section class="view on" id="view-upcoming"></section>
   <section class="view" id="view-series"></section>
   <section class="view" id="view-standings"></section>
@@ -763,6 +781,7 @@ function renderFilter(){
   chips+=`<button class="chip allbtn" onclick="allSeries()">Alle</button>`;
   el.innerHTML=chips;
   el.style.display = (currentView==="tv"||currentView==="rules")?"none":"flex";
+  const kopf=document.getElementById("kopf"); if(kopf&&kopf.classList) kopf.classList.toggle("ohne-filter",el.style.display==="none");
   /* Saisonpfeile dort ausblenden, wo die Saison keine Rolle spielt */
   const se=document.getElementById("season"); if(se) se.classList.toggle("ss-off",currentView==="tv"||currentView==="rules");
 }
@@ -1171,6 +1190,52 @@ function renderStandings(){
   host.innerHTML=html;
 }
 
+/* ═══════ KOPFBEREICH ═══════
+   Der Kopf klebt oben (position:sticky) mit negativem top: Beim Scrollen gleitet die große
+   Logozeile nach oben, bis nur noch ein schmales Band übrig ist. Logo und Jahresumschalter
+   wandern dabei in dieses Band, das Logo schrumpft. Schmal: Beschriftung und Datumszeile
+   blenden aus (gehören nicht in den festen Bereich). Breit: alles bleibt sichtbar.
+   Nur transform/opacity – die Höhe des Kopfes ändert sich beim Scrollen nicht. */
+const KOMPAKT_MQ=(typeof window!=="undefined"&&window.matchMedia)?window.matchMedia("(max-width: 899px), (max-height: 599px)"):null;
+function istKompakt(){return !!(KOMPAKT_MQ&&KOMPAKT_MQ.matches);}
+const KOPF={D:0,dyLogo:0,sLogo:1,dyR:0,p:-1,fest:0};
+function kopfMessen(){
+  const kopf=document.getElementById("kopf"); if(!kopf||!kopf.querySelector)return;
+  const mast=kopf.querySelector(".mast"), logo=mast&&mast.querySelector("h1"), rechts=mast&&mast.querySelector(".mast-r"), ss=document.getElementById("season");
+  if(!mast||!logo||!rechts||!ss||!(mast.offsetHeight>0))return;
+  const kompakt=istKompakt();
+  const band=kompakt?44:64, rand=3;                 /* Höhe der festen Logozeile inkl. Linie */
+  const mh=mast.offsetHeight, D=Math.max(0,mh-band);
+  const mitte=D+(band-rand)/2;
+  /* Lage ohne Verschiebung messen (relativ zur Oberkante der Logozeile) */
+  logo.style.transform=""; rechts.style.transform="";
+  const m0=mast.getBoundingClientRect().top, lr=logo.getBoundingClientRect();
+  const zr=(kompakt?ss:rechts).getBoundingClientRect(); /* schmal: nur der Jahresumschalter bleibt */
+  const lh=lr.height, s=Math.min(1,(band-rand-8)/lh);
+  KOPF.D=D; KOPF.sLogo=s; KOPF.dyLogo=mitte-(lr.top-m0)-lh*s/2;
+  KOPF.dyR=mitte-(zr.top-m0)-zr.height/2;
+  KOPF.kompakt=kompakt; KOPF.p=-1;
+  kopf.style.top=(-D)+"px";
+  KOPF.fest=kopf.offsetHeight-D;                     /* Höhe des festen Teils */
+  document.documentElement.style.setProperty("--kopf-h",KOPF.fest+"px");
+  kopfScroll();
+}
+function kopfScroll(){
+  const kopf=document.getElementById("kopf"); if(!kopf||!kopf.querySelector)return;
+  const p=KOPF.D>0?Math.min(1,Math.max(0,(window.scrollY||0)/KOPF.D)):1;
+  if(p===KOPF.p)return; KOPF.p=p;
+  const mast=kopf.querySelector(".mast"), logo=mast.querySelector("h1"), rechts=mast.querySelector(".mast-r");
+  logo.style.transform=`translateY(${(KOPF.dyLogo*p).toFixed(2)}px) scale(${(1-(1-KOPF.sLogo)*p).toFixed(4)})`;
+  rechts.style.transform=`translateY(${(KOPF.dyR*p).toFixed(2)}px)`;
+  const aus=KOPF.kompakt?Math.min(1,p*2):0;
+  mast.querySelectorAll(".mast-lab,.mast-z2").forEach(el=>{el.style.opacity=String(1-aus);el.style.visibility=aus>=1?"hidden":"";});
+}
+let KOPF_RAF=0;
+function kopfBeimScrollen(){
+  if(KOPF_RAF)return;
+  KOPF_RAF=requestAnimationFrame(()=>{KOPF_RAF=0;kopfScroll();});
+}
+
 /* ═══════ NAV / INIT ═══════ */
 let currentView="upcoming";
 function rerender(){if(!BEREIT)return;OPEN_RES=null;
@@ -1372,6 +1437,13 @@ function start(){
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});
+  window.addEventListener("scroll",kopfBeimScrollen,{passive:true});
+  window.addEventListener("resize",kopfMessen,{passive:true});
+  try{
+    kopfMessen();
+    if(typeof ResizeObserver!=="undefined")new ResizeObserver(kopfMessen).observe(document.getElementById("kopf"));
+    const fr=document.fonts&&document.fonts.ready; if(fr&&typeof fr.then==="function")fr.then(kopfMessen);
+  }catch(err){console.error(err);}
   updateJumpBtn();
   setInterval(()=>{tagNext();renderOnAir();checkReminders();if(currentView==="weekend")renderWeekend();},30000);
   setInterval(tickCountdown,1000);
