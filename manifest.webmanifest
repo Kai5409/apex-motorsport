@@ -1,7 +1,7 @@
 {
   "name": "APEX — Motorsport-Kalender",
   "short_name": "APEX",
-  "description": "Acht Rennserien, alle Sessionzeiten, DACH-TV-Infos. F1 · MotoGP · WEC · DTM · WRC · Formel E · GTWC · NLS.",
+  "description": "18 Rennserien, alle Sessionzeiten, DACH-TV-Infos. F1 · MotoGP · WEC · DTM · WRC · Formel E · IndyCar · WSBK · GTWC · NLS und mehr.",
   "lang": "de",
   "start_url": "./",
   "scope": "./",
