@@ -128,5 +128,15 @@
       ["Reifen und Boxenstopp", "Im Hauptrennen ist ein Boxenstopp mit Wechsel aller vier Reifen Pflicht, und beide Trockenmischungen müssen gefahren werden (außer es kommen Regenreifen zum Einsatz). Pro Wochenende hat jeder Fahrer fünf Sätze Trockenreifen — drei der härteren und zwei der weicheren Mischung — plus drei Sätze Regenreifen."],
       ["Technik", "Alle fahren dasselbe Auto: ein Dallara-Chassis, seit 2024 im Einsatz und nach den Sicherheitsstandards der Formel 1 mit Halo gebaut, dazu ein 3,4-Liter-V6-Turbo von Mecachrome und Einheitsreifen von Pirelli. Das Auto wiegt mit Fahrer 795 Kilogramm, erreicht bis zu 335 km/h und hat keine Servolenkung. Unterschiede machen Fahrer, Abstimmung und Team."]
     ]
+  },
+  "f3": {
+    "kurz": "Einstiegsstufe im Rahmen der Formel 1 — 30 identische Autos, Sprint und Hauptrennen.",
+    "bloecke": [
+      ["Wochenende", "Die Formel 3 fährt an einem Teil der europäischen Formel-1-Wochenenden und zum Auftakt in Melbourne. Freitags gibt es ein freies Training über 45 Minuten und das Qualifying über 30 Minuten. Am Samstag folgt der Sprint über 40 Minuten plus eine Runde, am Sonntagvormittag vor dem Grand Prix das Hauptrennen über 45 Minuten plus eine Runde."],
+      ["Startaufstellung", "Das Qualifying bestimmt die Startaufstellung des Hauptrennens. Für den Sprint werden die ersten zwölf des Qualifyings umgedreht: Der Zwölfte startet von der Pole. Mit 30 Autos auf der Strecke sind freie Runden im Qualifying knapp — das richtige Timing ist oft so wichtig wie das Tempo."],
+      ["Punkte", "Im Hauptrennen gibt es 25, 18, 15, 12, 10, 8, 6, 4, 2 und 1 Punkte für die ersten zehn, im Sprint 10 bis 1 Punkt für die ersten zehn. Die Pole für das Hauptrennen bringt zwei Punkte, die schnellste Runde in jedem Rennen einen — sofern der Fahrer unter den ersten zehn ins Ziel kommt."],
+      ["Reifen", "Einheitslieferant ist Pirelli mit 16-Zoll-Reifen und drei eigens für die Formel 3 entwickelten Mischungen, von denen je Strecke die passende gewählt wird. Pro Veranstaltung hat jeder Fahrer nur vier Sätze Trockenreifen und zwei Sätze Regenreifen — Schonen gehört dazu."],
+      ["Technik", "Alle 30 Autos sind gleich: Chassis von Dallara mit Halo, dazu ein 3,4-Liter-Sechszylinder-Saugmotor von Mecachrome mit 380 PS. Die Autos erreichen rund 300 km/h. Wer sich in der Formel 3 durchsetzt, steigt meist in die Formel 2 auf — die letzte Stufe vor der Formel 1."]
+    ]
   }
 }

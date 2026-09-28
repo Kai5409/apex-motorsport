@@ -85,6 +85,15 @@
         "ch": "Die Serie nennt für die Schweiz keinen eigenen Sender.",
         "note": "Die Formel 2 ist auch bei F1 TV Pro enthalten — in DACH sind dort aber keine neuen Abos möglich. Geprüft am 28.09.2026."
       }
+    },
+    "f3": {
+      "tv": "Sky · ServusTV/ORF (AT)",
+      "tvd": {
+        "de": "<b>Sky Deutschland</b> zeigt die Formel 3 live auf Sky Sport F1, auch bei <b>WOW</b>.",
+        "at": "<b>ServusTV</b> und <b>ORF</b> übertragen die Rennen, meist im Stream (ServusTV On, ORF ON), teils auf ORF SPORT+.",
+        "ch": "Die Serie nennt für die Schweiz keinen eigenen Sender.",
+        "note": "Die Formel 3 ist auch bei F1 TV Pro enthalten — in DACH sind dort aber keine neuen Abos möglich. Geprüft am 28.09.2026."
+      }
     }
   }
 }

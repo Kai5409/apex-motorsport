@@ -345,6 +345,32 @@
         ["Colton Herta", "Hitech", 26],
         ["Mari Boya", "Prema Racing", 21]
       ]
+    },
+    "f3": {
+      "stand": "Endstand · nach 9 Wochenenden · Madrid, 13.09.2026",
+      "quelle": "fiaformula3.com",
+      "drv": [
+        ["Ugo Ugochukwu", "Campos Racing", 159],
+        ["Freddie Slater", "Trident", 145],
+        ["Tuukka Taponen", "MP Motorsport", 109],
+        ["Taito Kato", "ART Grand Prix", 105],
+        ["Théophile Naël", "Campos Racing", 88],
+        ["Pedro Clerot", "Rodin Motorsport", 88],
+        ["Ernesto Rivera", "Campos Racing", 87],
+        ["Brando Badoer", "Rodin Motorsport", 71],
+        ["Hiyu Yamakoshi", "Van Amersfoort Racing", 71],
+        ["Noah Strømsted", "Trident", 65],
+        ["Bruno del Pino", "Van Amersfoort Racing", 57],
+        ["Maciej Gładysz", "ART Grand Prix", 54],
+        ["Mattia Colnaghi", "MP Motorsport", 54],
+        ["Jin Nakamura", "Hitech", 53],
+        ["Alessandro Giusti", "MP Motorsport", 45],
+        ["Enzo Deligny", "Van Amersfoort Racing", 40],
+        ["James Wharton", "Prema Racing", 39],
+        ["Yevan David", "AIX Racing", 35],
+        ["Nicola Lacorte", "DAMS Lucas Oil", 33],
+        ["Kanato Le", "ART Grand Prix", 30]
+      ]
     }
   }
 }
