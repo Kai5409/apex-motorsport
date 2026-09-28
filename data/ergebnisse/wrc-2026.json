@@ -1,0 +1,170 @@
+{
+  "wrc-1": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · de.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Oliver Solberg", "Toyota", "Rally1"],
+      [2, "Elfyn Evans", "Toyota", "Rally1"],
+      [3, "Sébastien Ogier", "Toyota", "Rally1"],
+      [4, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [5, "Thierry Neuville", "Hyundai", "Rally1"],
+      [6, "Léo Rossel", "Citroën", "WRC2"],
+      [7, "Takamoto Katsuta", "Toyota", "Rally1"],
+      [8, "Roberto Daprà", "Škoda", "WRC2"],
+      [9, "Arthur Pelamourgues", "Hyundai", "WRC2"],
+      [10, "Eric Camilli", "Škoda", "WRC2"],
+      [11, "Hayden Paddon", "Hyundai", "Rally1"]
+    ]}
+  ],
+  "wrc-2": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · de.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Elfyn Evans", "Toyota", "Rally1"],
+      [2, "Takamoto Katsuta", "Toyota", "Rally1"],
+      [3, "Sami Pajari", "Toyota", "Rally1"],
+      [4, "Oliver Solberg", "Toyota", "Rally1"],
+      [5, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [6, "Esapekka Lappi", "Hyundai", "Rally1"],
+      [7, "Thierry Neuville", "Hyundai", "Rally1"],
+      [8, "Jon Armstrong", "Ford", "Rally1"],
+      [9, "Josh McErlean", "Ford", "Rally1"],
+      [10, "Roope Korhonen", "Toyota", "WRC2"]
+    ]}
+  ],
+  "wrc-3": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · de.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Takamoto Katsuta", "Toyota", "Rally1"],
+      [2, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [3, "Sami Pajari", "Toyota", "Rally1"],
+      [4, "Esapekka Lappi", "Hyundai", "Rally1"],
+      [5, "Robert Virves", "Škoda", "WRC2"],
+      [6, "Gus Greensmith", "Toyota", "WRC2"],
+      [7, "Fabrizio Zaldivar", "Škoda", "WRC2"],
+      [8, "Andreas Mikkelsen", "Škoda", "WRC2"],
+      [9, "Diego Domínguez Jr.", "Toyota", "WRC2"],
+      [10, "Oliver Solberg", "Toyota", "Rally1"],
+      [11, "Sébastien Ogier", "Toyota", "Rally1"],
+      [12, "Thierry Neuville", "Hyundai", "Rally1"],
+      [13, "Elfyn Evans", "Toyota", "Rally1"]
+    ]}
+  ],
+  "wrc-4": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · de.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Takamoto Katsuta", "Toyota", "Rally1"],
+      [2, "Sami Pajari", "Toyota", "Rally1"],
+      [3, "Hayden Paddon", "Hyundai", "Rally1"],
+      [4, "Yohan Rossel", "Lancia", "WRC2"],
+      [5, "Léo Rossel", "Citroën", "WRC2"],
+      [6, "Nikolay Gryazin", "Lancia", "WRC2"],
+      [7, "Alejandro Cachón", "Toyota", "WRC2"],
+      [8, "Roope Korhonen", "Toyota", "WRC2"],
+      [9, "Roberto Daprà", "Škoda", "WRC2"],
+      [10, "Emil Lindholm", "Škoda", "WRC2"]
+    ]}
+  ],
+  "wrc-5": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · de.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Sébastien Ogier", "Toyota", "Rally1"],
+      [2, "Elfyn Evans", "Toyota", "Rally1"],
+      [3, "Sami Pajari", "Toyota", "Rally1"],
+      [4, "Takamoto Katsuta", "Toyota", "Rally1"],
+      [5, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [6, "Thierry Neuville", "Hyundai", "Rally1"],
+      [7, "Dani Sordo", "Hyundai", "Rally1"],
+      [8, "Josh McErlean", "Ford", "Rally1"],
+      [9, "Yohan Rossel", "Lancia", "WRC2"],
+      [10, "Alejandro Cachón", "Toyota", "WRC2"]
+    ]}
+  ],
+  "wrc-6": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · de.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Thierry Neuville", "Hyundai", "Rally1"],
+      [2, "Oliver Solberg", "Toyota", "Rally1"],
+      [3, "Elfyn Evans", "Toyota", "Rally1"],
+      [4, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [5, "Takamoto Katsuta", "Toyota", "Rally1"],
+      [6, "Sébastien Ogier", "Toyota", "Rally1"],
+      [7, "Sami Pajari", "Toyota", "Rally1"],
+      [8, "Dani Sordo", "Hyundai", "Rally1"],
+      [9, "Mārtiņš Sesks", "Ford", "Rally1"],
+      [10, "Teemu Suninen", "Toyota", "WRC2"]
+    ]}
+  ],
+  "wrc-7": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · de.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Elfyn Evans", "Toyota", "Rally1"],
+      [2, "Sébastien Ogier", "Toyota", "Rally1"],
+      [3, "Sami Pajari", "Toyota", "Rally1"],
+      [4, "Takamoto Katsuta", "Toyota", "Rally1"],
+      [5, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [6, "Thierry Neuville", "Hyundai", "Rally1"],
+      [7, "Hayden Paddon", "Hyundai", "Rally1"],
+      [8, "Jon Armstrong", "Ford", "Rally1"],
+      [9, "Nikolay Gryazin", "Lancia", "WRC2"],
+      [10, "Josh McErlean", "Ford", "Rally1"]
+    ]}
+  ],
+  "wrc-8": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Sébastien Ogier", "Toyota", "Rally1"],
+      [2, "Thierry Neuville", "Hyundai", "Rally1"],
+      [3, "Takamoto Katsuta", "Toyota", "Rally1"],
+      [4, "Sami Pajari", "Toyota", "Rally1"],
+      [5, "Elfyn Evans", "Toyota", "Rally1"],
+      [6, "Josh McErlean", "Ford", "Rally1"],
+      [7, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [8, "Mārtiņš Sesks", "Ford", "Rally1"],
+      [9, "Robert Virves", "Škoda", "WRC2"],
+      [10, "Andreas Mikkelsen", "Škoda", "WRC2"]
+    ]}
+  ],
+  "wrc-9": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Sami Pajari", "Toyota", "Rally1"],
+      [2, "Oliver Solberg", "Toyota", "Rally1"],
+      [3, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [4, "Thierry Neuville", "Hyundai", "Rally1"],
+      [5, "Sébastien Ogier", "Toyota", "Rally1"],
+      [6, "Elfyn Evans", "Toyota", "Rally1"],
+      [7, "Mārtiņš Sesks", "Ford", "Rally1"],
+      [8, "Esapekka Lappi", "Hyundai", "Rally1"],
+      [9, "Jon Armstrong", "Ford", "Rally1"]
+    ]}
+  ],
+  "wrc-10": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Sami Pajari", "Toyota", "Rally1"],
+      [2, "Oliver Solberg", "Toyota", "Rally1"],
+      [3, "Elfyn Evans", "Toyota", "Rally1"],
+      [4, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [5, "Thierry Neuville", "Hyundai", "Rally1"],
+      [6, "Takamoto Katsuta", "Toyota", "Rally1"],
+      [7, "Josh McErlean", "Ford", "Rally1"]
+    ]}
+  ],
+  "wrc-11": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Sami Pajari", "Toyota", "Rally1"],
+      [2, "Hayden Paddon", "Hyundai", "Rally1"],
+      [3, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [4, "Elfyn Evans", "Toyota", "Rally1"],
+      [5, "Oliver Solberg", "Toyota", "Rally1"],
+      [6, "Josh McErlean", "Ford", "Rally1"],
+      [7, "Diego Domínguez Jr.", "Toyota", "WRC2"],
+      [8, "Gus Greensmith", "Toyota", "WRC2"],
+      [9, "Alejandro Galanti", "Toyota", "WRC2"],
+      [10, "Taylor Gill", "Škoda", "WRC2"]
+    ]}
+  ],
+  "wrc-12": [
+    {"n": "Gesamtwertung", "quelle": "en.wikipedia.org · motorsport-magazin.com", "unvollstaendig": true, "zeilen": [
+      [1, "Oliver Solberg", "Toyota", "Rally1"],
+      [2, "Sébastien Ogier", "Toyota", "Rally1"],
+      [3, "Adrien Fourmaux", "Hyundai", "Rally1"],
+      [4, "Sami Pajari", "Toyota", "Rally1"],
+      [5, "Elfyn Evans", "Toyota", "Rally1"],
+      [6, "Esapekka Lappi", "Hyundai", "Rally1"],
+      [7, "Josh McErlean", "Ford", "Rally1"],
+      [8, "Yohan Rossel", "Lancia", "WRC2"],
+      [9, "Robert Virves", "Škoda", "WRC2"],
+      [10, "Gus Greensmith", "Toyota", "WRC2"]
+    ]}
+  ]
+}

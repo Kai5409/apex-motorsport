@@ -28,30 +28,7 @@
         {"p": 21, "who": "Carlos Sainz", "team": "Williams", "gap": "Q1 · keine Zeit"},
         {"p": 22, "who": "Lance Stroll", "team": "Aston Martin", "gap": "Q1 · keine Zeit"}
       ]},
-      {"n": "Rennen", "day": "So", "t": "05:00", "res": [
-        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "Sieger · 1:23:06.801"},
-        {"p": 2, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "+2.974"},
-        {"p": 3, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+15.519"},
-        {"p": 4, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+16.144"},
-        {"p": 5, "who": "Lando Norris", "team": "McLaren", "gap": "+51.741"},
-        {"p": 6, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+54.617"},
-        {"p": 7, "who": "Oliver Bearman", "team": "Haas", "gap": "+1 Rd"},
-        {"p": 8, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+1 Rd"},
-        {"p": 9, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+1 Rd"},
-        {"p": 10, "who": "Pierre Gasly", "team": "Alpine", "gap": "+1 Rd"},
-        {"p": 11, "who": "Esteban Ocon", "team": "Haas", "gap": "+1 Rd"},
-        {"p": 12, "who": "Alexander Albon", "team": "Williams", "gap": "+1 Rd"},
-        {"p": 13, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+1 Rd"},
-        {"p": 14, "who": "Franco Colapinto", "team": "Alpine", "gap": "+2 Rd"},
-        {"p": 15, "who": "Carlos Sainz", "team": "Williams", "gap": "+2 Rd"},
-        {"p": 16, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+3 Rd"},
-        {"p": "NC", "who": "Lance Stroll", "team": "Aston Martin", "gap": "43 Rd · n. klass."},
-        {"p": "DNF", "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Vibrationen"},
-        {"p": "DNF", "who": "Valtteri Bottas", "team": "Cadillac", "gap": "Kraftstoffsystem"},
-        {"p": "DNF", "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "Motorschaden"},
-        {"p": "DNS", "who": "Oscar Piastri", "team": "McLaren", "gap": "Unfall vor Start"},
-        {"p": "DNS", "who": "Nico Hülkenberg", "team": "Audi", "gap": "Hydraulik"}
-      ]}
+      {"n": "Rennen", "day": "So", "t": "05:00"}
     ]},
   {"s": "f1", "rd": 2, "name": "Großer Preis von China · Sprint", "loc": "Shanghai", "d0": "2026-03-13", "d1": "2026-03-15", "status": "done", "result": "Kimi Antonelli (Mercedes)",
     "sessions": [
@@ -80,32 +57,11 @@
         {"p": 21, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "Q1"},
         {"p": 22, "who": "Sergio Pérez", "team": "Cadillac", "gap": "Q1 · keine Zeit"}
       ]},
-      {"n": "Sprint", "day": "Sa", "t": "04:30", "partial": true, "res": [
-        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "Sieger · 33:38.998"},
-        {"p": 2, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+0.674"},
-        {"p": 3, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+2.554"},
-        {"p": 4, "who": "Lando Norris", "team": "McLaren", "gap": "+4.433"},
-        {"p": 5, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "+5.688"},
-        {"p": 6, "who": "Oscar Piastri", "team": "McLaren", "gap": "+6.809"},
-        {"p": 7, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+10.900"},
-        {"p": 8, "who": "Oliver Bearman", "team": "Haas", "gap": "+11.271"},
-        {"p": 9, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+11.619"},
-        {"p": 10, "who": "Esteban Ocon", "team": "Haas", "gap": "+13.887"},
-        {"p": 11, "who": "Pierre Gasly", "team": "Alpine", "gap": "+14.780"},
-        {"p": 12, "who": "Carlos Sainz", "team": "Williams", "gap": "+15.753"},
-        {"p": 13, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+15.858"},
-        {"p": 14, "who": "Franco Colapinto", "team": "Alpine", "gap": "+16.393"}
-      ]},
+      {"n": "Sprint", "day": "Sa", "t": "04:30"},
       {"n": "Qualifying", "day": "Sa", "t": "08:00", "partial": true, "res": [
         {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Pole"}
       ]},
-      {"n": "Rennen", "day": "So", "t": "08:00", "partial": true, "res": [
-        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger"},
-        {"p": 2, "who": "George Russell", "team": "Mercedes", "gap": "+5.515"},
-        {"p": 3, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "Podium"},
-        {"p": 4, "who": "Charles Leclerc", "team": "Ferrari", "gap": ""},
-        {"p": 5, "who": "Oliver Bearman", "team": "Haas", "gap": ""}
-      ]}
+      {"n": "Rennen", "day": "So", "t": "08:00"}
     ]},
   {"s": "f1", "rd": 3, "name": "Großer Preis von Japan", "loc": "Suzuka", "d0": "2026-03-27", "d1": "2026-03-29", "status": "done", "result": "Kimi Antonelli (Mercedes)",
     "sessions": [
@@ -136,17 +92,7 @@
         {"p": 21, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Q1"},
         {"p": 22, "who": "Lance Stroll", "team": "Aston Martin", "gap": "Q1"}
       ]},
-      {"n": "Rennen", "day": "So", "t": "07:00", "partial": true, "res": [
-        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger · 1:28:03.403"},
-        {"p": 2, "who": "Oscar Piastri", "team": "McLaren", "gap": "+13.722"},
-        {"p": 3, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+15.270"},
-        {"p": 4, "who": "George Russell", "team": "Mercedes", "gap": "+15.754"},
-        {"p": 5, "who": "Lando Norris", "team": "McLaren", "gap": "+23.479"},
-        {"p": 6, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+25.037"},
-        {"p": 7, "who": "Pierre Gasly", "team": "Alpine", "gap": "+32.340"},
-        {"p": 8, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+32.677"},
-        {"p": 9, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+50.180"}
-      ]}
+      {"n": "Rennen", "day": "So", "t": "07:00"}
     ]},
   {"s": "f1", "rd": 4, "name": "Großer Preis von Miami · Sprint", "loc": "Miami", "d0": "2026-05-01", "d1": "2026-05-03", "status": "done", "result": "Kimi Antonelli (Mercedes)",
     "sessions": [
@@ -154,30 +100,7 @@
       {"n": "Sprint-Quali", "day": "Fr", "t": "22:30"},
       {"n": "Sprint", "day": "Sa", "t": "18:00"},
       {"n": "Qualifying", "day": "Sa", "t": "22:00"},
-      {"n": "Rennen", "day": "So", "t": "22:00", "res": [
-        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger"},
-        {"p": 2, "who": "Lando Norris", "team": "McLaren", "gap": "+3.264"},
-        {"p": 3, "who": "Oscar Piastri", "team": "McLaren", "gap": "+27.092"},
-        {"p": 4, "who": "George Russell", "team": "Mercedes", "gap": "+43.051"},
-        {"p": 5, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+48.949 · 5s"},
-        {"p": 6, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+53.753"},
-        {"p": 7, "who": "Franco Colapinto", "team": "Alpine", "gap": "+61.871"},
-        {"p": 8, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+64.245 · 20s"},
-        {"p": 9, "who": "Carlos Sainz", "team": "Williams", "gap": "+82.072"},
-        {"p": 10, "who": "Alexander Albon", "team": "Williams", "gap": "+90.972"},
-        {"p": 11, "who": "Oliver Bearman", "team": "Haas", "gap": "+1 Rd"},
-        {"p": 12, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+1 Rd"},
-        {"p": 13, "who": "Esteban Ocon", "team": "Haas", "gap": "+1 Rd"},
-        {"p": 14, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+1 Rd"},
-        {"p": 15, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "+1 Rd"},
-        {"p": 16, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+1 Rd"},
-        {"p": 17, "who": "Lance Stroll", "team": "Aston Martin", "gap": "+1 Rd"},
-        {"p": 18, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "+2 Rd"},
-        {"p": "DNF", "who": "Nico Hülkenberg", "team": "Audi", "gap": ""},
-        {"p": "DNF", "who": "Liam Lawson", "team": "Racing Bulls", "gap": ""},
-        {"p": "DNF", "who": "Pierre Gasly", "team": "Alpine", "gap": ""},
-        {"p": "DNF", "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": ""}
-      ]}
+      {"n": "Rennen", "day": "So", "t": "22:00"}
     ]},
   {"s": "f1", "rd": 5, "name": "Großer Preis von Kanada · Sprint", "loc": "Montréal", "d0": "2026-05-22", "d1": "2026-05-24", "status": "done", "result": "Kimi Antonelli (Mercedes)",
     "sessions": [
@@ -196,30 +119,7 @@
         {"p": 11, "who": "Nico Hülkenberg", "team": "Audi", "gap": "Q2"},
         {"p": 12, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "Q2"}
       ]},
-      {"n": "Sprint", "day": "Sa", "t": "19:30", "res": [
-        {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "Sieger · 28:50.951"},
-        {"p": 2, "who": "Lando Norris", "team": "McLaren", "gap": "+1.272"},
-        {"p": 3, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "+1.843"},
-        {"p": 4, "who": "Oscar Piastri", "team": "McLaren", "gap": "+9.797"},
-        {"p": 5, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+9.929"},
-        {"p": 6, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+10.545"},
-        {"p": 7, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+15.935"},
-        {"p": 8, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+29.710"},
-        {"p": 9, "who": "Franco Colapinto", "team": "Alpine", "gap": "+31.621"},
-        {"p": 10, "who": "Carlos Sainz", "team": "Williams", "gap": "+36.793"},
-        {"p": 11, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+1:01.344"},
-        {"p": 12, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+1:01.814"},
-        {"p": 13, "who": "Esteban Ocon", "team": "Haas", "gap": "+1:04.209"},
-        {"p": 14, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+1:10.402 · 10s"},
-        {"p": 15, "who": "Nico Hülkenberg", "team": "Audi", "gap": "+1:12.158 · 10s"},
-        {"p": 16, "who": "Lance Stroll", "team": "Aston Martin", "gap": "+1 Rd"},
-        {"p": 17, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "+1 Rd"},
-        {"p": 18, "who": "Oliver Bearman", "team": "Haas", "gap": "+1 Rd"},
-        {"p": 19, "who": "Alexander Albon", "team": "Williams", "gap": "+1 Rd"},
-        {"p": 20, "who": "Pierre Gasly", "team": "Alpine", "gap": "+1 Rd"},
-        {"p": 21, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "+3 Rd"},
-        {"p": "DNF", "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Motor"}
-      ]},
+      {"n": "Sprint", "day": "Sa", "t": "19:30"},
       {"n": "Qualifying", "day": "Sa", "t": "23:00", "partial": true, "res": [
         {"p": 1, "who": "George Russell", "team": "Mercedes", "gap": "1:12.578 · Pole"},
         {"p": 2, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "1:12.646"},
@@ -232,30 +132,7 @@
         {"p": 9, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "1:13.280"},
         {"p": 10, "who": "Franco Colapinto", "team": "Alpine", "gap": "1:13.697"}
       ]},
-      {"n": "Rennen", "day": "So", "t": "20:00", "res": [
-        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger · 1:28:15.758"},
-        {"p": 2, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+10.768"},
-        {"p": 3, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+11.276"},
-        {"p": 4, "who": "Charles Leclerc", "team": "Ferrari", "gap": "+44.151"},
-        {"p": 5, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "+1 Rd"},
-        {"p": 6, "who": "Franco Colapinto", "team": "Alpine", "gap": "+1 Rd"},
-        {"p": 7, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+1 Rd"},
-        {"p": 8, "who": "Pierre Gasly", "team": "Alpine", "gap": "+1 Rd"},
-        {"p": 9, "who": "Carlos Sainz", "team": "Williams", "gap": "+1 Rd"},
-        {"p": 10, "who": "Oliver Bearman", "team": "Haas", "gap": "+1 Rd"},
-        {"p": 11, "who": "Oscar Piastri", "team": "McLaren", "gap": "+2 Rd"},
-        {"p": 12, "who": "Nico Hülkenberg", "team": "Audi", "gap": "+2 Rd"},
-        {"p": 13, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+2 Rd · 5s"},
-        {"p": 14, "who": "Esteban Ocon", "team": "Haas", "gap": "+2 Rd"},
-        {"p": 15, "who": "Lance Stroll", "team": "Aston Martin", "gap": "+4 Rd"},
-        {"p": 16, "who": "Valtteri Bottas", "team": "Cadillac", "gap": "+4 Rd"},
-        {"p": "DNF", "who": "Sergio Pérez", "team": "Cadillac", "gap": "Aufhängung"},
-        {"p": "DNF", "who": "Lando Norris", "team": "McLaren", "gap": "Getriebe"},
-        {"p": "DNF", "who": "George Russell", "team": "Mercedes", "gap": "Motor"},
-        {"p": "DNF", "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Sitz gebrochen"},
-        {"p": "DNF", "who": "Alexander Albon", "team": "Williams", "gap": "Kollision"},
-        {"p": "DNS", "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "Getriebe"}
-      ]}
+      {"n": "Rennen", "day": "So", "t": "20:00"}
     ]},
   {"s": "f1", "rd": 6, "name": "Großer Preis von Monaco", "loc": "Monte Carlo", "d0": "2026-06-05", "d1": "2026-06-07", "status": "done", "result": "Kimi Antonelli (Mercedes)",
     "sessions": [
@@ -265,30 +142,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "16:00", "partial": true, "res": [
         {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Pole"}
       ]},
-      {"n": "Rennen", "day": "So", "t": "15:00", "res": [
-        {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Sieger · 78 Rd"},
-        {"p": 2, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "+6.271"},
-        {"p": 3, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "+23.394"},
-        {"p": 4, "who": "Oscar Piastri", "team": "McLaren", "gap": "+24.261"},
-        {"p": 5, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+26.553"},
-        {"p": 6, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+29.010"},
-        {"p": 7, "who": "Pierre Gasly", "team": "Alpine", "gap": "+30.369"},
-        {"p": 8, "who": "Alexander Albon", "team": "Williams", "gap": "+33.413"},
-        {"p": 9, "who": "Esteban Ocon", "team": "Haas", "gap": "+37.410"},
-        {"p": 10, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "+41.899"},
-        {"p": 11, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+42.748"},
-        {"p": 12, "who": "George Russell", "team": "Mercedes", "gap": "+43.353"},
-        {"p": 13, "who": "Nico Hülkenberg", "team": "Audi", "gap": "+44.102"},
-        {"p": 14, "who": "Franco Colapinto", "team": "Alpine", "gap": "+48.964"},
-        {"p": 15, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+49.153 · 10s"},
-        {"p": "DNF", "who": "Carlos Sainz", "team": "Williams", "gap": ""},
-        {"p": "DNF", "who": "Charles Leclerc", "team": "Ferrari", "gap": "Unfall"},
-        {"p": "DNF", "who": "Lance Stroll", "team": "Aston Martin", "gap": "Unfall"},
-        {"p": "DNF", "who": "Lando Norris", "team": "McLaren", "gap": "Technik"},
-        {"p": "DNF", "who": "Oliver Bearman", "team": "Haas", "gap": "Aufgabe"},
-        {"p": "DNF", "who": "Valtteri Bottas", "team": "Cadillac", "gap": ""},
-        {"p": "DNF", "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "Stand am Start"}
-      ]}
+      {"n": "Rennen", "day": "So", "t": "15:00"}
     ]},
   {"s": "f1", "rd": 7, "name": "Großer Preis von Barcelona-Katalonien", "loc": "Barcelona", "d0": "2026-06-12", "d1": "2026-06-14", "status": "done", "result": "Lewis Hamilton (Ferrari)",
     "sessions": [
@@ -319,30 +173,7 @@
         {"p": 21, "who": "Lance Stroll", "team": "Aston Martin", "gap": "Q1"},
         {"p": 22, "who": "Fernando Alonso", "team": "Aston Martin", "gap": "Q1 · Boxengasse"}
       ]},
-      {"n": "Rennen", "day": "So", "t": "15:00", "res": [
-        {"p": 1, "who": "Lewis Hamilton", "team": "Ferrari", "gap": "Sieger"},
-        {"p": 2, "who": "George Russell", "team": "Mercedes", "gap": "+19.5s"},
-        {"p": 3, "who": "Lando Norris", "team": "McLaren", "gap": "+23.7s"},
-        {"p": 4, "who": "Max Verstappen", "team": "Red Bull-Ford", "gap": "+40.4s"},
-        {"p": 5, "who": "Oscar Piastri", "team": "McLaren", "gap": "+58.6s"},
-        {"p": 6, "who": "Isack Hadjar", "team": "Red Bull-Ford", "gap": "+1 Rd"},
-        {"p": 7, "who": "Pierre Gasly", "team": "Alpine", "gap": "+1 Rd"},
-        {"p": 8, "who": "Liam Lawson", "team": "Racing Bulls", "gap": "+1 Rd"},
-        {"p": 9, "who": "Arvid Lindblad", "team": "Racing Bulls", "gap": "+1 Rd"},
-        {"p": 10, "who": "Franco Colapinto", "team": "Alpine", "gap": "+1 Rd · 10s"},
-        {"p": 11, "who": "Gabriel Bortoleto", "team": "Audi", "gap": "+2 Rd"},
-        {"p": 12, "who": "Carlos Sainz", "team": "Williams", "gap": "+2 Rd"},
-        {"p": 13, "who": "Esteban Ocon", "team": "Haas", "gap": "+2 Rd"},
-        {"p": 14, "who": "Sergio Pérez", "team": "Cadillac", "gap": "+3 Rd"},
-        {"p": "DNF", "who": "Charles Leclerc", "team": "Ferrari", "gap": "Servolenkung"},
-        {"p": "DNF", "who": "Kimi Antonelli", "team": "Mercedes", "gap": "Motor"},
-        {"p": "DNF", "who": "Oliver Bearman", "team": "Haas", "gap": ""},
-        {"p": "DNF", "who": "Alexander Albon", "team": "Williams", "gap": ""},
-        {"p": "DNF", "who": "Fernando Alonso", "team": "Aston Martin", "gap": ""},
-        {"p": "DNF", "who": "Nico Hülkenberg", "team": "Audi", "gap": ""},
-        {"p": "DNF", "who": "Valtteri Bottas", "team": "Cadillac", "gap": ""},
-        {"p": "DNF", "who": "Lance Stroll", "team": "Aston Martin", "gap": ""}
-      ]}
+      {"n": "Rennen", "day": "So", "t": "15:00"}
     ]},
   {"s": "f1", "rd": 8, "name": "Großer Preis von Österreich", "loc": "Spielberg", "d0": "2026-06-26", "d1": "2026-06-28", "status": "done", "result": "George Russell (Mercedes)",
     "sessions": [
@@ -672,9 +503,7 @@
       {"n": "FP2", "day": "Fr", "t": "18:00"},
       {"n": "FP3", "day": "Sa", "t": "09:45"},
       {"n": "Hyperpole", "day": "Sa", "t": "14:20"},
-      {"n": "Rennen (6h)", "day": "So", "t": "13:00", "res": [
-        {"p": 1, "who": "Toyota #8", "team": "Buemi/Hartley/Hirakawa", "gap": "Sieger"}
-      ]}
+      {"n": "Rennen (6h)", "day": "So", "t": "13:00"}
     ]},
   {"s": "wec", "rd": 2, "name": "6 Stunden von Spa-Francorchamps", "loc": "Spa", "d0": "2026-05-07", "d1": "2026-05-09", "status": "done", "result": "BMW #20 (van der Linde/Frijns/Rast)",
     "sessions": [
@@ -682,10 +511,7 @@
       {"n": "FP2", "day": "Fr", "t": "11:00"},
       {"n": "FP3", "day": "Fr", "t": "16:00"},
       {"n": "Hyperpole", "day": "Sa", "t": "12:00"},
-      {"n": "Rennen (6h)", "day": "Sa", "t": "14:00", "res": [
-        {"p": 1, "who": "BMW #20", "team": "van der Linde/Frijns/Rast", "gap": "Sieger"},
-        {"p": 2, "who": "Toyota #15", "team": "Magnussen/Marciello/Vanthoor", "gap": "P2"}
-      ]}
+      {"n": "Rennen (6h)", "day": "Sa", "t": "14:00"}
     ]},
   {"s": "wec", "rd": 3, "name": "24 Stunden von Le Mans", "loc": "Le Mans", "d0": "2026-06-10", "d1": "2026-06-14", "status": "done", "result": "Toyota #7 (Conway/Kobayashi/de Vries)",
     "sessions": [
@@ -693,11 +519,7 @@
       {"n": "Qualifying", "day": "Mi", "t": "19:00"},
       {"n": "Hyperpole", "day": "Do", "t": "20:00"},
       {"n": "Warm Up", "day": "Sa", "t": "12:00"},
-      {"n": "Rennen (24h)", "day": "Sa", "t": "16:00", "res": [
-        {"p": 1, "who": "Toyota #7", "team": "Conway/Kobayashi/de Vries", "gap": "Sieger"},
-        {"p": 2, "who": "BMW #20", "team": "Hypercar", "gap": "P2"},
-        {"p": 3, "who": "Toyota #8", "team": "Hypercar", "gap": "P3"}
-      ]}
+      {"n": "Rennen (24h)", "day": "Sa", "t": "16:00"}
     ]},
   {"s": "wec", "rd": 4, "name": "6 Stunden von São Paulo", "loc": "Interlagos", "d0": "2026-07-10", "d1": "2026-07-12", "status": "done", "result": "BMW #15 (Magnussen/Marciello/Vanthoor)",
     "sessions": [
@@ -747,29 +569,19 @@
         {"p": 2, "who": "Ben Dörr", "team": "Ferrari", "gap": "+0.015"},
         {"p": 3, "who": "Thomas Preining", "team": "Porsche", "gap": "+0.048"}
       ]},
-      {"n": "Rennen 1", "day": "Sa", "t": "13:30", "res": [
-        {"p": 1, "who": "Thomas Preining", "team": "Porsche", "gap": "Sieger"},
-        {"p": 2, "who": "Lucas Auer", "team": "Mercedes", "gap": "+0.774"},
-        {"p": 3, "who": "Maximilian Engel", "team": "Mercedes", "gap": "+1.620"}
-      ]},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
       {"n": "Qualifying 2", "day": "So", "t": "09:30", "res": [
         {"p": 1, "who": "Kelvin van der Linde", "team": "BMW", "gap": "1:27.575 · Pole"},
         {"p": 2, "who": "Franz Wiebelhaus", "team": "Audi", "gap": "+0.085"},
         {"p": 3, "who": "Lucas Auer", "team": "Mercedes", "gap": "+0.093"}
       ]},
-      {"n": "Rennen 2", "day": "So", "t": "13:30", "res": [
-        {"p": 1, "who": "Maximilian Engel", "team": "Mercedes", "gap": "Sieger"},
-        {"p": 2, "who": "Marco Wittmann", "team": "BMW", "gap": "+4.857"},
-        {"p": 3, "who": "Lucas Auer", "team": "Mercedes", "gap": "+5.429"}
-      ]}
+      {"n": "Rennen 2", "day": "So", "t": "13:30"}
     ]},
   {"s": "dtm", "rd": 2, "name": "DTM Zandvoort", "loc": "Zandvoort", "d0": "2026-05-22", "d1": "2026-05-24", "status": "done", "result": "Sa: Cairoli · So: K. van der Linde",
     "sessions": [
       {"n": "Freies Training", "day": "Fr", "t": "13:30"},
       {"n": "Qualifying 1", "day": "Sa", "t": "09:40"},
-      {"n": "Rennen 1", "day": "Sa", "t": "13:30", "res": [
-        {"p": 1, "who": "Kelvin van der Linde", "team": "BMW Schubert", "gap": "Sieger"}
-      ]},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
       {"n": "Qualifying 2", "day": "So", "t": "09:30"},
       {"n": "Rennen 2", "day": "So", "t": "13:30"}
     ]},
@@ -822,11 +634,6 @@
       {"n": "Rennen 2", "day": "So", "t": "13:30"}
     ]},
   {"s": "wrc", "rd": 1, "name": "Rallye Monte-Carlo", "loc": "Monaco", "d0": "2026-01-22", "d1": "2026-01-25", "status": "done", "result": "Oliver Solberg (Toyota)",
-    "resOverall": [
-      {"p": 1, "who": "Oliver Solberg", "team": "Toyota", "gap": "Sieger"},
-      {"p": 2, "who": "Elfyn Evans", "team": "Toyota", "gap": "+51.8s"},
-      {"p": 3, "who": "Sébastien Ogier", "team": "Toyota", "gap": "P3"}
-    ],
     "sessions": [
       {"n": "Shakedown", "day": "Do", "t": "09:00"},
       {"n": "Etappe 1", "day": "Do", "t": "18:00"},
@@ -984,11 +791,7 @@
     "sessions": [
       {"n": "Freies Training", "day": "Fr", "t": "13:00"},
       {"n": "Qualifying", "day": "Sa", "t": "11:40"},
-      {"n": "Rennen", "day": "Sa", "t": "17:00", "res": [
-        {"p": 1, "who": "Jake Dennis", "team": "Andretti", "gap": "Sieger"},
-        {"p": 2, "who": "Oliver Rowland", "team": "Nissan", "gap": "P2"},
-        {"p": 3, "who": "Nick Cassidy", "team": "Citroën", "gap": "P3"}
-      ]}
+      {"n": "Rennen", "day": "Sa", "t": "17:00"}
     ]},
   {"s": "fe", "rd": 2, "name": "Mexiko-Stadt E-Prix", "loc": "Mexiko-Stadt", "d0": "2026-01-10", "d1": "2026-01-10", "status": "done", "result": "Nick Cassidy (Citroën)",
     "sessions": [

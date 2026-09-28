@@ -1,0 +1,189 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:APEX · GT World Challenge Europe
+X-WR-CALDESC:GT World Challenge Europe — alle Sessions in deutscher Zeit
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-gtwc8-FreiesTraining1@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20260918T070000Z
+DTEND:20260918T080000Z
+SUMMARY:GTWC · Zandvoort · Sprint — Freies Training 1
+LOCATION:Zandvoort
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc8-FreiesTraining2@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20260918T115000Z
+DTEND:20260918T125000Z
+SUMMARY:GTWC · Zandvoort · Sprint — Freies Training 2
+LOCATION:Zandvoort
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc8-Qualifying1GruppeA@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20260919T075000Z
+DTEND:20260919T085000Z
+SUMMARY:GTWC · Zandvoort · Sprint — Qualifying 1 · Gruppe A
+LOCATION:Zandvoort
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc8-Qualifying1GruppeB@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20260919T080500Z
+DTEND:20260919T090500Z
+SUMMARY:GTWC · Zandvoort · Sprint — Qualifying 1 · Gruppe B
+LOCATION:Zandvoort
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc8-Rennen1@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20260919T124500Z
+DTEND:20260919T134500Z
+SUMMARY:GTWC · Zandvoort · Sprint — Rennen 1
+LOCATION:Zandvoort
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc8-Qualifying2GruppeA@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20260920T083500Z
+DTEND:20260920T093500Z
+SUMMARY:GTWC · Zandvoort · Sprint — Qualifying 2 · Gruppe A
+LOCATION:Zandvoort
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc8-Qualifying2GruppeB@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20260920T085000Z
+DTEND:20260920T095000Z
+SUMMARY:GTWC · Zandvoort · Sprint — Qualifying 2 · Gruppe B
+LOCATION:Zandvoort
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc8-Rennen2@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20260920T121500Z
+DTEND:20260920T131500Z
+SUMMARY:GTWC · Zandvoort · Sprint — Rennen 2
+LOCATION:Zandvoort
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc9-FreiesTraining1@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20261002T070000Z
+DTEND:20261002T080000Z
+SUMMARY:GTWC · Barcelona · Sprint — Freies Training 1
+LOCATION:Barcelona
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc9-FreiesTraining2@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20261002T115500Z
+DTEND:20261002T125500Z
+SUMMARY:GTWC · Barcelona · Sprint — Freies Training 2
+LOCATION:Barcelona
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc9-Qualifying1GruppeA@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20261003T075000Z
+DTEND:20261003T085000Z
+SUMMARY:GTWC · Barcelona · Sprint — Qualifying 1 · Gruppe A
+LOCATION:Barcelona
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc9-Qualifying1GruppeB@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20261003T080500Z
+DTEND:20261003T090500Z
+SUMMARY:GTWC · Barcelona · Sprint — Qualifying 1 · Gruppe B
+LOCATION:Barcelona
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc9-Rennen1@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20261003T120000Z
+DTEND:20261003T130000Z
+SUMMARY:GTWC · Barcelona · Sprint — Rennen 1
+LOCATION:Barcelona
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc9-Qualifying2GruppeA@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20261004T091500Z
+DTEND:20261004T101500Z
+SUMMARY:GTWC · Barcelona · Sprint — Qualifying 2 · Gruppe A
+LOCATION:Barcelona
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc9-Qualifying2GruppeB@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20261004T093000Z
+DTEND:20261004T103000Z
+SUMMARY:GTWC · Barcelona · Sprint — Qualifying 2 · Gruppe B
+LOCATION:Barcelona
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc9-Rennen2@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20261004T140000Z
+DTEND:20261004T150000Z
+SUMMARY:GTWC · Barcelona · Sprint — Rennen 2
+LOCATION:Barcelona
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Barcelona
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc10-FreiesTraining1@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20261016T074500Z
+DTEND:20261016T084500Z
+SUMMARY:GTWC · Portimão · Endurance · Finale — Freies Training 1
+LOCATION:Portimão
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc10-FreiesTraining2@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20261016T114500Z
+DTEND:20261016T124500Z
+SUMMARY:GTWC · Portimão · Endurance · Finale — Freies Training 2
+LOCATION:Portimão
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc10-Qualifying@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20261016T165500Z
+DTEND:20261016T175500Z
+SUMMARY:GTWC · Portimão · Endurance · Finale — Qualifying
+LOCATION:Portimão
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc10-Rennen3Stunden@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20261017T160000Z
+DTEND:20261017T190000Z
+SUMMARY:GTWC · Portimão · Endurance · Finale — Rennen (3 Stunden)
+LOCATION:Portimão
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
+END:VEVENT
+END:VCALENDAR
