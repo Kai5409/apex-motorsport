@@ -293,6 +293,32 @@
         ["Goroyan RT by Car Collection #4", "Porsche 911 GT3 R", 30],
         ["Team LIQUI MOLY by BLACK FALCON #902", "Porsche 911 GT3 Cup", 25]
       ]
+    },
+    "indycar": {
+      "stand": "Endstand · nach 18 Rennen · Laguna Seca, 06.09.2026",
+      "quelle": "indycar.com",
+      "drv": [
+        ["Álex Palou", "Chip Ganassi Racing", 631],
+        ["Kyle Kirkwood", "Andretti Global", 545],
+        ["Christian Lundgaard", "Arrow McLaren", 535],
+        ["Pato O'Ward", "Arrow McLaren", 522],
+        ["David Malukas", "Team Penske", 514],
+        ["Scott McLaughlin", "Team Penske", 482],
+        ["Marcus Ericsson", "Andretti Global", 429],
+        ["Josef Newgarden", "Team Penske", 423],
+        ["Felix Rosenqvist", "Meyer Shank Racing", 412],
+        ["Rinus VeeKay", "Juncos Hollinger Racing", 378],
+        ["Will Power", "Andretti Global", 368],
+        ["Scott Dixon", "Chip Ganassi Racing", 331],
+        ["Kyffin Simpson", "Chip Ganassi Racing", 327],
+        ["Marcus Armstrong", "Meyer Shank Racing", 320],
+        ["Alexander Rossi", "ECR", 307],
+        ["Graham Rahal", "Rahal Letterman Lanigan Racing", 302],
+        ["Santino Ferrucci", "A.J. Foyt Enterprises", 280],
+        ["Louis Foster", "Rahal Letterman Lanigan Racing", 267],
+        ["Romain Grosjean", "Dale Coyne Racing", 259],
+        ["Nolan Siegel", "Arrow McLaren", 259]
+      ]
     }
   }
 }

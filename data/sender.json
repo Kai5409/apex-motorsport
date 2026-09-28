@@ -67,6 +67,15 @@
         "ch": "Wie in Deutschland: <b>kostenloser Livestream</b> auf VLN.de und YouTube.",
         "note": "Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."
       }
+    },
+    "indycar": {
+      "tv": "Sky · Motorvision+ · INDYCAR LIVE",
+      "tvd": {
+        "de": "<b>Sky Sport</b> (auch bei <b>WOW</b>) und <b>Motorvision+</b> zeigen die Rennen live, Motorvision+ mit deutschem Kommentar. Dazu kommt der offizielle Stream <b>INDYCAR LIVE</b> mit Trainings, Qualifying und Rennen.",
+        "at": "Wie in Deutschland: <b>Sky Sport</b>, <b>Motorvision+</b> und der offizielle Stream <b>INDYCAR LIVE</b>.",
+        "ch": "Wie in Deutschland: <b>Sky Sport</b>, <b>Motorvision+</b> und der offizielle Stream <b>INDYCAR LIVE</b>.",
+        "note": "Alle Angebote sind kostenpflichtig, eine Übertragung im Free-TV gibt es nicht. Geprüft am 28.09.2026."
+      }
     }
   }
 }
