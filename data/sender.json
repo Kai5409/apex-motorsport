@@ -103,6 +103,15 @@
         "ch": "<b>Sky</b> und <b>Canal+</b>, dazu der kostenlose Livestream auf YouTube und X.",
         "note": "Auch bei F1 TV enthalten — in DACH sind dort aber keine neuen Abos möglich. Geprüft am 28.09.2026."
       }
+    },
+    "wsbk": {
+      "tv": "ServusTV (AT) · ServusTV On (frei)",
+      "tvd": {
+        "de": "<b>ServusTV On</b> zeigt die Superbike-WM <b>kostenlos</b> als Livestream. Eurosport überträgt seit 2026 nicht mehr.",
+        "at": "<b>ServusTV</b> überträgt im <b>Free-TV</b>, dazu der Livestream bei ServusTV On.",
+        "ch": "<b>Kostenlos</b> als Livestream bei <b>ServusTV On</b>.",
+        "note": "Alle Sessions live gibt es mit dem kostenpflichtigen WorldSBK VideoPass der Serie (englischer Kommentar). Geprüft am 28.09.2026."
+      }
     }
   }
 }

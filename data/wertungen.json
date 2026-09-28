@@ -397,6 +397,22 @@
         ["Autumn Fisher", "Hitech", 0],
         ["Zoe Florescu", "Hitech", 0]
       ]
+    },
+    "wsbk": {
+      "stand": "nach 10 von 12 Wochenenden · Cremona, 27.09.2026",
+      "quelle": "worldsbk.com",
+      "drv": [
+        ["Nicolò Bulega", "Aruba.it Racing - Ducati", 602],
+        ["Iker Lecuona", "Aruba.it Racing - Ducati", 469],
+        ["Yari Montella", "Barni Spark Racing Team", 269],
+        ["Alex Lowes", "bimota by Kawasaki Racing Team", 226],
+        ["Sam Lowes", "ELF Marc VDS Racing Team", 219],
+        ["Lorenzo Baldassarri", "Team GoEleven", 193],
+        ["Axel Bassani", "bimota by Kawasaki Racing Team", 184],
+        ["Garrett Gerloff", "Kawasaki WorldSBK Team", 145],
+        ["Alberto Surra", "Motocorsa Racing", 140],
+        ["Álvaro Bautista", "Barni Spark Racing Team", 125]
+      ]
     }
   }
 }

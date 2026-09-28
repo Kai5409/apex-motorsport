@@ -13,6 +13,7 @@
     "f3": {"name": "Formel 3", "short": "F3", "gruppe": "formel", "color": "#ffc0ab", "ausgeblendet": true},
     "f1academy": {"name": "F1 Academy", "short": "F1 Academy", "gruppe": "formel", "color": "#d16458", "ausgeblendet": true},
     "mgp": {"name": "MotoGP", "short": "MotoGP", "gruppe": "motorrad", "color": "#e172db"},
+    "wsbk": {"name": "Superbike-WM", "short": "WSBK", "gruppe": "motorrad", "color": "#ad88fe"},
     "wec": {"name": "WEC", "short": "WEC", "gruppe": "sportwagen", "color": "#3a86ff"},
     "gtwc": {"name": "GT World Challenge Europe", "short": "GTWC", "gruppe": "sportwagen", "color": "#03c4c6"},
     "dtm": {"name": "DTM", "short": "DTM", "gruppe": "sportwagen", "color": "#6de5f7"},

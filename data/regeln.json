@@ -148,5 +148,18 @@
       ["Punkte", "Hauptrennen und Opening Race bringen 25, 18, 15, 12, 10, 8, 6, 4, 2 und 1 Punkte für die ersten zehn, das Reverse-Grid-Rennen 10, 8, 6, 5, 4, 3, 2 und 1 für die ersten acht. Die Pole für das Hauptrennen ist zwei Punkte wert, die schnellste Runde einen — aber nur für eine Fahrerin in den Punkterängen."],
       ["Technik", "Gefahren wird ein Einheitsauto von Tatuus mit Halo, angetrieben von einem 1,4-Liter-Vierzylinder-Turbo von Autotecnica mit 174 PS. Die Autos erreichen rund 240 km/h und fahren auf Pirelli-Reifen. Das entspricht dem Niveau der Formel 4 — die Stufe darüber ist die Formel 3."]
     ]
+  },
+  "wsbk": {
+    "kurz": "WM für seriennahe Superbikes — drei Rennen an jedem Wochenende.",
+    "bloecke": [
+      ["Wochenende", "Freitags zwei freie Trainings über je 45 Minuten, samstags ein drittes über 30 Minuten, danach die Tissot Superpole als Qualifying und am Nachmittag Rennen 1. Am Sonntag folgen das Tissot-Superpole-Rennen über zehn Runden (hier „Sprint“) und Rennen 2."],
+      ["Startaufstellung", "Die Superpole bestimmt die Startaufstellung für Rennen 1 und für das Superpole-Rennen. In Rennen 2 besetzen die ersten neun des Superpole-Rennens die ersten drei Startreihen, ab Platz zehn gilt wieder das Ergebnis der Superpole. Gestartet wird mit drei Fahrern pro Reihe."],
+      ["Punkte", "Rennen 1 und Rennen 2 bringen je 25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 und 1 Punkt für die ersten 15. Im Superpole-Rennen gibt es 12, 9, 7, 6, 5, 4, 3, 2 und 1 Punkt für die ersten neun. Ein perfektes Wochenende bringt damit 62 Punkte."],
+      ["Motorräder", "Gefahren wird mit seriennahen Motorrädern, die man in ähnlicher Form kaufen kann. Erlaubt sind Änderungen an Motorelektronik, Auspuff, Fahrwerk, Bremsen und einigen Motorteilen. Je nach Zylinderzahl haben die Maschinen 750 bis 1200 Kubikzentimeter Hubraum und wiegen mindestens 168 Kilogramm. 2026 sind Ducati, Bimota, Kawasaki, Yamaha, BMW und Honda vertreten."],
+      ["Reifen", "Seit 2004 gibt es einen Einheitsreifen-Lieferanten, um Kosten zu senken. 2026 ist die letzte Saison mit Pirelli, ab 2027 liefert Michelin."],
+      ["Strafen", "Die Rennleitung aus FIM und Veranstalter kann eine Long-Lap-Strafe verhängen — der Fahrer muss einen markierten, längeren Bogen fahren — oder eine Durchfahrt durch die Boxengasse mit 60 km/h. Auch Frühstarts werden bestraft."],
+      ["Testbeschränkung", "Zwischen zwei Saisons dürfen Teams höchstens zehn private Testtage nutzen. In den elf Tagen vor einem Rennwochenende sind Tests auf der jeweiligen Strecke verboten, zwischen dem 21. Dezember und dem 4. Januar ruht der Testbetrieb ganz."],
+      ["Klassen", "Im Rahmenprogramm fahren die Supersport-WM (mittelgroße Motorräder), seit 2026 die Sportbike-WM als Nachfolger der Supersport 300 und die Frauen-WM WorldWCR mit einheitlichen Yamaha R7. In der Superbike-WM gilt ein Mindestalter von 18 Jahren."]
+    ]
   }
 }
