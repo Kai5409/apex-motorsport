@@ -368,7 +368,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
   <footer>
 APEX · Saisons 2026 &amp; 2027 · Acht Serien · Stand 25. September 2026<br>
-    Alle Zeiten in MESZ, ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
+    Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
     <button class="legal-link" onclick="toggleLegal()">Datenschutz</button>
     <div class="legal" id="legal">
       <h3>Datenschutzerklärung</h3>
@@ -612,10 +612,12 @@ function convTime(e,s){
 }
 function renderTZ(){
   const el=document.getElementById("tzsw"); if(!el)return;
-  const opt=[["mesz","MESZ"],["local","Lokal"],["track","Strecke"]];
+  const opt=[["mesz","MEZ/MESZ"],["local","Lokal"],["track","Strecke"]];
   el.innerHTML='<span class="tzl">ZEIT</span>'+opt.map(o=>`<button class="${TZMODE===o[0]?'on':''}" onclick="setTZ('${o[0]}')">${o[1]}</button>`).join("");
 }
 function setTZ(m){TZMODE=m;renderTZ();rerender();}
+/* MEZ oder MESZ – je nach Datum der Uhrzeit (Umstellung Ende März/Ende Oktober) */
+function dtZone(inst){return zoneOffsetMin(inst,"Europe/Berlin")===120?"MESZ":"MEZ";}
 
 /* ── Kalender-Export (.ics) ── */
 function pad2(n){return String(n).padStart(2,"0");}
@@ -1227,7 +1229,7 @@ function renderWeekend(){
     const dur=sessDuration(it.e,it.s)*60000;
     const live=it.inst<=now&&now<it.inst+dur, gone=now>=it.inst+dur;
     html+=`<div class="wke-row ${gone?'gone':''}" onclick="gotoEvent('${it.e.s}','${it.e.rd}')">`+
-      `<span class="wke-t">${ct.t}<span class="d">${TZMODE==="mesz"?"MESZ":ct.day}</span></span>`+
+      `<span class="wke-t">${ct.t}<span class="d">${TZMODE==="mesz"?dtZone(new Date(it.inst)):ct.day}</span></span>`+
       `<span class="wke-bar" style="background:${S0.color}"></span>`+
       `<span><span class="wke-sn ${isRaceName(it.s.n)?'race':''}">${it.s.n}${live?'<span class="wke-live">LIVE</span>':''}</span>`+
       `<span class="wke-ev"><b style="color:${S0.color}">${S0.short}</b> · ${it.e.name} · ${it.e.loc}</span>`+
@@ -1300,7 +1302,7 @@ function checkReminders(){
       if(t>now&&t-now<=win&&!FIRED.has(key)){
         FIRED.add(key);saveFired();
         const mins=Math.max(1,Math.round((t-now)/60000));
-        try{new Notification("APEX · "+SERIES[e.s].short,{body:s.n+" — "+e.name+" startet in "+mins+" Min ("+s.t+" Uhr MESZ)",tag:key,icon:"icon-192.png"});}catch(err){}
+        try{new Notification("APEX · "+SERIES[e.s].short,{body:s.n+" — "+e.name+" startet in "+mins+" Min ("+s.t+" Uhr "+dtZone(new Date(t))+")",tag:key,icon:"icon-192.png"});}catch(err){}
       }
     });
   });
