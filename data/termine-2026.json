@@ -569,29 +569,19 @@
         {"p": 2, "who": "Ben Dörr", "team": "Ferrari", "gap": "+0.015"},
         {"p": 3, "who": "Thomas Preining", "team": "Porsche", "gap": "+0.048"}
       ]},
-      {"n": "Rennen 1", "day": "Sa", "t": "13:30", "res": [
-        {"p": 1, "who": "Thomas Preining", "team": "Porsche", "gap": "Sieger"},
-        {"p": 2, "who": "Lucas Auer", "team": "Mercedes", "gap": "+0.774"},
-        {"p": 3, "who": "Maximilian Engel", "team": "Mercedes", "gap": "+1.620"}
-      ]},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
       {"n": "Qualifying 2", "day": "So", "t": "09:30", "res": [
         {"p": 1, "who": "Kelvin van der Linde", "team": "BMW", "gap": "1:27.575 · Pole"},
         {"p": 2, "who": "Franz Wiebelhaus", "team": "Audi", "gap": "+0.085"},
         {"p": 3, "who": "Lucas Auer", "team": "Mercedes", "gap": "+0.093"}
       ]},
-      {"n": "Rennen 2", "day": "So", "t": "13:30", "res": [
-        {"p": 1, "who": "Maximilian Engel", "team": "Mercedes", "gap": "Sieger"},
-        {"p": 2, "who": "Marco Wittmann", "team": "BMW", "gap": "+4.857"},
-        {"p": 3, "who": "Lucas Auer", "team": "Mercedes", "gap": "+5.429"}
-      ]}
+      {"n": "Rennen 2", "day": "So", "t": "13:30"}
     ]},
   {"s": "dtm", "rd": 2, "name": "DTM Zandvoort", "loc": "Zandvoort", "d0": "2026-05-22", "d1": "2026-05-24", "status": "done", "result": "Sa: Cairoli · So: K. van der Linde",
     "sessions": [
       {"n": "Freies Training", "day": "Fr", "t": "13:30"},
       {"n": "Qualifying 1", "day": "Sa", "t": "09:40"},
-      {"n": "Rennen 1", "day": "Sa", "t": "13:30", "res": [
-        {"p": 1, "who": "Kelvin van der Linde", "team": "BMW Schubert", "gap": "Sieger"}
-      ]},
+      {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
       {"n": "Qualifying 2", "day": "So", "t": "09:30"},
       {"n": "Rennen 2", "day": "So", "t": "13:30"}
     ]},
