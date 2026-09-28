@@ -400,7 +400,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "16:00"},
       {"n": "Rennen", "day": "So", "t": "15:00"}
     ]},
-  {"s": "f1", "rd": 15, "name": "Großer Preis von Aserbaidschan", "loc": "Baku", "d0": "2026-09-24", "d1": "2026-09-26", "status": "up",
+  {"s": "f1", "rd": 15, "name": "Großer Preis von Aserbaidschan", "loc": "Baku", "d0": "2026-09-24", "d1": "2026-09-26", "status": "done", "result": "George Russell (Mercedes)",
     "sessions": [
       {"n": "FP1", "day": "Do", "t": "10:30"},
       {"n": "FP2", "day": "Do", "t": "14:00"},
@@ -715,7 +715,7 @@
       {"n": "Hyperpole", "day": "Sa", "t": "21:20"},
       {"n": "Rennen (6h)", "day": "So", "t": "20:00"}
     ]},
-  {"s": "wec", "rd": 6, "name": "6 Stunden von Fuji", "loc": "Fuji", "d0": "2026-09-25", "d1": "2026-09-27", "status": "up",
+  {"s": "wec", "rd": 6, "name": "6 Stunden von Fuji", "loc": "Fuji", "d0": "2026-09-25", "d1": "2026-09-27", "status": "done", "result": "Toyota #8 (Buemi/Hartley/Hirakawa)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "04:00"},
       {"n": "FP2", "day": "Fr", "t": "08:30"},
