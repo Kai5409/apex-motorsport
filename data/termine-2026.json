@@ -503,9 +503,7 @@
       {"n": "FP2", "day": "Fr", "t": "18:00"},
       {"n": "FP3", "day": "Sa", "t": "09:45"},
       {"n": "Hyperpole", "day": "Sa", "t": "14:20"},
-      {"n": "Rennen (6h)", "day": "So", "t": "13:00", "res": [
-        {"p": 1, "who": "Toyota #8", "team": "Buemi/Hartley/Hirakawa", "gap": "Sieger"}
-      ]}
+      {"n": "Rennen (6h)", "day": "So", "t": "13:00"}
     ]},
   {"s": "wec", "rd": 2, "name": "6 Stunden von Spa-Francorchamps", "loc": "Spa", "d0": "2026-05-07", "d1": "2026-05-09", "status": "done", "result": "BMW #20 (van der Linde/Frijns/Rast)",
     "sessions": [
@@ -513,10 +511,7 @@
       {"n": "FP2", "day": "Fr", "t": "11:00"},
       {"n": "FP3", "day": "Fr", "t": "16:00"},
       {"n": "Hyperpole", "day": "Sa", "t": "12:00"},
-      {"n": "Rennen (6h)", "day": "Sa", "t": "14:00", "res": [
-        {"p": 1, "who": "BMW #20", "team": "van der Linde/Frijns/Rast", "gap": "Sieger"},
-        {"p": 2, "who": "Toyota #15", "team": "Magnussen/Marciello/Vanthoor", "gap": "P2"}
-      ]}
+      {"n": "Rennen (6h)", "day": "Sa", "t": "14:00"}
     ]},
   {"s": "wec", "rd": 3, "name": "24 Stunden von Le Mans", "loc": "Le Mans", "d0": "2026-06-10", "d1": "2026-06-14", "status": "done", "result": "Toyota #7 (Conway/Kobayashi/de Vries)",
     "sessions": [
@@ -524,11 +519,7 @@
       {"n": "Qualifying", "day": "Mi", "t": "19:00"},
       {"n": "Hyperpole", "day": "Do", "t": "20:00"},
       {"n": "Warm Up", "day": "Sa", "t": "12:00"},
-      {"n": "Rennen (24h)", "day": "Sa", "t": "16:00", "res": [
-        {"p": 1, "who": "Toyota #7", "team": "Conway/Kobayashi/de Vries", "gap": "Sieger"},
-        {"p": 2, "who": "BMW #20", "team": "Hypercar", "gap": "P2"},
-        {"p": 3, "who": "Toyota #8", "team": "Hypercar", "gap": "P3"}
-      ]}
+      {"n": "Rennen (24h)", "day": "Sa", "t": "16:00"}
     ]},
   {"s": "wec", "rd": 4, "name": "6 Stunden von São Paulo", "loc": "Interlagos", "d0": "2026-07-10", "d1": "2026-07-12", "status": "done", "result": "BMW #15 (Magnussen/Marciello/Vanthoor)",
     "sessions": [
