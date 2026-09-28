@@ -130,6 +130,15 @@
         "ch": "Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.",
         "note": "Alle Sessions live und auf Abruf mit dem kostenpflichtigen MotoGP VideoPass. Geprüft am 28.09.2026."
       }
+    },
+    "supercup": {
+      "tv": "Sky",
+      "tvd": {
+        "de": "<b>Sky</b> zeigt die Supercup-Rennen im deutschsprachigen Raum live.",
+        "at": "Wie in Deutschland über <b>Sky</b>.",
+        "ch": "Wie in Deutschland über <b>Sky</b>.",
+        "note": "Auch bei F1 TV — in DACH sind dort aber keine neuen Abos möglich. Freies Training und Qualifying zeigt das offizielle Live-Timing. Geprüft am 28.09.2026."
+      }
     }
   }
 }

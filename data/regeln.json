@@ -181,5 +181,15 @@
       ["Technik", "Gefahren wird mit 250-Kubikzentimeter-Einzylinder-Viertaktern, 2026 von KTM und Honda. Einheitsreifen kommen von Pirelli. Die Moto3 hat 2012 die frühere 125er-Klasse abgelöst."],
       ["Windschatten", "Die leichten, vergleichsweise schwach motorisierten Maschinen profitieren stark vom Windschatten. Deshalb fahren oft große Gruppen um den Sieg, und viele Rennen werden erst in der letzten Runde oder der letzten Kurve entschieden."]
     ]
+  },
+  "supercup": {
+    "kurz": "Porsches internationaler Markenpokal im Rahmen der Formel 1 — alle fahren den 911 Cup.",
+    "bloecke": [
+      ["Serie", "Den Porsche Mobil 1 Supercup gibt es seit 1993. Er ist die Spitze von weltweit mehr als 30 Carrera Cups und fährt ausschließlich an Formel-1-Wochenenden in Europa, 2026 acht Rennen von Monaco bis Monza. Zehn Teams teilen sich 28 feste Startplätze, dazu kommen Gaststarter — außer in Monaco, wo höchstens 28 Autos starten dürfen."],
+      ["Wochenende", "Auf ein freies Training und das Qualifying folgt ein Rennen, meist am Sonntag vor dem Grand Prix. In Zandvoort wurden 2026 zwei Rennen an einem Wochenende gefahren. Das Qualifying bestimmt die Startaufstellung."],
+      ["Punkte", "Die ersten 15 bekommen 25, 20, 17, 14, 12, 10, 9, 8, 7, 6, 5, 4, 3, 2 und 1 Punkt. Gaststarter sind nicht punkteberechtigt, die Punkte rücken dann nach. Fährt der Sieger weniger als die Hälfte der geplanten Distanz, gibt es nur halbe Punkte."],
+      ["Auto", "Alle fahren den Porsche 911 Cup, seit 2026 in der neuen Generation 992.2: ein 4,0-Liter-Sechszylinder-Boxermotor ohne Turbo mit 382 kW (520 PS), überarbeitete Aerodynamik und erstmals ein Renn-ABS. Getankt wird ein Kraftstoff mit 80 Prozent erneuerbaren Anteilen, überwiegend eFuel."],
+      ["Wertungen", "Neben der Fahrerwertung gibt es eine Rookie-Wertung für Fahrer bis 25 Jahre und eine Teamwertung. Porsche fördert zudem ausgewählte Nachwuchsfahrer als „Porsche Junior“ — 2026 wurde mit Flynt Schuring ein Junior Gesamtsieger."]
+    ]
   }
 }
