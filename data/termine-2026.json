@@ -634,11 +634,6 @@
       {"n": "Rennen 2", "day": "So", "t": "13:30"}
     ]},
   {"s": "wrc", "rd": 1, "name": "Rallye Monte-Carlo", "loc": "Monaco", "d0": "2026-01-22", "d1": "2026-01-25", "status": "done", "result": "Oliver Solberg (Toyota)",
-    "resOverall": [
-      {"p": 1, "who": "Oliver Solberg", "team": "Toyota", "gap": "Sieger"},
-      {"p": 2, "who": "Elfyn Evans", "team": "Toyota", "gap": "+51.8s"},
-      {"p": 3, "who": "Sébastien Ogier", "team": "Toyota", "gap": "P3"}
-    ],
     "sessions": [
       {"n": "Shakedown", "day": "Do", "t": "09:00"},
       {"n": "Etappe 1", "day": "Do", "t": "18:00"},
