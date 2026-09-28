@@ -791,11 +791,7 @@
     "sessions": [
       {"n": "Freies Training", "day": "Fr", "t": "13:00"},
       {"n": "Qualifying", "day": "Sa", "t": "11:40"},
-      {"n": "Rennen", "day": "Sa", "t": "17:00", "res": [
-        {"p": 1, "who": "Jake Dennis", "team": "Andretti", "gap": "Sieger"},
-        {"p": 2, "who": "Oliver Rowland", "team": "Nissan", "gap": "P2"},
-        {"p": 3, "who": "Nick Cassidy", "team": "Citroën", "gap": "P3"}
-      ]}
+      {"n": "Rennen", "day": "Sa", "t": "17:00"}
     ]},
   {"s": "fe", "rd": 2, "name": "Mexiko-Stadt E-Prix", "loc": "Mexiko-Stadt", "d0": "2026-01-10", "d1": "2026-01-10", "status": "done", "result": "Nick Cassidy (Citroën)",
     "sessions": [
