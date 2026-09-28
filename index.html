@@ -1163,20 +1163,24 @@ function buildSessions(e,evId,status){
   /* Ergebnislisten gibt es nur für gewertete Events mit Sieger */
   const fertig=status==="done"&&!!e.result;
   const erg=fertig?ergStand(e):{zustand:"keine",listen:[]};
-  const namen=new Set(e.sessions.map(s=>s.n));
+  const namen=new Set(e.sessions.map(s=>s.n)), mitRennen=e.sessions.some(s=>isRaceName(s.n));
+  /* Ergebnisse ohne eigene Session: WRC-Gesamtwertung (Rallye) und Rennen ohne Zeitplan oben,
+     weitere Rennen eines Events mit Zeitplan (z. B. zweites Rennen) unter den Sessions */
+  let extra="";
   if(fertig){
-    /* Ergebnisse ohne eigene Session: WRC-Gesamtwertung (Rallye) oben, Rennen ohne Zeitplan */
-    let extra=erg.listen.filter(l=>!namen.has(l.n)).map(l=>l.n);
-    if(!extra.length&&e.s==="wrc")extra=["Gesamtwertung"];
-    else if(!extra.length&&!e.sessions.some(s=>isRaceName(s.n)))extra=["Ergebnis"];
-    extra.forEach(n=>{
+    let liste=erg.listen.filter(l=>!namen.has(l.n)).map(l=>l.n);
+    if(!liste.length&&e.s==="wrc")liste=["Gesamtwertung"];
+    else if(!liste.length&&!mitRennen)liste=["Ergebnis"];
+    liste.forEach(n=>{
       const titel=e.s==="wrc"&&n==="Gesamtwertung"?"Gesamtwertung (Rallye)":n;
       const res=e.s==="wrc"&&n==="Gesamtwertung"?e.resOverall:null;
-      out+=ergZeile(e,evId+"-r-"+n.replace(/\W+/g,""),
+      extra+=ergZeile(e,evId+"-r-"+n.replace(/\W+/g,""),
         `<span class="sess-chev">▶</span><span class="sess-n ovr">${esc(titel)}</span><span class="sess-t"></span><span class="sess-meta"></span><span></span>`,
         ergPanel(e,n,erg,res,!res),true);
     });
   }
+  const unten=mitRennen&&e.s!=="wrc";
+  if(!unten){out+=extra;extra="";}
   e.sessions.forEach((s,i)=>{
     const rid=evId+"-s"+i;
     const liste=erg.listen.some(l=>l.n===s.n);
@@ -1194,7 +1198,7 @@ function buildSessions(e,evId,status){
       out+=`<div class="sess"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
     }
   });
-  return out;
+  return out+extra;
 }
 /* sk/rd/sz gesetzt: beim ersten Öffnen die Ergebnisliste laden und das Event neu zeichnen */
 function toggleRes(rid,sk,rd,sz){
