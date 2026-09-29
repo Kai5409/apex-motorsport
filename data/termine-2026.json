@@ -547,19 +547,14 @@
     ]},
   {"s": "wec", "rd": 7, "name": "6 Stunden von Barcelona", "loc": "Circuit de Barcelona-Catalunya", "d0": "2026-10-16", "d1": "2026-10-18", "status": "up",
     "sessions": [
-      {"n": "FP1", "day": "Do", "t": "13:00"},
-      {"n": "FP2", "day": "Do", "t": "18:00"},
-      {"n": "FP3", "day": "Fr", "t": "13:00"},
-      {"n": "Hyperpole", "day": "Fr", "t": "17:20"},
-      {"n": "Rennen (6h)", "day": "Sa", "t": "13:00"}
+      {"n": "FP1", "day": "Fr", "t": "11:30"},
+      {"n": "FP2", "day": "Fr", "t": "16:30"},
+      {"n": "Rennen (6h)", "day": "So", "t": "12:00"}
     ]},
   {"s": "wec", "rd": 8, "name": "6 Stunden von Monza (Finale)", "loc": "Monza", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
-      {"n": "FP1", "day": "Do", "t": "13:00"},
-      {"n": "FP2", "day": "Do", "t": "18:00"},
-      {"n": "FP3", "day": "Fr", "t": "14:00"},
-      {"n": "Hyperpole", "day": "Fr", "t": "18:20"},
-      {"n": "Rennen (6h)", "day": "Sa", "t": "13:00"}
+      {"n": "Hyperpole", "day": "Sa", "t": "14:20"},
+      {"n": "Rennen (6h)", "day": "So", "t": "11:00"}
     ]},
   {"s": "dtm", "rd": 1, "name": "DTM Spielberg", "loc": "Red Bull Ring", "d0": "2026-04-24", "d1": "2026-04-26", "status": "done", "result": "Sa: Preining · So: Engel",
     "sessions": [
