@@ -13,10 +13,13 @@
   })();
 
   /* Vorschau ohne Ordneradressen (…/formel-1/index.html): Verweise auf Ordner mit index.html ergänzen */
-  if (/\/index\.html$/.test(location.pathname)) $$("a[href]").forEach((a) => {
-    const m = /^((?:\.\.?\/)+(?:[\w-]+\/)*)([?#].*)?$/.exec(a.getAttribute("href"));
-    if (m) a.setAttribute("href", m[1] + "index.html" + (m[2] || ""));
-  });
+  function ordnerLinks(r) {
+    if (/\/index\.html$/.test(location.pathname)) $$("a[href]", r).forEach((a) => {
+      const m = /^((?:\.\.?\/)+(?:[\w-]+\/)*)([?#].*)?$/.exec(a.getAttribute("href"));
+      if (m) a.setAttribute("href", m[1] + "index.html" + (m[2] || ""));
+    });
+  }
+  ordnerLinks();
 
   /* Kurzer Hinweis unten */
   let uhr = 0;
@@ -117,8 +120,8 @@
   /* Wertung und lange Zeitpläne: erst gekürzt, auf Wunsch alles */
   $$(".more").forEach((b) => {
     const liste = b.previousElementSibling; if (!liste) return;
-    liste.classList.add("kurz"); b.hidden = false;
-    b.addEventListener("click", () => { const kurz = liste.classList.toggle("kurz"); b.textContent = kurz ? b.dataset.alle : b.dataset.weniger; festPruefen(); });
+    liste.classList.add("kurz"); b.hidden = false; b.setAttribute("aria-expanded", "false");
+    b.addEventListener("click", () => { const kurz = liste.classList.toggle("kurz"); b.textContent = kurz ? b.dataset.alle : b.dataset.weniger; b.setAttribute("aria-expanded", String(!kurz)); festPruefen(); });
   });
 
   /* Saisonlinie (Saison des nächsten Events) */
@@ -175,6 +178,175 @@
   let rz = 0;
   addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { zeichnen(); festPruefen(); }, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(festPruefen);
+
+  /* Dieses Wochenende: Wochenende zum heutigen Datum (Donnerstag 00:00 bis Montag 06:00 deutscher Zeit).
+     Die Seite enthält jedes Wochenende mit Events (das erste direkt, die übrigen als <template>). Montag bis
+     Donnerstag gilt das kommende, Freitag bis Sonntag das laufende Wochenende; ohne Events ein Hinweis und
+     das nächste Wochenende mit Events. Dazu: vorbei/läuft, Heute, Serienfilter (wie in der App) und „Trainings ausblenden“. */
+  const woche = $("#woche");
+  if (woche) {
+    const MONL = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    const p2 = (n) => String(n).padStart(2, "0");
+    const wand = () => {
+      try { const t = new Date().toLocaleString("sv-SE", { timeZone: "Europe/Berlin", hour12: false }); return { datum: t.slice(0, 10), zeit: t.slice(11, 16) }; }
+      catch (e) { const d = new Date(); return { datum: d.getFullYear() + "-" + p2(d.getMonth() + 1) + "-" + p2(d.getDate()), zeit: p2(d.getHours()) + ":" + p2(d.getMinutes()) }; }
+    };
+    const tag = (x) => { const a = x.split("-").map(Number); return new Date(Date.UTC(a[0], a[1] - 1, a[2])); };
+    const plus = (x, n) => { const d = tag(x); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+    /* Donnerstag des Wochenendes; Montag bis 06:00 gehört noch zum Wochenende davor */
+    const donnerstag = (j) => { const w = tag(j.datum).getUTCDay(); return w === 1 && j.zeit < "06:00" ? plus(j.datum, -4) : plus(j.datum, w === 0 ? -3 : 4 - w); };
+    const spanneText = (von, bis) => { const a = tag(von), b = tag(bis);
+      return a.getUTCMonth() === b.getUTCMonth() ? a.getUTCDate() + ".–" + b.getUTCDate() + ". " + MONL[b.getUTCMonth()] + " " + b.getUTCFullYear()
+        : a.getUTCDate() + ". " + MONL[a.getUTCMonth()] + (a.getUTCFullYear() !== b.getUTCFullYear() ? " " + a.getUTCFullYear() : "") + " – " + b.getUTCDate() + ". " + MONL[b.getUTCMonth()] + " " + b.getUTCFullYear(); };
+    const erste = $(".wk", woche);
+    const wochen = (erste ? [{ k: erste.dataset.do, titel: erste.dataset.titel, el: erste }] : [])
+      .concat($$("template.wvorlage").map((t) => ({ k: t.dataset.do, t })))
+      .sort((a, b) => (a.k < b.k ? -1 : a.k > b.k ? 1 : 0));
+    let gezeigt = erste ? wochen.find((w) => w.el === erste) : null;
+    let ohneTraining = false;
+
+    function waehlen() {
+      const j = wand(), k = donnerstag(j);
+      const ziel = wochen.find((w) => w.k === k) || wochen.find((w) => w.k > k) || null;
+      if (ziel !== gezeigt) {
+        if (ziel && !ziel.el) { ziel.el = ziel.t.content.firstElementChild.cloneNode(true); ziel.titel = ziel.el.dataset.titel; }
+        woche.replaceChildren(...(ziel ? [ziel.el] : []));
+        if (ziel) ordnerLinks(ziel.el);
+        gezeigt = ziel;
+      }
+      const leer = $("#wleer"), zr = $("#wzr");
+      if (ziel && ziel.k === k) { leer.hidden = true; leer.innerHTML = ""; if (zr) zr.textContent = ziel.titel; }
+      else {
+        if (zr) zr.textContent = spanneText(plus(k, 1), plus(k, 3));
+        leer.innerHTML = "<p><b>An diesem Wochenende finden keine Rennen statt.</b></p>" + (ziel
+          ? "<p>Nächstes Rennwochenende: <b>" + ziel.titel + "</b></p>"
+          : "<p>Weitere Termine folgen, sobald die Kalender veröffentlicht sind.</p>");
+        leer.hidden = false;
+      }
+    }
+    /* vorbei (ausgegraut) und läuft – nach der Uhrzeit; „läuft gerade“ und „Heute“ nach dem Datum */
+    function zustand() {
+      const jetzt = Date.now(), heute = wand().datum;
+      $$("li[data-a]", woche).forEach((li) => {
+        const vorbei = jetzt >= +li.dataset.e, laeuft = !vorbei && jetzt >= +li.dataset.a, m = $(".wlive", li);
+        li.classList.toggle("vorbei", vorbei); li.classList.toggle("laeuft", laeuft);
+        if (laeuft && !m) $(".wsi b", li).insertAdjacentHTML("beforeend", ' <span class="wlive">läuft</span>');
+        else if (!laeuft && m) m.remove();
+      });
+      $$("li.ohne", woche).forEach((li) => li.classList.toggle("vorbei", li.dataset.bis < heute));
+      $$("[data-von]", woche).forEach((x) => { const l = $(".wlg", x); if (l) l.hidden = !(x.dataset.von <= heute && heute <= x.dataset.bis); });
+      $$(".wtag", woche).forEach((t) => { const h = $(".wheute", t); if (h) h.hidden = t.dataset.tag !== heute; });
+    }
+    /* Serienfilter wie in der App, aber nur mit den Serien des gezeigten Wochenendes: bis 4 Serien einzelne
+       Knöpfe, ab 5 Gruppenknöpfe mit Pfeil zum Aufklappen. Gleicher Speicher wie die App („apex_filter“,
+       {kürzel: an/aus}); ohne gespeicherte Auswahl die Standardwerte der App (Rahmenserien aus). */
+    const FILTER = "apex_filter";
+    const DAT = (() => { try { return JSON.parse($("#apex-woche").textContent); } catch (e) { return {}; } })();
+    const SER = DAT.serien || {}, GRP = DAT.gruppen || {}, ALLE = Object.keys(SER), AKTIV = new Set();
+    const leiste = $("#wfilter");
+    let offen = null, filterWoche;
+    function filterLaden() {
+      let alt = null; try { alt = JSON.parse(localStorage.getItem(FILTER) || "null"); } catch (e) { alt = null; }
+      if (!alt || typeof alt !== "object" || Array.isArray(alt)) alt = {};
+      AKTIV.clear();
+      ALLE.forEach((sk) => { if (typeof alt[sk] === "boolean" ? alt[sk] : !SER[sk].aus) AKTIV.add(sk); });
+      if (!AKTIV.size) ALLE.forEach((sk) => { if (!SER[sk].aus) AKTIV.add(sk); });
+      if (!AKTIV.size) ALLE.forEach((sk) => AKTIV.add(sk));
+    }
+    function filterSpeichern() { try { const o = {}; ALLE.forEach((sk) => { o[sk] = AKTIV.has(sk); }); localStorage.setItem(FILTER, JSON.stringify(o)); } catch (e) {} }
+    const wochenSerien = () => (gezeigt && gezeigt.el ? gezeigt.el.dataset.serien.split(" ").filter((sk) => SER[sk]) : []);
+    const escH = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    function gruppenDerWoche(sks) {
+      const gl = Object.keys(GRP).map((g) => ({ g, name: GRP[g].name, short: GRP[g].short, farbe: GRP[g].farbe, sks: sks.filter((sk) => SER[sk].gruppe === g) }));
+      const rest = sks.filter((sk) => !GRP[SER[sk].gruppe]);
+      if (rest.length) gl.push({ g: "weitere", name: "Weitere", short: "Weitere", farbe: "", sks: rest });
+      return gl.filter((x) => x.sks.length);
+    }
+    const knopf = (sk) => { const S = SER[sk], an = AKTIV.has(sk);
+      return `<button class="wf-chip${an ? "" : " aus"}" type="button" data-serie="${sk}" aria-pressed="${an}" title="${escH(S.name)}"><i style="background:${S.color}"></i><span class="wf-l">${escH(S.name)}</span><span class="wf-s">${escH(S.short)}</span></button>`; };
+    /* Knöpfe werden neu gezeichnet – der Tastaturfokus wandert auf den neuen Knopf an gleicher Stelle */
+    const fokusWahl = (el) => el.dataset.serie ? `.wf-chip[data-serie="${el.dataset.serie}"]`
+      : el.closest(".wf-grp") ? `.wf-grp[data-g="${el.closest(".wf-grp").dataset.g}"] .${el.classList.contains("wf-pfeil") ? "wf-pfeil" : "wf-an"}` : null;
+    function filterZeichnen() {
+      if (!leiste) return;
+      const sks = wochenSerien(), f = document.activeElement;
+      const fokus = f && f !== document.body && leiste.contains(f) ? fokusWahl(f) : null;
+      leiste.hidden = !sks.length;
+      let h = "";
+      if (sks.length && sks.length <= 4) { offen = null; h = `<div class="wf-leiste">${sks.map(knopf).join("")}</div>`; }
+      else if (sks.length) {
+        const gl = gruppenDerWoche(sks);
+        if (offen && !gl.some((x) => x.g === offen)) offen = null;
+        h = `<div class="wf-leiste wf-gruppen">` + gl.map((x) => {
+          const an = x.sks.filter((sk) => AKTIV.has(sk)).length, n = x.sks.length, st = !an ? "aus" : an < n ? "teil" : "an", auf = offen === x.g;
+          return `<div class="wf-grp ${st}${auf ? " offen" : ""}" data-g="${x.g}"${x.farbe ? ` style="--gf:${x.farbe}"` : ""}>` +
+            `<button class="wf-an" type="button" aria-pressed="${st === "an" ? "true" : st === "teil" ? "mixed" : "false"}" title="${escH(x.name)}"><span class="wf-l">${escH(x.name)}</span><span class="wf-s">${escH(x.short)}</span></button>` +
+            (st === "teil" ? `<span class="wf-z">${an}/${n}</span>` : "") +
+            `<button class="wf-pfeil" type="button" aria-expanded="${auf}"${auf ? ' aria-controls="wf-panel"' : ""} aria-label="Serien der Gruppe ${escH(x.name)} einzeln auswählen"><span aria-hidden="true">▾</span></button></div>`;
+        }).join("") + "</div>";
+        const g = gl.find((x) => x.g === offen);
+        if (g) h += `<div class="wf-panel" id="wf-panel" role="group" aria-label="${escH(g.name)}">${g.sks.map(knopf).join("")}</div>`;
+      } else offen = null;
+      leiste.innerHTML = h;
+      const neu = fokus && $(fokus, leiste); if (neu) neu.focus({ preventScroll: true });
+    }
+    /* wie toggleSeries()/toggleGruppe() der App: mindestens eine Serie bleibt ausgewählt */
+    function serieUmschalten(sk) { if (AKTIV.has(sk)) { if (AKTIV.size > 1) AKTIV.delete(sk); } else AKTIV.add(sk); geaendert(); }
+    function gruppeUmschalten(g) {
+      const x = gruppenDerWoche(wochenSerien()).find((y) => y.g === g); if (!x) return;
+      if (x.sks.some((sk) => AKTIV.has(sk))) { if (x.sks.filter((sk) => AKTIV.has(sk)).length >= AKTIV.size) return; x.sks.forEach((sk) => AKTIV.delete(sk)); }
+      else x.sks.forEach((sk) => AKTIV.add(sk));
+      geaendert();
+    }
+    function geaendert() { filterSpeichern(); filterZeichnen(); filtern(); }
+    if (leiste) leiste.addEventListener("click", (ev) => {
+      const chip = ev.target.closest(".wf-chip"), an = ev.target.closest(".wf-an"), pf = ev.target.closest(".wf-pfeil");
+      if (chip) serieUmschalten(chip.dataset.serie);
+      else if (an) gruppeUmschalten(an.closest(".wf-grp").dataset.g);
+      else if (pf) { const g = pf.closest(".wf-grp").dataset.g; offen = offen === g ? null : g; filterZeichnen(); }
+    });
+    /* Aufgeklappte Feinauswahl schließen: Tippen außerhalb des Filters oder Esc (wie in der App) */
+    document.addEventListener("click", (ev) => { if (offen && leiste && !leiste.contains(ev.target)) { offen = null; filterZeichnen(); } }, true);
+    document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && offen) { offen = null; filterZeichnen(); } });
+    /* Auswahl aus der App übernehmen: anderer Tab (storage) oder Rückkehr aus dem Browser-Zwischenspeicher */
+    const abgleichen = () => { filterLaden(); filterZeichnen(); filtern(); };
+    addEventListener("storage", (ev) => { if (ev.key === FILTER || ev.key === null) abgleichen(); });
+    addEventListener("pageshow", (ev) => { if (ev.persisted) abgleichen(); });
+
+    /* Serienauswahl und „Trainings ausblenden“ wirken nur auf den Zeitplan (Trainings per CSS, Klasse am <html>).
+       „Auf dem Programm“ und „Wo läuft was?“ zeigen immer alle Serien des Wochenendes; ausgeblendete gedämpft. */
+    const sichtbar = (x) => AKTIV.has(x.dataset.serie);
+    function filtern() {
+      root.classList.toggle("ohnetraining", ohneTraining);
+      let zeilen = 0;
+      $$(".wtag", woche).forEach((t) => {
+        let n = 0;
+        $$(".wsl li", t).forEach((li) => { li.hidden = !sichtbar(li); if (!li.hidden && !(ohneTraining && li.classList.contains("training"))) n++; });
+        t.hidden = !n; zeilen += n;
+      });
+      let evs = 0;
+      $$(".wel li", woche).forEach((li) => {
+        const an = sichtbar(li), aus = $(".waus", li);
+        li.classList.toggle("gedaempft", !an); if (aus) aus.hidden = an; if (an) evs++;
+      });
+      const nix = $(".wnix", woche);
+      if (nix) {
+        nix.hidden = zeilen > 0;
+        nix.textContent = !evs ? "Keine der ausgewählten Serien fährt an diesem Wochenende – oben weitere Serien auswählen."
+          : ohneTraining ? "In diesem Zeitraum stehen nur Trainings auf dem Programm – ohne „Trainings ausblenden“ erscheinen sie." : "Für diese Events liegen noch keine Sessionzeiten vor.";
+      }
+      const serien = wochenSerien();
+      $$(".wtvb").forEach((b) => { b.hidden = !serien.includes(b.dataset.serie); });
+      const sender = $("#sender");
+      if (sender) sender.hidden = !$$(".wtvb").some((b) => !b.hidden);
+    }
+    const tr = document.getElementById("ohnetraining");
+    if (tr) tr.addEventListener("click", () => { ohneTraining = tr.getAttribute("aria-checked") !== "true"; tr.setAttribute("aria-checked", String(ohneTraining)); filtern(); });
+    filterLaden();
+    const alles = () => { waehlen(); if (gezeigt !== filterWoche) { filterWoche = gezeigt; offen = null; filterZeichnen(); } zustand(); filtern(); };
+    alles();
+    setInterval(alles, 60000);
+  }
 
   /* Übersicht: nächstes Event je Serie nach dem heutigen Datum */
   const ueb = $("#apex-uebersicht");
