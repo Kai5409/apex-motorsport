@@ -130,6 +130,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .chip.off{opacity:.38;border-color:var(--rule);color:var(--muted)}
 .chip.off .cdot{filter:grayscale(1) brightness(.7)}
 .chip.allbtn{border-color:var(--paper);color:var(--paper);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px}
+.chip.nur{min-width:0;overflow:hidden}
 
 /* Gruppenfilter: Knopf schaltet die Gruppe, Pfeil klappt ihre Serien auf (--gf = Farbe der Gruppe).
    Teilauswahl als kleines Abzeichen an der Ecke, damit die Zeile am Handy nicht breiter wird. */
@@ -292,6 +293,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* Serien */
 .ser-block{padding:34px 0 6px;border-bottom:1px solid var(--rule)}
 .ser-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(40px,9vw,76px);line-height:.9;text-transform:uppercase}
+/* Seriennamen im Serien- und Wertungs-Tab führen zur Serienseite */
+.ser-link{color:inherit;text-decoration:underline;text-decoration-color:var(--rule-strong);text-decoration-thickness:2px;text-underline-offset:.12em}
+.ser-link:hover,.ser-link:focus-visible{text-decoration-color:currentColor}
 .ser-meta{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.08em;margin:10px 0 18px;text-transform:uppercase}
 .ser-round{display:grid;grid-template-columns:40px 78px 1fr auto 14px;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
 .ser-round.cancel{opacity:.4}
@@ -501,6 +505,11 @@ APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
       Server-Protokolle besteht kein Einfluss. Abonnieren Sie einen Kalender, ruft Ihre Kalender-App die
       Abo-Datei regelmäßig auf dieselbe Weise von GitHub ab.</p>
 
+      <h4>Kalenderdienste</h4>
+      <p>Wählen Sie auf einer Serienseite unter „Termine abonnieren“ Google Kalender oder Outlook,
+      werden Sie auf die Seite des jeweiligen Anbieters weitergeleitet. APEX überträgt dabei keine
+      Daten an den Anbieter; für die Nutzung dort gelten die Datenschutzbestimmungen des Anbieters.</p>
+
       <h4>Schriftarten</h4>
       <p>Alle Schriftarten werden direkt von dieser Seite ausgeliefert. Es erfolgt kein Abruf von
       Google Fonts oder anderen externen Anbietern; dabei werden keine Daten an Dritte übertragen.</p>
@@ -601,8 +610,9 @@ function uebernehmeDaten(d){
     /* Serien: gruppe = Kürzel der Gruppe, ausgeblendet = im Filter standardmäßig aus */
     Object.keys(x.serien).forEach(k=>{const v=x.serien[k];
       if(luecke("serien",istKey(k)&&istObj(v)&&istText(v.name)&&istText(v.short)&&istFarbe(v.color)
-          &&(v.gruppe==null||istText(v.gruppe))&&(v.ausgeblendet==null||typeof v.ausgeblendet==="boolean")))
-        SERIES[k]={name:v.name,short:v.short,color:v.color,gruppe:v.gruppe||"",aus:v.ausgeblendet===true};});
+          &&(v.gruppe==null||istText(v.gruppe))&&(v.ausgeblendet==null||typeof v.ausgeblendet==="boolean")
+          &&(v.seite==null||istText(v.seite)&&/^[a-z0-9-]+$/.test(v.seite))))
+        SERIES[k]={name:v.name,short:v.short,color:v.color,gruppe:v.gruppe||"",aus:v.ausgeblendet===true,seite:v.seite||seiteAusName(v.name)};});
     return Object.keys(SERIES).length>0;
   });
   DATEN.filter(n=>n.startsWith("termine-")).forEach(n=>teil(n,x=>{
@@ -655,6 +665,14 @@ function ladeHinweis(n){
 }
 function termineFehlen(y){return DATEN_FEHLT.has("termine-"+y);}
 function esc(str){ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+/* Serienseiten (formel-1/ …): Adresse aus serien.json ("seite"), sonst aus dem Namen */
+function seiteAusName(n){return String(n).toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");}
+function serienName(sk){
+  const S0=SERIES[sk]; if(!S0.seite)return S0.name;
+  /* Vorschau ohne Ordneradressen (…/index.html): Seite mit Dateinamen verlinken */
+  const datei=/\/index\.html$/.test((typeof location!=="undefined"&&location.pathname)||"")?"index.html":"";
+  return `<a class="ser-link" href="${S0.seite}/${datei}">${S0.name}</a>`;
+}
 
 /* ═══════ STATE ═══════ */
 const ACTIVE = new Set();   /* wird nach dem Laden der Daten mit allen Serien gefuellt */
@@ -922,25 +940,32 @@ function renderFilter(){
   const gl=gruppenListe();
   if(FILTER_OFFEN&&!gl.some(g=>g.key===FILTER_OFFEN))FILTER_OFFEN=null;
   let html=`<span class="fl-lab">Serien</span><div class="grp-leiste">`;
-  gl.forEach(g=>{
-    const an=g.serien.filter(sk=>ACTIVE.has(sk)).length, n=g.serien.length;
-    const zustand=an===0?"aus":an<n?"teil":"an", offen=FILTER_OFFEN===g.key;
-    html+=`<div class="grp ${zustand}${offen?" offen":""}"${g.farbe?` style="--gf:${g.farbe}"`:""}>`+
-      `<button class="grp-an" onclick="toggleGruppe('${g.key}')" aria-pressed="${zustand==="an"?"true":zustand==="teil"?"mixed":"false"}" title="${esc(g.name)}">`+
-        `<span class="grp-n-l">${esc(g.name)}</span><span class="grp-n-s">${esc(g.short)}</span>`+
-        (zustand==="teil"?`<span class="grp-z">${an}/${n}</span>`:"")+`</button>`+
-      `<button class="grp-pfeil" onclick="klappeGruppe('${g.key}')" aria-expanded="${offen}" aria-label="Serien der Gruppe ${esc(g.name)} einzeln auswählen"><span>▾</span></button>`+
-      `</div>`;
-  });
-  html+=`</div>`;
-  const g=gl.find(x=>x.key===FILTER_OFFEN);
-  if(g){
-    html+=`<div class="grp-panel" role="group" aria-label="${esc(g.name)}">`;
-    g.serien.forEach(sk=>{
-      const S0=SERIES[sk],on=ACTIVE.has(sk);
-      html+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
+  if(FILTER_NUR&&SERIES[FILTER_NUR]){
+    const S0=SERIES[FILTER_NUR];
+    html=`<span class="fl-lab">Serien</span><span class="chip nur" role="status"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">Nur ${S0.name}</span><span class="cn-s">Nur ${S0.short}</span></span>`+
+      `<button class="chip allbtn" onclick="nurZuruecksetzen()" title="Wieder die eigene Serienauswahl zeigen">Zurücksetzen</button>`;
+    FILTER_OFFEN=null;
+  } else {
+    gl.forEach(g=>{
+      const an=g.serien.filter(sk=>ACTIVE.has(sk)).length, n=g.serien.length;
+      const zustand=an===0?"aus":an<n?"teil":"an", offen=FILTER_OFFEN===g.key;
+      html+=`<div class="grp ${zustand}${offen?" offen":""}"${g.farbe?` style="--gf:${g.farbe}"`:""}>`+
+        `<button class="grp-an" onclick="toggleGruppe('${g.key}')" aria-pressed="${zustand==="an"?"true":zustand==="teil"?"mixed":"false"}" title="${esc(g.name)}">`+
+          `<span class="grp-n-l">${esc(g.name)}</span><span class="grp-n-s">${esc(g.short)}</span>`+
+          (zustand==="teil"?`<span class="grp-z">${an}/${n}</span>`:"")+`</button>`+
+        `<button class="grp-pfeil" onclick="klappeGruppe('${g.key}')" aria-expanded="${offen}" aria-label="Serien der Gruppe ${esc(g.name)} einzeln auswählen"><span>▾</span></button>`+
+        `</div>`;
     });
-    html+=`<button class="chip allbtn" onclick="allSeries()">Alle Serien</button></div>`;
+    html+=`</div>`;
+    const g=gl.find(x=>x.key===FILTER_OFFEN);
+    if(g){
+      html+=`<div class="grp-panel" role="group" aria-label="${esc(g.name)}">`;
+      g.serien.forEach(sk=>{
+        const S0=SERIES[sk],on=ACTIVE.has(sk);
+        html+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
+      });
+      html+=`<button class="chip allbtn" onclick="allSeries()">Alle Serien</button></div>`;
+    }
   }
   el.innerHTML=html;
   el.style.display = (currentView==="tv"||currentView==="rules")?"none":"flex";
@@ -973,6 +998,7 @@ function filterGeaendert(){
    Auswahl noch nicht vorkommen, folgen ihrer Standardeinstellung (ausgeblendet). */
 const FILTER_SPEICHER="apex_filter";
 function filterSpeichern(){
+  if(FILTER_NUR)return;   /* vorübergehende Auswahl aus ?serie= wird nie gespeichert */
   try{const o={};Object.keys(SERIES).forEach(sk=>o[sk]=ACTIVE.has(sk));localStorage.setItem(FILTER_SPEICHER,JSON.stringify(o));}catch(err){}
 }
 function filterLaden(){
@@ -983,6 +1009,22 @@ function filterLaden(){
   Object.keys(SERIES).forEach(sk=>{if(typeof alt[sk]==="boolean"?alt[sk]:!SERIES[sk].aus)ACTIVE.add(sk);});
   if(!ACTIVE.size)Object.keys(SERIES).forEach(sk=>{if(!SERIES[sk].aus)ACTIVE.add(sk);});
   if(!ACTIVE.size)Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk));
+}
+/* Adressparameter ?serie=<kürzel> (Knopf „In der Zeitleiste ansehen“ der Serienseiten): zeigt vorübergehend
+   nur diese Serie mit dem Hinweis „Nur <Serie>“. Die gespeicherte Auswahl bleibt unverändert,
+   „Zurücksetzen“ stellt sie wieder her. */
+let FILTER_NUR=null;
+function nurSerieLaden(){
+  let sk=null; try{sk=new URLSearchParams(location.search).get("serie");}catch(err){}
+  if(sk&&SERIES[sk]){FILTER_NUR=sk;ACTIVE.clear();ACTIVE.add(sk);}
+}
+function nurBeenden(){
+  FILTER_NUR=null; filterLaden();
+  try{history.replaceState(null,"",location.pathname+location.hash);}catch(err){}
+}
+function nurZuruecksetzen(){
+  nurBeenden(); renderFilter(); renderOnAir(); rerender();
+  if(currentView==="upcoming")zumStart(); updateJumpBtn();
 }
 /* Aufgeklappte Feinauswahl schließen: Tippen außerhalb der Filterleiste oder Esc */
 if(typeof document!=="undefined"&&document.addEventListener){
@@ -1354,11 +1396,11 @@ function renderSeries(){
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
     const abo=aboHTML("kalender/"+sk+".ics","Kalender abonnieren");
-    if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div><div class="ser-meta">${leer}</div>${abo}</div>`;return;}
+    if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div><div class="ser-meta">${leer}</div>${abo}</div>`;return;}
     /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
     const lauf=evs.filter(e=>!e.sonder);
     const done=lauf.filter(e=>st(e)==="done").length,canc=lauf.filter(e=>e.status==="cancel").length;
-    html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${S0.name}</div>`+
+    html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div>`+
       `<div class="ser-meta">${lauf.length?`${lauf.length-canc} Läufe · ${done} gefahren · ${lauf.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}`:leer}</div>`+abo;
     let n=0;
     evs.forEach(e=>{const status=st(e);
@@ -1510,13 +1552,13 @@ function renderStandings(){
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk], D=STAND[sk];
     if(!D){
-      html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
+      html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
         `<div class="std-tag">${STAND_LUECKE.has(sk)?"Wertung konnte gerade nicht geladen werden":"Wertung noch nicht gepflegt"}</div></div>`;
       return;
     }
     any=true;
     if(verborgen("wertung-"+sk)){
-      html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
+      html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
         `<div class="std-tag">Stand ${D.stand}</div><button class="aufdecken" onclick="aufdeckenWertung('${sk}')">Wertung anzeigen</button></div>`;
       return;
     }
@@ -1532,7 +1574,7 @@ function renderStandings(){
       });
       return t;
     };
-    html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${S0.name}</div>`+
+    html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
       `<div class="std-tag">Stand ${D.stand}</div>`+ tabelle(D.drv,D.klasse,D.wertung) +
       (D.drv2&&D.drv2.length? `<div class="std-gap"></div>`+tabelle(D.drv2,D.klasse2,D.wertung2) : "");
     html+=`</div>`;
@@ -1661,6 +1703,7 @@ function gotoEvent(sk,rd,sz,sofort){
   const e=findEv(sk,rd,sz); if(!e)return;
   if(evYear(e)!==SEASON){SEASON=evYear(e);renderSeason();renderTimeline();}
   if(currentView!=="upcoming")setView("upcoming");
+  if(FILTER_NUR&&FILTER_NUR!==e.s){nurBeenden();renderFilter();renderTimeline();}
   let el=document.getElementById("ev-"+evDomId(e));
   if(!el&&(SEARCH||FAV_ONLY||!ACTIVE.has(e.s))){
     SEARCH="";const si=document.getElementById("search");if(si)si.value="";
@@ -1707,8 +1750,15 @@ function kurzerHinweis(txt){
   el.textContent=txt; el.classList.add("on");
   clearTimeout(HINWEIS_UHR); HINWEIS_UHR=setTimeout(()=>el.classList.remove("on"),1800);
 }
+/* #datenschutz (Link aus den Serienseiten): Datenschutzerklärung aufklappen und hinspringen */
+function zeigeDatenschutz(){
+  const el=document.getElementById("legal"); if(!el||!el.classList)return;
+  el.classList.add("on");
+  ohneAnimation(()=>{try{el.scrollIntoView({behavior:"instant",block:"start"});}catch(err){el.scrollIntoView(true);}});
+}
 function applyHash(sofort){
   const h=location.hash.replace(/^#/,""); if(!h)return;
+  if(h==="datenschutz"){zeigeDatenschutz();return;}
   let m=h.match(/^ev=([a-z0-9]+)-(\d+)(?:-(\w+))?$/);
   if(m&&findEv(m[1],m[2],m[3])){setTimeout(()=>gotoEvent(m[1],m[2],m[3],sofort===true),80);return;}
   m=h.match(/^v=(\w+)$/);
@@ -1818,7 +1868,7 @@ function renderDatenstand(){
 }
 function start(){
   BEREIT=true;
-  filterLaden(); spoilerLaden();
+  filterLaden(); nurSerieLaden(); spoilerLaden();
   [renderDatenstand,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
@@ -1841,6 +1891,7 @@ let SELBST_GESCROLLT=false;
 function evLinkZiel(){const m=(location.hash||"").match(/^#ev=([a-z0-9]+)-(\d+)(?:-(\w+))?$/);return m?findEv(m[1],m[2],m[3]):null;}
 function startPosition(){
   if(evLinkZiel())return;            /* gotoEvent übernimmt */
+  if(location.hash==="#datenschutz"){zeigeDatenschutz();return;}
   if(currentView==="upcoming")zumStart();
 }
 try{if("scrollRestoration" in history)history.scrollRestoration="manual";}catch(err){}
