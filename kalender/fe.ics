@@ -516,23 +516,23 @@ DESCRIPTION:APEX · Formel E · Lauf 11 · Berlin — ganztägig\, Sessionzeiten
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe12-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20270529
 DTEND;VALUE=DATE:20270530
 TRANSP:TRANSPARENT
 SUMMARY:F·E · London E-Prix I
-LOCATION:London
-DESCRIPTION:APEX · Formel E · Lauf 12 · London — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Brands Hatch
+DESCRIPTION:APEX · Formel E · Lauf 12 · Brands Hatch — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe13-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20270530
 DTEND;VALUE=DATE:20270531
 TRANSP:TRANSPARENT
 SUMMARY:F·E · London E-Prix II
-LOCATION:London
-DESCRIPTION:APEX · Formel E · Lauf 13 · London — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Brands Hatch
+DESCRIPTION:APEX · Formel E · Lauf 13 · Brands Hatch — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe14-S13-ganztag@apex-motorsport
