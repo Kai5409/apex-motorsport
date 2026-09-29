@@ -1043,11 +1043,11 @@ DESCRIPTION:APEX · Formel 1 · Lauf 23 · Yas Marina
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f11-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20270312
 DTEND;VALUE=DATE:20270315
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von Bahrain
+SUMMARY:F1 · Großer Preis von Bahrain · Sprint
 LOCATION:Sakhir
 DESCRIPTION:APEX · Formel 1 · Lauf 1 · Sakhir — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
@@ -1063,21 +1063,21 @@ DESCRIPTION:APEX · Formel 1 · Lauf 2 · Dschidda — ganztägig\, Sessionzeite
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f13-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20270402
 DTEND;VALUE=DATE:20270405
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von Australien
+SUMMARY:F1 · Großer Preis von Australien · Sprint
 LOCATION:Melbourne
 DESCRIPTION:APEX · Formel 1 · Lauf 3 · Melbourne — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f14-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20270409
 DTEND;VALUE=DATE:20270412
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von Japan
+SUMMARY:F1 · Großer Preis von Japan · Sprint
 LOCATION:Suzuka
 DESCRIPTION:APEX · Formel 1 · Lauf 4 · Suzuka — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
@@ -1103,21 +1103,21 @@ DESCRIPTION:APEX · Formel 1 · Lauf 6 · Miami — ganztägig\, Sessionzeiten l
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f17-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20270521
 DTEND;VALUE=DATE:20270524
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von Kanada
+SUMMARY:F1 · Großer Preis von Kanada · Sprint
 LOCATION:Montréal
 DESCRIPTION:APEX · Formel 1 · Lauf 7 · Montréal — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f18-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20270604
 DTEND;VALUE=DATE:20270607
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von Monaco
+SUMMARY:F1 · Großer Preis von Monaco · Sprint
 LOCATION:Monte Carlo
 DESCRIPTION:APEX · Formel 1 · Lauf 8 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
@@ -1133,11 +1133,11 @@ DESCRIPTION:APEX · Formel 1 · Lauf 9 · Portimão — ganztägig\, Sessionzeit
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f110-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20270702
 DTEND;VALUE=DATE:20270705
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von Großbritannien
+SUMMARY:F1 · Großer Preis von Großbritannien · Sprint
 LOCATION:Silverstone
 DESCRIPTION:APEX · Formel 1 · Lauf 10 · Silverstone — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
@@ -1173,11 +1173,11 @@ DESCRIPTION:APEX · Formel 1 · Lauf 13 · Budapest — ganztägig\, Sessionzeit
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f114-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20270903
 DTEND;VALUE=DATE:20270906
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von Italien
+SUMMARY:F1 · Großer Preis von Italien · Sprint
 LOCATION:Monza
 DESCRIPTION:APEX · Formel 1 · Lauf 14 · Monza — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
@@ -1243,11 +1243,11 @@ DESCRIPTION:APEX · Formel 1 · Lauf 20 · Mexiko-Stadt — ganztägig\, Session
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f121-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20271105
 DTEND;VALUE=DATE:20271108
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von São Paulo
+SUMMARY:F1 · Großer Preis von São Paulo · Sprint
 LOCATION:Interlagos
 DESCRIPTION:APEX · Formel 1 · Lauf 21 · Interlagos — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
@@ -1263,21 +1263,21 @@ DESCRIPTION:APEX · Formel 1 · Lauf 22 · Las Vegas — ganztägig\, Sessionzei
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f123-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20271203
 DTEND;VALUE=DATE:20271206
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von Katar
+SUMMARY:F1 · Großer Preis von Katar · Sprint
 LOCATION:Lusail
 DESCRIPTION:APEX · Formel 1 · Lauf 23 · Lusail — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f124-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20260929T141303Z
 DTSTART;VALUE=DATE:20271210
 DTEND;VALUE=DATE:20271213
 TRANSP:TRANSPARENT
-SUMMARY:F1 · Großer Preis von Abu Dhabi
+SUMMARY:F1 · Großer Preis von Abu Dhabi · Sprint
 LOCATION:Yas Marina
 DESCRIPTION:APEX · Formel 1 · Lauf 24 · Yas Marina — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
