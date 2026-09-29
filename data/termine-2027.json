@@ -159,6 +159,8 @@
     "sessions": []},
   {"s": "nls", "rd": 2, "sz": "2027", "prov": true, "name": "NLS2", "loc": "Nürburgring", "d0": "2027-04-17", "d1": "2027-04-17", "status": "up",
     "sessions": []},
+  {"s": "nls", "rd": 90, "sz": "2027", "prov": true, "sonder": "24hQ", "veranstalter": "ADAC Nordrhein", "name": "ADAC 24h Nürburgring Qualifiers", "loc": "Nürburgring", "d0": "2027-04-30", "d1": "2027-05-02", "status": "up",
+    "sessions": []},
   {"s": "nls", "rd": 0, "sz": "2027", "prov": true, "sonder": "24h", "veranstalter": "ADAC Nordrhein", "name": "ADAC RAVENOL 24h Nürburgring", "loc": "Nürburgring", "d0": "2027-05-27", "d1": "2027-05-30", "status": "up",
     "sessions": []},
   {"s": "nls", "rd": 3, "sz": "2027", "prov": true, "name": "NLS3", "loc": "Nürburgring", "d0": "2027-07-03", "d1": "2027-07-03", "status": "up",

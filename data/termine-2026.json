@@ -935,7 +935,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "17:30"}
     ]},
-  {"s": "nls", "rd": 5, "name": "ADAC 24h Nürburgring Qualifiers · Rennen 2", "loc": "Nürburgring", "d0": "2026-04-19", "d1": "2026-04-19", "status": "done", "result": "Audi #16 (Haase/Sims/Green)",
+  {"s": "nls", "rd": 5, "name": "ADAC 24h Nürburgring Qualifiers · Rennen 2", "loc": "Nürburgring", "d0": "2026-04-19", "d1": "2026-04-19", "status": "done", "result": "Audi #16 (Haase/Sims/Green)", "vorlaeufig": true,
     "sessions": [
       {"n": "Qualifying", "day": "So", "t": "08:15"},
       {"n": "Top-Qualifying", "day": "So", "t": "10:40"},
@@ -960,7 +960,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 9, "name": "66. ADAC ACAS Cup", "loc": "Nürburgring", "d0": "2026-09-13", "d1": "2026-09-13", "status": "up",
+  {"s": "nls", "rd": 9, "name": "66. ADAC ACAS Cup", "loc": "Nürburgring", "d0": "2026-09-13", "d1": "2026-09-13", "status": "done", "result": "Porsche #44 (Heinemann/Schuring)", "vorlaeufig": true,
     "sessions": [
       {"n": "Qualifying", "day": "So", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "So", "t": "12:00"}
