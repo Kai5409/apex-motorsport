@@ -148,6 +148,15 @@
         "ch": "Wie in Deutschland über <b>Rally.TV</b>.",
         "note": "Eine Übertragung im klassischen Fernsehen ist nicht bekannt. Geprüft am 28.09.2026."
       }
+    },
+    "dakar": {
+      "tv": "Eurosport",
+      "tvd": {
+        "de": "<b>Eurosport</b> zeigt eigene Sendungen zur Rallye Dakar (europaweit). Das <b>ZDF</b> berichtet in seinen Nachrichtensendungen.",
+        "at": "Eigene Sendungen bei <b>Eurosport</b>; <b>ORF Sport</b> und <b>ServusTV</b> berichten in Nachrichtensendungen.",
+        "ch": "In der offiziellen Liste ist kein Schweizer Sender genannt; europaweit überträgt <b>Eurosport</b>.",
+        "note": "Stand: offizielle Senderliste der Dakar 2026 (dakar.com), die Liste für 2027 ist noch nicht veröffentlicht. Geprüft am 29.09.2026."
+      }
     }
   }
 }
