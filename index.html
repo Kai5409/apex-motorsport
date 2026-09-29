@@ -1036,6 +1036,17 @@ function nurZuruecksetzen(){
   nurBeenden(); renderFilter(); renderOnAir(); rerender();
   if(currentView==="upcoming")zumStart(); updateJumpBtn();
 }
+/* Die Seite „Dieses Wochenende“ nutzt dieselbe Serienauswahl (apex_filter): Änderungen dort übernehmen –
+   aus einem anderen Tab (storage) oder bei der Rückkehr aus dem Browser-Zwischenspeicher (pageshow) */
+function filterAbgleichen(){
+  if(!BEREIT||FILTER_NUR)return;
+  const vorher=[...ACTIVE].sort().join(); filterLaden();
+  if([...ACTIVE].sort().join()!==vorher)filterGeaendert();
+}
+if(typeof window!=="undefined"&&window.addEventListener){
+  window.addEventListener("storage",ev=>{if(ev.key===FILTER_SPEICHER||ev.key===null)filterAbgleichen();});
+  window.addEventListener("pageshow",ev=>{if(ev.persisted)filterAbgleichen();});
+}
 /* Aufgeklappte Feinauswahl schließen: Tippen außerhalb der Filterleiste oder Esc */
 if(typeof document!=="undefined"&&document.addEventListener){
   document.addEventListener("click",ev=>{
