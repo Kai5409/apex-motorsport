@@ -13,10 +13,13 @@
   })();
 
   /* Vorschau ohne Ordneradressen (…/formel-1/index.html): Verweise auf Ordner mit index.html ergänzen */
-  if (/\/index\.html$/.test(location.pathname)) $$("a[href]").forEach((a) => {
-    const m = /^((?:\.\.?\/)+(?:[\w-]+\/)*)([?#].*)?$/.exec(a.getAttribute("href"));
-    if (m) a.setAttribute("href", m[1] + "index.html" + (m[2] || ""));
-  });
+  function ordnerLinks(r) {
+    if (/\/index\.html$/.test(location.pathname)) $$("a[href]", r).forEach((a) => {
+      const m = /^((?:\.\.?\/)+(?:[\w-]+\/)*)([?#].*)?$/.exec(a.getAttribute("href"));
+      if (m) a.setAttribute("href", m[1] + "index.html" + (m[2] || ""));
+    });
+  }
+  ordnerLinks();
 
   /* Kurzer Hinweis unten */
   let uhr = 0;
@@ -175,6 +178,95 @@
   let rz = 0;
   addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { zeichnen(); festPruefen(); }, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(festPruefen);
+
+  /* Dieses Wochenende: Wochenende zum heutigen Datum (Donnerstag 00:00 bis Montag 06:00 deutscher Zeit).
+     Die Seite enthält jedes Wochenende mit Events (das erste direkt, die übrigen als <template>). Montag bis
+     Donnerstag gilt das kommende, Freitag bis Sonntag das laufende Wochenende; ohne Events ein Hinweis und
+     das nächste Wochenende mit Events. Dazu: vorbei/läuft, Heute, „Nur Rennen“, „Rahmenserien einblenden“. */
+  const woche = $("#woche");
+  if (woche) {
+    const MONL = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    const p2 = (n) => String(n).padStart(2, "0");
+    const wand = () => {
+      try { const t = new Date().toLocaleString("sv-SE", { timeZone: "Europe/Berlin", hour12: false }); return { datum: t.slice(0, 10), zeit: t.slice(11, 16) }; }
+      catch (e) { const d = new Date(); return { datum: d.getFullYear() + "-" + p2(d.getMonth() + 1) + "-" + p2(d.getDate()), zeit: p2(d.getHours()) + ":" + p2(d.getMinutes()) }; }
+    };
+    const tag = (x) => { const a = x.split("-").map(Number); return new Date(Date.UTC(a[0], a[1] - 1, a[2])); };
+    const plus = (x, n) => { const d = tag(x); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+    /* Donnerstag des Wochenendes; Montag bis 06:00 gehört noch zum Wochenende davor */
+    const donnerstag = (j) => { const w = tag(j.datum).getUTCDay(); return w === 1 && j.zeit < "06:00" ? plus(j.datum, -4) : plus(j.datum, w === 0 ? -3 : 4 - w); };
+    const spanneText = (von, bis) => { const a = tag(von), b = tag(bis);
+      return a.getUTCMonth() === b.getUTCMonth() ? a.getUTCDate() + ".–" + b.getUTCDate() + ". " + MONL[b.getUTCMonth()] + " " + b.getUTCFullYear()
+        : a.getUTCDate() + ". " + MONL[a.getUTCMonth()] + (a.getUTCFullYear() !== b.getUTCFullYear() ? " " + a.getUTCFullYear() : "") + " – " + b.getUTCDate() + ". " + MONL[b.getUTCMonth()] + " " + b.getUTCFullYear(); };
+    const erste = $(".wk", woche);
+    const wochen = (erste ? [{ k: erste.dataset.do, titel: erste.dataset.titel, el: erste }] : [])
+      .concat($$("template.wvorlage").map((t) => ({ k: t.dataset.do, t })))
+      .sort((a, b) => (a.k < b.k ? -1 : a.k > b.k ? 1 : 0));
+    let gezeigt = erste ? wochen.find((w) => w.el === erste) : null;
+    let nurRennen = false, mitRahmen = false;
+
+    function waehlen() {
+      const j = wand(), k = donnerstag(j);
+      const ziel = wochen.find((w) => w.k === k) || wochen.find((w) => w.k > k) || null;
+      if (ziel !== gezeigt) {
+        if (ziel && !ziel.el) { ziel.el = ziel.t.content.firstElementChild.cloneNode(true); ziel.titel = ziel.el.dataset.titel; }
+        woche.replaceChildren(...(ziel ? [ziel.el] : []));
+        if (ziel) ordnerLinks(ziel.el);
+        gezeigt = ziel;
+      }
+      const leer = $("#wleer"), zr = $("#wzr");
+      if (ziel && ziel.k === k) { leer.hidden = true; leer.innerHTML = ""; if (zr) zr.textContent = ziel.titel; }
+      else {
+        if (zr) zr.textContent = spanneText(plus(k, 1), plus(k, 3));
+        leer.innerHTML = "<p><b>An diesem Wochenende finden keine Rennen statt.</b></p>" + (ziel
+          ? "<p>Nächstes Rennwochenende: <b>" + ziel.titel + "</b></p>"
+          : "<p>Weitere Termine folgen, sobald die Kalender veröffentlicht sind.</p>");
+        leer.hidden = false;
+      }
+    }
+    /* vorbei (ausgegraut) und läuft – nach der Uhrzeit; „läuft gerade“ und „Heute“ nach dem Datum */
+    function zustand() {
+      const jetzt = Date.now(), heute = wand().datum;
+      $$("li[data-a]", woche).forEach((li) => {
+        const vorbei = jetzt >= +li.dataset.e, laeuft = !vorbei && jetzt >= +li.dataset.a, m = $(".wlive", li);
+        li.classList.toggle("vorbei", vorbei); li.classList.toggle("laeuft", laeuft);
+        if (laeuft && !m) $(".wsi b", li).insertAdjacentHTML("beforeend", ' <span class="wlive">läuft</span>');
+        else if (!laeuft && m) m.remove();
+      });
+      $$("li.ohne", woche).forEach((li) => li.classList.toggle("vorbei", li.dataset.bis < heute));
+      $$("[data-von]", woche).forEach((x) => { const l = $(".wlg", x); if (l) l.hidden = !(x.dataset.von <= heute && heute <= x.dataset.bis); });
+      $$(".wtag", woche).forEach((t) => { const h = $(".wheute", t); if (h) h.hidden = t.dataset.tag !== heute; });
+    }
+    /* Umschalter: ausgeblendete Zeilen per CSS (Klassen am <html>), leere Tage und Abschnitte hier */
+    const sichtbar = (x) => mitRahmen || !x.hasAttribute("data-rahmen");
+    function filtern() {
+      root.classList.toggle("nurrennen", nurRennen); root.classList.toggle("mitrahmen", mitRahmen);
+      let zeilen = 0;
+      $$(".wtag", woche).forEach((t) => {
+        const n = $$(".wsl li", t).filter((li) => sichtbar(li) && (!nurRennen || li.classList.contains("race") || li.classList.contains("ohne"))).length;
+        t.hidden = !n; zeilen += n;
+      });
+      const evs = $$(".wel li", woche).filter(sichtbar).length, start = $(".wstart", woche);
+      if (start) { start.hidden = !evs; const z = $(".sechead p", start); if (z) z.textContent = evs === 1 ? "1 Event" : evs + " Events"; }
+      const nix = $(".wnix", woche);
+      if (nix) {
+        nix.hidden = zeilen > 0;
+        nix.textContent = !evs ? "An diesem Wochenende fahren nur Rahmenserien – „Rahmenserien einblenden“ zeigt sie."
+          : nurRennen ? "Keine Rennen in diesem Zeitraum – ohne „Nur Rennen“ erscheinen alle Sessions." : "Für diese Events liegen noch keine Sessionzeiten vor.";
+      }
+      const serien = gezeigt && gezeigt.el ? gezeigt.el.dataset.serien.split(" ") : [];
+      $$(".wtvb").forEach((b) => { b.hidden = !serien.includes(b.dataset.serie); });
+      const sender = $("#sender");
+      if (sender) sender.hidden = !$$(".wtvb").some((b) => !b.hidden && sichtbar(b));
+    }
+    [["nurrennen", (an) => { nurRennen = an; }], ["rahmen", (an) => { mitRahmen = an; }]].forEach(([id, setzen]) => {
+      const b = document.getElementById(id); if (!b) return;
+      b.addEventListener("click", () => { const an = b.getAttribute("aria-checked") !== "true"; b.setAttribute("aria-checked", String(an)); setzen(an); filtern(); });
+    });
+    const alles = () => { waehlen(); zustand(); filtern(); };
+    alles();
+    setInterval(alles, 60000);
+  }
 
   /* Übersicht: nächstes Event je Serie nach dem heutigen Datum */
   const ueb = $("#apex-uebersicht");

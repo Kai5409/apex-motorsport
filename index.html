@@ -114,6 +114,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .onair-ev .nm{font-weight:600}
 .onair-ev .meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
 .onair-bar{display:inline-block;width:4px;height:13px;vertical-align:middle;margin-right:7px;border-radius:1px}
+.onair-we{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;color:var(--gold);text-decoration:underline;text-decoration-color:var(--rule-strong);text-underline-offset:3px}
+.onair-we:hover,.onair-we:focus-visible{color:var(--paper);text-decoration-color:currentColor}
 
 /* Nav */
 .nav{display:flex;gap:26px;padding:14px 0 0;border-bottom:1px solid var(--rule)}
@@ -1046,6 +1048,11 @@ function nextSessOf(e){
   return best;
 }
 
+/* Verweis auf die Seite „Dieses Wochenende“ (alle Sessions aller Serien); Vorschau ohne Ordneradressen mit index.html */
+function wochenendLink(){
+  const datei=/\/index\.html$/.test((typeof location!=="undefined"&&location.pathname)||"")?"index.html":"";
+  return `<a class="onair-we" href="dieses-wochenende/${datei}">Ganzes Wochenende ansehen <span aria-hidden="true">→</span></a>`;
+}
 /* Live-Info: breit im Kopf (#onair), schmal an der Heute-Linie der Zeitleiste (#jetzt) */
 function renderOnAir(){
   const html=onAirHTML();
@@ -1066,7 +1073,7 @@ function onAirHTML(){
       html+=`<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span>`+
             `<span class="nm">${e.name}</span> <span class="meta">${meta}</span></span>`;
     });
-    return html;
+    return html+wochenendLink();
   } else if(NEXT_SESS){
     /* Nicht nur die eine naechste Session zeigen, sondern alle Serien,
        deren naechste Session im selben Zeitfenster liegt (72 Stunden) -
@@ -1093,7 +1100,7 @@ function onAirHTML(){
             `<span class="nm">${x.e.name} — ${x.s.n}</span> `+
             `<span class="meta">${S0.short} · ${ct.day} ${ct.t}</span></span>`;
     });
-    return html;
+    return html+wochenendLink();
   } else {
     const fehlt=DATEN.some(n=>n.startsWith("termine-")&&DATEN_FEHLT.has(n));
     return `<span class="onair-lab idle">${fehlt?"Termine gerade nicht verfügbar":"Saison beendet"}</span>`;
