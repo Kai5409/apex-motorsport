@@ -481,7 +481,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <footer>
-APEX · Saisons 2026 &amp; 2027 · 18 Serien · Stand 25. September 2026<br>
+APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
     Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
     <button class="legal-link" onclick="toggleLegal()">Datenschutz</button>
     <div class="legal" id="legal">
@@ -539,6 +539,7 @@ const DATEN_FEHLT=new Set();   /* Dateien, die nicht geladen oder nicht gelesen 
 const DATEN_LUECKE=new Set();  /* Dateien, aus denen einzelne Einträge übersprungen wurden */
 const STAND_LUECKE=new Set();  /* Serien, deren Wertung übersprungen wurde */
 let BEREIT=false;
+let DATEN_STAND=0;         /* jüngste Änderung der geladenen Datendateien (Last-Modified), für „Stand …“ in der Fußzeile */
 
 const istObj=x=>!!x&&typeof x==="object"&&!Array.isArray(x);
 const istText=x=>typeof x==="string";
@@ -554,7 +555,10 @@ const streckeOK=v=>istObj(v)&&istText(v.name)&&typeof v.len==="number"&&(v.turns
 function ladeDatei(n){
   return Promise.resolve()
     .then(()=>fetch("data/"+n+".json",{cache:"no-cache"}))
-    .then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.text();})
+    .then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);
+      const lm=Date.parse((r.headers&&r.headers.get&&r.headers.get("Last-Modified"))||"");
+      if(lm>DATEN_STAND)DATEN_STAND=lm;
+      return r.text();})
     .then(t=>JSON.parse(t))
     .catch(()=>{DATEN_FEHLT.add(n);return null;});
 }
@@ -1805,10 +1809,17 @@ function injectEventSchema(){
    Erst wenn alle Datendateien geladen (oder als fehlend erkannt) sind, wird gerendert.
    Jeder Schritt läuft für sich – ein Fehler in einem Teil hält die übrigen nicht auf. */
 document.getElementById("mast-date").textContent=NOW().toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+/* Fußzeile „Stand …“ = Datum der jüngsten Datendatei (vom Server gemeldet); ohne Angabe entfällt der Zusatz */
+function renderDatenstand(){
+  const el=document.getElementById("datenstand"); if(!el)return;
+  if(!DATEN_STAND){el.textContent="";return;}
+  const d=new Date(DATEN_STAND);
+  el.textContent=" · Stand "+d.getDate()+". "+MON[d.getMonth()]+" "+d.getFullYear();
+}
 function start(){
   BEREIT=true;
   filterLaden(); spoilerLaden();
-  [injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
+  [renderDatenstand,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});
