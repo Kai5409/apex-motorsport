@@ -120,8 +120,8 @@
   /* Wertung und lange Zeitpläne: erst gekürzt, auf Wunsch alles */
   $$(".more").forEach((b) => {
     const liste = b.previousElementSibling; if (!liste) return;
-    liste.classList.add("kurz"); b.hidden = false;
-    b.addEventListener("click", () => { const kurz = liste.classList.toggle("kurz"); b.textContent = kurz ? b.dataset.alle : b.dataset.weniger; festPruefen(); });
+    liste.classList.add("kurz"); b.hidden = false; b.setAttribute("aria-expanded", "false");
+    b.addEventListener("click", () => { const kurz = liste.classList.toggle("kurz"); b.textContent = kurz ? b.dataset.alle : b.dataset.weniger; b.setAttribute("aria-expanded", String(!kurz)); festPruefen(); });
   });
 
   /* Saisonlinie (Saison des nächsten Events) */

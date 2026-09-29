@@ -229,6 +229,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600;white-space:nowrap;flex-shrink:0;overflow-wrap:normal}
 .ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
 .ev-row:hover .ev-toggle{color:var(--paper)}
+/* Pfeile der aufklappbaren Zeilen sind Knöpfe (Tastatur, aria-expanded); ein Klick darauf wirkt wie ein Tippen auf die Zeile */
+.ev-toggle,.sess-row .sess-chev{line-height:inherit;padding:0}
 /* Teilen: nur das Symbol (drei verbundene Punkte) */
 .ev-teilen{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;margin-right:-6px;border-radius:50%;color:var(--faint);transition:color .15s,background .15s}
 .ev-teilen:hover,.ev-teilen:focus-visible{color:var(--paper);background:rgba(236,231,221,.08)}
@@ -489,7 +491,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <footer>
 APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
     Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
-    <button class="legal-link" onclick="toggleLegal()">Datenschutz</button>
+    <button class="legal-link" onclick="toggleLegal()" aria-expanded="false" aria-controls="legal">Datenschutz</button>
     <div class="legal" id="legal">
       <h3>Datenschutzerklärung</h3>
 
@@ -989,7 +991,13 @@ function toggleGruppe(key){
   } else g.serien.forEach(sk=>ACTIVE.add(sk));
   filterGeaendert();
 }
-function klappeGruppe(key){ FILTER_OFFEN=FILTER_OFFEN===key?null:key; renderFilter(); }
+/* Der Pfeil wird beim Neuzeichnen ersetzt – lag der Fokus auf ihm, bekommt ihn der neue (Tastatur: zweimal Enter = wieder zu) */
+function klappeGruppe(key){
+  const fokus=!!document.activeElement&&!!document.activeElement.classList&&document.activeElement.classList.contains("grp-pfeil");
+  FILTER_OFFEN=FILTER_OFFEN===key?null:key; renderFilter();
+  const b=fokus&&document.querySelectorAll(".grp-pfeil")[gruppenListe().findIndex(g=>g.key===key)];
+  if(b)b.focus({preventScroll:true});
+}
 function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); filterGeaendert(); }
 function filterGeaendert(){
   const a=ankerMerken();
@@ -1211,9 +1219,19 @@ function ergPanel(e,n,erg,res,partial){
   else if(e.result)h+=fmtRes([{p:1,who:e.result,gap:e.vorlaeufig?"Sieger (vorläufig)":"Sieger"}],true);
   return h;
 }
+/* Pfeil einer Ergebniszeile: Knopf, der Klick geht an die Zeile weiter */
+const PFEIL_ERG=`<button class="sess-chev" type="button" aria-expanded="false" aria-label="Ergebnis anzeigen">▶</button>`;
+/* Rennkarte (.ev) oder Ergebniszeile (.sess) auf- bzw. zuklappen, aria-expanded am Pfeil folgt */
+function klappen(el,auf){
+  if(!el)return;
+  el.classList.toggle("open",auf);
+  const b=el.querySelector(el.classList.contains("sess")?".sess-row .sess-chev":".ev-row .ev-toggle");
+  if(b)b.setAttribute("aria-expanded",String(auf));
+}
 /* Aufklappbare Ergebniszeile; laden=true: beim Öffnen die Ergebnisliste der Serie laden */
 function ergZeile(e,rid,kopf,panel,laden){
   const auf=laden?`,'${e.s}','${e.rd}','${e.sz||""}'`:"";
+  kopf=kopf.replace(`<span class="sess-chev">▶</span>`,PFEIL_ERG);
   return `<div class="sess" id="s-${rid}"><div class="sess-row clk" onclick="toggleRes('${rid}'${auf})">${kopf}</div>`+
     `<div class="sess-respanel">${panel}</div></div>`;
 }
@@ -1270,9 +1288,9 @@ function toggleRes(rid,sk,rd,sz){
   const el=document.getElementById("s-"+rid);
   if(!el)return;
   const isOpen=el.classList.contains("open");
-  if(OPEN_RES && OPEN_RES!==rid){const prev=document.getElementById("s-"+OPEN_RES);if(prev)prev.classList.remove("open");}
-  if(isOpen){el.classList.remove("open");OPEN_RES=null;return;}
-  el.classList.add("open");OPEN_RES=rid;
+  if(OPEN_RES && OPEN_RES!==rid)klappen(document.getElementById("s-"+OPEN_RES),false);
+  if(isOpen){klappen(el,false);OPEN_RES=null;return;}
+  klappen(el,true);OPEN_RES=rid;
   const e=sk!=null?findEv(sk,rd,sz):null;
   if(e&&["offen","fehlt"].includes(ergStand(e).zustand)){
     ladeErgebnisse(e).then(()=>ergNeuZeichnen(e,rid));
@@ -1283,14 +1301,16 @@ function toggleRes(rid,sk,rd,sz){
 function ergNeuZeichnen(e,rid){
   const evId=evDomId(e), ev=document.getElementById("ev-"+evId), box=ev&&ev.querySelector&&ev.querySelector(".sessions");
   if(!box)return;
+  /* Lag der Tastaturfokus in der Liste (Pfeil), bleibt er nach dem Neuzeichnen auf der geöffneten Zeile */
+  const fokus=!!document.activeElement&&box.contains(document.activeElement);
   box.innerHTML=buildSessions(e,evId,st(e));
   if(!OPEN_RES)return;
   let el=document.getElementById("s-"+OPEN_RES);
   /* Platzhalter „Ergebnis“ wurde durch die Listen ersetzt: erste Liste öffnen */
   if(!el&&OPEN_RES===rid){const erste=box.querySelector(".sess-row.clk");el=erste&&erste.parentNode;OPEN_RES=el?el.id.slice(2):null;}
-  if(el)el.classList.add("open");
+  if(el){klappen(el,true);const b=fokus&&el.querySelector(".sess-chev");if(b)b.focus({preventScroll:true});}
 }
-function toggleEv(id){document.getElementById("ev-"+id).classList.toggle("open");}
+function toggleEv(id){const el=document.getElementById("ev-"+id);klappen(el,!el.classList.contains("open"));}
 
 /* ═══════ TIMELINE (Aktuell) ═══════ */
 const TEILEN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 10.7 16.5 5.9M7.5 13.3l9 4.8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="18" cy="5" r="2.7" fill="currentColor"/><circle cx="6" cy="12" r="2.7" fill="currentColor"/><circle cx="18" cy="19" r="2.7" fill="currentColor"/></svg>';
@@ -1312,7 +1332,7 @@ function eventHTML(e){
       `<span class="ev-body"><span class="ev-name">${e.name}</span>`+
       `<span class="ev-sub"><span class="ser" style="color:${S0.color}">${S0.name}</span> · ${e.sonder?`<span class="sonder">${sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}</span>`+
       `<button class="ev-teilen" aria-label="Teilen" title="Teilen" onclick="event.stopPropagation();teilen('${e.s}','${e.rd}','${e.sz||""}')">${TEILEN_SVG}</button>`+
-      `<span class="ev-toggle">+</span></div>`+
+      `<button class="ev-toggle" type="button" aria-expanded="false" aria-label="Sessions anzeigen">+</button></div>`+
       `<div class="sessions">${buildSessions(e,evId,status)}</div></div></div>`+
   `</div></div>`;
 }
@@ -1445,17 +1465,23 @@ function renderCalendar(){
 /* ═══════ TV ═══════ */
 /* ═══════ REGELN ═══════ */
 
+/* aria-expanded des Knopfs „Datenschutz“ = Zustand der Erklärung */
+function legalAria(){const el=document.getElementById("legal"),b=document.querySelector(".legal-link");if(el&&b)b.setAttribute("aria-expanded",String(el.classList.contains("on")));}
 function toggleLegal(){
   const el=document.getElementById("legal"); if(!el)return;
-  el.classList.toggle("on");
+  el.classList.toggle("on"); legalAria();
   if(el.classList.contains("on")) el.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
 
 let RULES_OPEN = null;   /* welche Serie ist aufgeklappt */
 
 function toggleRule(sk){
+  const fokus=!!document.activeElement&&!!document.activeElement.classList&&document.activeElement.classList.contains("rl-head");
   RULES_OPEN = (RULES_OPEN===sk) ? null : sk;
   renderRules();
+  /* Knopf wurde neu gezeichnet: Fokus zurück (Tastatur: zweimal Enter = wieder zu) */
+  const b=fokus&&document.querySelector("#rl-"+sk+" .rl-head");
+  if(b)b.focus({preventScroll:true});
   if(RULES_OPEN){
     const el=document.getElementById("rl-"+RULES_OPEN);
     if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
@@ -1718,7 +1744,7 @@ function gotoEvent(sk,rd,sz,sofort){
     renderFilter();renderToolbar();renderTimeline();
     el=document.getElementById("ev-"+evDomId(e));
   }
-  if(el){el.classList.add("open");
+  if(el){klappen(el,true);
     const w=el.closest(".wknd")||el;
     /* Oberkante knapp unter den festen Kopf (scroll-padding-top) */
     if(sofort===true)ohneAnimation(()=>{try{w.scrollIntoView({behavior:"instant",block:"start"});}catch(err){w.scrollIntoView(true);}});
@@ -1760,7 +1786,7 @@ function kurzerHinweis(txt){
 /* #datenschutz (Link aus den Serienseiten): Datenschutzerklärung aufklappen und hinspringen */
 function zeigeDatenschutz(){
   const el=document.getElementById("legal"); if(!el||!el.classList)return;
-  el.classList.add("on");
+  el.classList.add("on"); legalAria();
   ohneAnimation(()=>{try{el.scrollIntoView({behavior:"instant",block:"start"});}catch(err){el.scrollIntoView(true);}});
 }
 function applyHash(sofort){

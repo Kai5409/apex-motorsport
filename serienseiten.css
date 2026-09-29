@@ -154,7 +154,8 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;m
 .start{font:500 14px var(--mono);text-align:right;white-space:nowrap}
 .start small{display:block;font:12px var(--text);color:var(--muted);margin-top:2px}
 .start small.i{display:inline;margin:0 0 0 5px}
-.chev{color:var(--faint);transition:transform .15s;font-size:12px}
+/* Der Pfeil fängt keine Klicks ab: gedreht (offen) läge er sonst über der Klickfläche des Knopfs und klappte nicht mehr zu */
+.chev{color:var(--faint);transition:transform .15s;font-size:12px;pointer-events:none}
 .race.open .chev{transform:rotate(90deg)}
 .race.past .when,.race.past .gp{color:#b8b1a4}
 .race.past .rd{color:var(--faint)}
