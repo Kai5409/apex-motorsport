@@ -6,4 +6,264 @@ METHOD:PUBLISH
 X-WR-CALNAME:APEX · IndyCar
 X-WR-CALDESC:IndyCar — alle Sessions in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-indycar1-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260301
+DTEND;VALUE=DATE:20260302
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von St. Petersburg
+LOCATION:St. Petersburg
+DESCRIPTION:APEX · IndyCar · Lauf 1 · St. Petersburg — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar2-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260307
+DTEND;VALUE=DATE:20260308
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Phoenix 250
+LOCATION:Phoenix
+DESCRIPTION:APEX · IndyCar · Lauf 2 · Phoenix — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar3-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260315
+DTEND;VALUE=DATE:20260316
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Arlington
+LOCATION:Arlington
+DESCRIPTION:APEX · IndyCar · Lauf 3 · Arlington — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar4-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260329
+DTEND;VALUE=DATE:20260330
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Alabama
+LOCATION:Barber
+DESCRIPTION:APEX · IndyCar · Lauf 4 · Barber — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar5-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260419
+DTEND;VALUE=DATE:20260420
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Long Beach
+LOCATION:Long Beach
+DESCRIPTION:APEX · IndyCar · Lauf 5 · Long Beach — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar6-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260509
+DTEND;VALUE=DATE:20260510
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Indianapolis
+LOCATION:Indianapolis
+DESCRIPTION:APEX · IndyCar · Lauf 6 · Indianapolis — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar7-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260524
+DTEND;VALUE=DATE:20260525
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · 110. Indianapolis 500
+LOCATION:Indianapolis
+DESCRIPTION:APEX · IndyCar · Lauf 7 · Indianapolis — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar8-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260531
+DTEND;VALUE=DATE:20260601
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Detroit
+LOCATION:Detroit
+DESCRIPTION:APEX · IndyCar · Lauf 8 · Detroit — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar9-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260607
+DTEND;VALUE=DATE:20260608
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Gateway 500
+LOCATION:Gateway
+DESCRIPTION:APEX · IndyCar · Lauf 9 · Gateway — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar10-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260621
+DTEND;VALUE=DATE:20260622
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Road America
+LOCATION:Road America
+DESCRIPTION:APEX · IndyCar · Lauf 10 · Road America — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar11-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260705
+DTEND;VALUE=DATE:20260706
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Indy 200 Mid-Ohio
+LOCATION:Mid-Ohio
+DESCRIPTION:APEX · IndyCar · Lauf 11 · Mid-Ohio — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar12-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260720
+DTEND;VALUE=DATE:20260721
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Music City Grand Prix
+LOCATION:Nashville
+DESCRIPTION:APEX · IndyCar · Lauf 12 · Nashville — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260809
+DTEND;VALUE=DATE:20260810
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Portland
+LOCATION:Portland
+DESCRIPTION:APEX · IndyCar · Lauf 13 · Portland — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar14-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260816
+DTEND;VALUE=DATE:20260817
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Indy Markham
+LOCATION:Markham
+DESCRIPTION:APEX · IndyCar · Lauf 14 · Markham — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar15-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260823
+DTEND;VALUE=DATE:20260824
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Freedom 250 Washington
+LOCATION:Washington
+DESCRIPTION:APEX · IndyCar · Lauf 15 · Washington — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar16-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260831
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Milwaukee Mile · Rennen 1
+LOCATION:Milwaukee
+DESCRIPTION:APEX · IndyCar · Lauf 16 · Milwaukee — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar17-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Milwaukee Mile · Rennen 2
+LOCATION:Milwaukee
+DESCRIPTION:APEX · IndyCar · Lauf 17 · Milwaukee — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar18-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Monterey · Finale
+LOCATION:Laguna Seca
+DESCRIPTION:APEX · IndyCar · Lauf 18 · Laguna Seca — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar1-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270307
+DTEND;VALUE=DATE:20270308
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von St. Petersburg
+LOCATION:St. Petersburg
+DESCRIPTION:APEX · IndyCar · Lauf 1 · St. Petersburg — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar2-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270313
+DTEND;VALUE=DATE:20270314
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Phoenix 250
+LOCATION:Phoenix
+DESCRIPTION:APEX · IndyCar · Lauf 2 · Phoenix — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar3-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Arlington
+LOCATION:Arlington
+DESCRIPTION:APEX · IndyCar · Lauf 3 · Arlington — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar4-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270404
+DTEND;VALUE=DATE:20270405
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Alabama
+LOCATION:Barber
+DESCRIPTION:APEX · IndyCar · Lauf 4 · Barber — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar5-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270418
+DTEND;VALUE=DATE:20270419
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Long Beach
+LOCATION:Long Beach
+DESCRIPTION:APEX · IndyCar · Lauf 5 · Long Beach — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar6-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270516
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Indianapolis
+LOCATION:Indianapolis
+DESCRIPTION:APEX · IndyCar · Lauf 6 · Indianapolis — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar7-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270530
+DTEND;VALUE=DATE:20270531
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · 111. Indianapolis 500
+LOCATION:Indianapolis
+DESCRIPTION:APEX · IndyCar · Lauf 7 · Indianapolis — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar8-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270606
+DTEND;VALUE=DATE:20270607
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Detroit
+LOCATION:Detroit
+DESCRIPTION:APEX · IndyCar · Lauf 8 · Detroit — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

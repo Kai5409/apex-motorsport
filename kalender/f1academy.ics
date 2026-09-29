@@ -51,4 +51,54 @@ SUMMARY:F1 Academy · Großer Preis der USA — Rennen 2
 LOCATION:Austin
 DESCRIPTION:APEX · F1 Academy · Lauf 5 · Austin
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy1-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260313
+DTEND;VALUE=DATE:20260316
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von China
+LOCATION:Shanghai
+DESCRIPTION:APEX · F1 Academy · Lauf 1 · Shanghai — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy2-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260522
+DTEND;VALUE=DATE:20260525
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von Kanada
+LOCATION:Montréal
+DESCRIPTION:APEX · F1 Academy · Lauf 2 · Montréal — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy3-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260703
+DTEND;VALUE=DATE:20260706
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von Großbritannien
+LOCATION:Silverstone
+DESCRIPTION:APEX · F1 Academy · Lauf 3 · Silverstone — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy4-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260821
+DTEND;VALUE=DATE:20260824
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis der Niederlande
+LOCATION:Zandvoort
+DESCRIPTION:APEX · F1 Academy · Lauf 4 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy6-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261122
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von Las Vegas · Finale
+LOCATION:Las Vegas
+DESCRIPTION:APEX · F1 Academy · Lauf 6 · Las Vegas — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

@@ -6,4 +6,74 @@ METHOD:PUBLISH
 X-WR-CALNAME:APEX · ERC
 X-WR-CALDESC:ERC — alle Sessions in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-erc1-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260417
+DTEND;VALUE=DATE:20260420
+TRANSP:TRANSPARENT
+SUMMARY:ERC · Rallye Sierra Morena (Andalusien)
+LOCATION:Córdoba
+DESCRIPTION:APEX · ERC · Lauf 1 · Córdoba — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-erc2-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260522
+DTEND;VALUE=DATE:20260525
+TRANSP:TRANSPARENT
+SUMMARY:ERC · Rallye Skandinavien
+LOCATION:Karlstad
+DESCRIPTION:APEX · ERC · Lauf 2 · Karlstad — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-erc3-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260703
+DTEND;VALUE=DATE:20260706
+TRANSP:TRANSPARENT
+SUMMARY:ERC · Rallye Rom
+LOCATION:Rom
+DESCRIPTION:APEX · ERC · Lauf 3 · Rom — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-erc4-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260724
+DTEND;VALUE=DATE:20260727
+TRANSP:TRANSPARENT
+SUMMARY:ERC · Rallye Polen
+LOCATION:Katowice
+DESCRIPTION:APEX · ERC · Lauf 4 · Katowice — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-erc5-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260814
+DTEND;VALUE=DATE:20260817
+TRANSP:TRANSPARENT
+SUMMARY:ERC · Barum Rallye Zlín
+LOCATION:Zlín
+DESCRIPTION:APEX · ERC · Lauf 5 · Zlín — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-erc6-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260904
+DTEND;VALUE=DATE:20260907
+TRANSP:TRANSPARENT
+SUMMARY:ERC · Rallye Ceredigion (Wales)
+LOCATION:Aberystwyth
+DESCRIPTION:APEX · ERC · Lauf 6 · Aberystwyth — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-erc7-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261026
+TRANSP:TRANSPARENT
+SUMMARY:ERC · Rallye Nordportugal · Finale
+LOCATION:Fafe
+DESCRIPTION:APEX · ERC · Lauf 7 · Fafe — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

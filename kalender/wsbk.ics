@@ -6,4 +6,124 @@ METHOD:PUBLISH
 X-WR-CALNAME:APEX · Superbike-WM
 X-WR-CALDESC:Superbike-WM — alle Sessions in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-wsbk1-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260220
+DTEND;VALUE=DATE:20260223
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Australien
+LOCATION:Phillip Island
+DESCRIPTION:APEX · Superbike-WM · Lauf 1 · Phillip Island — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk2-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260327
+DTEND;VALUE=DATE:20260330
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Portugal
+LOCATION:Portimão
+DESCRIPTION:APEX · Superbike-WM · Lauf 2 · Portimão — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk3-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260417
+DTEND;VALUE=DATE:20260420
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Niederlande
+LOCATION:Assen
+DESCRIPTION:APEX · Superbike-WM · Lauf 3 · Assen — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk4-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260504
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Ungarn
+LOCATION:Balaton Park
+DESCRIPTION:APEX · Superbike-WM · Lauf 4 · Balaton Park — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk5-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260515
+DTEND;VALUE=DATE:20260518
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Tschechien
+LOCATION:Most
+DESCRIPTION:APEX · Superbike-WM · Lauf 5 · Most — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk6-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260529
+DTEND;VALUE=DATE:20260601
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Aragón
+LOCATION:Aragón
+DESCRIPTION:APEX · Superbike-WM · Lauf 6 · Aragón — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk7-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260612
+DTEND;VALUE=DATE:20260615
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Emilia-Romagna
+LOCATION:Misano
+DESCRIPTION:APEX · Superbike-WM · Lauf 7 · Misano — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk8-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260710
+DTEND;VALUE=DATE:20260713
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Großbritannien
+LOCATION:Donington
+DESCRIPTION:APEX · Superbike-WM · Lauf 8 · Donington — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk9-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260904
+DTEND;VALUE=DATE:20260907
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Frankreich
+LOCATION:Magny-Cours
+DESCRIPTION:APEX · Superbike-WM · Lauf 9 · Magny-Cours — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk10-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20260928
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Italien
+LOCATION:Cremona
+DESCRIPTION:APEX · Superbike-WM · Lauf 10 · Cremona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk11-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261012
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Estoril
+LOCATION:Estoril
+DESCRIPTION:APEX · Superbike-WM · Lauf 11 · Estoril — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk12-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261019
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Spanien · Finale
+LOCATION:Jerez
+DESCRIPTION:APEX · Superbike-WM · Lauf 12 · Jerez — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

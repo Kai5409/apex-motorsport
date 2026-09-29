@@ -186,4 +186,174 @@ SUMMARY:GTWC · Portimão · Endurance · Finale — Rennen (3 Stunden)
 LOCATION:Portimão
 DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc1-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260411
+DTEND;VALUE=DATE:20260413
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · 6 Stunden von Paul Ricard · Endurance
+LOCATION:Paul Ricard
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 1 · Paul Ricard — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc2-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260502
+DTEND;VALUE=DATE:20260504
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Brands Hatch · Sprint
+LOCATION:Brands Hatch
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 2 · Brands Hatch — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc3-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260530
+DTEND;VALUE=DATE:20260601
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Monza · Endurance
+LOCATION:Monza
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 3 · Monza — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc4-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260625
+DTEND;VALUE=DATE:20260629
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · 24 Stunden von Spa · Endurance
+LOCATION:Spa-Francorchamps
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 4 · Spa-Francorchamps — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc5-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260718
+DTEND;VALUE=DATE:20260720
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Misano · Sprint
+LOCATION:Misano
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 5 · Misano — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc6-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260801
+DTEND;VALUE=DATE:20260803
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Magny-Cours · Sprint
+LOCATION:Magny-Cours
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 6 · Magny-Cours — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc7-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260831
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Nürburgring · Endurance
+LOCATION:Nürburgring
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 7 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc1-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270415
+DTEND;VALUE=DATE:20270419
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Paul Ricard · Endurance
+LOCATION:Paul Ricard
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 1 · Paul Ricard — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc2-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270503
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Brands Hatch · Sprint
+LOCATION:Brands Hatch
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 2 · Brands Hatch — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc3-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270521
+DTEND;VALUE=DATE:20270524
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Imola · Endurance
+LOCATION:Imola
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 3 · Imola — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc4-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270624
+DTEND;VALUE=DATE:20270628
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · 24 Stunden von Spa · Endurance
+LOCATION:Spa-Francorchamps
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 4 · Spa-Francorchamps — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc5-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270716
+DTEND;VALUE=DATE:20270719
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Misano · Sprint
+LOCATION:Misano
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 5 · Misano — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc6-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270730
+DTEND;VALUE=DATE:20270802
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Magny-Cours · Sprint
+LOCATION:Magny-Cours
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 6 · Magny-Cours — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc7-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270827
+DTEND;VALUE=DATE:20270830
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Nürburgring · Endurance
+LOCATION:Nürburgring
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 7 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc8-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270917
+DTEND;VALUE=DATE:20270920
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Zandvoort · Sprint
+LOCATION:Zandvoort
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 8 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc9-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271001
+DTEND;VALUE=DATE:20271004
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Budapest · Sprint
+LOCATION:Hungaroring
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 9 · Hungaroring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc10-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271022
+DTEND;VALUE=DATE:20271025
+TRANSP:TRANSPARENT
+SUMMARY:GTWC · Barcelona · Endurance · Finale
+LOCATION:Barcelona
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Barcelona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

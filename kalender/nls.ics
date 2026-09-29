@@ -186,4 +186,104 @@ SUMMARY:NLS · 2. NLS Sportwarte-Trophy · Finale — Rennen (4h)
 LOCATION:Nürburgring
 DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 10 · Nürburgring
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls1-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270320
+DTEND;VALUE=DATE:20270321
+TRANSP:TRANSPARENT
+SUMMARY:NLS · NLS1
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 1 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls2-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+TRANSP:TRANSPARENT
+SUMMARY:NLS · NLS2
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 2 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls90-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270503
+TRANSP:TRANSPARENT
+SUMMARY:NLS · ADAC 24h Nürburgring Qualifiers
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Eigenständiges Rennen · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls0-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270527
+DTEND;VALUE=DATE:20270531
+TRANSP:TRANSPARENT
+SUMMARY:NLS · ADAC RAVENOL 24h Nürburgring
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Eigenständiges Rennen · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls3-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270703
+DTEND;VALUE=DATE:20270704
+TRANSP:TRANSPARENT
+SUMMARY:NLS · NLS3
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 3 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls4-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270807
+DTEND;VALUE=DATE:20270808
+TRANSP:TRANSPARENT
+SUMMARY:NLS · NLS4 · 6h-Rennen
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 4 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls5-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270911
+DTEND;VALUE=DATE:20270912
+TRANSP:TRANSPARENT
+SUMMARY:NLS · NLS5
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 5 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls6-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270912
+DTEND;VALUE=DATE:20270913
+TRANSP:TRANSPARENT
+SUMMARY:NLS · NLS6
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 6 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls7-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270925
+DTEND;VALUE=DATE:20270926
+TRANSP:TRANSPARENT
+SUMMARY:NLS · NLS7
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 7 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls8-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271009
+DTEND;VALUE=DATE:20271010
+TRANSP:TRANSPARENT
+SUMMARY:NLS · NLS8 · Finale
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 8 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

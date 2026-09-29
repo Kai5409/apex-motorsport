@@ -222,6 +222,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ev-sub .sonder{color:var(--paper)}
 .ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px;overflow-wrap:anywhere}
 .ev-note{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-top:4px}
+.ev-win .vorl,.ser-round .vorl{font-size:8.5px;border:1px solid currentColor;padding:0 4px;border-radius:2px;white-space:nowrap;opacity:.8}
 .ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600;white-space:nowrap;flex-shrink:0;overflow-wrap:normal}
 .ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
 .ev-row:hover .ev-toggle{color:var(--paper)}
@@ -480,7 +481,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <footer>
-APEX · Saisons 2026 &amp; 2027 · 18 Serien · Stand 25. September 2026<br>
+APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
     Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
     <button class="legal-link" onclick="toggleLegal()">Datenschutz</button>
     <div class="legal" id="legal">
@@ -538,6 +539,7 @@ const DATEN_FEHLT=new Set();   /* Dateien, die nicht geladen oder nicht gelesen 
 const DATEN_LUECKE=new Set();  /* Dateien, aus denen einzelne Einträge übersprungen wurden */
 const STAND_LUECKE=new Set();  /* Serien, deren Wertung übersprungen wurde */
 let BEREIT=false;
+let DATEN_STAND=0;         /* jüngste Änderung der geladenen Datendateien (Last-Modified), für „Stand …“ in der Fußzeile */
 
 const istObj=x=>!!x&&typeof x==="object"&&!Array.isArray(x);
 const istText=x=>typeof x==="string";
@@ -553,7 +555,10 @@ const streckeOK=v=>istObj(v)&&istText(v.name)&&typeof v.len==="number"&&(v.turns
 function ladeDatei(n){
   return Promise.resolve()
     .then(()=>fetch("data/"+n+".json",{cache:"no-cache"}))
-    .then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.text();})
+    .then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);
+      const lm=Date.parse((r.headers&&r.headers.get&&r.headers.get("Last-Modified"))||"");
+      if(lm>DATEN_STAND)DATEN_STAND=lm;
+      return r.text();})
     .then(t=>JSON.parse(t))
     .catch(()=>{DATEN_FEHLT.add(n);return null;});
 }
@@ -1141,6 +1146,7 @@ function ladeErgebnisse(e){
 function ergStand(e){const o=ERG[ergDatei(e)];return {zustand:o?o.zustand:"offen",listen:(o&&o.listen[ergKey(e)])||[]};}
 function fmtListe(l){
   let h=l.zeilen.map(z=>`<div class="res-row ${z[0]===1?'p1':''}"><span class="res-p">${z[0]}</span><span class="res-w">${esc(z[1])}${z[2]?` <span class="rt">${esc(z[2])}</span>`:''}</span><span class="res-g">${z[3]?esc(z[3]):''}</span></div>`).join("");
+  if(l.vorlaeufig)h+=`<div class="res-note">Vorläufiges Ergebnis – kann sich noch ändern</div>`;
   if(l.gekuerzt)h+=`<div class="res-note">Gezeigt sind die ersten ${l.zeilen.length} Plätze</div>`;
   else if(l.unvollstaendig)h+=`<div class="res-note">Weitere Plätze werden ergänzt</div>`;
   if(l.quelle)h+=`<div class="res-note">Quelle: ${esc(l.quelle)}</div>`;
@@ -1153,7 +1159,7 @@ function ergPanel(e,n,erg,res,partial){
   if(erg.zustand==="offen"||erg.zustand==="laedt")return `<div class="res-note">Ergebnis wird geladen …</div>`;
   let h=erg.zustand==="fehlt"?`<div class="res-note">Die Ergebnisliste konnte gerade nicht geladen werden.</div>`:"";
   if(res)h+=fmtRes(res,partial);
-  else if(e.result)h+=fmtRes([{p:1,who:e.result,gap:"Sieger"}],true);
+  else if(e.result)h+=fmtRes([{p:1,who:e.result,gap:e.vorlaeufig?"Sieger (vorläufig)":"Sieger"}],true);
   return h;
 }
 /* Aufklappbare Ergebniszeile; laden=true: beim Öffnen die Ergebnisliste der Serie laden */
@@ -1239,11 +1245,13 @@ function toggleEv(id){document.getElementById("ev-"+id).classList.toggle("open")
 
 /* ═══════ TIMELINE (Aktuell) ═══════ */
 const TEILEN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 10.7 16.5 5.9M7.5 13.3l9 4.8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="18" cy="5" r="2.7" fill="currentColor"/><circle cx="6" cy="12" r="2.7" fill="currentColor"/><circle cx="18" cy="19" r="2.7" fill="currentColor"/></svg>';
+/* Ergebnis offiziell noch vorläufig (vorlaeufig:true am Event): Zusatz hinter dem Sieger */
+function vorlText(e){return e.vorlaeufig===true?' <span class="vorl">vorläufig</span>':"";}
 /* Sieger bzw. Abbruch auf der Karte – bei „Ergebnisse verbergen“ erst auf Tippen */
 function siegerKarte(e){
   if(!e.result&&!e.abbruch)return "";
   if(verborgen(ergKey(e)))return aufdeckenKnopf(e,"karte");
-  return e.result?`<div class="ev-win">${e.result}</div>`:`<div class="ev-note">${ABBRUCH}</div>`;
+  return e.result?`<div class="ev-win">${e.result}${vorlText(e)}</div>`:`<div class="ev-note">${ABBRUCH}</div>`;
 }
 function eventHTML(e){
   const status=st(e),S0=SERIES[e.s],evId=evDomId(e);
@@ -1308,7 +1316,7 @@ function renderTimeline(){
 /* Sieger bzw. Abbruch in der Rundenliste – bei „Ergebnisse verbergen“ erst auf Tippen */
 function siegerSerie(e){
   if(verborgen(ergKey(e)))return aufdeckenKnopf(e,"serie");
-  return e.result?`<span class="st done">${e.result}</span>`:`<span class="st up">Abgebrochen</span>`;
+  return e.result?`<span class="st done">${e.result}${vorlText(e)}</span>`:`<span class="st up">Abgebrochen</span>`;
 }
 /* Kalender-Abos: apex-2026.ics (alle Serien) und kalender/<serie>.ics erzeugt das Prüfskript.
    webcal:// öffnet den Abo-Dialog der Kalender-App; „Link kopieren“ für Kalender, die eine Adresse brauchen. */
@@ -1801,10 +1809,17 @@ function injectEventSchema(){
    Erst wenn alle Datendateien geladen (oder als fehlend erkannt) sind, wird gerendert.
    Jeder Schritt läuft für sich – ein Fehler in einem Teil hält die übrigen nicht auf. */
 document.getElementById("mast-date").textContent=NOW().toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+/* Fußzeile „Stand …“ = Datum der jüngsten Datendatei (vom Server gemeldet); ohne Angabe entfällt der Zusatz */
+function renderDatenstand(){
+  const el=document.getElementById("datenstand"); if(!el)return;
+  if(!DATEN_STAND){el.textContent="";return;}
+  const d=new Date(DATEN_STAND);
+  el.textContent=" · Stand "+d.getDate()+". "+MON[d.getMonth()]+" "+d.getFullYear();
+}
 function start(){
   BEREIT=true;
   filterLaden(); spoilerLaden();
-  [injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
+  [renderDatenstand,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});

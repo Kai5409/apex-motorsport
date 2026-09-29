@@ -151,7 +151,7 @@
     ]}
   ],
   "wec-5": [
-    {"n": "Rennen (6h)", "quelle": "fiawec.com · en./de.wikipedia.org", "unvollstaendig": true, "zeilen": [
+    {"n": "Rennen (6h)", "quelle": "fiawec.alkamelsystems.com (Final Classification) · fiawec.com", "zeilen": [
       [1, "Fuoco / Molina / Nielsen", "Ferrari #50", "Hypercar"],
       [2, "Bamber / Bourdais / Aitken", "Cadillac #38", "Hypercar"],
       [3, "Félix da Costa / Milesi / Habsburg", "Alpine #35", "Hypercar"],
@@ -179,7 +179,7 @@
       [25, "Gattuso / Levorato / Sargeant", "Ford #88", "LMGT3"],
       [26, "Flohr / Castellacci / Rigon", "Ferrari #54", "LMGT3"],
       [27, "McIntosh / Thompson / Harper", "BMW #69", "LMGT3"],
-      [28, "Keating / Edgar / Varrone", "Corvette #33", "LMGT3"],
+      [28, "Keating / Edgar / Catsburg", "Corvette #33", "LMGT3"],
       [29, "López / Schmid / Umbrărescu", "Lexus #87", "LMGT3"],
       [30, "Dempsey / Yoluç / Eastwood", "Corvette #34", "LMGT3"],
       [31, "Shahin / Pera / Lietz", "Porsche #92", "LMGT3"],
@@ -188,7 +188,7 @@
     ]}
   ],
   "wec-6": [
-    {"n": "Rennen (6h)", "quelle": "fiawec.com · en.wikipedia.org", "unvollstaendig": true, "zeilen": [
+    {"n": "Rennen (6h)", "quelle": "fiawec.alkamelsystems.com (Final Classification) · fiawec.com", "zeilen": [
       [1, "Buemi / Hartley / Hirakawa", "Toyota #8", "Hypercar"],
       [2, "Gounon / Martins", "Alpine #36", "Hypercar"],
       [3, "Magnussen / Marciello / Vanthoor", "BMW #15", "Hypercar"],
@@ -213,7 +213,10 @@
       [22, "Cottingham / Boguslavskiy / Güven", "Porsche #91", "LMGT3"],
       [23, "Au / Fleming / Kirchhöfer", "McLaren #10", "LMGT3"],
       [24, "Van Rompuy / David / Masson", "Lexus #78", "LMGT3"],
-      [25, "Powell / Tuck / Priaulx", "Ford #77", "LMGT3"]
+      [25, "Powell / Tuck / Priaulx", "Ford #77", "LMGT3"],
+      [26, "Umbrărescu / Schmid / López", "Lexus #87", "LMGT3"],
+      [27, "Shahin / Pera / Lietz", "Porsche #92", "LMGT3"],
+      [28, "Zelger / Cressoni / Hodenius", "Mercedes-AMG #79", "LMGT3"]
     ]}
   ]
 }

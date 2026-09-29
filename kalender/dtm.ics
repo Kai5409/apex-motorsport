@@ -366,4 +366,84 @@ SUMMARY:DTM · DTM Hockenheim (Finale) — Rennen 2
 LOCATION:Hockenheimring
 DESCRIPTION:APEX · DTM · Lauf 8 · Hockenheimring
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-dtm1-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270423
+DTEND;VALUE=DATE:20270426
+TRANSP:TRANSPARENT
+SUMMARY:DTM · DTM Spielberg
+LOCATION:Red Bull Ring
+DESCRIPTION:APEX · DTM · Lauf 1 · Red Bull Ring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-dtm2-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270507
+DTEND;VALUE=DATE:20270510
+TRANSP:TRANSPARENT
+SUMMARY:DTM · DTM Oschersleben
+LOCATION:Oschersleben
+DESCRIPTION:APEX · DTM · Lauf 2 · Oschersleben — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-dtm3-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270618
+DTEND;VALUE=DATE:20270621
+TRANSP:TRANSPARENT
+SUMMARY:DTM · DTM Lausitzring
+LOCATION:Lausitzring
+DESCRIPTION:APEX · DTM · Lauf 3 · Lausitzring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-dtm4-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270702
+DTEND;VALUE=DATE:20270705
+TRANSP:TRANSPARENT
+SUMMARY:DTM · DTM Norisring
+LOCATION:Nürnberg
+DESCRIPTION:APEX · DTM · Lauf 4 · Nürnberg — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-dtm5-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270806
+DTEND;VALUE=DATE:20270809
+TRANSP:TRANSPARENT
+SUMMARY:DTM · DTM Zandvoort
+LOCATION:Zandvoort
+DESCRIPTION:APEX · DTM · Lauf 5 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-dtm6-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270820
+DTEND;VALUE=DATE:20270823
+TRANSP:TRANSPARENT
+SUMMARY:DTM · DTM Nürburgring
+LOCATION:Nürburgring
+DESCRIPTION:APEX · DTM · Lauf 6 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-dtm7-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270924
+DTEND;VALUE=DATE:20270927
+TRANSP:TRANSPARENT
+SUMMARY:DTM · DTM Sachsenring
+LOCATION:Sachsenring
+DESCRIPTION:APEX · DTM · Lauf 7 · Sachsenring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-dtm8-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271008
+DTEND;VALUE=DATE:20271011
+TRANSP:TRANSPARENT
+SUMMARY:DTM · DTM Hockenheim (Finale)
+LOCATION:Hockenheimring
+DESCRIPTION:APEX · DTM · Lauf 8 · Hockenheimring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR
