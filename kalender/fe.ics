@@ -384,4 +384,234 @@ SUMMARY:F·E · Tokio E-Prix — Rennen
 LOCATION:Tokio
 DESCRIPTION:APEX · Formel E · Lauf 14 · Tokio
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe15-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260815
+DTEND;VALUE=DATE:20260816
+TRANSP:TRANSPARENT
+SUMMARY:F·E · London E-Prix I
+LOCATION:London ExCeL
+DESCRIPTION:APEX · Formel E · Lauf 15 · London ExCeL — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe16-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260816
+DTEND;VALUE=DATE:20260817
+TRANSP:TRANSPARENT
+SUMMARY:F·E · London E-Prix II · Finale
+LOCATION:London ExCeL
+DESCRIPTION:APEX · Formel E · Lauf 16 · London ExCeL — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe1-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261219
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Dschidda E-Prix I · Auftakt Saison 13
+LOCATION:Dschidda
+DESCRIPTION:APEX · Formel E · Lauf 1 · Dschidda — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe2-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Dschidda E-Prix II
+LOCATION:Dschidda
+DESCRIPTION:APEX · Formel E · Lauf 2 · Dschidda — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe3-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270116
+DTEND;VALUE=DATE:20270117
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Mexiko-Stadt E-Prix
+LOCATION:Mexiko-Stadt
+DESCRIPTION:APEX · Formel E · Lauf 3 · Mexiko-Stadt — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe4-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270206
+DTEND;VALUE=DATE:20270207
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Austin E-Prix
+LOCATION:Austin
+DESCRIPTION:APEX · Formel E · Lauf 4 · Austin — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe5-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Miami E-Prix
+LOCATION:Miami
+DESCRIPTION:APEX · Formel E · Lauf 5 · Miami — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe6-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270313
+DTEND;VALUE=DATE:20270314
+TRANSP:TRANSPARENT
+SUMMARY:F·E · São Paulo E-Prix
+LOCATION:São Paulo
+DESCRIPTION:APEX · Formel E · Lauf 6 · São Paulo — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe7-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Sanya E-Prix
+LOCATION:Sanya
+DESCRIPTION:APEX · Formel E · Lauf 7 · Sanya — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe8-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Monaco E-Prix I
+LOCATION:Monte Carlo
+DESCRIPTION:APEX · Formel E · Lauf 8 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe9-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270502
+DTEND;VALUE=DATE:20270503
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Monaco E-Prix II
+LOCATION:Monte Carlo
+DESCRIPTION:APEX · Formel E · Lauf 9 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe10-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270508
+DTEND;VALUE=DATE:20270509
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Berlin E-Prix I
+LOCATION:Berlin
+DESCRIPTION:APEX · Formel E · Lauf 10 · Berlin — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe11-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270509
+DTEND;VALUE=DATE:20270510
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Berlin E-Prix II
+LOCATION:Berlin
+DESCRIPTION:APEX · Formel E · Lauf 11 · Berlin — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe12-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270529
+DTEND;VALUE=DATE:20270530
+TRANSP:TRANSPARENT
+SUMMARY:F·E · London E-Prix I
+LOCATION:London
+DESCRIPTION:APEX · Formel E · Lauf 12 · London — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe13-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270530
+DTEND;VALUE=DATE:20270531
+TRANSP:TRANSPARENT
+SUMMARY:F·E · London E-Prix II
+LOCATION:London
+DESCRIPTION:APEX · Formel E · Lauf 13 · London — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe14-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270618
+DTEND;VALUE=DATE:20270619
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Zandvoort E-Prix I
+LOCATION:Zandvoort
+DESCRIPTION:APEX · Formel E · Lauf 14 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe15-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270619
+DTEND;VALUE=DATE:20270620
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Zandvoort E-Prix II
+LOCATION:Zandvoort
+DESCRIPTION:APEX · Formel E · Lauf 15 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe16-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270626
+DTEND;VALUE=DATE:20270627
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Madrid E-Prix I
+LOCATION:Madrid
+DESCRIPTION:APEX · Formel E · Lauf 16 · Madrid — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe17-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270627
+DTEND;VALUE=DATE:20270628
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Madrid E-Prix II
+LOCATION:Madrid
+DESCRIPTION:APEX · Formel E · Lauf 17 · Madrid — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe18-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270710
+DTEND;VALUE=DATE:20270711
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Shanghai E-Prix I
+LOCATION:Shanghai
+DESCRIPTION:APEX · Formel E · Lauf 18 · Shanghai — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe19-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270711
+DTEND;VALUE=DATE:20270712
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Shanghai E-Prix II
+LOCATION:Shanghai
+DESCRIPTION:APEX · Formel E · Lauf 19 · Shanghai — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe20-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270724
+DTEND;VALUE=DATE:20270725
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Tokio E-Prix I
+LOCATION:Tokio
+DESCRIPTION:APEX · Formel E · Lauf 20 · Tokio — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe21-S13-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270725
+DTEND;VALUE=DATE:20270726
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Tokio E-Prix II · Finale
+LOCATION:Tokio
+DESCRIPTION:APEX · Formel E · Lauf 21 · Tokio — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

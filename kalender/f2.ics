@@ -6,4 +6,144 @@ METHOD:PUBLISH
 X-WR-CALNAME:APEX · Formel 2
 X-WR-CALDESC:Formel 2 — alle Sessions in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-f21-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260306
+DTEND;VALUE=DATE:20260309
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Australien
+LOCATION:Melbourne
+DESCRIPTION:APEX · Formel 2 · Lauf 1 · Melbourne — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f22-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260504
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Miami
+LOCATION:Miami
+DESCRIPTION:APEX · Formel 2 · Lauf 2 · Miami — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f23-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260522
+DTEND;VALUE=DATE:20260525
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Kanada
+LOCATION:Montréal
+DESCRIPTION:APEX · Formel 2 · Lauf 3 · Montréal — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f24-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260604
+DTEND;VALUE=DATE:20260608
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Monaco
+LOCATION:Monte Carlo
+DESCRIPTION:APEX · Formel 2 · Lauf 4 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f25-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260612
+DTEND;VALUE=DATE:20260615
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Barcelona-Katalonien
+LOCATION:Barcelona
+DESCRIPTION:APEX · Formel 2 · Lauf 5 · Barcelona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f26-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260626
+DTEND;VALUE=DATE:20260629
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Österreich
+LOCATION:Spielberg
+DESCRIPTION:APEX · Formel 2 · Lauf 6 · Spielberg — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f27-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260703
+DTEND;VALUE=DATE:20260706
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Großbritannien
+LOCATION:Silverstone
+DESCRIPTION:APEX · Formel 2 · Lauf 7 · Silverstone — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f28-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260717
+DTEND;VALUE=DATE:20260720
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Belgien
+LOCATION:Spa-Francorchamps
+DESCRIPTION:APEX · Formel 2 · Lauf 8 · Spa-Francorchamps — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f29-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260724
+DTEND;VALUE=DATE:20260727
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Ungarn
+LOCATION:Budapest
+DESCRIPTION:APEX · Formel 2 · Lauf 9 · Budapest — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f210-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260904
+DTEND;VALUE=DATE:20260907
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Italien
+LOCATION:Monza
+DESCRIPTION:APEX · Formel 2 · Lauf 10 · Monza — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f211-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260914
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Spanien
+LOCATION:Madrid
+DESCRIPTION:APEX · Formel 2 · Lauf 11 · Madrid — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f212-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260924
+DTEND;VALUE=DATE:20260927
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Aserbaidschan
+LOCATION:Baku
+DESCRIPTION:APEX · Formel 2 · Lauf 12 · Baku — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f213-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261130
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Katar
+LOCATION:Lusail
+DESCRIPTION:APEX · Formel 2 · Lauf 13 · Lusail — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f214-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261207
+TRANSP:TRANSPARENT
+SUMMARY:F2 · Großer Preis von Abu Dhabi · Finale
+LOCATION:Yas Marina
+DESCRIPTION:APEX · Formel 2 · Lauf 14 · Yas Marina — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

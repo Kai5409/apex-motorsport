@@ -6,4 +6,84 @@ METHOD:PUBLISH
 X-WR-CALNAME:APEX · Porsche Supercup
 X-WR-CALDESC:Porsche Supercup — alle Sessions in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-supercup1-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260604
+DTEND;VALUE=DATE:20260608
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Monaco
+LOCATION:Monte Carlo
+DESCRIPTION:APEX · Porsche Supercup · Lauf 1 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup2-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260612
+DTEND;VALUE=DATE:20260615
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Barcelona-Katalonien
+LOCATION:Barcelona
+DESCRIPTION:APEX · Porsche Supercup · Lauf 2 · Barcelona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup3-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260626
+DTEND;VALUE=DATE:20260629
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Österreich
+LOCATION:Spielberg
+DESCRIPTION:APEX · Porsche Supercup · Lauf 3 · Spielberg — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup4-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260717
+DTEND;VALUE=DATE:20260720
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Belgien
+LOCATION:Spa-Francorchamps
+DESCRIPTION:APEX · Porsche Supercup · Lauf 4 · Spa-Francorchamps — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup5-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260724
+DTEND;VALUE=DATE:20260727
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Ungarn
+LOCATION:Budapest
+DESCRIPTION:APEX · Porsche Supercup · Lauf 5 · Budapest — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup6-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260821
+DTEND;VALUE=DATE:20260824
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis der Niederlande · Rennen 1
+LOCATION:Zandvoort
+DESCRIPTION:APEX · Porsche Supercup · Lauf 6 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup7-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260821
+DTEND;VALUE=DATE:20260824
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis der Niederlande · Rennen 2
+LOCATION:Zandvoort
+DESCRIPTION:APEX · Porsche Supercup · Lauf 7 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup8-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260904
+DTEND;VALUE=DATE:20260907
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Italien · Finale
+LOCATION:Monza
+DESCRIPTION:APEX · Porsche Supercup · Lauf 8 · Monza — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

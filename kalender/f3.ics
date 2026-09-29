@@ -6,4 +6,94 @@ METHOD:PUBLISH
 X-WR-CALNAME:APEX · Formel 3
 X-WR-CALDESC:Formel 3 — alle Sessions in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-f31-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260306
+DTEND;VALUE=DATE:20260309
+TRANSP:TRANSPARENT
+SUMMARY:F3 · Großer Preis von Australien
+LOCATION:Melbourne
+DESCRIPTION:APEX · Formel 3 · Lauf 1 · Melbourne — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f32-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260604
+DTEND;VALUE=DATE:20260608
+TRANSP:TRANSPARENT
+SUMMARY:F3 · Großer Preis von Monaco
+LOCATION:Monte Carlo
+DESCRIPTION:APEX · Formel 3 · Lauf 2 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f33-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260612
+DTEND;VALUE=DATE:20260615
+TRANSP:TRANSPARENT
+SUMMARY:F3 · Großer Preis von Barcelona-Katalonien
+LOCATION:Barcelona
+DESCRIPTION:APEX · Formel 3 · Lauf 3 · Barcelona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f34-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260626
+DTEND;VALUE=DATE:20260629
+TRANSP:TRANSPARENT
+SUMMARY:F3 · Großer Preis von Österreich
+LOCATION:Spielberg
+DESCRIPTION:APEX · Formel 3 · Lauf 4 · Spielberg — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f35-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260703
+DTEND;VALUE=DATE:20260706
+TRANSP:TRANSPARENT
+SUMMARY:F3 · Großer Preis von Großbritannien
+LOCATION:Silverstone
+DESCRIPTION:APEX · Formel 3 · Lauf 5 · Silverstone — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f36-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260717
+DTEND;VALUE=DATE:20260720
+TRANSP:TRANSPARENT
+SUMMARY:F3 · Großer Preis von Belgien
+LOCATION:Spa-Francorchamps
+DESCRIPTION:APEX · Formel 3 · Lauf 6 · Spa-Francorchamps — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f37-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260724
+DTEND;VALUE=DATE:20260727
+TRANSP:TRANSPARENT
+SUMMARY:F3 · Großer Preis von Ungarn
+LOCATION:Budapest
+DESCRIPTION:APEX · Formel 3 · Lauf 7 · Budapest — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f38-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260904
+DTEND;VALUE=DATE:20260907
+TRANSP:TRANSPARENT
+SUMMARY:F3 · Großer Preis von Italien
+LOCATION:Monza
+DESCRIPTION:APEX · Formel 3 · Lauf 8 · Monza — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f39-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260914
+TRANSP:TRANSPARENT
+SUMMARY:F3 · Großer Preis von Spanien · Finale
+LOCATION:Madrid
+DESCRIPTION:APEX · Formel 3 · Lauf 9 · Madrid — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

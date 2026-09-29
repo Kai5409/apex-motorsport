@@ -141,4 +141,414 @@ SUMMARY:Moto2 · Großer Preis von Portugal — Rennen
 LOCATION:Portimão
 DESCRIPTION:APEX · Moto2 · Lauf 21 · Portimão
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto21-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260227
+DTEND;VALUE=DATE:20260302
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Thailand
+LOCATION:Buriram
+DESCRIPTION:APEX · Moto2 · Lauf 1 · Buriram — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto22-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260320
+DTEND;VALUE=DATE:20260323
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Brasilien
+LOCATION:Goiânia
+DESCRIPTION:APEX · Moto2 · Lauf 2 · Goiânia — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto23-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260327
+DTEND;VALUE=DATE:20260330
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis der Amerikas
+LOCATION:Austin
+DESCRIPTION:APEX · Moto2 · Lauf 3 · Austin — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto24-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260424
+DTEND;VALUE=DATE:20260427
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Spanien
+LOCATION:Jerez
+DESCRIPTION:APEX · Moto2 · Lauf 4 · Jerez — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto25-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260508
+DTEND;VALUE=DATE:20260511
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Frankreich
+LOCATION:Le Mans
+DESCRIPTION:APEX · Moto2 · Lauf 5 · Le Mans — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto26-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260515
+DTEND;VALUE=DATE:20260518
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Katalonien
+LOCATION:Barcelona
+DESCRIPTION:APEX · Moto2 · Lauf 6 · Barcelona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto27-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260529
+DTEND;VALUE=DATE:20260601
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Italien
+LOCATION:Mugello
+DESCRIPTION:APEX · Moto2 · Lauf 7 · Mugello — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto28-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260605
+DTEND;VALUE=DATE:20260608
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Ungarn
+LOCATION:Balaton Park
+DESCRIPTION:APEX · Moto2 · Lauf 8 · Balaton Park — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto29-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260619
+DTEND;VALUE=DATE:20260622
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Tschechien
+LOCATION:Brünn
+DESCRIPTION:APEX · Moto2 · Lauf 9 · Brünn — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto210-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260626
+DTEND;VALUE=DATE:20260629
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis der Niederlande
+LOCATION:Assen
+DESCRIPTION:APEX · Moto2 · Lauf 10 · Assen — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto211-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260710
+DTEND;VALUE=DATE:20260713
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Deutschland
+LOCATION:Sachsenring
+DESCRIPTION:APEX · Moto2 · Lauf 11 · Sachsenring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto212-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260807
+DTEND;VALUE=DATE:20260810
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Großbritannien
+LOCATION:Silverstone
+DESCRIPTION:APEX · Moto2 · Lauf 12 · Silverstone — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto213-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260828
+DTEND;VALUE=DATE:20260831
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Aragón
+LOCATION:Aragón
+DESCRIPTION:APEX · Moto2 · Lauf 13 · Aragón — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto214-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260914
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von San Marino
+LOCATION:Misano
+DESCRIPTION:APEX · Moto2 · Lauf 14 · Misano — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto215-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260918
+DTEND;VALUE=DATE:20260921
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Österreich
+LOCATION:Red Bull Ring
+DESCRIPTION:APEX · Moto2 · Lauf 15 · Red Bull Ring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto218-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261026
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Australien
+LOCATION:Phillip Island
+DESCRIPTION:APEX · Moto2 · Lauf 18 · Phillip Island — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto219-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261102
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Malaysia
+LOCATION:Sepang
+DESCRIPTION:APEX · Moto2 · Lauf 19 · Sepang — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto220-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261109
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Katar
+LOCATION:Lusail
+DESCRIPTION:APEX · Moto2 · Lauf 20 · Lusail — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto222-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261130
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Valencia
+LOCATION:Valencia
+DESCRIPTION:APEX · Moto2 · Lauf 22 · Valencia — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto21-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270305
+DTEND;VALUE=DATE:20270308
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Thailand
+LOCATION:Buriram
+DESCRIPTION:APEX · Moto2 · Lauf 1 · Buriram — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto22-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270312
+DTEND;VALUE=DATE:20270315
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Katar
+LOCATION:Lusail
+DESCRIPTION:APEX · Moto2 · Lauf 2 · Lusail — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto23-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270402
+DTEND;VALUE=DATE:20270405
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Brasilien
+LOCATION:Goiânia
+DESCRIPTION:APEX · Moto2 · Lauf 3 · Goiânia — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto24-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270409
+DTEND;VALUE=DATE:20270412
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Argentinien
+LOCATION:Buenos Aires
+DESCRIPTION:APEX · Moto2 · Lauf 4 · Buenos Aires — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto25-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270423
+DTEND;VALUE=DATE:20270426
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis der Amerikas
+LOCATION:Austin
+DESCRIPTION:APEX · Moto2 · Lauf 5 · Austin — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto26-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270507
+DTEND;VALUE=DATE:20270510
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Spanien
+LOCATION:Jerez
+DESCRIPTION:APEX · Moto2 · Lauf 6 · Jerez — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto27-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270514
+DTEND;VALUE=DATE:20270517
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Frankreich
+LOCATION:Le Mans
+DESCRIPTION:APEX · Moto2 · Lauf 7 · Le Mans — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto28-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270528
+DTEND;VALUE=DATE:20270531
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Italien
+LOCATION:Mugello
+DESCRIPTION:APEX · Moto2 · Lauf 8 · Mugello — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto29-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270611
+DTEND;VALUE=DATE:20270614
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Katalonien
+LOCATION:Barcelona
+DESCRIPTION:APEX · Moto2 · Lauf 9 · Barcelona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto210-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270625
+DTEND;VALUE=DATE:20270628
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis der Niederlande
+LOCATION:Assen
+DESCRIPTION:APEX · Moto2 · Lauf 10 · Assen — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto211-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270709
+DTEND;VALUE=DATE:20270712
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Deutschland
+LOCATION:Sachsenring
+DESCRIPTION:APEX · Moto2 · Lauf 11 · Sachsenring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto212-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270716
+DTEND;VALUE=DATE:20270719
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Tschechien
+LOCATION:Brünn
+DESCRIPTION:APEX · Moto2 · Lauf 12 · Brünn — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto213-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270813
+DTEND;VALUE=DATE:20270816
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Großbritannien
+LOCATION:Silverstone
+DESCRIPTION:APEX · Moto2 · Lauf 13 · Silverstone — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto214-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270827
+DTEND;VALUE=DATE:20270830
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Österreich
+LOCATION:Red Bull Ring
+DESCRIPTION:APEX · Moto2 · Lauf 14 · Red Bull Ring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto215-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270910
+DTEND;VALUE=DATE:20270913
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von San Marino
+LOCATION:Misano
+DESCRIPTION:APEX · Moto2 · Lauf 15 · Misano — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto216-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20270917
+DTEND;VALUE=DATE:20270920
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Aragón
+LOCATION:Aragón
+DESCRIPTION:APEX · Moto2 · Lauf 16 · Aragón — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto217-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271001
+DTEND;VALUE=DATE:20271004
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Portugal
+LOCATION:Portimão
+DESCRIPTION:APEX · Moto2 · Lauf 17 · Portimão — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto218-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271015
+DTEND;VALUE=DATE:20271018
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Japan
+LOCATION:Motegi
+DESCRIPTION:APEX · Moto2 · Lauf 18 · Motegi — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto219-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271022
+DTEND;VALUE=DATE:20271025
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Malaysia
+LOCATION:Sepang
+DESCRIPTION:APEX · Moto2 · Lauf 19 · Sepang — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto220-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271029
+DTEND;VALUE=DATE:20271101
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Indonesien
+LOCATION:Mandalika
+DESCRIPTION:APEX · Moto2 · Lauf 20 · Mandalika — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto221-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271112
+DTEND;VALUE=DATE:20271115
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Australien
+LOCATION:Adelaide
+DESCRIPTION:APEX · Moto2 · Lauf 21 · Adelaide — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-moto222-2027-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20271126
+DTEND;VALUE=DATE:20271129
+TRANSP:TRANSPARENT
+SUMMARY:Moto2 · Großer Preis von Valencia (Finale)
+LOCATION:Valencia
+DESCRIPTION:APEX · Moto2 · Lauf 22 · Valencia — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR
