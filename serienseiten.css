@@ -6,6 +6,7 @@
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2")}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2")}
 :root{
+  /* Text mindestens --muted (5,2:1 auf --bg); --faint (2,3:1) nur für Linien, Punkte und Deko */
   --bg:#141210; --bg2:#1b1916; --bg3:#221f1b; --paper:#ece7dd; --muted:#8d8678; --faint:#55504a;
   --rule:#302e2b; --gold:#d8a84b; --serie:#ff3000;
   --display:"Anton",Impact,"Arial Narrow",sans-serif;
@@ -144,7 +145,7 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;m
 .gp:focus-visible{outline:none}
 .gp:focus-visible::after{outline:2px solid var(--gold);outline-offset:-2px;border-radius:4px}
 .rh:hover .gp{text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
-.rd{font:500 12.5px var(--mono);color:var(--faint);text-align:right}
+.rd{font:500 12.5px var(--mono);color:var(--muted);text-align:right}
 .when{font-family:var(--display);font-size:20px;line-height:1;letter-spacing:.01em}
 .when small{display:block;font-family:var(--text);font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:0}
 .what{min-width:0}
@@ -155,18 +156,18 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;m
 .start small{display:block;font:12px var(--text);color:var(--muted);margin-top:2px}
 .start small.i{display:inline;margin:0 0 0 5px}
 /* Der Pfeil fängt keine Klicks ab: gedreht (offen) läge er sonst über der Klickfläche des Knopfs und klappte nicht mehr zu */
-.chev{color:var(--faint);transition:transform .15s;font-size:12px;pointer-events:none}
+.chev{color:var(--muted);transition:transform .15s;font-size:12px;pointer-events:none}
 .race.open .chev{transform:rotate(90deg)}
 .race.past .when,.race.past .gp{color:#b8b1a4}
-.race.past .rd{color:var(--faint)}
+.race.past .rd{color:var(--muted)}
 .win{display:block;font-size:13px;color:var(--muted);margin-top:3px}
 .win b{color:var(--paper);font-weight:500}
 .win .nw{white-space:nowrap}
 .vorl{font-size:11px;border:1px solid currentColor;border-radius:3px;padding:0 4px;margin-left:4px;white-space:nowrap}
 .reveal{display:none;position:relative;z-index:1;background:none;border:0;padding:0;color:var(--gold);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;margin-top:3px}
 .race.cancel .gp{text-decoration:line-through;text-decoration-color:var(--faint);color:var(--muted)}
-.race.cancel .when{color:var(--faint)}
-.race.cancel .start{color:var(--faint);font-family:var(--text);font-size:13px}
+.race.cancel .when{color:var(--muted)}
+.race.cancel .start{color:var(--muted);font-family:var(--text);font-size:13px}
 .race.next{background:linear-gradient(90deg,rgba(216,168,75,.08),transparent 60%)}
 .race.next .rh{box-shadow:inset 3px 0 0 var(--gold)}
 .race.next .rd{color:var(--gold)}
