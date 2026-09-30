@@ -161,6 +161,7 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;m
 .race.past .rd{color:var(--faint)}
 .win{display:block;font-size:13px;color:var(--muted);margin-top:3px}
 .win b{color:var(--paper);font-weight:500}
+.win .nw{white-space:nowrap}
 .vorl{font-size:11px;border:1px solid currentColor;border-radius:3px;padding:0 4px;margin-left:4px;white-space:nowrap}
 .reveal{display:none;position:relative;z-index:1;background:none;border:0;padding:0;color:var(--gold);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;margin-top:3px}
 .race.cancel .gp{text-decoration:line-through;text-decoration-color:var(--faint);color:var(--muted)}
@@ -270,6 +271,11 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .snext{margin-top:auto;padding-top:8px;font-size:13px;color:var(--muted);line-height:1.45}
 .snext b{display:block;color:var(--gold);font-weight:500}
 .hero+.subnav{margin-top:26px}
+/* Reiter der Gruppen: am Handy Kurzname wie im Filter („Sportwagen“), damit alle ohne seitliches Scrollen passen */
+.subnav .gs{display:none}
+@media (max-width:560px){.subnav .gl{display:none}.subnav .gs{display:inline}}
+@media (max-width:380px){.subnav a{padding-left:9px;padding-right:9px}}
+@media (max-width:340px){.subnav a{padding-left:6px;padding-right:6px;font-size:13px}}
 @media (min-width:1000px){.hero+.subnav{margin-top:30px}}
 
 /* Serienübersicht: Verweis auf „Dieses Wochenende“ */
@@ -359,6 +365,8 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .wsi b{font-weight:500}
 .wsi>span{display:block;font-size:13px;color:var(--muted);margin-top:1px}
 .wsl li.race a{background:linear-gradient(90deg,rgba(216,168,75,.08),transparent 60%);box-shadow:inset 3px 0 0 var(--gold)}
+/* Uhrzeit nicht direkt am goldenen Balken (wie am Handy); Spalten bleiben mit den übrigen Zeilen bündig */
+.wsl li.race a{padding-left:8px;grid-template-columns:72px 92px minmax(0,1fr)}
 .wsl li.race .wsi b{font-weight:700}
 .wsl li.race .wzt{font-weight:600}
 .wsl li.vorbei{opacity:.45}
@@ -368,7 +376,7 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 @media (max-width:560px){
   .wsl a{grid-template-columns:62px minmax(0,1fr);grid-template-areas:"zt sk" "zt si";column-gap:12px;row-gap:1px}
   .wzt{grid-area:zt}.wsl .wsk{grid-area:sk}.wsi{grid-area:si}
-  .wsl li.race a{padding-left:8px}
+  .wsl li.race a{grid-template-columns:62px minmax(0,1fr)}
 }
 .wtv{display:grid;column-gap:36px}
 @media (min-width:760px){.wtv{grid-template-columns:1fr 1fr}}

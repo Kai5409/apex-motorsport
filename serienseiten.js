@@ -130,7 +130,8 @@
   const linie = D && D.linien ? (D.linien.find((l) => l.ev.some((x) => x[0] === NEXT)) || D.linien.find((l) => l.key === D.linie)) : null;
   function zeichnen() {
     const svg = $("#linesvg"); if (!svg || !linie) return;
-    const W = svg.clientWidth || 600, H = 118, padX = 10, top = 22, bot = 92, E = linie.ev, n = E.length;
+    /* top: Platz über dem Scheitelpunkt für den Ortsnamen (steht über dem Ring, ohne ihn zu berühren) */
+    const W = svg.clientWidth || 600, H = 118, padX = 10, top = 34, bot = 94, E = linie.ev, n = E.length;
     const ni = E.findIndex((x) => x[0] === NEXT);
     const lastDone = E.reduce((a, x, i) => (x[2] === "d" ? i : a), -1);
     const xs = E.map((_, i) => padX + (i * (W - 2 * padX)) / Math.max(1, n - 1));
@@ -150,10 +151,20 @@
       else c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="var(--bg)" stroke="var(--paper)" stroke-width="1.5"/>`;
       h += `<g class="dot" tabindex="0" role="button" data-i="${i}" aria-label="${esc(x[1])}"><circle cx="${cx}" cy="${cy}" r="14" fill="transparent"/>${c}</g>`;
     });
-    if (ni >= 0) h += `<text class="lbl gold" x="${xs[ni]}" y="${top - 12}" text-anchor="middle">${esc(E[ni][3])}</text>`;
+    if (ni >= 0) h += `<text class="lbl gold" id="linelbl" x="${xs[ni]}" y="${top - 21}" text-anchor="middle">${esc(E[ni][3])}</text>`;
     h += `<text class="lbl" x="${xs[0]}" y="${H - 4}" text-anchor="start">${esc(E[0][4])}</text>`;
     h += `<text class="lbl" x="${xs[n - 1]}" y="${H - 4}" text-anchor="end">${esc(E[n - 1][4])}</text>`;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.setAttribute("aria-label", linie.aria); svg.innerHTML = h;
+    /* Ortsname: Unterkante 4 px über dem Ring (Radius 13 + halbe Linienstärke), am Rand ganz im Bild */
+    const lbl = $("#linelbl", svg);
+    if (lbl && lbl.getBBox) {
+      const b = lbl.getBBox();
+      if (b.width) {
+        lbl.setAttribute("y", (+lbl.getAttribute("y") + (top - 13 - 1.25 - 4) - (b.y + b.height)).toFixed(1));
+        const links = b.x < 0 ? -b.x : 0, rechts = b.x + b.width > W ? b.x + b.width - W : 0;
+        if (links || rechts) lbl.setAttribute("x", (xs[ni] + links - rechts).toFixed(1));
+      }
+    }
     const tip = $("#tip");
     svg.querySelectorAll(".dot").forEach((g) => {
       const x = E[+g.dataset.i];

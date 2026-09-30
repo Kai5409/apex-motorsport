@@ -200,7 +200,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* Timeline */
 .month{margin-top:42px}
 .month-head{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(44px,11vw,90px);line-height:.86;text-transform:uppercase;display:flex;align-items:baseline;gap:18px}
-.month-head .yr{font-size:.28em;color:var(--red);letter-spacing:.1em}
+.month-head .yr{font-size:.28em;color:var(--red);letter-spacing:.1em;-webkit-text-stroke:0}
 .month.past .month-head,.month.future .month-head{color:transparent;-webkit-text-stroke:1.4px var(--faint)}
 .month.current .month-head{color:var(--paper)}
 .tl{position:relative;margin:22px 0 0;padding-left:30px}
@@ -236,8 +236,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ev-sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.04em;margin-top:6px;text-transform:uppercase}
 .ev-sub .ser{font-weight:600}
 .ev-sub .sonder{color:var(--paper)}
-.ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px;overflow-wrap:anywhere}
+.ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px}
 .ev-note{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-top:4px}
+.ev-win .nw,.ser-round .nw{white-space:nowrap}
 .ev-win .vorl,.ser-round .vorl{font-size:8.5px;border:1px solid currentColor;padding:0 4px;border-radius:2px;white-space:nowrap;opacity:.8}
 .ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600;white-space:nowrap;flex-shrink:0;overflow-wrap:normal}
 .ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
@@ -540,10 +541,9 @@ APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
       Google Fonts oder anderen externen Anbietern; dabei werden keine Daten an Dritte übertragen.</p>
 
       <h4>Speicherung auf Ihrem Gerät</h4>
-      <p>Ihre Serienauswahl im Filter, die Einstellung „Ergebnisse verbergen“ sowie Favoriten und Erinnerungseinstellungen werden ausschließlich
+      <p>Ihre Serienauswahl im Filter und die Einstellung „Ergebnisse verbergen“ werden ausschließlich
       lokal in Ihrem Browser gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
-      die Einstellungen Ihres Browsers löschen. Wenn Sie Benachrichtigungen für Sessions aktivieren,
-      geschieht dies ebenfalls nur auf Ihrem Gerät.</p>
+      die Einstellungen Ihres Browsers löschen.</p>
 
       <h4>Ihre Rechte</h4>
       <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
@@ -916,7 +916,7 @@ function computeNextSession(){
 function dayRange(e){const a=pd(e.d0),b=pd(e.d1);if(e.d0===e.d1)return String(a.getDate());
   if(a.getMonth()===b.getMonth())return a.getDate()+"–"+b.getDate();
   return a.getDate()+"."+(a.getMonth()+1)+"–"+b.getDate()+"."+(b.getMonth()+1);}
-function dows(e){return DOWf[pd(e.d0).getDay()]+"–"+DOWf[pd(e.d1).getDay()];}
+function dows(e){return e.d0===e.d1?DOWf[pd(e.d0).getDay()]:DOWf[pd(e.d0).getDay()]+"–"+DOWf[pd(e.d1).getDay()];}
 function startW(e){return pd(e.d0);}
 function endW(e){const b=pd(e.d1);b.setHours(23,59,59);return b;}
 function st(e){if(e.status==="cancel")return"cancel";const now=NOW();
@@ -1390,13 +1390,18 @@ function toggleEv(id){const el=document.getElementById("ev-"+id);klappen(el,!el.
 
 /* ═══════ TIMELINE (Aktuell) ═══════ */
 const TEILEN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 10.7 16.5 5.9M7.5 13.3l9 4.8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="18" cy="5" r="2.7" fill="currentColor"/><circle cx="6" cy="12" r="2.7" fill="currentColor"/><circle cx="18" cy="19" r="2.7" fill="currentColor"/></svg>';
+/* Sieger mit mehreren Fahrern („Buemi/Hartley/Hirakawa“): Umbruch nur nach „/“ oder Leerzeichen, nie mitten im Namen
+   (auch nicht am Bindestrich wie in „Al-Attiyah“) */
+function siegerText(e){
+  return String(e.result).split(/(\s+)/).map(w=>w.split("/").map(x=>x.includes("-")?`<span class="nw">${x}</span>`:x).join("/<wbr>")).join("");
+}
 /* Ergebnis offiziell noch vorläufig (vorlaeufig:true am Event): Zusatz hinter dem Sieger */
 function vorlText(e){return e.vorlaeufig===true?' <span class="vorl">vorläufig</span>':"";}
 /* Sieger bzw. Abbruch auf der Karte – bei „Ergebnisse verbergen“ erst auf Tippen */
 function siegerKarte(e){
   if(!e.result&&!e.abbruch)return "";
   if(verborgen(ergKey(e)))return aufdeckenKnopf(e,"karte");
-  return e.result?`<div class="ev-win">${e.result}${vorlText(e)}</div>`:`<div class="ev-note">${ABBRUCH}</div>`;
+  return e.result?`<div class="ev-win"><span>${siegerText(e)}</span>${vorlText(e)}</div>`:`<div class="ev-note">${ABBRUCH}</div>`;
 }
 function eventHTML(e){
   const status=st(e),S0=SERIES[e.s],evId=evDomId(e);
@@ -1461,7 +1466,7 @@ function renderTimeline(){
 /* Sieger bzw. Abbruch in der Rundenliste – bei „Ergebnisse verbergen“ erst auf Tippen */
 function siegerSerie(e){
   if(verborgen(ergKey(e)))return aufdeckenKnopf(e,"serie");
-  return e.result?`<span class="st done">${e.result}${vorlText(e)}</span>`:`<span class="st up">Abgebrochen</span>`;
+  return e.result?`<span class="st done">${siegerText(e)}${vorlText(e)}</span>`:`<span class="st up">Abgebrochen</span>`;
 }
 /* Kalender-Abos: apex-2026.ics (alle Serien) und kalender/<serie>.ics erzeugt das Prüfskript.
    webcal:// öffnet den Abo-Dialog der Kalender-App; „Link kopieren“ für Kalender, die eine Adresse brauchen. */
