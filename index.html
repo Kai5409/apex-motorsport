@@ -768,6 +768,9 @@ function renderSeason(){
     `<b class="ss-yr">${SEASON}</b>`+
     `<button class="ss-btn" onclick="stepSeason(1)" ${i>=ys.length-1?"disabled":""} aria-label="Nächste Saison">›</button>`+
     (seasonIsProv(SEASON)?`<span class="ss-prov">vorläufiger Kalender</span>`:"");
+  /* Der Hinweis „vorläufiger Kalender“ ändert die Höhe des festen Bands – sofort neu messen,
+     damit Sprünge danach (zumStart, gotoEvent) schon mit der neuen Kopfhöhe rechnen */
+  if(BEREIT)kopfMessen();
 }
 function stepSeason(d){
   const ys=seasonsAll(), i=ys.indexOf(SEASON), n=ys[i+d];
@@ -1705,27 +1708,38 @@ function renderStandings(){
 /* ═══════ KOPFBEREICH ═══════
    Der Kopf klebt oben (position:sticky) mit negativem top: Beim Scrollen gleitet die große
    Logozeile nach oben, bis nur noch ein schmales Band übrig ist. Logo und Jahresumschalter
-   wandern dabei in dieses Band, das Logo schrumpft. Schmal: Beschriftung und Datumszeile
-   blenden aus (gehören nicht in den festen Bereich). Breit: alles bleibt sichtbar.
+   wandern dabei in dieses Band, das Logo schrumpft. Beschriftung und Datumszeile blenden aus
+   (gehören nicht in den festen Bereich); der Hinweis „vorläufiger Kalender“ bleibt sichtbar.
+   Die Höhe des Bands ergibt sich aus dem gemessenen Inhalt (Logo, Jahreszahl, Hinweis) plus
+   Abstand oben und unten – nichts wird abgeschnitten, der Kopf wird aber nicht höher als nötig.
+   Breit bleibt alles bis zum Serienfilter stehen, schmal die Logozeile, Tabs und Filter.
    Nur transform/opacity – die Höhe des Kopfes ändert sich beim Scrollen nicht. */
 const KOMPAKT_MQ=(typeof window!=="undefined"&&window.matchMedia)?window.matchMedia("(max-width: 899px), (max-height: 599px)"):null;
 function istKompakt(){return !!(KOMPAKT_MQ&&KOMPAKT_MQ.matches);}
 const KOPF={D:0,dyLogo:0,sLogo:1,dyR:0,p:-1,fest:0};
+const KOPF_LUFT=8;                  /* Abstand im Band zum oberen Fensterrand und zur Linie darunter */
 function kopfMessen(){
   const kopf=document.getElementById("kopf"); if(!kopf||!kopf.querySelector)return;
   const mast=kopf.querySelector(".mast"), logo=mast&&mast.querySelector("h1"), rechts=mast&&mast.querySelector(".mast-r"), ss=document.getElementById("season");
   if(!mast||!logo||!rechts||!ss||!(mast.offsetHeight>0))return;
   const kompakt=istKompakt();
-  const band=kompakt?40:60, rand=3;                 /* Höhe der festen Logozeile inkl. Linie */
-  const mh=mast.offsetHeight, D=Math.max(0,mh-band);
-  const mitte=D+(band-rand)/2;
+  const rand=3, zielLogo=kompakt?26:40;   /* Linie unter der Logozeile; sichtbare Höhe des Logos im Band */
   /* Lage ohne Verschiebung messen (relativ zur Oberkante der Logozeile) */
   logo.style.transform=""; rechts.style.transform="";
   const m0=mast.getBoundingClientRect().top, lr=logo.getBoundingClientRect();
-  const zr=(kompakt?ss:rechts).getBoundingClientRect(); /* schmal: nur der Jahresumschalter bleibt */
-  const lh=lr.height, s=Math.min(1,(band-rand-8)/lh);
-  KOPF.D=D; KOPF.sLogo=s; KOPF.dyLogo=mitte-(lr.top-m0)-lh*s/2;
-  KOPF.dyR=mitte-(zr.top-m0)-zr.height/2;
+  /* Umfang mehrerer Elemente (gedrehte Buchstaben ragen über das h1 hinaus) */
+  const umfang=els=>els.filter(Boolean).map(el=>el.getBoundingClientRect()).filter(r=>r.height>0)
+    .reduce((u,r)=>u?{top:Math.min(u.top,r.top),bottom:Math.max(u.bottom,r.bottom)}:{top:r.top,bottom:r.bottom},null);
+  const lv=umfang([...logo.querySelectorAll(".mk-word i,.mk-line")])||{top:lr.top,bottom:lr.bottom};
+  /* Im Band bleiben Jahreszahl (mit Pfeilen) und in vorläufigen Saisons der Hinweis darunter */
+  const rv=umfang([ss.querySelector(".ss-yr"),ss.querySelector(".ss-prov")])||ss.getBoundingClientRect();
+  const lh=lv.bottom-lv.top, rh=rv.bottom-rv.top, s=Math.min(1,zielLogo/lh);
+  const band=Math.ceil(rand+2*KOPF_LUFT+Math.max(lh*s,rh));  /* Höhe der festen Logozeile inkl. Linie */
+  const mh=mast.offsetHeight, D=Math.max(0,mh-band);
+  const mitte=D+(band-rand)/2;
+  /* Logo skaliert von seiner linken oberen Ecke aus; die Mitte seines sichtbaren Umfangs kommt auf die Bandmitte */
+  KOPF.D=D; KOPF.sLogo=s; KOPF.dyLogo=mitte-(lr.top-m0)-((lv.top-lr.top)+lh/2)*s;
+  KOPF.dyR=mitte-(rv.top-m0)-rh/2;
   KOPF.kompakt=kompakt; KOPF.p=-1;
   kopf.style.top=(-D)+"px";
   KOPF.fest=kopf.offsetHeight-D;                     /* Höhe des festen Teils */
@@ -1739,7 +1753,7 @@ function kopfScroll(){
   const mast=kopf.querySelector(".mast"), logo=mast.querySelector("h1"), rechts=mast.querySelector(".mast-r");
   logo.style.transform=`translateY(${(KOPF.dyLogo*p).toFixed(2)}px) scale(${(1-(1-KOPF.sLogo)*p).toFixed(4)})`;
   rechts.style.transform=`translateY(${(KOPF.dyR*p).toFixed(2)}px)`;
-  const aus=KOPF.kompakt?Math.min(1,p*2):0;
+  const aus=Math.min(1,p*2);
   mast.querySelectorAll(".mast-lab,.mast-z2").forEach(el=>{el.style.opacity=String(1-aus);el.style.visibility=aus>=1?"hidden":"";});
 }
 let KOPF_RAF=0;
@@ -1763,6 +1777,7 @@ function setView(v){currentView=v;FILTER_OFFEN=null;
   document.querySelectorAll(".view").forEach(x=>x.classList.remove("on"));
   document.getElementById("view-"+v).classList.add("on");
   renderFilter();renderToolbar();rerender();try{history.replaceState(null,"","#v="+v);}catch(err){}
+  kopfMessen();   /* Filterleiste ein/aus ändert die Kopfhöhe – vor dem Sprung messen */
   if(v==="upcoming")zumStart(); else scrollen(0,false);
   updateJumpBtn();}
 
