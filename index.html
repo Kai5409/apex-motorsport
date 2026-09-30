@@ -306,6 +306,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .abo-box p{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.03em;line-height:1.7;margin:0 0 14px}
 .abo-box p b{color:var(--paper);font-weight:500}
 .abo-box .abo{margin:0 0 12px}
+/* Verweis „Alle Serien im Überblick“ (Serien-Tab, im Stil des Abo-Kastens) */
+.ueb-box{display:block;padding:13px 14px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;line-height:1.7;color:var(--gold);text-decoration:none;transition:border-color .15s,background .15s}
+.ueb-box b{font-weight:600}
+.ueb-t{display:block;color:var(--muted)}
+.ueb-box:hover,.ueb-box:focus-visible{border-color:var(--gold);background:rgba(216,168,75,.05)}
+.ueb-box+.abo-box{margin-top:12px}
+.abo-s{color:var(--paper)}
+.abo-s:hover{border-color:var(--paper);background:rgba(236,231,221,.06)}
 
 /* Serien */
 .ser-block{padding:34px 0 6px;border-bottom:1px solid var(--rule)}
@@ -503,6 +511,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <footer>
 APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
     Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
+    <a class="legal-link ordner" href="serien/">Alle Serien</a> · <a class="legal-link ordner" href="dieses-wochenende/">Dieses Wochenende</a> ·
     <button class="legal-link" onclick="toggleLegal()" aria-expanded="false" aria-controls="legal">Datenschutz</button>
     <div class="legal" id="legal">
       <h3>Datenschutzerklärung</h3>
@@ -683,11 +692,13 @@ function termineFehlen(y){return DATEN_FEHLT.has("termine-"+y);}
 function esc(str){ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 /* Serienseiten (formel-1/ …): Adresse aus serien.json ("seite"), sonst aus dem Namen */
 function seiteAusName(n){return String(n).toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");}
+/* Verweis auf einen Seitenordner (serien/, formel-1/ …); Vorschau ohne Ordneradressen (…/index.html): mit Dateinamen */
+function ordnerHref(ordner){
+  return ordner+(/\/index\.html$/.test((typeof location!=="undefined"&&location.pathname)||"")?"index.html":"");
+}
 function serienName(sk){
   const S0=SERIES[sk]; if(!S0.seite)return S0.name;
-  /* Vorschau ohne Ordneradressen (…/index.html): Seite mit Dateinamen verlinken */
-  const datei=/\/index\.html$/.test((typeof location!=="undefined"&&location.pathname)||"")?"index.html":"";
-  return `<a class="ser-link" href="${S0.seite}/${datei}">${S0.name}</a>`;
+  return `<a class="ser-link" href="${ordnerHref(S0.seite+"/")}">${S0.name}</a>`;
 }
 
 /* ═══════ STATE ═══════ */
@@ -1097,8 +1108,7 @@ function nextSessOf(e){
 
 /* Verweis auf die Seite „Dieses Wochenende“ (alle Sessions aller Serien); Vorschau ohne Ordneradressen mit index.html */
 function wochenendLink(){
-  const datei=/\/index\.html$/.test((typeof location!=="undefined"&&location.pathname)||"")?"index.html":"";
-  return `<a class="onair-we" href="dieses-wochenende/${datei}">Ganzes Wochenende ansehen <span aria-hidden="true">→</span></a>`;
+  return `<a class="onair-we" href="${ordnerHref("dieses-wochenende/")}">Ganzes Wochenende ansehen <span aria-hidden="true">→</span></a>`;
 }
 /* Zeitraum, den die Seite „Dieses Wochenende“ gerade zeigt (wie serienseiten.js): Donnerstag 00:00 bis Montag 06:00
    deutscher Zeit – Montag (ab 06:00) bis Donnerstag das kommende, Freitag bis Sonntag das laufende Wochenende */
@@ -1456,10 +1466,12 @@ function siegerSerie(e){
 /* Kalender-Abos: apex-2026.ics (alle Serien) und kalender/<serie>.ics erzeugt das Prüfskript.
    webcal:// öffnet den Abo-Dialog der Kalender-App; „Link kopieren“ für Kalender, die eine Adresse brauchen. */
 function aboUrl(datei){return location.href.split("#")[0].split("?")[0].replace(/[^/]*$/,"")+datei;}
-function aboHTML(datei,text){
+/* seite: Ordner der Serienseite – daneben der Link „Zur Serienseite“ */
+function aboHTML(datei,text,seite){
   const url=aboUrl(datei);
   return `<div class="abo"><a class="abo-a" href="${esc(url.replace(/^https?:/,"webcal:"))}">＋ ${esc(text)}</a>`+
-    `<button class="abo-k" onclick="kopieren('${esc(url)}')">Link kopieren</button></div>`;
+    `<button class="abo-k" onclick="kopieren('${esc(url)}')">Link kopieren</button>`+
+    (seite?`<a class="abo-a abo-s" href="${ordnerHref(seite+"/")}">Zur Serienseite <span aria-hidden="true">→</span></a>`:"")+`</div>`;
 }
 /* Ergebnis einer gefahrenen Runde im Serien-Tab: alle Listen des Events (bei mehreren mit Überschrift).
    Geladen wird wie in der Zeitleiste erst beim Aufklappen. */
@@ -1484,11 +1496,13 @@ function serErgebnis(sk,rd,sz){
 }
 function renderSeries(){
   const host=document.getElementById("view-series"); if(!host)return;let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
+  /* Übersicht aller Serienseiten */
+  if(Object.keys(SERIES).length)html+=`<a class="abo-box ueb-box" href="${ordnerHref("serien/")}"><b>Alle Serien im Überblick</b> <span aria-hidden="true">→</span><span class="ueb-t">Je Serie eine eigene Seite mit Kalender, Startzeiten, Wertung, Sendern und Regeln</span></a>`;
   if(Object.keys(SERIES).length)html+=`<div class="abo-box"><p><b>Kalender-Abo</b> · Alle Sessions in deutscher Zeit direkt im eigenen Kalender – aktualisiert sich selbst. Für alle Serien oder unten je Serie.</p>${aboHTML("apex-2026.ics","Alle Serien abonnieren")}</div>`;
   const leer=termineFehlen(SEASON)?"Termine gerade nicht verfügbar":`Kalender ${SEASON} noch nicht veröffentlicht`;
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
-    const abo=aboHTML("kalender/"+sk+".ics","Kalender abonnieren");
+    const abo=aboHTML("kalender/"+sk+".ics","Termine abonnieren",S0.seite);
     if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div><div class="ser-meta">${leer}</div>${abo}</div>`;return;}
     /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
     const lauf=evs.filter(e=>!e.sonder);
@@ -1974,10 +1988,12 @@ function renderDatenstand(){
   const d=new Date(DATEN_STAND);
   el.textContent=" · Stand "+d.getDate()+". "+MON[d.getMonth()]+" "+d.getFullYear();
 }
+/* Feste Verweise auf Seitenordner (Fußzeile): in der Vorschau ohne Ordneradressen mit index.html */
+function ordnerLinks(){document.querySelectorAll("a.ordner").forEach(a=>a.setAttribute("href",ordnerHref(a.getAttribute("href"))));}
 function start(){
   BEREIT=true;
   filterLaden(); nurSerieLaden(); spoilerLaden();
-  [renderDatenstand,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
+  [ordnerLinks,renderDatenstand,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});
