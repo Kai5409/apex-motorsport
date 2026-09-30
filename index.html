@@ -625,6 +625,7 @@ function pruefeEvent(e,n){
   return Object.assign({},e,{sessions,_jahr:n.slice(8)});
 }
 function uebernehmeDaten(d){
+  SESS_ZEIT=new WeakMap(); ONAIR=null;   /* zwischengespeicherte Zeitpunkte gelten nur für die bisherigen Daten */
   const teil=(n,f)=>{ if(d[n]==null)return; try{ if(f(d[n])===false)DATEN_FEHLT.add(n); }catch(err){DATEN_FEHLT.add(n);} };
   const luecke=(n,ok)=>{ if(!ok)DATEN_LUECKE.add(n); return ok; };
   teil("serien",x=>{
@@ -786,8 +787,15 @@ function pd(iso){const[y,m,d]=iso.split("-").map(Number);return new Date(y,m-1,d
 /* ── Zeitzonen ── */
 let TZMODE="mesz";
 const LOCAL_TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||"Europe/Berlin";
+/* Ein Intl.DateTimeFormat anzulegen ist teuer – je Sprache und Optionen (samt Zeitzone) nur einmal, danach wiederverwenden */
+const FORMATE=new Map();
+function formatierer(sprache,opt){
+  const k=sprache+JSON.stringify(opt);
+  let f=FORMATE.get(k); if(!f){f=new Intl.DateTimeFormat(sprache,opt);FORMATE.set(k,f);}
+  return f;
+}
 function zoneOffsetMin(date,tz){
-  const p=new Intl.DateTimeFormat("en-US",{timeZone:tz,hour12:false,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"}).formatToParts(date).reduce((a,x)=>(a[x.type]=x.value,a),{});
+  const p=formatierer("en-US",{timeZone:tz,hour12:false,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"}).formatToParts(date).reduce((a,x)=>(a[x.type]=x.value,a),{});
   let hh=p.hour==="24"?0:p.hour;
   return (Date.UTC(p.year,p.month-1,p.day,hh,p.minute,p.second)-date.getTime())/60000;
 }
@@ -812,9 +820,9 @@ function convTime(e,s){
   const tz = TZMODE==="local"? LOCAL_TZ : (TZLOC[e.loc]||"Europe/Berlin");
   const d=sessionAbsDate(e,s), parts=s.t.split(":").map(Number);
   const inst=wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),parts[0],parts[1],"Europe/Berlin");
-  const t=new Intl.DateTimeFormat("de-DE",{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}).format(inst);
-  const day=new Intl.DateTimeFormat("de-DE",{timeZone:tz,weekday:"short"}).format(inst).replace(".","");
-  const dt=new Intl.DateTimeFormat("de-DE",{timeZone:tz,day:"2-digit",month:"2-digit"}).format(inst);
+  const t=formatierer("de-DE",{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}).format(inst);
+  const day=formatierer("de-DE",{timeZone:tz,weekday:"short"}).format(inst).replace(".","");
+  const dt=formatierer("de-DE",{timeZone:tz,day:"2-digit",month:"2-digit"}).format(inst);
   return {t,day,dt};
 }
 function renderTZ(){
@@ -830,7 +838,16 @@ function dtZone(inst){return zoneOffsetMin(inst,"Europe/Berlin")===120?"MESZ":"M
 function pad2(n){return String(n).padStart(2,"0");}
 function icsStamp(d){return d.getUTCFullYear()+pad2(d.getUTCMonth()+1)+pad2(d.getUTCDate())+"T"+pad2(d.getUTCHours())+pad2(d.getUTCMinutes())+"00Z";}
 function icsEsc(t){return String(t).replace(/([\\,;])/g,"\\$1").replace(/\n/g,"\\n");}
-function sessionInstant(e,s){const d=sessionAbsDate(e,s),p=s.t.split(":").map(Number);return wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),p[0],p[1],"Europe/Berlin");}
+/* Zeitpunkt je Session zwischengespeichert (ms). Er gilt, solange Datum des Events, Tag und Uhrzeit der Session gleich
+   bleiben – sonst wird neu gerechnet; neu geladene Daten beginnen mit leerem Speicher (uebernehmeDaten) */
+let SESS_ZEIT=new WeakMap();
+function sessionInstant(e,s){
+  const k=e.d0+"|"+e.d1+"|"+s.day+"|"+s.t, z=SESS_ZEIT.get(s);
+  if(z&&z.k===k)return new Date(z.t);
+  const d=sessionAbsDate(e,s),p=s.t.split(":").map(Number);
+  const t=wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),p[0],p[1],"Europe/Berlin").getTime();
+  SESS_ZEIT.set(s,{k,t}); return new Date(t);
+}
 function sessDuration(e,s){const n=s.n;
   if(/\(24h\)/.test(n))return 1440; if(/\(8h\)/.test(n))return 480; if(/\(6h\)/.test(n))return 360;
   if(/\(4h\)/.test(n))return 240; if(/\(3 Stunden\)/.test(n))return 180;
@@ -1148,22 +1165,21 @@ function onAirEintrag(e,s,live,schmal){
     (schmal?`<span class="onair-zt">${zt}</span>${bar}<span class="onair-tx">`:bar)+
     `<span class="nm">${nm}</span> <span class="meta">${meta}</span>${schmal?"</span>":""}</a>`;
 }
-function onAirHTML(schmal){
+/* Inhalt von „Jetzt live“ bzw. „Als Nächstes“ – einmal je Neuzeichnen berechnet: Kopf (#onair) und Heute-Linie (#jetzt)
+   nutzen dasselbe Ergebnis. Es gilt bis zum Ende der laufenden Aufgabe (danach leert ein Microtask den Speicher)
+   und nur für dieselbe Serienauswahl. */
+let ONAIR=null;
+function onAirStand(){
+  const auswahl=[...ACTIVE].join();
+  if(ONAIR&&ONAIR.auswahl===auswahl)return ONAIR;
   const now=NOW();
   /* Alle Serien, deren Wochenende gerade laeuft - nicht nur die erste. */
   const live=actEvents().filter(e=>e.status!=="cancel" && now>=startW(e) && now<=endW(e))
                         .sort((a,b)=>startW(a)-startW(b));
   computeNextSession();
-
+  let o;
   if(live.length){
-    let html=`<span class="onair-lab live"><span class="pulse"></span>Jetzt live</span>`;
-    const gezeigt=[];
-    live.forEach(e=>{
-      const nx=nextSessOf(e);
-      gezeigt.push({e,inst:nx?nx.inst:null});
-      html+=onAirEintrag(e,nx?nx.s:null,true,schmal);
-    });
-    return html+(imWochenende(gezeigt)?wochenendLink():"");
+    o={live:true,liste:live.map(e=>{const nx=nextSessOf(e);return {e,s:nx?nx.s:null,inst:nx?nx.inst:null};})};
   } else if(NEXT_SESS){
     /* Nicht nur die eine naechste Session zeigen, sondern alle Serien,
        deren naechste Session im selben Zeitfenster liegt (72 Stunden) -
@@ -1181,11 +1197,22 @@ function onAirHTML(schmal){
     });
     proSerie.sort((a,b)=>a.inst-b.inst);
     const grenze = proSerie[0].inst + FENSTER;
-    const zeigen = proSerie.filter(x=>x.inst<=grenze);
-
-    let html=`<span class="onair-lab soon">${zeigen.length>1?"Als Nächstes":"Nächste Session"}</span>`;
-    zeigen.forEach(x=>{ html+=onAirEintrag(x.e,x.s,false,schmal); });
-    return html+(imWochenende(zeigen)?wochenendLink():"");
+    o={live:false,liste:proSerie.filter(x=>x.inst<=grenze)};
+  } else o={live:false,liste:[]};
+  o.auswahl=auswahl; o.wochenende=o.liste.length>0&&imWochenende(o.liste);
+  ONAIR=o; Promise.resolve().then(()=>{ONAIR=null;});
+  return o;
+}
+function onAirHTML(schmal){
+  const o=onAirStand();
+  if(o.live){
+    let html=`<span class="onair-lab live"><span class="pulse"></span>Jetzt live</span>`;
+    o.liste.forEach(x=>{ html+=onAirEintrag(x.e,x.s,true,schmal); });
+    return html+(o.wochenende?wochenendLink():"");
+  } else if(o.liste.length){
+    let html=`<span class="onair-lab soon">${o.liste.length>1?"Als Nächstes":"Nächste Session"}</span>`;
+    o.liste.forEach(x=>{ html+=onAirEintrag(x.e,x.s,false,schmal); });
+    return html+(o.wochenende?wochenendLink():"");
   } else {
     const fehlt=DATEN.some(n=>n.startsWith("termine-")&&DATEN_FEHLT.has(n));
     return `<span class="onair-lab idle">${fehlt?"Termine gerade nicht verfügbar":"Saison beendet"}</span>`;
