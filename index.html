@@ -110,8 +110,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .onair-lab.live{color:var(--red)} .onair-lab.soon{color:var(--gold)} .onair-lab.idle{color:var(--muted)}
 .pulse{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.4s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
-.onair-ev{display:inline-flex;align-items:baseline;gap:9px;font-size:12.5px}
+.onair-ev{display:inline-flex;align-items:baseline;gap:9px;font-size:12.5px;color:inherit;text-decoration:none;border-radius:3px}
 .onair-ev .nm{font-weight:600}
+.onair-ev:hover .nm,.onair-ev:focus-visible .nm{text-decoration:underline;text-decoration-color:var(--muted);text-underline-offset:3px}
 .onair-ev .meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
 .onair-bar{display:inline-block;width:4px;height:13px;vertical-align:middle;margin-right:7px;border-radius:1px}
 .onair-we{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;color:var(--gold);text-decoration:underline;text-decoration-color:var(--rule-strong);text-underline-offset:3px}
@@ -221,7 +222,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .tl-heute::before{top:-8px;bottom:0}
 .jetzt{display:none;flex-direction:column;align-items:flex-start;gap:7px;padding:16px 0 8px}
 .jetzt>*{white-space:normal}
-.jetzt .onair-ev{display:block;line-height:1.45}
+/* Handy: Tag und Uhrzeit vorne in fester Breite, danach „Event — Session“ und die Serie */
+.jetzt .onair-ev{display:grid;grid-template-columns:8.2ch 4px minmax(0,1fr);column-gap:9px;align-items:start;width:100%;line-height:1.45}
+.onair-zt{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;color:var(--paper);white-space:nowrap;padding-top:1px}
+.jetzt .onair-bar{align-self:stretch;width:4px;height:auto;min-height:13px;margin:3px 0}
+.jetzt .onair-tx{min-width:0}
 
 .ev{border-top:1px solid var(--rule)} .ev:first-child{border-top:none}
 .ev-row{display:flex;align-items:center;gap:13px;padding:9px 0;cursor:pointer}
@@ -466,7 +471,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 .wke-live{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--red);border:1px solid var(--red);padding:1px 5px;margin-left:8px;letter-spacing:.12em;vertical-align:2px;animation:pulse 1.4s infinite}
 .wke-none{padding:44px 0;color:var(--muted);line-height:1.9}
 .wke-none b{color:var(--paper)}
-.ev.flash{animation:evflash 1.8s ease-out}
+.ev.flash,.sess.flash{animation:evflash 1.8s ease-out}
 @keyframes evflash{0%{background:rgba(255,48,0,.16)}100%{background:transparent}}
 </style>
 </head>
@@ -1095,12 +1100,41 @@ function wochenendLink(){
   const datei=/\/index\.html$/.test((typeof location!=="undefined"&&location.pathname)||"")?"index.html":"";
   return `<a class="onair-we" href="dieses-wochenende/${datei}">Ganzes Wochenende ansehen <span aria-hidden="true">→</span></a>`;
 }
+/* Zeitraum, den die Seite „Dieses Wochenende“ gerade zeigt (wie serienseiten.js): Donnerstag 00:00 bis Montag 06:00
+   deutscher Zeit – Montag (ab 06:00) bis Donnerstag das kommende, Freitag bis Sonntag das laufende Wochenende */
+function wochenendZeitraum(){
+  let t; try{t=NOW().toLocaleString("sv-SE",{timeZone:"Europe/Berlin",hour12:false});}catch(err){return null;}
+  const datum=t.slice(0,10), zeit=t.slice(11,16), [y,m,d]=datum.split("-").map(Number), w=new Date(Date.UTC(y,m-1,d)).getUTCDay();
+  const k=new Date(Date.UTC(y,m-1,d+(w===1&&zeit<"06:00"?-4:w===0?-3:4-w)));
+  const K=[k.getUTCFullYear(),k.getUTCMonth()+1,k.getUTCDate()], iso=x=>x.toISOString().slice(0,10);
+  return {von:wallToInstant(K[0],K[1],K[2],0,0,"Europe/Berlin").getTime(),bis:wallToInstant(K[0],K[1],K[2]+4,6,0,"Europe/Berlin").getTime(),
+    d0:iso(k),d1:iso(new Date(k.getTime()+3*864e5))};
+}
+/* „Ganzes Wochenende ansehen“ nur, wenn eine angezeigte Session (bzw. ein laufendes Event ohne weitere Session)
+   in diesen Zeitraum fällt – sonst zeigte die Seite ein anderes Wochenende */
+function imWochenende(liste){
+  const z=wochenendZeitraum(); if(!z)return false;
+  return liste.some(x=>x.inst!=null?x.inst>=z.von&&x.inst<z.bis:x.e.d0<=z.d1&&x.e.d1>=z.d0);
+}
 /* Live-Info: breit im Kopf (#onair), schmal an der Heute-Linie der Zeitleiste (#jetzt) */
 function renderOnAir(){
-  const html=onAirHTML();
-  ["onair","jetzt"].forEach(id=>{const el=document.getElementById(id); if(el)el.innerHTML=html;});
+  [["onair",false],["jetzt",true]].forEach(([id,schmal])=>{const el=document.getElementById(id); if(el)el.innerHTML=onAirHTML(schmal);});
 }
-function onAirHTML(){
+/* Ein Eintrag: Link zum Event in der Zeitleiste (zuSession). Schmal (Handy): Tag und Uhrzeit vorne in fester Breite,
+   danach „Event — Session“ und die Serie. Breit wie bisher: „Event — Session“ mit Serie und Zeit, laufende
+   Wochenenden mit Event, Serie und nächster Session. s = Session (null: Wochenende läuft ohne weitere Session) */
+function onAirEintrag(e,s,live,schmal){
+  const S0=SERIES[e.s], ct=s&&convTime(e,s), i=s?e.sessions.indexOf(s):null;
+  let zt="", nm, meta;
+  if(schmal){zt=s?`${ct.day} ${ct.t}`:"läuft"; nm=s?`${e.name} — ${s.n}`:e.name; meta=S0.short+(s?"":" · Wochenende läuft");}
+  else if(live){nm=e.name; meta=s?`${S0.short} · ${s.n} ${ct.t}`:`${S0.short} · Wochenende läuft`;}
+  else{nm=`${e.name} — ${s.n}`; meta=`${S0.short} · ${ct.day} ${ct.t}`;}
+  const bar=`<span class="onair-bar" style="background:${S0.color}"></span>`;
+  return `<a class="onair-ev" href="#ev=${e.s}-${e.rd}${e.sz?"-"+e.sz:""}" onclick="event.preventDefault();zuSession('${e.s}','${e.rd}','${e.sz||""}',${i})">`+
+    (schmal?`<span class="onair-zt">${zt}</span>${bar}<span class="onair-tx">`:bar)+
+    `<span class="nm">${nm}</span> <span class="meta">${meta}</span>${schmal?"</span>":""}</a>`;
+}
+function onAirHTML(schmal){
   const now=NOW();
   /* Alle Serien, deren Wochenende gerade laeuft - nicht nur die erste. */
   const live=actEvents().filter(e=>e.status!=="cancel" && now>=startW(e) && now<=endW(e))
@@ -1109,13 +1143,13 @@ function onAirHTML(){
 
   if(live.length){
     let html=`<span class="onair-lab live"><span class="pulse"></span>Jetzt live</span>`;
+    const gezeigt=[];
     live.forEach(e=>{
-      const S0=SERIES[e.s], nx=nextSessOf(e);
-      const meta = nx ? `${S0.short} · ${nx.s.n} ${convTime(e,nx.s).t}` : `${S0.short} · Wochenende läuft`;
-      html+=`<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span>`+
-            `<span class="nm">${e.name}</span> <span class="meta">${meta}</span></span>`;
+      const nx=nextSessOf(e);
+      gezeigt.push({e,inst:nx?nx.inst:null});
+      html+=onAirEintrag(e,nx?nx.s:null,true,schmal);
     });
-    return html+wochenendLink();
+    return html+(imWochenende(gezeigt)?wochenendLink():"");
   } else if(NEXT_SESS){
     /* Nicht nur die eine naechste Session zeigen, sondern alle Serien,
        deren naechste Session im selben Zeitfenster liegt (72 Stunden) -
@@ -1136,18 +1170,16 @@ function onAirHTML(){
     const zeigen = proSerie.filter(x=>x.inst<=grenze);
 
     let html=`<span class="onair-lab soon">${zeigen.length>1?"Als Nächstes":"Nächste Session"}</span>`;
-    zeigen.forEach(x=>{
-      const S0=SERIES[x.e.s], ct=convTime(x.e,x.s);
-      html+=`<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span>`+
-            `<span class="nm">${x.e.name} — ${x.s.n}</span> `+
-            `<span class="meta">${S0.short} · ${ct.day} ${ct.t}</span></span>`;
-    });
-    return html+wochenendLink();
+    zeigen.forEach(x=>{ html+=onAirEintrag(x.e,x.s,false,schmal); });
+    return html+(imWochenende(zeigen)?wochenendLink():"");
   } else {
     const fehlt=DATEN.some(n=>n.startsWith("termine-")&&DATEN_FEHLT.has(n));
     return `<span class="onair-lab idle">${fehlt?"Termine gerade nicht verfügbar":"Saison beendet"}</span>`;
   }
 }
+/* „Als Nächstes“ / „Jetzt live“: zum Event in der Zeitleiste springen – vorher Tab „Aktuell“ und die Saison
+   des Events –, aufklappen und die Session kurz hervorheben (i = Index der Session, null = ganzes Event) */
+function zuSession(sk,rd,sz,i){ gotoEvent(sk,rd,sz||undefined,false,i); }
 
 /* ═══════ HEUTE ═══════
    Die Heute-Linie (#heute) steht in der Zeitleiste der laufenden Saison. Beim Öffnen springt
@@ -1312,7 +1344,7 @@ function buildSessions(e,evId,status){
       out+=ergZeile(e,rid,kopf,fmtRes(s.res,!!s.partial),false);
     } else {
       const note = (status==="done"&&isRaceName(s.n)&&!(e.abbruch&&verborgen(ergKey(e)))) ? `<div class="sess-flat">${e.abbruch?ABBRUCH:"Wertung noch nicht erfasst"}</div>` : "";
-      out+=`<div class="sess"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
+      out+=`<div class="sess" id="s-${rid}"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
     }
   });
   return out+extra;
@@ -1374,7 +1406,7 @@ function eventHTML(e){
    sonst zwischen den Monaten (bzw. am Ende). Darunter am Handy die Live-Info. */
 function heuteHTML(){
   const lab=NOW().toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"}).replace(".,",",");
-  return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div><div class="jetzt" id="jetzt">${onAirHTML()}</div>`;
+  return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div><div class="jetzt" id="jetzt">${onAirHTML(true)}</div>`;
 }
 function monthGroupsHTML(list,heute){
   const groups={};
@@ -1766,7 +1798,8 @@ function renderWeekend(){
 }
 
 /* ═══════ DEEP-LINKS ═══════ */
-function gotoEvent(sk,rd,sz,sofort){
+/* si: Index einer Session – sie wird statt des ganzen Events hervorgehoben und ins Bild geholt */
+function gotoEvent(sk,rd,sz,sofort,si){
   const e=findEv(sk,rd,sz); if(!e)return;
   if(evYear(e)!==SEASON){SEASON=evYear(e);renderSeason();renderTimeline();}
   if(currentView!=="upcoming")setView("upcoming");
@@ -1779,11 +1812,19 @@ function gotoEvent(sk,rd,sz,sofort){
     el=document.getElementById("ev-"+evDomId(e));
   }
   if(el){klappen(el,true);
-    const w=el.closest(".wknd")||el;
+    const w=el.closest(".wknd")||el, sess=si!=null?document.getElementById("s-"+evDomId(e)+"-s"+si):null;
+    if(sess){
+      /* Oberkante des Events knapp unter den festen Kopf; läge die Session dann unter dem Fensterrand, weiter bis zu ihr */
+      const y0=window.scrollY||0, oben=(KOPF.fest||0)+12, r=sess.getBoundingClientRect();
+      let y=w.getBoundingClientRect().top+y0-oben;
+      if(r.bottom+y0-y>window.innerHeight-24)y=r.top+y0-oben-40;
+      scrollen(Math.max(0,y),sofort!==true);
+    }
     /* Oberkante knapp unter den festen Kopf (scroll-padding-top) */
-    if(sofort===true)ohneAnimation(()=>{try{w.scrollIntoView({behavior:"instant",block:"start"});}catch(err){w.scrollIntoView(true);}});
+    else if(sofort===true)ohneAnimation(()=>{try{w.scrollIntoView({behavior:"instant",block:"start"});}catch(err){w.scrollIntoView(true);}});
     else w.scrollIntoView({behavior:"smooth",block:"start"});
-    el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}
+    const hl=sess||el; document.querySelectorAll("#view-upcoming .flash").forEach(x=>x.classList.remove("flash"));
+    void hl.offsetWidth; hl.classList.add("flash");}
   try{history.replaceState(null,"","#ev="+sk+"-"+rd+(sz?"-"+sz:""));}catch(err){}
 }
 /* Teilen: Handy (Touch) → System-Teilen-Menü mit dem Event-Link; sonst oder wenn das nicht geht:
