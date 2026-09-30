@@ -626,7 +626,7 @@
       {"n": "Qualifying 1", "day": "Sa", "t": "09:00"},
       {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
       {"n": "Qualifying 2", "day": "So", "t": "09:05"},
-      {"n": "Rennen 2", "day": "So", "t": "13:30"}
+      {"n": "Rennen 2", "day": "So", "t": "16:30"}
     ]},
   {"s": "wrc", "rd": 1, "name": "Rallye Monte-Carlo", "loc": "Monaco", "d0": "2026-01-22", "d1": "2026-01-25", "status": "done", "result": "Oliver Solberg (Toyota)",
     "sessions": [
