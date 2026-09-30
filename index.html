@@ -134,25 +134,33 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .chip.allbtn{border-color:var(--paper);color:var(--paper);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px}
 .chip.nur{min-width:0;overflow:hidden}
 
-/* Gruppenfilter: Knopf schaltet die Gruppe, Pfeil klappt ihre Serien auf (--gf = Farbe der Gruppe).
-   Teilauswahl als kleines Abzeichen an der Ecke, damit die Zeile am Handy nicht breiter wird. */
+/* Gruppenfilter: Tippen auf den Gruppenknopf klappt die Auswahl auf (--gf = Farbe der Gruppe) – oben der
+   Schalter „Alle …-Serien“, darunter die einzelnen Serien. Teilauswahl als kleines Abzeichen an der Ecke,
+   damit die Zeile am Handy nicht breiter wird. */
 .filterbar{position:relative;flex-wrap:nowrap;padding:14px 0 12px}
 .grp-leiste{display:flex;gap:6px;min-width:0}
 .grp{position:relative;display:inline-flex;align-items:stretch;min-width:0;border:1px solid var(--rule-strong);border-color:color-mix(in srgb,var(--gf,#ece7dd) 60%,transparent);border-radius:999px;transition:opacity .15s,border-color .15s}
-.grp-an{display:inline-flex;align-items:center;gap:7px;min-width:0;height:32px;padding:0 2px 0 12px;font-family:"Inter",system-ui,sans-serif;font-size:12px;font-weight:600;color:var(--paper);white-space:nowrap}
+.grp-an{display:inline-flex;align-items:center;gap:7px;min-width:0;height:32px;padding:0 12px 0 12px;border-radius:999px;font-family:"Inter",system-ui,sans-serif;font-size:12px;font-weight:600;color:var(--paper);white-space:nowrap}
 .grp-an::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gf,var(--muted));flex-shrink:0}
 .grp-n-l,.grp-n-s{overflow:hidden;text-overflow:ellipsis}
 .grp-n-s{display:none}
 .grp-z{position:absolute;top:-8px;right:8px;font-family:"IBM Plex Mono",monospace;font-size:9px;font-weight:600;line-height:1;padding:2px 4px;border-radius:999px;background:var(--gf,var(--paper));color:#141210;letter-spacing:.02em;pointer-events:none}
-.grp-pfeil{display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;color:var(--muted);border-radius:0 999px 999px 0}
-.grp-pfeil span{display:inline-block;font-size:11px;transition:transform .2s}
-.grp-pfeil:hover,.grp-an:hover{color:var(--paper)}
+.grp-pf{display:inline-block;flex-shrink:0;margin-left:-1px;font-size:11px;color:var(--muted);transition:transform .2s,color .15s}
+.grp-an:hover .grp-pf{color:var(--paper)}
 .grp.offen{border-color:var(--paper)}
-.grp.offen .grp-pfeil{color:var(--red)} .grp.offen .grp-pfeil span{transform:rotate(180deg)}
+.grp.offen .grp-pf{color:var(--red);transform:rotate(180deg)}
 .grp.aus{border-color:var(--rule)}
 .grp.aus .grp-an{color:var(--muted);opacity:.5}
 .grp.aus .grp-an::before{filter:grayscale(1) brightness(.7)}
-.grp-panel{position:absolute;left:0;right:0;top:calc(100% - 6px);z-index:5;display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:8px;box-shadow:0 14px 34px rgba(0,0,0,.55)}
+.grp-panel{position:absolute;left:0;right:0;top:calc(100% - 6px);z-index:5;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:12px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:8px;box-shadow:0 14px 34px rgba(0,0,0,.55)}
+.grp-chips{display:flex;flex-wrap:wrap;gap:8px}
+/* Schalter „Alle …-Serien“: an = alle Serien der Gruppe an, aus = alle aus */
+.grp-alle{display:inline-flex;align-items:center;gap:10px;min-height:28px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .15s}
+.grp-alle:hover,.grp-alle[aria-checked="true"]{color:var(--paper)}
+.grp-sw{position:relative;width:30px;height:17px;border-radius:999px;border:1px solid var(--rule-strong);background:var(--bg);flex-shrink:0;transition:background .15s,border-color .15s}
+.grp-sw::after{content:"";position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:var(--muted);transition:transform .15s,background .15s}
+.grp-alle[aria-checked="true"] .grp-sw{background:var(--gold);border-color:var(--gold)}
+.grp-alle[aria-checked="true"] .grp-sw::after{transform:translateX(13px);background:var(--bg)}
 
 /* Gruppen als Zwischenüberschriften in Serien, Wertung, Wo schauen?, Regeln */
 .grp-h{display:flex;align-items:center;gap:10px;margin:40px 0 0;padding:0 0 9px;border-bottom:1px solid var(--rule-strong);font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper)}
@@ -388,9 +396,8 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .filterbar .fl-lab{display:none}
   .grp-leiste{flex:1 1 auto;gap:4px}
   .grp{flex:1 1 auto}
-  .grp-an{flex:1 1 auto;justify-content:center;padding-left:7px;font-size:11px}
+  .grp-an{flex:1 1 auto;justify-content:center;gap:5px;padding:0 7px;font-size:11px}
   .grp-an::before{display:none}
-  .grp-pfeil{width:20px}
   .grp-z{right:4px}
   .mast{padding:22px 0 12px}
   .kopf .onair{display:none}
@@ -436,7 +443,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 @media(max-width:359px){
   .nav{gap:10px} .tab{font-size:12px;white-space:nowrap}
   .spoiler svg{width:15px;height:15px}
-  .grp-an{font-size:10px;padding-left:5px} .grp-pfeil{width:17px}
+  .grp-an{font-size:10px;gap:3px;padding:0 5px}
 }
 
 /* ── Wochenende / Deep-Link / PWA ── */
@@ -935,13 +942,29 @@ function serienGruppiert(f){
 }
 
 /* ═══════ FILTERBAR ═══════
-   Eine Zeile Gruppenknöpfe: Tippen schaltet die Gruppe an/aus, der Pfeil klappt die Serien
-   der Gruppe zum Feinauswählen auf. Teilauswahl steht am Knopf („2/4“). */
+   Eine Zeile Gruppenknöpfe: Tippen klappt die Auswahl der Gruppe auf (nochmals Tippen, Tippen daneben
+   oder Esc schließt sie). Darin oben der Schalter „Alle …-Serien“, darunter die einzelnen Serien.
+   Teilauswahl steht am Knopf („2/4“). */
 let FILTER_OFFEN=null;   /* Gruppe, deren Serien gerade aufgeklappt sind */
+let FILTER_GEZEIGT=null; /* zuletzt gezeichnete offene Gruppe (Fokus nach dem Schließen) */
+/* „Formel-Serien“, „Sportwagen- & GT-Serien“ (wie „Weitere … -Serien“ auf den Serienseiten) */
+function gruppenWort(g){
+  if(g.key==="weitere")return g.ohneTitel?"Serien":"weiteren Serien";
+  return g.name.split(" & ").map(x=>x+"-").join(" & ")+"Serien";
+}
+/* Die Knöpfe werden neu gezeichnet – der Tastaturfokus bleibt auf dem Knopf an gleicher Stelle */
+function filterFokus(el){
+  const f=document.activeElement;
+  if(!f||f===document.body||!el.contains||!el.contains(f)||!f.dataset)return null;
+  if(f.dataset.serie)return `.chip[data-serie="${f.dataset.serie}"]`;
+  if(f.classList.contains("grp-alle"))return ".grp-alle";
+  if(f.dataset.g)return `.grp-an[data-g="${f.dataset.g}"]`;
+  return null;
+}
 function renderFilter(){
   if(!BEREIT)return;
   const el=document.getElementById("filterbar");
-  const gl=gruppenListe();
+  const gl=gruppenListe(), fokus=filterFokus(el), warOffen=FILTER_GEZEIGT;
   if(FILTER_OFFEN&&!gl.some(g=>g.key===FILTER_OFFEN))FILTER_OFFEN=null;
   let html=`<span class="fl-lab">Serien</span><div class="grp-leiste">`;
   if(FILTER_NUR&&SERIES[FILTER_NUR]){
@@ -954,51 +977,51 @@ function renderFilter(){
       const an=g.serien.filter(sk=>ACTIVE.has(sk)).length, n=g.serien.length;
       const zustand=an===0?"aus":an<n?"teil":"an", offen=FILTER_OFFEN===g.key;
       html+=`<div class="grp ${zustand}${offen?" offen":""}"${g.farbe?` style="--gf:${g.farbe}"`:""}>`+
-        `<button class="grp-an" onclick="toggleGruppe('${g.key}')" aria-pressed="${zustand==="an"?"true":zustand==="teil"?"mixed":"false"}" title="${esc(g.name)}">`+
-          `<span class="grp-n-l">${esc(g.name)}</span><span class="grp-n-s">${esc(g.short)}</span>`+
-          (zustand==="teil"?`<span class="grp-z">${an}/${n}</span>`:"")+`</button>`+
-        `<button class="grp-pfeil" onclick="klappeGruppe('${g.key}')" aria-expanded="${offen}" aria-label="Serien der Gruppe ${esc(g.name)} einzeln auswählen"><span>▾</span></button>`+
+        `<button class="grp-an" type="button" data-g="${g.key}" onclick="klappeGruppe('${g.key}')" aria-expanded="${offen}"${offen?' aria-controls="grp-panel"':""} aria-label="${esc(g.name)}: ${an} von ${n} Serien ausgewählt" title="${esc(g.name)}">`+
+          `<span class="grp-n-l">${esc(g.name)}</span><span class="grp-n-s">${esc(g.short)}</span><span class="grp-pf" aria-hidden="true">▾</span>`+
+          (zustand==="teil"?`<span class="grp-z" aria-hidden="true">${an}/${n}</span>`:"")+`</button>`+
         `</div>`;
+      /* Auswahl direkt hinter ihrem Knopf (Tab-Reihenfolge); sie liegt über der Zeitleiste unter der ganzen Leiste */
+      if(offen){
+        html+=`<div class="grp-panel" id="grp-panel" role="group" aria-label="${esc(g.name)}">`+
+          `<button class="grp-alle" type="button" role="switch" aria-checked="${an===n}" onclick="toggleGruppe('${g.key}')"><span class="grp-sw" aria-hidden="true"></span>Alle ${esc(gruppenWort(g))}</button><div class="grp-chips">`;
+        g.serien.forEach(sk=>{
+          const S0=SERIES[sk],on=ACTIVE.has(sk);
+          html+=`<button class="chip ${on?'':'off'}" type="button" data-serie="${sk}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
+        });
+        html+=`</div></div>`;
+      }
     });
     html+=`</div>`;
-    const g=gl.find(x=>x.key===FILTER_OFFEN);
-    if(g){
-      html+=`<div class="grp-panel" role="group" aria-label="${esc(g.name)}">`;
-      g.serien.forEach(sk=>{
-        const S0=SERIES[sk],on=ACTIVE.has(sk);
-        html+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
-      });
-      html+=`<button class="chip allbtn" onclick="allSeries()">Alle Serien</button></div>`;
-    }
   }
-  el.innerHTML=html;
+  el.innerHTML=html; FILTER_GEZEIGT=FILTER_OFFEN;
+  /* Fokus zurück; lag er in der gerade geschlossenen Auswahl, auf den Gruppenknopf */
+  const ziel=fokus&&(el.querySelector(fokus)||(warOffen&&el.querySelector(`.grp-an[data-g="${warOffen}"]`)));
+  if(ziel)ziel.focus({preventScroll:true});
   el.style.display = (currentView==="tv"||currentView==="rules")?"none":"flex";
   const kopf=document.getElementById("kopf"); if(kopf&&kopf.classList) kopf.classList.toggle("ohne-filter",el.style.display==="none");
   /* Saisonpfeile dort ausblenden, wo die Saison keine Rolle spielt */
   const se=document.getElementById("season"); if(se) se.classList.toggle("ss-off",currentView==="tv"||currentView==="rules");
 }
+/* Mindestens eine Serie bleibt immer ausgewählt */
+const MIND_EINE="Mindestens eine Serie bleibt ausgewählt";
 function toggleSeries(sk){
-  if(ACTIVE.has(sk)){ if(ACTIVE.size>1) ACTIVE.delete(sk); } else ACTIVE.add(sk);
+  if(ACTIVE.has(sk)){ if(ACTIVE.size<=1){kurzerHinweis(MIND_EINE);return;} ACTIVE.delete(sk); } else ACTIVE.add(sk);
   filterGeaendert();
 }
-/* Gruppe an/aus: ist mindestens eine Serie der Gruppe an, gehen alle aus – sonst alle an.
-   Mindestens eine Serie bleibt immer ausgewählt. */
+/* Schalter „Alle …-Serien“: sind alle Serien der Gruppe an, gehen alle aus – sonst alle an */
 function toggleGruppe(key){
   const g=gruppenListe().find(x=>x.key===key); if(!g)return;
-  if(g.serien.some(sk=>ACTIVE.has(sk))){
-    if(g.serien.filter(sk=>ACTIVE.has(sk)).length>=ACTIVE.size)return;
+  if(g.serien.every(sk=>ACTIVE.has(sk))){
+    if(g.serien.length>=ACTIVE.size){kurzerHinweis(MIND_EINE);return;}
     g.serien.forEach(sk=>ACTIVE.delete(sk));
   } else g.serien.forEach(sk=>ACTIVE.add(sk));
   filterGeaendert();
 }
-/* Der Pfeil wird beim Neuzeichnen ersetzt – lag der Fokus auf ihm, bekommt ihn der neue (Tastatur: zweimal Enter = wieder zu) */
+/* Auswahl einer Gruppe auf- bzw. zuklappen (der Fokus bleibt über renderFilter() auf dem Knopf) */
 function klappeGruppe(key){
-  const fokus=!!document.activeElement&&!!document.activeElement.classList&&document.activeElement.classList.contains("grp-pfeil");
   FILTER_OFFEN=FILTER_OFFEN===key?null:key; renderFilter();
-  const b=fokus&&document.querySelectorAll(".grp-pfeil")[gruppenListe().findIndex(g=>g.key===key)];
-  if(b)b.focus({preventScroll:true});
 }
-function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); filterGeaendert(); }
 function filterGeaendert(){
   const a=ankerMerken();
   filterSpeichern(); renderFilter(); renderOnAir(); rerender();
@@ -1047,7 +1070,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
   window.addEventListener("storage",ev=>{if(ev.key===FILTER_SPEICHER||ev.key===null)filterAbgleichen();});
   window.addEventListener("pageshow",ev=>{if(ev.persisted)filterAbgleichen();});
 }
-/* Aufgeklappte Feinauswahl schließen: Tippen außerhalb der Filterleiste oder Esc */
+/* Auswahl schließen: Tippen außerhalb der Filterleiste oder Esc (nochmals Tippen auf den Gruppenknopf: klappeGruppe) */
 if(typeof document!=="undefined"&&document.addEventListener){
   document.addEventListener("click",ev=>{
     if(!FILTER_OFFEN)return;
