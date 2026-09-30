@@ -42,6 +42,7 @@
 </style>
 <style>
 :root{
+  /* Text mindestens --muted (5,2:1 auf --bg); --faint (2,3:1) nur für Linien, Punkte und Deko */
   --bg:#141210; --bg2:#1b1916; --paper:#ece7dd; --muted:#8d8678; --faint:#55504a;
   --rule:rgba(236,231,221,.13); --rule-strong:rgba(236,231,221,.32);
   --red:#ff3000; --green:#3fae62; --gold:#d8a84b;
@@ -77,7 +78,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .mast-r b{color:var(--paper);font-weight:600}
 .mast-z2{min-height:1.7em}
 .tzsw{display:flex;gap:4px;justify-content:flex-end;align-items:center;margin-top:9px}
-.tzsw .tzl{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;color:var(--faint);margin-right:2px}
+.tzsw .tzl{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;color:var(--muted);margin-right:2px}
 .tzsw button{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--muted);transition:all .15s}
 .tzsw button:hover{color:var(--paper)}
 .tzsw button.on{background:var(--paper);color:var(--bg);border-color:var(--paper);font-weight:600}
@@ -110,8 +111,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .onair-lab.live{color:var(--red)} .onair-lab.soon{color:var(--gold)} .onair-lab.idle{color:var(--muted)}
 .pulse{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.4s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
-.onair-ev{display:inline-flex;align-items:baseline;gap:9px;font-size:12.5px}
+.onair-ev{display:inline-flex;align-items:baseline;gap:9px;font-size:12.5px;color:inherit;text-decoration:none;border-radius:3px}
 .onair-ev .nm{font-weight:600}
+.onair-ev:hover .nm,.onair-ev:focus-visible .nm{text-decoration:underline;text-decoration-color:var(--muted);text-underline-offset:3px}
 .onair-ev .meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
 .onair-bar{display:inline-block;width:4px;height:13px;vertical-align:middle;margin-right:7px;border-radius:1px}
 .onair-we{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;color:var(--gold);text-decoration:underline;text-decoration-color:var(--rule-strong);text-underline-offset:3px}
@@ -119,13 +121,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 /* Nav */
 .nav{display:flex;gap:26px;padding:14px 0 0;border-bottom:1px solid var(--rule)}
-.tab{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);padding:0 0 12px;position:relative;transition:color .15s}
-.tab:hover{color:var(--muted)} .tab.on{color:var(--paper)}
+.tab{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:0 0 12px;position:relative;transition:color .15s}
+.tab:hover{color:var(--paper)} .tab.on{color:var(--paper)}
 .tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--red)}
 
 /* Filterbar */
 .filterbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:16px 0 2px}
-.filterbar .fl-lab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-right:4px}
+.filterbar .fl-lab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-right:4px}
 .chip{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;padding:5px 11px 5px 9px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--paper);display:inline-flex;align-items:center;gap:7px;transition:opacity .15s,border-color .15s,background .15s}
 .chip .cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .chip{white-space:nowrap} .chip .cn-s{display:none}
@@ -134,25 +136,33 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .chip.allbtn{border-color:var(--paper);color:var(--paper);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px}
 .chip.nur{min-width:0;overflow:hidden}
 
-/* Gruppenfilter: Knopf schaltet die Gruppe, Pfeil klappt ihre Serien auf (--gf = Farbe der Gruppe).
-   Teilauswahl als kleines Abzeichen an der Ecke, damit die Zeile am Handy nicht breiter wird. */
+/* Gruppenfilter: Tippen auf den Gruppenknopf klappt die Auswahl auf (--gf = Farbe der Gruppe) – oben der
+   Schalter „Alle …-Serien“, darunter die einzelnen Serien. Teilauswahl als kleines Abzeichen an der Ecke,
+   damit die Zeile am Handy nicht breiter wird. */
 .filterbar{position:relative;flex-wrap:nowrap;padding:14px 0 12px}
 .grp-leiste{display:flex;gap:6px;min-width:0}
 .grp{position:relative;display:inline-flex;align-items:stretch;min-width:0;border:1px solid var(--rule-strong);border-color:color-mix(in srgb,var(--gf,#ece7dd) 60%,transparent);border-radius:999px;transition:opacity .15s,border-color .15s}
-.grp-an{display:inline-flex;align-items:center;gap:7px;min-width:0;height:32px;padding:0 2px 0 12px;font-family:"Inter",system-ui,sans-serif;font-size:12px;font-weight:600;color:var(--paper);white-space:nowrap}
+.grp-an{display:inline-flex;align-items:center;gap:7px;min-width:0;height:32px;padding:0 12px 0 12px;border-radius:999px;font-family:"Inter",system-ui,sans-serif;font-size:12px;font-weight:600;color:var(--paper);white-space:nowrap}
 .grp-an::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gf,var(--muted));flex-shrink:0}
 .grp-n-l,.grp-n-s{overflow:hidden;text-overflow:ellipsis}
 .grp-n-s{display:none}
 .grp-z{position:absolute;top:-8px;right:8px;font-family:"IBM Plex Mono",monospace;font-size:9px;font-weight:600;line-height:1;padding:2px 4px;border-radius:999px;background:var(--gf,var(--paper));color:#141210;letter-spacing:.02em;pointer-events:none}
-.grp-pfeil{display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;color:var(--muted);border-radius:0 999px 999px 0}
-.grp-pfeil span{display:inline-block;font-size:11px;transition:transform .2s}
-.grp-pfeil:hover,.grp-an:hover{color:var(--paper)}
+.grp-pf{display:inline-block;flex-shrink:0;margin-left:-1px;font-size:11px;color:var(--muted);transition:transform .2s,color .15s}
+.grp-an:hover .grp-pf{color:var(--paper)}
 .grp.offen{border-color:var(--paper)}
-.grp.offen .grp-pfeil{color:var(--red)} .grp.offen .grp-pfeil span{transform:rotate(180deg)}
+.grp.offen .grp-pf{color:var(--red);transform:rotate(180deg)}
 .grp.aus{border-color:var(--rule)}
 .grp.aus .grp-an{color:var(--muted);opacity:.5}
 .grp.aus .grp-an::before{filter:grayscale(1) brightness(.7)}
-.grp-panel{position:absolute;left:0;right:0;top:calc(100% - 6px);z-index:5;display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:8px;box-shadow:0 14px 34px rgba(0,0,0,.55)}
+.grp-panel{position:absolute;left:0;right:0;top:calc(100% - 6px);z-index:5;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:12px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:8px;box-shadow:0 14px 34px rgba(0,0,0,.55)}
+.grp-chips{display:flex;flex-wrap:wrap;gap:8px}
+/* Schalter „Alle …-Serien“: an = alle Serien der Gruppe an, aus = alle aus */
+.grp-alle{display:inline-flex;align-items:center;gap:10px;min-height:28px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .15s}
+.grp-alle:hover,.grp-alle[aria-checked="true"]{color:var(--paper)}
+.grp-sw{position:relative;width:30px;height:17px;border-radius:999px;border:1px solid var(--rule-strong);background:var(--bg);flex-shrink:0;transition:background .15s,border-color .15s}
+.grp-sw::after{content:"";position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:var(--muted);transition:transform .15s,background .15s}
+.grp-alle[aria-checked="true"] .grp-sw{background:var(--gold);border-color:var(--gold)}
+.grp-alle[aria-checked="true"] .grp-sw::after{transform:translateX(13px);background:var(--bg)}
 
 /* Gruppen als Zwischenüberschriften in Serien, Wertung, Wo schauen?, Regeln */
 .grp-h{display:flex;align-items:center;gap:10px;margin:40px 0 0;padding:0 0 9px;border-bottom:1px solid var(--rule-strong);font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper)}
@@ -164,14 +174,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* Toolbar */
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 0 2px}
 .search{flex:1;min-width:180px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:999px;color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;padding:8px 14px;outline:none}
-.search::placeholder{color:var(--faint)}
+.search::placeholder{color:var(--muted)}
 .search:focus{border-color:var(--muted)}
 .tbtn{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--muted);transition:all .15s;white-space:nowrap}
 .tbtn:hover{color:var(--paper)}
 .tbtn.on{background:var(--gold);color:#241a06;border-color:var(--gold);font-weight:600}
 .tbtn.gold{color:var(--gold);border-color:var(--rule-strong)}
 .tbtn.gold:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
-.searchcnt{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.05em;padding:8px 0 0}
+.searchcnt{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.05em;padding:8px 0 0}
 
 /* Favoriten-Stern */
 .favstar{font-size:16px;line-height:1;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .15s;align-self:center}
@@ -186,12 +196,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 .view{display:none} .view.on{display:block}
 
-.emptyhint{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint);padding:30px 0;text-align:center}
+.emptyhint{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);padding:30px 0;text-align:center}
 
 /* Timeline */
 .month{margin-top:42px}
 .month-head{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(44px,11vw,90px);line-height:.86;text-transform:uppercase;display:flex;align-items:baseline;gap:18px}
-.month-head .yr{font-size:.28em;color:var(--red);letter-spacing:.1em}
+.month-head .yr{font-size:.28em;color:var(--red);letter-spacing:.1em;-webkit-text-stroke:0}
 .month.past .month-head,.month.future .month-head{color:transparent;-webkit-text-stroke:1.4px var(--faint)}
 .month.current .month-head{color:var(--paper)}
 .tl{position:relative;margin:22px 0 0;padding-left:30px}
@@ -213,7 +223,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .tl-heute::before{top:-8px;bottom:0}
 .jetzt{display:none;flex-direction:column;align-items:flex-start;gap:7px;padding:16px 0 8px}
 .jetzt>*{white-space:normal}
-.jetzt .onair-ev{display:block;line-height:1.45}
+/* Handy: Tag und Uhrzeit vorne in fester Breite, danach „Event — Session“ und die Serie */
+.jetzt .onair-ev{display:grid;grid-template-columns:8.2ch 4px minmax(0,1fr);column-gap:9px;align-items:start;width:100%;line-height:1.45}
+.onair-zt{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;color:var(--paper);white-space:nowrap;padding-top:1px}
+.jetzt .onair-bar{align-self:stretch;width:4px;height:auto;min-height:13px;margin:3px 0}
+.jetzt .onair-tx{min-width:0}
 
 .ev{border-top:1px solid var(--rule)} .ev:first-child{border-top:none}
 .ev-row{display:flex;align-items:center;gap:13px;padding:9px 0;cursor:pointer}
@@ -223,16 +237,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ev-sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.04em;margin-top:6px;text-transform:uppercase}
 .ev-sub .ser{font-weight:600}
 .ev-sub .sonder{color:var(--paper)}
-.ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px;overflow-wrap:anywhere}
+.ev-win{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--gold);margin-top:4px}
 .ev-note{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-top:4px}
+.ev-win .nw,.ser-round .nw{white-space:nowrap}
 .ev-win .vorl,.ser-round .vorl{font-size:8.5px;border:1px solid currentColor;padding:0 4px;border-radius:2px;white-space:nowrap;opacity:.8}
 .ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600;white-space:nowrap;flex-shrink:0;overflow-wrap:normal}
-.ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
+.ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--muted);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
 .ev-row:hover .ev-toggle{color:var(--paper)}
 /* Pfeile der aufklappbaren Zeilen sind Knöpfe (Tastatur, aria-expanded); ein Klick darauf wirkt wie ein Tippen auf die Zeile */
 .ev-toggle,.sess-row .sess-chev{line-height:inherit;padding:0}
 /* Teilen: nur das Symbol (drei verbundene Punkte) */
-.ev-teilen{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;margin-right:-6px;border-radius:50%;color:var(--faint);transition:color .15s,background .15s}
+.ev-teilen{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;margin-right:-6px;border-radius:50%;color:var(--muted);transition:color .15s,background .15s}
 .ev-teilen:hover,.ev-teilen:focus-visible{color:var(--paper);background:rgba(236,231,221,.08)}
 .ev-teilen svg{width:17px;height:17px}
 .toast{position:fixed;left:50%;bottom:78px;z-index:70;transform:translateX(-50%) translateY(8px);background:var(--paper);color:var(--bg);font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;border-radius:999px;box-shadow:0 6px 22px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
@@ -243,13 +258,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* Session rows + results */
 .sess{border-bottom:1px dotted var(--rule)} .sess:last-child{border-bottom:none}
 .sess-row{display:grid;grid-template-columns:20px 1fr 66px 74px 24px;gap:10px;align-items:center;padding:7px 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px}
-.scal{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1;color:var(--faint);text-align:center;width:24px;height:20px;border-radius:5px;border:1px solid var(--rule);transition:color .15s,border-color .15s,background .15s}
+.scal{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1;color:var(--muted);text-align:center;width:24px;height:20px;border-radius:5px;border:1px solid var(--rule);transition:color .15s,border-color .15s,background .15s}
 .scal:hover{color:var(--gold);border-color:var(--gold);background:rgba(216,168,75,.08)}
 .calbtn{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:999px;padding:6px 12px;margin:2px 0 12px;transition:border-color .15s,background .15s}
 .calbtn:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
 .sess-row.clk{cursor:pointer}
 .sess-row.clk:hover .sess-n{color:#fff}
-.sess-chev{color:var(--faint);font-size:10px;transition:transform .2s,color .15s;text-align:center}
+.sess-chev{color:var(--muted);font-size:10px;transition:transform .2s,color .15s;text-align:center}
 .sess.open .sess-chev{transform:rotate(90deg);color:var(--red)}
 .sess-row.clk:hover .sess-chev{color:var(--paper)}
 .sess-n{color:var(--paper);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -266,8 +281,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .res-w{color:var(--paper)} .res-row.p1 .res-w{font-weight:600}
 .res-w .rt{color:var(--muted)}
 .res-g{color:var(--muted);text-align:right;white-space:nowrap}
-.res-note{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);padding:7px 0 2px;letter-spacing:.04em}
-.sess-flat{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);padding:6px 0 0 30px;letter-spacing:.03em}
+.res-note{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);padding:7px 0 2px;letter-spacing:.04em}
+.sess-flat{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);padding:6px 0 0 30px;letter-spacing:.03em}
 
 /* Spoilerschutz: Schalter in der Tab-Zeile, verdeckte Sieger und Wertungen */
 .spoiler{margin-left:auto;display:inline-flex;align-items:center;gap:8px;padding:0 0 12px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;transition:color .15s}
@@ -293,6 +308,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .abo-box p{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.03em;line-height:1.7;margin:0 0 14px}
 .abo-box p b{color:var(--paper);font-weight:500}
 .abo-box .abo{margin:0 0 12px}
+/* Verweis „Alle Serien im Überblick“ (Serien-Tab, im Stil des Abo-Kastens) */
+.ueb-box{display:block;padding:13px 14px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;line-height:1.7;color:var(--gold);text-decoration:none;transition:border-color .15s,background .15s}
+.ueb-box b{font-weight:600}
+.ueb-t{display:block;color:var(--muted)}
+.ueb-box:hover,.ueb-box:focus-visible{border-color:var(--gold);background:rgba(216,168,75,.05)}
+.ueb-box+.abo-box{margin-top:12px}
+.abo-s{color:var(--paper)}
+.abo-s:hover{border-color:var(--paper);background:rgba(236,231,221,.06)}
 
 /* Serien */
 .ser-block{padding:34px 0 6px;border-bottom:1px solid var(--rule)}
@@ -303,14 +326,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ser-meta{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.08em;margin:10px 0 18px;text-transform:uppercase}
 .ser-round{display:grid;grid-template-columns:40px 78px 1fr auto 14px;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
 .ser-round.cancel{opacity:.4}
-.ser-round .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint)}
+.ser-round .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
 .ser-round .dt{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
 .ser-round .rn{font-size:14.5px;font-weight:600}
 .ser-round .rn .loc{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);font-weight:400;margin-top:2px;letter-spacing:.04em;text-transform:uppercase}
 .ser-round .st{font-family:"IBM Plex Mono",monospace;font-size:10px;text-align:right;text-transform:uppercase;letter-spacing:.05em}
-.ser-round .st.done{color:var(--gold)} .ser-round .st.up{color:var(--faint)} .ser-round .st.next{color:var(--red)} .ser-round .st.cancel{color:var(--faint)}
+.ser-round .st.done{color:var(--gold)} .ser-round .st.up{color:var(--muted)} .ser-round .st.next{color:var(--red)} .ser-round .st.cancel{color:var(--muted)}
 /* Gefahrene Runden klappen das Ergebnis auf (wie in der Zeitleiste) */
-.ser-round .sch{font-size:10px;color:var(--faint);text-align:center;transition:transform .2s,color .15s}
+.ser-round .sch{font-size:10px;color:var(--muted);text-align:center;transition:transform .2s,color .15s}
 .ser-round.clk{cursor:pointer}
 .ser-round.clk:hover .rn,.ser-round.clk:focus-visible .rn{color:#fff}
 .ser-round.clk:hover .sch{color:var(--paper)}
@@ -335,17 +358,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .std-gap{height:26px}
 .std-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,7vw,54px);line-height:.9;text-transform:uppercase}
 .std-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.06em;margin:8px 0 4px;text-transform:uppercase}
-.std-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--faint);letter-spacing:.05em;padding:10px 0 0}
-.std-sub{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:18px 0 2px}
+.std-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.05em;padding:10px 0 0}
+.std-sub{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:18px 0 2px}
 .std-row{display:grid;grid-template-columns:30px 1fr auto 52px;gap:12px;align-items:baseline;padding:8px 0;border-top:1px solid var(--rule)}
-.std-row .sp{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint)}
+.std-row .sp{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
 .std-row.lead .sp{color:var(--gold)}
 .std-nm{font-size:14.5px;font-weight:600}
 .std-nm .tm{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);font-weight:400;margin-top:2px;letter-spacing:.03em}
 .std-wins{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--gold);align-self:center}
 .std-pts{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;text-align:right;line-height:1}
 .std-row.lead .std-pts{color:var(--gold)}
-.std-pts small{font-family:"IBM Plex Mono",monospace;font-size:8.5px;color:var(--faint);display:block;font-weight:400;letter-spacing:.1em}
+.std-pts small{font-family:"IBM Plex Mono",monospace;font-size:8.5px;color:var(--muted);display:block;font-weight:400;letter-spacing:.1em}
 
 /* TV */
 .tv-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:28px 0 18px;letter-spacing:.04em;line-height:1.7}
@@ -354,32 +377,32 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .tv-row .tb{font-size:13px;color:var(--muted);line-height:1.6}
 .tv-l{display:block;padding:3px 0}
 .tv-l b{color:var(--paper);font-weight:600}
-.tv-c{display:inline-block;min-width:88px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);vertical-align:1px}
-.tv-note{display:block;margin-top:7px;padding-left:88px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.03em;line-height:1.6}
+.tv-c{display:inline-block;min-width:88px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);vertical-align:1px}
+.tv-note{display:block;margin-top:7px;padding-left:88px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.03em;line-height:1.6}
 .rl-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:28px 0 18px;letter-spacing:.04em;line-height:1.7}
 .rl-block{border-top:1px solid var(--rule)}
 .rl-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;width:100%;background:none;border:0;cursor:pointer;text-align:left;padding:20px 0;color:inherit}
 .rl-head:hover .rl-name{filter:brightness(1.25)}
-.rl-chev{color:var(--faint);font-size:11px;flex:0 0 auto}
+.rl-chev{color:var(--muted);font-size:11px;flex:0 0 auto}
 .rl-name{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:26px;text-transform:uppercase;line-height:1}
-.rl-kurz{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.rl-kurz{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .rl-body{padding-bottom:18px}
 .rl-item{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:11px 0;align-items:baseline}
 .rl-item+.rl-item{border-top:1px solid var(--rule)}
-.rl-t{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+.rl-t{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
 .rl-x{font-size:13.5px;color:var(--muted);line-height:1.72;max-width:66ch}
 .legal-link{background:none;border:0;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px}
 .legal-link:hover{color:var(--paper)}
 .legal{display:none;margin:22px auto 0;max-width:74ch;text-align:left;border-top:1px solid var(--rule);padding-top:20px}
 .legal.on{display:block}
 .legal h3{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;text-transform:uppercase;margin:0 0 14px;letter-spacing:.02em}
-.legal h4{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:18px 0 5px;font-weight:400}
+.legal h4{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:18px 0 5px;font-weight:400}
 .legal p{font-size:12.5px;line-height:1.72;color:var(--muted);margin:0 0 6px}
 .legal a{color:var(--muted)}
-.tv-open{display:block;color:var(--faint);font-style:italic}
-.tv-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--faint);letter-spacing:.04em;line-height:1.7;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--rule)}
+.tv-open{display:block;color:var(--muted);font-style:italic}
+.tv-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.04em;line-height:1.7;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--rule)}
 
-footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.05em;line-height:1.9}
+footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.05em;line-height:1.9}
 
 /* Schmale (und sehr niedrige) Bildschirme: fest bleiben nur Logozeile, Tabs und Filter.
    Datumszeile und Beschriftung blenden beim Scrollen aus, die Live-Info steht in der Zeitleiste. */
@@ -388,9 +411,8 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .filterbar .fl-lab{display:none}
   .grp-leiste{flex:1 1 auto;gap:4px}
   .grp{flex:1 1 auto}
-  .grp-an{flex:1 1 auto;justify-content:center;padding-left:7px;font-size:11px}
+  .grp-an{flex:1 1 auto;justify-content:center;gap:5px;padding:0 7px;font-size:11px}
   .grp-an::before{display:none}
-  .grp-pfeil{width:20px}
   .grp-z{right:4px}
   .mast{padding:22px 0 12px}
   .kopf .onair{display:none}
@@ -436,7 +458,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 @media(max-width:359px){
   .nav{gap:10px} .tab{font-size:12px;white-space:nowrap}
   .spoiler svg{width:15px;height:15px}
-  .grp-an{font-size:10px;padding-left:5px} .grp-pfeil{width:17px}
+  .grp-an{font-size:10px;gap:3px;padding:0 5px}
 }
 
 /* ── Wochenende / Deep-Link / PWA ── */
@@ -455,11 +477,11 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 .wke-bar{border-radius:1px}
 .wke-sn{font-weight:600;font-size:14.5px;line-height:1.25;transition:color .15s}
 .wke-ev{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:4px}
-.wke-tv{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--faint);letter-spacing:.03em;margin-top:2px}
+.wke-tv{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.03em;margin-top:2px}
 .wke-live{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--red);border:1px solid var(--red);padding:1px 5px;margin-left:8px;letter-spacing:.12em;vertical-align:2px;animation:pulse 1.4s infinite}
 .wke-none{padding:44px 0;color:var(--muted);line-height:1.9}
 .wke-none b{color:var(--paper)}
-.ev.flash{animation:evflash 1.8s ease-out}
+.ev.flash,.sess.flash{animation:evflash 1.8s ease-out}
 @keyframes evflash{0%{background:rgba(255,48,0,.16)}100%{background:transparent}}
 </style>
 </head>
@@ -491,6 +513,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <footer>
 APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
     Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
+    <a class="legal-link ordner" href="serien/">Alle Serien</a> · <a class="legal-link ordner" href="dieses-wochenende/">Dieses Wochenende</a> ·
     <button class="legal-link" onclick="toggleLegal()" aria-expanded="false" aria-controls="legal">Datenschutz</button>
     <div class="legal" id="legal">
       <h3>Datenschutzerklärung</h3>
@@ -519,10 +542,9 @@ APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
       Google Fonts oder anderen externen Anbietern; dabei werden keine Daten an Dritte übertragen.</p>
 
       <h4>Speicherung auf Ihrem Gerät</h4>
-      <p>Ihre Serienauswahl im Filter, die Einstellung „Ergebnisse verbergen“ sowie Favoriten und Erinnerungseinstellungen werden ausschließlich
+      <p>Ihre Serienauswahl im Filter und die Einstellung „Ergebnisse verbergen“ werden ausschließlich
       lokal in Ihrem Browser gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
-      die Einstellungen Ihres Browsers löschen. Wenn Sie Benachrichtigungen für Sessions aktivieren,
-      geschieht dies ebenfalls nur auf Ihrem Gerät.</p>
+      die Einstellungen Ihres Browsers löschen.</p>
 
       <h4>Ihre Rechte</h4>
       <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
@@ -671,11 +693,13 @@ function termineFehlen(y){return DATEN_FEHLT.has("termine-"+y);}
 function esc(str){ return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 /* Serienseiten (formel-1/ …): Adresse aus serien.json ("seite"), sonst aus dem Namen */
 function seiteAusName(n){return String(n).toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");}
+/* Verweis auf einen Seitenordner (serien/, formel-1/ …); Vorschau ohne Ordneradressen (…/index.html): mit Dateinamen */
+function ordnerHref(ordner){
+  return ordner+(/\/index\.html$/.test((typeof location!=="undefined"&&location.pathname)||"")?"index.html":"");
+}
 function serienName(sk){
   const S0=SERIES[sk]; if(!S0.seite)return S0.name;
-  /* Vorschau ohne Ordneradressen (…/index.html): Seite mit Dateinamen verlinken */
-  const datei=/\/index\.html$/.test((typeof location!=="undefined"&&location.pathname)||"")?"index.html":"";
-  return `<a class="ser-link" href="${S0.seite}/${datei}">${S0.name}</a>`;
+  return `<a class="ser-link" href="${ordnerHref(S0.seite+"/")}">${S0.name}</a>`;
 }
 
 /* ═══════ STATE ═══════ */
@@ -744,6 +768,9 @@ function renderSeason(){
     `<b class="ss-yr">${SEASON}</b>`+
     `<button class="ss-btn" onclick="stepSeason(1)" ${i>=ys.length-1?"disabled":""} aria-label="Nächste Saison">›</button>`+
     (seasonIsProv(SEASON)?`<span class="ss-prov">vorläufiger Kalender</span>`:"");
+  /* Der Hinweis „vorläufiger Kalender“ ändert die Höhe des festen Bands – sofort neu messen,
+     damit Sprünge danach (zumStart, gotoEvent) schon mit der neuen Kopfhöhe rechnen */
+  if(BEREIT)kopfMessen();
 }
 function stepSeason(d){
   const ys=seasonsAll(), i=ys.indexOf(SEASON), n=ys[i+d];
@@ -893,7 +920,7 @@ function computeNextSession(){
 function dayRange(e){const a=pd(e.d0),b=pd(e.d1);if(e.d0===e.d1)return String(a.getDate());
   if(a.getMonth()===b.getMonth())return a.getDate()+"–"+b.getDate();
   return a.getDate()+"."+(a.getMonth()+1)+"–"+b.getDate()+"."+(b.getMonth()+1);}
-function dows(e){return DOWf[pd(e.d0).getDay()]+"–"+DOWf[pd(e.d1).getDay()];}
+function dows(e){return e.d0===e.d1?DOWf[pd(e.d0).getDay()]:DOWf[pd(e.d0).getDay()]+"–"+DOWf[pd(e.d1).getDay()];}
 function startW(e){return pd(e.d0);}
 function endW(e){const b=pd(e.d1);b.setHours(23,59,59);return b;}
 function st(e){if(e.status==="cancel")return"cancel";const now=NOW();
@@ -935,13 +962,29 @@ function serienGruppiert(f){
 }
 
 /* ═══════ FILTERBAR ═══════
-   Eine Zeile Gruppenknöpfe: Tippen schaltet die Gruppe an/aus, der Pfeil klappt die Serien
-   der Gruppe zum Feinauswählen auf. Teilauswahl steht am Knopf („2/4“). */
+   Eine Zeile Gruppenknöpfe: Tippen klappt die Auswahl der Gruppe auf (nochmals Tippen, Tippen daneben
+   oder Esc schließt sie). Darin oben der Schalter „Alle …-Serien“, darunter die einzelnen Serien.
+   Teilauswahl steht am Knopf („2/4“). */
 let FILTER_OFFEN=null;   /* Gruppe, deren Serien gerade aufgeklappt sind */
+let FILTER_GEZEIGT=null; /* zuletzt gezeichnete offene Gruppe (Fokus nach dem Schließen) */
+/* „Formel-Serien“, „Sportwagen- & GT-Serien“ (wie „Weitere … -Serien“ auf den Serienseiten) */
+function gruppenWort(g){
+  if(g.key==="weitere")return g.ohneTitel?"Serien":"weiteren Serien";
+  return g.name.split(" & ").map(x=>x+"-").join(" & ")+"Serien";
+}
+/* Die Knöpfe werden neu gezeichnet – der Tastaturfokus bleibt auf dem Knopf an gleicher Stelle */
+function filterFokus(el){
+  const f=document.activeElement;
+  if(!f||f===document.body||!el.contains||!el.contains(f)||!f.dataset)return null;
+  if(f.dataset.serie)return `.chip[data-serie="${f.dataset.serie}"]`;
+  if(f.classList.contains("grp-alle"))return ".grp-alle";
+  if(f.dataset.g)return `.grp-an[data-g="${f.dataset.g}"]`;
+  return null;
+}
 function renderFilter(){
   if(!BEREIT)return;
   const el=document.getElementById("filterbar");
-  const gl=gruppenListe();
+  const gl=gruppenListe(), fokus=filterFokus(el), warOffen=FILTER_GEZEIGT;
   if(FILTER_OFFEN&&!gl.some(g=>g.key===FILTER_OFFEN))FILTER_OFFEN=null;
   let html=`<span class="fl-lab">Serien</span><div class="grp-leiste">`;
   if(FILTER_NUR&&SERIES[FILTER_NUR]){
@@ -954,51 +997,51 @@ function renderFilter(){
       const an=g.serien.filter(sk=>ACTIVE.has(sk)).length, n=g.serien.length;
       const zustand=an===0?"aus":an<n?"teil":"an", offen=FILTER_OFFEN===g.key;
       html+=`<div class="grp ${zustand}${offen?" offen":""}"${g.farbe?` style="--gf:${g.farbe}"`:""}>`+
-        `<button class="grp-an" onclick="toggleGruppe('${g.key}')" aria-pressed="${zustand==="an"?"true":zustand==="teil"?"mixed":"false"}" title="${esc(g.name)}">`+
-          `<span class="grp-n-l">${esc(g.name)}</span><span class="grp-n-s">${esc(g.short)}</span>`+
-          (zustand==="teil"?`<span class="grp-z">${an}/${n}</span>`:"")+`</button>`+
-        `<button class="grp-pfeil" onclick="klappeGruppe('${g.key}')" aria-expanded="${offen}" aria-label="Serien der Gruppe ${esc(g.name)} einzeln auswählen"><span>▾</span></button>`+
+        `<button class="grp-an" type="button" data-g="${g.key}" onclick="klappeGruppe('${g.key}')" aria-expanded="${offen}"${offen?' aria-controls="grp-panel"':""} aria-label="${esc(g.name)}: ${an} von ${n} Serien ausgewählt" title="${esc(g.name)}">`+
+          `<span class="grp-n-l">${esc(g.name)}</span><span class="grp-n-s">${esc(g.short)}</span><span class="grp-pf" aria-hidden="true">▾</span>`+
+          (zustand==="teil"?`<span class="grp-z" aria-hidden="true">${an}/${n}</span>`:"")+`</button>`+
         `</div>`;
+      /* Auswahl direkt hinter ihrem Knopf (Tab-Reihenfolge); sie liegt über der Zeitleiste unter der ganzen Leiste */
+      if(offen){
+        html+=`<div class="grp-panel" id="grp-panel" role="group" aria-label="${esc(g.name)}">`+
+          `<button class="grp-alle" type="button" role="switch" aria-checked="${an===n}" onclick="toggleGruppe('${g.key}')"><span class="grp-sw" aria-hidden="true"></span>Alle ${esc(gruppenWort(g))}</button><div class="grp-chips">`;
+        g.serien.forEach(sk=>{
+          const S0=SERIES[sk],on=ACTIVE.has(sk);
+          html+=`<button class="chip ${on?'':'off'}" type="button" data-serie="${sk}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
+        });
+        html+=`</div></div>`;
+      }
     });
     html+=`</div>`;
-    const g=gl.find(x=>x.key===FILTER_OFFEN);
-    if(g){
-      html+=`<div class="grp-panel" role="group" aria-label="${esc(g.name)}">`;
-      g.serien.forEach(sk=>{
-        const S0=SERIES[sk],on=ACTIVE.has(sk);
-        html+=`<button class="chip ${on?'':'off'}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
-      });
-      html+=`<button class="chip allbtn" onclick="allSeries()">Alle Serien</button></div>`;
-    }
   }
-  el.innerHTML=html;
+  el.innerHTML=html; FILTER_GEZEIGT=FILTER_OFFEN;
+  /* Fokus zurück; lag er in der gerade geschlossenen Auswahl, auf den Gruppenknopf */
+  const ziel=fokus&&(el.querySelector(fokus)||(warOffen&&el.querySelector(`.grp-an[data-g="${warOffen}"]`)));
+  if(ziel)ziel.focus({preventScroll:true});
   el.style.display = (currentView==="tv"||currentView==="rules")?"none":"flex";
   const kopf=document.getElementById("kopf"); if(kopf&&kopf.classList) kopf.classList.toggle("ohne-filter",el.style.display==="none");
   /* Saisonpfeile dort ausblenden, wo die Saison keine Rolle spielt */
   const se=document.getElementById("season"); if(se) se.classList.toggle("ss-off",currentView==="tv"||currentView==="rules");
 }
+/* Mindestens eine Serie bleibt immer ausgewählt */
+const MIND_EINE="Mindestens eine Serie bleibt ausgewählt";
 function toggleSeries(sk){
-  if(ACTIVE.has(sk)){ if(ACTIVE.size>1) ACTIVE.delete(sk); } else ACTIVE.add(sk);
+  if(ACTIVE.has(sk)){ if(ACTIVE.size<=1){kurzerHinweis(MIND_EINE);return;} ACTIVE.delete(sk); } else ACTIVE.add(sk);
   filterGeaendert();
 }
-/* Gruppe an/aus: ist mindestens eine Serie der Gruppe an, gehen alle aus – sonst alle an.
-   Mindestens eine Serie bleibt immer ausgewählt. */
+/* Schalter „Alle …-Serien“: sind alle Serien der Gruppe an, gehen alle aus – sonst alle an */
 function toggleGruppe(key){
   const g=gruppenListe().find(x=>x.key===key); if(!g)return;
-  if(g.serien.some(sk=>ACTIVE.has(sk))){
-    if(g.serien.filter(sk=>ACTIVE.has(sk)).length>=ACTIVE.size)return;
+  if(g.serien.every(sk=>ACTIVE.has(sk))){
+    if(g.serien.length>=ACTIVE.size){kurzerHinweis(MIND_EINE);return;}
     g.serien.forEach(sk=>ACTIVE.delete(sk));
   } else g.serien.forEach(sk=>ACTIVE.add(sk));
   filterGeaendert();
 }
-/* Der Pfeil wird beim Neuzeichnen ersetzt – lag der Fokus auf ihm, bekommt ihn der neue (Tastatur: zweimal Enter = wieder zu) */
+/* Auswahl einer Gruppe auf- bzw. zuklappen (der Fokus bleibt über renderFilter() auf dem Knopf) */
 function klappeGruppe(key){
-  const fokus=!!document.activeElement&&!!document.activeElement.classList&&document.activeElement.classList.contains("grp-pfeil");
   FILTER_OFFEN=FILTER_OFFEN===key?null:key; renderFilter();
-  const b=fokus&&document.querySelectorAll(".grp-pfeil")[gruppenListe().findIndex(g=>g.key===key)];
-  if(b)b.focus({preventScroll:true});
 }
-function allSeries(){ Object.keys(SERIES).forEach(sk=>ACTIVE.add(sk)); filterGeaendert(); }
 function filterGeaendert(){
   const a=ankerMerken();
   filterSpeichern(); renderFilter(); renderOnAir(); rerender();
@@ -1047,7 +1090,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
   window.addEventListener("storage",ev=>{if(ev.key===FILTER_SPEICHER||ev.key===null)filterAbgleichen();});
   window.addEventListener("pageshow",ev=>{if(ev.persisted)filterAbgleichen();});
 }
-/* Aufgeklappte Feinauswahl schließen: Tippen außerhalb der Filterleiste oder Esc */
+/* Auswahl schließen: Tippen außerhalb der Filterleiste oder Esc (nochmals Tippen auf den Gruppenknopf: klappeGruppe) */
 if(typeof document!=="undefined"&&document.addEventListener){
   document.addEventListener("click",ev=>{
     if(!FILTER_OFFEN)return;
@@ -1069,15 +1112,43 @@ function nextSessOf(e){
 
 /* Verweis auf die Seite „Dieses Wochenende“ (alle Sessions aller Serien); Vorschau ohne Ordneradressen mit index.html */
 function wochenendLink(){
-  const datei=/\/index\.html$/.test((typeof location!=="undefined"&&location.pathname)||"")?"index.html":"";
-  return `<a class="onair-we" href="dieses-wochenende/${datei}">Ganzes Wochenende ansehen <span aria-hidden="true">→</span></a>`;
+  return `<a class="onair-we" href="${ordnerHref("dieses-wochenende/")}">Ganzes Wochenende ansehen <span aria-hidden="true">→</span></a>`;
+}
+/* Zeitraum, den die Seite „Dieses Wochenende“ gerade zeigt (wie serienseiten.js): Donnerstag 00:00 bis Montag 06:00
+   deutscher Zeit – Montag (ab 06:00) bis Donnerstag das kommende, Freitag bis Sonntag das laufende Wochenende */
+function wochenendZeitraum(){
+  let t; try{t=NOW().toLocaleString("sv-SE",{timeZone:"Europe/Berlin",hour12:false});}catch(err){return null;}
+  const datum=t.slice(0,10), zeit=t.slice(11,16), [y,m,d]=datum.split("-").map(Number), w=new Date(Date.UTC(y,m-1,d)).getUTCDay();
+  const k=new Date(Date.UTC(y,m-1,d+(w===1&&zeit<"06:00"?-4:w===0?-3:4-w)));
+  const K=[k.getUTCFullYear(),k.getUTCMonth()+1,k.getUTCDate()], iso=x=>x.toISOString().slice(0,10);
+  return {von:wallToInstant(K[0],K[1],K[2],0,0,"Europe/Berlin").getTime(),bis:wallToInstant(K[0],K[1],K[2]+4,6,0,"Europe/Berlin").getTime(),
+    d0:iso(k),d1:iso(new Date(k.getTime()+3*864e5))};
+}
+/* „Ganzes Wochenende ansehen“ nur, wenn eine angezeigte Session (bzw. ein laufendes Event ohne weitere Session)
+   in diesen Zeitraum fällt – sonst zeigte die Seite ein anderes Wochenende */
+function imWochenende(liste){
+  const z=wochenendZeitraum(); if(!z)return false;
+  return liste.some(x=>x.inst!=null?x.inst>=z.von&&x.inst<z.bis:x.e.d0<=z.d1&&x.e.d1>=z.d0);
 }
 /* Live-Info: breit im Kopf (#onair), schmal an der Heute-Linie der Zeitleiste (#jetzt) */
 function renderOnAir(){
-  const html=onAirHTML();
-  ["onair","jetzt"].forEach(id=>{const el=document.getElementById(id); if(el)el.innerHTML=html;});
+  [["onair",false],["jetzt",true]].forEach(([id,schmal])=>{const el=document.getElementById(id); if(el)el.innerHTML=onAirHTML(schmal);});
 }
-function onAirHTML(){
+/* Ein Eintrag: Link zum Event in der Zeitleiste (zuSession). Schmal (Handy): Tag und Uhrzeit vorne in fester Breite,
+   danach „Event — Session“ und die Serie. Breit wie bisher: „Event — Session“ mit Serie und Zeit, laufende
+   Wochenenden mit Event, Serie und nächster Session. s = Session (null: Wochenende läuft ohne weitere Session) */
+function onAirEintrag(e,s,live,schmal){
+  const S0=SERIES[e.s], ct=s&&convTime(e,s), i=s?e.sessions.indexOf(s):null;
+  let zt="", nm, meta;
+  if(schmal){zt=s?`${ct.day} ${ct.t}`:"läuft"; nm=s?`${e.name} — ${s.n}`:e.name; meta=S0.short+(s?"":" · Wochenende läuft");}
+  else if(live){nm=e.name; meta=s?`${S0.short} · ${s.n} ${ct.t}`:`${S0.short} · Wochenende läuft`;}
+  else{nm=`${e.name} — ${s.n}`; meta=`${S0.short} · ${ct.day} ${ct.t}`;}
+  const bar=`<span class="onair-bar" style="background:${S0.color}"></span>`;
+  return `<a class="onair-ev" href="#ev=${e.s}-${e.rd}${e.sz?"-"+e.sz:""}" onclick="event.preventDefault();zuSession('${e.s}','${e.rd}','${e.sz||""}',${i})">`+
+    (schmal?`<span class="onair-zt">${zt}</span>${bar}<span class="onair-tx">`:bar)+
+    `<span class="nm">${nm}</span> <span class="meta">${meta}</span>${schmal?"</span>":""}</a>`;
+}
+function onAirHTML(schmal){
   const now=NOW();
   /* Alle Serien, deren Wochenende gerade laeuft - nicht nur die erste. */
   const live=actEvents().filter(e=>e.status!=="cancel" && now>=startW(e) && now<=endW(e))
@@ -1086,13 +1157,13 @@ function onAirHTML(){
 
   if(live.length){
     let html=`<span class="onair-lab live"><span class="pulse"></span>Jetzt live</span>`;
+    const gezeigt=[];
     live.forEach(e=>{
-      const S0=SERIES[e.s], nx=nextSessOf(e);
-      const meta = nx ? `${S0.short} · ${nx.s.n} ${convTime(e,nx.s).t}` : `${S0.short} · Wochenende läuft`;
-      html+=`<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span>`+
-            `<span class="nm">${e.name}</span> <span class="meta">${meta}</span></span>`;
+      const nx=nextSessOf(e);
+      gezeigt.push({e,inst:nx?nx.inst:null});
+      html+=onAirEintrag(e,nx?nx.s:null,true,schmal);
     });
-    return html+wochenendLink();
+    return html+(imWochenende(gezeigt)?wochenendLink():"");
   } else if(NEXT_SESS){
     /* Nicht nur die eine naechste Session zeigen, sondern alle Serien,
        deren naechste Session im selben Zeitfenster liegt (72 Stunden) -
@@ -1113,18 +1184,16 @@ function onAirHTML(){
     const zeigen = proSerie.filter(x=>x.inst<=grenze);
 
     let html=`<span class="onair-lab soon">${zeigen.length>1?"Als Nächstes":"Nächste Session"}</span>`;
-    zeigen.forEach(x=>{
-      const S0=SERIES[x.e.s], ct=convTime(x.e,x.s);
-      html+=`<span class="onair-ev"><span class="onair-bar" style="background:${S0.color}"></span>`+
-            `<span class="nm">${x.e.name} — ${x.s.n}</span> `+
-            `<span class="meta">${S0.short} · ${ct.day} ${ct.t}</span></span>`;
-    });
-    return html+wochenendLink();
+    zeigen.forEach(x=>{ html+=onAirEintrag(x.e,x.s,false,schmal); });
+    return html+(imWochenende(zeigen)?wochenendLink():"");
   } else {
     const fehlt=DATEN.some(n=>n.startsWith("termine-")&&DATEN_FEHLT.has(n));
     return `<span class="onair-lab idle">${fehlt?"Termine gerade nicht verfügbar":"Saison beendet"}</span>`;
   }
 }
+/* „Als Nächstes“ / „Jetzt live“: zum Event in der Zeitleiste springen – vorher Tab „Aktuell“ und die Saison
+   des Events –, aufklappen und die Session kurz hervorheben (i = Index der Session, null = ganzes Event) */
+function zuSession(sk,rd,sz,i){ gotoEvent(sk,rd,sz||undefined,false,i); }
 
 /* ═══════ HEUTE ═══════
    Die Heute-Linie (#heute) steht in der Zeitleiste der laufenden Saison. Beim Öffnen springt
@@ -1289,7 +1358,7 @@ function buildSessions(e,evId,status){
       out+=ergZeile(e,rid,kopf,fmtRes(s.res,!!s.partial),false);
     } else {
       const note = (status==="done"&&isRaceName(s.n)&&!(e.abbruch&&verborgen(ergKey(e)))) ? `<div class="sess-flat">${e.abbruch?ABBRUCH:"Wertung noch nicht erfasst"}</div>` : "";
-      out+=`<div class="sess"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
+      out+=`<div class="sess" id="s-${rid}"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
     }
   });
   return out+extra;
@@ -1325,13 +1394,18 @@ function toggleEv(id){const el=document.getElementById("ev-"+id);klappen(el,!el.
 
 /* ═══════ TIMELINE (Aktuell) ═══════ */
 const TEILEN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 10.7 16.5 5.9M7.5 13.3l9 4.8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="18" cy="5" r="2.7" fill="currentColor"/><circle cx="6" cy="12" r="2.7" fill="currentColor"/><circle cx="18" cy="19" r="2.7" fill="currentColor"/></svg>';
+/* Sieger mit mehreren Fahrern („Buemi/Hartley/Hirakawa“): Umbruch nur nach „/“ oder Leerzeichen, nie mitten im Namen
+   (auch nicht am Bindestrich wie in „Al-Attiyah“) */
+function siegerText(e){
+  return String(e.result).split(/(\s+)/).map(w=>w.split("/").map(x=>x.includes("-")?`<span class="nw">${x}</span>`:x).join("/<wbr>")).join("");
+}
 /* Ergebnis offiziell noch vorläufig (vorlaeufig:true am Event): Zusatz hinter dem Sieger */
 function vorlText(e){return e.vorlaeufig===true?' <span class="vorl">vorläufig</span>':"";}
 /* Sieger bzw. Abbruch auf der Karte – bei „Ergebnisse verbergen“ erst auf Tippen */
 function siegerKarte(e){
   if(!e.result&&!e.abbruch)return "";
   if(verborgen(ergKey(e)))return aufdeckenKnopf(e,"karte");
-  return e.result?`<div class="ev-win">${e.result}${vorlText(e)}</div>`:`<div class="ev-note">${ABBRUCH}</div>`;
+  return e.result?`<div class="ev-win"><span>${siegerText(e)}</span>${vorlText(e)}</div>`:`<div class="ev-note">${ABBRUCH}</div>`;
 }
 function eventHTML(e){
   const status=st(e),S0=SERIES[e.s],evId=evDomId(e);
@@ -1351,7 +1425,7 @@ function eventHTML(e){
    sonst zwischen den Monaten (bzw. am Ende). Darunter am Handy die Live-Info. */
 function heuteHTML(){
   const lab=NOW().toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"}).replace(".,",",");
-  return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div><div class="jetzt" id="jetzt">${onAirHTML()}</div>`;
+  return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div><div class="jetzt" id="jetzt">${onAirHTML(true)}</div>`;
 }
 function monthGroupsHTML(list,heute){
   const groups={};
@@ -1396,15 +1470,17 @@ function renderTimeline(){
 /* Sieger bzw. Abbruch in der Rundenliste – bei „Ergebnisse verbergen“ erst auf Tippen */
 function siegerSerie(e){
   if(verborgen(ergKey(e)))return aufdeckenKnopf(e,"serie");
-  return e.result?`<span class="st done">${e.result}${vorlText(e)}</span>`:`<span class="st up">Abgebrochen</span>`;
+  return e.result?`<span class="st done">${siegerText(e)}${vorlText(e)}</span>`:`<span class="st up">Abgebrochen</span>`;
 }
 /* Kalender-Abos: apex-2026.ics (alle Serien) und kalender/<serie>.ics erzeugt das Prüfskript.
    webcal:// öffnet den Abo-Dialog der Kalender-App; „Link kopieren“ für Kalender, die eine Adresse brauchen. */
 function aboUrl(datei){return location.href.split("#")[0].split("?")[0].replace(/[^/]*$/,"")+datei;}
-function aboHTML(datei,text){
+/* seite: Ordner der Serienseite – daneben der Link „Zur Serienseite“ */
+function aboHTML(datei,text,seite){
   const url=aboUrl(datei);
   return `<div class="abo"><a class="abo-a" href="${esc(url.replace(/^https?:/,"webcal:"))}">＋ ${esc(text)}</a>`+
-    `<button class="abo-k" onclick="kopieren('${esc(url)}')">Link kopieren</button></div>`;
+    `<button class="abo-k" onclick="kopieren('${esc(url)}')">Link kopieren</button>`+
+    (seite?`<a class="abo-a abo-s" href="${ordnerHref(seite+"/")}">Zur Serienseite <span aria-hidden="true">→</span></a>`:"")+`</div>`;
 }
 /* Ergebnis einer gefahrenen Runde im Serien-Tab: alle Listen des Events (bei mehreren mit Überschrift).
    Geladen wird wie in der Zeitleiste erst beim Aufklappen. */
@@ -1429,11 +1505,13 @@ function serErgebnis(sk,rd,sz){
 }
 function renderSeries(){
   const host=document.getElementById("view-series"); if(!host)return;let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
+  /* Übersicht aller Serienseiten */
+  if(Object.keys(SERIES).length)html+=`<a class="abo-box ueb-box" href="${ordnerHref("serien/")}"><b>Alle Serien im Überblick</b> <span aria-hidden="true">→</span><span class="ueb-t">Je Serie eine eigene Seite mit Kalender, Startzeiten, Wertung, Sendern und Regeln</span></a>`;
   if(Object.keys(SERIES).length)html+=`<div class="abo-box"><p><b>Kalender-Abo</b> · Alle Sessions in deutscher Zeit direkt im eigenen Kalender – aktualisiert sich selbst. Für alle Serien oder unten je Serie.</p>${aboHTML("apex-2026.ics","Alle Serien abonnieren")}</div>`;
   const leer=termineFehlen(SEASON)?"Termine gerade nicht verfügbar":`Kalender ${SEASON} noch nicht veröffentlicht`;
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
-    const abo=aboHTML("kalender/"+sk+".ics","Kalender abonnieren");
+    const abo=aboHTML("kalender/"+sk+".ics","Termine abonnieren",S0.seite);
     if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div><div class="ser-meta">${leer}</div>${abo}</div>`;return;}
     /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
     const lauf=evs.filter(e=>!e.sonder);
@@ -1630,27 +1708,38 @@ function renderStandings(){
 /* ═══════ KOPFBEREICH ═══════
    Der Kopf klebt oben (position:sticky) mit negativem top: Beim Scrollen gleitet die große
    Logozeile nach oben, bis nur noch ein schmales Band übrig ist. Logo und Jahresumschalter
-   wandern dabei in dieses Band, das Logo schrumpft. Schmal: Beschriftung und Datumszeile
-   blenden aus (gehören nicht in den festen Bereich). Breit: alles bleibt sichtbar.
+   wandern dabei in dieses Band, das Logo schrumpft. Beschriftung und Datumszeile blenden aus
+   (gehören nicht in den festen Bereich); der Hinweis „vorläufiger Kalender“ bleibt sichtbar.
+   Die Höhe des Bands ergibt sich aus dem gemessenen Inhalt (Logo, Jahreszahl, Hinweis) plus
+   Abstand oben und unten – nichts wird abgeschnitten, der Kopf wird aber nicht höher als nötig.
+   Breit bleibt alles bis zum Serienfilter stehen, schmal die Logozeile, Tabs und Filter.
    Nur transform/opacity – die Höhe des Kopfes ändert sich beim Scrollen nicht. */
 const KOMPAKT_MQ=(typeof window!=="undefined"&&window.matchMedia)?window.matchMedia("(max-width: 899px), (max-height: 599px)"):null;
 function istKompakt(){return !!(KOMPAKT_MQ&&KOMPAKT_MQ.matches);}
 const KOPF={D:0,dyLogo:0,sLogo:1,dyR:0,p:-1,fest:0};
+const KOPF_LUFT=8;                  /* Abstand im Band zum oberen Fensterrand und zur Linie darunter */
 function kopfMessen(){
   const kopf=document.getElementById("kopf"); if(!kopf||!kopf.querySelector)return;
   const mast=kopf.querySelector(".mast"), logo=mast&&mast.querySelector("h1"), rechts=mast&&mast.querySelector(".mast-r"), ss=document.getElementById("season");
   if(!mast||!logo||!rechts||!ss||!(mast.offsetHeight>0))return;
   const kompakt=istKompakt();
-  const band=kompakt?40:60, rand=3;                 /* Höhe der festen Logozeile inkl. Linie */
-  const mh=mast.offsetHeight, D=Math.max(0,mh-band);
-  const mitte=D+(band-rand)/2;
+  const rand=3, zielLogo=kompakt?26:40;   /* Linie unter der Logozeile; sichtbare Höhe des Logos im Band */
   /* Lage ohne Verschiebung messen (relativ zur Oberkante der Logozeile) */
   logo.style.transform=""; rechts.style.transform="";
   const m0=mast.getBoundingClientRect().top, lr=logo.getBoundingClientRect();
-  const zr=(kompakt?ss:rechts).getBoundingClientRect(); /* schmal: nur der Jahresumschalter bleibt */
-  const lh=lr.height, s=Math.min(1,(band-rand-8)/lh);
-  KOPF.D=D; KOPF.sLogo=s; KOPF.dyLogo=mitte-(lr.top-m0)-lh*s/2;
-  KOPF.dyR=mitte-(zr.top-m0)-zr.height/2;
+  /* Umfang mehrerer Elemente (gedrehte Buchstaben ragen über das h1 hinaus) */
+  const umfang=els=>els.filter(Boolean).map(el=>el.getBoundingClientRect()).filter(r=>r.height>0)
+    .reduce((u,r)=>u?{top:Math.min(u.top,r.top),bottom:Math.max(u.bottom,r.bottom)}:{top:r.top,bottom:r.bottom},null);
+  const lv=umfang([...logo.querySelectorAll(".mk-word i,.mk-line")])||{top:lr.top,bottom:lr.bottom};
+  /* Im Band bleiben Jahreszahl (mit Pfeilen) und in vorläufigen Saisons der Hinweis darunter */
+  const rv=umfang([ss.querySelector(".ss-yr"),ss.querySelector(".ss-prov")])||ss.getBoundingClientRect();
+  const lh=lv.bottom-lv.top, rh=rv.bottom-rv.top, s=Math.min(1,zielLogo/lh);
+  const band=Math.ceil(rand+2*KOPF_LUFT+Math.max(lh*s,rh));  /* Höhe der festen Logozeile inkl. Linie */
+  const mh=mast.offsetHeight, D=Math.max(0,mh-band);
+  const mitte=D+(band-rand)/2;
+  /* Logo skaliert von seiner linken oberen Ecke aus; die Mitte seines sichtbaren Umfangs kommt auf die Bandmitte */
+  KOPF.D=D; KOPF.sLogo=s; KOPF.dyLogo=mitte-(lr.top-m0)-((lv.top-lr.top)+lh/2)*s;
+  KOPF.dyR=mitte-(rv.top-m0)-rh/2;
   KOPF.kompakt=kompakt; KOPF.p=-1;
   kopf.style.top=(-D)+"px";
   KOPF.fest=kopf.offsetHeight-D;                     /* Höhe des festen Teils */
@@ -1664,7 +1753,7 @@ function kopfScroll(){
   const mast=kopf.querySelector(".mast"), logo=mast.querySelector("h1"), rechts=mast.querySelector(".mast-r");
   logo.style.transform=`translateY(${(KOPF.dyLogo*p).toFixed(2)}px) scale(${(1-(1-KOPF.sLogo)*p).toFixed(4)})`;
   rechts.style.transform=`translateY(${(KOPF.dyR*p).toFixed(2)}px)`;
-  const aus=KOPF.kompakt?Math.min(1,p*2):0;
+  const aus=Math.min(1,p*2);
   mast.querySelectorAll(".mast-lab,.mast-z2").forEach(el=>{el.style.opacity=String(1-aus);el.style.visibility=aus>=1?"hidden":"";});
 }
 let KOPF_RAF=0;
@@ -1688,6 +1777,7 @@ function setView(v){currentView=v;FILTER_OFFEN=null;
   document.querySelectorAll(".view").forEach(x=>x.classList.remove("on"));
   document.getElementById("view-"+v).classList.add("on");
   renderFilter();renderToolbar();rerender();try{history.replaceState(null,"","#v="+v);}catch(err){}
+  kopfMessen();   /* Filterleiste ein/aus ändert die Kopfhöhe – vor dem Sprung messen */
   if(v==="upcoming")zumStart(); else scrollen(0,false);
   updateJumpBtn();}
 
@@ -1743,7 +1833,8 @@ function renderWeekend(){
 }
 
 /* ═══════ DEEP-LINKS ═══════ */
-function gotoEvent(sk,rd,sz,sofort){
+/* si: Index einer Session – sie wird statt des ganzen Events hervorgehoben und ins Bild geholt */
+function gotoEvent(sk,rd,sz,sofort,si){
   const e=findEv(sk,rd,sz); if(!e)return;
   if(evYear(e)!==SEASON){SEASON=evYear(e);renderSeason();renderTimeline();}
   if(currentView!=="upcoming")setView("upcoming");
@@ -1756,11 +1847,19 @@ function gotoEvent(sk,rd,sz,sofort){
     el=document.getElementById("ev-"+evDomId(e));
   }
   if(el){klappen(el,true);
-    const w=el.closest(".wknd")||el;
+    const w=el.closest(".wknd")||el, sess=si!=null?document.getElementById("s-"+evDomId(e)+"-s"+si):null;
+    if(sess){
+      /* Oberkante des Events knapp unter den festen Kopf; läge die Session dann unter dem Fensterrand, weiter bis zu ihr */
+      const y0=window.scrollY||0, oben=(KOPF.fest||0)+12, r=sess.getBoundingClientRect();
+      let y=w.getBoundingClientRect().top+y0-oben;
+      if(r.bottom+y0-y>window.innerHeight-24)y=r.top+y0-oben-40;
+      scrollen(Math.max(0,y),sofort!==true);
+    }
     /* Oberkante knapp unter den festen Kopf (scroll-padding-top) */
-    if(sofort===true)ohneAnimation(()=>{try{w.scrollIntoView({behavior:"instant",block:"start"});}catch(err){w.scrollIntoView(true);}});
+    else if(sofort===true)ohneAnimation(()=>{try{w.scrollIntoView({behavior:"instant",block:"start"});}catch(err){w.scrollIntoView(true);}});
     else w.scrollIntoView({behavior:"smooth",block:"start"});
-    el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}
+    const hl=sess||el; document.querySelectorAll("#view-upcoming .flash").forEach(x=>x.classList.remove("flash"));
+    void hl.offsetWidth; hl.classList.add("flash");}
   try{history.replaceState(null,"","#ev="+sk+"-"+rd+(sz?"-"+sz:""));}catch(err){}
 }
 /* Teilen: Handy (Touch) → System-Teilen-Menü mit dem Event-Link; sonst oder wenn das nicht geht:
@@ -1910,10 +2009,12 @@ function renderDatenstand(){
   const d=new Date(DATEN_STAND);
   el.textContent=" · Stand "+d.getDate()+". "+MON[d.getMonth()]+" "+d.getFullYear();
 }
+/* Feste Verweise auf Seitenordner (Fußzeile): in der Vorschau ohne Ordneradressen mit index.html */
+function ordnerLinks(){document.querySelectorAll("a.ordner").forEach(a=>a.setAttribute("href",ordnerHref(a.getAttribute("href"))));}
 function start(){
   BEREIT=true;
   filterLaden(); nurSerieLaden(); spoilerLaden();
-  [renderDatenstand,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
+  [ordnerLinks,renderDatenstand,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});

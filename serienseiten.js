@@ -130,7 +130,8 @@
   const linie = D && D.linien ? (D.linien.find((l) => l.ev.some((x) => x[0] === NEXT)) || D.linien.find((l) => l.key === D.linie)) : null;
   function zeichnen() {
     const svg = $("#linesvg"); if (!svg || !linie) return;
-    const W = svg.clientWidth || 600, H = 118, padX = 10, top = 22, bot = 92, E = linie.ev, n = E.length;
+    /* top: Platz über dem Scheitelpunkt für den Ortsnamen (steht über dem Ring, ohne ihn zu berühren) */
+    const W = svg.clientWidth || 600, H = 118, padX = 10, top = 34, bot = 94, E = linie.ev, n = E.length;
     const ni = E.findIndex((x) => x[0] === NEXT);
     const lastDone = E.reduce((a, x, i) => (x[2] === "d" ? i : a), -1);
     const xs = E.map((_, i) => padX + (i * (W - 2 * padX)) / Math.max(1, n - 1));
@@ -150,10 +151,20 @@
       else c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="var(--bg)" stroke="var(--paper)" stroke-width="1.5"/>`;
       h += `<g class="dot" tabindex="0" role="button" data-i="${i}" aria-label="${esc(x[1])}"><circle cx="${cx}" cy="${cy}" r="14" fill="transparent"/>${c}</g>`;
     });
-    if (ni >= 0) h += `<text class="lbl gold" x="${xs[ni]}" y="${top - 12}" text-anchor="middle">${esc(E[ni][3])}</text>`;
+    if (ni >= 0) h += `<text class="lbl gold" id="linelbl" x="${xs[ni]}" y="${top - 21}" text-anchor="middle">${esc(E[ni][3])}</text>`;
     h += `<text class="lbl" x="${xs[0]}" y="${H - 4}" text-anchor="start">${esc(E[0][4])}</text>`;
     h += `<text class="lbl" x="${xs[n - 1]}" y="${H - 4}" text-anchor="end">${esc(E[n - 1][4])}</text>`;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.setAttribute("aria-label", linie.aria); svg.innerHTML = h;
+    /* Ortsname: Unterkante 4 px über dem Ring (Radius 13 + halbe Linienstärke), am Rand ganz im Bild */
+    const lbl = $("#linelbl", svg);
+    if (lbl && lbl.getBBox) {
+      const b = lbl.getBBox();
+      if (b.width) {
+        lbl.setAttribute("y", (+lbl.getAttribute("y") + (top - 13 - 1.25 - 4) - (b.y + b.height)).toFixed(1));
+        const links = b.x < 0 ? -b.x : 0, rechts = b.x + b.width > W ? b.x + b.width - W : 0;
+        if (links || rechts) lbl.setAttribute("x", (xs[ni] + links - rechts).toFixed(1));
+      }
+    }
     const tip = $("#tip");
     svg.querySelectorAll(".dot").forEach((g) => {
       const x = E[+g.dataset.i];
@@ -238,13 +249,14 @@
       $$(".wtag", woche).forEach((t) => { const h = $(".wheute", t); if (h) h.hidden = t.dataset.tag !== heute; });
     }
     /* Serienfilter wie in der App, aber nur mit den Serien des gezeigten Wochenendes: bis 4 Serien einzelne
-       Knöpfe, ab 5 Gruppenknöpfe mit Pfeil zum Aufklappen. Gleicher Speicher wie die App („apex_filter“,
-       {kürzel: an/aus}); ohne gespeicherte Auswahl die Standardwerte der App (Rahmenserien aus). */
+       Knöpfe, ab 5 Gruppenknöpfe – Tippen klappt die Auswahl der Gruppe auf (oben „Alle …-Serien“, darunter
+       die einzelnen Serien). Gleicher Speicher wie die App („apex_filter“, {kürzel: an/aus}); ohne gespeicherte
+       Auswahl die Standardwerte der App (Rahmenserien aus). */
     const FILTER = "apex_filter";
     const DAT = (() => { try { return JSON.parse($("#apex-woche").textContent); } catch (e) { return {}; } })();
     const SER = DAT.serien || {}, GRP = DAT.gruppen || {}, ALLE = Object.keys(SER), AKTIV = new Set();
     const leiste = $("#wfilter");
-    let offen = null, filterWoche;
+    let offen = null, gezeigtOffen = null, filterWoche;
     function filterLaden() {
       let alt = null; try { alt = JSON.parse(localStorage.getItem(FILTER) || "null"); } catch (e) { alt = null; }
       if (!alt || typeof alt !== "object" || Array.isArray(alt)) alt = {};
@@ -264,12 +276,14 @@
     }
     const knopf = (sk) => { const S = SER[sk], an = AKTIV.has(sk);
       return `<button class="wf-chip${an ? "" : " aus"}" type="button" data-serie="${sk}" aria-pressed="${an}" title="${escH(S.name)}"><i style="background:${S.color}"></i><span class="wf-l">${escH(S.name)}</span><span class="wf-s">${escH(S.short)}</span></button>`; };
+    /* „Formel-Serien“, „Sportwagen- & GT-Serien“ (wie „Weitere … -Serien“ auf den Serienseiten) */
+    const gruppenWort = (x) => (x.g === "weitere" ? "weiteren Serien" : x.name.split(" & ").map((w) => w + "-").join(" & ") + "Serien");
     /* Knöpfe werden neu gezeichnet – der Tastaturfokus wandert auf den neuen Knopf an gleicher Stelle */
     const fokusWahl = (el) => el.dataset.serie ? `.wf-chip[data-serie="${el.dataset.serie}"]`
-      : el.closest(".wf-grp") ? `.wf-grp[data-g="${el.closest(".wf-grp").dataset.g}"] .${el.classList.contains("wf-pfeil") ? "wf-pfeil" : "wf-an"}` : null;
+      : el.classList.contains("wf-alle") ? ".wf-alle" : el.closest(".wf-grp") ? `.wf-grp[data-g="${el.closest(".wf-grp").dataset.g}"] .wf-an` : null;
     function filterZeichnen() {
       if (!leiste) return;
-      const sks = wochenSerien(), f = document.activeElement;
+      const sks = wochenSerien(), f = document.activeElement, war = gezeigtOffen;
       const fokus = f && f !== document.body && leiste.contains(f) ? fokusWahl(f) : null;
       leiste.hidden = !sks.length;
       let h = "";
@@ -279,33 +293,37 @@
         if (offen && !gl.some((x) => x.g === offen)) offen = null;
         h = `<div class="wf-leiste wf-gruppen">` + gl.map((x) => {
           const an = x.sks.filter((sk) => AKTIV.has(sk)).length, n = x.sks.length, st = !an ? "aus" : an < n ? "teil" : "an", auf = offen === x.g;
+          /* Auswahl direkt hinter ihrem Knopf (Tab-Reihenfolge); sie liegt unter der ganzen Leiste */
           return `<div class="wf-grp ${st}${auf ? " offen" : ""}" data-g="${x.g}"${x.farbe ? ` style="--gf:${x.farbe}"` : ""}>` +
-            `<button class="wf-an" type="button" aria-pressed="${st === "an" ? "true" : st === "teil" ? "mixed" : "false"}" title="${escH(x.name)}"><span class="wf-l">${escH(x.name)}</span><span class="wf-s">${escH(x.short)}</span></button>` +
-            (st === "teil" ? `<span class="wf-z">${an}/${n}</span>` : "") +
-            `<button class="wf-pfeil" type="button" aria-expanded="${auf}"${auf ? ' aria-controls="wf-panel"' : ""} aria-label="Serien der Gruppe ${escH(x.name)} einzeln auswählen"><span aria-hidden="true">▾</span></button></div>`;
+            `<button class="wf-an" type="button" aria-expanded="${auf}"${auf ? ' aria-controls="wf-panel"' : ""} aria-label="${escH(x.name)}: ${an} von ${n} Serien ausgewählt" title="${escH(x.name)}"><span class="wf-l">${escH(x.name)}</span><span class="wf-s">${escH(x.short)}</span><span class="wf-pf" aria-hidden="true">▾</span></button>` +
+            (st === "teil" ? `<span class="wf-z" aria-hidden="true">${an}/${n}</span>` : "") + `</div>` +
+            (auf ? `<div class="wf-panel" id="wf-panel" role="group" aria-label="${escH(x.name)}">` +
+              `<button class="switch wf-alle" type="button" role="switch" aria-checked="${an === n}"><span class="track"></span>Alle ${escH(gruppenWort(x))}</button>` +
+              `<div class="wf-chips">${x.sks.map(knopf).join("")}</div></div>` : "");
         }).join("") + "</div>";
-        const g = gl.find((x) => x.g === offen);
-        if (g) h += `<div class="wf-panel" id="wf-panel" role="group" aria-label="${escH(g.name)}">${g.sks.map(knopf).join("")}</div>`;
       } else offen = null;
-      leiste.innerHTML = h;
-      const neu = fokus && $(fokus, leiste); if (neu) neu.focus({ preventScroll: true });
+      leiste.innerHTML = h; gezeigtOffen = offen;
+      /* Fokus zurück; lag er in der gerade geschlossenen Auswahl, auf den Gruppenknopf */
+      const neu = fokus && ($(fokus, leiste) || (war && $(`.wf-grp[data-g="${war}"] .wf-an`, leiste))); if (neu) neu.focus({ preventScroll: true });
     }
     /* wie toggleSeries()/toggleGruppe() der App: mindestens eine Serie bleibt ausgewählt */
-    function serieUmschalten(sk) { if (AKTIV.has(sk)) { if (AKTIV.size > 1) AKTIV.delete(sk); } else AKTIV.add(sk); geaendert(); }
+    const MIND_EINE = "Mindestens eine Serie bleibt ausgewählt";
+    function serieUmschalten(sk) { if (AKTIV.has(sk)) { if (AKTIV.size <= 1) { hinweis(MIND_EINE); return; } AKTIV.delete(sk); } else AKTIV.add(sk); geaendert(); }
+    /* Schalter „Alle …-Serien“: sind alle Serien der Gruppe an, gehen alle aus – sonst alle an */
     function gruppeUmschalten(g) {
       const x = gruppenDerWoche(wochenSerien()).find((y) => y.g === g); if (!x) return;
-      if (x.sks.some((sk) => AKTIV.has(sk))) { if (x.sks.filter((sk) => AKTIV.has(sk)).length >= AKTIV.size) return; x.sks.forEach((sk) => AKTIV.delete(sk)); }
+      if (x.sks.every((sk) => AKTIV.has(sk))) { if (x.sks.length >= AKTIV.size) { hinweis(MIND_EINE); return; } x.sks.forEach((sk) => AKTIV.delete(sk)); }
       else x.sks.forEach((sk) => AKTIV.add(sk));
       geaendert();
     }
     function geaendert() { filterSpeichern(); filterZeichnen(); filtern(); }
     if (leiste) leiste.addEventListener("click", (ev) => {
-      const chip = ev.target.closest(".wf-chip"), an = ev.target.closest(".wf-an"), pf = ev.target.closest(".wf-pfeil");
+      const chip = ev.target.closest(".wf-chip"), alle = ev.target.closest(".wf-alle"), an = ev.target.closest(".wf-an");
       if (chip) serieUmschalten(chip.dataset.serie);
-      else if (an) gruppeUmschalten(an.closest(".wf-grp").dataset.g);
-      else if (pf) { const g = pf.closest(".wf-grp").dataset.g; offen = offen === g ? null : g; filterZeichnen(); }
+      else if (alle) gruppeUmschalten(offen);
+      else if (an) { const g = an.closest(".wf-grp").dataset.g; offen = offen === g ? null : g; filterZeichnen(); }
     });
-    /* Aufgeklappte Feinauswahl schließen: Tippen außerhalb des Filters oder Esc (wie in der App) */
+    /* Auswahl schließen: nochmals Tippen auf den Gruppenknopf (oben), Tippen außerhalb des Filters oder Esc (wie in der App) */
     document.addEventListener("click", (ev) => { if (offen && leiste && !leiste.contains(ev.target)) { offen = null; filterZeichnen(); } }, true);
     document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && offen) { offen = null; filterZeichnen(); } });
     /* Auswahl aus der App übernehmen: anderer Tab (storage) oder Rückkehr aus dem Browser-Zwischenspeicher */

@@ -6,6 +6,7 @@
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2")}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2")}
 :root{
+  /* Text mindestens --muted (5,2:1 auf --bg); --faint (2,3:1) nur für Linien, Punkte und Deko */
   --bg:#141210; --bg2:#1b1916; --bg3:#221f1b; --paper:#ece7dd; --muted:#8d8678; --faint:#55504a;
   --rule:#302e2b; --gold:#d8a84b; --serie:#ff3000;
   --display:"Anton",Impact,"Arial Narrow",sans-serif;
@@ -144,7 +145,7 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;m
 .gp:focus-visible{outline:none}
 .gp:focus-visible::after{outline:2px solid var(--gold);outline-offset:-2px;border-radius:4px}
 .rh:hover .gp{text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
-.rd{font:500 12.5px var(--mono);color:var(--faint);text-align:right}
+.rd{font:500 12.5px var(--mono);color:var(--muted);text-align:right}
 .when{font-family:var(--display);font-size:20px;line-height:1;letter-spacing:.01em}
 .when small{display:block;font-family:var(--text);font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:0}
 .what{min-width:0}
@@ -155,17 +156,18 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;m
 .start small{display:block;font:12px var(--text);color:var(--muted);margin-top:2px}
 .start small.i{display:inline;margin:0 0 0 5px}
 /* Der Pfeil fängt keine Klicks ab: gedreht (offen) läge er sonst über der Klickfläche des Knopfs und klappte nicht mehr zu */
-.chev{color:var(--faint);transition:transform .15s;font-size:12px;pointer-events:none}
+.chev{color:var(--muted);transition:transform .15s;font-size:12px;pointer-events:none}
 .race.open .chev{transform:rotate(90deg)}
 .race.past .when,.race.past .gp{color:#b8b1a4}
-.race.past .rd{color:var(--faint)}
+.race.past .rd{color:var(--muted)}
 .win{display:block;font-size:13px;color:var(--muted);margin-top:3px}
 .win b{color:var(--paper);font-weight:500}
+.win .nw{white-space:nowrap}
 .vorl{font-size:11px;border:1px solid currentColor;border-radius:3px;padding:0 4px;margin-left:4px;white-space:nowrap}
 .reveal{display:none;position:relative;z-index:1;background:none;border:0;padding:0;color:var(--gold);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;margin-top:3px}
 .race.cancel .gp{text-decoration:line-through;text-decoration-color:var(--faint);color:var(--muted)}
-.race.cancel .when{color:var(--faint)}
-.race.cancel .start{color:var(--faint);font-family:var(--text);font-size:13px}
+.race.cancel .when{color:var(--muted)}
+.race.cancel .start{color:var(--muted);font-family:var(--text);font-size:13px}
 .race.next{background:linear-gradient(90deg,rgba(216,168,75,.08),transparent 60%)}
 .race.next .rh{box-shadow:inset 3px 0 0 var(--gold)}
 .race.next .rd{color:var(--gold)}
@@ -270,6 +272,11 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .snext{margin-top:auto;padding-top:8px;font-size:13px;color:var(--muted);line-height:1.45}
 .snext b{display:block;color:var(--gold);font-weight:500}
 .hero+.subnav{margin-top:26px}
+/* Reiter der Gruppen: am Handy Kurzname wie im Filter („Sportwagen“), damit alle ohne seitliches Scrollen passen */
+.subnav .gs{display:none}
+@media (max-width:560px){.subnav .gl{display:none}.subnav .gs{display:inline}}
+@media (max-width:380px){.subnav a{padding-left:9px;padding-right:9px}}
+@media (max-width:340px){.subnav a{padding-left:6px;padding-right:6px;font-size:13px}}
 @media (min-width:1000px){.hero+.subnav{margin-top:30px}}
 
 /* Serienübersicht: Verweis auf „Dieses Wochenende“ */
@@ -287,7 +294,7 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .wleer b{color:var(--paper);font-weight:600}
 .wschalter{display:flex;flex-wrap:wrap;gap:6px 24px;margin:14px 0 0}
 .ohnetraining .wsl li.training{display:none}
-/* Serienfilter (wie in der App): bis 4 Serien einzelne Knöpfe, sonst Gruppen mit Pfeil zum Aufklappen */
+/* Serienfilter (wie in der App): bis 4 Serien einzelne Knöpfe, sonst Gruppenknöpfe – Tippen klappt die Auswahl auf */
 .wfilter{position:relative;margin:22px 0 0}
 .wf-leiste{display:flex;flex-wrap:wrap;gap:8px}
 .wf-chip{display:inline-flex;align-items:center;gap:8px;min-height:36px;background:var(--bg2);border:1px solid var(--rule);border-radius:999px;padding:6px 14px 6px 12px;cursor:pointer;font-size:14px;color:var(--paper);white-space:nowrap}
@@ -297,32 +304,32 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .wf-chip.aus i{filter:grayscale(1) brightness(.7)}
 .wf-s{display:none}
 .wf-grp{position:relative;display:inline-flex;align-items:stretch;min-width:0;border:1px solid var(--rule);border-color:color-mix(in srgb,var(--gf,#ece7dd) 60%,transparent);border-radius:999px}
-.wf-an{display:inline-flex;align-items:center;gap:8px;min-width:0;min-height:36px;background:none;border:0;padding:0 2px 0 14px;font-size:13.5px;font-weight:600;color:var(--paper);cursor:pointer;white-space:nowrap}
+.wf-an{display:inline-flex;align-items:center;gap:8px;min-width:0;min-height:36px;background:none;border:0;border-radius:999px;padding:0 14px;font-size:13.5px;font-weight:600;color:var(--paper);cursor:pointer;white-space:nowrap}
 .wf-an::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gf,var(--muted));flex:none}
-.wf-an span{overflow:hidden;text-overflow:ellipsis}
+.wf-an .wf-l,.wf-an .wf-s{overflow:hidden;text-overflow:ellipsis}
 .wf-z{position:absolute;top:-9px;right:10px;font:600 9.5px/1 var(--mono);padding:2px 5px;border-radius:999px;background:var(--gf,var(--paper));color:#141210;pointer-events:none}
-.wf-pfeil{display:flex;align-items:center;justify-content:center;width:34px;flex:none;background:none;border:0;border-radius:0 999px 999px 0;color:var(--muted);cursor:pointer}
-.wf-pfeil span{display:inline-block;font-size:12px;transition:transform .2s;pointer-events:none}
-.wf-an:hover,.wf-pfeil:hover{color:var(--paper)}
+.wf-pf{display:inline-block;flex:none;margin-left:-2px;font-size:12px;color:var(--muted);transition:transform .2s,color .15s}
+.wf-an:hover .wf-pf{color:var(--paper)}
 .wf-grp.offen{border-color:var(--paper)}
-.wf-grp.offen .wf-pfeil{color:var(--gold)}
-.wf-grp.offen .wf-pfeil span{transform:rotate(180deg)}
+.wf-grp.offen .wf-pf{color:var(--gold);transform:rotate(180deg)}
 .wf-grp.aus{border-color:var(--rule)}
 .wf-grp.aus .wf-an{color:var(--muted);opacity:.55}
 .wf-grp.aus .wf-an::before{filter:grayscale(1) brightness(.7)}
-.wf-panel{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:25;display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--bg2);border:1px solid var(--rule);border-radius:10px;box-shadow:0 14px 34px rgba(0,0,0,.55)}
+.wf-panel{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:25;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:12px;background:var(--bg2);border:1px solid var(--rule);border-radius:10px;box-shadow:0 14px 34px rgba(0,0,0,.55)}
+.wf-chips{display:flex;flex-wrap:wrap;gap:8px}
+/* Schalter „Alle …-Serien“: an = alle Serien der Gruppe an, aus = alle aus */
+.wf-alle{font-weight:600}
 @media (max-width:640px){
   .wf-chip{font-size:13px;padding:5px 12px 5px 10px;min-height:34px}
   .wf-chip .wf-l{display:none}.wf-chip .wf-s{display:inline}
   .wf-gruppen{flex-wrap:nowrap;gap:5px}
   .wf-grp{flex:1 1 auto}
-  .wf-an{flex:1 1 auto;justify-content:center;gap:0;padding:0 0 0 7px;font-size:11px;min-height:34px}
+  .wf-an{flex:1 1 auto;justify-content:center;gap:5px;padding:0 7px;font-size:11px;min-height:34px}
   .wf-an::before{display:none}
   .wf-an .wf-l{display:none}.wf-an .wf-s{display:inline}
-  .wf-pfeil{width:19px}
   .wf-z{right:4px}
 }
-@media (max-width:359px){.wf-an{font-size:10px;padding-left:5px}.wf-pfeil{width:16px}.wf-gruppen{gap:4px}}
+@media (max-width:359px){.wf-an{font-size:10px;gap:3px;padding:0 5px}.wf-gruppen{gap:4px}}
 .wk .sechead{margin-top:30px}
 @media (min-width:1000px){
   .wk{display:grid;grid-template-columns:minmax(0,1fr) 340px;column-gap:48px;align-items:start}
@@ -359,6 +366,8 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .wsi b{font-weight:500}
 .wsi>span{display:block;font-size:13px;color:var(--muted);margin-top:1px}
 .wsl li.race a{background:linear-gradient(90deg,rgba(216,168,75,.08),transparent 60%);box-shadow:inset 3px 0 0 var(--gold)}
+/* Uhrzeit nicht direkt am goldenen Balken (wie am Handy); Spalten bleiben mit den übrigen Zeilen bündig */
+.wsl li.race a{padding-left:8px;grid-template-columns:72px 92px minmax(0,1fr)}
 .wsl li.race .wsi b{font-weight:700}
 .wsl li.race .wzt{font-weight:600}
 .wsl li.vorbei{opacity:.45}
@@ -368,7 +377,7 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 @media (max-width:560px){
   .wsl a{grid-template-columns:62px minmax(0,1fr);grid-template-areas:"zt sk" "zt si";column-gap:12px;row-gap:1px}
   .wzt{grid-area:zt}.wsl .wsk{grid-area:sk}.wsi{grid-area:si}
-  .wsl li.race a{padding-left:8px}
+  .wsl li.race a{grid-template-columns:62px minmax(0,1fr)}
 }
 .wtv{display:grid;column-gap:36px}
 @media (min-width:760px){.wtv{grid-template-columns:1fr 1fr}}
