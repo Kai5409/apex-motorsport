@@ -279,8 +279,8 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 @media (max-width:340px){.subnav a{padding-left:6px;padding-right:6px;font-size:13px}}
 @media (min-width:1000px){.hero+.subnav{margin-top:30px}}
 
-/* Serienübersicht: Verweis auf „Dieses Wochenende“ */
-.wlink{margin:18px 0 0}
+/* Serienübersicht: Verweise auf „Dieses Wochenende“ und „In der Nähe“ */
+.wlink{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
 .wlink a{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;border:1px solid var(--rule);border-left:3px solid var(--gold);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--muted);text-decoration:none}
 .wlink a:hover{border-color:var(--muted);border-left-color:var(--gold)}
 .wlink b{color:var(--paper);font-weight:600}
@@ -389,3 +389,108 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .wtvb .tvl+.tvtext{margin-top:2px}
 .wtvb .tvl{margin-top:10px}
 .wtvb .tvnote{font-size:12.5px;margin-top:6px}
+
+/* In der Nähe (Karte): am PC Steuerung oben, darunter Karte | Liste; am Handy Ort – Karte – Filter – Liste */
+.wrap.nah{max-width:1240px;padding-bottom:8px;
+  --meer:#121110; --land:#1d1a17; --land-dach:#27231e; --kueste:#3b3631; --grenze:#3a3530; --netz:#1a1816}
+.nah input{font:inherit;color:inherit}
+.nah .hero{padding:14px 0 0}
+.nah h1{font-size:clamp(40px,8vw,78px);text-wrap:balance}
+.nah .lead{max-width:44ch}
+.nah footer{margin:48px 0 0;padding:20px 0 34px}
+.nah footer p{max-width:80ch}
+.nah .steuer{display:flex;flex-wrap:wrap;align-items:flex-end;gap:18px 28px;grid-column:1/-1}
+.nah .ortwahl{flex:1 1 300px;max-width:420px;min-width:0}
+.nah .lab{display:block;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
+.nah .suche{position:relative}
+.nah .suche input{width:100%;background:var(--bg2);border:1px solid var(--rule);border-radius:999px;padding:11px 42px 11px 40px;font-size:15px;outline:none}
+.nah .suche input:focus{border-color:var(--gold)}
+.nah .suche input::placeholder{color:var(--muted)}
+.nah .suche svg{position:absolute;left:14px;top:50%;width:16px;height:16px;transform:translateY(-50%);color:var(--gold);pointer-events:none}
+.nah .suche .weg{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;border-radius:50%;background:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1}
+.nah .suche .weg:hover{color:var(--paper)}
+.nah #vorschlaege{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:var(--bg3);border:1px solid var(--rule);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.45);max-height:300px;overflow:auto}
+.nah #vorschlaege li{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:6px;cursor:pointer}
+.nah #vorschlaege li small{font:12px var(--mono);color:var(--muted)}
+.nah #vorschlaege li[aria-selected="true"],.nah #vorschlaege li:hover{background:var(--bg2);color:var(--gold)}
+.nah .hinweis{margin:0;font-size:13px;color:var(--muted)}
+.nah .hinweis b{color:var(--paper);font-weight:500}
+.nah .ortzeile{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:9px 0 0 2px}
+.nah .ortbtn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--rule);background:var(--bg2);border-radius:999px;padding:7px 13px 7px 11px;font-size:13.5px;cursor:pointer;white-space:nowrap}
+.nah .ortbtn svg{width:15px;height:15px;color:var(--gold)}
+.nah .ortbtn:hover{border-color:var(--muted)}
+.nah .ortbtn[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
+.nah .filter{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:flex-end}
+.nah .zr{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;background:var(--bg2)}
+.nah .zr button{border:0;background:none;border-radius:999px;padding:7px 13px;font-size:13.5px;color:var(--muted);cursor:pointer;white-space:nowrap}
+.nah .zr button[aria-checked="true"]{background:var(--paper);color:var(--bg);font-weight:600}
+.nah .filter .wfilter{margin:0;min-width:0}
+.nah .bereich{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-top:24px}
+@media (min-width:980px){
+  .nah .bereich{grid-template-columns:minmax(0,1fr) minmax(320px,390px);align-items:start;column-gap:30px}
+  .nah .kartenspalte{position:sticky;top:14px}
+}
+@media (max-width:979px){
+  .nah .steuer{display:contents}
+  .nah .ortwahl{order:1;max-width:none}.nah .kartenspalte{order:2}.nah .filter{order:3}.nah .liste{order:4;margin-top:8px}
+  .nah .filter{width:100%}.nah .filter>div{min-width:0;width:100%}
+}
+.nah .karte{position:relative;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--meer);aspect-ratio:1000/860;max-width:100%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+@media (max-width:700px){.nah .karte{aspect-ratio:1/1.02}}
+.nah .karte.gezoomt{touch-action:none}
+.nah .karte>svg{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:default}
+.nah .karte.gezoomt>svg{cursor:grab}
+.nah .karte.waehlen{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.nah .karte.waehlen>svg{cursor:crosshair}
+.nah .karte.zieht>svg{cursor:grabbing}
+.nah .wahl{position:absolute;left:10px;right:56px;top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 8px 9px 14px;border-radius:8px;background:rgba(27,25,22,.96);border:1px solid var(--gold);font-size:13.5px;box-shadow:0 10px 28px rgba(0,0,0,.5)}
+.nah .wahl b{font-weight:600;color:var(--gold)}
+.nah .wahl button{border:1px solid var(--rule);background:none;border-radius:999px;padding:5px 11px;font-size:13px;cursor:pointer;white-space:nowrap}
+.nah .wahl button:hover{border-color:var(--muted)}
+.nah .basis path{vector-effect:non-scaling-stroke}
+.nah .zoom{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px}
+.nah .zoom button{width:36px;height:36px;border-radius:8px;border:1px solid var(--rule);background:rgba(27,25,22,.92);color:var(--paper);font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.nah .zoom button:hover{border-color:var(--muted)}
+.nah .zoom button:disabled{opacity:.35;cursor:default}
+.nah .info{position:absolute;left:10px;right:10px;bottom:10px;max-width:440px;padding:12px 40px 12px 14px;border-radius:8px;background:rgba(27,25,22,.96);border:1px solid var(--rule);box-shadow:0 10px 28px rgba(0,0,0,.5)}
+.nah .info h3{margin:0;font:600 15px/1.3 var(--text)}
+.nah .info .m{margin:2px 0 0;font-size:13px;color:var(--muted)}.nah .info .m b{font:600 13px var(--mono);color:var(--gold)}
+.nah .info .n{margin:8px 0 0;font-size:13.5px}
+.nah .info .n b{font:600 12px var(--mono)}
+.nah .info .zu{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer;border-radius:50%}
+.nah .info .akt{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:8px}.nah .info .alle{border:0;background:none;padding:0;color:var(--gold);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}.nah .info a{color:var(--gold);font-size:13px;text-underline-offset:3px}
+.nah .legende{display:grid;gap:8px;margin:12px 2px 0;font-size:13px;color:var(--muted)}
+.nah .lg-zeile{display:grid;grid-template-columns:86px minmax(0,1fr);align-items:baseline;gap:4px 12px}
+.nah .lg-titel{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#7a7366}
+.nah .lg-liste{display:flex;flex-wrap:wrap;gap:6px 18px}
+.nah .lg{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:#b3ac9f}
+.nah .lg svg{width:14px;height:14px;flex:none;transform:translateY(2px)}
+.nah .lg svg.lg-linie{width:22px;height:10px;transform:none}
+.nah .lg i{width:9px;height:9px;border-radius:50%;background:var(--gf);transform:translateY(0)}
+@media (max-width:420px){.nah .lg-zeile{grid-template-columns:1fr}.nah .lg{white-space:normal}}
+.nah .liste{min-width:0}
+.nah .liste .sechead{display:block;border-left:3px solid var(--gold);padding-left:12px;margin:0 0 6px}
+.nah .band{margin:22px 0 0;padding:0 0 7px;border-bottom:1px solid var(--rule);font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:12px}
+.nah .band b{color:var(--paper);font-weight:500}
+.nah .ort{border-bottom:1px solid var(--rule);padding:13px 2px 14px;transition:background .2s}
+.nah .ort.aktiv{background:linear-gradient(90deg,rgba(216,168,75,.10),transparent 70%)}
+.nah .ort-kopf{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:10px;width:100%;border:0;background:none;padding:0;text-align:left;cursor:pointer}
+.nah .ort-kopf .p{width:10px;height:10px;border-radius:50%;background:var(--pc);box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--pr,transparent);transform:translateY(1px)}
+.nah .ort-kopf b{font-weight:600;font-size:16px;line-height:1.3}
+.nah .ort-kopf .km{font:600 13px var(--mono);color:var(--gold);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.nah .ort-kopf .km small{font:500 11px var(--text);color:var(--muted);margin-left:6px}
+.nah .ort-kopf:hover b{text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
+.nah .ort-meta{margin:2px 0 0 20px;font-size:12.5px;color:var(--muted)}
+.nah .ev{list-style:none;margin:8px 0 0 20px;padding:0;display:grid;gap:6px}
+.nah .ev li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:2px 12px;font-size:13.5px;line-height:1.35}
+.nah .ev time{font:12px/1.55 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.nah .ev a{text-decoration:none}
+.nah .ev a:hover .en{text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
+.nah .ev .sk{font:600 11.5px var(--mono);letter-spacing:.02em}
+.nah .ev .sk small{font-weight:400;color:var(--muted);font-size:11px}
+.nah .ev .en{display:block;color:var(--paper)}
+.nah .mehr{margin:6px 0 0 20px;border:0;background:none;padding:0;color:var(--muted);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.nah .route{display:inline-block;margin:8px 0 0 20px;font-size:13px;color:var(--gold);text-underline-offset:3px}
+.nah .leer{padding:26px 0;color:var(--muted)}
+.nah .fuss{margin:18px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
+.nah .fuss b{color:var(--paper);font-weight:500}
