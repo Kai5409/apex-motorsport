@@ -262,6 +262,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .scal:hover{color:var(--gold);border-color:var(--gold);background:rgba(216,168,75,.08)}
 .calbtn{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:999px;padding:6px 12px;margin:2px 0 12px;transition:border-color .15s,background .15s}
 .calbtn:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
+a.calbtn{line-height:normal;text-decoration:none}
 .sess-row.clk{cursor:pointer}
 .sess-row.clk:hover .sess-n{color:#fff}
 .sess-chev{color:var(--muted);font-size:10px;transition:transform .2s,color .15s;text-align:center}
@@ -513,7 +514,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <footer>
 APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
     Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
-    <a class="legal-link ordner" href="serien/">Alle Serien</a> · <a class="legal-link ordner" href="dieses-wochenende/">Dieses Wochenende</a> ·
+    <a class="legal-link ordner" href="serien/">Alle Serien</a> · <a class="legal-link ordner" href="dieses-wochenende/">Dieses Wochenende</a> · <a class="legal-link ordner" href="in-der-naehe/">In der Nähe</a> ·
     <button class="legal-link" onclick="toggleLegal()" aria-expanded="false" aria-controls="legal">Datenschutz</button>
     <div class="legal" id="legal">
       <h3>Datenschutzerklärung</h3>
@@ -537,13 +538,18 @@ APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
       werden Sie auf die Seite des jeweiligen Anbieters weitergeleitet. APEX überträgt dabei keine
       Daten an den Anbieter; für die Nutzung dort gelten die Datenschutzbestimmungen des Anbieters.</p>
 
+      <h4>Routenplanung</h4>
+      <p>Wählen Sie auf der Seite „In der Nähe“ „Route planen“, öffnet sich Google Maps. Dabei übergibt der Link
+      den gewählten Startort und das Ziel an Google. APEX selbst speichert oder überträgt diese Angaben nicht; für die
+      Nutzung von Google Maps gelten die Datenschutzbestimmungen von Google.</p>
+
       <h4>Schriftarten</h4>
       <p>Alle Schriftarten werden direkt von dieser Seite ausgeliefert. Es erfolgt kein Abruf von
       Google Fonts oder anderen externen Anbietern; dabei werden keine Daten an Dritte übertragen.</p>
 
       <h4>Speicherung auf Ihrem Gerät</h4>
-      <p>Ihre Serienauswahl im Filter und die Einstellung „Ergebnisse verbergen“ werden ausschließlich
-      lokal in Ihrem Browser gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
+      <p>Ihre Serienauswahl im Filter, die Einstellung „Ergebnisse verbergen“ und der gewählte Startort der Seite
+      „In der Nähe“ werden ausschließlich lokal in Ihrem Browser gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
       die Einstellungen Ihres Browsers löschen.</p>
 
       <h4>Ihre Rechte</h4>
@@ -878,7 +884,6 @@ function downloadICS(fn,veventsArr){
 }
 function findEv(sk,rd,sz){return EVENTS.find(e=>e.s===sk&&String(e.rd)===String(rd)&&(e.sz||"")===(sz||""));}
 function exportSession(sk,rd,i,sz){const e=findEv(sk,rd,sz);if(!e)return;downloadICS("apex-"+sk+rd+(sz?"-"+sz:"")+"-s"+i+".ics",[vevent(e,e.sessions[i])]);}
-function exportEvent(sk,rd,sz){const e=findEv(sk,rd,sz);if(!e)return;const vs=e.sessions.filter(s=>s.t).map(s=>vevent(e,s));if(vs.length)downloadICS("apex-"+sk+rd+(sz?"-"+sz:"")+".ics",vs);}
 function exportSeason(){
   const evs=actEvents().filter(e=>e.status!=="cancel"&&(!FAV_ONLY||isFav(e)));
   let vs=[]; evs.forEach(e=>e.sessions.filter(s=>s.t).forEach(s=>vs.push(vevent(e,s))));
@@ -1346,8 +1351,9 @@ function buildSessions(e,evId,status){
   let out="";
   out+=trackInfoHTML(e);
   const hasTimes=e.sessions.some(s=>s.t);
-  if(hasTimes){
-    out+=`<button class="calbtn" onclick="exportEvent('${e.s}','${e.rd}','${e.sz||""}')">＋ Ganzes Wochenende in Kalender</button>`;
+  /* Ganzes Wochenende: fertige Kalenderdatei je Event (kalender/termine/, wie auf den Serienseiten; abgesagte Events haben keine) */
+  if(hasTimes&&e.status!=="cancel"){
+    out+=`<a class="calbtn" href="kalender/termine/${ergKey(e)}.ics">＋ Ganzes Wochenende in Kalender</a>`;
   }
   if(e.prov) out+=`<div class="sess-flat prov-note">${hasTimes?"Weitere Sessionzeiten folgen":"Sessionzeiten folgen"}, sobald der offizielle Zeitplan vorliegt.</div>`;
   /* Ergebnislisten gibt es nur für gewertete Events mit Sieger */

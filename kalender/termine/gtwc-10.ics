@@ -1,0 +1,42 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:apex-gtwc10-FreiesTraining1@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20261016T074500Z
+DTEND:20261016T084500Z
+SUMMARY:GTWC · Portimão · Endurance · Finale — Freies Training 1
+LOCATION:Portimão
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc10-FreiesTraining2@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20261016T114500Z
+DTEND:20261016T124500Z
+SUMMARY:GTWC · Portimão · Endurance · Finale — Freies Training 2
+LOCATION:Portimão
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc10-Qualifying@apex-motorsport
+DTSTAMP:20260925T230300Z
+DTSTART:20261016T165500Z
+DTEND:20261016T175500Z
+SUMMARY:GTWC · Portimão · Endurance · Finale — Qualifying
+LOCATION:Portimão
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc10-Rennen3Stunden@apex-motorsport
+DTSTAMP:20260927T224800Z
+DTSTART:20261017T160000Z
+DTEND:20261017T190000Z
+SUMMARY:GTWC · Portimão · Endurance · Finale — Rennen (3 Stunden)
+LOCATION:Portimão
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 10 · Portimão
+END:VEVENT
+END:VCALENDAR

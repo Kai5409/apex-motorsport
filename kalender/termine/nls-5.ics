@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:apex-nls5-Qualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260419T061500Z
+DTEND:20260419T074500Z
+SUMMARY:NLS · ADAC 24h Nürburgring Qualifiers · Rennen 2 — Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 5 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls5-TopQualifying@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260419T084000Z
+DTEND:20260419T094000Z
+SUMMARY:NLS · ADAC 24h Nürburgring Qualifiers · Rennen 2 — Top-Qualifying
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 5 · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls5-Rennen4h@apex-motorsport
+DTSTAMP:20260927T231100Z
+DTSTART:20260419T110000Z
+DTEND:20260419T150000Z
+SUMMARY:NLS · ADAC 24h Nürburgring Qualifiers · Rennen 2 — Rennen (4h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Lauf 5 · Nürburgring
+END:VEVENT
+END:VCALENDAR
