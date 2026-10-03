@@ -262,6 +262,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .scal:hover{color:var(--gold);border-color:var(--gold);background:rgba(216,168,75,.08)}
 .calbtn{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:999px;padding:6px 12px;margin:2px 0 12px;transition:border-color .15s,background .15s}
 .calbtn:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
+a.calbtn{line-height:normal;text-decoration:none}
 .sess-row.clk{cursor:pointer}
 .sess-row.clk:hover .sess-n{color:#fff}
 .sess-chev{color:var(--muted);font-size:10px;transition:transform .2s,color .15s;text-align:center}
@@ -883,7 +884,6 @@ function downloadICS(fn,veventsArr){
 }
 function findEv(sk,rd,sz){return EVENTS.find(e=>e.s===sk&&String(e.rd)===String(rd)&&(e.sz||"")===(sz||""));}
 function exportSession(sk,rd,i,sz){const e=findEv(sk,rd,sz);if(!e)return;downloadICS("apex-"+sk+rd+(sz?"-"+sz:"")+"-s"+i+".ics",[vevent(e,e.sessions[i])]);}
-function exportEvent(sk,rd,sz){const e=findEv(sk,rd,sz);if(!e)return;const vs=e.sessions.filter(s=>s.t).map(s=>vevent(e,s));if(vs.length)downloadICS("apex-"+sk+rd+(sz?"-"+sz:"")+".ics",vs);}
 function exportSeason(){
   const evs=actEvents().filter(e=>e.status!=="cancel"&&(!FAV_ONLY||isFav(e)));
   let vs=[]; evs.forEach(e=>e.sessions.filter(s=>s.t).forEach(s=>vs.push(vevent(e,s))));
@@ -1351,8 +1351,9 @@ function buildSessions(e,evId,status){
   let out="";
   out+=trackInfoHTML(e);
   const hasTimes=e.sessions.some(s=>s.t);
-  if(hasTimes){
-    out+=`<button class="calbtn" onclick="exportEvent('${e.s}','${e.rd}','${e.sz||""}')">＋ Ganzes Wochenende in Kalender</button>`;
+  /* Ganzes Wochenende: fertige Kalenderdatei je Event (kalender/termine/, wie auf den Serienseiten; abgesagte Events haben keine) */
+  if(hasTimes&&e.status!=="cancel"){
+    out+=`<a class="calbtn" href="kalender/termine/${ergKey(e)}.ics">＋ Ganzes Wochenende in Kalender</a>`;
   }
   if(e.prov) out+=`<div class="sess-flat prov-note">${hasTimes?"Weitere Sessionzeiten folgen":"Sessionzeiten folgen"}, sobald der offizielle Zeitplan vorliegt.</div>`;
   /* Ergebnislisten gibt es nur für gewertete Events mit Sieger */

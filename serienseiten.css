@@ -175,6 +175,11 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;m
 .race.open .rb{display:block}
 .rb .sess{max-width:360px}
 .rb p{margin:0;color:var(--muted);font-size:13.5px}
+/* Ganzes Wochenende in den Kalender (Datei je Event) – unter den Sessions und in der Karte „Nächstes Rennen“ */
+.evcal{display:flex;width:fit-content;align-items:center;gap:6px;margin-top:12px;border:1px solid var(--rule);border-radius:999px;padding:6px 14px 6px 12px;font-size:13.5px;color:var(--paper);text-decoration:none}
+.evcal span{color:var(--gold);font-weight:600}
+.evcal:hover{border-color:var(--gold)}
+.nextcard .evcal{margin-top:14px}
 .allres{display:inline-block;margin-top:12px;font-size:13.5px;color:var(--paper);text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
 .rb .allres:first-child{margin-top:0}
 .allres:hover{text-decoration-color:var(--paper)}
