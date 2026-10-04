@@ -556,23 +556,23 @@ DESCRIPTION:APEX · Formel E · Lauf 15 · Zandvoort — ganztägig\, Sessionzei
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe16-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261004T005748Z
 DTSTART;VALUE=DATE:20270626
 DTEND;VALUE=DATE:20270627
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Madrid E-Prix I
-LOCATION:Madrid
-DESCRIPTION:APEX · Formel E · Lauf 16 · Madrid — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Jarama
+DESCRIPTION:APEX · Formel E · Lauf 16 · Jarama — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe17-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261004T005748Z
 DTSTART;VALUE=DATE:20270627
 DTEND;VALUE=DATE:20270628
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Madrid E-Prix II
-LOCATION:Madrid
-DESCRIPTION:APEX · Formel E · Lauf 17 · Madrid — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Jarama
+DESCRIPTION:APEX · Formel E · Lauf 17 · Jarama — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe18-S13-ganztag@apex-motorsport

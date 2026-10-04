@@ -72,8 +72,10 @@
         <li><a href="#regeln">Regeln</a></li>
       </ul></nav>
       <section class="kal" id="kalender" aria-label="Kalender">
-   <div class="sechead"><div><h2 class="sec">Saison 2026</h2><p>13 Rallyes · Uhrzeit = Start der ersten Wertungsprüfung</p></div>
+   <div class="saisonwahl"><div class="seg saisonseg" role="group" aria-label="Saison"><button type="button" aria-pressed="false" data-saison="2027">2027</button><button type="button" aria-pressed="true" data-saison="2026">2026</button></div>
      <button class="switch" type="button" role="switch" aria-checked="false" id="spoiler"><span class="track"></span>Ergebnisse verbergen</button></div>
+   <div class="saison" data-saison="2026" data-bis="2026-10-04">
+   <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg" hidden>abgeschlossen</span></h2><p>13 Rallyes · Uhrzeit = Start der ersten Wertungsprüfung</p></div></div>
    <ul class="races"><li class="race past" id="r-wrc-1">
     <div class="rh">
       <span class="rd">1</span>
@@ -173,9 +175,12 @@
       <span class="start">abgesagt</span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-wrc-14"><ul class="sess"><li class="n">Shakedown</li><li class="v">Mi 11.11. · 13:00 MEZ</li><li class="n">Etappe 1</li><li class="v">Do 12.11. · 16:00 MEZ</li><li class="n">Etappe 2</li><li class="v">Fr 13.11. · 16:00 MEZ</li><li class="n">Etappe 3</li><li class="v">Sa 14.11. · 16:00 MEZ</li><li class="n">Power Stage</li><li class="v">Sa 14.11. · 19:15 MEZ</li></ul></div></li></ul>
-   <div class="sechead"><div><h2 class="sec">Saison 2027</h2></div></div>
+   </div>
+   <div class="saison" data-saison="2027">
+   <div class="sechead"><div><h2 class="sec">Saison 2027<span class="abg" hidden>abgeschlossen</span></h2></div></div>
    <p class="prov">Der Kalender 2027 ist noch nicht veröffentlicht.</p>
    
+   </div>
       </section>
       <section class="wert" id="wertung" aria-labelledby="h-wert" data-nosnippet>
         <div class="sechead"><div><h2 class="sec" id="h-wert">Wertung</h2><p>nach 12 von 13 Rallyes · Chile, 13.09.2026</p></div></div>
