@@ -509,3 +509,96 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .nah .leer{padding:26px 0;color:var(--muted)}
 .nah .fuss{margin:18px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
 .nah .fuss b{color:var(--paper);font-weight:500}
+
+/* Streckenseiten (strecken/<slug>/): Aufbau wie die Serienseiten; Serienkürzel statt Rundennummer, Farbbalken in
+   Abschnitten (je Serie an der Strecke), Faktenleiste, Variantenkacheln, Entfernung, Kartenausschnitt mit Infokarte */
+.strecke-seite h1 .bar.serien{display:flex;gap:4px;width:auto;background:none}
+.strecke-seite h1 .bar.serien i{display:block;width:30px;height:6px}
+.strecke-seite .subnav a.on{border-bottom-color:var(--gold)}
+.ort{margin:12px 0 0;font:500 12.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fakten{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));margin:22px 0 0;padding:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.fakten div{padding:12px 12px 12px 0;min-width:0}
+.fakten div+div{padding-left:14px;border-left:1px solid var(--rule)}
+.fakten dt{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fakten dd{margin:5px 0 0;font:500 18px/1.15 var(--mono);font-variant-numeric:tabular-nums}
+.fakten dd small{font:13px var(--text);color:var(--muted);margin-left:4px}
+.hero .chips{margin-top:18px}
+.chiplab{display:block;font-size:13px;color:var(--muted);margin:18px 0 8px}
+.chiplab+.chips{margin-top:0}
+@media (max-width:640px){
+  .fakten{grid-template-columns:1fr 1fr}
+  .fakten div:nth-child(odd){padding-left:0;border-left:0}
+  .fakten div:nth-child(n+3){border-top:1px solid var(--rule)}
+}
+/* Terminliste: statt Rundennummer das Serienkürzel in Serienfarbe */
+.strecke-seite .rh{grid-template-columns:46px 74px minmax(0,1fr) auto 16px}
+.strecke-seite .rb{padding-left:132px}
+.rd.sk{font:600 12px var(--mono);letter-spacing:.02em;text-align:left;white-space:nowrap}
+.race.past .rd.sk,.race.cancel .rd.sk{opacity:.7}
+.rb .rwin{margin:12px 0 0}
+.rb .rwin .win{display:inline;margin:0}
+.sp .race:not(.auf) .rwin .reveal{margin:0}
+.rlinks{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0}
+.rb .rlinks:first-child{margin-top:0}
+.rlinks .allres{margin:0}
+@media (max-width:560px){.strecke-seite .rh{grid-template-columns:38px 56px minmax(0,1fr) auto;gap:9px}.strecke-seite .rb{padding-left:102px}}
+@media (max-width:420px){.strecke-seite .rb{padding-left:32px}}
+/* Karte „Nächster Termin“ */
+.nextcard .where b{font:600 12.5px var(--mono);letter-spacing:.02em}
+.nextcard .zur{display:inline-block;margin-top:12px;font-size:14px;color:var(--muted);text-decoration-color:var(--faint);text-underline-offset:3px}
+.nextcard .zur:hover{color:var(--paper)}
+.nextcard .evcal+.zur{display:block;width:fit-content}
+.entf{margin:14px 0 0;background:var(--bg2);border:1px solid var(--rule);border-radius:10px;padding:14px 16px 15px}
+.entf .k{font-size:13px;color:var(--muted);margin:0}
+.entf .km{font:500 28px/1.1 var(--mono);margin:6px 0 0;font-variant-numeric:tabular-nums}
+.entf .km small{font:13px var(--text);color:var(--muted);margin-left:8px}
+.entf .ab{font-size:13.5px;color:var(--muted);margin:4px 0 0}
+.entf .akt{display:flex;flex-wrap:wrap;gap:6px 18px;margin:12px 0 0;font-size:14px}
+.entf .akt a{color:var(--gold);text-underline-offset:3px}
+/* Die Strecke – Reihenfolge am Handy: nach den Terminen, vor den Sendern */
+.strecke-info{order:6}
+.naehe{order:8}
+.portrait{max-width:62ch;margin:0 0 18px;font-size:15.5px}
+.vari{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.v1{background:var(--bg2);border:1px solid var(--rule);border-radius:10px;padding:13px 14px 12px;min-width:0}
+.vn{margin:0;font-weight:600;font-size:14.5px;line-height:1.3}
+.vn small{display:block;font-weight:400;font-size:13px;color:var(--muted)}
+.vk{margin:10px 0 0;font:500 22px/1.1 var(--mono);font-variant-numeric:tabular-nums}
+.vk small{display:block;font:13px var(--text);color:var(--muted);margin-top:4px}
+.vs{margin:10px 0 0;padding-top:9px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
+.lage{display:flex;flex-wrap:wrap;gap:6px 18px;margin:16px 0 0;font-size:14px;color:var(--muted)}
+.lage span{font-family:var(--mono);font-size:13px}
+.lage a{color:var(--gold);text-underline-offset:3px}
+@media (max-width:720px){.vari{grid-template-columns:1fr}}
+/* Wo schauen? (Strecken: Sender aller Serien an der Strecke) */
+.strecke-seite .wtvb h3{font-size:15px;margin:18px 0 6px}
+.strecke-seite .wtvb .tvl{display:none}
+/* In der Nähe: Kartenausschnitt aus karte/europa.svg; Infokarte am PC über der Karte, am Handy darunter */
+.mini{margin:0;border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:#121110;max-width:100%}
+.miniwrap{position:relative}
+.mini svg{display:block;width:100%;height:100%}
+.mini .mpt{cursor:pointer;outline:none}
+.mini .mpt:focus-visible circle:first-child{stroke:var(--gold);stroke-width:2px}
+.miniinfo{position:absolute;left:10px;bottom:10px;width:min(340px,calc(100% - 20px));background:var(--bg2);border:1px solid var(--rule);border-left:3px solid var(--pc,var(--gold));border-radius:10px;padding:11px 14px 12px;box-shadow:0 10px 28px rgba(0,0,0,.5)}
+.miniinfo h3{margin:0 26px 0 0;font-size:15.5px;line-height:1.3}
+.miniinfo .m{margin:3px 0 0;font-size:13px;color:var(--muted)}
+.miniinfo .m b{font:600 13px var(--mono);color:var(--gold)}
+.miniinfo .n{margin:7px 0 0;font-size:13.5px}
+.miniinfo .n b{font:600 12px var(--mono);margin-right:4px}
+.miniinfo .n small{display:block;color:var(--muted);font-size:13px}
+.miniinfo a{display:inline-block;margin-top:8px;color:var(--gold);font-size:14px;text-underline-offset:3px}
+.miniinfo .zu{position:absolute;top:6px;right:6px;width:30px;height:30px;border:0;background:none;color:var(--muted);font-size:20px;line-height:1;cursor:pointer;border-radius:6px}
+.miniinfo .zu:hover{color:var(--paper)}
+@media (max-width:640px){.miniinfo{position:relative;left:auto;bottom:auto;width:auto;margin-top:10px;box-shadow:none}}
+.minicap{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+.nahliste{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--rule)}
+.nahliste li{border-bottom:1px solid var(--rule)}
+.nahliste a{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"nn nk" "nt nt";gap:3px 12px;padding:12px 2px;text-decoration:none;color:inherit}
+.nahliste a:hover b{text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
+.nn{grid-area:nn;min-width:0}.nn b{font-weight:600}.nn small{color:var(--muted);font-size:13px;margin-left:8px}
+.nk{grid-area:nk;font:600 13px var(--mono);color:var(--gold);white-space:nowrap;text-align:right}
+.nk small{font:500 11px var(--text);color:var(--muted);margin-left:6px}
+.nt{grid-area:nt;font-size:13.5px;color:var(--muted)}
+.nt i{font:normal 600 12px var(--mono);margin-right:4px}
+.maplink{display:inline-block;margin:14px 0 0;color:var(--gold);font-size:14.5px;text-underline-offset:3px}
+@media (max-width:560px){.nn small{display:block;margin:2px 0 0}}
