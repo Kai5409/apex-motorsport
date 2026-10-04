@@ -69,8 +69,10 @@
         <li><a href="#regeln">Regeln</a></li>
       </ul></nav>
       <section class="kal" id="kalender" aria-label="Kalender">
-   <div class="sechead"><div><h2 class="sec">Saison 2026</h2><p>7 Rallyes</p></div>
+   <div class="saisonwahl"><div class="seg saisonseg" role="group" aria-label="Saison"><button type="button" aria-pressed="false" data-saison="2027">2027</button><button type="button" aria-pressed="true" data-saison="2026">2026</button></div>
      <button class="switch" type="button" role="switch" aria-checked="false" id="spoiler"><span class="track"></span>Ergebnisse verbergen</button></div>
+   <div class="saison" data-saison="2026" data-bis="2026-10-25">
+   <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg" hidden>abgeschlossen</span></h2><p>7 Rallyes</p></div></div>
    <ul class="races"><li class="race past" id="r-erc-1">
     <div class="rh">
       <span class="rd">1</span>
@@ -121,9 +123,12 @@
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-erc-7"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p></div></li></ul>
-   <div class="sechead"><div><h2 class="sec">Saison 2027</h2></div></div>
+   </div>
+   <div class="saison" data-saison="2027">
+   <div class="sechead"><div><h2 class="sec">Saison 2027<span class="abg" hidden>abgeschlossen</span></h2></div></div>
    <p class="prov">Der Kalender 2027 ist noch nicht veröffentlicht.</p>
    
+   </div>
       </section>
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2></div>

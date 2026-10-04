@@ -54,17 +54,29 @@
   });
   function zuZeile(id, sanft) {
     const li = document.getElementById("r-" + id); if (!li) return;
+    /* Zeile einer anderen Saison: vorher umschalten */
+    const s = li.closest(".saison"); if (s && s.hidden) saisonZeigen(s.dataset.saison);
     oeffnen(li, true);
     li.scrollIntoView({ block: "center", behavior: sanft ? "smooth" : "auto" });
     li.classList.remove("hl"); void li.offsetWidth; li.classList.add("hl");
   }
-  if (/^#r-/.test(location.hash)) zuZeile(location.hash.slice(3), false);
 
   /* Wo schauen? – Land umschalten */
-  $$(".seg button").forEach((b) => b.addEventListener("click", () => {
-    $$(".seg button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  $$(".seg button[data-l]").forEach((b) => b.addEventListener("click", () => {
+    $$(".seg button[data-l]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
     $$(".tvland").forEach((x) => x.classList.toggle("on", x.dataset.land === b.dataset.l));
   }));
+
+  /* Saisons (Serien- und Streckenseiten): Umschalter über den Terminen, gezeigt wird eine Saison */
+  const saisons = $$(".saison[data-saison]");
+  function saisonZeigen(k) {
+    if (!saisons.some((s) => s.dataset.saison === k)) return;
+    saisons.forEach((s) => { s.hidden = s.dataset.saison !== k; });
+    $$(".saisonseg button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.saison === k)));
+  }
+  $$(".saisonseg button").forEach((b) => b.addEventListener("click", () => saisonZeigen(b.dataset.saison)));
+  /* abgeschlossen: alle Termine der Saison liegen vor heute */
+  saisons.forEach((s) => { const a = $(".abg", s); if (a && s.dataset.bis && s.dataset.bis < heute) a.hidden = false; });
 
   /* Abschnittsnavigation markieren */
   const links = $$(".subnav a");
@@ -117,6 +129,15 @@
     $$(".race.next").forEach((li) => { if (li.id !== "r-" + NEXT) li.classList.remove("next"); });
     const nl = NEXT && document.getElementById("r-" + NEXT); if (nl) nl.classList.add("next");
   }
+  /* Gezeigte Saison: die mit dem nächsten Termin (wie die Karte), sonst die jüngste mit Terminen */
+  if (saisons.length > 1) {
+    const nl = NEXT && document.getElementById("r-" + NEXT), sn = nl && nl.closest(".saison");
+    const mitTermin = saisons.filter((s) => s.dataset.bis).sort((a, b) => (a.dataset.bis < b.dataset.bis ? -1 : 1));
+    const s = sn || mitTermin[mitTermin.length - 1] || saisons[0];
+    saisonZeigen(s.dataset.saison);
+  }
+  if (/^#r-/.test(location.hash)) zuZeile(location.hash.slice(3), false);
+  addEventListener("hashchange", () => { if (/^#r-/.test(location.hash)) zuZeile(location.hash.slice(3), true); });
 
   /* Wertung und lange Zeitpläne: erst gekürzt, auf Wunsch alles */
   $$(".more").forEach((b) => {
@@ -125,7 +146,7 @@
     b.addEventListener("click", () => { const kurz = liste.classList.toggle("kurz"); b.textContent = kurz ? b.dataset.alle : b.dataset.weniger; b.setAttribute("aria-expanded", String(!kurz)); festPruefen(); });
   });
 
-  /* Saisonlinie (Saison des nächsten Events) */
+  /* Saisonlinie (Saison des nächsten Events). Je Punkt [id, Text, Zustand d/c/u, Beschriftung, Monat, Farbe (optional)] */
   const datenEl = $("#apex-seite");
   const D = datenEl ? JSON.parse(datenEl.textContent) : null;
   const linie = D && D.linien ? (D.linien.find((l) => l.ev.some((x) => x[0] === NEXT)) || D.linien.find((l) => l.key === D.linie)) : null;
@@ -148,8 +169,8 @@
       let c;
       if (i === ni) c = `<circle class="halo" cx="${cx}" cy="${cy}" r="13" fill="none" stroke="var(--gold)" stroke-width="2.5"/><circle class="core" cx="${cx}" cy="${cy}" r="5" fill="var(--gold)"/>`;
       else if (x[2] === "c") c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="var(--bg)" stroke="var(--faint)" stroke-width="1.5"/><line x1="${cx - 5}" y1="${cy + 5}" x2="${cx + 5}" y2="${cy - 5}" stroke="var(--faint)" stroke-width="1.5"/>`;
-      else if (x[2] === "d") c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="var(--serie)"/>`;
-      else c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="var(--bg)" stroke="var(--paper)" stroke-width="1.5"/>`;
+      else if (x[2] === "d") c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="${x[5] || "var(--serie)"}"/>`;
+      else c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="var(--bg)" stroke="${x[5] || "var(--paper)"}" stroke-width="1.5"/>`;
       h += `<g class="dot" tabindex="0" role="button" data-i="${i}" aria-label="${esc(x[1])}"><circle cx="${cx}" cy="${cy}" r="14" fill="transparent"/>${c}</g>`;
     });
     if (ni >= 0) h += `<text class="lbl gold" id="linelbl" x="${xs[ni]}" y="${top - 21}" text-anchor="middle">${esc(E[ni][3])}</text>`;
