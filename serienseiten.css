@@ -520,6 +520,7 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .nah .ort .zurs+.route{margin-left:0}
 .nah .info .zurs{display:inline-block;margin-top:8px}
 .nah .zurs:hover{text-decoration-color:var(--paper)}
+.nah #lhint{margin:6px 0 0;color:var(--paper);font-size:13.5px}
 .nah .leer{padding:26px 0;color:var(--muted)}
 .nah .fuss{margin:18px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
 .nah .fuss b{color:var(--paper);font-weight:500}
