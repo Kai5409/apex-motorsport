@@ -432,7 +432,7 @@
 
     /* Daten aufbereiten */
     const S = N.serien, G = N.gruppen, SK = Object.keys(S);
-    const ORTE = Object.entries(N.strecken).map(([id, v]) => ({ id, name: v[0], land: v[1], typ: v[2], lat: v[3], lon: v[4], xy: proj(v[3], v[4]) }));
+    const ORTE = Object.entries(N.strecken).map(([id, v]) => ({ id, name: v[0], land: v[1], typ: v[2], lat: v[3], lon: v[4], slug: v[5] || "", xy: proj(v[3], v[4]) }));
     const ORT_BY = Object.fromEntries(ORTE.map((o) => [o.id, o]));
     /* Rennwochenenden: gleiche Strecke + gleiche Woche = eine Zeile (z. B. MotoGP mit Moto2 und Moto3) */
     function wochenKey(x) { const d = new Date(x + "T12:00:00"); const t = (d.getDay() + 6) % 7; d.setDate(d.getDate() - t); return d.toISOString().slice(0, 10); }
@@ -549,7 +549,7 @@
       <p class="ort-meta">${esc(o.land)} · ${typ} · ${o.zeilen.length} ${o.zeilen.length === 1 ? "Termin" : "Termine"}</p>
       <ul class="ev">${zs.map(zeileHTML).join("")}</ul>
       ${o.zeilen.length > 3 ? `<button class="mehr" type="button" data-mehr="${o.id}">${offen ? "Weniger zeigen" : "Alle " + o.zeilen.length + " Termine zeigen"}</button><br>` : ""}
-      <a class="route" href="${route(o)}" target="_blank" rel="noopener noreferrer">Route planen ↗</a>
+      ${o.slug ? `<a class="zurs" href="../strecken/${o.slug}/">Zur Streckenseite <span aria-hidden="true">→</span></a>` : ""}<a class="route" href="${route(o)}" target="_blank" rel="noopener noreferrer">Route planen ↗</a>
     </article>`; });
       const liste = byId("liste"); liste.innerHTML = h; ordnerLinks(liste);
       const zr = ZEIT === "3" ? "nächste 3 Monate" : ZEIT === "12" ? "nächste 12 Monate" : "bis Ende " + N.jahr;
@@ -567,8 +567,8 @@
     function infoZeigen() { const i = byId("info"), o = LISTE.find((q) => q.id === AUSGEWAEHLT);
       if (!o) { i.hidden = true; return; } const z = o.zeilen[0], hs = S[z.haupt];
       i.innerHTML = `<button class="zu" type="button" aria-label="Schließen">×</button><h3>${esc(o.name)}</h3><p class="m"><b>${kmText(o.d)}</b> Luftlinie · ${esc(o.land)}</p>
-    <p class="n"><b style="color:${hs.color}">${esc(hs.short)}</b> ${esc(z.name)} · ${datum(z.d0, z.d1)}</p><div class="akt"><button class="alle" type="button">${o.zeilen.length > 1 ? "Alle " + o.zeilen.length + " Termine" : "In der Liste"}</button><a href="${route(o)}" target="_blank" rel="noopener noreferrer">Route planen ↗</a></div>`;
-      i.hidden = false; }
+    <p class="n"><b style="color:${hs.color}">${esc(hs.short)}</b> ${esc(z.name)} · ${datum(z.d0, z.d1)}</p><div class="akt"><button class="alle" type="button">${o.zeilen.length > 1 ? "Alle " + o.zeilen.length + " Termine" : "In der Liste"}</button><a href="${route(o)}" target="_blank" rel="noopener noreferrer">Route planen ↗</a></div>${o.slug ? `<a class="zurs" href="../strecken/${o.slug}/">Zur Streckenseite <span aria-hidden="true">→</span></a>` : ""}`;
+      ordnerLinks(i); i.hidden = false; }
     function auswaehlen(id, { scroll = false, zentrieren = false } = {}) { AUSGEWAEHLT = id;
       $$(".ort.aktiv").forEach((e) => e.classList.remove("aktiv"));
       const a = id && byId("o-" + id); if (a) a.classList.add("aktiv");
