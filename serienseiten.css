@@ -286,6 +286,15 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .skurz{font-size:14px;color:#cfc8bb;line-height:1.45}
 .snext{margin-top:auto;padding-top:8px;font-size:13px;color:var(--muted);line-height:1.45}
 .snext b{display:block;color:var(--gold);font-weight:500}
+/* Streckenübersicht: Karte je Strecke (Name, Ort, Serien, nächster Termin) */
+.scard.strk{border-left-color:var(--gold)}
+.scard.strk:hover{border-left-color:var(--gold)}
+.scard.strk .sname{color:var(--paper)}
+.sort{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sser{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:4px;font:600 12px var(--mono);color:#cfc8bb}
+.sser span{display:inline-flex;align-items:center;gap:6px}
+.sser i{width:8px;height:8px;border-radius:50%}
+.snext i{font:normal 600 12px var(--mono);margin-right:2px}
 .hero+.subnav{margin-top:26px}
 /* Reiter der Gruppen: am Handy Kurzname wie im Filter („Sportwagen“), damit alle ohne seitliches Scrollen passen */
 .subnav .gs{display:none}

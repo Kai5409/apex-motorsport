@@ -650,12 +650,12 @@
     FL.zeichnen(); aktualisieren(); startAusschnitt();
   }
 
-  /* Übersicht: nächstes Event je Serie nach dem heutigen Datum */
+  /* Übersichten (Serien, Strecken): nächstes Event je Serie bzw. Strecke nach dem heutigen Datum */
   const ueb = $("#apex-uebersicht");
   if (ueb) {
     const U = JSON.parse(ueb.textContent);
-    $$(".scard[data-serie]").forEach((c) => {
-      const d = U[c.dataset.serie], el = $(".snext", c); if (!d || !el) return;
+    $$(".scard[data-serie],.scard[data-strecke]").forEach((c) => {
+      const d = U[c.dataset.serie || c.dataset.strecke], el = $(".snext", c); if (!d || !el) return;
       const x = d.kand.find((k) => k[0] >= heute);
       el.innerHTML = x ? x[1] : d.ende;
     });
