@@ -550,9 +550,6 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .strecke-seite .rb{padding-left:132px}
 .rd.sk{font:600 12px var(--mono);letter-spacing:.02em;text-align:left;white-space:nowrap}
 .race.past .rd.sk,.race.cancel .rd.sk{opacity:.7}
-.rb .rwin{margin:12px 0 0}
-.rb .rwin .win{display:inline;margin:0}
-.sp .race:not(.auf) .rwin .reveal{margin:0}
 .rlinks{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0}
 .rb .rlinks:first-child{margin-top:0}
 .rlinks .allres{margin:0}

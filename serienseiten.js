@@ -585,7 +585,9 @@
 
     /* Alles neu */
     function aktualisieren() { LISTE = ortListe(); if (AUSGEWAEHLT && !LISTE.some((o) => o.id === AUSGEWAEHLT)) AUSGEWAEHLT = null; listeZeichnen(); kartenpunkte(); infoZeigen();
-      byId("ort").value = START ? START.n : ""; byId("orthinweis").innerHTML = ""; }
+      byId("ort").value = START ? START.n : ""; byId("orthinweis").innerHTML = "";
+      /* × nur mit gewähltem Startort */
+      byId("ortweg").hidden = !START; }
 
     /* Startort setzen */
     function ortSetzen(o, speichernOk = true) { START = o; if (speichernOk) { try { localStorage.setItem("apex_ort", JSON.stringify({ n: o.n, lat: o.lat, lon: o.lon })); } catch (e) {} } aktualisieren(); }
