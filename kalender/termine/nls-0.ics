@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:apex-nls0-Rennen24h@apex-motorsport
+DTSTAMP:20260927T231300Z
+DTSTART:20260516T130000Z
+DTEND:20260517T130000Z
+SUMMARY:NLS · 54. ADAC RAVENOL 24h Nürburgring — Rennen (24h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Eigenständiges Rennen – zählt nicht zur NLS-Wertung · Nürburgring
+END:VEVENT
+END:VCALENDAR
