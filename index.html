@@ -392,6 +392,8 @@ a.calbtn{line-height:normal;text-decoration:none}
 .rl-item+.rl-item{border-top:1px solid var(--rule)}
 .rl-t{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
 .rl-x{font-size:13.5px;color:var(--muted);line-height:1.72;max-width:66ch}
+/* Verweis am Ende der aufgeklappten Regeln (Link wie „Zur Serienseite“ bei den Kalender-Abos) */
+.rl-seite{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:12px 0 0;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--muted)}
 .legal-link{background:none;border:0;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px}
 .legal-link:hover{color:var(--paper)}
 .legal{display:none;margin:22px auto 0;max-width:74ch;text-align:left;border-top:1px solid var(--rule);padding-top:20px}
@@ -572,7 +574,7 @@ APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
    (mit kurzem Hinweis) – der Rest der App läuft normal. Einzelne unlesbare Einträge werden
    übersprungen. */
 const DATEN=["serien","sender","termine-2026","termine-2027","wertungen","regeln","zeitzonen","strecken"];
-const SERIES={}, EVENTS=[], STAND={}, REGELN={}, TZLOC={}, CIRCUITS={}, STRECKEN_SERIE={};
+const SERIES={}, EVENTS=[], STAND={}, REGELN={}, TZLOC={}, CIRCUITS={}, STRECKEN_SERIE={}, KARTE_STRECKEN=[];
 const GRUPPEN={};              /* Seriengruppen aus serien.json (Reihenfolge = Reihenfolge in der App) */
 let STAND_SEASON=null;     /* Jahr, zu dem die gepflegten Wertungen gehoeren (aus wertungen.json) */
 let TV_GEPRUEFT="";        /* Prüfdatum der Senderangaben (aus sender.json) */
@@ -631,7 +633,7 @@ function pruefeEvent(e,n){
   return Object.assign({},e,{sessions,_jahr:n.slice(8)});
 }
 function uebernehmeDaten(d){
-  SESS_ZEIT=new WeakMap(); ONAIR=null;   /* zwischengespeicherte Zeitpunkte gelten nur für die bisherigen Daten */
+  SESS_ZEIT=new WeakMap(); ONAIR=null; STRECKE_SLUG=null;   /* zwischengespeicherte Werte gelten nur für die bisherigen Daten */
   const teil=(n,f)=>{ if(d[n]==null)return; try{ if(f(d[n])===false)DATEN_FEHLT.add(n); }catch(err){DATEN_FEHLT.add(n);} };
   const luecke=(n,ok)=>{ if(!ok)DATEN_LUECKE.add(n); return ok; };
   teil("serien",x=>{
@@ -686,6 +688,10 @@ function uebernehmeDaten(d){
       if(!luecke("strecken",istObj(o)))return;
       STRECKEN_SERIE[s]={};
       Object.keys(o).forEach(k=>{if(luecke("strecken",streckeOK(o[k])))STRECKEN_SERIE[s][k]=o[k];});});
+    /* Streckenseiten strecken/<slug>/: Kartenpunkte mit slug (ohne Rallye-Zentren) und ihren Schreibweisen von loc */
+    if(istObj(x.karte)&&istObj(x.karte.strecken))Object.keys(x.karte.strecken).forEach(k=>{const v=x.karte.strecken[k];
+      if(istObj(v)&&v.typ!=="rallye"&&istText(v.slug)&&/^[a-z0-9-]+$/.test(v.slug)&&Array.isArray(v.loc)&&v.loc.every(istText))
+        KARTE_STRECKEN.push({slug:v.slug,loc:v.loc});});
   });
 }
 /* Kurzer Hinweis statt Inhalt, wenn eine Datendatei fehlt oder Einträge übersprungen wurden */
@@ -924,7 +930,21 @@ function trackInfoHTML(e){
   let facts=`<span class="tfact">Länge <b>${c.len.toFixed(3)} km</b></span>`;
   if(c.turns)facts+=`<span class="tfact">Kurven <b>${c.turns}</b></span>`;
   facts+=`<span class="tfact">Ort <b>${e.loc}</b></span>`;
-  return `<div class="trackinfo"><span class="tcircuit">◗ ${c.name}</span>${facts}</div>`;
+  const slug=streckeSlug(e.loc);
+  const name=slug?`<a class="ser-link" href="${ordnerHref("strecken/"+slug+"/")}">${c.name}</a>`:c.name;
+  return `<div class="trackinfo"><span class="tcircuit">◗ ${name}</span>${facts}</div>`;
+}
+/* Streckenseite zu einem Ort (Zuordnung loc → karte.strecken wie im Seitengenerator). Eine Seite gibt es nur für
+   Strecken mit mindestens einem nicht abgesagten Termin – sonst null (kein Link) */
+let STRECKE_SLUG=null;
+function streckeSlug(loc){
+  if(!STRECKE_SLUG){
+    STRECKE_SLUG=new Map();
+    KARTE_STRECKEN.forEach(k=>{
+      if(EVENTS.some(e=>k.loc.includes(e.loc)&&e.status!=="cancel"&&SERIES[e.s]))k.loc.forEach(l=>{if(!STRECKE_SLUG.has(l))STRECKE_SLUG.set(l,k.slug);});
+    });
+  }
+  return STRECKE_SLUG.get(loc)||null;
 }
 
 /* ── nächste Session ── */
@@ -1628,6 +1648,7 @@ function renderRules(){
       R.bloecke.forEach(b=>{
         html+=`<div class="rl-item"><span class="rl-t">${esc(b[0])}</span><span class="rl-x">${esc(b[1])}</span></div>`;
       });
+      if(S0.seite)html+=`<div class="rl-seite">Termine, Wertung und Sender: <a class="abo-a abo-s" href="${ordnerHref(S0.seite+"/")}">Zur Serienseite <span aria-hidden="true">→</span></a></div>`;
       html+=`</div>`;
     }
     html+=`</div>`;
@@ -1643,7 +1664,7 @@ function renderTV(){
   const LAND={de:"Deutschland",at:"Österreich",ch:"Schweiz"};
   serienGruppiert(()=>true).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk];
-    html+=`<div class="tv-row"><span class="tn" style="color:${S0.color}">${S0.name}</span><span class="tb">`;
+    html+=`<div class="tv-row"><span class="tn" style="color:${S0.color}">${serienName(sk)}</span><span class="tb">`;
     if(!S0.tvd){
       html+=`<span class="tv-open">Für diese Serie ist die Senderlage noch nicht geprüft — hier steht bewusst nichts, statt etwas Falsches.</span>`;
     } else {
