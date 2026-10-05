@@ -126,4 +126,124 @@ SUMMARY:WSBK · WM-Lauf Spanien · Finale
 LOCATION:Jerez
 DESCRIPTION:APEX · Superbike-WM · Lauf 12 · Jerez — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk1-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270219
+DTEND;VALUE=DATE:20270222
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Australien
+LOCATION:Phillip Island
+DESCRIPTION:APEX · Superbike-WM · Lauf 1 · Phillip Island — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk2-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270319
+DTEND;VALUE=DATE:20270322
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Portugal
+LOCATION:Portimão
+DESCRIPTION:APEX · Superbike-WM · Lauf 2 · Portimão — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk3-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270402
+DTEND;VALUE=DATE:20270405
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Valencia
+LOCATION:Valencia
+DESCRIPTION:APEX · Superbike-WM · Lauf 3 · Valencia — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk4-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270419
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Niederlande
+LOCATION:Assen
+DESCRIPTION:APEX · Superbike-WM · Lauf 4 · Assen — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk5-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270521
+DTEND;VALUE=DATE:20270524
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Aragón
+LOCATION:Aragón
+DESCRIPTION:APEX · Superbike-WM · Lauf 5 · Aragón — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk6-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270604
+DTEND;VALUE=DATE:20270607
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Tschechien
+LOCATION:Most
+DESCRIPTION:APEX · Superbike-WM · Lauf 6 · Most — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk7-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270618
+DTEND;VALUE=DATE:20270621
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Emilia-Romagna
+LOCATION:Misano
+DESCRIPTION:APEX · Superbike-WM · Lauf 7 · Misano — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk8-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270709
+DTEND;VALUE=DATE:20270712
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Großbritannien
+LOCATION:Donington
+DESCRIPTION:APEX · Superbike-WM · Lauf 8 · Donington — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk9-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270903
+DTEND;VALUE=DATE:20270906
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Frankreich
+LOCATION:Magny-Cours
+DESCRIPTION:APEX · Superbike-WM · Lauf 9 · Magny-Cours — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk10-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20270924
+DTEND;VALUE=DATE:20270927
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Italien
+LOCATION:Cremona
+DESCRIPTION:APEX · Superbike-WM · Lauf 10 · Cremona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk11-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20271015
+DTEND;VALUE=DATE:20271018
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf Estoril
+LOCATION:Estoril
+DESCRIPTION:APEX · Superbike-WM · Lauf 11 · Estoril — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wsbk12-2027-ganztag@apex-motorsport
+DTSTAMP:20261005T174404Z
+DTSTART;VALUE=DATE:20271029
+DTEND;VALUE=DATE:20271101
+TRANSP:TRANSPARENT
+SUMMARY:WSBK · WM-Lauf China · Finale
+LOCATION:Shanghai
+DESCRIPTION:APEX · Superbike-WM · Lauf 12 · Shanghai — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR
