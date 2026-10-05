@@ -20,14 +20,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="APEX">
 <meta property="og:title" content="APEX — Motorsport-Kalender 2026 & 2027">
-<meta property="og:description" content="Alle Renntermine 2026 und die neuen Kalender 2027 für 18 Serien: F1, MotoGP, WEC, DTM, WRC, Formel E, IndyCar, Superbike-WM, GT World Challenge, NLS mit dem 24h-Rennen am Nürburgring und mehr — mit Sessionzeiten, Wertungen und TV-Infos für DACH.">
+<meta property="og:description" content="Alle Renntermine 2026 und 2027 für 18 Serien: F1, MotoGP, WEC, DTM, WRC, Formel E, IndyCar, Superbike-WM, GT World Challenge, NLS mit dem 24h-Rennen am Nürburgring und mehr — mit Sessionzeiten, Wertungen und TV-Infos für DACH.">
 <meta property="og:image" content="https://apexkalender.de/logo-apex.png">
 <meta property="og:url" content="https://apexkalender.de/">
 <meta property="og:locale" content="de_DE">
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="APEX — Motorsport-Kalender 2026 & 2027">
-<meta name="twitter:description" content="Formel-1-Kalender 2027 und alle Termine 2026 für 18 Serien: F1, MotoGP, WEC, DTM, WRC, Formel E, IndyCar, Superbike-WM, GTWC, NLS, 24h Nürburgring und mehr.">
+<meta name="twitter:description" content="Motorsport-Kalender 2026 und 2027 für 18 Serien: F1, MotoGP, WEC, DTM, WRC, Formel E, IndyCar, Superbike-WM, GTWC, NLS, 24h Nürburgring und mehr.">
 <meta name="twitter:image" content="https://apexkalender.de/logo-apex.png">
 <style>
 /* Schriften lokal ausgeliefert - kein Abruf von Google-Servern, keine Datenuebertragung an Dritte. */
@@ -2013,6 +2013,28 @@ if(typeof window!=="undefined"&&window.addEventListener){
 }
 function installApp(){ if(!DEFERRED_INSTALL)return; DEFERRED_INSTALL.prompt(); DEFERRED_INSTALL.userChoice.finally(()=>{DEFERRED_INSTALL=null;const b=document.getElementById("installbtn");if(b)b.style.display="none";}); }
 
+/* ═══════ SEO: JAHRESZAHLEN IN TITEL UND BESCHREIBUNG ═══════
+   Regel wie titelJahre() im Seitengenerator: das laufende Jahr, solange es dort noch kommende Termine gibt (nicht
+   abgesagt), dazu das Folgejahr, sobald es Termine hat; sonst das letzte Jahr mit Terminen. Datum in deutscher Zeit.
+   Der <head> nennt die Jahre zum Stand der letzten Pflege, kopfJahre() setzt sie beim Start nach dem heutigen Tag. */
+function titelJahre(){
+  const heute=NOW().toLocaleDateString("sv-SE",{timeZone:"Europe/Berlin"}), J=+heute.slice(0,4);
+  const akt=EVENTS.filter(e=>e.status!=="cancel");
+  const j=[];
+  if(akt.some(e=>evYear(e)===J&&(e.d1||e.d0)>=heute))j.push(J);
+  if(akt.some(e=>evYear(e)===J+1))j.push(J+1);
+  if(!j.length)j.push(akt.length?Math.max(...akt.map(evYear)):J);
+  return j;
+}
+function kopfJahre(){
+  if(!EVENTS.length)return;
+  const j=titelJahre(), re=/20\d\d(?: (?:&|und) 20\d\d)?/;
+  document.title=document.title.replace(re,j.join(" & "));
+  [["meta[name='description']"," und "],["meta[property='og:title']"," & "],["meta[property='og:description']"," und "],
+   ["meta[name='twitter:title']"," & "],["meta[name='twitter:description']"," und "]].forEach(([sel,trenn])=>{
+    const m=document.querySelector(sel); if(m)m.setAttribute("content",m.getAttribute("content").replace(re,j.join(trenn)));});
+}
+
 /* ═══════ SEO: STRUKTURIERTE DATEN (Schema.org Event) ═══════ */
 /* Wird rein aus EVENTS generiert -- keine Zugangsdaten, keine externen Aufrufe. */
 function injectEventSchema(){
@@ -2047,7 +2069,7 @@ function injectEventSchema(){
         "sport":S0?S0.name:undefined
       };
     });
-    const data={"@context":"https://schema.org","@type":"ItemList","name":"APEX Motorsport-Kalender 2026 und 2027","itemListElement":list};
+    const data={"@context":"https://schema.org","@type":"ItemList","name":"APEX Motorsport-Kalender "+titelJahre().join(" und "),"itemListElement":list};
     const sc=document.createElement("script");
     sc.type="application/ld+json";
     sc.textContent=JSON.stringify(data);
@@ -2071,7 +2093,7 @@ function ordnerLinks(){document.querySelectorAll("a.ordner").forEach(a=>a.setAtt
 function start(){
   BEREIT=true;
   filterLaden(); nurSerieLaden(); spoilerLaden();
-  [ordnerLinks,renderDatenstand,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
+  [ordnerLinks,renderDatenstand,kopfJahre,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});
