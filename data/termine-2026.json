@@ -249,9 +249,9 @@
     ]},
   {"s": "f1", "rd": 17, "name": "Großer Preis von Singapur · Sprint", "loc": "Singapur", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
     "sessions": [
-      {"n": "FP1", "day": "Fr", "t": "11:30"},
-      {"n": "Sprint-Quali", "day": "Fr", "t": "15:00"},
-      {"n": "Sprint", "day": "Sa", "t": "11:30"},
+      {"n": "FP1", "day": "Fr", "t": "10:30"},
+      {"n": "Sprint-Quali", "day": "Fr", "t": "14:30"},
+      {"n": "Sprint", "day": "Sa", "t": "11:00"},
       {"n": "Qualifying", "day": "Sa", "t": "15:00"},
       {"n": "Rennen", "day": "So", "t": "14:00"}
     ]},
