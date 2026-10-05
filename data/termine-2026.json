@@ -65,10 +65,10 @@
     ]},
   {"s": "f1", "rd": 3, "name": "Großer Preis von Japan", "loc": "Suzuka", "d0": "2026-03-27", "d1": "2026-03-29", "status": "done", "result": "Kimi Antonelli (Mercedes)",
     "sessions": [
-      {"n": "FP1", "day": "Fr", "t": "04:30"},
-      {"n": "FP2", "day": "Fr", "t": "08:00"},
-      {"n": "FP3", "day": "Sa", "t": "04:30"},
-      {"n": "Qualifying", "day": "Sa", "t": "08:00", "res": [
+      {"n": "FP1", "day": "Fr", "t": "03:30"},
+      {"n": "FP2", "day": "Fr", "t": "07:00"},
+      {"n": "FP3", "day": "Sa", "t": "03:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "07:00", "res": [
         {"p": 1, "who": "Kimi Antonelli", "team": "Mercedes", "gap": "1:28.778 · Pole"},
         {"p": 2, "who": "George Russell", "team": "Mercedes", "gap": "1:29.076"},
         {"p": 3, "who": "Oscar Piastri", "team": "McLaren", "gap": "1:29.132"},
@@ -265,34 +265,34 @@
     ]},
   {"s": "f1", "rd": 19, "name": "Großer Preis von Mexiko", "loc": "Mexiko-Stadt", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
     "sessions": [
-      {"n": "FP1", "day": "Fr", "t": "20:30"},
-      {"n": "FP2", "day": "Sa", "t": "00:00"},
-      {"n": "FP3", "day": "Sa", "t": "19:30"},
-      {"n": "Qualifying", "day": "Sa", "t": "23:00"},
+      {"n": "FP1", "day": "Fr", "t": "19:30"},
+      {"n": "FP2", "day": "Fr", "t": "23:00"},
+      {"n": "FP3", "day": "Sa", "t": "18:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "22:00"},
       {"n": "Rennen", "day": "So", "t": "21:00"}
     ]},
   {"s": "f1", "rd": 20, "name": "Großer Preis von São Paulo", "loc": "Interlagos", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
-      {"n": "FP1", "day": "Fr", "t": "15:30"},
-      {"n": "FP2", "day": "Fr", "t": "19:00"},
+      {"n": "FP1", "day": "Fr", "t": "16:30"},
+      {"n": "FP2", "day": "Fr", "t": "20:00"},
       {"n": "FP3", "day": "Sa", "t": "15:30"},
       {"n": "Qualifying", "day": "Sa", "t": "19:00"},
       {"n": "Rennen", "day": "So", "t": "18:00"}
     ]},
   {"s": "f1", "rd": 21, "name": "Großer Preis von Las Vegas", "loc": "Las Vegas", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
     "sessions": [
-      {"n": "FP1", "day": "Fr", "t": "05:30"},
-      {"n": "FP2", "day": "Fr", "t": "09:00"},
-      {"n": "FP3", "day": "Sa", "t": "05:30"},
-      {"n": "Qualifying", "day": "Sa", "t": "09:00"},
-      {"n": "Rennen", "day": "So", "t": "07:00"}
+      {"n": "FP1", "day": "Fr", "t": "01:30"},
+      {"n": "FP2", "day": "Fr", "t": "05:00"},
+      {"n": "FP3", "day": "Sa", "t": "01:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "05:00"},
+      {"n": "Rennen", "day": "So", "t": "05:00"}
     ]},
   {"s": "f1", "rd": 22, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-27", "d1": "2026-11-29", "status": "up",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "14:30"},
       {"n": "FP2", "day": "Fr", "t": "18:00"},
-      {"n": "FP3", "day": "Sa", "t": "14:30"},
-      {"n": "Qualifying", "day": "Sa", "t": "18:00"},
+      {"n": "FP3", "day": "Sa", "t": "15:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "19:00"},
       {"n": "Rennen", "day": "So", "t": "17:00"}
     ]},
   {"s": "f1", "rd": 23, "name": "Großer Preis von Abu Dhabi", "loc": "Yas Marina", "d0": "2026-12-04", "d1": "2026-12-06", "status": "up",
