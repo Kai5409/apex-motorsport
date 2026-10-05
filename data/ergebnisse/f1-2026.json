@@ -434,5 +434,28 @@
       [15, "Gabriel Bortoleto", "Audi"],
       [16, "Valtteri Bottas", "Cadillac"]
     ]}
+  ],
+  "f1-16": [
+    {"n": "Rennen", "quelle": "formula1.com · en.wikipedia.org", "zeilen": [
+      [1, "Max Verstappen", "Red Bull"],
+      [2, "Kimi Antonelli", "Mercedes"],
+      [3, "Lewis Hamilton", "Ferrari"],
+      [4, "Charles Leclerc", "Ferrari"],
+      [5, "Isack Hadjar", "Red Bull"],
+      [6, "Oscar Piastri", "McLaren"],
+      [7, "Liam Lawson", "Racing Bulls"],
+      [8, "Fernando Alonso", "Aston Martin"],
+      [9, "Lando Norris", "McLaren"],
+      [10, "Arvid Lindblad", "Racing Bulls"],
+      [11, "Nico Hülkenberg", "Audi"],
+      [12, "Lance Stroll", "Aston Martin"],
+      [13, "Franco Colapinto", "Alpine"],
+      [14, "Oliver Bearman", "Haas"],
+      [15, "Esteban Ocon", "Haas"],
+      [16, "Pierre Gasly", "Alpine"],
+      [17, "Carlos Sainz", "Williams"],
+      [18, "Gabriel Bortoleto", "Audi"],
+      [19, "Sergio Perez", "Cadillac"]
+    ]}
   ]
 }

@@ -1,0 +1,28 @@
+{
+  "moto3-16": [
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "David Almansa", "Liqui Moly Dynavolt Intact GP"],
+      [2, "Máximo Quiles", "CFMOTO Gaviota Aspar Team"],
+      [3, "Álvaro Carpe", "Red Bull KTM Ajo"],
+      [4, "Brian Uriarte", "Red Bull KTM Ajo"],
+      [5, "Rico Salmela", "Red Bull KTM Tech3"],
+      [6, "Matteo Bertelle", "LEVEL UP - MTA"],
+      [7, "David Muñoz", "Liqui Moly Dynavolt Intact GP"],
+      [8, "Ryusei Yamanaka", "AEON Credit - MT Helmets - MSI"],
+      [9, "Joel Esteban", "LEVEL UP - MTA"],
+      [10, "Adrián Cruces", "CIP Green Power"],
+      [11, "Veda Pratama", "Honda Team Asia"],
+      [12, "Hakim Danish", "AEON Credit - MT Helmets - MSI"],
+      [13, "Adrián Fernández", "Leopard Racing"],
+      [14, "Valentín Perrone", "Red Bull KTM Tech3"],
+      [15, "Casey O'Gorman", "SIC58 Squadra Corse"],
+      [16, "Ryota Ogiwara", "CODE Motorsports"],
+      [17, "Joel Kelso", "GRYD Racing"],
+      [18, "Marco Morelli", "CFMOTO Gaviota Aspar Team"],
+      [19, "Jesús Ríos", "Rivacold Snipers Team"],
+      [20, "Scott Ogden", "CIP Green Power"],
+      [21, "Zen Mitani", "Honda Team Asia"],
+      [22, "Ruché Moodley", "CODE Motorsports"]
+    ]}
+  ]
+}
