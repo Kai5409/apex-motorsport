@@ -2050,8 +2050,9 @@ function injectEventSchema(){
         "@type":"SportsEvent",
         "position":i+1,
         "name":(S0&&!e.sonder?S0.name+" — ":"")+e.name,
-        "description":`${e.sonder?e.name:(S0?S0.name:"")} ${evYear(e)} in ${e.loc}, ${zeitraum}.${e.prov?" Vorläufiger Termin.":""}`
-          + (rennen?` ${rennen===1?"Rennen":rennen+" Rennen"} mit Sessionzeiten in deutscher Zeit.`:""),
+        "description":`${e.sonder?e.name:(S0?S0.name:"")} ${evYear(e)}, ${e.loc}, ${zeitraum}.${e.prov?" Vorläufiger Termin.":""}`
+          + (S0&&S0.gruppe==="rallye"?(e.sessions.some(x=>x.t)?" Mit Zeitplan in deutscher Zeit.":"")
+            :rennen?` ${rennen===1?"Rennen":rennen+" Rennen"} mit Sessionzeiten in deutscher Zeit.`:""),
         /* Bewusst OHNE Sieger: waere ein Spoiler in den Suchergebnissen,
            und die Ergebnisse werden nicht regelmaessig genug gepflegt. */
         "image":BASIS+"logo-apex.png",
