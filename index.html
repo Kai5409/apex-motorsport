@@ -535,11 +535,11 @@ APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
       und aufgerufene Datei an GitHub. Diese Verarbeitung ist für die Auslieferung der Seite
       erforderlich und erfolgt auf Grundlage eines berechtigten Interesses an einem sicheren und
       funktionsfähigen Angebot (Art. 6 Abs. 1 lit. f DSGVO). Auf Umfang und Speicherdauer dieser
-      Server-Protokolle besteht kein Einfluss. Abonnieren Sie einen Kalender, ruft Ihre Kalender-App die
-      Abo-Datei regelmäßig auf dieselbe Weise von GitHub ab.</p>
+      Server-Protokolle besteht kein Einfluss. Verbinden Sie einen APEX-Kalender mit Ihrer Kalender-App, ruft diese die
+      Kalenderdatei regelmäßig auf dieselbe Weise von GitHub ab.</p>
 
       <h4>Kalenderdienste</h4>
-      <p>Wählen Sie auf einer Serienseite unter „Termine abonnieren“ Google Kalender oder Outlook,
+      <p>Wählen Sie auf einer Serienseite unter „Mit Kalender verbinden“ Google Kalender oder Outlook,
       werden Sie auf die Seite des jeweiligen Anbieters weitergeleitet. APEX überträgt dabei keine
       Daten an den Anbieter; für die Nutzung dort gelten die Datenschutzbestimmungen des Anbieters.</p>
 
@@ -1563,11 +1563,11 @@ function renderSeries(){
   const host=document.getElementById("view-series"); if(!host)return;let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
   /* Übersicht aller Serienseiten */
   if(Object.keys(SERIES).length)html+=`<a class="abo-box ueb-box" href="${ordnerHref("serien/")}"><b>Alle Serien im Überblick</b> <span aria-hidden="true">→</span><span class="ueb-t">Je Serie eine eigene Seite mit Kalender, Startzeiten, Wertung, Sendern und Regeln</span></a>`;
-  if(Object.keys(SERIES).length)html+=`<div class="abo-box"><p><b>Kalender-Abo</b> · Alle Sessions in deutscher Zeit direkt im eigenen Kalender – aktualisiert sich selbst. Für alle Serien oder unten je Serie.</p>${aboHTML("apex-2026.ics","Alle Serien abonnieren")}</div>`;
+  if(Object.keys(SERIES).length)html+=`<div class="abo-box"><p><b>Kalender verbinden</b> · Alle Sessions in deutscher Zeit direkt auf dem Handy, in Google oder Outlook – aktualisiert sich selbst. Für alle Serien oder unten je Serie.</p>${aboHTML("apex-2026.ics","Alle Serien mit Kalender verbinden")}</div>`;
   const leer=termineFehlen(SEASON)?"Termine gerade nicht verfügbar":`Kalender ${SEASON} noch nicht veröffentlicht`;
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
-    const abo=aboHTML("kalender/"+sk+".ics","Termine abonnieren",S0.seite);
+    const abo=aboHTML("kalender/"+sk+".ics","Mit Kalender verbinden",S0.seite);
     if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div><div class="ser-meta">${leer}</div>${abo}</div>`;return;}
     /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
     const lauf=evs.filter(e=>!e.sonder);

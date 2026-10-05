@@ -12,7 +12,7 @@ DATEIEN
   apple-touch-icon.png     iOS-Homescreen (180px)
   favicon-32.png / -16.png Browser-Tab (vereinfacht: ohne Curb-Streifen,
                            die bei 32px zu Matsch würden)
-  apex-2026.ics            Abo-Feed: alle 436 Sessions, alle 6 Serien
+  apex-2026.ics            Kalender-Feed: alle 436 Sessions, alle 6 Serien
   logo-apex.png            Logo als Bilddatei (für Social, README, Presse)
 
 DAS LOGO
@@ -99,14 +99,14 @@ HOSTEN (GitHub Pages, kostenlos, ~5 Minuten)
   2. Settings -> Pages -> Branch "main" -> Save
   3. Fertig: https://apexkalender.de/
   Danach automatisch aktiv: "App installieren", Offline-Nutzung,
-  Kalender-Abo unter "Wo schauen?" (webcal-Link).
+  "Mit Kalender verbinden" unter "Wo schauen?" (webcal-Link).
 
 WICHTIG BEIM UMBENENNEN
-  - Die Abo-Datei heißt jetzt apex-2026.ics (vorher fullgrid-2026.ics).
+  - Die Kalenderdatei heißt jetzt apex-2026.ics (vorher fullgrid-2026.ics).
     Beim Hochladen die alte Datei löschen, sonst liegen beide parallel.
   - Die Termin-IDs im Feed haben sich geändert (apex- statt fullgrid-).
-    Wer den alten Feed schon abonniert hatte, sieht die Termine einmalig
-    doppelt und muss das Abo neu einrichten. Vor dem Launch unkritisch.
+    Wer den alten Feed schon mit dem eigenen Kalender verbunden hatte, sieht
+    die Termine einmalig doppelt und muss den Kalender neu verbinden. Vor dem Launch unkritisch.
   - Gespeicherte Favoriten und Erinnerungen gehen NICHT verloren: die App
     liest die alten Browser-Daten automatisch ein und schreibt ab dann
     unter den neuen Schlüsseln weiter.
@@ -115,7 +115,7 @@ DATEN AKTUALISIEREN
   index.html anpassen und hochladen — Besucher bekommen beim nächsten
   Öffnen automatisch den neuen Stand (Netzwerk-zuerst-Cache).
   Bei geänderten Sessionzeiten auch apex-2026.ics neu erzeugen lassen,
-  sonst hinkt der Abo-Feed hinterher.
+  sonst hinkt der Kalender-Feed hinterher.
 
 ERINNERUNGEN
   Button in der Toolbar (Tab "Aktuell"): Aus -> 15 -> 30 -> 60 Min vorher.
