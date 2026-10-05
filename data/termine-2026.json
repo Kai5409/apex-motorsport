@@ -239,7 +239,7 @@
       {"n": "Qualifying", "day": "Fr", "t": "14:00"},
       {"n": "Rennen", "day": "Sa", "t": "13:00"}
     ]},
-  {"s": "f1", "rd": 16, "name": "Großer Preis von Bahrain", "loc": "Sepang", "d0": "2026-10-02", "d1": "2026-10-04", "status": "up",
+  {"s": "f1", "rd": 16, "name": "Großer Preis von Bahrain", "loc": "Sepang", "d0": "2026-10-02", "d1": "2026-10-04", "status": "done", "result": "Max Verstappen (Red Bull)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "06:30"},
       {"n": "FP2", "day": "Fr", "t": "10:00"},
@@ -442,7 +442,7 @@
       {"n": "Warm Up", "day": "So", "t": "09:40"},
       {"n": "Rennen", "day": "So", "t": "14:00"}
     ]},
-  {"s": "mgp", "rd": 16, "name": "Großer Preis von Japan", "loc": "Motegi", "d0": "2026-10-02", "d1": "2026-10-04", "status": "up",
+  {"s": "mgp", "rd": 16, "name": "Großer Preis von Japan", "loc": "Motegi", "d0": "2026-10-02", "d1": "2026-10-04", "status": "done", "result": "Marc Márquez (Ducati)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "03:45"},
       {"n": "Practice", "day": "Fr", "t": "08:00"},
@@ -753,7 +753,7 @@
       {"n": "WP15 Carampangue 2", "day": "So", "t": "16:13"},
       {"n": "WP16 BioBío 2 · Power Stage", "day": "So", "t": "18:15"}
     ]},
-  {"s": "wrc", "rd": 13, "name": "Rallye Italien (Sardinien) · Finale", "loc": "Alghero", "d0": "2026-10-01", "d1": "2026-10-04", "status": "up",
+  {"s": "wrc", "rd": 13, "name": "Rallye Italien (Sardinien) · Finale", "loc": "Alghero", "d0": "2026-10-01", "d1": "2026-10-04", "status": "done", "result": "Oliver Solberg (Toyota)",
     "sessions": [
       {"n": "Shakedown", "day": "Do", "t": "09:01"},
       {"n": "WP1 Ittiri Arena Show", "day": "Do", "t": "16:05"},
@@ -895,7 +895,7 @@
       {"n": "Qualifying 2 · Gruppe B", "day": "So", "t": "10:50"},
       {"n": "Rennen 2", "day": "So", "t": "14:15"}
     ]},
-  {"s": "gtwc", "rd": 9, "name": "Barcelona · Sprint", "loc": "Barcelona", "d0": "2026-10-02", "d1": "2026-10-04", "status": "up",
+  {"s": "gtwc", "rd": 9, "name": "Barcelona · Sprint", "loc": "Barcelona", "d0": "2026-10-02", "d1": "2026-10-04", "status": "done", "result": "Sa: Pereira/Aka (Audi) · So: Vermeulen/Green (Ferrari)",
     "sessions": [
       {"n": "Freies Training 1", "day": "Fr", "t": "09:00"},
       {"n": "Freies Training 2", "day": "Fr", "t": "13:55"},
@@ -1119,7 +1119,7 @@
     "sessions": []},
   {"s": "moto2", "rd": 15, "name": "Großer Preis von Österreich", "loc": "Red Bull Ring", "d0": "2026-09-18", "d1": "2026-09-20", "status": "done", "result": "Izan Guevara (Boscoscuro)",
     "sessions": []},
-  {"s": "moto2", "rd": 16, "name": "Großer Preis von Japan", "loc": "Motegi", "d0": "2026-10-02", "d1": "2026-10-04", "status": "up",
+  {"s": "moto2", "rd": 16, "name": "Großer Preis von Japan", "loc": "Motegi", "d0": "2026-10-02", "d1": "2026-10-04", "status": "done", "result": "Izan Guevara (Boscoscuro)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "02:50"},
       {"n": "Practice", "day": "Fr", "t": "07:05"},
@@ -1181,7 +1181,7 @@
     "sessions": []},
   {"s": "moto3", "rd": 15, "name": "Großer Preis von Österreich", "loc": "Red Bull Ring", "d0": "2026-09-18", "d1": "2026-09-20", "status": "done", "result": "Máximo Quiles (KTM)",
     "sessions": []},
-  {"s": "moto3", "rd": 16, "name": "Großer Preis von Japan", "loc": "Motegi", "d0": "2026-10-02", "d1": "2026-10-04", "status": "up",
+  {"s": "moto3", "rd": 16, "name": "Großer Preis von Japan", "loc": "Motegi", "d0": "2026-10-02", "d1": "2026-10-04", "status": "done", "result": "David Almansa (KTM)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "02:00"},
       {"n": "Practice", "day": "Fr", "t": "06:15"},
