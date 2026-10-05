@@ -72,5 +72,9 @@
   "Jarama": "Europe/Madrid",
   "Tempelhof": "Europe/Berlin",
   "Sanya": "Asia/Shanghai",
-  "Tokio": "Asia/Tokyo"
+  "Tokio": "Asia/Tokyo",
+  "Most": "Europe/Prague",
+  "Donington": "Europe/London",
+  "Cremona": "Europe/Rome",
+  "Estoril": "Europe/Lisbon"
 }

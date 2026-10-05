@@ -89,9 +89,13 @@
 
   /* Termine abonnieren */
   const veil = $("#veil"), abo = $("#abo");
-  function aboZu() { if (veil && veil.classList.contains("on")) { veil.classList.remove("on"); if (abo) abo.focus(); } }
+  let aboVon = null;   /* Knopf oder Textlink, der die Auswahl geöffnet hat (Fokus kehrt dorthin zurück) */
+  function aboZu() { if (veil && veil.classList.contains("on")) { veil.classList.remove("on"); const z = aboVon && aboVon.isConnected ? aboVon : abo; if (z) z.focus(); } }
+  function aboAuf(von) { aboVon = von; veil.classList.add("on"); const o = $(".opt", veil); if (o) o.focus(); }
   if (veil && abo) {
-    abo.addEventListener("click", (ev) => { ev.preventDefault(); veil.classList.add("on"); const o = $(".opt", veil); if (o) o.focus(); });
+    abo.addEventListener("click", (ev) => { ev.preventDefault(); aboAuf(abo); });
+    /* Textlink im Hinweis „Kalender … noch nicht veröffentlicht“ (auch in nachgeladenen Karten): dieselbe Auswahl */
+    document.addEventListener("click", (ev) => { const a = ev.target.closest && ev.target.closest("a.abolink"); if (a) { ev.preventDefault(); aboAuf(a); } });
     $("#closeabo").addEventListener("click", aboZu);
     veil.addEventListener("click", (ev) => { if (ev.target === veil) aboZu(); });
     document.addEventListener("keydown", (ev) => { if (ev.key === "Escape") aboZu(); });
