@@ -913,14 +913,14 @@
       {"n": "Qualifying", "day": "Fr", "t": "18:55"},
       {"n": "Rennen (3 Stunden)", "day": "Sa", "t": "18:00"}
     ]},
-  {"s": "nls", "rd": 1, "name": "71. ADAC Westfalenfahrt", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-03-14", "d1": "2026-03-14", "status": "cancel",
+  {"s": "nls", "rd": 1, "name": "71. ADAC Westfalenfahrt", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-03-14", "d1": "2026-03-14", "status": "cancel",
     "sessions": []},
-  {"s": "nls", "rd": 2, "name": "58. ADAC Barbarossapreis", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-03-21", "d1": "2026-03-21", "status": "done", "result": "BMW #99 (Harper/Pepper)",
+  {"s": "nls", "rd": 2, "name": "58. ADAC Barbarossapreis", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-03-21", "d1": "2026-03-21", "status": "done", "result": "BMW #99 (Harper/Pepper)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 3, "name": "57. Adenauer ADAC Rundstrecken-Trophy", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-04-11", "d1": "2026-04-11", "status": "done", "result": "BMW #77 (Wittmann/Eng/Frijns)",
+  {"s": "nls", "rd": 3, "name": "57. Adenauer ADAC Rundstrecken-Trophy", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-04-11", "d1": "2026-04-11", "status": "done", "result": "BMW #77 (Wittmann/Eng/Frijns)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
@@ -940,27 +940,27 @@
     "sessions": [
       {"n": "Rennen (24h)", "day": "Sa", "t": "15:00"}
     ]},
-  {"s": "nls", "rd": 6, "name": "1. ADAC Eifel Trophy", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-06-20", "d1": "2026-06-20", "status": "done", "result": "Porsche #17 (Menzel/Müller)",
+  {"s": "nls", "rd": 6, "name": "1. ADAC Eifel Trophy", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-06-20", "d1": "2026-06-20", "status": "done", "result": "Porsche #17 (Menzel/Müller)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 7, "name": "KW 6h ADAC Ruhr-Pokal-Rennen", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-08-01", "d1": "2026-08-01", "status": "done", "result": "Mercedes-AMG #80 (Stolz/Aron)",
+  {"s": "nls", "rd": 7, "name": "KW 6h ADAC Ruhr-Pokal-Rennen", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-08-01", "d1": "2026-08-01", "status": "done", "result": "Mercedes-AMG #80 (Stolz/Aron)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (6h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 8, "name": "65. ADAC Reinoldus-Langstreckenrennen", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-09-12", "d1": "2026-09-12", "status": "done", "result": "BMW #77 (Klingmann/Pepper/de Wilde)",
+  {"s": "nls", "rd": 8, "name": "65. ADAC Reinoldus-Langstreckenrennen", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-09-12", "d1": "2026-09-12", "status": "done", "result": "BMW #77 (Klingmann/Pepper/de Wilde)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 9, "name": "66. ADAC ACAS Cup", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-09-13", "d1": "2026-09-13", "status": "done", "result": "Porsche #44 (Heinemann/Schuring)", "vorlaeufig": true,
+  {"s": "nls", "rd": 9, "name": "66. ADAC ACAS Cup", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-09-13", "d1": "2026-09-13", "status": "done", "result": "Porsche #44 (Heinemann/Schuring)", "vorlaeufig": true,
     "sessions": [
       {"n": "Qualifying", "day": "So", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "So", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 10, "name": "2. NLS Sportwarte-Trophy · Finale", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-10-10", "d1": "2026-10-10", "status": "up",
+  {"s": "nls", "rd": 10, "name": "2. NLS Sportwarte-Trophy · Finale", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-10-10", "d1": "2026-10-10", "status": "up",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
