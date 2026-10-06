@@ -305,7 +305,7 @@
     ]},
   {"s": "f1", "rd": 0, "name": "Großer Preis von Bahrain", "loc": "Sakhir", "d0": "2026-04-10", "d1": "2026-04-12", "status": "cancel",
     "sessions": []},
-  {"s": "f1", "rd": 0, "name": "Großer Preis von Saudi-Arabien", "loc": "Dschidda", "var": null, "d0": "2026-04-17", "d1": "2026-04-19", "status": "cancel",
+  {"s": "f1", "rd": 0, "name": "Großer Preis von Saudi-Arabien", "loc": "Dschidda", "d0": "2026-04-17", "d1": "2026-04-19", "status": "cancel",
     "sessions": []},
   {"s": "mgp", "rd": 1, "name": "Großer Preis von Thailand", "loc": "Buriram", "d0": "2026-02-27", "d1": "2026-03-01", "status": "done", "result": "Marco Bezzecchi (Aprilia)",
     "sessions": [

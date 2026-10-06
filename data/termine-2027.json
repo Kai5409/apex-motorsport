@@ -1,7 +1,7 @@
 [
   {"s": "f1", "rd": 1, "sz": "2027", "prov": true, "name": "Großer Preis von Bahrain · Sprint", "loc": "Sakhir", "d0": "2027-03-12", "d1": "2027-03-14", "status": "up",
     "sessions": []},
-  {"s": "f1", "rd": 2, "sz": "2027", "prov": true, "name": "Großer Preis von Saudi-Arabien", "loc": "Dschidda", "var": null, "d0": "2027-03-19", "d1": "2027-03-21", "status": "up",
+  {"s": "f1", "rd": 2, "sz": "2027", "prov": true, "name": "Großer Preis von Saudi-Arabien", "loc": "Dschidda", "d0": "2027-03-19", "d1": "2027-03-21", "status": "up",
     "sessions": []},
   {"s": "f1", "rd": 3, "sz": "2027", "prov": true, "name": "Großer Preis von Australien · Sprint", "loc": "Albert Park", "d0": "2027-04-02", "d1": "2027-04-04", "status": "up",
     "sessions": []},
