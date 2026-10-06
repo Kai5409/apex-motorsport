@@ -130,13 +130,13 @@ DESCRIPTION:APEX · Superbike-WM · Lauf 5 · Most — ganztägig\, Sessionzeite
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-wsbk6-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260529
 DTEND;VALUE=DATE:20260601
 TRANSP:TRANSPARENT
 SUMMARY:WSBK · WM-Lauf Aragón
-LOCATION:Aragón
-DESCRIPTION:APEX · Superbike-WM · Lauf 6 · Aragón — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:MotorLand Aragón
+DESCRIPTION:APEX · Superbike-WM · Lauf 6 · MotorLand Aragón — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-wsbk7-ganztag@apex-motorsport
@@ -150,13 +150,13 @@ DESCRIPTION:APEX · Superbike-WM · Lauf 7 · Misano — ganztägig\, Sessionzei
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-wsbk8-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260710
 DTEND;VALUE=DATE:20260713
 TRANSP:TRANSPARENT
 SUMMARY:WSBK · WM-Lauf Großbritannien
-LOCATION:Donington
-DESCRIPTION:APEX · Superbike-WM · Lauf 8 · Donington — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Donington Park
+DESCRIPTION:APEX · Superbike-WM · Lauf 8 · Donington Park — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-wsbk9-ganztag@apex-motorsport
@@ -230,13 +230,13 @@ DESCRIPTION:APEX · Superbike-WM · Lauf 4 · Assen — ganztägig\, Sessionzeit
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-wsbk5-2027-ganztag@apex-motorsport
-DTSTAMP:20261005T174404Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20270521
 DTEND;VALUE=DATE:20270524
 TRANSP:TRANSPARENT
 SUMMARY:WSBK · WM-Lauf Aragón
-LOCATION:Aragón
-DESCRIPTION:APEX · Superbike-WM · Lauf 5 · Aragón — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:MotorLand Aragón
+DESCRIPTION:APEX · Superbike-WM · Lauf 5 · MotorLand Aragón — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-wsbk6-2027-ganztag@apex-motorsport
@@ -260,13 +260,13 @@ DESCRIPTION:APEX · Superbike-WM · Lauf 7 · Misano — ganztägig\, Sessionzei
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-wsbk8-2027-ganztag@apex-motorsport
-DTSTAMP:20261005T174404Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20270709
 DTEND;VALUE=DATE:20270712
 TRANSP:TRANSPARENT
 SUMMARY:WSBK · WM-Lauf Großbritannien
-LOCATION:Donington
-DESCRIPTION:APEX · Superbike-WM · Lauf 8 · Donington — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Donington Park
+DESCRIPTION:APEX · Superbike-WM · Lauf 8 · Donington Park — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-wsbk9-2027-ganztag@apex-motorsport

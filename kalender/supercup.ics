@@ -8,13 +8,13 @@ X-WR-CALDESC:Porsche Supercup — alle Sessions in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VEVENT
 UID:apex-supercup1-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260604
 DTEND;VALUE=DATE:20260608
 TRANSP:TRANSPARENT
 SUMMARY:Supercup · Großer Preis von Monaco
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Porsche Supercup · Lauf 1 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Monaco
+DESCRIPTION:APEX · Porsche Supercup · Lauf 1 · Monaco — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-supercup2-ganztag@apex-motorsport
@@ -28,13 +28,13 @@ DESCRIPTION:APEX · Porsche Supercup · Lauf 2 · Barcelona — ganztägig\, Ses
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-supercup3-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260626
 DTEND;VALUE=DATE:20260629
 TRANSP:TRANSPARENT
 SUMMARY:Supercup · Großer Preis von Österreich
-LOCATION:Spielberg
-DESCRIPTION:APEX · Porsche Supercup · Lauf 3 · Spielberg — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Red Bull Ring
+DESCRIPTION:APEX · Porsche Supercup · Lauf 3 · Red Bull Ring — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-supercup4-ganztag@apex-motorsport
@@ -48,13 +48,13 @@ DESCRIPTION:APEX · Porsche Supercup · Lauf 4 · Spa-Francorchamps — ganztäg
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-supercup5-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260724
 DTEND;VALUE=DATE:20260727
 TRANSP:TRANSPARENT
 SUMMARY:Supercup · Großer Preis von Ungarn
-LOCATION:Budapest
-DESCRIPTION:APEX · Porsche Supercup · Lauf 5 · Budapest — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Hungaroring
+DESCRIPTION:APEX · Porsche Supercup · Lauf 5 · Hungaroring — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-supercup6-ganztag@apex-motorsport

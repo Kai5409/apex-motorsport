@@ -170,111 +170,111 @@ DESCRIPTION:APEX · Formel E · Lauf 6 · Jarama
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe7-FreiesTraining@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260502T073000Z
 DTEND:20260502T083000Z
 SUMMARY:F·E · Berlin E-Prix I — Freies Training
-LOCATION:Tempelhof
-DESCRIPTION:APEX · Formel E · Lauf 7 · Tempelhof
+LOCATION:Berlin-Tempelhof
+DESCRIPTION:APEX · Formel E · Lauf 7 · Berlin-Tempelhof
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe7-Qualifying@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260502T094000Z
 DTEND:20260502T104000Z
 SUMMARY:F·E · Berlin E-Prix I — Qualifying
-LOCATION:Tempelhof
-DESCRIPTION:APEX · Formel E · Lauf 7 · Tempelhof
+LOCATION:Berlin-Tempelhof
+DESCRIPTION:APEX · Formel E · Lauf 7 · Berlin-Tempelhof
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe7-Rennen@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260502T140000Z
 DTEND:20260502T145000Z
 SUMMARY:F·E · Berlin E-Prix I — Rennen
-LOCATION:Tempelhof
-DESCRIPTION:APEX · Formel E · Lauf 7 · Tempelhof
+LOCATION:Berlin-Tempelhof
+DESCRIPTION:APEX · Formel E · Lauf 7 · Berlin-Tempelhof
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe8-FreiesTraining@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260503T073000Z
 DTEND:20260503T083000Z
 SUMMARY:F·E · Berlin E-Prix II — Freies Training
-LOCATION:Tempelhof
-DESCRIPTION:APEX · Formel E · Lauf 8 · Tempelhof
+LOCATION:Berlin-Tempelhof
+DESCRIPTION:APEX · Formel E · Lauf 8 · Berlin-Tempelhof
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe8-Qualifying@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260503T094000Z
 DTEND:20260503T104000Z
 SUMMARY:F·E · Berlin E-Prix II — Qualifying
-LOCATION:Tempelhof
-DESCRIPTION:APEX · Formel E · Lauf 8 · Tempelhof
+LOCATION:Berlin-Tempelhof
+DESCRIPTION:APEX · Formel E · Lauf 8 · Berlin-Tempelhof
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe8-Rennen@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260503T140000Z
 DTEND:20260503T145000Z
 SUMMARY:F·E · Berlin E-Prix II — Rennen
-LOCATION:Tempelhof
-DESCRIPTION:APEX · Formel E · Lauf 8 · Tempelhof
+LOCATION:Berlin-Tempelhof
+DESCRIPTION:APEX · Formel E · Lauf 8 · Berlin-Tempelhof
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe9-FreiesTraining@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260516T063000Z
 DTEND:20260516T073000Z
 SUMMARY:F·E · Monaco E-Prix I — Freies Training
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Formel E · Lauf 9 · Monte Carlo
+LOCATION:Monaco
+DESCRIPTION:APEX · Formel E · Lauf 9 · Monaco
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe9-Qualifying@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260516T084000Z
 DTEND:20260516T094000Z
 SUMMARY:F·E · Monaco E-Prix I — Qualifying
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Formel E · Lauf 9 · Monte Carlo
+LOCATION:Monaco
+DESCRIPTION:APEX · Formel E · Lauf 9 · Monaco
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe9-Rennen@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260516T130000Z
 DTEND:20260516T135000Z
 SUMMARY:F·E · Monaco E-Prix I — Rennen
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Formel E · Lauf 9 · Monte Carlo
+LOCATION:Monaco
+DESCRIPTION:APEX · Formel E · Lauf 9 · Monaco
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe10-FreiesTraining@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260517T063000Z
 DTEND:20260517T073000Z
 SUMMARY:F·E · Monaco E-Prix II — Freies Training
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Formel E · Lauf 10 · Monte Carlo
+LOCATION:Monaco
+DESCRIPTION:APEX · Formel E · Lauf 10 · Monaco
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe10-Qualifying@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260517T084000Z
 DTEND:20260517T094000Z
 SUMMARY:F·E · Monaco E-Prix II — Qualifying
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Formel E · Lauf 10 · Monte Carlo
+LOCATION:Monaco
+DESCRIPTION:APEX · Formel E · Lauf 10 · Monaco
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe10-Rennen@apex-motorsport
-DTSTAMP:20260925T230300Z
+DTSTAMP:20261006T165200Z
 DTSTART:20260517T130000Z
 DTEND:20260517T135000Z
 SUMMARY:F·E · Monaco E-Prix II — Rennen
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Formel E · Lauf 10 · Monte Carlo
+LOCATION:Monaco
+DESCRIPTION:APEX · Formel E · Lauf 10 · Monaco
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe11-FreiesTraining@apex-motorsport
@@ -386,23 +386,23 @@ DESCRIPTION:APEX · Formel E · Lauf 14 · Tokio
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe15-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260815
 DTEND;VALUE=DATE:20260816
 TRANSP:TRANSPARENT
 SUMMARY:F·E · London E-Prix I
-LOCATION:London ExCeL
-DESCRIPTION:APEX · Formel E · Lauf 15 · London ExCeL — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:ExCeL London
+DESCRIPTION:APEX · Formel E · Lauf 15 · ExCeL London — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe16-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260816
 DTEND;VALUE=DATE:20260817
 TRANSP:TRANSPARENT
 SUMMARY:F·E · London E-Prix II · Finale
-LOCATION:London ExCeL
-DESCRIPTION:APEX · Formel E · Lauf 16 · London ExCeL — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:ExCeL London
+DESCRIPTION:APEX · Formel E · Lauf 16 · ExCeL London — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe1-S13-ganztag@apex-motorsport
@@ -436,13 +436,13 @@ DESCRIPTION:APEX · Formel E · Lauf 3 · Mexiko-Stadt — ganztägig\, Sessionz
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe4-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20270206
 DTEND;VALUE=DATE:20270207
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Austin E-Prix
-LOCATION:Austin
-DESCRIPTION:APEX · Formel E · Lauf 4 · Austin — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:COTA
+DESCRIPTION:APEX · Formel E · Lauf 4 · COTA — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe5-S13-ganztag@apex-motorsport
@@ -476,43 +476,43 @@ DESCRIPTION:APEX · Formel E · Lauf 7 · Sanya — ganztägig\, Sessionzeiten l
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe8-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20270501
 DTEND;VALUE=DATE:20270502
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Monaco E-Prix I
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Formel E · Lauf 8 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Monaco
+DESCRIPTION:APEX · Formel E · Lauf 8 · Monaco — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe9-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20270502
 DTEND;VALUE=DATE:20270503
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Monaco E-Prix II
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Formel E · Lauf 9 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Monaco
+DESCRIPTION:APEX · Formel E · Lauf 9 · Monaco — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe10-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20270508
 DTEND;VALUE=DATE:20270509
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Berlin E-Prix I
-LOCATION:Berlin
-DESCRIPTION:APEX · Formel E · Lauf 10 · Berlin — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Berlin-Tempelhof
+DESCRIPTION:APEX · Formel E · Lauf 10 · Berlin-Tempelhof — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe11-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20270509
 DTEND;VALUE=DATE:20270510
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Berlin E-Prix II
-LOCATION:Berlin
-DESCRIPTION:APEX · Formel E · Lauf 11 · Berlin — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Berlin-Tempelhof
+DESCRIPTION:APEX · Formel E · Lauf 11 · Berlin-Tempelhof — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe12-S13-ganztag@apex-motorsport

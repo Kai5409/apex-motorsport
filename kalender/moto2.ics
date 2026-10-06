@@ -163,13 +163,13 @@ DESCRIPTION:APEX · Moto2 · Lauf 2 · Goiânia — ganztägig\, Sessionzeiten l
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-moto23-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260327
 DTEND;VALUE=DATE:20260330
 TRANSP:TRANSPARENT
 SUMMARY:Moto2 · Großer Preis der Amerikas
-LOCATION:Austin
-DESCRIPTION:APEX · Moto2 · Lauf 3 · Austin — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:COTA
+DESCRIPTION:APEX · Moto2 · Lauf 3 · COTA — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-moto24-ganztag@apex-motorsport
@@ -263,13 +263,13 @@ DESCRIPTION:APEX · Moto2 · Lauf 12 · Silverstone — ganztägig\, Sessionzeit
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-moto213-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260828
 DTEND;VALUE=DATE:20260831
 TRANSP:TRANSPARENT
 SUMMARY:Moto2 · Großer Preis von Aragón
-LOCATION:Aragón
-DESCRIPTION:APEX · Moto2 · Lauf 13 · Aragón — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:MotorLand Aragón
+DESCRIPTION:APEX · Moto2 · Lauf 13 · MotorLand Aragón — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-moto214-ganztag@apex-motorsport
@@ -373,13 +373,13 @@ DESCRIPTION:APEX · Moto2 · Lauf 4 · Buenos Aires — ganztägig\, Sessionzeit
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-moto25-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20270423
 DTEND;VALUE=DATE:20270426
 TRANSP:TRANSPARENT
 SUMMARY:Moto2 · Großer Preis der Amerikas
-LOCATION:Austin
-DESCRIPTION:APEX · Moto2 · Lauf 5 · Austin — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:COTA
+DESCRIPTION:APEX · Moto2 · Lauf 5 · COTA — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-moto26-2027-ganztag@apex-motorsport
@@ -483,13 +483,13 @@ DESCRIPTION:APEX · Moto2 · Lauf 15 · Misano — ganztägig\, Sessionzeiten li
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-moto216-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20270917
 DTEND;VALUE=DATE:20270920
 TRANSP:TRANSPARENT
 SUMMARY:Moto2 · Großer Preis von Aragón
-LOCATION:Aragón
-DESCRIPTION:APEX · Moto2 · Lauf 16 · Aragón — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:MotorLand Aragón
+DESCRIPTION:APEX · Moto2 · Lauf 16 · MotorLand Aragón — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-moto217-2027-ganztag@apex-motorsport
