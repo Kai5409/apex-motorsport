@@ -694,7 +694,7 @@ function uebernehmeDaten(d){
       if(v.varianten!=null&&luecke("strecken",istObj(v.varianten)))Object.keys(v.varianten).forEach(vk=>{if(luecke("strecken",varianteOK(v.varianten[vk])))vs[vk]=v.varianten[vk];});
       const slug=v.typ!=="rallye"&&istText(v.slug)&&/^[a-z0-9-]+$/.test(v.slug)?v.slug:"";
       const ort=istObj(v.adresse)&&istText(v.adresse.ort)?v.adresse.ort:"";
-      const eintrag={name:v.name,typ:v.typ,ort,varianten:vs};
+      const eintrag={name:v.name,offiziell:istText(v.offiziell)?v.offiziell:"",typ:v.typ,ort,varianten:vs};
       v.loc.forEach(l=>KARTE_ORT.set(l,eintrag));
       if(slug)KARTE_STRECKEN.push({slug,loc:v.loc});});
   });
@@ -916,6 +916,7 @@ function matchEv(e){
   if(!SEARCH)return true;const q=SEARCH;
   if(SERIES[e.s].name.toLowerCase().includes(q))return true;
   if((e.name+" "+e.loc).toLowerCase().includes(q))return true;
+  const ks=KARTE_ORT.get(e.loc); if(ks&&(ks.name+" "+ks.offiziell+" "+ks.ort).toLowerCase().includes(q))return true;
   const ci=circuitFor(e); if(ci&&ci.name.toLowerCase().includes(q))return true;
   if(e.result&&e.result.toLowerCase().includes(q))return true;
   const pools=[]; if(e.resOverall)pools.push(e.resOverall);
@@ -931,14 +932,26 @@ function circuitFor(e){
   const ks=Object.keys(k.varianten);
   return k.varianten[typeof e.var==="string"?e.var:ks[0]]||null;
 }
+/* Eventkarte: „◗ Kurzname“ (Link auf die Streckenseite, wenn es sie gibt), Länge und Kurven der gefahrenen Variante, Ort aus
+   adresse.ort der Strecke (nicht aus e.loc). Rallye-Zentren und Orte ohne Eintrag in karte.strecken: keine Streckeninfo */
 function trackInfoHTML(e){
   if(DATEN_FEHLT.has("strecken"))return `<div class="trackinfo"><span class="tfact">Streckeninfo konnte gerade nicht geladen werden</span></div>`;
-  const c=circuitFor(e); if(!c)return "";
-  let facts=`<span class="tfact">Länge <b>${c.len.toFixed(3)} km</b></span>`;
-  if(c.turns)facts+=`<span class="tfact">Kurven <b>${c.turns}</b></span>`;
-  facts+=`<span class="tfact">Ort <b>${e.loc}</b></span>`;
+  const k=KARTE_ORT.get(e.loc); if(!k||k.typ==="rallye")return "";
+  const c=circuitFor(e);
+  let facts="";
+  if(c){
+    facts+=`<span class="tfact">Länge <b>${c.len.toFixed(3)} km</b></span>`;
+    if(c.turns)facts+=`<span class="tfact">Kurven <b>${c.turns}</b></span>`;
+    /* weicht der Termin von der Hauptvariante ab (z. B. Formel E, NLS, 24h Le Mans): Name der Variante, ohne den Streckennamen davor */
+    const ks=Object.keys(k.varianten);
+    if(typeof e.var==="string"&&e.var!==ks[0]){
+      const m=/^(.*?)\s*\(([^)]+)\)\s*$/.exec(c.name);
+      facts+=`<span class="tfact">Variante <b>${m&&(m[1]===k.name||m[1]===k.offiziell)?m[2]:c.name}</b></span>`;
+    }
+  }
+  if(k.ort&&k.ort!==k.name)facts+=`<span class="tfact">Ort <b>${k.ort}</b></span>`;
   const slug=streckeSlug(e.loc);
-  const name=slug?`<a class="ser-link" href="${ordnerHref("strecken/"+slug+"/")}">${c.name}</a>`:c.name;
+  const name=slug?`<a class="ser-link" href="${ordnerHref("strecken/"+slug+"/")}">${k.name}</a>`:k.name;
   return `<div class="trackinfo"><span class="tcircuit">◗ ${name}</span>${facts}</div>`;
 }
 /* Streckenseite zu einem Ort (Zuordnung loc → karte.strecken wie im Seitengenerator). Eine Seite gibt es nur für
@@ -2041,6 +2054,13 @@ function kopfJahre(){
 
 /* ═══════ SEO: STRUKTURIERTE DATEN (Schema.org Event) ═══════ */
 /* Wird rein aus EVENTS generiert -- keine Zugangsdaten, keine externen Aufrufe. */
+/* Ort im JSON-LD: offizieller Name der Strecke (alternateName = Kurzname = loc), Ort aus adresse.ort; ohne Eintrag wie bisher loc */
+function ortLD(e){
+  const k=KARTE_ORT.get(e.loc), p={"@type":"Place","name":(k&&k.offiziell)||e.loc||""};
+  if(k&&k.offiziell)p.alternateName=e.loc;
+  p.address={"@type":"PostalAddress","addressLocality":(k&&k.ort)||e.loc||""};
+  return p;
+}
 function injectEventSchema(){
   try{
     const BASIS="https://apexkalender.de/";
@@ -2065,11 +2085,7 @@ function injectEventSchema(){
         "endDate":e.d1||e.d0,
         "eventStatus":"https://schema.org/EventScheduled",
         "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-        "location":{
-          "@type":"Place",
-          "name":e.loc||"",
-          "address":{"@type":"PostalAddress","addressLocality":e.loc||""}
-        },
+        "location":ortLD(e),
         "organizer":e.veranstalter?{"@type":"Organization","name":e.veranstalter}:(S0?{"@type":"Organization","name":S0.name}:undefined),
         "sport":S0?S0.name:undefined
       };
