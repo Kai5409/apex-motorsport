@@ -305,7 +305,7 @@
     ]},
   {"s": "f1", "rd": 0, "name": "Großer Preis von Bahrain", "loc": "Sakhir", "d0": "2026-04-10", "d1": "2026-04-12", "status": "cancel",
     "sessions": []},
-  {"s": "f1", "rd": 0, "name": "Großer Preis von Saudi-Arabien", "loc": "Dschidda", "d0": "2026-04-17", "d1": "2026-04-19", "status": "cancel",
+  {"s": "f1", "rd": 0, "name": "Großer Preis von Saudi-Arabien", "loc": "Dschidda", "var": null, "d0": "2026-04-17", "d1": "2026-04-19", "status": "cancel",
     "sessions": []},
   {"s": "mgp", "rd": 1, "name": "Großer Preis von Thailand", "loc": "Buriram", "d0": "2026-02-27", "d1": "2026-03-01", "status": "done", "result": "Marco Bezzecchi (Aprilia)",
     "sessions": [
@@ -513,7 +513,7 @@
       {"n": "Hyperpole", "day": "Sa", "t": "12:00"},
       {"n": "Rennen (6h)", "day": "Sa", "t": "14:00"}
     ]},
-  {"s": "wec", "rd": 3, "name": "24 Stunden von Le Mans", "loc": "Le Mans", "d0": "2026-06-10", "d1": "2026-06-14", "status": "done", "result": "Toyota #7 (Conway/Kobayashi/de Vries)",
+  {"s": "wec", "rd": 3, "name": "24 Stunden von Le Mans", "loc": "Le Mans", "var": "24h", "d0": "2026-06-10", "d1": "2026-06-14", "status": "done", "result": "Toyota #7 (Conway/Kobayashi/de Vries)",
     "sessions": [
       {"n": "Free Practice", "day": "Mi", "t": "15:00"},
       {"n": "Qualifying", "day": "Mi", "t": "19:00"},
@@ -788,25 +788,25 @@
       {"n": "Qualifying", "day": "Sa", "t": "11:40"},
       {"n": "Rennen", "day": "Sa", "t": "17:00"}
     ]},
-  {"s": "fe", "rd": 2, "name": "Mexiko-Stadt E-Prix", "loc": "Mexiko-Stadt", "d0": "2026-01-10", "d1": "2026-01-10", "status": "done", "result": "Nick Cassidy (Citroën)",
+  {"s": "fe", "rd": 2, "name": "Mexiko-Stadt E-Prix", "loc": "Mexiko-Stadt", "var": null, "d0": "2026-01-10", "d1": "2026-01-10", "status": "done", "result": "Nick Cassidy (Citroën)",
     "sessions": [
       {"n": "Freies Training", "day": "Sa", "t": "16:30"},
       {"n": "Qualifying", "day": "Sa", "t": "18:40"},
       {"n": "Rennen", "day": "Sa", "t": "23:00"}
     ]},
-  {"s": "fe", "rd": 3, "name": "Miami E-Prix", "loc": "Miami", "d0": "2026-01-31", "d1": "2026-01-31", "status": "done", "result": "Mitch Evans (Jaguar)",
+  {"s": "fe", "rd": 3, "name": "Miami E-Prix", "loc": "Miami", "var": "formel-e", "d0": "2026-01-31", "d1": "2026-01-31", "status": "done", "result": "Mitch Evans (Jaguar)",
     "sessions": [
       {"n": "Freies Training", "day": "Sa", "t": "15:30"},
       {"n": "Qualifying", "day": "Sa", "t": "17:40"},
       {"n": "Rennen", "day": "Sa", "t": "22:00"}
     ]},
-  {"s": "fe", "rd": 4, "name": "Jeddah E-Prix I", "loc": "Dschidda", "d0": "2026-02-13", "d1": "2026-02-13", "status": "done", "result": "Pascal Wehrlein (Porsche)",
+  {"s": "fe", "rd": 4, "name": "Jeddah E-Prix I", "loc": "Dschidda", "var": "formel-e", "d0": "2026-02-13", "d1": "2026-02-13", "status": "done", "result": "Pascal Wehrlein (Porsche)",
     "sessions": [
       {"n": "Freies Training", "day": "Fr", "t": "12:30"},
       {"n": "Qualifying", "day": "Fr", "t": "14:40"},
       {"n": "Rennen", "day": "Fr", "t": "19:00"}
     ]},
-  {"s": "fe", "rd": 5, "name": "Jeddah E-Prix II", "loc": "Dschidda", "d0": "2026-02-14", "d1": "2026-02-14", "status": "done", "result": "António Félix da Costa (Jaguar)",
+  {"s": "fe", "rd": 5, "name": "Jeddah E-Prix II", "loc": "Dschidda", "var": "formel-e", "d0": "2026-02-14", "d1": "2026-02-14", "status": "done", "result": "António Félix da Costa (Jaguar)",
     "sessions": [
       {"n": "Freies Training", "day": "Sa", "t": "10:30"},
       {"n": "Qualifying", "day": "Sa", "t": "12:40"},
@@ -848,13 +848,13 @@
       {"n": "Qualifying", "day": "Sa", "t": "06:40"},
       {"n": "Rennen", "day": "Sa", "t": "09:00"}
     ]},
-  {"s": "fe", "rd": 12, "name": "Shanghai E-Prix I", "loc": "Shanghai", "d0": "2026-07-04", "d1": "2026-07-04", "status": "done", "result": "Pascal Wehrlein (Porsche)",
+  {"s": "fe", "rd": 12, "name": "Shanghai E-Prix I", "loc": "Shanghai", "var": "formel-e", "d0": "2026-07-04", "d1": "2026-07-04", "status": "done", "result": "Pascal Wehrlein (Porsche)",
     "sessions": [
       {"n": "Freies Training", "day": "Sa", "t": "04:30"},
       {"n": "Qualifying", "day": "Sa", "t": "06:40"},
       {"n": "Rennen", "day": "Sa", "t": "09:00"}
     ]},
-  {"s": "fe", "rd": 13, "name": "Shanghai E-Prix II", "loc": "Shanghai", "d0": "2026-07-05", "d1": "2026-07-05", "status": "done", "result": "Lucas di Grassi (Lola Yamaha ABT)",
+  {"s": "fe", "rd": 13, "name": "Shanghai E-Prix II", "loc": "Shanghai", "var": "formel-e", "d0": "2026-07-05", "d1": "2026-07-05", "status": "done", "result": "Lucas di Grassi (Lola Yamaha ABT)",
     "sessions": [
       {"n": "Freies Training", "day": "So", "t": "04:30"},
       {"n": "Qualifying", "day": "So", "t": "06:40"},
@@ -913,54 +913,54 @@
       {"n": "Qualifying", "day": "Fr", "t": "18:55"},
       {"n": "Rennen (3 Stunden)", "day": "Sa", "t": "18:00"}
     ]},
-  {"s": "nls", "rd": 1, "name": "71. ADAC Westfalenfahrt", "loc": "Nürburgring", "d0": "2026-03-14", "d1": "2026-03-14", "status": "cancel",
+  {"s": "nls", "rd": 1, "name": "71. ADAC Westfalenfahrt", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-03-14", "d1": "2026-03-14", "status": "cancel",
     "sessions": []},
-  {"s": "nls", "rd": 2, "name": "58. ADAC Barbarossapreis", "loc": "Nürburgring", "d0": "2026-03-21", "d1": "2026-03-21", "status": "done", "result": "BMW #99 (Harper/Pepper)",
+  {"s": "nls", "rd": 2, "name": "58. ADAC Barbarossapreis", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-03-21", "d1": "2026-03-21", "status": "done", "result": "BMW #99 (Harper/Pepper)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 3, "name": "57. Adenauer ADAC Rundstrecken-Trophy", "loc": "Nürburgring", "d0": "2026-04-11", "d1": "2026-04-11", "status": "done", "result": "BMW #77 (Wittmann/Eng/Frijns)",
+  {"s": "nls", "rd": 3, "name": "57. Adenauer ADAC Rundstrecken-Trophy", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-04-11", "d1": "2026-04-11", "status": "done", "result": "BMW #77 (Wittmann/Eng/Frijns)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 4, "name": "ADAC 24h Nürburgring Qualifiers · Rennen 1", "loc": "Nürburgring", "d0": "2026-04-18", "d1": "2026-04-18", "status": "done", "abbruch": true,
+  {"s": "nls", "rd": 4, "name": "ADAC 24h Nürburgring Qualifiers · Rennen 1", "loc": "Nürburgring", "var": "24h", "d0": "2026-04-18", "d1": "2026-04-18", "status": "done", "abbruch": true,
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "17:30"}
     ]},
-  {"s": "nls", "rd": 5, "name": "ADAC 24h Nürburgring Qualifiers · Rennen 2", "loc": "Nürburgring", "d0": "2026-04-19", "d1": "2026-04-19", "status": "done", "result": "Audi #16 (Haase/Sims/Green)", "vorlaeufig": true,
+  {"s": "nls", "rd": 5, "name": "ADAC 24h Nürburgring Qualifiers · Rennen 2", "loc": "Nürburgring", "var": "24h", "d0": "2026-04-19", "d1": "2026-04-19", "status": "done", "result": "Audi #16 (Haase/Sims/Green)", "vorlaeufig": true,
     "sessions": [
       {"n": "Qualifying", "day": "So", "t": "08:15"},
       {"n": "Top-Qualifying", "day": "So", "t": "10:40"},
       {"n": "Rennen (4h)", "day": "So", "t": "13:00"}
     ]},
-  {"s": "nls", "rd": 0, "sonder": "24h", "veranstalter": "ADAC Nordrhein", "name": "54. ADAC RAVENOL 24h Nürburgring", "loc": "Nürburgring", "d0": "2026-05-14", "d1": "2026-05-17", "status": "done", "result": "Mercedes-AMG #80 (Engel/Stolz/Schiller/Martin)",
+  {"s": "nls", "rd": 0, "sonder": "24h", "veranstalter": "ADAC Nordrhein", "name": "54. ADAC RAVENOL 24h Nürburgring", "loc": "Nürburgring", "var": "24h", "d0": "2026-05-14", "d1": "2026-05-17", "status": "done", "result": "Mercedes-AMG #80 (Engel/Stolz/Schiller/Martin)",
     "sessions": [
       {"n": "Rennen (24h)", "day": "Sa", "t": "15:00"}
     ]},
-  {"s": "nls", "rd": 6, "name": "1. ADAC Eifel Trophy", "loc": "Nürburgring", "d0": "2026-06-20", "d1": "2026-06-20", "status": "done", "result": "Porsche #17 (Menzel/Müller)",
+  {"s": "nls", "rd": 6, "name": "1. ADAC Eifel Trophy", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-06-20", "d1": "2026-06-20", "status": "done", "result": "Porsche #17 (Menzel/Müller)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 7, "name": "KW 6h ADAC Ruhr-Pokal-Rennen", "loc": "Nürburgring", "d0": "2026-08-01", "d1": "2026-08-01", "status": "done", "result": "Mercedes-AMG #80 (Stolz/Aron)",
+  {"s": "nls", "rd": 7, "name": "KW 6h ADAC Ruhr-Pokal-Rennen", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-08-01", "d1": "2026-08-01", "status": "done", "result": "Mercedes-AMG #80 (Stolz/Aron)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (6h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 8, "name": "65. ADAC Reinoldus-Langstreckenrennen", "loc": "Nürburgring", "d0": "2026-09-12", "d1": "2026-09-12", "status": "done", "result": "BMW #77 (Klingmann/Pepper/de Wilde)",
+  {"s": "nls", "rd": 8, "name": "65. ADAC Reinoldus-Langstreckenrennen", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-09-12", "d1": "2026-09-12", "status": "done", "result": "BMW #77 (Klingmann/Pepper/de Wilde)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 9, "name": "66. ADAC ACAS Cup", "loc": "Nürburgring", "d0": "2026-09-13", "d1": "2026-09-13", "status": "done", "result": "Porsche #44 (Heinemann/Schuring)", "vorlaeufig": true,
+  {"s": "nls", "rd": 9, "name": "66. ADAC ACAS Cup", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-09-13", "d1": "2026-09-13", "status": "done", "result": "Porsche #44 (Heinemann/Schuring)", "vorlaeufig": true,
     "sessions": [
       {"n": "Qualifying", "day": "So", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "So", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 10, "name": "2. NLS Sportwarte-Trophy · Finale", "loc": "Nürburgring", "d0": "2026-10-10", "d1": "2026-10-10", "status": "up",
+  {"s": "nls", "rd": 10, "name": "2. NLS Sportwarte-Trophy · Finale", "loc": "Nürburgring", "var": "nordschleife", "d0": "2026-10-10", "d1": "2026-10-10", "status": "up",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
@@ -975,9 +975,9 @@
     "sessions": []},
   {"s": "indycar", "rd": 5, "name": "Grand Prix von Long Beach", "loc": "Long Beach", "d0": "2026-04-19", "d1": "2026-04-19", "status": "done", "result": "Álex Palou (Chip Ganassi Racing)",
     "sessions": []},
-  {"s": "indycar", "rd": 6, "name": "Grand Prix von Indianapolis", "loc": "Indianapolis", "d0": "2026-05-09", "d1": "2026-05-09", "status": "done", "result": "Christian Lundgaard (Arrow McLaren)",
+  {"s": "indycar", "rd": 6, "name": "Grand Prix von Indianapolis", "loc": "Indianapolis", "var": "strassenkurs", "d0": "2026-05-09", "d1": "2026-05-09", "status": "done", "result": "Christian Lundgaard (Arrow McLaren)",
     "sessions": []},
-  {"s": "indycar", "rd": 7, "name": "110. Indianapolis 500", "loc": "Indianapolis", "d0": "2026-05-24", "d1": "2026-05-24", "status": "done", "result": "Felix Rosenqvist (Meyer Shank Racing)",
+  {"s": "indycar", "rd": 7, "name": "110. Indianapolis 500", "loc": "Indianapolis", "var": "oval", "d0": "2026-05-24", "d1": "2026-05-24", "status": "done", "result": "Felix Rosenqvist (Meyer Shank Racing)",
     "sessions": []},
   {"s": "indycar", "rd": 8, "name": "Grand Prix von Detroit", "loc": "Detroit", "d0": "2026-05-31", "d1": "2026-05-31", "status": "done", "result": "Álex Palou (Chip Ganassi Racing)",
     "sessions": []},

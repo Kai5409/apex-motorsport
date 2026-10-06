@@ -577,7 +577,7 @@ APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
    (mit kurzem Hinweis) – der Rest der App läuft normal. Einzelne unlesbare Einträge werden
    übersprungen. */
 const DATEN=["serien","sender","termine-2026","termine-2027","wertungen","regeln","zeitzonen","strecken"];
-const SERIES={}, EVENTS=[], STAND={}, REGELN={}, TZLOC={}, CIRCUITS={}, STRECKEN_SERIE={}, KARTE_STRECKEN=[];
+const SERIES={}, EVENTS=[], STAND={}, REGELN={}, TZLOC={}, KARTE_ORT=new Map(), KARTE_STRECKEN=[];
 const GRUPPEN={};              /* Seriengruppen aus serien.json (Reihenfolge = Reihenfolge in der App) */
 let STAND_SEASON=null;     /* Jahr, zu dem die gepflegten Wertungen gehoeren (aus wertungen.json) */
 let TV_GEPRUEFT="";        /* Prüfdatum der Senderangaben (aus sender.json) */
@@ -596,7 +596,7 @@ const istKey=x=>istText(x)&&/^[a-z0-9]+$/.test(x);
 const ergebnisOK=a=>Array.isArray(a)&&a.every(r=>istObj(r)&&istText(r.who)&&(typeof r.p==="number"||istText(r.p)));
 const tabelleOK=a=>Array.isArray(a)&&a.every(r=>Array.isArray(r)&&istText(r[0])&&istText(r[1])&&typeof r[2]==="number"&&isFinite(r[2]));
 const istFarbe=x=>istText(x)&&/^#[0-9a-fA-F]{3,8}$/.test(x);
-const streckeOK=v=>istObj(v)&&istText(v.name)&&typeof v.len==="number"&&(v.turns==null||Number.isInteger(v.turns));
+const varianteOK=v=>istObj(v)&&istText(v.name)&&typeof v.len==="number"&&(v.turns==null||Number.isInteger(v.turns));
 
 function ladeDatei(n){
   return Promise.resolve()
@@ -685,16 +685,18 @@ function uebernehmeDaten(d){
       if(luecke("zeitzonen",ok))TZLOC[k]=x[k];});
   });
   teil("strecken",x=>{
-    if(!istObj(x)||!istObj(x.orte))return false;
-    Object.keys(x.orte).forEach(k=>{if(luecke("strecken",streckeOK(x.orte[k])))CIRCUITS[k]=x.orte[k];});
-    if(x.serien!=null&&luecke("strecken",istObj(x.serien)))Object.keys(x.serien).forEach(s=>{const o=x.serien[s];
-      if(!luecke("strecken",istObj(o)))return;
-      STRECKEN_SERIE[s]={};
-      Object.keys(o).forEach(k=>{if(luecke("strecken",streckeOK(o[k])))STRECKEN_SERIE[s][k]=o[k];});});
-    /* Streckenseiten strecken/<slug>/: Kartenpunkte mit slug (ohne Rallye-Zentren) und ihren Schreibweisen von loc */
-    if(istObj(x.karte)&&istObj(x.karte.strecken))Object.keys(x.karte.strecken).forEach(k=>{const v=x.karte.strecken[k];
-      if(istObj(v)&&v.typ!=="rallye"&&istText(v.slug)&&/^[a-z0-9-]+$/.test(v.slug)&&Array.isArray(v.loc)&&v.loc.every(istText))
-        KARTE_STRECKEN.push({slug:v.slug,loc:v.loc});});
+    if(!istObj(x)||!istObj(x.karte)||!istObj(x.karte.strecken))return false;
+    /* Je Strecke: Kurzname (= loc der Termine), Ort, Varianten (erste = Hauptvariante; ein Termin wählt sie mit var) und –
+       nur mit slug (ohne Rallye-Zentren) – die Streckenseite strecken/<slug>/ */
+    Object.keys(x.karte.strecken).forEach(k=>{const v=x.karte.strecken[k];
+      if(!luecke("strecken",istObj(v)&&istText(v.name)&&Array.isArray(v.loc)&&v.loc.every(istText)))return;
+      const vs={};
+      if(v.varianten!=null&&luecke("strecken",istObj(v.varianten)))Object.keys(v.varianten).forEach(vk=>{if(luecke("strecken",varianteOK(v.varianten[vk])))vs[vk]=v.varianten[vk];});
+      const slug=v.typ!=="rallye"&&istText(v.slug)&&/^[a-z0-9-]+$/.test(v.slug)?v.slug:"";
+      const ort=istObj(v.adresse)&&istText(v.adresse.ort)?v.adresse.ort:"";
+      const eintrag={name:v.name,typ:v.typ,ort,varianten:vs};
+      v.loc.forEach(l=>KARTE_ORT.set(l,eintrag));
+      if(slug)KARTE_STRECKEN.push({slug,loc:v.loc});});
   });
 }
 /* Kurzer Hinweis statt Inhalt, wenn eine Datendatei fehlt oder Einträge übersprungen wurden */
@@ -922,10 +924,12 @@ function matchEv(e){
 }
 
 /* ── Strecken-Infos (statisch; len in km) ── */
+/* Gefahrene Variante: var am Termin (Schlüssel in varianten der Strecke), ohne var die Hauptvariante (erster Eintrag);
+   "var": null = Streckenführung noch unbekannt – keine Streckendaten */
 function circuitFor(e){
-  const sv=STRECKEN_SERIE[e.s]||{};
-  if(/24h/.test(e.name)&&sv[e.loc+" · 24h"])return sv[e.loc+" · 24h"];
-  return sv[e.loc]||CIRCUITS[e.loc]||null;
+  const k=KARTE_ORT.get(e.loc); if(!k||e.var===null)return null;
+  const ks=Object.keys(k.varianten);
+  return k.varianten[typeof e.var==="string"?e.var:ks[0]]||null;
 }
 function trackInfoHTML(e){
   if(DATEN_FEHLT.has("strecken"))return `<div class="trackinfo"><span class="tfact">Streckeninfo konnte gerade nicht geladen werden</span></div>`;
