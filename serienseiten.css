@@ -309,6 +309,9 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .wlink a:hover{border-color:var(--muted);border-left-color:var(--gold)}
 .wlink b{color:var(--paper);font-weight:600}
 .wlink span{color:var(--gold)}
+/* Übersicht strecken/: Sprungmarken zu den Kontinenten und Kontinent über dem ersten Land */
+.sprung{margin-top:16px}
+.kont{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:52px 0 -24px;scroll-margin-top:12px}
 
 /* Dieses Wochenende */
 [hidden]{display:none!important}
