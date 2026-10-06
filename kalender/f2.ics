@@ -8,13 +8,13 @@ X-WR-CALDESC:Formel 2 — alle Sessions in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VEVENT
 UID:apex-f21-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260306
 DTEND;VALUE=DATE:20260309
 TRANSP:TRANSPARENT
 SUMMARY:F2 · Großer Preis von Australien
-LOCATION:Melbourne
-DESCRIPTION:APEX · Formel 2 · Lauf 1 · Melbourne — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Albert Park
+DESCRIPTION:APEX · Formel 2 · Lauf 1 · Albert Park — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f22-ganztag@apex-motorsport
@@ -38,13 +38,13 @@ DESCRIPTION:APEX · Formel 2 · Lauf 3 · Montréal — ganztägig\, Sessionzeit
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f24-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260604
 DTEND;VALUE=DATE:20260608
 TRANSP:TRANSPARENT
 SUMMARY:F2 · Großer Preis von Monaco
-LOCATION:Monte Carlo
-DESCRIPTION:APEX · Formel 2 · Lauf 4 · Monte Carlo — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Monaco
+DESCRIPTION:APEX · Formel 2 · Lauf 4 · Monaco — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f25-ganztag@apex-motorsport
@@ -58,13 +58,13 @@ DESCRIPTION:APEX · Formel 2 · Lauf 5 · Barcelona — ganztägig\, Sessionzeit
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f26-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260626
 DTEND;VALUE=DATE:20260629
 TRANSP:TRANSPARENT
 SUMMARY:F2 · Großer Preis von Österreich
-LOCATION:Spielberg
-DESCRIPTION:APEX · Formel 2 · Lauf 6 · Spielberg — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Red Bull Ring
+DESCRIPTION:APEX · Formel 2 · Lauf 6 · Red Bull Ring — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f27-ganztag@apex-motorsport
@@ -88,13 +88,13 @@ DESCRIPTION:APEX · Formel 2 · Lauf 8 · Spa-Francorchamps — ganztägig\, Ses
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f29-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260724
 DTEND;VALUE=DATE:20260727
 TRANSP:TRANSPARENT
 SUMMARY:F2 · Großer Preis von Ungarn
-LOCATION:Budapest
-DESCRIPTION:APEX · Formel 2 · Lauf 9 · Budapest — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Hungaroring
+DESCRIPTION:APEX · Formel 2 · Lauf 9 · Hungaroring — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f210-ganztag@apex-motorsport
@@ -108,13 +108,13 @@ DESCRIPTION:APEX · Formel 2 · Lauf 10 · Monza — ganztägig\, Sessionzeiten 
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f211-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261006T165230Z
 DTSTART;VALUE=DATE:20260911
 DTEND;VALUE=DATE:20260914
 TRANSP:TRANSPARENT
 SUMMARY:F2 · Großer Preis von Spanien
-LOCATION:Madrid
-DESCRIPTION:APEX · Formel 2 · Lauf 11 · Madrid — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Madring
+DESCRIPTION:APEX · Formel 2 · Lauf 11 · Madring — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-f212-ganztag@apex-motorsport
