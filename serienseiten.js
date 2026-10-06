@@ -1,6 +1,7 @@
 /* APEX – Serienseiten und Serienübersicht: Interaktionen.
    Die Seiten sind fertiges HTML; dieses Skript ergänzt nur Bedienung und rückt „Nächstes Rennen“
-   nach dem heutigen Datum vor. Es lädt nichts nach und speichert nur die Einstellung
+   nach dem heutigen Datum vor. Es lädt nur auf der Seite „In der Nähe“ bei Bedarf eigene Dateien nach (die Ortsliste
+   beim Tippen ins Suchfeld, die Karte einer anderen Region beim Kartenwechsel) und speichert nur die Einstellung
    „Ergebnisse verbergen“ und die Serienauswahl (gleiche Schlüssel wie in der App) sowie auf der Seite
    „In der Nähe“ den gewählten Startort. */
 (function () {
@@ -401,9 +402,11 @@
     setInterval(alles, 60000);
   }
 
-  /* In der Nähe: Karte mit allen Strecken in Europa, Liste nach Entfernung (Luftlinie) ab dem Startort, ohne Startort nach Datum.
+  /* In der Nähe: Karte mit allen Strecken der Welt – gezeigt wird die Karte der Region des Startorts (Europa, Nordamerika, Südamerika,
+     Naher Osten, Asien, Australien) oder die Weltkarte –, Liste nach Entfernung (Luftlinie) ab dem Startort, ohne Startort nach Datum.
      Die Seite enthält alle Termine ab dem Datenstand; welche noch kommen, entscheidet das heutige Datum.
-     Startort lokal unter „apex_ort“, Serienauswahl wie in der App („apex_filter“). Lädt nichts nach. */
+     Startort lokal unter „apex_ort“, Serienauswahl wie in der App („apex_filter“). Nachgeladen werden nur eigene Dateien der Seite:
+     orte-welt.json (Ortssuche, erst beim Tippen ins Suchfeld) und karte/<region>.svg (beim Wechsel der Karte). */
   const nahDaten = $("#apex-naehe");
   if (nahDaten) {
     const N = (() => { try { return JSON.parse(nahDaten.textContent); } catch (e) { return null; } })();
@@ -411,19 +414,36 @@
   }
   function nahStarten(N) {
     const byId = (id) => document.getElementById(id);
-    const K = N.karte;
-    /* Projektion: winkeltreue Kegelprojektion (identisch mit der beim Erzeugen der Karte) */
+    /* Projektionen wie d3-geo: winkeltreue Kegelprojektion je Region (Werte aus regionen.json), die Weltkarte als Natural Earth (art „natur“) */
     const RAD = Math.PI / 180, HP = Math.PI / 2, tany = (y) => Math.tan((HP + y) / 2);
-    const PY0 = K.par[0] * RAD, PY1 = K.par[1] * RAD, CY0 = Math.cos(PY0);
-    const PN = Math.log(CY0 / Math.cos(PY1)) / Math.log(tany(PY1) / tany(PY0)), PF = CY0 * Math.pow(tany(PY0), PN) / PN;
-    function proj(lat, lon) { const x = (lon - K.lon0) * RAD, r = PF / Math.pow(tany(lat * RAD), PN); return [K.tx + K.k * r * Math.sin(PN * x), K.ty - K.k * (PF - r * Math.cos(PN * x))]; }
-    function unproj(X, Y) { const x = (X - K.tx) / K.k, y = (K.ty - Y) / K.k, fy = PF - y, r = Math.sign(PN) * Math.sqrt(x * x + fy * fy); let l = Math.atan2(x, Math.abs(fy)) * Math.sign(fy); if (fy * PN < 0) l -= Math.PI * Math.sign(x) * Math.sign(fy); return [(2 * Math.atan(Math.pow(PF / r, 1 / PN)) - HP) / RAD, l / PN / RAD + K.lon0]; }
+    function projektion(G) {
+      const dreh = (lon) => { const l = lon - G.lon0; return l > 180 ? l - 360 : l < -180 ? l + 360 : l; };
+      if (G.art === "natur") return { proj(lat, lon) { const lam = dreh(lon) * RAD, p = lat * RAD, p2 = p * p, p4 = p2 * p2;
+        return [G.tx + G.k * lam * (0.8707 - 0.131979 * p2 + p4 * (-0.013791 + p4 * (0.003971 * p2 - 0.001529 * p4))), G.ty - G.k * p * (1.007226 + p2 * (0.015085 + p4 * (-0.044475 + 0.028874 * p2 - 0.005916 * p4)))]; } };
+      const PY0 = G.par[0] * RAD, PY1 = G.par[1] * RAD, CY0 = Math.cos(PY0);
+      const PN = Math.log(CY0 / Math.cos(PY1)) / Math.log(tany(PY1) / tany(PY0)), PF = CY0 * Math.pow(tany(PY0), PN) / PN;
+      return {
+        proj(lat, lon) { const x = dreh(lon) * RAD, r = PF / Math.pow(tany(lat * RAD), PN); return [G.tx + G.k * r * Math.sin(PN * x), G.ty - G.k * (PF - r * Math.cos(PN * x))]; },
+        unproj(X, Y) { const x = (X - G.tx) / G.k, y = (G.ty - Y) / G.k, fy = PF - y, r = Math.sign(PN) * Math.sqrt(x * x + fy * fy); let l = Math.atan2(x, Math.abs(fy)) * Math.sign(fy); if (fy * PN < 0) l -= Math.PI * Math.sign(x) * Math.sign(fy);
+          const v = l / PN / RAD + G.lon0; return [(2 * Math.atan(Math.pow(PF / r, 1 / PN)) - HP) / RAD, v > 180 ? v - 360 : v < -180 ? v + 360 : v]; },
+      };
+    }
+    const REGIONEN = N.regionen, REIHE = ["europa", "nordamerika", "suedamerika", "nahost", "asien", "australien"], PRJ = {};
+    for (const k in REGIONEN) PRJ[k] = projektion(REGIONEN[k]);
+    const imRand = (k, xy, r = 0) => xy[0] >= -r && xy[0] <= REGIONEN[k].W + r && xy[1] >= -r && xy[1] <= REGIONEN[k].H + r;
+    /* Region eines Punkts: Europa, wenn er im Ausschnitt der Europakarte liegt, sonst die erste Regionalkarte, die ihn enthält (sonst keine) */
+    const regionVon = (lat, lon) => REIHE.find((k) => imRand(k, PRJ[k].proj(lat, lon))) || null;
+    /* gezeigte Karte: ANSICHT; LINKS = Region im linken Knopf des Umschalters (Region des Startorts bzw. zuletzt gezeigte Region) */
+    let ANSICHT = "europa", LINKS = "europa", R = REGIONEN.europa, P = PRJ.europa, W = R.W, H = R.H;
+    const proj = (lat, lon) => P.proj(lat, lon), unproj = (X, Y) => P.unproj(X, Y);
     function km(a, b) { const p1 = a[0] * RAD, p2 = b[0] * RAD, dp = p2 - p1, dl = (b[1] - a[1]) * RAD, h = Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2; return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h))); }
     function ziel(lat, lon, brg, d) { const a = d / 6371, t = brg * RAD, p1 = lat * RAD, l1 = lon * RAD, p2 = Math.asin(Math.sin(p1) * Math.cos(a) + Math.cos(p1) * Math.sin(a) * Math.cos(t)), l2 = l1 + Math.atan2(Math.sin(t) * Math.sin(a) * Math.cos(p1), Math.cos(a) - Math.sin(p1) * Math.sin(p2)); return [p2 / RAD, l2 / RAD]; }
 
     /* Hilfen */
     const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-    const norm = (t) => t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ß/g, "ss");
+    /* Suche: Groß-/Kleinschreibung, Akzente und Umlaute egal („Sao Paulo“ findet São Paulo, „Muenchen“ und „Munchen“ finden München) */
+    const SOND = { ø: "o", đ: "d", ł: "l", æ: "ae", œ: "oe", ı: "i", ð: "d", þ: "th" };
+    const norm = (t) => t.toLowerCase().replace(/ß/g, "ss").replace(/[øđłæœıðþ]/g, (c) => SOND[c]).normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim().replace(/ae|oe|ue/g, (m) => m[0]);
     const MON = ["Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
     const JAHR = +heute.slice(0, 4);
     function plusTage(x, n) { const d = new Date(x + "T12:00:00"); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); }
@@ -439,6 +459,7 @@
     const S = N.serien, G = N.gruppen, SK = Object.keys(S);
     const ORTE = Object.entries(N.strecken).map(([id, v]) => ({ id, name: v[0], land: v[1], typ: v[2], lat: v[3], lon: v[4], slug: v[5] || "", xy: proj(v[3], v[4]) }));
     const ORT_BY = Object.fromEntries(ORTE.map((o) => [o.id, o]));
+    const sichtbar = (o) => imRand(ANSICHT, o.xy);   // liegt der Punkt auf der gezeigten Karte?
     /* Rennwochenenden: gleiche Strecke + gleiche Woche = eine Zeile (z. B. MotoGP mit Moto2 und Moto3) */
     function wochenKey(x) { const d = new Date(x + "T12:00:00"); const t = (d.getDay() + 6) % 7; d.setDate(d.getDate() - t); return d.toISOString().slice(0, 10); }
     const ZEILEN = (() => { const m = new Map();
@@ -475,12 +496,13 @@
     const farbe = (g) => (G[g] && G[g].farbe) || "#8d8678";
 
     /* Karte: Ausschnitt, Zoom, Verschieben */
-    const W = K.W, H = K.H, svg = byId("svg"), dyn = byId("dyn"), box = byId("karte");
+    const svg = byId("svg"), dyn = byId("dyn"), box = byId("karte");
     let VB = { cx: W / 2, cy: H / 2, w: W };
     function verh() { const r = box.getBoundingClientRect(); return r.height / r.width || H / W; }
-    function maxW() { return Math.min(W, H / verh()); }
+    /* Weltkarte: immer die ganze Breite (ist das Feld höher als die Karte, steht sie etwas über der Mitte im Meer, damit die Infokarte unten nicht die Karte verdeckt); Regionen: höchstens ihre Fläche */
+    function maxW() { return ANSICHT === "welt" ? W : Math.min(W, H / verh()); }
     function klemmen() { const mw = maxW(); VB.w = Math.max(mw / 8, Math.min(mw, VB.w)); const h = VB.w * verh();
-      VB.cx = Math.max(VB.w / 2, Math.min(W - VB.w / 2, VB.cx)); VB.cy = Math.max(h / 2, Math.min(H - h / 2, VB.cy)); }
+      VB.cx = VB.w >= W ? W / 2 : Math.max(VB.w / 2, Math.min(W - VB.w / 2, VB.cx)); VB.cy = h >= H ? H / 2 + 0.15 * (h - H) : Math.max(h / 2, Math.min(H - h / 2, VB.cy)); }
     function vbSetzen() { klemmen(); const h = VB.w * verh(); svg.setAttribute("viewBox", `${(VB.cx - VB.w / 2).toFixed(2)} ${(VB.cy - h / 2).toFixed(2)} ${VB.w.toFixed(2)} ${h.toFixed(2)}`);
       const z = maxW() / VB.w; box.classList.toggle("gezoomt", z > 1.05); byId("zminus").disabled = z <= 1.01; byId("zplus").disabled = z >= 7.9; byId("zganz").disabled = z <= 1.01; kartenpunkte(); }
     function ppu() { return box.getBoundingClientRect().width / VB.w; }
@@ -488,9 +510,10 @@
     function zoomUm(f, px, py) { const alt = VB.w; VB.w = VB.w / f; klemmenNurW(); const k = VB.w / alt;
       if (px != null) { VB.cx = px + (VB.cx - px) * k; VB.cy = py + (VB.cy - py) * k; } vbSetzen(); }
     function svgPunkt(cx, cy) { const pt = svg.createSVGPoint(); pt.x = cx; pt.y = cy; return pt.matrixTransform(svg.getScreenCTM().inverse()); }
-    /* ohne Startort der ganze Ausschnitt als Überblick (auch am Handy) */
-    function startAusschnitt() { const schmal = START && box.getBoundingClientRect().width < 640; const [x, y] = START ? proj(START.lat, START.lon) : [W / 2, H / 2];
-      VB = { cx: schmal ? x : W / 2, cy: schmal ? y : H / 2, w: schmal ? maxW() / 1.6 : maxW() }; vbSetzen(); }
+    /* ohne Startort (oder mit einem Startort außerhalb der Karte) der ganze Ausschnitt als Überblick (auch am Handy); auf jeder Regionalkarte derselbe Maßstab wie auf der Europakarte im selben Feld */
+    function startAusschnitt() { const [x, y] = START ? proj(START.lat, START.lon) : [W / 2, H / 2];
+      const schmal = START && ANSICHT !== "welt" && imRand(ANSICHT, [x, y]) && box.getBoundingClientRect().width < 640, wRef = Math.min(REGIONEN.europa.W, REGIONEN.europa.H / verh());
+      VB = { cx: schmal ? x : W / 2, cy: schmal ? y : H / 2, w: schmal ? Math.min(maxW(), wRef) / 1.6 : maxW() }; vbSetzen(); }
 
     /* Zeichnen */
     const NS = "http://www.w3.org/2000/svg";
@@ -498,14 +521,14 @@
     let LISTE = [];
     function kartenpunkte() {
       const u = 1 / ppu(); dyn.textContent = "";
-      const ich = START ? proj(START.lat, START.lon) : null;
-      /* Ringe 300/600 km (echte Kreise auf der Erde, projiziert) – nur mit Startort */
-      if (START) [300, 600].forEach((r) => { const pts = []; for (let b = 0; b <= 360; b += 4) { const [la, lo] = ziel(START.lat, START.lon, b, r); pts.push(proj(la, lo).map((v) => v.toFixed(1)).join(",")); }
+      const ich = START ? proj(START.lat, START.lon) : null, welt = ANSICHT === "welt", sicht = LISTE.filter(sichtbar);
+      /* Ringe 300/600 km (echte Kreise auf der Erde, projiziert) – nur mit Startort in der Nähe der Karte, nicht auf der Weltkarte */
+      if (ich && !welt && imRand(ANSICHT, ich, 400)) [300, 600].forEach((r) => { const pts = []; for (let b = 0; b <= 360; b += 4) { const [la, lo] = ziel(START.lat, START.lon, b, r); pts.push(proj(la, lo).map((v) => v.toFixed(1)).join(",")); }
         dyn.append(el("polyline", { points: pts.join(" "), fill: "none", stroke: "var(--gold)", "stroke-opacity": r === 300 ? 0.55 : 0.35, "stroke-width": 1.2 * u, "stroke-dasharray": `${5 * u} ${4 * u}` }));
       });
       /* Strecken */
       const sel = AUSGEWAEHLT;
-      LISTE.slice().reverse().forEach((o) => { const [x, y] = o.xy; const n = o.zeilen.length, r = (4.2 + Math.min(n, 6) * 0.55) * u;
+      sicht.slice().reverse().forEach((o) => { const [x, y] = o.xy; const n = o.zeilen.length, r = (4.2 + Math.min(n, 6) * 0.55) * u;
         const g1 = farbe(o.gruppen[0]), g2 = o.gruppen[1] ? farbe(o.gruppen[1]) : null;
         const grp = el("g", { "data-id": o.id, class: "pt" });
         if (o.id === sel) grp.append(el("circle", { cx: x, cy: y, r: r + 7 * u, fill: "none", stroke: "var(--paper)", "stroke-width": 1.5 * u }));
@@ -514,14 +537,14 @@
         grp.append(el("circle", { cx: x, cy: y, r, fill: g1 }));
         if (o.typ === "rallye") grp.append(el("circle", { cx: x, cy: y, r: r * 0.38, fill: "var(--meer)" }));
         dyn.append(grp); });
-      /* Beschriftungen: die nächsten Strecken + die ausgewählte, ohne Überlappung */
+      /* Beschriftungen: die nächsten Strecken auf der Karte + die ausgewählte, ohne Überlappung; die Weltkarte zeigt nur Punkte */
       const z = maxW() / VB.w, anzahl = z < 1.3 ? 5 : z < 2.2 ? 9 : z < 3.5 ? 16 : 99, belegt = [];
       if (ich) { const [ix, iy] = ich, iw = START.n.length * 7.6 * u; belegt.push([ix - iw / 2, iy - 28 * u, ix + iw / 2, iy + 9 * u]); }
-      LISTE.forEach((o) => { const r = 2.5 * u; belegt.push([o.xy[0] - r, o.xy[1] - r, o.xy[0] + r, o.xy[1] + r]); });
+      sicht.forEach((o) => { const r = 2.5 * u; belegt.push([o.xy[0] - r, o.xy[1] - r, o.xy[0] + r, o.xy[1] + r]); });
       const kurz = box.getBoundingClientRect().width < 560;
       const vh = VB.w * verh(), v0 = [VB.cx - VB.w / 2 + 4 * u, VB.cy - vh / 2 + 4 * u, VB.cx + VB.w / 2 - 4 * u, VB.cy + vh / 2 - 4 * u];
       belegt.push([v0[2] - 50 * u, v0[1] - 4 * u, v0[2] + 4 * u, v0[1] + 130 * u]);
-      const kand = LISTE.slice(0, anzahl); if (sel && !kand.some((o) => o.id === sel)) { const s0 = LISTE.find((o) => o.id === sel); if (s0) kand.unshift(s0); }
+      const kand = welt ? [] : sicht.slice(0, anzahl); if (!welt && sel && !kand.some((o) => o.id === sel)) { const s0 = sicht.find((o) => o.id === sel); if (s0) kand.unshift(s0); }
       kand.sort((a, b) => (b.id === sel) - (a.id === sel));
       kand.forEach((o) => { const [x, y] = o.xy, mitKm = !!START && (!kurz || o.id === sel), t = o.name + (mitKm ? "  " + kmText(o.d).replace("≈ ", "") : ""), fs = (o.id === sel ? 12.5 : 11.5) * u, w = t.length * fs * 0.56, h = fs * 1.2;
         for (const [dx, anchor] of [[9 * u, "start"], [-9 * u, "end"]]) { const x0 = anchor === "start" ? x + dx : x + dx - w, b = [x0, y - h * 0.75, x0 + w, y + h * 0.35];
@@ -532,12 +555,12 @@
           tx.append(document.createTextNode(o.name + (mitKm ? " " : ""))); if (mitKm) tx.append(el("tspan", { "font-family": "IBM Plex Mono, monospace", "font-weight": 500, fill: "var(--gold)" }, kmText(o.d).replace("≈ ", "")));
           dyn.append(tx); break; } });
       /* Startort */
-      if (!ich) return;
+      if (!ich || !imRand(ANSICHT, ich, 40)) return;
       const [ix, iy] = ich;
       dyn.append(el("circle", { cx: ix, cy: iy, r: 11 * u, fill: "var(--gold)", "fill-opacity": 0.16 }));
       dyn.append(el("circle", { cx: ix, cy: iy, r: 5.5 * u, fill: "var(--bg)", stroke: "var(--gold)", "stroke-width": 2.4 * u }));
       dyn.append(el("circle", { cx: ix, cy: iy, r: 1.8 * u, fill: "var(--gold)" }));
-      dyn.append(el("text", { x: ix, y: iy - 15 * u, "text-anchor": "middle", "font-family": "IBM Plex Mono, monospace", "font-weight": 600, "font-size": 11.5 * u, "letter-spacing": 0.6 * u, fill: "var(--gold)", "paint-order": "stroke", stroke: "var(--meer)", "stroke-width": 3.2 * u }, START.n.toUpperCase()));
+      if (!welt) dyn.append(el("text", { x: ix, y: iy - 15 * u, "text-anchor": "middle", "font-family": "IBM Plex Mono, monospace", "font-weight": 600, "font-size": 11.5 * u, "letter-spacing": 0.6 * u, fill: "var(--gold)", "paint-order": "stroke", stroke: "var(--meer)", "stroke-width": 3.2 * u }, START.n.toUpperCase()));
     }
 
     /* Liste */
@@ -545,9 +568,9 @@
       const rest = z.serien.slice(1).map((sk) => S[sk].short).join(" · ");
       return `<li><time datetime="${z.d0}">${datum(z.d0, z.d1)}</time><a href="../${hs.seite}/"><span class="sk" style="color:${hs.color}">${esc(hs.short)}${rest ? ` <small>· ${esc(rest)}</small>` : ""}</span><span class="en">${esc(z.name)}</span></a></li>`; }
     function listeZeichnen() {
-      const bands = [[300, "Bis 300 km"], [600, "300 bis 600 km"], [1000, "600 bis 1.000 km"], [1e9, "Über 1.000 km"]];
+      const bands = [[300, "Bis 300 km"], [600, "300 bis 600 km"], [1000, "600 bis 1.000 km"], [3000, "1.000 bis 3.000 km"], [1e9, "Über 3.000 km"]];
       let h = "", b = -1;
-      if (!LISTE.length) h = `<p class="leer">Im gewählten Zeitraum gibt es für diese Serien keine Termine in Europa.</p>`;
+      if (!LISTE.length) h = `<p class="leer">Im gewählten Zeitraum gibt es für diese Serien keine Termine.</p>`;
       LISTE.forEach((o) => { const nb = START ? bands.findIndex((x) => o.d <= x[0]) : -1;
         if (START && nb !== b) { b = nb; const n = LISTE.filter((q) => bands.findIndex((x) => q.d <= x[0]) === nb).length; h += `<div class="band"><span><b>${bands[nb][1]}</b> Luftlinie</span><span>${n} ${n === 1 ? "Strecke" : "Strecken"}</span></div>`; }
         const offen = OFFEN_MEHR.has(o.id), zs = offen ? o.zeilen : o.zeilen.slice(0, 3);
@@ -565,15 +588,13 @@
       const anz = `${LISTE.length} ${LISTE.length === 1 ? "Strecke" : "Strecken"}`;
       byId("lsub").textContent = START ? `Luftlinie ab ${START.n} · ${anz} · ${zr}` : `${anz} · ${zr} · nach Datum`;
       byId("lh").textContent = START ? "Nach Entfernung" : "Nächste Termine";
-      byId("lhint").hidden = !!START; byId("lg-start").hidden = byId("lg-ringe").hidden = !START;
-      /* außerhalb Europas */
-      const bis = bisDatum();
-      const aus = N.ausserhalb.filter(([sk, d0, d1]) => d1 >= heute && d0 <= bis && AKTIV.has(sk));
-      byId("aussen").innerHTML = aus.length ? `Dazu kommen <b>${aus.length} Termine außerhalb Europas</b> – alle in der <a href="../">Zeitleiste</a>.` : "";
-      ordnerLinks(byId("aussen"));
+      byId("lhint").hidden = !!START; legende();
       const offen = N.offen.filter((sk) => S[sk] && AKTIV.has(sk)).map((sk) => S[sk].name);
       byId("offen").innerHTML = ZEIT !== "3" && offen.length ? `Kalender ${N.jahr} noch nicht veröffentlicht: <b>${esc(offen.join(", "))}</b> – diese Termine kommen dazu, sobald sie feststehen.` : "";
     }
+
+    /* Legende: Startort und Ringe nur mit Startort, Ringe nicht auf der Weltkarte */
+    function legende() { byId("lg-start").hidden = !START; byId("lg-ringe").hidden = !START || ANSICHT === "welt"; }
 
     /* Info-Karte in der Karte */
     function infoZeigen() { const i = byId("info"), o = LISTE.find((q) => q.id === AUSGEWAEHLT);
@@ -595,28 +616,69 @@
 
     /* Startort setzen */
     function ortSetzen(o, speichernOk = true) { START = o; if (speichernOk) { try { localStorage.setItem("apex_ort", JSON.stringify({ n: o.n, lat: o.lat, lon: o.lon })); } catch (e) {} } aktualisieren(); }
-    function naechsterOrt(lat, lon) { let best = null; N.orte.forEach(([n, la, lo]) => { const d = km([lat, lon], [la, lo]); if (!best || d < best.d) best = { n, d }; }); return best; }
+    function naechsterOrt(lat, lon) { let best = null; (ORTSLISTE || []).forEach((o) => { const d = km([lat, lon], [o.lat, o.lon]); if (!best || d < best.d) best = { n: o.n, d }; }); return best; }
 
-    /* Suche */
+    /* Ortssuche weltweit: Die Ortsliste (orte-welt.json, etwa 100 KB) wird erst beim Fokussieren oder Tippen ins Suchfeld geladen (und beim
+       Wählen auf der Karte, für den Namen des Punkts); gesucht wird nur im Browser, das Eingetippte wird nicht übertragen. Der Rang einer
+       Stadt ist ihre Stelle in der Liste (nach Einwohnern absteigend). */
+    let ORTSLISTE = null, ORTE_LADEN = null;
+    const gradText = (v, plus, minus) => Math.abs(v).toFixed(1).replace(".", ",") + "° " + (v >= 0 ? plus : minus);
+    function ortenLaden() {
+      if (ORTSLISTE) return Promise.resolve(ORTSLISTE);
+      if (!ORTE_LADEN) ORTE_LADEN = fetch("orte-welt.json").then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }).then((j) => {
+        const liste = j.orte.map((o) => ({ n: o[0], land: j.laender[o[1]], lat: o[2], lon: o[3], k: norm(o[0]) })), zaehl = new Map();
+        liste.forEach((o) => { const k = o.k + "|" + o.land; zaehl.set(k, (zaehl.get(k) || 0) + 1); });
+        /* gleicher Name im selben Land (z. B. zwei Orte „Portland“): die Lage unterscheidet sie */
+        liste.forEach((o) => { if (zaehl.get(o.k + "|" + o.land) > 1) o.zusatz = gradText(o.lat, "N", "S") + ", " + gradText(o.lon, "O", "W"); });
+        return (ORTSLISTE = liste); }).catch(() => { ORTE_LADEN = null; return null; });
+      return ORTE_LADEN;
+    }
     const inp = byId("ort"), vl = byId("vorschlaege"); let TREFFER = [], AKT = -1;
-    function vorschlaege() { const q = norm(inp.value.trim()); if (!q) { vl.hidden = true; inp.setAttribute("aria-expanded", "false"); return; }
-      const a = N.orte.filter((o) => norm(o[0]).startsWith(q)), b = N.orte.filter((o) => !norm(o[0]).startsWith(q) && norm(o[0]).includes(q));
-      TREFFER = a.concat(b).slice(0, 8); AKT = TREFFER.length ? 0 : -1;
-      vl.innerHTML = TREFFER.length ? TREFFER.map((o, i) => `<li role="option" id="v${i}" data-i="${i}" aria-selected="${i === AKT}">${esc(o[0])}<small>${esc(o[3])}</small></li>`).join("") : `<li role="option" aria-disabled="true">Kein Ort gefunden – „Auf der Karte wählen“ nutzen<small></small></li>`;
+    /* Name gleich, dann Treffer am Wortanfang, dann mitten im Wort – je nach Einwohnern */
+    function suchen(q) { const a = [], b = [], c = [];
+      for (const o of ORTSLISTE) { if (o.k === q) a.push(o); else if (o.k.startsWith(q) || o.k.includes(" " + q)) b.push(o); else if (o.k.includes(q)) c.push(o); }
+      const t = a.concat(b, c).slice(0, 8);
+      /* ohne Treffer im Namen: Orte des Landes („Monaco“, „Japan“) */
+      return t.length ? t : ORTSLISTE.filter((o) => norm(o.land).startsWith(q)).slice(0, 8); }
+    function zeileZeigen(text) { TREFFER = []; AKT = -1; vl.innerHTML = `<li role="option" aria-disabled="true">${text}</li>`; vl.hidden = false; inp.setAttribute("aria-expanded", "true"); }
+    function vorschlaege() { const q = inp.value.trim(), t = norm(q); if (!t) { vl.hidden = true; inp.setAttribute("aria-expanded", "false"); return; }
+      if (!ORTSLISTE) { zeileZeigen("Orte werden geladen …"); ortenLaden().then((l) => { if (inp.value.trim() !== q) return; if (l) vorschlaege(); else zeileZeigen("Die Ortssuche ist gerade nicht verfügbar – „Auf der Karte wählen“ nutzen"); }); return; }
+      TREFFER = suchen(t); AKT = TREFFER.length ? 0 : -1;
+      if (!TREFFER.length) { zeileZeigen("Kein Ort gefunden – „Auf der Karte wählen“ nutzen"); return; }
+      vl.innerHTML = TREFFER.map((o, i) => `<li role="option" id="v${i}" data-i="${i}" aria-selected="${i === AKT}">${esc(o.n)} <small>· ${esc(o.land)}${o.zusatz ? " · " + o.zusatz : ""}</small></li>`).join("");
       vl.hidden = false; inp.setAttribute("aria-expanded", "true"); }
-    function waehlen(i) { const o = TREFFER[i]; if (!o) return; vl.hidden = true; inp.setAttribute("aria-expanded", "false"); ortSetzen({ n: o[0], lat: o[1], lon: o[2] }); startAusschnitt(); inp.blur(); }
+    function waehlen(i) { const o = TREFFER[i]; if (!o) return; vl.hidden = true; inp.setAttribute("aria-expanded", "false"); ortSetzen({ n: o.n, lat: o.lat, lon: o.lon }); ansichtSetzen(ansichtFuerStart()); inp.blur(); }
     inp.addEventListener("input", vorschlaege);
     /* Klick ins Feld: der bisherige Ort verschwindet sofort (steht als Platzhalter da); ohne neue Eingabe kommt er beim Verlassen zurück */
     const PLATZHALTER = inp.placeholder;
-    inp.addEventListener("focus", () => { if (START && inp.value === START.n) { inp.value = ""; inp.placeholder = START.n + " – neuen Ort eingeben"; } else if (inp.value) vorschlaege(); });
+    inp.addEventListener("focus", () => { ortenLaden(); if (START && inp.value === START.n) { inp.value = ""; inp.placeholder = START.n + " – neuen Ort eingeben"; } else if (inp.value) vorschlaege(); });
     inp.addEventListener("blur", () => { setTimeout(() => { if (document.activeElement === inp) return; if (!inp.value.trim() && START) inp.value = START.n; inp.placeholder = PLATZHALTER; vl.hidden = true; }, 150); });
     inp.addEventListener("keydown", (e) => { if (vl.hidden) return;
       if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (!TREFFER.length) return; AKT = (AKT + (e.key === "ArrowDown" ? 1 : -1) + TREFFER.length) % TREFFER.length; $$("li", vl).forEach((li, i) => li.setAttribute("aria-selected", i === AKT)); }
       else if (e.key === "Enter") { e.preventDefault(); waehlen(AKT); } else if (e.key === "Escape") { vl.hidden = true; } });
     vl.addEventListener("mousedown", (e) => { const li = e.target.closest("li[data-i]"); if (li) { e.preventDefault(); waehlen(+li.dataset.i); } });
     document.addEventListener("click", (e) => { if (!e.target.closest(".suche")) vl.hidden = true; });
-    /* × entfernt den Startort ganz (auch aus dem Speicher) und führt zurück zum Überblick */
-    byId("ortweg").addEventListener("click", () => { inp.value = ""; vl.hidden = true; START = null; AUSGEWAEHLT = null; try { localStorage.removeItem("apex_ort"); } catch (e) {} aktualisieren(); startAusschnitt(); });
+    /* × entfernt den Startort ganz (auch aus dem Speicher) und führt zurück zum Überblick über Europa */
+    byId("ortweg").addEventListener("click", () => { inp.value = ""; vl.hidden = true; START = null; AUSGEWAEHLT = null; try { localStorage.removeItem("apex_ort"); } catch (e) {} aktualisieren(); ansichtSetzen("europa"); });
+
+    /* Karte wechseln: die Region des Startorts (ohne Startort Europa, ohne Region die Weltkarte), eine andere Region oder die Welt.
+       Der Startort bleibt, wie er ist; die gezeigte Karte wird nicht gespeichert. */
+    const ansichtFuerStart = () => (START ? regionVon(START.lat, START.lon) || "welt" : "europa");
+    const kw = byId("kartenwahl"), rz = byId("regionen");
+    rz.innerHTML = "<span>Zur Region:</span>" + REIHE.map((k) => `<button type="button" data-r="${k}">${esc(REGIONEN[k].name)}</button>`).join("");
+    function ansichtSetzen(k) {
+      ANSICHT = k; if (k !== "welt") LINKS = k;
+      R = REGIONEN[k]; P = PRJ[k]; W = R.W; H = R.H;
+      const bild = byId("basis-bild"); byId("basis-europa").style.display = k === "europa" ? "" : "none"; bild.style.display = k === "europa" ? "none" : ""; bild.textContent = "";
+      if (k !== "europa") bild.append(el("rect", { x: -W, y: -H, width: 3 * W, height: 3 * H, fill: "var(--meer)" }), el("image", { x: 0, y: 0, width: W, height: H, preserveAspectRatio: "none", href: "../" + R.datei }));
+      svg.setAttribute("aria-label", (k === "welt" ? "Weltkarte" : "Karte " + R.name) + " – alle Rennstrecken mit Terminen im gewählten Zeitraum");
+      ORTE.forEach((o) => { o.xy = proj(o.lat, o.lon); }); LISTE.forEach((o) => { o.xy = proj(o.lat, o.lon); });
+      if (k === "welt" && WAHL) wahlmodus(false);
+      byId("ortwahl").hidden = k === "welt";
+      const l = kw.querySelector('[data-k="region"]'); l.textContent = REGIONEN[LINKS].name; l.setAttribute("aria-checked", String(k !== "welt")); kw.querySelector('[data-k="welt"]').setAttribute("aria-checked", String(k === "welt"));
+      rz.hidden = k !== "welt"; legende(); startAusschnitt(); }
+    kw.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const k = b.dataset.k === "welt" ? "welt" : LINKS; if (k !== ANSICHT) ansichtSetzen(k); });
+    rz.addEventListener("click", (e) => { const b = e.target.closest("button[data-r]"); if (b) ansichtSetzen(b.dataset.r); });
 
     /* Zeitraum */
     byId("zeitraum").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; ZEIT = b.dataset.z;
@@ -624,7 +686,8 @@
 
     /* Liste: Klicks */
     byId("liste").addEventListener("click", (e) => { const m = e.target.closest("[data-mehr]"); if (m) { const id = m.dataset.mehr; OFFEN_MEHR.has(id) ? OFFEN_MEHR.delete(id) : OFFEN_MEHR.add(id); listeZeichnen(); return; }
-      const k = e.target.closest(".ort-kopf"); if (k) { auswaehlen(k.dataset.id, { zentrieren: true }); if (window.matchMedia("(max-width:979px)").matches) box.scrollIntoView({ behavior: "smooth", block: "center" }); } });
+      const k = e.target.closest(".ort-kopf"); if (k) { const o = ORT_BY[k.dataset.id]; if (o && !sichtbar(o)) ansichtSetzen(regionVon(o.lat, o.lon) || "welt");
+        auswaehlen(k.dataset.id, { zentrieren: true }); if (window.matchMedia("(max-width:979px)").matches) box.scrollIntoView({ behavior: "smooth", block: "center" }); } });
     byId("info").addEventListener("click", (e) => { if (e.target.closest(".zu")) { auswaehlen(null); return; } if (e.target.closest(".alle")) auswaehlen(AUSGEWAEHLT, { scroll: true }); });
 
     /* Karte: Tippen, Ziehen, Zwei-Finger-Zoom */
@@ -643,26 +706,28 @@
     svg.addEventListener("pointerup", ende); svg.addEventListener("pointercancel", (e) => { zeiger.delete(e.pointerId); pinch = null; start = null; box.classList.remove("zieht"); });
     let WAHL = false;
     function wahlmodus(an) { WAHL = an; box.classList.toggle("waehlen", an); byId("wahl").hidden = !an; byId("ortwahl").setAttribute("aria-pressed", an);
-      if (an) { auswaehlen(null); const r = box.getBoundingClientRect(); if (r.top < 0 || r.bottom > innerHeight) box.scrollIntoView({ behavior: "smooth", block: "center" }); } }
+      if (an) { ortenLaden(); auswaehlen(null); const r = box.getBoundingClientRect(); if (r.top < 0 || r.bottom > innerHeight) box.scrollIntoView({ behavior: "smooth", block: "center" }); } }
     byId("ortwahl").addEventListener("click", () => wahlmodus(!WAHL));
     byId("wahlweg").addEventListener("click", () => wahlmodus(false));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && WAHL) wahlmodus(false); });
     function tippen(cx, cy) { const pt = svgPunkt(cx, cy), u = 1 / ppu();
-      if (WAHL) { const [lat, lon] = unproj(pt.x, pt.y), no = naechsterOrt(lat, lon); wahlmodus(false); AUSGEWAEHLT = null;
-        ortSetzen({ n: no && no.d < 40 ? "bei " + no.n : "Gewählter Punkt", lat: +lat.toFixed(4), lon: +lon.toFixed(4) }); return; }
+      if (WAHL) { const [lat, lon] = unproj(pt.x, pt.y); wahlmodus(false); AUSGEWAEHLT = null;
+        const setzen = (no) => ortSetzen({ n: no && no.d < 40 ? "bei " + no.n : "Gewählter Punkt", lat: +lat.toFixed(4), lon: +lon.toFixed(4) });
+        if (ORTSLISTE) setzen(naechsterOrt(lat, lon)); else ortenLaden().then((l) => setzen(l ? naechsterOrt(lat, lon) : null));
+        return; }
       let best = null; LISTE.forEach((o) => { const d = Math.hypot(o.xy[0] - pt.x, o.xy[1] - pt.y); if (d < 16 * u && (!best || d < best.d)) best = { id: o.id, d }; });
       if (best) { auswaehlen(best.id === AUSGEWAEHLT ? null : best.id); return; }
       if (AUSGEWAEHLT) auswaehlen(null); }
     svg.addEventListener("dblclick", (e) => { const pt = svgPunkt(e.clientX, e.clientY); zoomUm(1.8, pt.x, pt.y); });
     svg.addEventListener("wheel", (e) => { if (!e.ctrlKey) return; e.preventDefault(); const pt = svgPunkt(e.clientX, e.clientY); zoomUm(Math.exp(-e.deltaY * 0.01), pt.x, pt.y); }, { passive: false });
-    byId("zplus").addEventListener("click", () => { const [x, y] = AUSGEWAEHLT ? ORT_BY[AUSGEWAEHLT].xy : START ? proj(START.lat, START.lon) : [VB.cx, VB.cy]; zoomUm(1.6, x, y); });
+    byId("zplus").addEventListener("click", () => { const st = START && proj(START.lat, START.lon), [x, y] = AUSGEWAEHLT && sichtbar(ORT_BY[AUSGEWAEHLT]) ? ORT_BY[AUSGEWAEHLT].xy : st && imRand(ANSICHT, st) ? st : [VB.cx, VB.cy]; zoomUm(1.6, x, y); });
     byId("zminus").addEventListener("click", () => zoomUm(1 / 1.6));
     byId("zganz").addEventListener("click", () => { VB = { cx: W / 2, cy: H / 2, w: maxW() }; vbSetzen(); });
     if ("ResizeObserver" in window) new ResizeObserver(() => vbSetzen()).observe(box);
     else addEventListener("resize", () => vbSetzen());
 
     /* Start */
-    FL.zeichnen(); aktualisieren(); startAusschnitt();
+    FL.zeichnen(); aktualisieren(); ansichtSetzen(ansichtFuerStart());
   }
 
   /* Übersichten (Serien, Strecken): nächstes Event je Serie bzw. Strecke nach dem heutigen Datum */

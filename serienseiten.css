@@ -437,14 +437,15 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .nah .suche .weg{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;border-radius:50%;background:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1}
 .nah .suche .weg:hover{color:var(--paper)}
 .nah #vorschlaege{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:var(--bg3);border:1px solid var(--rule);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.45);max-height:300px;overflow:auto}
-.nah #vorschlaege li{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:6px;cursor:pointer}
-.nah #vorschlaege li small{font:12px var(--mono);color:var(--muted)}
+.nah #vorschlaege li{padding:8px 10px;border-radius:6px;cursor:pointer}
+.nah #vorschlaege li small{margin-left:3px;font:12px var(--mono);color:var(--muted)}
 .nah #vorschlaege li[aria-selected="true"],.nah #vorschlaege li:hover{background:var(--bg2);color:var(--gold)}
 .nah .hinweis{margin:0;font-size:13px;color:var(--muted)}
 .nah .hinweis b{color:var(--paper);font-weight:500}
 .nah .ortzeile{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:9px 0 0 2px}
 .nah .ortbtn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--rule);background:var(--bg2);border-radius:999px;padding:7px 13px 7px 11px;font-size:13.5px;cursor:pointer;white-space:nowrap}
 .nah .ortbtn svg{width:15px;height:15px;color:var(--gold)}
+.nah .ortbtn[hidden]{display:none}
 .nah .ortbtn:hover{border-color:var(--muted)}
 .nah .ortbtn[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
 .nah .filter{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:flex-end}
@@ -462,6 +463,12 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
   .nah .ortwahl{order:1;max-width:none}.nah .kartenspalte{order:2}.nah .filter{order:3}.nah .liste{order:4;margin-top:8px}
   .nah .filter{width:100%}.nah .filter>div{min-width:0;width:100%}
 }
+/* Umschalter „<Region> | Welt“ über der Karte und die Zeile mit den Regionen unter der Weltkarte */
+.nah .kartenkopf{margin:0 0 8px}
+.nah .regionen{display:flex;flex-wrap:wrap;gap:2px 16px;margin:10px 2px 0;font-size:13px;line-height:1.8;color:var(--muted)}
+.nah .regionen[hidden]{display:none}
+.nah .regionen button{border:0;background:none;padding:0;font:inherit;color:var(--paper);cursor:pointer;text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
+.nah .regionen button:hover{text-decoration-color:var(--paper)}
 .nah .karte{position:relative;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--meer);aspect-ratio:1000/860;max-width:100%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 @media (max-width:700px){.nah .karte{aspect-ratio:1/1.02}}
 .nah .karte.gezoomt{touch-action:none}
