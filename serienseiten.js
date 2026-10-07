@@ -433,8 +433,8 @@
     const imRand = (k, xy, r = 0) => xy[0] >= -r && xy[0] <= REGIONEN[k].W + r && xy[1] >= -r && xy[1] <= REGIONEN[k].H + r;
     /* Region eines Punkts: Europa, wenn er im Ausschnitt der Europakarte liegt, sonst die erste Regionalkarte, die ihn enthält (sonst keine) */
     const regionVon = (lat, lon) => REIHE.find((k) => imRand(k, PRJ[k].proj(lat, lon))) || null;
-    /* gezeigte Karte: ANSICHT; LINKS = Region im linken Knopf des Umschalters (Region des Startorts bzw. zuletzt gezeigte Region) */
-    let ANSICHT = "europa", LINKS = "europa", R = REGIONEN.europa, P = PRJ.europa, W = R.W, H = R.H;
+    /* gezeigte Karte: ANSICHT (eine Region oder „welt“) */
+    let ANSICHT = "europa", R = REGIONEN.europa, P = PRJ.europa, W = R.W, H = R.H;
     const proj = (lat, lon) => P.proj(lat, lon), unproj = (X, Y) => P.unproj(X, Y);
     function km(a, b) { const p1 = a[0] * RAD, p2 = b[0] * RAD, dp = p2 - p1, dl = (b[1] - a[1]) * RAD, h = Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2; return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h))); }
     function ziel(lat, lon, brg, d) { const a = d / 6371, t = brg * RAD, p1 = lat * RAD, l1 = lon * RAD, p2 = Math.asin(Math.sin(p1) * Math.cos(a) + Math.cos(p1) * Math.sin(a) * Math.cos(t)), l2 = l1 + Math.atan2(Math.sin(t) * Math.sin(a) * Math.cos(p1), Math.cos(a) - Math.sin(p1) * Math.sin(p2)); return [p2 / RAD, l2 / RAD]; }
@@ -499,10 +499,9 @@
     const svg = byId("svg"), dyn = byId("dyn"), box = byId("karte");
     let VB = { cx: W / 2, cy: H / 2, w: W };
     function verh() { const r = box.getBoundingClientRect(); return r.height / r.width || H / W; }
-    /* Weltkarte: immer die ganze Breite (ist das Feld höher als die Karte, steht sie etwas über der Mitte im Meer, damit die Infokarte unten nicht die Karte verdeckt); Regionen: höchstens ihre Fläche */
-    function maxW() { return ANSICHT === "welt" ? W : Math.min(W, H / verh()); }
+    function maxW() { return Math.min(W, H / verh()); }
     function klemmen() { const mw = maxW(); VB.w = Math.max(mw / 8, Math.min(mw, VB.w)); const h = VB.w * verh();
-      VB.cx = VB.w >= W ? W / 2 : Math.max(VB.w / 2, Math.min(W - VB.w / 2, VB.cx)); VB.cy = h >= H ? H / 2 + 0.15 * (h - H) : Math.max(h / 2, Math.min(H - h / 2, VB.cy)); }
+      VB.cx = VB.w >= W ? W / 2 : Math.max(VB.w / 2, Math.min(W - VB.w / 2, VB.cx)); VB.cy = h >= H ? H / 2 : Math.max(h / 2, Math.min(H - h / 2, VB.cy)); }
     function vbSetzen() { klemmen(); const h = VB.w * verh(); svg.setAttribute("viewBox", `${(VB.cx - VB.w / 2).toFixed(2)} ${(VB.cy - h / 2).toFixed(2)} ${VB.w.toFixed(2)} ${h.toFixed(2)}`);
       const z = maxW() / VB.w; box.classList.toggle("gezoomt", z > 1.05); byId("zminus").disabled = z <= 1.01; byId("zplus").disabled = z >= 7.9; byId("zganz").disabled = z <= 1.01; kartenpunkte(); }
     function ppu() { return box.getBoundingClientRect().width / VB.w; }
@@ -664,20 +663,27 @@
     /* Karte wechseln: die Region des Startorts (ohne Startort Europa, ohne Region die Weltkarte), eine andere Region oder die Welt.
        Der Startort bleibt, wie er ist; die gezeigte Karte wird nicht gespeichert. */
     const ansichtFuerStart = () => (START ? regionVon(START.lat, START.lon) || "welt" : "europa");
+    /* linker Knopf des Umschalters: die gezeigte Region, in der Weltansicht die Region des Startorts (ohne Startort Europa); ohne Region (z. B. Kapstadt) gibt es nur „Welt“ */
+    const linkeRegion = () => (ANSICHT !== "welt" ? ANSICHT : START ? regionVon(START.lat, START.lon) : "europa");
+    /* Verweis von den Streckenseiten: #karte=<region> öffnet die Karte dieser Region (der Startort bleibt, wie er ist) */
+    const startAnsicht = () => { const m = /^#karte=([a-z]+)$/.exec(location.hash); return m && REGIONEN[m[1]] ? m[1] : ansichtFuerStart(); };
     const kw = byId("kartenwahl"), rz = byId("regionen");
     rz.innerHTML = "<span>Zur Region:</span>" + REIHE.map((k) => `<button type="button" data-r="${k}">${esc(REGIONEN[k].name)}</button>`).join("");
     function ansichtSetzen(k) {
-      ANSICHT = k; if (k !== "welt") LINKS = k;
-      R = REGIONEN[k]; P = PRJ[k]; W = R.W; H = R.H;
+      ANSICHT = k; R = REGIONEN[k]; P = PRJ[k]; W = R.W; H = R.H;
+      /* Weltkarte: Rahmen im Seitenverhältnis der Karte (kein leerer Raum darunter), Infokarte unter der Karte statt darüber; die Regionen behalten das Feld und die Infokarte in der Karte */
+      box.style.aspectRatio = k === "welt" ? W + " / " + H : "";
+      const info = byId("info"); info.classList.toggle("unter", k === "welt"); if (k === "welt") box.after(info); else box.append(info);
       const bild = byId("basis-bild"); byId("basis-europa").style.display = k === "europa" ? "" : "none"; bild.style.display = k === "europa" ? "none" : ""; bild.textContent = "";
       if (k !== "europa") bild.append(el("rect", { x: -W, y: -H, width: 3 * W, height: 3 * H, fill: "var(--meer)" }), el("image", { x: 0, y: 0, width: W, height: H, preserveAspectRatio: "none", href: "../" + R.datei }));
       svg.setAttribute("aria-label", (k === "welt" ? "Weltkarte" : "Karte " + R.name) + " – alle Rennstrecken mit Terminen im gewählten Zeitraum");
       ORTE.forEach((o) => { o.xy = proj(o.lat, o.lon); }); LISTE.forEach((o) => { o.xy = proj(o.lat, o.lon); });
       if (k === "welt" && WAHL) wahlmodus(false);
       byId("ortwahl").hidden = k === "welt";
-      const l = kw.querySelector('[data-k="region"]'); l.textContent = REGIONEN[LINKS].name; l.setAttribute("aria-checked", String(k !== "welt")); kw.querySelector('[data-k="welt"]').setAttribute("aria-checked", String(k === "welt"));
+      const l = kw.querySelector('[data-k="region"]'), lr = linkeRegion(); l.hidden = !lr; if (lr) l.textContent = REGIONEN[lr].name;
+      l.setAttribute("aria-checked", String(k !== "welt")); kw.querySelector('[data-k="welt"]').setAttribute("aria-checked", String(k === "welt"));
       rz.hidden = k !== "welt"; legende(); startAusschnitt(); }
-    kw.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const k = b.dataset.k === "welt" ? "welt" : LINKS; if (k !== ANSICHT) ansichtSetzen(k); });
+    kw.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const k = b.dataset.k === "welt" ? "welt" : linkeRegion(); if (k && k !== ANSICHT) ansichtSetzen(k); });
     rz.addEventListener("click", (e) => { const b = e.target.closest("button[data-r]"); if (b) ansichtSetzen(b.dataset.r); });
 
     /* Zeitraum */
@@ -727,7 +733,7 @@
     else addEventListener("resize", () => vbSetzen());
 
     /* Start */
-    FL.zeichnen(); aktualisieren(); ansichtSetzen(ansichtFuerStart());
+    FL.zeichnen(); aktualisieren(); ansichtSetzen(startAnsicht());
   }
 
   /* Übersichten (Serien, Strecken): nächstes Event je Serie bzw. Strecke nach dem heutigen Datum */
