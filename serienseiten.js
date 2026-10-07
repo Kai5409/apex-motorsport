@@ -625,10 +625,13 @@
     function ortenLaden() {
       if (ORTSLISTE) return Promise.resolve(ORTSLISTE);
       if (!ORTE_LADEN) ORTE_LADEN = fetch("orte-welt.json").then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }).then((j) => {
-        const liste = j.orte.map((o) => ({ n: o[0], land: j.laender[o[1]], lat: o[2], lon: o[3], k: norm(o[0]) })), zaehl = new Map();
+        const liste = j.orte.map((o) => ({ n: o[0], land: j.laender[o[1]], lat: o[2], lon: o[3], k: norm(o[0]), region: o[4] || "" })), zaehl = new Map();
         liste.forEach((o) => { const k = o.k + "|" + o.land; zaehl.set(k, (zaehl.get(k) || 0) + 1); });
-        /* gleicher Name im selben Land (z. B. zwei Orte „Portland“): die Lage unterscheidet sie */
-        liste.forEach((o) => { if (zaehl.get(o.k + "|" + o.land) > 1) o.zusatz = gradText(o.lat, "N", "S") + ", " + gradText(o.lon, "O", "W"); });
+        /* gleicher Name im selben Land (z. B. zwei Orte „Portland“): die Region unterscheidet sie („Madison · Wisconsin, Vereinigte Staaten“),
+           ohne Region die Lage; Kurzform ohne Land, falls die Zeile am Handy sonst umbräche */
+        liste.forEach((o) => { if (zaehl.get(o.k + "|" + o.land) > 1) {
+          if (o.region) { o.zusatz = o.region + ", " + o.land; o.kurz = o.region; }
+          else { o.kurz = gradText(o.lat, "N", "S") + ", " + gradText(o.lon, "O", "W"); o.zusatz = o.land + " · " + o.kurz; } } });
         return (ORTSLISTE = liste); }).catch(() => { ORTE_LADEN = null; return null; });
       return ORTE_LADEN;
     }
@@ -644,8 +647,11 @@
       if (!ORTSLISTE) { zeileZeigen("Orte werden geladen …"); ortenLaden().then((l) => { if (inp.value.trim() !== q) return; if (l) vorschlaege(); else zeileZeigen("Die Ortssuche ist gerade nicht verfügbar – „Auf der Karte wählen“ nutzen"); }); return; }
       TREFFER = suchen(t); AKT = TREFFER.length ? 0 : -1;
       if (!TREFFER.length) { zeileZeigen("Kein Ort gefunden – „Auf der Karte wählen“ nutzen"); return; }
-      vl.innerHTML = TREFFER.map((o, i) => `<li role="option" id="v${i}" data-i="${i}" aria-selected="${i === AKT}">${esc(o.n)} <small>· ${esc(o.land)}${o.zusatz ? " · " + o.zusatz : ""}</small></li>`).join("");
-      vl.hidden = false; inp.setAttribute("aria-expanded", "true"); }
+      vl.innerHTML = TREFFER.map((o, i) => `<li role="option" id="v${i}" data-i="${i}" aria-selected="${i === AKT}"${o.kurz ? ` data-kurz="${esc(o.kurz)}"` : ""}>${esc(o.n)} <small>· ${esc(o.zusatz || o.land)}</small></li>`).join("");
+      vl.hidden = false; inp.setAttribute("aria-expanded", "true");
+      /* gleichnamige Orte stehen in einer Zeile: passt eine nicht, entfällt in allen das Land */
+      const gleichnamig = $$("li[data-kurz]", vl);
+      if (gleichnamig.some((li) => li.scrollWidth > li.clientWidth + 1)) gleichnamig.forEach((li) => { $("small", li).textContent = "· " + li.dataset.kurz; }); }
     function waehlen(i) { const o = TREFFER[i]; if (!o) return; vl.hidden = true; inp.setAttribute("aria-expanded", "false"); ortSetzen({ n: o.n, lat: o.lat, lon: o.lon }); ansichtSetzen(ansichtFuerStart()); inp.blur(); }
     inp.addEventListener("input", vorschlaege);
     /* Klick ins Feld: der bisherige Ort verschwindet sofort (steht als Platzhalter da); ohne neue Eingabe kommt er beim Verlassen zurück */
