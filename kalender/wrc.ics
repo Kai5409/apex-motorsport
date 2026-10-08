@@ -969,4 +969,154 @@ SUMMARY:WRC · Rallye Italien (Sardinien) · Finale — WP17 Sassari–Argentier
 LOCATION:Alghero
 DESCRIPTION:APEX · WRC · Lauf 13 · Alghero
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc1-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270125
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Monte-Carlo
+LOCATION:Gap
+DESCRIPTION:APEX · WRC · Lauf 1 · Gap — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc2-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270218
+DTEND;VALUE=DATE:20270222
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Schweden
+LOCATION:Umeå
+DESCRIPTION:APEX · WRC · Lauf 2 · Umeå — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc3-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270318
+DTEND;VALUE=DATE:20270322
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Safari-Rallye Kenia
+LOCATION:Nairobi
+DESCRIPTION:APEX · WRC · Lauf 3 · Nairobi — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc4-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270408
+DTEND;VALUE=DATE:20270412
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Kroatien
+LOCATION:Rijeka
+DESCRIPTION:APEX · WRC · Lauf 4 · Rijeka — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc5-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270506
+DTEND;VALUE=DATE:20270510
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Islas Canarias
+LOCATION:Las Palmas (Gran Canaria)
+DESCRIPTION:APEX · WRC · Lauf 5 · Las Palmas (Gran Canaria) — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc6-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270603
+DTEND;VALUE=DATE:20270607
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Japan
+LOCATION:Aichi/Gifu
+DESCRIPTION:APEX · WRC · Lauf 6 · Aichi/Gifu — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc7-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270624
+DTEND;VALUE=DATE:20270628
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Akropolis-Rallye Griechenland
+LOCATION:Loutraki
+DESCRIPTION:APEX · WRC · Lauf 7 · Loutraki — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc8-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270708
+DTEND;VALUE=DATE:20270712
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Italien (Rom)
+LOCATION:Rom
+DESCRIPTION:APEX · WRC · Lauf 8 · Rom — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc9-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270722
+DTEND;VALUE=DATE:20270726
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Estland
+LOCATION:Tartu
+DESCRIPTION:APEX · WRC · Lauf 9 · Tartu — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc10-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270729
+DTEND;VALUE=DATE:20270802
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Finnland
+LOCATION:Jyväskylä
+DESCRIPTION:APEX · WRC · Lauf 10 · Jyväskylä — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc11-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270826
+DTEND;VALUE=DATE:20270830
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye USA
+LOCATION:Knoxville (Tennessee)
+DESCRIPTION:APEX · WRC · Lauf 11 · Knoxville (Tennessee) — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc12-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20270930
+DTEND;VALUE=DATE:20271004
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Schottland
+LOCATION:Aberdeen
+DESCRIPTION:APEX · WRC · Lauf 12 · Aberdeen — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc13-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20271021
+DTEND;VALUE=DATE:20271025
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Paraguay
+LOCATION:Encarnación
+DESCRIPTION:APEX · WRC · Lauf 13 · Encarnación — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc14-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20271104
+DTEND;VALUE=DATE:20271108
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Chile Bio Bío
+LOCATION:Concepción
+DESCRIPTION:APEX · WRC · Lauf 14 · Concepción — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-wrc15-2027-ganztag@apex-motorsport
+DTSTAMP:20261008T144832Z
+DTSTART;VALUE=DATE:20271125
+DTEND;VALUE=DATE:20271129
+TRANSP:TRANSPARENT
+SUMMARY:WRC · Rallye Saudi-Arabien · Finale
+LOCATION:Saudi-Arabien
+DESCRIPTION:APEX · WRC · Lauf 15 · Saudi-Arabien — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR
