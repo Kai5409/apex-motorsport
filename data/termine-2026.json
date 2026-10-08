@@ -549,6 +549,8 @@
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "11:30"},
       {"n": "FP2", "day": "Fr", "t": "16:30"},
+      {"n": "FP3", "day": "Sa", "t": "12:40"},
+      {"n": "Hyperpole", "day": "Sa", "t": "16:00"},
       {"n": "Rennen (6h)", "day": "So", "t": "12:00"}
     ]},
   {"s": "wec", "rd": 8, "name": "6 Stunden von Monza (Finale)", "loc": "Monza", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
@@ -622,10 +624,11 @@
     ]},
   {"s": "dtm", "rd": 8, "name": "DTM Hockenheim (Finale)", "loc": "Hockenheimring", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
     "sessions": [
-      {"n": "Freies Training", "day": "Fr", "t": "13:30"},
-      {"n": "Qualifying 1", "day": "Sa", "t": "09:00"},
+      {"n": "Freies Training", "day": "Fr", "t": "12:05"},
+      {"n": "Freies Training 2", "day": "Fr", "t": "15:30"},
+      {"n": "Qualifying 1", "day": "Sa", "t": "09:35"},
       {"n": "Rennen 1", "day": "Sa", "t": "13:30"},
-      {"n": "Qualifying 2", "day": "So", "t": "09:05"},
+      {"n": "Qualifying 2", "day": "So", "t": "09:30"},
       {"n": "Rennen 2", "day": "So", "t": "16:30"}
     ]},
   {"s": "wrc", "rd": 1, "name": "Rallye Monte-Carlo", "loc": "Gap", "d0": "2026-01-22", "d1": "2026-01-25", "status": "done", "result": "Oliver Solberg (Toyota)",
