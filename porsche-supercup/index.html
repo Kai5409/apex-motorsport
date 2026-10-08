@@ -46,7 +46,7 @@
       <div class="linecap"><span id="capL"><b>8</b> von 8 Rennen gefahren</span><span id="capR"></span></div>
     </div>
 
-    <div class="side">
+    <div class="side"><div class="klebt">
       <div class="next" id="next">
   <div class="nextcard" data-id="">
     <p class="k">Nächstes Rennen</p>
@@ -59,7 +59,15 @@
     <p class="hint">Für Handy, Google oder Outlook – aktualisiert sich automatisch</p>
   </div>
       </div>
-    </div>
+      <section class="skarte" id="skarte" aria-labelledby="h-skarte" hidden>
+        <div class="skopf"><h2 class="k" id="h-skarte">Saison auf der Karte</h2>
+          <div class="seg" role="group" aria-label="Kartenausschnitt"><button type="button" data-ans="welt" aria-pressed="true">Welt</button><button type="button" data-ans="europa" aria-pressed="false">Europa</button></div></div>
+        <div class="sbild"></div>
+        <div class="sinfo" aria-live="polite"></div>
+        <div class="slegende"></div>
+        <p class="squelle">Kartengrundlage: Natural Earth (gemeinfrei)</p>
+      </section>
+    </div></div>
 
     <div class="rest">
       <nav class="subnav" aria-label="Abschnitte"><ul>
@@ -176,5 +184,6 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script type="application/json" id="apex-seite">{"linien":[{"key":"2026","aria":"Saisonverlauf 2026","capL":"\u003cb\u003e8\u003c/b\u003e von 8 Rennen gefahren","capR":"","ev":[["supercup-1","Großer Preis von Monaco · 04–07 Jun","d","Monaco","Jun"],["supercup-2","Großer Preis von Barcelona-Katalonien · 12–14 Jun","d","Barcelona","Jun"],["supercup-3","Großer Preis von Österreich · 26–28 Jun","d","Red Bull Ring","Jun"],["supercup-4","Großer Preis von Belgien · 17–19 Jul","d","Spa-Francorchamps","Jul"],["supercup-5","Großer Preis von Ungarn · 24–26 Jul","d","Hungaroring","Jul"],["supercup-6","Großer Preis der Niederlande · Rennen 1 · 21–23 Aug","d","Zandvoort","Aug"],["supercup-7","Großer Preis der Niederlande · Rennen 2 · 21–23 Aug","d","Zandvoort","Aug"],["supercup-8","Großer Preis von Italien · Finale · 04–06 Sep","d","Monza","Sep"]]}],"linie":"2026"}</script>
+<script type="application/json" id="apex-karte">{"regionen":{"europa":{"k":1664.9210713611237,"tx":500,"ty":1993.8614300202494,"lon0":10,"par":[40,58],"W":1000,"H":860,"datei":"../karte/europa.svg"},"welt":{"art":"natur","k":182.79,"tx":500,"ty":259.998,"lon0":10,"W":1000,"H":446,"datei":"../karte/welt.svg"}},"saisons":{"2026":[["supercup-1",1,"Großer Preis von Monaco","Monaco","monaco",43.737,7.429,"d","2026-06-04","2026-06-07"],["supercup-2",2,"Großer Preis von Barcelona-Katalonien","Barcelona","barcelona-katalonien",41.569,2.259,"d","2026-06-12","2026-06-14"],["supercup-3",3,"Großer Preis von Österreich","Red Bull Ring","red-bull-ring",47.223,14.761,"d","2026-06-26","2026-06-28"],["supercup-4",4,"Großer Preis von Belgien","Spa-Francorchamps","spa-francorchamps",50.436,5.971,"d","2026-07-17","2026-07-19"],["supercup-5",5,"Großer Preis von Ungarn","Hungaroring","hungaroring",47.583,19.25,"d","2026-07-24","2026-07-26"],["supercup-6",6,"Großer Preis der Niederlande · Rennen 1","Zandvoort","zandvoort",52.389,4.541,"d","2026-08-21","2026-08-23"],["supercup-7",7,"Großer Preis der Niederlande · Rennen 2","Zandvoort","zandvoort",52.389,4.541,"d","2026-08-21","2026-08-23"],["supercup-8",8,"Großer Preis von Italien · Finale","Monza","monza",45.621,9.29,"d","2026-09-04","2026-09-06"]]}}</script>
 </body>
 </html>

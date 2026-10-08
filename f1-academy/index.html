@@ -46,7 +46,7 @@
       <div class="linecap"><span id="capL"><b>4</b> von 6 Wochenenden gefahren</span><span id="capR"></span></div>
     </div>
 
-    <div class="side">
+    <div class="side"><div class="klebt">
       <div class="next" id="next">
   <div class="nextcard" data-id="f1academy-5" data-von="2026-10-22" data-bis="2026-10-25">
     <p class="k">Nächstes Rennen</p>
@@ -62,7 +62,15 @@
     <p class="hint">Für Handy, Google oder Outlook – aktualisiert sich automatisch</p>
   </div>
       </div>
-    </div>
+      <section class="skarte" id="skarte" aria-labelledby="h-skarte" hidden>
+        <div class="skopf"><h2 class="k" id="h-skarte">Saison auf der Karte</h2>
+          <div class="seg" role="group" aria-label="Kartenausschnitt"><button type="button" data-ans="welt" aria-pressed="true">Welt</button><button type="button" data-ans="europa" aria-pressed="false">Europa</button></div></div>
+        <div class="sbild"></div>
+        <div class="sinfo" aria-live="polite"></div>
+        <div class="slegende"></div>
+        <p class="squelle">Kartengrundlage: Natural Earth (gemeinfrei)</p>
+      </section>
+    </div></div>
 
     <div class="rest">
       <nav class="subnav" aria-label="Abschnitte"><ul>
@@ -181,5 +189,6 @@
     <p class="where">Der Kalender 2027 ist noch nicht veröffentlicht. Wer die Termine <a class="abolink" href="webcal://apexkalender.de/kalender/f1academy.ics" aria-haspopup="dialog">mit dem eigenen Kalender verbindet</a>, bekommt sie automatisch, sobald sie feststehen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[{"key":"2026","aria":"Saisonverlauf 2026","capL":"\u003cb\u003e4\u003c/b\u003e von 6 Wochenenden gefahren","capR":"","ev":[["f1academy-1","Großer Preis von China · 13–15 Mär","d","Shanghai","Mär"],["f1academy-2","Großer Preis von Kanada · 22–24 Mai","d","Montréal","Mai"],["f1academy-3","Großer Preis von Großbritannien · 03–05 Jul","d","Silverstone","Jul"],["f1academy-4","Großer Preis der Niederlande · 21–23 Aug","d","Zandvoort","Aug"],["f1academy-5","Großer Preis der USA · 22–25 Okt","u","COTA","Okt"],["f1academy-6","Großer Preis von Las Vegas · Finale · 19–21 Nov","u","Las Vegas","Nov"]]}],"linie":"2026"}</script>
+<script type="application/json" id="apex-karte">{"regionen":{"europa":{"k":1664.9210713611237,"tx":500,"ty":1993.8614300202494,"lon0":10,"par":[40,58],"W":1000,"H":860,"datei":"../karte/europa.svg"},"welt":{"art":"natur","k":182.79,"tx":500,"ty":259.998,"lon0":10,"W":1000,"H":446,"datei":"../karte/welt.svg"}},"saisons":{"2026":[["f1academy-1",1,"Großer Preis von China","Shanghai","shanghai",31.3402,121.2193,"d","2026-03-13","2026-03-15"],["f1academy-2",2,"Großer Preis von Kanada","Montréal","montreal",45.5044,-73.5264,"d","2026-05-22","2026-05-24"],["f1academy-3",3,"Großer Preis von Großbritannien","Silverstone","silverstone",52.072,-1.017,"d","2026-07-03","2026-07-05"],["f1academy-4",4,"Großer Preis der Niederlande","Zandvoort","zandvoort",52.389,4.541,"d","2026-08-21","2026-08-23"],["f1academy-5",5,"Großer Preis der USA","COTA","cota",30.1352,-97.6348,"u","2026-10-22","2026-10-25"],["f1academy-6",6,"Großer Preis von Las Vegas · Finale","Las Vegas","las-vegas",36.1164,-115.1657,"u","2026-11-19","2026-11-21"]]}}</script>
 </body>
 </html>

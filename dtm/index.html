@@ -46,7 +46,7 @@
       <div class="linecap"><span id="capL"><b>7</b> von 8 Wochenenden gefahren</span><span id="capR"></span></div>
     </div>
 
-    <div class="side">
+    <div class="side"><div class="klebt">
       <div class="next" id="next">
   <div class="nextcard" data-id="dtm-8" data-von="2026-10-09" data-bis="2026-10-11">
     <p class="k">Nächstes Rennen</p>
@@ -62,7 +62,15 @@
     <p class="hint">Für Handy, Google oder Outlook – aktualisiert sich automatisch</p>
   </div>
       </div>
-    </div>
+      <section class="skarte" id="skarte" aria-labelledby="h-skarte" hidden>
+        <div class="skopf"><h2 class="k" id="h-skarte">Saison auf der Karte</h2>
+          <div class="seg" role="group" aria-label="Kartenausschnitt"><button type="button" data-ans="welt" aria-pressed="true">Welt</button><button type="button" data-ans="europa" aria-pressed="false">Europa</button></div></div>
+        <div class="sbild"></div>
+        <div class="sinfo" aria-live="polite"></div>
+        <div class="slegende"></div>
+        <p class="squelle">Kartengrundlage: Natural Earth (gemeinfrei)</p>
+      </section>
+    </div></div>
 
     <div class="rest">
       <nav class="subnav" aria-label="Abschnitte"><ul>
@@ -292,5 +300,6 @@
     <p class="where">Neue Termine folgen, sobald der Kalender veröffentlicht ist. Wer die Termine <a class="abolink" href="webcal://apexkalender.de/kalender/dtm.ics" aria-haspopup="dialog">mit dem eigenen Kalender verbindet</a>, bekommt sie automatisch, sobald sie feststehen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[{"key":"2026","aria":"Saisonverlauf 2026","capL":"\u003cb\u003e7\u003c/b\u003e von 8 Wochenenden gefahren","capR":"","ev":[["dtm-1","DTM Spielberg · 24–26 Apr","d","Red Bull Ring","Apr"],["dtm-2","DTM Zandvoort · 22–24 Mai","d","Zandvoort","Mai"],["dtm-3","DTM Lausitzring · 19–21 Jun","d","Lausitzring","Jun"],["dtm-4","DTM Norisring · 03–05 Jul","d","Norisring","Jul"],["dtm-5","DTM Oschersleben · 24–26 Jul","d","Oschersleben","Jul"],["dtm-6","DTM Nürburgring · 14–16 Aug","d","Nürburgring","Aug"],["dtm-7","DTM Sachsenring · 11–13 Sep","d","Sachsenring","Sep"],["dtm-8","DTM Hockenheim (Finale) · 09–11 Okt","u","Hockenheimring","Okt"]]},{"key":"2027","aria":"Saisonverlauf 2027","capL":"\u003cb\u003e0\u003c/b\u003e von 8 Wochenenden gefahren","capR":"","ev":[["dtm-1-2027","DTM Spielberg · 23–25 Apr","u","Red Bull Ring","Apr"],["dtm-2-2027","DTM Oschersleben · 07–09 Mai","u","Oschersleben","Mai"],["dtm-3-2027","DTM Lausitzring · 18–20 Jun","u","Lausitzring","Jun"],["dtm-4-2027","DTM Norisring · 02–04 Jul","u","Norisring","Jul"],["dtm-5-2027","DTM Zandvoort · 06–08 Aug","u","Zandvoort","Aug"],["dtm-6-2027","DTM Nürburgring · 20–22 Aug","u","Nürburgring","Aug"],["dtm-7-2027","DTM Sachsenring · 24–26 Sep","u","Sachsenring","Sep"],["dtm-8-2027","DTM Hockenheim (Finale) · 08–10 Okt","u","Hockenheimring","Okt"]]}],"linie":"2026"}</script>
+<script type="application/json" id="apex-karte">{"regionen":{"europa":{"k":1664.9210713611237,"tx":500,"ty":1993.8614300202494,"lon0":10,"par":[40,58],"W":1000,"H":860,"datei":"../karte/europa.svg"},"welt":{"art":"natur","k":182.79,"tx":500,"ty":259.998,"lon0":10,"W":1000,"H":446,"datei":"../karte/welt.svg"}},"saisons":{"2026":[["dtm-1",1,"DTM Spielberg","Red Bull Ring","red-bull-ring",47.223,14.761,"d","2026-04-24","2026-04-26"],["dtm-2",2,"DTM Zandvoort","Zandvoort","zandvoort",52.389,4.541,"d","2026-05-22","2026-05-24"],["dtm-3",3,"DTM Lausitzring","Lausitzring","lausitzring",51.53333,13.91944,"d","2026-06-19","2026-06-21"],["dtm-4",4,"DTM Norisring","Norisring","norisring",49.43139,11.125,"d","2026-07-03","2026-07-05"],["dtm-5",5,"DTM Oschersleben","Oschersleben","oschersleben",52.02722,11.27861,"d","2026-07-24","2026-07-26"],["dtm-6",6,"DTM Nürburgring","Nürburgring","nuerburgring",50.334,6.943,"d","2026-08-14","2026-08-16"],["dtm-7",7,"DTM Sachsenring","Sachsenring","sachsenring",50.79167,12.68889,"d","2026-09-11","2026-09-13"],["dtm-8",8,"DTM Hockenheim (Finale)","Hockenheimring","hockenheimring",49.33,8.572,"u","2026-10-09","2026-10-11"]],"2027":[["dtm-1-2027",1,"DTM Spielberg","Red Bull Ring","red-bull-ring",47.223,14.761,"u","2027-04-23","2027-04-25"],["dtm-2-2027",2,"DTM Oschersleben","Oschersleben","oschersleben",52.02722,11.27861,"u","2027-05-07","2027-05-09"],["dtm-3-2027",3,"DTM Lausitzring","Lausitzring","lausitzring",51.53333,13.91944,"u","2027-06-18","2027-06-20"],["dtm-4-2027",4,"DTM Norisring","Norisring","norisring",49.43139,11.125,"u","2027-07-02","2027-07-04"],["dtm-5-2027",5,"DTM Zandvoort","Zandvoort","zandvoort",52.389,4.541,"u","2027-08-06","2027-08-08"],["dtm-6-2027",6,"DTM Nürburgring","Nürburgring","nuerburgring",50.334,6.943,"u","2027-08-20","2027-08-22"],["dtm-7-2027",7,"DTM Sachsenring","Sachsenring","sachsenring",50.79167,12.68889,"u","2027-09-24","2027-09-26"],["dtm-8-2027",8,"DTM Hockenheim (Finale)","Hockenheimring","hockenheimring",49.33,8.572,"u","2027-10-08","2027-10-10"]]}}</script>
 </body>
 </html>

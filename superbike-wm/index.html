@@ -46,7 +46,7 @@
       <div class="linecap"><span id="capL"><b>10</b> von 12 Wochenenden gefahren</span><span id="capR"></span></div>
     </div>
 
-    <div class="side">
+    <div class="side"><div class="klebt">
       <div class="next" id="next">
   <div class="nextcard" data-id="wsbk-11" data-von="2026-10-09" data-bis="2026-10-11">
     <p class="k">Nächstes Rennen</p>
@@ -62,7 +62,15 @@
     <p class="hint">Für Handy, Google oder Outlook – aktualisiert sich automatisch</p>
   </div>
       </div>
-    </div>
+      <section class="skarte" id="skarte" aria-labelledby="h-skarte" hidden>
+        <div class="skopf"><h2 class="k" id="h-skarte">Saison auf der Karte</h2>
+          <div class="seg" role="group" aria-label="Kartenausschnitt"><button type="button" data-ans="welt" aria-pressed="true">Welt</button><button type="button" data-ans="europa" aria-pressed="false">Europa</button></div></div>
+        <div class="sbild"></div>
+        <div class="sinfo" aria-live="polite"></div>
+        <div class="slegende"></div>
+        <p class="squelle">Kartengrundlage: Natural Earth (gemeinfrei)</p>
+      </section>
+    </div></div>
 
     <div class="rest">
       <nav class="subnav" aria-label="Abschnitte"><ul>
@@ -379,5 +387,6 @@
     <p class="where">Neue Termine folgen, sobald der Kalender veröffentlicht ist. Wer die Termine <a class="abolink" href="webcal://apexkalender.de/kalender/wsbk.ics" aria-haspopup="dialog">mit dem eigenen Kalender verbindet</a>, bekommt sie automatisch, sobald sie feststehen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[{"key":"2026","aria":"Saisonverlauf 2026","capL":"\u003cb\u003e10\u003c/b\u003e von 12 Wochenenden gefahren","capR":"","ev":[["wsbk-1","WM-Lauf Australien · 20–22 Feb","d","Phillip Island","Feb"],["wsbk-2","WM-Lauf Portugal · 27–29 Mär","d","Portimão","Mär"],["wsbk-3","WM-Lauf Niederlande · 17–19 Apr","d","Assen","Apr"],["wsbk-4","WM-Lauf Ungarn · 01–03 Mai","d","Balaton Park","Mai"],["wsbk-5","WM-Lauf Tschechien · 15–17 Mai","d","Most","Mai"],["wsbk-6","WM-Lauf Aragón · 29–31 Mai","d","MotorLand Aragón","Mai"],["wsbk-7","WM-Lauf Emilia-Romagna · 12–14 Jun","d","Misano","Jun"],["wsbk-8","WM-Lauf Großbritannien · 10–12 Jul","d","Donington Park","Jul"],["wsbk-9","WM-Lauf Frankreich · 04–06 Sep","d","Magny-Cours","Sep"],["wsbk-10","WM-Lauf Italien · 25–27 Sep","d","Cremona","Sep"],["wsbk-11","WM-Lauf Estoril · 09–11 Okt","u","Estoril","Okt"],["wsbk-12","WM-Lauf Spanien · Finale · 16–18 Okt","u","Jerez","Okt"]]},{"key":"2027","aria":"Saisonverlauf 2027","capL":"\u003cb\u003e0\u003c/b\u003e von 12 Wochenenden gefahren","capR":"","ev":[["wsbk-1-2027","WM-Lauf Australien · 19–21 Feb","u","Phillip Island","Feb"],["wsbk-2-2027","WM-Lauf Portugal · 19–21 Mär","u","Portimão","Mär"],["wsbk-3-2027","WM-Lauf Valencia · 02–04 Apr","u","Valencia","Apr"],["wsbk-4-2027","WM-Lauf Niederlande · 16–18 Apr","u","Assen","Apr"],["wsbk-5-2027","WM-Lauf Aragón · 21–23 Mai","u","MotorLand Aragón","Mai"],["wsbk-6-2027","WM-Lauf Tschechien · 04–06 Jun","u","Most","Jun"],["wsbk-7-2027","WM-Lauf Emilia-Romagna · 18–20 Jun","u","Misano","Jun"],["wsbk-8-2027","WM-Lauf Großbritannien · 09–11 Jul","u","Donington Park","Jul"],["wsbk-9-2027","WM-Lauf Frankreich · 03–05 Sep","u","Magny-Cours","Sep"],["wsbk-10-2027","WM-Lauf Italien · 24–26 Sep","u","Cremona","Sep"],["wsbk-11-2027","WM-Lauf Estoril · 15–17 Okt","u","Estoril","Okt"],["wsbk-12-2027","WM-Lauf China · Finale · 29–31 Okt","u","Shanghai","Okt"]]}],"linie":"2026"}</script>
+<script type="application/json" id="apex-karte">{"regionen":{"europa":{"k":1664.9210713611237,"tx":500,"ty":1993.8614300202494,"lon0":10,"par":[40,58],"W":1000,"H":860,"datei":"../karte/europa.svg"},"welt":{"art":"natur","k":182.79,"tx":500,"ty":259.998,"lon0":10,"W":1000,"H":446,"datei":"../karte/welt.svg"}},"saisons":{"2026":[["wsbk-1",1,"WM-Lauf Australien","Phillip Island","phillip-island",-38.5031,145.2364,"d","2026-02-20","2026-02-22"],["wsbk-2",2,"WM-Lauf Portugal","Portimão","portimao",37.232,-8.628,"d","2026-03-27","2026-03-29"],["wsbk-3",3,"WM-Lauf Niederlande","Assen","assen",52.96167,6.52333,"d","2026-04-17","2026-04-19"],["wsbk-4",4,"WM-Lauf Ungarn","Balaton Park","balaton-park",47.0081,18.1989,"d","2026-05-01","2026-05-03"],["wsbk-5",5,"WM-Lauf Tschechien","Most","most",50.5225,13.6006,"d","2026-05-15","2026-05-17"],["wsbk-6",6,"WM-Lauf Aragón","MotorLand Aragón","motorland-aragon",41.07833,-0.2075,"d","2026-05-29","2026-05-31"],["wsbk-7",7,"WM-Lauf Emilia-Romagna","Misano","misano",43.97889,12.695,"d","2026-06-12","2026-06-14"],["wsbk-8",8,"WM-Lauf Großbritannien","Donington Park","donington",52.8292,-1.375,"d","2026-07-10","2026-07-12"],["wsbk-9",9,"WM-Lauf Frankreich","Magny-Cours","magny-cours",46.863,3.164,"d","2026-09-04","2026-09-06"],["wsbk-10",10,"WM-Lauf Italien","Cremona","cremona",45.0854,10.312,"d","2026-09-25","2026-09-27"],["wsbk-11",11,"WM-Lauf Estoril","Estoril","estoril",38.751,-9.394,"u","2026-10-09","2026-10-11"],["wsbk-12",12,"WM-Lauf Spanien · Finale","Jerez","jerez",36.70833,-6.03417,"u","2026-10-16","2026-10-18"]],"2027":[["wsbk-1-2027",1,"WM-Lauf Australien","Phillip Island","phillip-island",-38.5031,145.2364,"u","2027-02-19","2027-02-21"],["wsbk-2-2027",2,"WM-Lauf Portugal","Portimão","portimao",37.232,-8.628,"u","2027-03-19","2027-03-21"],["wsbk-3-2027",3,"WM-Lauf Valencia","Valencia","valencia",39.48583,-0.62806,"u","2027-04-02","2027-04-04"],["wsbk-4-2027",4,"WM-Lauf Niederlande","Assen","assen",52.96167,6.52333,"u","2027-04-16","2027-04-18"],["wsbk-5-2027",5,"WM-Lauf Aragón","MotorLand Aragón","motorland-aragon",41.07833,-0.2075,"u","2027-05-21","2027-05-23"],["wsbk-6-2027",6,"WM-Lauf Tschechien","Most","most",50.5225,13.6006,"u","2027-06-04","2027-06-06"],["wsbk-7-2027",7,"WM-Lauf Emilia-Romagna","Misano","misano",43.97889,12.695,"u","2027-06-18","2027-06-20"],["wsbk-8-2027",8,"WM-Lauf Großbritannien","Donington Park","donington",52.8292,-1.375,"u","2027-07-09","2027-07-11"],["wsbk-9-2027",9,"WM-Lauf Frankreich","Magny-Cours","magny-cours",46.863,3.164,"u","2027-09-03","2027-09-05"],["wsbk-10-2027",10,"WM-Lauf Italien","Cremona","cremona",45.0854,10.312,"u","2027-09-24","2027-09-26"],["wsbk-11-2027",11,"WM-Lauf Estoril","Estoril","estoril",38.751,-9.394,"u","2027-10-15","2027-10-17"],["wsbk-12-2027",12,"WM-Lauf China · Finale","Shanghai","shanghai",31.3402,121.2193,"u","2027-10-29","2027-10-31"]]}}</script>
 </body>
 </html>
