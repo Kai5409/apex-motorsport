@@ -464,7 +464,12 @@
     ]},
   {"s": "mgp", "rd": 18, "name": "Großer Preis von Australien", "loc": "Phillip Island", "d0": "2026-10-23", "d1": "2026-10-25", "status": "up",
     "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "01:45"},
+      {"n": "Practice", "day": "Fr", "t": "06:00"},
+      {"n": "FP2", "day": "Sa", "t": "01:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "01:50"},
       {"n": "Sprint", "day": "Sa", "t": "06:00"},
+      {"n": "Warm Up", "day": "So", "t": "00:40"},
       {"n": "Rennen", "day": "So", "t": "04:00"}
     ]},
   {"s": "mgp", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
@@ -474,7 +479,11 @@
     ]},
   {"s": "mgp", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
+      {"n": "Practice", "day": "Fr", "t": "18:00"},
+      {"n": "FP2", "day": "Sa", "t": "13:00"},
+      {"n": "Qualifying", "day": "Sa", "t": "13:40"},
       {"n": "Sprint", "day": "Sa", "t": "18:00"},
+      {"n": "Warm Up", "day": "So", "t": "13:40"},
       {"n": "Rennen", "day": "So", "t": "18:00"}
     ]},
   {"s": "mgp", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
@@ -1151,7 +1160,13 @@
   {"s": "moto2", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
     "sessions": []},
   {"s": "moto2", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "12:50"},
+      {"n": "Practice", "day": "Fr", "t": "17:05"},
+      {"n": "FP2", "day": "Sa", "t": "12:15"},
+      {"n": "Qualifying", "day": "Sa", "t": "16:40"},
+      {"n": "Rennen", "day": "So", "t": "16:15"}
+    ]},
   {"s": "moto2", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "10:50"},
@@ -1161,7 +1176,13 @@
       {"n": "Rennen", "day": "So", "t": "12:15"}
     ]},
   {"s": "moto2", "rd": 22, "name": "Großer Preis von Valencia", "loc": "Valencia", "d0": "2026-11-27", "d1": "2026-11-29", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "09:50"},
+      {"n": "Practice", "day": "Fr", "t": "14:05"},
+      {"n": "FP2", "day": "Sa", "t": "09:25"},
+      {"n": "Qualifying", "day": "Sa", "t": "13:40"},
+      {"n": "Rennen", "day": "So", "t": "12:15"}
+    ]},
   {"s": "moto3", "rd": 1, "name": "Großer Preis von Thailand", "loc": "Buriram", "d0": "2026-02-27", "d1": "2026-03-01", "status": "done", "result": "David Almansa (KTM)",
     "sessions": []},
   {"s": "moto3", "rd": 2, "name": "Großer Preis von Brasilien", "loc": "Goiânia", "d0": "2026-03-20", "d1": "2026-03-22", "status": "done", "result": "Máximo Quiles (KTM)",
@@ -1213,7 +1234,13 @@
   {"s": "moto3", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
     "sessions": []},
   {"s": "moto3", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "12:00"},
+      {"n": "Practice", "day": "Fr", "t": "16:15"},
+      {"n": "FP2", "day": "Sa", "t": "11:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "15:45"},
+      {"n": "Rennen", "day": "So", "t": "15:00"}
+    ]},
   {"s": "moto3", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "10:00"},
@@ -1223,7 +1250,13 @@
       {"n": "Rennen", "day": "So", "t": "15:30"}
     ]},
   {"s": "moto3", "rd": 22, "name": "Großer Preis von Valencia", "loc": "Valencia", "d0": "2026-11-27", "d1": "2026-11-29", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "09:00"},
+      {"n": "Practice", "day": "Fr", "t": "13:15"},
+      {"n": "FP2", "day": "Sa", "t": "08:40"},
+      {"n": "Qualifying", "day": "Sa", "t": "12:45"},
+      {"n": "Rennen", "day": "So", "t": "11:00"}
+    ]},
   {"s": "supercup", "rd": 1, "name": "Großer Preis von Monaco", "loc": "Monaco", "d0": "2026-06-04", "d1": "2026-06-07", "status": "done", "result": "Theo Oeverhaus (Martinet by Alméras)",
     "sessions": []},
   {"s": "supercup", "rd": 2, "name": "Großer Preis von Barcelona-Katalonien", "loc": "Barcelona", "d0": "2026-06-12", "d1": "2026-06-14", "status": "done", "result": "Flynt Schuring (Schumacher CLRT)",
