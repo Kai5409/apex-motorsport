@@ -74,6 +74,7 @@
     if (!saisons.some((s) => s.dataset.saison === k)) return;
     saisons.forEach((s) => { s.hidden = s.dataset.saison !== k; });
     $$(".saisonseg button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.saison === k)));
+    document.dispatchEvent(new CustomEvent("apex-saison", { detail: k }));   /* Saisonkarte folgt der Saison */
   }
   $$(".saisonseg button").forEach((b) => b.addEventListener("click", () => saisonZeigen(b.dataset.saison)));
   /* abgeschlossen: alle Termine der Saison liegen vor heute */
@@ -154,7 +155,12 @@
   /* Saisonlinie (Saison des nächsten Events). Je Punkt [id, Text, Zustand d/c/u, Beschriftung, Monat, Farbe (optional)] */
   const datenEl = $("#apex-seite");
   const D = datenEl ? JSON.parse(datenEl.textContent) : null;
-  const linie = D && D.linien ? (D.linien.find((l) => l.ev.some((x) => x[0] === NEXT)) || D.linien.find((l) => l.key === D.linie)) : null;
+  let linie = D && D.linien ? (D.linien.find((l) => l.ev.some((x) => x[0] === NEXT)) || D.linien.find((l) => l.key === D.linie)) : null;
+  /* Die Saisonlinie folgt dem Saison-Umschalter über dem Kalender (wie die Saisonkarte) */
+  document.addEventListener("apex-saison", (ev) => {
+    const l = D && D.linien ? D.linien.find((x) => x.key === ev.detail) : null;
+    if (l && l !== linie) { linie = l; zeichnen(); }
+  });
   function zeichnen() {
     const svg = $("#linesvg"); if (!svg || !linie) return;
     /* top: Platz über dem Scheitelpunkt für den Ortsnamen (steht über dem Ring, ohne ihn zu berühren) */
@@ -206,11 +212,129 @@
     if (l) l.innerHTML = linie.capL; if (r) r.textContent = linie.capR;
   }
 
-  /* Karte bleibt am PC nur stehen, wenn sie ganz auf den Bildschirm passt */
+  /* Saison auf der Karte (Serienseiten): am PC in der Seitenspalte unter „Nächstes Rennen“, am Handy unter der Wertung.
+     Gezeigt wird die Saison, die der Umschalter über dem Kalender gerade zeigt (Ereignis „apex-saison“). Daten je Saison:
+     [Event-ID, Runde, Name, Ort, Streckenseite, Breite, Länge, Zustand d/c/u, von, bis]; Kartengrundlage wie „In der Nähe“
+     (karte/welt.svg, karte/europa.svg, gleiche Projektionen). Eine Karte nur ab KARTE_MIN verschiedenen Orten.
+     Weltansicht: Rennen in Europa als ein Kreis mit ihrer Zahl – Tippen öffnet die Europakarte. */
+  const kartenEl = $("#skarte"), kartenDat = (() => { const x = $("#apex-karte"); try { return x ? JSON.parse(x.textContent) : null; } catch (e) { return null; } })();
+  if (kartenEl && kartenDat) {
+    const KARTE_MIN = 5, RAD = Math.PI / 180, HP = Math.PI / 2, tany = (y) => Math.tan((HP + y) / 2);
+    const MONK = ["Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."];
+    const escK = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    function projektion(G) {
+      const dreh = (lon) => { const l = lon - G.lon0; return l > 180 ? l - 360 : l < -180 ? l + 360 : l; };
+      if (G.art === "natur") return (lat, lon) => { const lam = dreh(lon) * RAD, p = lat * RAD, p2 = p * p, p4 = p2 * p2;
+        return [G.tx + G.k * lam * (0.8707 - 0.131979 * p2 + p4 * (-0.013791 + p4 * (0.003971 * p2 - 0.001529 * p4))), G.ty - G.k * p * (1.007226 + p2 * (0.015085 + p4 * (-0.044475 + 0.028874 * p2 - 0.005916 * p4)))]; };
+      const PY0 = G.par[0] * RAD, PY1 = G.par[1] * RAD, CY0 = Math.cos(PY0);
+      const PN = Math.log(CY0 / Math.cos(PY1)) / Math.log(tany(PY1) / tany(PY0)), PF = CY0 * Math.pow(tany(PY0), PN) / PN;
+      return (lat, lon) => { const x = dreh(lon) * RAD, r = PF / Math.pow(tany(lat * RAD), PN); return [G.tx + G.k * r * Math.sin(PN * x), G.ty - G.k * (PF - r * Math.cos(PN * x))]; };
+    }
+    const RG = kartenDat.regionen, PRJ = { welt: projektion(RG.welt), europa: projektion(RG.europa) };
+    const inEuropa = (o) => { const [x, y] = PRJ.europa(o.lat, o.lon); return x >= 0 && x <= RG.europa.W && y >= 0 && y <= RG.europa.H; };
+    const spanne = (a, b) => { const A = a.split("-").map(Number), B = b.split("-").map(Number);
+      return a === b ? A[2] + ". " + MONK[A[1] - 1] : A[1] === B[1] ? A[2] + ".–" + B[2] + ". " + MONK[B[1] - 1] : A[2] + ". " + MONK[A[1] - 1] + " – " + B[2] + ". " + MONK[B[1] - 1]; };
+    let saison = null, ansicht = null, gewaehlt = null, orte = [];
+    /* Orte einer Saison: Rennen am selben Ort zusammen; Zustand des Punkts: nächstes > kommend > gefahren > abgesagt */
+    function orteVon(k) {
+      const m = new Map();
+      (kartenDat.saisons[k] || []).forEach(([id, rd, name, loc, slug, lat, lon, z, von, bis]) => {
+        const zz = id === NEXT ? "n" : z;
+        let o = m.get(loc); if (!o) m.set(loc, (o = { loc, slug, lat, lon, ev: [] }));
+        o.ev.push({ id, rd, name, z: zz, von, bis });
+      });
+      const rang = { n: 0, u: 1, d: 2, c: 3 };
+      return [...m.values()].map((o) => { o.z = o.ev.map((e) => e.z).sort((a, b) => rang[a] - rang[b])[0]; o.eu = inEuropa(o); return o; });
+    }
+    /* Ausschnitt um die Punkte (mit Rand), Seitenverhältnis begrenzt, innerhalb der Karte */
+    function ausschnitt(G, pts, rand, minV, maxV) {
+      let x0 = Math.min(...pts.map((p) => p[0])) - rand, x1 = Math.max(...pts.map((p) => p[0])) + rand;
+      let y0 = Math.min(...pts.map((p) => p[1])) - rand, y1 = Math.max(...pts.map((p) => p[1])) + rand;
+      let w = x1 - x0, h = y1 - y0;
+      if (w / h > maxV) { const nh = w / maxV; y0 -= (nh - h) / 2; h = nh; } else if (w / h < minV) { const nw = h * minV; x0 -= (nw - w) / 2; w = nw; }
+      w = Math.min(w, G.W); h = Math.min(h, G.H);
+      x0 = Math.max(0, Math.min(x0, G.W - w)); y0 = Math.max(0, Math.min(y0, G.H - h));
+      return { x0, y0, w, h };
+    }
+    const PUNKT = { n: "nächstes Rennen", u: "kommend", d: "gefahren", c: "abgesagt" };
+    function info(o) {
+      const box = $(".sinfo", kartenEl);
+      if (!o) { box.innerHTML = `<p class="sleer">Punkt antippen für Rennen und Strecke.</p>`; return; }
+      box.innerHTML = `<h3>${escK(o.loc)}</h3>` + o.ev.map((e) =>
+        `<p class="sev ${e.z}"><span class="srd">${e.rd ? "Lauf " + e.rd : "—"}</span><span class="snm">${escK(e.name)}<small>${spanne(e.von, e.bis)}${e.z === "c" ? " · abgesagt" : e.z === "n" ? " · nächstes Rennen" : ""}</small></span></p>`).join("") +
+        `<p class="sakt">${o.ev.filter((e) => e.z !== "c").map((e) => `<button type="button" class="szeile" data-id="${e.id}">Im Kalender <span aria-hidden="true">↓</span></button>`).slice(0, 1).join("")}` +
+        (o.slug ? `<a href="../strecken/${o.slug}/">Zur Streckenseite <span aria-hidden="true">→</span></a>` : "") + `</p>`;
+      ordnerLinks(box);
+    }
+    function zeichnenKarte() {
+      const bild = $(".sbild", kartenEl), seg = $(".skopf .seg", kartenEl);
+      const eu = orte.filter((o) => o.eu), welt = orte.length > eu.length, europa = eu.length > 0;
+      if (ansicht === "europa" && !europa) ansicht = "welt";
+      if (ansicht === "welt" && !welt) ansicht = "europa";
+      seg.hidden = !(welt && europa && eu.length >= 2);
+      $$("button", seg).forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.ans === ansicht)));
+      const G = RG[ansicht], P = PRJ[ansicht];
+      /* Weltansicht: Europa als Sammelpunkt (ab 3 Orten), sonst einzeln */
+      const sammeln = ansicht === "welt" && eu.length >= 3 && welt;
+      const einzeln = ansicht === "europa" ? eu : sammeln ? orte.filter((o) => !o.eu) : orte;
+      const pts = einzeln.map((o) => P(o.lat, o.lon));
+      let sam = null;
+      if (sammeln) { const q = eu.map((o) => P(o.lat, o.lon)); sam = [q.reduce((a, p) => a + p[0], 0) / q.length, q.reduce((a, p) => a + p[1], 0) / q.length]; pts.push(sam); }
+      const A = ansicht === "welt" ? ausschnitt(G, pts, 30, 1.7, 2.4) : ausschnitt(G, pts, 45, 1.05, 1.5);
+      const pz = (p) => `left:${((p[0] - A.x0) / A.w * 100).toFixed(2)}%;top:${((p[1] - A.y0) / A.h * 100).toFixed(2)}%`;
+      let h = `<div class="sflaeche" style="aspect-ratio:${A.w.toFixed(1)}/${A.h.toFixed(1)}">` +
+        `<img src="${G.datei}" alt="" style="width:${(G.W / A.w * 100).toFixed(2)}%;left:${(-A.x0 / A.w * 100).toFixed(2)}%;top:${(-A.y0 / A.h * 100).toFixed(2)}%">`;
+      /* gefahrene und abgesagte zuerst, damit kommende und das nächste Rennen obenauf liegen */
+      const reihe = { c: 0, d: 1, u: 2, n: 3 };
+      einzeln.slice().sort((a, b) => reihe[a.z] - reihe[b.z]).forEach((o) => {
+        const i = orte.indexOf(o);
+        h += `<button type="button" class="spunkt ${o.z}${gewaehlt === i ? " gew" : ""}" data-i="${i}" style="${pz(P(o.lat, o.lon))}" aria-label="${escK(o.loc)}: ${o.ev.map((e) => escK(e.name) + ", " + PUNKT[e.z]).join("; ")}"></button>`;
+      });
+      if (sam) h += `<button type="button" class="ssammel" style="${pz(sam)}" aria-label="${eu.length} Orte in Europa – Europakarte zeigen">${eu.length}</button>`;
+      const nx = einzeln.find((o) => o.z === "n");
+      if (nx) { const p = P(nx.lat, nx.lon), rechts = (p[0] - A.x0) / A.w > 0.62;
+        h += `<span class="skname${rechts ? " links" : ""}" style="${pz(p)}">${escK(nx.loc)}</span>`; }
+      bild.innerHTML = h + `</div>`;
+      /* Legende: nur Zustände, die vorkommen */
+      const da = new Set(orte.map((o) => o.z)), leg = $(".slegende", kartenEl);
+      leg.innerHTML = [["n", "nächstes Rennen"], ["u", "kommend"], ["d", "gefahren"], ["c", "abgesagt"]].filter(([z]) => da.has(z))
+        .map(([z, t]) => `<span><i class="spunkt ${z}"></i>${t}</span>`).join("") + (sammeln ? `<span><i class="ssammel">${eu.length}</i>Orte in Europa</span>` : "");
+      info(gewaehlt != null ? orte[gewaehlt] : einzeln.find((o) => o.z === "n") || null);
+    }
+    function karteZeigen(k) {
+      saison = k; orte = orteVon(k); gewaehlt = null;
+      kartenEl.hidden = orte.length < KARTE_MIN;
+      if (kartenEl.hidden) { festPruefen(); return; }
+      $("#h-skarte").textContent = "Saison " + k + " auf der Karte";
+      /* Start: Weltkarte, wenn Rennen außerhalb Europas, sonst Europa */
+      ansicht = orte.some((o) => !o.eu) ? "welt" : "europa";
+      zeichnenKarte(); festPruefen();
+    }
+    kartenEl.addEventListener("click", (ev) => {
+      const p = ev.target.closest(".spunkt[data-i]"), s = ev.target.closest(".ssammel"), a = ev.target.closest("button[data-ans]"), z = ev.target.closest(".szeile");
+      if (p) { gewaehlt = +p.dataset.i; zeichnenKarte(); const n = $(`.spunkt[data-i="${p.dataset.i}"]`, kartenEl); if (n) n.focus({ preventScroll: true }); }
+      else if (s && s.closest(".sbild")) { ansicht = "europa"; gewaehlt = null; zeichnenKarte(); }
+      else if (a) { ansicht = a.dataset.ans; gewaehlt = null; zeichnenKarte(); }
+      else if (z) zuZeile(z.dataset.id, true);
+    });
+    document.addEventListener("apex-saison", (ev) => { if (ev.detail !== saison) karteZeigen(ev.detail); });
+    const an = $(".saisonseg button[aria-pressed='true']");
+    karteZeigen(an ? an.dataset.saison : (Object.keys(kartenDat.saisons).find((k) => (kartenDat.saisons[k] || []).some((x) => x[0] === NEXT)) || Object.keys(kartenDat.saisons)[0]));
+  }
+
+  /* Karte bleibt am PC nur stehen, wenn sie ganz auf den Bildschirm passt. Mit Saisonkarte stehen beide gemeinsam (.klebt):
+     passen sie nicht zusammen auf den Bildschirm, bleiben sie an ihrer Unterkante stehen */
   function festPruefen() {
     const n = $(".side .next"); if (!n) return;
     const breit = window.matchMedia ? matchMedia("(min-width:1000px)").matches : false;
     n.classList.toggle("fest", breit && n.offsetHeight + 36 <= innerHeight);
+    const w = $(".side .klebt"), k = $(".side .skarte");
+    if (w) {
+      n.classList.remove("fest");
+      const h = w.offsetHeight, passt = breit && h + 36 <= innerHeight, mitKarte = breit && k && !k.hidden;
+      w.classList.toggle("fest", passt || mitKarte);
+      w.style.top = passt ? "18px" : mitKarte ? innerHeight - h - 18 + "px" : "";
+    }
   }
   zeichnen(); festPruefen();
   let rz = 0;
@@ -394,7 +518,82 @@
       $$(".wtvb").forEach((b) => { b.hidden = !serien.includes(b.dataset.serie); });
       const sender = $("#sender");
       if (sender) sender.hidden = !$$(".wtvb").some((b) => !b.hidden);
+      tageAnsicht();
     }
+
+    /* Tage im Zeitplan: schmal (Handy) ein Tag zur Zeit mit Umschalter über dem Zeitplan; ist genug Platz für alle Tage
+       nebeneinander (mindestens TAG_MIN px je Tag), ein gemeinsames Raster: Spalten = Tage, Zeilen = Stunden. Sessions derselben
+       Stunde stehen so auf einer Höhe, Tage ohne Session in einer Stunde bleiben dort leer. Grundlage sind immer die
+       Tageslisten (.wtag) – Serienfilter, „Trainings ausblenden“, vorbei/läuft gelten unverändert. */
+    const TAG_MIN = 190, STD_SPALTE = 64;
+    let tagWahl = null;   /* am Handy gewählter Tag (data-tag); null = automatisch */
+    const stunde = (ms) => { try { return new Date(ms).toLocaleString("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", hour12: false }).slice(0, 2); } catch (e) { return p2(new Date(ms).getHours()); } };
+    const WT = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+    const tagKurz = (d) => { const x = tag(d); return { wt: WT[x.getUTCDay()], dm: x.getUTCDate() + "." + (x.getUTCMonth() + 1) + "." }; };
+    function tageAnsicht() {
+      const wk = $(".wk", woche), plan = wk && $(".wplan", wk); if (!plan) return;
+      $$(".wraster,.wtagwahl", plan).forEach((x) => x.remove());
+      const heuteD = wand().datum;
+      const sichtbareLi = (t) => $$(".wsl li", t).filter((li) => !li.hidden && !(ohneTraining && li.classList.contains("training")));
+      const tage = $$(".wtag", plan).filter((t) => !t.hidden && sichtbareLi(t).length);
+      const raster = tage.length > 1 && wk.clientWidth >= STD_SPALTE + tage.length * TAG_MIN;
+      wk.classList.toggle("raster", raster);
+      $$(".wtag", plan).forEach((t) => t.classList.remove("weg"));
+      if (tage.length < 2) return;   /* ein Tag: Liste wie bisher */
+      const anker = $(".wnix", plan) || $(".sechead", plan);
+      if (raster) {
+        tage.forEach((t) => t.classList.add("weg"));
+        /* Zeilen: Stunden mit mindestens einer Session; Events ohne Zeitplan („Zeit folgt“) in einer eigenen Zeile oben */
+        const zellen = new Map(), stunden = new Set();
+        tage.forEach((t, i) => sichtbareLi(t).forEach((li) => {
+          const s = li.dataset.a ? stunde(+li.dataset.a) : "ohne"; stunden.add(s);
+          const k = s + "|" + i; if (!zellen.has(k)) zellen.set(k, []); zellen.get(k).push(li);
+        }));
+        const reihen = [...stunden].sort((a, b) => (a === "ohne" ? -1 : b === "ohne" ? 1 : a < b ? -1 : 1));
+        const r = document.createElement("div");
+        r.className = "wraster"; r.style.setProperty("--tage", tage.length);
+        r.setAttribute("role", "table"); r.setAttribute("aria-label", "Zeitplan nach Tagen");
+        let h = `<div class="wr-zeile wr-kopfzeile" role="row"><span class="wr-std" role="columnheader"></span>`;
+        tage.forEach((t) => {
+          const k = tagKurz(t.dataset.tag), lang = (t.querySelector("h3").firstChild || {}).textContent || "";
+          h += `<div class="wr-tag${t.dataset.tag === heuteD ? " heute" : ""}" role="columnheader"><b>${lang.split(",")[0]}</b><span>${k.dm}${t.dataset.tag === heuteD ? ' <i class="wheute">Heute</i>' : ""}</span></div>`;
+        });
+        h += `</div>`;
+        let vorher = null;
+        reihen.forEach((s) => {
+          const luecke = vorher && vorher !== "ohne" && s !== "ohne" && +s - +vorher > 1;
+          /* Sprung über Stunden ohne Session: zwei gestrichelte Linien mit kleinem Spalt dazwischen */
+          if (luecke) h += `<div class="wr-spalt" aria-hidden="true"></div>`;
+          h += `<div class="wr-zeile${luecke ? " luecke" : ""}" role="row"><span class="wr-std" role="rowheader">${s === "ohne" ? "–" : s + ":00"}</span>`;
+          tage.forEach((t, i) => { h += `<ul class="wr-zelle${t.dataset.tag === heuteD ? " heute" : ""}" role="cell" data-k="${s}|${i}"></ul>`; });
+          h += `</div>`; vorher = s;
+        });
+        r.innerHTML = h;
+        $$(".wr-zelle", r).forEach((u) => (zellen.get(u.dataset.k) || []).forEach((li) => { const c = li.cloneNode(true); c.hidden = false; u.appendChild(c); }));
+        anker.after(r);
+        ordnerLinks(r);
+        return;
+      }
+      /* Handy: gewählter Tag – sonst heute, sonst der erste Tag, an dem noch etwas kommt, sonst der erste */
+      if (!tage.some((t) => t.dataset.tag === tagWahl)) tagWahl = null;
+      const wahl = tagWahl || (tage.find((t) => t.dataset.tag === heuteD)
+        || tage.find((t) => sichtbareLi(t).some((li) => !li.classList.contains("vorbei"))) || tage[0]).dataset.tag;
+      tage.forEach((t) => t.classList.toggle("weg", t.dataset.tag !== wahl));
+      const leiste = document.createElement("div");
+      leiste.className = "wtagwahl";
+      leiste.innerHTML = `<div class="seg" role="group" aria-label="Tag">` + tage.map((t) => {
+        const k = tagKurz(t.dataset.tag), heu = t.dataset.tag === heuteD;
+        return `<button type="button" data-tag="${t.dataset.tag}" aria-pressed="${t.dataset.tag === wahl}"${heu ? ' class="heute"' : ""}><b>${k.wt}</b><span>${k.dm}</span></button>`;
+      }).join("") + `</div>`;
+      leiste.addEventListener("click", (ev) => {
+        const b = ev.target.closest("button[data-tag]"); if (!b) return;
+        tagWahl = b.dataset.tag; tageAnsicht();
+        const l = $(".wtagwahl", plan); if (l && l.getBoundingClientRect().top < 0) l.scrollIntoView({ block: "start" });
+      });
+      anker.after(leiste);
+    }
+    let tz = 0;
+    addEventListener("resize", () => { clearTimeout(tz); tz = setTimeout(tageAnsicht, 120); });
     const tr = document.getElementById("ohnetraining");
     if (tr) tr.addEventListener("click", () => { ohneTraining = tr.getAttribute("aria-checked") !== "true"; tr.setAttribute("aria-checked", String(ohneTraining)); filtern(); });
     const alles = () => { waehlen(); if (gezeigt !== filterWoche) { filterWoche = gezeigt; FL.schliessen(); FL.zeichnen(); } zustand(); filtern(); };

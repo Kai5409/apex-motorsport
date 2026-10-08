@@ -46,7 +46,7 @@
       <div class="linecap"><span id="capL"><b>6</b> von 8 Rennen gefahren</span><span id="capR"></span></div>
     </div>
 
-    <div class="side">
+    <div class="side"><div class="klebt">
       <div class="next" id="next">
   <div class="nextcard" data-id="wec-7" data-von="2026-10-16" data-bis="2026-10-18">
     <p class="k">Nächstes Rennen</p>
@@ -62,7 +62,15 @@
     <p class="hint">Für Handy, Google oder Outlook – aktualisiert sich automatisch</p>
   </div>
       </div>
-    </div>
+      <section class="skarte" id="skarte" aria-labelledby="h-skarte" hidden>
+        <div class="skopf"><h2 class="k" id="h-skarte">Saison auf der Karte</h2>
+          <div class="seg" role="group" aria-label="Kartenausschnitt"><button type="button" data-ans="welt" aria-pressed="true">Welt</button><button type="button" data-ans="europa" aria-pressed="false">Europa</button></div></div>
+        <div class="sbild"></div>
+        <div class="sinfo" aria-live="polite"></div>
+        <div class="slegende"></div>
+        <p class="squelle">Kartengrundlage: Natural Earth (gemeinfrei)</p>
+      </section>
+    </div></div>
 
     <div class="rest">
       <nav class="subnav" aria-label="Abschnitte"><ul>
@@ -323,5 +331,6 @@
     <p class="where">Neue Termine folgen, sobald der Kalender veröffentlicht ist. Wer die Termine <a class="abolink" href="webcal://apexkalender.de/kalender/wec.ics" aria-haspopup="dialog">mit dem eigenen Kalender verbindet</a>, bekommt sie automatisch, sobald sie feststehen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[{"key":"2026","aria":"Saisonverlauf 2026","capL":"\u003cb\u003e6\u003c/b\u003e von 8 Rennen gefahren","capR":"","ev":[["wec-1","6 Stunden von Imola · 17–19 Apr","d","Imola","Apr"],["wec-2","6 Stunden von Spa-Francorchamps · 07–09 Mai","d","Spa-Francorchamps","Mai"],["wec-3","24 Stunden von Le Mans · 10–14 Jun","d","Le Mans","Jun"],["wec-4","6 Stunden von São Paulo · 10–12 Jul","d","Interlagos","Jul"],["wec-5","Lone Star Le Mans (Austin) · 04–06 Sep","d","COTA","Sep"],["wec-6","6 Stunden von Fuji · 25–27 Sep","d","Fuji","Sep"],["wec-7","6 Stunden von Barcelona · 16–18 Okt","u","Barcelona","Okt"],["wec-8","6 Stunden von Monza (Finale) · 06–08 Nov","u","Monza","Nov"]]},{"key":"2027","aria":"Saisonverlauf 2027","capL":"\u003cb\u003e0\u003c/b\u003e von 9 Rennen gefahren","capR":"","ev":[["wec-1-2027","Qatar 1812 km · 25–27 Mär","u","Lusail","Mär"],["wec-2-2027","6 Stunden von Imola · 09–11 Apr","u","Imola","Apr"],["wec-3-2027","6 Stunden von Silverstone · 23–25 Apr","u","Silverstone","Apr"],["wec-4-2027","6 Stunden von Spa-Francorchamps · 13–15 Mai","u","Spa-Francorchamps","Mai"],["wec-5-2027","24 Stunden von Le Mans · 06–13 Jun","u","Le Mans","Jun"],["wec-6-2027","6 Stunden von São Paulo · 09–11 Jul","u","Interlagos","Jul"],["wec-7-2027","Lone Star Le Mans (Austin) · 10–12 Sep","u","COTA","Sep"],["wec-8-2027","6 Stunden von Fuji · 24–26 Sep","u","Fuji","Sep"],["wec-9-2027","8 Stunden von Bahrain (Finale) · 04–06 Nov","u","Sakhir","Nov"]]}],"linie":"2026"}</script>
+<script type="application/json" id="apex-karte">{"regionen":{"europa":{"k":1664.9210713611237,"tx":500,"ty":1993.8614300202494,"lon0":10,"par":[40,58],"W":1000,"H":860,"datei":"../karte/europa.svg"},"welt":{"art":"natur","k":182.79,"tx":500,"ty":259.998,"lon0":10,"W":1000,"H":446,"datei":"../karte/welt.svg"}},"saisons":{"2026":[["wec-1",1,"6 Stunden von Imola","Imola","imola",44.341,11.713,"d","2026-04-17","2026-04-19"],["wec-2",2,"6 Stunden von Spa-Francorchamps","Spa-Francorchamps","spa-francorchamps",50.436,5.971,"d","2026-05-07","2026-05-09"],["wec-3",3,"24 Stunden von Le Mans","Le Mans","le-mans",47.933,0.233,"d","2026-06-10","2026-06-14"],["wec-4",4,"6 Stunden von São Paulo","Interlagos","interlagos",-23.701,-46.698,"d","2026-07-10","2026-07-12"],["wec-5",5,"Lone Star Le Mans (Austin)","COTA","cota",30.1352,-97.6348,"d","2026-09-04","2026-09-06"],["wec-6",6,"6 Stunden von Fuji","Fuji","fuji",35.3717,138.9267,"d","2026-09-25","2026-09-27"],["wec-7",7,"6 Stunden von Barcelona","Barcelona","barcelona-katalonien",41.569,2.259,"u","2026-10-16","2026-10-18"],["wec-8",8,"6 Stunden von Monza (Finale)","Monza","monza",45.621,9.29,"u","2026-11-06","2026-11-08"]],"2027":[["wec-1-2027",1,"Qatar 1812 km","Lusail","lusail",25.4917,51.4543,"u","2027-03-25","2027-03-27"],["wec-2-2027",2,"6 Stunden von Imola","Imola","imola",44.341,11.713,"u","2027-04-09","2027-04-11"],["wec-3-2027",3,"6 Stunden von Silverstone","Silverstone","silverstone",52.072,-1.017,"u","2027-04-23","2027-04-25"],["wec-4-2027",4,"6 Stunden von Spa-Francorchamps","Spa-Francorchamps","spa-francorchamps",50.436,5.971,"u","2027-05-13","2027-05-15"],["wec-5-2027",5,"24 Stunden von Le Mans","Le Mans","le-mans",47.933,0.233,"u","2027-06-06","2027-06-13"],["wec-6-2027",6,"6 Stunden von São Paulo","Interlagos","interlagos",-23.701,-46.698,"u","2027-07-09","2027-07-11"],["wec-7-2027",7,"Lone Star Le Mans (Austin)","COTA","cota",30.1352,-97.6348,"u","2027-09-10","2027-09-12"],["wec-8-2027",8,"6 Stunden von Fuji","Fuji","fuji",35.3717,138.9267,"u","2027-09-24","2027-09-26"],["wec-9-2027",9,"8 Stunden von Bahrain (Finale)","Sakhir","sakhir",26.0322,50.5141,"u","2027-11-04","2027-11-06"]]}}</script>
 </body>
 </html>

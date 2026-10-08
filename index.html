@@ -221,8 +221,54 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .heute-lab{position:absolute;left:24px;top:-8px;padding:0 8px 0 6px;background:var(--bg);font-family:"IBM Plex Mono",monospace;font-size:9.5px;line-height:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
 .tl-heute{margin-top:26px;padding-bottom:4px}
 .tl-heute::before{top:-8px;bottom:0}
-.jetzt{display:none;flex-direction:column;align-items:flex-start;gap:7px;padding:16px 0 8px}
+/* Live-Info („Als Nächstes“ / „Jetzt live“): steht nicht mehr im Kopf, sondern auf allen Bildschirmen in der Zeitleiste –
+   im Block „Dieses Wochenende“, ohne Rennen am Wochenende unter der Heute-Linie */
+.jetzt{display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:16px 0 8px}
 .jetzt>*{white-space:normal}
+
+/* Dieses Wochenende: alle Events des Wochenendes (Zeitraum wie die Seite „Dieses Wochenende“, nach Serienfilter)
+   als Block in der Zeitleiste, direkt unter der Heute-Linie. Die Zeitleiste bleibt das ganze Jahr nach oben und unten scrollbar. */
+.we-block{position:relative;margin:22px 0 0 -30px;padding:16px 16px 4px 30px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:6px}
+.we-block::before{content:"";position:absolute;left:6px;top:0;bottom:0;width:1px;background:var(--rule-strong)}
+.we-kopf{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.we-lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.we-anz{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.we-titel{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,5vw,44px);line-height:.95;text-transform:uppercase;margin-top:6px}
+.we-block .jetzt{padding:12px 0 6px}
+.we-block .wknd.we-letzt{border-bottom:none}
+/* Startzeiten der Rennen: rechts neben dem Event, am Handy unter dem Namen */
+.ev-zeiten{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--paper);text-align:right}
+.ev-zeiten-m{display:none;flex-wrap:wrap;gap:3px 16px;margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--paper)}
+@media(max-width:640px){.ev-zeiten{display:none}.ev-zeiten-m{display:flex}}
+.we-z{white-space:nowrap}
+.we-z span{color:var(--muted);margin-right:6px;font-size:.92em}
+.we-z.we-leer{color:var(--muted)}
+.ev-tag{color:var(--paper)}
+.wk-top.oh{grid-template-columns:minmax(0,1fr)}
+.we-links{display:flex;flex-wrap:wrap;gap:8px;padding:2px 0 12px 17px}
+.we-link{display:inline-flex;align-items:center;gap:6px;min-height:30px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper);border:1px solid var(--rule-strong);border-radius:999px;padding:5px 12px;text-decoration:none;transition:border-color .15s,background .15s}
+.we-link:hover,.we-link:focus-visible{border-color:var(--paper);background:rgba(236,231,221,.06)}
+.we-fuss{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 18px;padding:14px 0 12px;border-top:1px solid var(--rule)}
+.we-aus{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;color:var(--muted)}
+.std-block.flash{animation:evflash 1.8s ease-out}
+/* Zeitleiste nach Wochenenden gegliedert: Kopf je Wochenende mit dem Punkt auf der Linie, die Events darunter ohne eigenen Punkt */
+.wgrp{position:relative}
+.wg-kopf{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:22px 0 8px;border-bottom:1px solid var(--rule-strong)}
+.wg-kopf::before,.we-kopf::before{content:"";position:absolute;left:-26.5px;top:28px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--faint)}
+.we-kopf{position:relative}
+.we-kopf::before{top:1px;border-color:var(--red);background:var(--bg2)}
+.wgrp.done .wg-kopf::before{background:var(--faint)}
+.wgrp.live .wg-kopf::before{border-color:var(--red);background:var(--red);box-shadow:0 0 0 4px rgba(255,48,0,.18)}
+.wgrp.next .wg-kopf::before{border-color:var(--red)}
+.wg-tit{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:22px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.wgrp.done .wg-tit{color:var(--muted)}
+.wg-anz{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.wgrp .wknd::before,.we-block .wknd::before{display:none}
+.wgrp .wknd:last-child{border-bottom:none}
+.wgrp+.wgrp,.we-block+.wgrp,.wgrp+.we-block{margin-top:8px}
+.wluecke{position:relative;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 12px;margin-top:8px;padding:12px 0 11px;border-bottom:1px dashed var(--rule-strong);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wluecke::before{content:"";position:absolute;left:-24.5px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--bg);border:1.5px solid var(--faint)}
+.wluecke+.heute{margin-top:22px}
 /* Handy: Tag und Uhrzeit vorne in fester Breite, danach „Event — Session“ und die Serie */
 .jetzt .onair-ev{display:grid;grid-template-columns:8.2ch 4px minmax(0,1fr);column-gap:9px;align-items:start;width:100%;line-height:1.45}
 .onair-zt{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;color:var(--paper);white-space:nowrap;padding-top:1px}
@@ -495,7 +541,6 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
     <h1 aria-label="APEX"><span class="mk-word" aria-hidden="true"><i>A</i><i>P</i><i>E</i><i>X</i></span><svg class="mk-line" viewBox="3 3 234 30" aria-hidden="true"><g fill="none" stroke-width="7.4" stroke-linecap="butt"><path d="M5.00,8.00 L5.74,8.25 L6.47,8.51 L7.21,8.76 L7.95,9.01 L8.69,9.25 L9.43,9.50 L10.17,9.74 L10.91,9.99 L11.65,10.23 L12.39,10.46 L13.14,10.70 L13.88,10.94 L14.63,11.17 L15.38,11.40" stroke="var(--red)"/><path d="M15.38,11.40 L16.13,11.63 L16.87,11.86 L17.62,12.09 L18.38,12.31 L19.13,12.53 L19.88,12.75 L20.63,12.97 L21.39,13.19 L22.14,13.41 L22.90,13.62 L23.65,13.84 L24.41,14.05 L25.17,14.26 L25.93,14.46" stroke="var(--paper)"/><path d="M25.93,14.46 L26.69,14.67 L27.45,14.87 L28.21,15.07 L28.97,15.27 L29.73,15.47 L30.50,15.67 L31.26,15.87 L32.03,16.06 L32.79,16.25 L33.56,16.44 L34.33,16.63 L35.09,16.82 L35.86,17.00 L36.63,17.18" stroke="var(--red)"/><path d="M36.63,17.18 L37.40,17.37 L38.17,17.54 L38.94,17.72 L39.72,17.90 L40.49,18.07 L41.26,18.25 L42.04,18.42 L42.81,18.59 L43.59,18.75 L44.36,18.92 L45.14,19.08 L45.92,19.25 L46.69,19.41 L47.47,19.56" stroke="var(--paper)"/><path d="M47.47,19.56 L48.25,19.72 L49.03,19.88 L49.81,20.03 L50.59,20.18 L51.37,20.33 L52.16,20.48 L52.94,20.63 L53.72,20.77 L54.51,20.92 L55.29,21.06 L56.07,21.20 L56.86,21.33 L57.65,21.47 L58.43,21.61" stroke="var(--red)"/><path d="M58.43,21.61 L59.22,21.74 L60.01,21.87 L60.79,22.00 L61.58,22.13 L62.37,22.25 L63.16,22.38 L63.95,22.50 L64.74,22.62 L65.53,22.74 L66.32,22.85 L67.11,22.97 L67.90,23.08 L68.70,23.20 L69.49,23.31" stroke="var(--paper)"/><path d="M69.49,23.31 L70.28,23.41 L71.08,23.52 L71.87,23.63 L72.67,23.73 L73.46,23.83 L74.26,23.93 L75.05,24.03 L75.85,24.13 L76.64,24.22 L77.44,24.31 L78.24,24.40 L79.03,24.49 L79.83,24.58 L80.63,24.67" stroke="var(--red)"/><path d="M80.63,24.67 L81.43,24.75 L82.23,24.83 L83.03,24.91 L83.82,24.99 L84.62,25.07 L85.42,25.15 L86.22,25.22 L87.02,25.29 L87.83,25.36 L88.63,25.43 L89.43,25.50 L90.23,25.56 L91.03,25.63 L91.83,25.69" stroke="var(--paper)"/><path d="M91.83,25.69 L92.64,25.75 L93.44,25.81 L94.24,25.86 L95.04,25.92 L95.85,25.97 L96.65,26.02 L97.45,26.07 L98.26,26.12 L99.06,26.16 L99.86,26.21 L100.67,26.25 L101.47,26.29 L102.28,26.33 L103.08,26.37" stroke="var(--red)"/><path d="M103.08,26.37 L103.89,26.40 L104.69,26.44 L105.50,26.47 L106.30,26.50 L107.11,26.53 L107.91,26.55 L108.72,26.58 L109.52,26.60 L110.33,26.63 L111.13,26.65 L111.94,26.66 L112.75,26.68 L113.55,26.69 L114.36,26.71" stroke="var(--paper)"/><path d="M114.36,26.71 L115.16,26.72 L115.97,26.73 L116.78,26.74 L117.58,26.74 L118.39,26.75 L119.19,26.75 L120.00,26.75 L120.81,26.75 L121.61,26.75 L122.42,26.74 L123.22,26.74 L124.03,26.73 L124.84,26.72 L125.64,26.71" stroke="var(--red)"/><path d="M125.64,26.71 L126.45,26.69 L127.25,26.68 L128.06,26.66 L128.87,26.65 L129.67,26.63 L130.48,26.60 L131.28,26.58 L132.09,26.55 L132.89,26.53 L133.70,26.50 L134.50,26.47 L135.31,26.44 L136.11,26.40 L136.92,26.37" stroke="var(--paper)"/><path d="M136.92,26.37 L137.72,26.33 L138.53,26.29 L139.33,26.25 L140.14,26.21 L140.94,26.16 L141.74,26.12 L142.55,26.07 L143.35,26.02 L144.15,25.97 L144.96,25.92 L145.76,25.86 L146.56,25.81 L147.36,25.75 L148.17,25.69" stroke="var(--red)"/><path d="M148.17,25.69 L148.97,25.63 L149.77,25.56 L150.57,25.50 L151.37,25.43 L152.17,25.36 L152.98,25.29 L153.78,25.22 L154.58,25.15 L155.38,25.07 L156.18,24.99 L156.97,24.91 L157.77,24.83 L158.57,24.75 L159.37,24.67" stroke="var(--paper)"/><path d="M159.37,24.67 L160.17,24.58 L160.97,24.49 L161.76,24.40 L162.56,24.31 L163.36,24.22 L164.15,24.13 L164.95,24.03 L165.74,23.93 L166.54,23.83 L167.33,23.73 L168.13,23.63 L168.92,23.52 L169.72,23.41 L170.51,23.31" stroke="var(--red)"/><path d="M170.51,23.31 L171.30,23.20 L172.10,23.08 L172.89,22.97 L173.68,22.85 L174.47,22.74 L175.26,22.62 L176.05,22.50 L176.84,22.38 L177.63,22.25 L178.42,22.13 L179.21,22.00 L179.99,21.87 L180.78,21.74 L181.57,21.61" stroke="var(--paper)"/><path d="M181.57,21.61 L182.35,21.47 L183.14,21.33 L183.93,21.20 L184.71,21.06 L185.49,20.92 L186.28,20.77 L187.06,20.63 L187.84,20.48 L188.63,20.33 L189.41,20.18 L190.19,20.03 L190.97,19.88 L191.75,19.72 L192.53,19.56" stroke="var(--red)"/><path d="M192.53,19.56 L193.31,19.41 L194.08,19.25 L194.86,19.08 L195.64,18.92 L196.41,18.75 L197.19,18.59 L197.96,18.42 L198.74,18.25 L199.51,18.07 L200.28,17.90 L201.06,17.72 L201.83,17.54 L202.60,17.37 L203.37,17.18" stroke="var(--paper)"/><path d="M203.37,17.18 L204.14,17.00 L204.91,16.82 L205.67,16.63 L206.44,16.44 L207.21,16.25 L207.97,16.06 L208.74,15.87 L209.50,15.67 L210.27,15.47 L211.03,15.27 L211.79,15.07 L212.55,14.87 L213.31,14.67 L214.07,14.46" stroke="var(--red)"/><path d="M214.07,14.46 L214.83,14.26 L215.59,14.05 L216.35,13.84 L217.10,13.62 L217.86,13.41 L218.61,13.19 L219.37,12.97 L220.12,12.75 L220.87,12.53 L221.62,12.31 L222.38,12.09 L223.13,11.86 L223.87,11.63 L224.62,11.40" stroke="var(--paper)"/><path d="M224.62,11.40 L225.37,11.17 L226.12,10.94 L226.86,10.70 L227.61,10.46 L228.35,10.23 L229.09,9.99 L229.83,9.74 L230.57,9.50 L231.31,9.25 L232.05,9.01 L232.79,8.76 L233.53,8.51 L234.26,8.25 L235.00,8.00" stroke="var(--red)"/></g><circle cx="120.0" cy="26.8" r="4.4" fill="none" stroke="var(--gold)" stroke-width="1.7"/><circle cx="120.0" cy="26.8" r="1.9" fill="var(--gold)"/></svg></h1>
     <div class="mast-r"><span class="mast-lab">Motorsport-Kalender</span> <span class="season" id="season"><b class="ss-yr">2026</b></span><div class="mast-z2"><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ App installieren</button></div></div>
   </header>
-  <div class="onair" id="onair"></div>
   <nav class="nav">
     <button class="tab on" data-v="upcoming" onclick="setView('upcoming')">Aktuell</button>
     <button class="tab" data-v="series" onclick="setView('series')">Serien</button>
@@ -514,7 +559,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <footer>
-APEX · Saisons 2026 &amp; 2027 · 18 Serien<span id="datenstand"></span><br>
+APEX · Saison <span id="fuss-saison">2026</span> · 18 Serien<span id="datenstand"></span><br>
     Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
     <a class="legal-link ordner" href="serien/">Alle Serien</a> · <a class="legal-link ordner" href="strecken/">Alle Strecken</a> · <a class="legal-link ordner" href="dieses-wochenende/">Dieses Wochenende</a> · <a class="legal-link ordner" href="in-der-naehe/">In der Nähe</a> ·
     <button class="legal-link" onclick="toggleLegal()" aria-expanded="false" aria-controls="legal">Datenschutz</button>
@@ -786,6 +831,8 @@ function renderSeason(){
     `<b class="ss-yr">${SEASON}</b>`+
     `<button class="ss-btn" onclick="stepSeason(1)" ${i>=ys.length-1?"disabled":""} aria-label="Nächste Saison">›</button>`+
     (seasonIsProv(SEASON)?`<span class="ss-prov">vorläufiger Kalender</span>`:"");
+  /* Fußzeile: nur die gezeigte Saison, keine Doppelangabe der Jahre */
+  const fs=document.getElementById("fuss-saison"); if(fs)fs.textContent=String(SEASON);
   /* Der Hinweis „vorläufiger Kalender“ ändert die Höhe des festen Bands – sofort neu messen,
      damit Sprünge danach (zumStart, gotoEvent) schon mit der neuen Kopfhöhe rechnen */
   if(BEREIT)kopfMessen();
@@ -1192,9 +1239,10 @@ function imWochenende(liste){
   const z=wochenendZeitraum(); if(!z)return false;
   return liste.some(x=>x.inst!=null?x.inst>=z.von&&x.inst<z.bis:x.e.d0<=z.d1&&x.e.d1>=z.d0);
 }
-/* Live-Info: breit im Kopf (#onair), schmal an der Heute-Linie der Zeitleiste (#jetzt) */
+/* Live-Info: in der Zeitleiste (#jetzt) – im Block „Dieses Wochenende“ ohne eigenen Verweis auf die Wochenendseite
+   (der Block hat unten „Alle Sessions im Zeitplan“), sonst unter der Heute-Linie */
 function renderOnAir(){
-  [["onair",false],["jetzt",true]].forEach(([id,schmal])=>{const el=document.getElementById(id); if(el)el.innerHTML=onAirHTML(schmal);});
+  const el=document.getElementById("jetzt"); if(el)el.innerHTML=onAirHTML(true,!!(el.closest&&el.closest(".we-block")));
 }
 /* Ein Eintrag: Link zum Event in der Zeitleiste (zuSession). Schmal (Handy): Tag und Uhrzeit vorne in fester Breite,
    danach „Event — Session“ und die Serie. Breit wie bisher: „Event — Session“ mit Serie und Zeit, laufende
@@ -1248,16 +1296,16 @@ function onAirStand(){
   ONAIR=o; Promise.resolve().then(()=>{ONAIR=null;});
   return o;
 }
-function onAirHTML(schmal){
+function onAirHTML(schmal,ohneLink){
   const o=onAirStand();
   if(o.live){
     let html=`<span class="onair-lab live"><span class="pulse"></span>Jetzt live</span>`;
     o.liste.forEach(x=>{ html+=onAirEintrag(x.e,x.s,true,schmal); });
-    return html+(o.wochenende?wochenendLink():"");
+    return html+(o.wochenende&&!ohneLink?wochenendLink():"");
   } else if(o.liste.length){
     let html=`<span class="onair-lab soon">${o.liste.length>1?"Als Nächstes":"Nächste Session"}</span>`;
     o.liste.forEach(x=>{ html+=onAirEintrag(x.e,x.s,false,schmal); });
-    return html+(o.wochenende?wochenendLink():"");
+    return html+(o.wochenende&&!ohneLink?wochenendLink():"");
   } else {
     const fehlt=DATEN.some(n=>n.startsWith("termine-")&&DATEN_FEHLT.has(n));
     return `<span class="onair-lab idle">${fehlt?"Termine gerade nicht verfügbar":"Saison beendet"}</span>`;
@@ -1480,40 +1528,153 @@ function siegerKarte(e){
   if(verborgen(ergKey(e)))return aufdeckenKnopf(e,"karte");
   return e.result?`<div class="ev-win"><span>${siegerText(e)}</span>${vorlText(e)}</div>`:`<div class="ev-note">${ABBRUCH}</div>`;
 }
-function eventHTML(e){
+/* Im Block „Dieses Wochenende“ zusätzlich: Startzeiten der Rennen und Verweise auf Serienseite und Wertung */
+function weZusatz(e){
+  const S0=SERIES[e.s], rennen=e.sessions.filter(s=>s.t&&isRaceName(s.n));
+  let zeiten="";
+  if(rennen.length)zeiten=rennen.map(s=>{const ct=convTime(e,s);return `<span class="we-z"><span>${esc(s.n)}</span>${ct.day} ${ct.t}</span>`;}).join("");
+  else if(!e.sessions.some(s=>s.t))zeiten=`<span class="we-z we-leer">Zeiten folgen</span>`;
+  const seite=S0.seite?`<a class="we-link" href="${ordnerHref(S0.seite+"/")}">Serienseite <span aria-hidden="true">→</span></a>`:"";
+  /* Wertung nur, wenn sie gepflegt ist und zur Saison des Events gehört; eigenständige Rennen zählen nicht zur Wertung */
+  const wert=STAND[e.s]&&!e.sonder&&STAND_SEASON===evYear(e)?`<a class="we-link" href="#v=standings" onclick="event.preventDefault();zuWertung('${e.s}')">Wertung <span aria-hidden="true">→</span></a>`:"";
+  return {zeiten,links:seite||wert?`<div class="we-links">${seite}${wert}</div>`:""};
+}
+/* Zur Wertung der Serie (Tab „Wertung“), kurz hervorgehoben */
+function zuWertung(sk){
+  setView("standings");
+  const el=document.getElementById("std-"+sk); if(!el)return;
+  ohneAnimation(()=>{try{el.scrollIntoView({behavior:"instant",block:"start"});}catch(err){el.scrollIntoView(true);}});
+  el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
+}
+/* Event in der Zeitleiste (immer in einem Wochenende: Gruppe oder Block „Dieses Wochenende“). Statt der Datumsspalte
+   rechts die Startzeiten der Rennen (am Handy unter dem Namen); weicht das Event vom Zeitraum des Wochenendes ab
+   (z. B. nur Samstag), steht sein Tag in der Unterzeile. Aufklappen zeigt wie bisher alle Sessions.
+   von/bis = Zeitraum des Wochenendes; imBlock: zusätzlich Verweise auf Serienseite und Wertung */
+function eventHTML(e,imBlock,letzt,von,bis){
   const status=st(e),S0=SERIES[e.s],evId=evDomId(e);
-  const win=status==="done"?siegerKarte(e):"";
-  return `<div class="wknd ${status}"><div class="wk-top">`+
-    `<div class="wk-date">${dayRange(e)}<span class="dow">${dows(e)}</span></div>`+
+  const win=status==="done"?siegerKarte(e):"", z=weZusatz(e), links=imBlock?z.links:"";
+  const tag=(von&&(e.d0!==von||e.d1!==bis))?`<span class="ev-tag">${dows(e)} ${dayRange(e)}.</span> · `:"";
+  return `<div class="wknd ${status}${letzt?" we-letzt":""}"><div class="wk-top oh">`+
     `<div><div class="ev" id="ev-${evId}"><div class="ev-row" onclick="toggleEv('${evId}')">`+
       `<span class="ev-bar" style="background:${S0.color}"></span>`+
       `<span class="ev-body"><span class="ev-name">${e.name}</span>`+
-      `<span class="ev-sub"><span class="ser" style="color:${S0.color}">${S0.name}</span> · ${e.sonder?`<span class="sonder">${sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}</span>`+
+      `<span class="ev-sub">${tag}<span class="ser" style="color:${S0.color}">${S0.name}</span> · ${e.sonder?`<span class="sonder">${sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}${z.zeiten?`<span class="ev-zeiten-m">${z.zeiten}</span>`:""}</span>`+
+      (z.zeiten?`<span class="ev-zeiten">${z.zeiten}</span>`:"")+
       `<button class="ev-teilen" aria-label="Teilen" title="Teilen" onclick="event.stopPropagation();teilen('${e.s}','${e.rd}','${e.sz||""}')">${TEILEN_SVG}</button>`+
-      `<button class="ev-toggle" type="button" aria-expanded="false" aria-label="Sessions anzeigen">+</button></div>`+
+      `<button class="ev-toggle" type="button" aria-expanded="false" aria-label="Sessions anzeigen">+</button></div>`+links+
       `<div class="sessions">${buildSessions(e,evId,status)}</div></div></div>`+
   `</div></div>`;
 }
-/* heute=true: Heute-Linie vor dem ersten Event, das noch nicht vorbei ist – im laufenden Monat,
-   sonst zwischen den Monaten (bzw. am Ende). Darunter am Handy die Live-Info. */
-function heuteHTML(){
+/* mitJetzt=false: die Live-Info steht im Block „Dieses Wochenende“ */
+function heuteHTML(mitJetzt){
   const lab=NOW().toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"}).replace(".,",",");
-  return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div><div class="jetzt" id="jetzt">${onAirHTML(true)}</div>`;
+  return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div>`+(mitJetzt===false?"":`<div class="jetzt" id="jetzt">${onAirHTML(true)}</div>`);
+}
+/* Events des Wochenendes, das die Seite „Dieses Wochenende“ gerade zeigt (Donnerstag bis Sonntag, wochenendZeitraum) */
+function wochenendListe(list){
+  const z=wochenendZeitraum(); if(!z)return [];
+  return list.filter(e=>e.d0<=z.d1&&e.d1>=z.d0);
+}
+const TAGMON=d=>{const x=pd(d);return {t:x.getDate(),m:x.getMonth(),y:x.getFullYear()};};
+function spanneHTML(von,bis){
+  const a=TAGMON(von),b=TAGMON(bis);
+  if(von===bis)return `${a.t}. ${MON[a.m]}`;
+  return a.m===b.m?`${a.t}.–${b.t}. ${MON[b.m]}`:`${a.t}. ${MON[a.m]} – ${b.t}. ${MON[b.m]}`;
+}
+/* Block „Dieses Wochenende“: Kopf mit Zeitraum, Live-Info, alle Events (wie in der Zeitleiste, aufklappbar)
+   mit Rennzeiten und Verweisen, unten der Weg zum ganzen Zeitplan und – falls vorhanden – ausgeblendete Serien */
+function wochenendHTML(WE){
+  const z=wochenendZeitraum();
+  let von=WE.reduce((a,e)=>e.d0<a?e.d0:a,WE[0].d0), bis=WE.reduce((a,e)=>e.d1>a?e.d1:a,WE[0].d1);
+  if(z){if(von<z.d0)von=z.d0; if(bis>z.d1)bis=z.d1;}
+  const aus=z?[...new Set(EVENTS.filter(e=>!ACTIVE.has(e.s)&&e.status!=="cancel"&&inSeason(e)&&e.d0<=z.d1&&e.d1>=z.d0).map(e=>SERIES[e.s].short))]:[];
+  return `<div class="we-block" id="wochenende" aria-label="Dieses Wochenende">`+
+    `<div class="we-kopf"><span class="we-lab">Dieses Wochenende</span><span class="we-anz">${WE.length} Event${WE.length===1?"":"s"}</span></div>`+
+    `<div class="we-titel">${spanneHTML(von,bis)}</div>`+
+    `<div class="jetzt" id="jetzt">${onAirHTML(true,true)}</div>`+
+    WE.map((e,i)=>eventHTML(e,true,i===WE.length-1,von,bis)).join("")+
+    `<div class="we-fuss"><a class="onair-we" href="${ordnerHref("dieses-wochenende/")}">Ganzes Wochenende ansehen <span aria-hidden="true">→</span></a>`+
+    (aus.length?`<span class="we-aus">Ebenfalls an diesem Wochenende, im Filter ausgeblendet: ${aus.map(esc).join(", ")}</span>`:"")+`</div></div>`;
+}
+/* Events eines Monats nach Kalenderwoche (Montag bis Sonntag) gruppiert, in zeitlicher Reihenfolge */
+function wochenGruppen(evs){
+  const m=new Map();
+  evs.forEach(e=>{const d=pd(e.d0);d.setDate(d.getDate()-(d.getDay()+6)%7);const k=d.getTime();if(!m.has(k))m.set(k,[]);m.get(k).push(e);});
+  return [...m.values()];
+}
+/* Ein Wochenende in der Zeitleiste: Kopf mit Zeitraum und Anzahl, darunter die Events wie bisher.
+   Der Punkt auf der Zeitleiste sitzt am Kopf und zeigt den Stand des Wochenendes (gefahren, läuft, als Nächstes) */
+function gruppeHTML(g){
+  let von=g.reduce((a,e)=>e.d0<a?e.d0:a,g[0].d0), bis=g.reduce((a,e)=>e.d1>a?e.d1:a,g[0].d1);
+  if(g.length>1){   /* lange Events (z. B. Dakar) dehnen den Zeitraum nicht über die Woche aus */
+    const mo=pd(g[0].d0); mo.setDate(mo.getDate()-(mo.getDay()+6)%7);
+    const so=new Date(mo); so.setDate(mo.getDate()+6);
+    const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+    if(bis>iso(so))bis=iso(so); if(von<iso(mo))von=iso(mo);
+  }
+  const zs=g.map(st), z=zs.includes("live")?"live":zs.includes("next")?"next":zs.every(x=>x==="done")?"done":"";
+  return `<div class="wgrp ${z}"><div class="wg-kopf"><span class="wg-tit">${spanneHTML(von,bis)}</span><span class="wg-anz">${g.length} Event${g.length===1?"":"s"}</span></div>`+
+    g.map(e=>eventHTML(e,false,false,von,bis)).join("")+`</div>`;
+}
+/* Rennfreie Wochenenden: aufeinanderfolgende leere Wochenenden als eine schmale Zeile („2 Wochenenden ohne Rennen · 17.–25. Okt.“) */
+const MONK=["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."];
+function montag(d0){const d=pd(d0);d.setDate(d.getDate()-(d.getDay()+6)%7);return d;}
+function lueckeHTML(sams){
+  if(!sams.length)return "";
+  const a=sams[0], b=new Date(sams[sams.length-1]); b.setDate(b.getDate()+1);
+  const zr=a.getMonth()===b.getMonth()?`${a.getDate()}.–${b.getDate()}. ${MONK[b.getMonth()]}`:`${a.getDate()}. ${MONK[a.getMonth()]} – ${b.getDate()}. ${MONK[b.getMonth()]}`;
+  return `<div class="wluecke"><span>${sams.length===1?"Ohne Rennen":sams.length+" Wochenenden ohne Rennen"}</span><span>${zr}</span></div>`;
 }
 function monthGroupsHTML(list,heute){
   const groups={};
   list.sort((a,b)=>startW(a)-startW(b)).forEach(e=>{const d=pd(e.d0);(groups[d.getFullYear()+"-"+d.getMonth()]=groups[d.getFullYear()+"-"+d.getMonth()]||[]).push(e);});
   const now=NOW(),curKey=now.getFullYear()+"-"+now.getMonth(),curNr=now.getFullYear()*12+now.getMonth();let html="";
   let offen=!!heute;
-  const linieAllein=()=>{offen=false;return `<div class="tl tl-heute">${heuteHTML()}</div>`;};
-  Object.keys(groups).forEach(key=>{const[y,m]=key.split("-").map(Number);
-    if(offen&&y*12+m>curNr&&!groups[curKey])html+=linieAllein();
+  /* Wochenende: seine Events stehen gesammelt im Block (an der Stelle des ersten), direkt unter der Heute-Linie */
+  const WE=heute?wochenendListe(list):[], WE_SET=new Set(WE), mitJetzt=!WE.length;
+  let weDa=false;
+  const linieAllein=()=>{offen=false;return `<div class="tl tl-heute">${heuteHTML(mitJetzt)}</div>`;};
+  /* Wochen aller Monate der Reihe nach – für die Lücken zwischen zwei Wochenenden mit Events (nicht bei Suche/Favoriten) */
+  const monate=Object.keys(groups).map(key=>({key,gr:wochenGruppen(groups[key]).map(g=>({g,mo:montag(g[0].d0)}))}));
+  const flach=[]; monate.forEach(M=>M.gr.forEach(x=>flach.push(x)));
+  const mitLuecken=!(SEARCH||FAV_ONLY);
+  const lueckeVor=i=>{
+    const r=[]; if(!mitLuecken||i<=0||i>=flach.length)return r;
+    const d=new Date(flach[i-1].mo); d.setDate(d.getDate()+12);   /* Samstag der Folgewoche */
+    while(d<flach[i].mo){r.push(new Date(d)); d.setDate(d.getDate()+7);}
+    return r;
+  };
+  const mnr=d=>d.getFullYear()*12+d.getMonth();
+  /* Liegt die Heute-Linie in einer Lücke, steht sie zwischen den vergangenen und den kommenden leeren Wochenenden */
+  const lueckeAus=(sams,pos)=>{
+    if(!sams.length)return "";
+    if(offen&&pos<=curNr){
+      const vor=sams.filter(sa=>{const so=new Date(sa);so.setDate(so.getDate()+1);so.setHours(23,59,59);return so<now;});
+      if(vor.length<sams.length){offen=false;return lueckeHTML(vor)+heuteHTML(mitJetzt)+lueckeHTML(sams.slice(vor.length));}
+    }
+    return lueckeHTML(sams);
+  };
+  let idx=0;
+  monate.forEach((M,mi)=>{const key=M.key,[y,m]=key.split("-").map(Number),pos=y*12+m;
+    if(offen&&pos>curNr&&!groups[curKey]&&!groups[key].some(e=>WE_SET.has(e)))html+=linieAllein();
     let cls="future";if(key===curKey)cls="current";else if(new Date(y,m+1,0)<now)cls="past";
     html+=`<div class="month ${cls}"><div class="month-head">${MON[m]}<span class="yr">${y}</span></div><div class="tl">`;
-    groups[key].forEach(e=>{
-      if(offen&&endW(e)>=now&&y*12+m<=curNr){offen=false;html+=heuteHTML();}
-      html+=eventHTML(e);});
-    if(offen&&key===curKey){offen=false;html+=heuteHTML();}
+    /* innerhalb des Monats nach Wochenenden gegliedert (Woche Montag bis Sonntag, nach dem ersten Tag des Events) */
+    M.gr.forEach(x=>{const i=idx++, g=x.g;
+      html+=lueckeAus(lueckeVor(i).filter(sa=>mnr(sa)>=pos),pos);
+      if(g.some(e=>WE_SET.has(e))){
+        if(weDa)return; weDa=true;
+        if(offen){offen=false;html+=heuteHTML(false);}
+        html+=wochenendHTML(WE);
+        const rest=g.filter(e=>!WE_SET.has(e)); if(rest.length)html+=gruppeHTML(rest);
+        return;
+      }
+      if(offen&&g.some(e=>endW(e)>=now)&&pos<=curNr){offen=false;html+=heuteHTML(mitJetzt);}
+      html+=gruppeHTML(g);});
+    /* leere Wochenenden bis zum nächsten Monat mit Events: am Ende dieses Monats */
+    if(idx<flach.length){const [ny,nm]=monate[mi+1].key.split("-").map(Number);
+      html+=lueckeAus(lueckeVor(idx).filter(sa=>mnr(sa)<ny*12+nm),pos);}
+    if(offen&&key===curKey){offen=false;html+=heuteHTML(mitJetzt);}
     html+=`</div></div>`;});
   if(offen)html+=linieAllein();
   return html;
@@ -1748,13 +1909,13 @@ function renderStandings(){
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk], D=STAND[sk];
     if(!D){
-      html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
+      html+=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
         `<div class="std-tag">${STAND_LUECKE.has(sk)?"Wertung konnte gerade nicht geladen werden":"Wertung noch nicht gepflegt"}</div></div>`;
       return;
     }
     any=true;
     if(verborgen("wertung-"+sk)){
-      html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
+      html+=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
         `<div class="std-tag">Stand ${D.stand}</div><button class="aufdecken" onclick="aufdeckenWertung('${sk}')">Wertung anzeigen</button></div>`;
       return;
     }
@@ -1770,7 +1931,7 @@ function renderStandings(){
       });
       return t;
     };
-    html+=`<div class="std-block"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
+    html+=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
       `<div class="std-tag">Stand ${D.stand}</div>`+ tabelle(D.drv,D.klasse,D.wertung) +
       (D.drv2&&D.drv2.length? `<div class="std-gap"></div>`+tabelle(D.drv2,D.klasse2,D.wertung2) : "");
     html+=`</div>`;

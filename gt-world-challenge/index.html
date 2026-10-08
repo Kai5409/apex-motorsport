@@ -46,7 +46,7 @@
       <div class="linecap"><span id="capL"><b>9</b> von 10 Wochenenden gefahren</span><span id="capR"></span></div>
     </div>
 
-    <div class="side">
+    <div class="side"><div class="klebt">
       <div class="next" id="next">
   <div class="nextcard" data-id="gtwc-10" data-von="2026-10-16" data-bis="2026-10-18">
     <p class="k">Nächstes Rennen</p>
@@ -62,7 +62,15 @@
     <p class="hint">Für Handy, Google oder Outlook – aktualisiert sich automatisch</p>
   </div>
       </div>
-    </div>
+      <section class="skarte" id="skarte" aria-labelledby="h-skarte" hidden>
+        <div class="skopf"><h2 class="k" id="h-skarte">Saison auf der Karte</h2>
+          <div class="seg" role="group" aria-label="Kartenausschnitt"><button type="button" data-ans="welt" aria-pressed="true">Welt</button><button type="button" data-ans="europa" aria-pressed="false">Europa</button></div></div>
+        <div class="sbild"></div>
+        <div class="sinfo" aria-live="polite"></div>
+        <div class="slegende"></div>
+        <p class="squelle">Kartengrundlage: Natural Earth (gemeinfrei)</p>
+      </section>
+    </div></div>
 
     <div class="rest">
       <nav class="subnav" aria-label="Abschnitte"><ul>
@@ -333,5 +341,6 @@
     <p class="where">Neue Termine folgen, sobald der Kalender veröffentlicht ist. Wer die Termine <a class="abolink" href="webcal://apexkalender.de/kalender/gtwc.ics" aria-haspopup="dialog">mit dem eigenen Kalender verbindet</a>, bekommt sie automatisch, sobald sie feststehen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[{"key":"2026","aria":"Saisonverlauf 2026","capL":"\u003cb\u003e9\u003c/b\u003e von 10 Wochenenden gefahren","capR":"","ev":[["gtwc-1","6 Stunden von Paul Ricard · Endurance · 11–12 Apr","d","Paul Ricard","Apr"],["gtwc-2","Brands Hatch · Sprint · 02–03 Mai","d","Brands Hatch","Mai"],["gtwc-3","Monza · Endurance · 30–31 Mai","d","Monza","Mai"],["gtwc-4","24 Stunden von Spa · Endurance · 25–28 Jun","d","Spa-Francorchamps","Jun"],["gtwc-5","Misano · Sprint · 18–19 Jul","d","Misano","Jul"],["gtwc-6","Magny-Cours · Sprint · 01–02 Aug","d","Magny-Cours","Aug"],["gtwc-7","Nürburgring · Endurance · 29–30 Aug","d","Nürburgring","Aug"],["gtwc-8","Zandvoort · Sprint · 18–20 Sep","d","Zandvoort","Sep"],["gtwc-9","Barcelona · Sprint · 02–04 Okt","d","Barcelona","Okt"],["gtwc-10","Portimão · Endurance · Finale · 16–18 Okt","u","Portimão","Okt"]]},{"key":"2027","aria":"Saisonverlauf 2027","capL":"\u003cb\u003e0\u003c/b\u003e von 10 Wochenenden gefahren","capR":"","ev":[["gtwc-1-2027","Paul Ricard · Endurance · 15–18 Apr","u","Paul Ricard","Apr"],["gtwc-2-2027","Brands Hatch · Sprint · 01–02 Mai","u","Brands Hatch","Mai"],["gtwc-3-2027","Imola · Endurance · 21–23 Mai","u","Imola","Mai"],["gtwc-4-2027","24 Stunden von Spa · Endurance · 24–27 Jun","u","Spa-Francorchamps","Jun"],["gtwc-5-2027","Misano · Sprint · 16–18 Jul","u","Misano","Jul"],["gtwc-6-2027","Magny-Cours · Sprint · 30.–01. Jul/Aug","u","Magny-Cours","Jul"],["gtwc-7-2027","Nürburgring · Endurance · 27–29 Aug","u","Nürburgring","Aug"],["gtwc-8-2027","Zandvoort · Sprint · 17–19 Sep","u","Zandvoort","Sep"],["gtwc-9-2027","Budapest · Sprint · 01–03 Okt","u","Hungaroring","Okt"],["gtwc-10-2027","Barcelona · Endurance · Finale · 22–24 Okt","u","Barcelona","Okt"]]}],"linie":"2026"}</script>
+<script type="application/json" id="apex-karte">{"regionen":{"europa":{"k":1664.9210713611237,"tx":500,"ty":1993.8614300202494,"lon0":10,"par":[40,58],"W":1000,"H":860,"datei":"../karte/europa.svg"},"welt":{"art":"natur","k":182.79,"tx":500,"ty":259.998,"lon0":10,"W":1000,"H":446,"datei":"../karte/welt.svg"}},"saisons":{"2026":[["gtwc-1",1,"6 Stunden von Paul Ricard · Endurance","Paul Ricard","paul-ricard",43.253,5.791,"d","2026-04-11","2026-04-12"],["gtwc-2",2,"Brands Hatch · Sprint","Brands Hatch","brands-hatch",51.35667,0.2625,"d","2026-05-02","2026-05-03"],["gtwc-3",3,"Monza · Endurance","Monza","monza",45.621,9.29,"d","2026-05-30","2026-05-31"],["gtwc-4",4,"24 Stunden von Spa · Endurance","Spa-Francorchamps","spa-francorchamps",50.436,5.971,"d","2026-06-25","2026-06-28"],["gtwc-5",5,"Misano · Sprint","Misano","misano",43.97889,12.695,"d","2026-07-18","2026-07-19"],["gtwc-6",6,"Magny-Cours · Sprint","Magny-Cours","magny-cours",46.863,3.164,"d","2026-08-01","2026-08-02"],["gtwc-7",7,"Nürburgring · Endurance","Nürburgring","nuerburgring",50.334,6.943,"d","2026-08-29","2026-08-30"],["gtwc-8",8,"Zandvoort · Sprint","Zandvoort","zandvoort",52.389,4.541,"d","2026-09-18","2026-09-20"],["gtwc-9",9,"Barcelona · Sprint","Barcelona","barcelona-katalonien",41.569,2.259,"d","2026-10-02","2026-10-04"],["gtwc-10",10,"Portimão · Endurance · Finale","Portimão","portimao",37.232,-8.628,"u","2026-10-16","2026-10-18"]],"2027":[["gtwc-1-2027",1,"Paul Ricard · Endurance","Paul Ricard","paul-ricard",43.253,5.791,"u","2027-04-15","2027-04-18"],["gtwc-2-2027",2,"Brands Hatch · Sprint","Brands Hatch","brands-hatch",51.35667,0.2625,"u","2027-05-01","2027-05-02"],["gtwc-3-2027",3,"Imola · Endurance","Imola","imola",44.341,11.713,"u","2027-05-21","2027-05-23"],["gtwc-4-2027",4,"24 Stunden von Spa · Endurance","Spa-Francorchamps","spa-francorchamps",50.436,5.971,"u","2027-06-24","2027-06-27"],["gtwc-5-2027",5,"Misano · Sprint","Misano","misano",43.97889,12.695,"u","2027-07-16","2027-07-18"],["gtwc-6-2027",6,"Magny-Cours · Sprint","Magny-Cours","magny-cours",46.863,3.164,"u","2027-07-30","2027-08-01"],["gtwc-7-2027",7,"Nürburgring · Endurance","Nürburgring","nuerburgring",50.334,6.943,"u","2027-08-27","2027-08-29"],["gtwc-8-2027",8,"Zandvoort · Sprint","Zandvoort","zandvoort",52.389,4.541,"u","2027-09-17","2027-09-19"],["gtwc-9-2027",9,"Budapest · Sprint","Hungaroring","hungaroring",47.583,19.25,"u","2027-10-01","2027-10-03"],["gtwc-10-2027",10,"Barcelona · Endurance · Finale","Barcelona","barcelona-katalonien",41.569,2.259,"u","2027-10-22","2027-10-24"]]}}</script>
 </body>
 </html>
