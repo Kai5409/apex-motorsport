@@ -1988,6 +1988,37 @@ function stdLabels(D){
   return [stdKurz(D.wertung||"Fahrerwertung"),stdKurz(D.wertung2||"Fahrerwertung")];
 }
 function stdTab(sk,i){STD_TAB[sk]=i;renderStandings();}
+/* Serien ohne Meisterschaft (Rallye Dakar): Die Wertung ist das Endergebnis der jüngsten Veranstaltung
+   mit Ergebnisliste (data/ergebnisse/…, Listen „Gesamtwertung …“), ohne Punkte. Läuft die nächste
+   noch oder hat sie noch kein Ergebnis, bleibt die vorige stehen. */
+const WERTUNG_AUS_ERGEBNIS=["dakar"];
+function ergWertungHTML(sk){
+  const S0=SERIES[sk], kopf=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`;
+  const evs=EVENTS.filter(e=>e.s===sk&&e.result&&!e.abbruch&&st(e)==="done").sort((a,b)=>a.d1<b.d1?1:a.d1>b.d1?-1:0);
+  for(const e of evs){
+    const erg=ergStand(e);
+    if(erg.zustand==="offen"||erg.zustand==="laedt"){
+      ladeErgebnisse(e).then(()=>{if(currentView==="standings")renderStandings();});
+      return kopf+`<div class="std-tag">Gesamtwertung wird geladen …</div></div>`;
+    }
+    if(erg.zustand==="fehlt")return kopf+`<div class="std-tag">Wertung konnte gerade nicht geladen werden</div></div>`;
+    const listen=erg.listen.filter(l=>/^Gesamtwertung( |$)/.test(l.n));
+    if(!listen.length)continue;
+    const tag=`<div class="std-tag">Gesamtwertung · Endergebnis ${esc(e.name)}, ${e.d1.split("-").reverse().join(".")}</div>`;
+    if(verborgen("wertung-"+sk))return kopf+tag+`<button class="aufdecken" onclick="aufdeckenWertung('${sk}')">Wertung anzeigen</button></div>`;
+    const tab=STD_TAB[sk]>0&&STD_TAB[sk]<listen.length?STD_TAB[sk]:0, l=listen[tab];
+    const seg=listen.length>1?`<div class="std-seg" role="group" aria-label="Wertung wählen">`+listen.map((x,j)=>
+      `<button type="button" aria-pressed="${tab===j}" onclick="stdTab('${sk}',${j})">${esc(x.n.replace(/^Gesamtwertung\s*/,"")||x.n)}</button>`).join("")+`</div>`:"";
+    let t=`<div class="std-sub">${esc(l.n)}</div>`;
+    l.zeilen.forEach(z=>{
+      t+=`<div class="std-row ${z[0]===1?'lead':''}"><span class="sp">${z[0]}</span>`+
+        `<span class="std-nm">${esc(z[1])}${z[2]?`<span class="tm">${esc(z[2])}</span>`:''}</span>`+
+        `<span class="std-wins"></span><span class="std-pts"></span></div>`;
+    });
+    return kopf+tag+seg+t+`</div>`;
+  }
+  return kopf+`<div class="std-tag">Wertung noch nicht gepflegt</div></div>`;
+}
 function renderStandings(){
   const host=document.getElementById("view-standings");
   if(DATEN_FEHLT.has("wertungen")){host.innerHTML=ladeHinweis("serien")+ladeHinweis("wertungen");return;}
@@ -1998,6 +2029,7 @@ function renderStandings(){
   let html=snavHTML("standings")+ladeHinweis("serien")+ladeHinweis("wertungen"), any=false;
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk], D=STAND[sk];
+    if(!D&&WERTUNG_AUS_ERGEBNIS.includes(sk)){html+=ergWertungHTML(sk);any=true;return;}
     if(!D){
       html+=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
         `<div class="std-tag">${STAND_LUECKE.has(sk)?"Wertung konnte gerade nicht geladen werden":"Wertung noch nicht gepflegt"}</div></div>`;

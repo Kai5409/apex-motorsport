@@ -520,6 +520,52 @@
         ["Jesús Ríos", "Rivacold Snipers Team", 49],
         ["Ryusei Yamanaka", "AEON Credit - MT Helmets - MSI", 39]
       ]
+    },
+    "erc": {
+      "stand": "nach 6 von 7 Rallyes · Aberystwyth, 06.09.2026",
+      "quelle": "fiaerc.com",
+      "drv": [
+        ["Teemu Suninen", "Škoda", 137],
+        ["Andrea Mabellini", "Lancia", 98],
+        ["Mikołaj Marczyk", "Škoda", 92],
+        ["Jakub Matulka", "Škoda", 53],
+        ["Simone Tempestini", "Škoda", 52],
+        ["Giandomenico Basso", "Škoda", 45],
+        ["Kris Meeke", "Toyota", 34],
+        ["Roberto Daprà", "Škoda", 30],
+        ["Adam Březík", "Škoda", 30],
+        ["José Antonio Suárez", "Škoda", 30],
+        ["Mikko Heikkilä", "Škoda", 30],
+        ["Marco Bulacia", "Škoda", 30],
+        ["Mārtiņš Sesks", "Škoda", 28],
+        ["Iván Ares", "Toyota", 27],
+        ["Boštjan Avbelj", "Škoda", 26],
+        ["Isak Reiersen", "Škoda", 26],
+        ["William Creighton", "Citroën", 24],
+        ["Max McRae", "Škoda", 22],
+        ["Calle Carlberg", "Toyota", 22],
+        ["Erik Cais", "Hyundai", 22],
+        ["Kajetan Kajetanowicz", "Toyota", 17],
+        ["Yoann Bonato", "Lancia", 17],
+        ["Jorge Cagiao", "Citroën", 17],
+        ["Meirion Evans", "Toyota", 17],
+        ["Eyvind Brynildsen", "Toyota", 15],
+        ["Mille Johansson", "Škoda", 15],
+        ["Ville Vatanen", "Ford", 14],
+        ["Pablo Sarrazin", "Citroën", 13],
+        ["Adrian Rzeźnik", "Škoda", 13],
+        ["Filip Mareš", "Toyota", 13],
+        ["Joosep Ralf Nõgene", "Toyota", 13],
+        ["Simon Wagner", "Hyundai", 11],
+        ["Jarosław Szeja", "Škoda", 11],
+        ["Tuukka Kauppinen", "Lancia", 10],
+        ["Yohan Rossel", "Lancia", 9],
+        ["Václav Pech", "Citroën", 9],
+        ["Dominik Stříteský", "Škoda", 9],
+        ["Brandon Semenuk", "Škoda", 9],
+        ["Tristan Charpentier", "Škoda", 9],
+        ["Roberto Blach", "Toyota", 8]
+      ]
     }
   }
 }
