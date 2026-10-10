@@ -566,6 +566,56 @@
         ["Tristan Charpentier", "Škoda", 9],
         ["Roberto Blach", "Toyota", 8]
       ]
+    },
+    "imsa": {
+      "stand": "nach 11 von 11 Rennen · Road Atlanta, 03.10.2026",
+      "quelle": "imsa.results.alkamelcloud.com",
+      "klasse": "GTP",
+      "drv": [
+        ["Jack Aitken", "Cadillac #31", 3020],
+        ["Laurin Heinrich", "Porsche #5/#7/#6", 2859],
+        ["Yelloly / van der Zande", "Acura #93", 2723],
+        ["Kevin Estre", "Porsche #6", 2709],
+        ["Earl Bamber", "Cadillac #31", 2672],
+        ["Vanthoor / van der Linde", "BMW #24", 2650],
+        ["Nasr / Andlauer", "Porsche #7", 2638],
+        ["Taylor / Deletraz", "Cadillac #40", 2556],
+        ["Tijmen van der Helm", "Porsche #5/#85", 2525],
+        ["Braun / Blomqvist", "Acura #60", 2465],
+        ["Albuquerque / Taylor", "Cadillac #10", 2448],
+        ["Laurens Vanthoor", "Porsche #6", 2386],
+        ["Wittmann / Eng", "BMW #25", 2338],
+        ["De Angelis / Gunn", "Aston Martin #23", 2242],
+        ["Frederik Vesti", "Cadillac #31", 1931],
+        ["Kaylen Frederick", "Porsche #5/#85", 1424],
+        ["Matt Campbell", "Porsche #6", 1030],
+        ["Robin Frijns", "BMW #24", 956],
+        ["Colton Herta", "Cadillac #40", 873],
+        ["Scott Dixon", "Acura #60", 845]
+      ],
+      "klasse2": "GTD Pro",
+      "drv2": [
+        ["De Phillippi / Verhagen", "BMW #1", 3017],
+        ["Caldarelli / Mitchell", "Lamborghini #9", 2979],
+        ["Catsburg / Milner", "Chevrolet #4", 2949],
+        ["King / Tandy", "Porsche #77", 2921],
+        ["Mies / Vervisch", "Ford #65", 2825],
+        ["Barker / Olsen", "Ford #64", 2821],
+        ["Barnicoat / Hawksworth", "Lexus #14", 2779],
+        ["Sims / Garcia", "Chevrolet #3", 2776],
+        ["Esterson / Johnson", "McLaren #59", 2392],
+        ["Klaus Bachler", "Porsche #911", 1379],
+        ["Calado / Agostini", "Ferrari #033", 1257],
+        ["Serra / Rigon", "Ferrari #62", 1206],
+        ["Thomas Preining", "Porsche #911", 1169],
+        ["Valentin Hasse Clot", "Aston Martin #68", 1144],
+        ["Alessio Picariello", "Porsche #77", 926],
+        ["Marco Sorensen", "Aston Martin #68", 908],
+        ["Nico Varrone", "Chevrolet #4", 848],
+        ["Marvin Kirchhöfer", "Chevrolet #3", 779],
+        ["Sebastian Priaulx", "Ford #65", 737],
+        ["Miguel Molina", "Ferrari #033", 717]
+      ]
     }
   }
 }
