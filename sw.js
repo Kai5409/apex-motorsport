@@ -1,5 +1,5 @@
 /* APEX Service Worker — Netzwerk zuerst (frische Daten), Cache als Offline-Fallback */
-const CACHE = "apex-v56";
+const CACHE = "apex-v57";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png",
               "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon-32.png",
               "./favicon-16.png", "./apex-2026.ics",
@@ -17,7 +17,7 @@ const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", 
               "./fonts/inter-latin-700-normal.woff2",
               "./serienseiten.css", "./serienseiten.js", "./logo-apex-klein.png", "./strecken.js", "./karte/europa.svg",
               "./serien/", "./dieses-wochenende/", "./in-der-naehe/", "./strecken/", "./formel-1/", "./formel-e/", "./indycar/", "./formel-2/", "./formel-3/",
-              "./f1-academy/", "./motogp/", "./superbike-wm/", "./moto2/", "./moto3/", "./wec/",
+              "./f1-academy/", "./motogp/", "./superbike-wm/", "./moto2/", "./moto3/", "./wec/", "./imsa/",
               "./gt-world-challenge/", "./dtm/", "./nls/", "./porsche-supercup/", "./wrc/", "./erc/",
               "./rallye-dakar/"];
 

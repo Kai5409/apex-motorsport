@@ -4,7 +4,7 @@ PRODID:-//APEX//Motorsport-Kalender//DE
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:APEX Motorsport-Kalender
-X-WR-CALDESC:18 Rennserien — Sessions 2026 und 2027 in deutscher Zeit
+X-WR-CALDESC:19 Rennserien — Sessions 2026 und 2027 in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VEVENT
 UID:apex-f11-FP1@apex-motorsport
