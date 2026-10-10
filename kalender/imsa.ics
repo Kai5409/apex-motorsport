@@ -68,13 +68,13 @@ DESCRIPTION:APEX · IMSA · Lauf 6 · Watkins Glen — ganztägig\, Sessionzeite
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-imsa7-ganztag@apex-motorsport
-DTSTAMP:20261010T105258Z
+DTSTAMP:20261010T123932Z
 DTSTART;VALUE=DATE:20260710
 DTEND;VALUE=DATE:20260713
 TRANSP:TRANSPARENT
 SUMMARY:IMSA · Chevrolet Grand Prix
-LOCATION:Canadian Tire Motorsport Park
-DESCRIPTION:APEX · IMSA · Lauf 7 · Canadian Tire Motorsport Park — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:CTMP
+DESCRIPTION:APEX · IMSA · Lauf 7 · CTMP — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-imsa8-ganztag@apex-motorsport
@@ -178,13 +178,13 @@ DESCRIPTION:APEX · IMSA · Lauf 6 · Watkins Glen — ganztägig\, Sessionzeite
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-imsa7-2027-ganztag@apex-motorsport
-DTSTAMP:20261010T110341Z
+DTSTAMP:20261010T123932Z
 DTSTART;VALUE=DATE:20270709
 DTEND;VALUE=DATE:20270712
 TRANSP:TRANSPARENT
 SUMMARY:IMSA · Chevrolet Grand Prix
-LOCATION:Canadian Tire Motorsport Park
-DESCRIPTION:APEX · IMSA · Lauf 7 · Canadian Tire Motorsport Park — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:CTMP
+DESCRIPTION:APEX · IMSA · Lauf 7 · CTMP — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-imsa8-2027-ganztag@apex-motorsport

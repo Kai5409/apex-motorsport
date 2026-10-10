@@ -389,7 +389,7 @@
     "sessions": []},
   {"s": "imsa", "rd": 6, "sz": "2027", "name": "6 Stunden von Watkins Glen", "loc": "Watkins Glen", "d0": "2027-06-24", "d1": "2027-06-27", "status": "up",
     "sessions": []},
-  {"s": "imsa", "rd": 7, "sz": "2027", "name": "Chevrolet Grand Prix", "loc": "Canadian Tire Motorsport Park", "d0": "2027-07-09", "d1": "2027-07-11", "status": "up",
+  {"s": "imsa", "rd": 7, "sz": "2027", "name": "Chevrolet Grand Prix", "loc": "CTMP", "d0": "2027-07-09", "d1": "2027-07-11", "status": "up",
     "sessions": []},
   {"s": "imsa", "rd": 8, "sz": "2027", "name": "6 Stunden von Road America", "loc": "Road America", "d0": "2027-08-05", "d1": "2027-08-08", "status": "up",
     "sessions": []},

@@ -933,9 +933,13 @@ function sessionInstant(e,s){
   const t=wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),p[0],p[1],"Europe/Berlin").getTime();
   SESS_ZEIT.set(s,{k,t}); return new Date(t);
 }
-function sessDuration(e,s){const n=s.n;
-  if(/\(24h\)/.test(n))return 1440; if(/\(8h\)/.test(n))return 480; if(/\(6h\)/.test(n))return 360;
-  if(/\(4h\)/.test(n))return 240; if(/\(3 Stunden\)/.test(n))return 180;
+/* Dauer aus dem Sessionnamen, wenn er eine nennt (Minuten, sonst 0): „Rennen (24h)“, „Rennen (10h)“,
+   „Rennen (3 Stunden)“, „Rennen (2h 40min)“, „Rennen (100min)“ – gleich in tools/seiten.mjs (dauerAusName) */
+function dauerAusName(n){const m=/\((?:(\d+(?:[.,]\d+)?)\s*(?:h|Std\.?|Stunden?))?\s*(?:(\d+)\s*(?:min|Minuten))?\)/i.exec(n);
+  if(!m||(m[1]==null&&m[2]==null))return 0;
+  return Math.round((m[1]!=null?parseFloat(m[1].replace(",","."))*60:0)+(m[2]!=null?+m[2]:0));}
+function sessDuration(e,s){const n=s.n, d=dauerAusName(n);
+  if(d)return d;
   if(e.s==="nls"&&n==="Qualifying")return 90;
   if(/^Rennen/.test(n))return e.s==="f1"?120:(e.s==="mgp"?45:(e.s==="fe"?50:(e.s==="gtwc"?60:90)));
   if(/Power Stage/.test(n))return 30; if(/Etappe|Shakedown/.test(n))return 150;

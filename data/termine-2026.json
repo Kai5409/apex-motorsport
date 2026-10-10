@@ -1301,7 +1301,7 @@
     "sessions": []},
   {"s": "imsa", "rd": 6, "name": "6 Stunden von Watkins Glen", "loc": "Watkins Glen", "d0": "2026-06-26", "d1": "2026-06-28", "status": "done", "result": "Cadillac #31 (Aitken/Bamber/Vesti)",
     "sessions": []},
-  {"s": "imsa", "rd": 7, "name": "Chevrolet Grand Prix", "loc": "Canadian Tire Motorsport Park", "d0": "2026-07-10", "d1": "2026-07-12", "status": "done", "result": "Oreca #43 (Dillmann/Clarke)",
+  {"s": "imsa", "rd": 7, "name": "Chevrolet Grand Prix", "loc": "CTMP", "d0": "2026-07-10", "d1": "2026-07-12", "status": "done", "result": "Oreca #43 (Dillmann/Clarke)",
     "sessions": []},
   {"s": "imsa", "rd": 8, "name": "6 Stunden von Road America", "loc": "Road America", "d0": "2026-07-31", "d1": "2026-08-02", "status": "done", "result": "Cadillac #10 (Taylor/Albuquerque)",
     "sessions": []},
