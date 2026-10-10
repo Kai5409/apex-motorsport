@@ -268,6 +268,9 @@ h2.sec .abg[hidden]{display:none}
 .more{background:none;border:0;color:var(--paper);padding:12px 2px;cursor:pointer;font-size:13.5px;text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
 .wreveal{font-size:13.5px}
 .sp .wert:not(.auf) .wbody{display:none}
+.wseg{margin:0 0 16px}
+.js .wtab:not(.on){display:none}
+.js .wtab .tsub,html:not(.js) .wtab:nth-child(2) .tsub{margin-top:0}
 .sp .wert:not(.auf) .wreveal{display:inline-block}
 
 /* Sender */

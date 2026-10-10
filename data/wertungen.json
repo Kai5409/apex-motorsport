@@ -28,6 +28,20 @@
         ["Lance Stroll", "Aston Martin", 0],
         ["Valtteri Bottas", "Cadillac", 0],
         ["Sergio Perez", "Cadillac", 0]
+      ],
+      "wertung2": "Konstrukteurswertung",
+      "drv2": [
+        ["Mercedes", "", 556],
+        ["Ferrari", "", 405],
+        ["McLaren", "", 316],
+        ["Red Bull Racing", "", 298],
+        ["Racing Bulls", "", 90],
+        ["Alpine", "", 68],
+        ["Haas F1 Team", "", 27],
+        ["Audi", "", 17],
+        ["Williams", "", 12],
+        ["Aston Martin", "", 7],
+        ["Cadillac", "", 0]
       ]
     },
     "mgp": {
@@ -65,6 +79,20 @@
         ["Jonas Folger", "Red Bull KTM Tech3", 0],
         ["Lorenzo Savadori", "SuperFile Trackhouse MotoGP Team", 0],
         ["Michele Pirro", "BK8 Gresini Racing MotoGP", 0]
+      ],
+      "wertung2": "Teamwertung",
+      "drv2": [
+        ["Aprilia Racing", "", 617],
+        ["Ducati Lenovo Team", "", 495],
+        ["SuperFile Trackhouse MotoGP Team", "", 453],
+        ["Red Bull KTM Factory Racing", "", 342],
+        ["BK8 Gresini Racing MotoGP", "", 289],
+        ["Pertamina Enduro VR46 Racing Team", "", 287],
+        ["Honda HRC", "", 143],
+        ["Red Bull KTM Tech3", "", 133],
+        ["LCR Honda", "", 122],
+        ["Monster Energy Yamaha MotoGP Team", "", 90],
+        ["Prima Pramac Yamaha MotoGP", "", 46]
       ]
     },
     "wrc": {
@@ -100,7 +128,7 @@
     },
     "fe": {
       "stand": "Endstand · Saison 12 (2025/26) nach 17 Rennen · London, 16.08.2026",
-      "quelle": "e-formel.de",
+      "quelle": "e-formel.de · fiaformulae.com",
       "drv": [
         ["Pascal Wehrlein", "Porsche Formula E Team", 169],
         ["Jake Dennis", "Andretti Formula E", 164],
@@ -122,6 +150,19 @@
         ["Maximilian Günther", "DS Penske", 23],
         ["Norman Nato", "Nissan Formula E Team", 20],
         ["Zane Maloney", "Lola Yamaha ABT Formula E Team", 3]
+      ],
+      "wertung2": "Teamwertung",
+      "drv2": [
+        ["Jaguar TCS Racing", "", 288],
+        ["Porsche Formula E Team", "", 271],
+        ["Mahindra Racing", "", 252],
+        ["Andretti Formula E", "", 229],
+        ["Citroën Racing", "", 182],
+        ["Nissan Formula E Team", "", 157],
+        ["Envision Racing", "", 152],
+        ["Cupra KIRO", "", 128],
+        ["DS Penske", "", 91],
+        ["Lola Yamaha ABT Formula E Team", "", 35]
       ]
     },
     "dtm": {
@@ -150,6 +191,20 @@
         ["Maximilian Paul", "TGI by GRT", 11],
         ["Nicolas Baert", "Comtoyou Racing", 8],
         ["Christian Engelhart", "TGI by GRT", 2]
+      ],
+      "wertung2": "Teamwertung",
+      "drv2": [
+        ["Manthey", "", 282],
+        ["Winward Racing", "", 262],
+        ["Schubert Motorsport", "", 249],
+        ["Emil Frey Racing", "", 236],
+        ["Landgraf Motorsport", "", 194],
+        ["HRT Ford Racing", "", 173],
+        ["Dörr Motorsport", "", 149],
+        ["Comtoyou Racing", "", 145],
+        ["ABT Sportsline", "", 134],
+        ["GRT Grasser-Racing-Team", "", 84],
+        ["Land-Motorsport", "", 50]
       ]
     },
     "wec": {
