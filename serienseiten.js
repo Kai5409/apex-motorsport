@@ -145,6 +145,16 @@
   if (/^#r-/.test(location.hash)) zuZeile(location.hash.slice(3), false);
   addEventListener("hashchange", () => { if (/^#r-/.test(location.hash)) zuZeile(location.hash.slice(3), true); });
 
+  /* Wertung mit zwei Tabellen (Fahrer | Teams, Hypercar | LMGT3 …): Umschalter, gezeigt wird eine (nicht gespeichert) */
+  $$(".wseg").forEach((seg) => {
+    const body = seg.parentElement;
+    $$("button[data-wtab]", seg).forEach((b) => b.addEventListener("click", () => {
+      $$("button[data-wtab]", seg).forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      $$(".wtab", body).forEach((t) => t.classList.toggle("on", t.dataset.wtab === b.dataset.wtab));
+      festPruefen();
+    }));
+  });
+
   /* Wertung und lange Zeitpläne: erst gekürzt, auf Wunsch alles */
   $$(".more").forEach((b) => {
     const liste = b.previousElementSibling; if (!liste) return;

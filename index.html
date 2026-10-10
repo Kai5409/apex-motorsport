@@ -48,7 +48,7 @@
   --red:#ff3000; --green:#3fae62; --gold:#d8a84b;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--kopf-h,0px) + 12px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--kopf-h,0px) + var(--snav-h,0px) + 12px)}
 body{background:var(--bg);color:var(--paper);font-family:"Inter",system-ui,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .disp{font-family:"Anton",Impact,"Arial Narrow",sans-serif;letter-spacing:.01em;text-transform:uppercase}
@@ -403,6 +403,27 @@ a.calbtn{line-height:normal;text-decoration:none}
 .std-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:8px 0 14px;letter-spacing:.04em;line-height:1.7}
 .std-block{padding:30px 0 8px;border-bottom:1px solid var(--rule)}
 .std-gap{height:26px}
+/* Serienleiste über Wertung und Serien (Tippen springt zur Serie).
+   PC: alle Serien, klebt unter dem Kopf. Handy: eine schmale klebende Zeile mit Auswahl (.zeile) */
+.snav{position:sticky;top:var(--kopf-h,0px);z-index:30;background:var(--bg);display:flex;flex-wrap:wrap;gap:7px 16px;padding:12px 0 11px;border-bottom:1px solid var(--rule)}
+.snav-g{display:flex;flex-wrap:wrap;gap:7px}
+.snav .chip{background:none;cursor:pointer;color:var(--muted);border-color:var(--rule-strong)}
+.snav .chip:hover{color:var(--paper)}
+.snav .chip.akt{color:var(--paper);border-color:var(--c);background:rgba(236,231,221,.07)}
+.snav .chip:focus-visible,.snav-akt:focus-visible,.std-seg button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.snav.zeile{display:block;padding:6px 0}
+.snav-akt{display:flex;align-items:center;gap:9px;width:100%;min-height:36px;padding:0;background:none;border:0;cursor:pointer;color:var(--paper);text-align:left;font:600 14.5px "Inter",system-ui,sans-serif}
+.snav-akt .cdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;background:var(--c,var(--muted))}
+.snav-akt .snav-nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.snav-pf{font:500 10px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule-strong);border-radius:999px;padding:5px 11px}
+.snav-akt[aria-expanded="true"] .snav-pf{color:var(--paper);border-color:var(--paper)}
+.snav-wahl{position:absolute;left:0;right:0;top:100%;display:flex;flex-wrap:wrap;gap:8px 14px;padding:12px 0 16px;background:var(--bg);border-bottom:1px solid var(--rule-strong);box-shadow:0 14px 24px rgba(0,0,0,.5)}
+.snav-wahl[hidden]{display:none}
+.snav-wahl .chip{padding:7px 12px 7px 10px}
+/* Umschalter zwischen zwei Tabellen einer Serie (Fahrer | Teams, Hypercar | LMGT3 …) */
+.std-seg{display:inline-flex;border:1px solid var(--rule-strong);border-radius:8px;padding:3px;gap:3px;margin:14px 0 2px}
+.std-seg button{background:none;border:0;border-radius:6px;padding:7px 16px;min-height:36px;cursor:pointer;color:var(--muted);font:500 13px "Inter",system-ui,sans-serif}
+.std-seg button[aria-pressed="true"]{background:#221f1b;color:var(--paper)}
 .std-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,7vw,54px);line-height:.9;text-transform:uppercase}
 .std-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.06em;margin:8px 0 4px;text-transform:uppercase}
 .std-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.05em;padding:10px 0 0}
@@ -1544,6 +1565,7 @@ function zuWertung(sk){
   setView("standings");
   const el=document.getElementById("std-"+sk); if(!el)return;
   ohneAnimation(()=>{try{el.scrollIntoView({behavior:"instant",block:"start"});}catch(err){el.scrollIntoView(true);}});
+  SNAV_SPERRE=Date.now()+600; snavMarke("standings",sk);
   el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
 }
 /* Event in der Zeitleiste (immer in einem Wochenende: Gruppe oder Block „Dieses Wochenende“). Statt der Datumsspalte
@@ -1738,7 +1760,7 @@ function serErgebnis(sk,rd,sz){
   box.innerHTML=serPanel(e);
 }
 function renderSeries(){
-  const host=document.getElementById("view-series"); if(!host)return;let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
+  const host=document.getElementById("view-series"); if(!host)return;let html=snavHTML("series")+ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
   /* Übersicht aller Serienseiten */
   if(Object.keys(SERIES).length)html+=`<a class="abo-box ueb-box" href="${ordnerHref("serien/")}"><b>Alle Serien im Überblick</b> <span aria-hidden="true">→</span><span class="ueb-t">Je Serie eine eigene Seite mit Kalender, Startzeiten, Wertung, Sendern und Regeln</span></a>`;
   if(Object.keys(SERIES).length)html+=`<div class="abo-box"><p><b>Kalender verbinden</b> · Alle Sessions in deutscher Zeit direkt auf dem Handy, in Google oder Outlook – aktualisiert sich selbst. Für alle Serien oder unten je Serie.</p>${aboHTML("apex-2026.ics","Alle Serien mit Kalender verbinden")}</div>`;
@@ -1746,11 +1768,11 @@ function renderSeries(){
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
     const abo=aboHTML("kalender/"+sk+".ics","Mit Kalender verbinden",S0.seite);
-    if(!evs.length){html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div><div class="ser-meta">${leer}</div>${abo}</div>`;return;}
+    if(!evs.length){html+=`<div class="ser-block" id="ser-${sk}"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div><div class="ser-meta">${leer}</div>${abo}</div>`;return;}
     /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
     const lauf=evs.filter(e=>!e.sonder);
     const done=lauf.filter(e=>st(e)==="done").length,canc=lauf.filter(e=>e.status==="cancel").length;
-    html+=`<div class="ser-block"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div>`+
+    html+=`<div class="ser-block" id="ser-${sk}"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div>`+
       `<div class="ser-meta">${lauf.length?`${lauf.length-canc} Läufe · ${done} gefahren · ${lauf.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}`:leer}</div>`+abo;
     let n=0;
     evs.forEach(e=>{const status=st(e);
@@ -1768,7 +1790,7 @@ function renderSeries(){
       if(erg)html+=`<div class="ser-erg" id="se-${id}"${auf?"":" hidden"}>${auf?serPanel(e):""}</div>`;});
     html+=`</div>`;});});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
-  host.innerHTML=html;
+  host.innerHTML=html; snavMessen(); snavBeimScrollen();
 }
 
 /* ═══════ JAHR ═══════ */
@@ -1898,6 +1920,74 @@ function standings(sk){
     team:Object.entries(team).map(([k,v])=>({name:k,pts:v})).sort((a,b)=>b.pts-a.pts)
   };
 }
+/* ═══════ SERIENLEISTE (Wertung, Serien) ═══════
+   PC (breiter als 640 px): Kurznamen der gezeigten Serien, klebt unter dem Kopf, Tippen springt zur
+   Serie, die Serie im Bild ist markiert.
+   Handy (bis 640 px): eine schmale klebende Zeile zeigt die Serie im Bild, Tippen klappt die Auswahl
+   auf, die Wahl springt hin und klappt zu (Tippen daneben oder Esc schließt). */
+let SNAV_SPERRE=0;   /* nach einem Tipp: Markierung kurz nicht vom Scrollen überschreiben */
+const SNAV_MQ=typeof matchMedia==="function"?matchMedia("(max-width:640px)"):null;
+function snavArt(){return SNAV_MQ&&SNAV_MQ.matches?"zeile":"sprung";}
+function snavHTML(v){
+  const gr=serienGruppiert(sk=>ACTIVE.has(sk));
+  if(gr.reduce((n,x)=>n+x.sks.length,0)<2)return "";
+  const art=snavArt();
+  const chips=gr.map(({sks})=>`<span class="snav-g">`+sks.map(sk=>{const S0=SERIES[sk];
+    return `<button type="button" class="chip" data-sk="${sk}" style="--c:${S0.color}" onclick="snavTipp('${v}','${sk}')"><span class="cdot" style="background:${S0.color}"></span>${esc(S0.short)}</button>`;
+  }).join("")+`</span>`).join("");
+  if(art==="zeile")return `<nav class="snav zeile" id="snav-${v}" aria-label="Zur Serie springen">`+
+    `<button type="button" class="snav-akt" aria-expanded="false" aria-controls="snav-wahl-${v}" onclick="snavKlappe('${v}')">`+
+    `<span class="cdot"></span><span class="snav-nm"></span><span class="snav-pf">Serien ▾</span></button>`+
+    `<div class="snav-wahl" id="snav-wahl-${v}" hidden>${chips}</div></nav>`;
+  return `<nav class="snav" id="snav-${v}" aria-label="Zur Serie springen">${chips}</nav>`;
+}
+function snavZiel(v,sk){return document.getElementById((v==="standings"?"std-":"ser-")+sk);}
+function snavNav(){return (currentView==="standings"||currentView==="series")?document.getElementById("snav-"+currentView):null;}
+function snavHoehe(){const n=snavNav();return n?n.offsetHeight:0;}
+function snavMessen(){document.documentElement.style.setProperty("--snav-h",snavHoehe()+"px");}
+function snavKlappe(v,auf){
+  const n=document.getElementById("snav-"+v); if(!n)return;
+  const w=n.querySelector(".snav-wahl"),b=n.querySelector(".snav-akt"); if(!w||!b)return;
+  if(auf===undefined)auf=w.hidden; w.hidden=!auf; b.setAttribute("aria-expanded",String(auf));
+}
+function snavTipp(v,sk){
+  snavKlappe(v,false);
+  const el=snavZiel(v,sk); if(!el)return;
+  const y=el.getBoundingClientRect().top+(window.scrollY||0)-(KOPF.fest||0)-snavHoehe()+1;
+  SNAV_SPERRE=Date.now()+1200; snavMarke(v,sk);
+  scrollen(Math.max(0,y),true);
+}
+function snavMarke(v,sk){
+  const n=document.getElementById("snav-"+v); if(!n)return;
+  n.querySelectorAll(".chip").forEach(b=>b.classList.toggle("akt",b.dataset.sk===sk));
+  const b=n.querySelector(".snav-akt"); if(!b)return;
+  const k=sk||(n.querySelector(".chip")||{dataset:{}}).dataset.sk, S0=SERIES[k]; if(!S0)return;
+  b.style.setProperty("--c",S0.color); b.querySelector(".snav-nm").textContent=S0.name;
+}
+function snavBeimScrollen(){
+  const n=snavNav(); if(!n||Date.now()<SNAV_SPERRE)return;
+  const v=currentView, grenze=(KOPF.fest||0)+n.offsetHeight+40; let akt=null;
+  n.querySelectorAll(".chip").forEach(b=>{const el=snavZiel(v,b.dataset.sk);if(el&&el.getBoundingClientRect().top<=grenze)akt=b.dataset.sk;});
+  const unten=window.innerHeight+(window.scrollY||0)>=document.documentElement.scrollHeight-4;
+  if(unten){const m=n.querySelector(".chip.akt");if(m){const el=snavZiel(v,m.dataset.sk);if(el&&el.getBoundingClientRect().top<window.innerHeight)return;}}
+  snavMarke(v,akt);
+}
+if(typeof document!=="undefined"){
+  document.addEventListener("click",e=>{document.querySelectorAll(".snav-akt[aria-expanded='true']").forEach(b=>{
+    if(!b.closest(".snav").contains(e.target))snavKlappe(b.closest(".snav").id.slice(5),false);});});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".snav-akt[aria-expanded='true']").forEach(b=>{
+    snavKlappe(b.closest(".snav").id.slice(5),false);b.focus();});});
+}
+if(SNAV_MQ){const neu=()=>{if(BEREIT&&(currentView==="standings"||currentView==="series"))rerender();};
+  if(SNAV_MQ.addEventListener)SNAV_MQ.addEventListener("change",neu);else if(SNAV_MQ.addListener)SNAV_MQ.addListener(neu);}
+/* Zwei Tabellen einer Serie (drv / drv2) nicht untereinander, sondern per Umschalter */
+const STD_TAB={};
+function stdKurz(w){return {Fahrerwertung:"Fahrer",Konstrukteurswertung:"Konstrukteure",Teamwertung:"Teams",Herstellerwertung:"Hersteller"}[w]||w;}
+function stdLabels(D){
+  if(D.klasse&&D.klasse2&&!D.wertung2)return [D.klasse,D.klasse2];
+  return [stdKurz(D.wertung||"Fahrerwertung"),stdKurz(D.wertung2||"Fahrerwertung")];
+}
+function stdTab(sk,i){STD_TAB[sk]=i;renderStandings();}
 function renderStandings(){
   const host=document.getElementById("view-standings");
   if(DATEN_FEHLT.has("wertungen")){host.innerHTML=ladeHinweis("serien")+ladeHinweis("wertungen");return;}
@@ -1905,7 +1995,7 @@ function renderStandings(){
     host.innerHTML=`<div class="seasonnote">Die Saison ${SEASON} hat noch nicht begonnen – Wertungen erscheinen nach den ersten Rennen. Die aktuellen Stände findest du unter <button class="linkbtn" onclick="SEASON=${STAND_SEASON};renderSeason();rerender();">${STAND_SEASON}</button>.</div>`;
     return;
   }
-  let html=ladeHinweis("serien")+ladeHinweis("wertungen"), any=false;
+  let html=snavHTML("standings")+ladeHinweis("serien")+ladeHinweis("wertungen"), any=false;
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk], D=STAND[sk];
     if(!D){
@@ -1931,13 +2021,16 @@ function renderStandings(){
       });
       return t;
     };
+    const zwei=!!(D.drv2&&D.drv2.length), tab=zwei&&STD_TAB[sk]===1?1:0;
+    const seg=zwei?`<div class="std-seg" role="group" aria-label="Wertung wählen">`+stdLabels(D).map((l,j)=>
+      `<button type="button" aria-pressed="${tab===j}" onclick="stdTab('${sk}',${j})">${esc(l)}</button>`).join("")+`</div>`:"";
     html+=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
-      `<div class="std-tag">Stand ${D.stand}</div>`+ tabelle(D.drv,D.klasse,D.wertung) +
-      (D.drv2&&D.drv2.length? `<div class="std-gap"></div>`+tabelle(D.drv2,D.klasse2,D.wertung2) : "");
+      `<div class="std-tag">Stand ${D.stand}</div>`+ seg +
+      (tab===1? tabelle(D.drv2,D.klasse2,D.wertung2) : tabelle(D.drv,D.klasse,D.wertung));
     html+=`</div>`;
   });});
   if(!any && !html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
-  host.innerHTML=html;
+  host.innerHTML=html; snavMessen(); snavBeimScrollen();
 }
 
 /* ═══════ KOPFBEREICH ═══════
@@ -2013,6 +2106,7 @@ function setView(v){currentView=v;FILTER_OFFEN=null;
   document.getElementById("view-"+v).classList.add("on");
   renderFilter();renderToolbar();rerender();try{history.replaceState(null,"","#v="+v);}catch(err){}
   kopfMessen();   /* Filterleiste ein/aus ändert die Kopfhöhe – vor dem Sprung messen */
+  snavMessen();
   if(v==="upcoming")zumStart(); else scrollen(0,false);
   updateJumpBtn();}
 
@@ -2280,6 +2374,8 @@ function start(){
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});
   window.addEventListener("scroll",kopfBeimScrollen,{passive:true});
+  window.addEventListener("scroll",()=>requestAnimationFrame(snavBeimScrollen),{passive:true});
+  window.addEventListener("resize",snavMessen,{passive:true});
   window.addEventListener("resize",kopfMessen,{passive:true});
   try{
     if(typeof ResizeObserver!=="undefined")new ResizeObserver(kopfMessen).observe(document.getElementById("kopf"));
