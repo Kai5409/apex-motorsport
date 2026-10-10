@@ -106,5 +106,11 @@
   "Saudi-Arabien": "Asia/Riyadh",
   "St. Petersburg": "America/New_York",
   "Washington": "America/New_York",
-  "Zlín": "Europe/Prague"
+  "Zlín": "Europe/Prague",
+  "Daytona": "America/New_York",
+  "Sebring": "America/New_York",
+  "Watkins Glen": "America/New_York",
+  "Canadian Tire Motorsport Park": "America/Toronto",
+  "VIR": "America/New_York",
+  "Road Atlanta": "America/New_York"
 }

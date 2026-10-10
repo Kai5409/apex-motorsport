@@ -211,5 +211,14 @@
       ["Marathon-Etappen", "An Marathon-Etappen übernachten die Teilnehmer in einem einfachen Biwak ohne die gewohnte Hilfe ihrer Teams und müssen ihre Fahrzeuge weitgehend selbst in Schuss halten. 2027 gibt es eine Nacht im Refuge-Biwak und eine klassische Marathon-Etappe."],
       ["2027", "Die 49. Dakar läuft vom 1. bis 15. Januar 2027 mit Start und Ziel in King Abdullah Economic City am Roten Meer. Mit 5320 Kilometern Wertungsprüfungen wird sie die längste der Ära in Saudi-Arabien. Die Dakar ist zugleich erster Lauf der Rallye-Raid-Weltmeisterschaft (W2RC)."]
     ]
+  },
+  "imsa": {
+    "kurz": "Nordamerikanische Langstrecken-Meisterschaft: Prototypen und GT3-Fahrzeuge in vier Klassen auf einer Strecke.",
+    "bloecke": [
+      ["Format", "Elf Rennen zwischen 1 Stunde 40 Minuten und 24 Stunden, vom Rolex 24 in Daytona im Januar bis zum Petit Le Mans in Road Atlanta im Oktober. Bei den kurzen Rennen teilen sich zwei Fahrer ein Auto, bei den Langstreckenrennen drei oder vier. Nicht jede Klasse fährt jedes Rennen – in Long Beach, Detroit, im Canadian Tire Motorsport Park und auf dem Virginia International Raceway starten nur einzelne Klassen."],
+      ["Klassen", "GTP sind die Prototypen der Hersteller nach LMDh- bzw. LMH-Reglement, 2026 von Acura, Aston Martin, BMW, Cadillac und Porsche. In der LMP2 fahren alle mit dem Oreca-Chassis. GTD Pro und GTD sind die Klassen der GT3-Fahrzeuge: GTD Pro für Profi-Besetzungen, GTD für Teams aus Profis und Amateuren."],
+      ["Punkte", "Gewertet wird in jeder Klasse getrennt, für Fahrer, Teams und Hersteller. Punkte gibt es schon im Qualifying – 35 für die Pole – und im Rennen: 350 für den Sieg, 320 für Platz 2, 300 für Platz 3, danach in kleineren Schritten bis weit nach hinten."],
+      ["Michelin Endurance Cup", "Die fünf Langstreckenrennen – Daytona, Sebring, Watkins Glen, Road America und Petit Le Mans – bilden zusätzlich den Michelin Endurance Cup. Hier wird auch zwischendurch gewertet, in Daytona etwa nach 6, 12 und 18 Stunden: In jeder Klasse bekommt der Erste 5 Punkte, der Zweite 4, der Dritte 3 und jedes weitere Auto 2."]
+    ]
   }
 }

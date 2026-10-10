@@ -17,6 +17,7 @@
     "moto2": {"name": "Moto2", "short": "Moto2", "seite": "moto2", "gruppe": "motorrad", "color": "#f32a94", "ausgeblendet": true},
     "moto3": {"name": "Moto3", "short": "Moto3", "seite": "moto3", "gruppe": "motorrad", "color": "#f3b7ff", "ausgeblendet": true},
     "wec": {"name": "WEC", "short": "WEC", "seite": "wec", "gruppe": "sportwagen", "color": "#3a86ff"},
+    "imsa": {"name": "IMSA", "short": "IMSA", "seite": "imsa", "gruppe": "sportwagen", "color": "#33b4fe", "titel": "IMSA Kalender {jahre} – WeatherTech SportsCar Championship"},
     "gtwc": {"name": "GT World Challenge Europe", "short": "GTWC", "seite": "gt-world-challenge", "gruppe": "sportwagen", "color": "#03c4c6", "titel": "GT World Challenge Europe Kalender {jahre} – GTWC Termine"},
     "dtm": {"name": "DTM", "short": "DTM", "seite": "dtm", "gruppe": "sportwagen", "color": "#6de5f7"},
     "nls": {"name": "Nürburgring Langstrecken-Serie", "short": "NLS", "seite": "nls", "gruppe": "sportwagen", "color": "#98bafe", "titel": "NLS Kalender {jahre} – Termine der Nürburgring Langstrecken-Serie"},
