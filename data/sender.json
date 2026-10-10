@@ -157,6 +157,15 @@
         "ch": "In der offiziellen Liste ist kein Schweizer Sender genannt; europaweit überträgt <b>Eurosport</b>.",
         "note": "Stand: offizielle Senderliste der Dakar 2026 (dakar.com), die Liste für 2027 ist noch nicht veröffentlicht. Geprüft am 29.09.2026."
       }
+    },
+    "imsa": {
+      "tv": "Motorvision TV · IMSA-Stream",
+      "tvd": {
+        "de": "<b>Motorvision TV</b> überträgt die Rennen der WeatherTech Championship mit deutschem Kommentar.",
+        "at": "In der offiziellen Senderliste ist kein Sender für Österreich genannt. Wo es keine Live-Übertragung im Fernsehen gibt, zeigt IMSA die Rennen im Stream auf <b>IMSA.com/tvlive</b> und bei <b>YouTube</b> (IMSAOfficial) mit dem Kommentar von IMSA Radio.",
+        "ch": "In der offiziellen Senderliste ist kein Sender für die Schweiz genannt. Wo es keine Live-Übertragung im Fernsehen gibt, zeigt IMSA die Rennen im Stream auf <b>IMSA.com/tvlive</b> und bei <b>YouTube</b> (IMSAOfficial) mit dem Kommentar von IMSA Radio.",
+        "note": "Stand: offizielle Senderliste „International Coverage“ auf imsa.com. Geprüft am 10.10.2026."
+      }
     }
   }
 }
