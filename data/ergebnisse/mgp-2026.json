@@ -674,5 +674,48 @@
       [19, "Jack Miller", "Prima Pramac Yamaha MotoGP"],
       [20, "Johann Zarco", "Castrol Honda LCR"]
     ]}
+  ],
+  "mgp-17": [
+    {"n": "Sprint", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "Marc Márquez", "Ducati Lenovo Team"],
+      [2, "Ai Ogura", "SuperFile Trackhouse MotoGP Team"],
+      [3, "Fabio Di Giannantonio", "Pertamina Enduro VR46 Racing Team"],
+      [4, "Jorge Martín", "Aprilia Racing"],
+      [5, "Álex Márquez", "BK8 Gresini Racing MotoGP"],
+      [6, "Pedro Acosta", "Red Bull KTM Factory Racing"],
+      [7, "Fermín Aldeguer", "BK8 Gresini Racing MotoGP"],
+      [8, "Francesco Bagnaia", "Ducati Lenovo Team"],
+      [9, "Fabio Quartararo", "Monster Energy Yamaha MotoGP Team"],
+      [10, "Álex Rins", "Monster Energy Yamaha MotoGP Team"],
+      [11, "Enea Bastianini", "Red Bull KTM Tech3"],
+      [12, "Johann Zarco", "Castrol Honda LCR"],
+      [13, "Jack Miller", "Prima Pramac Yamaha MotoGP"],
+      [14, "Franco Morbidelli", "Pertamina Enduro VR46 Racing Team"],
+      [15, "Luca Marini", "Honda HRC Castrol"],
+      [16, "Brad Binder", "Red Bull KTM Factory Racing"],
+      [17, "Diogo Moreira", "Pro Honda LCR"],
+      [18, "Maverick Viñales", "Red Bull KTM Tech3"],
+      [19, "Toprak Razgatlioglu", "Prima Pramac Yamaha MotoGP"],
+      [20, "Aleix Espargaró", "Honda HRC Castrol"]
+    ]},
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "Marco Bezzecchi", "Aprilia Racing"],
+      [2, "Raúl Fernández", "SuperFile Trackhouse MotoGP Team"],
+      [3, "Jorge Martín", "Aprilia Racing"],
+      [4, "Ai Ogura", "SuperFile Trackhouse MotoGP Team"],
+      [5, "Pedro Acosta", "Red Bull KTM Factory Racing"],
+      [6, "Marc Márquez", "Ducati Lenovo Team"],
+      [7, "Álex Márquez", "BK8 Gresini Racing MotoGP"],
+      [8, "Fabio Di Giannantonio", "Pertamina Enduro VR46 Racing Team"],
+      [9, "Fabio Quartararo", "Monster Energy Yamaha MotoGP Team"],
+      [10, "Enea Bastianini", "Red Bull KTM Tech3"],
+      [11, "Brad Binder", "Red Bull KTM Factory Racing"],
+      [12, "Luca Marini", "Honda HRC Castrol"],
+      [13, "Johann Zarco", "Castrol Honda LCR"],
+      [14, "Franco Morbidelli", "Pertamina Enduro VR46 Racing Team"],
+      [15, "Álex Rins", "Monster Energy Yamaha MotoGP Team"],
+      [16, "Diogo Moreira", "Pro Honda LCR"],
+      [17, "Maverick Viñales", "Red Bull KTM Tech3"]
+    ]}
   ]
 }
