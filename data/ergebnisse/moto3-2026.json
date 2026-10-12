@@ -24,5 +24,29 @@
       [21, "Zen Mitani", "Honda Team Asia"],
       [22, "Ruché Moodley", "CODE Motorsports"]
     ]}
+  ],
+  "moto3-17": [
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "Máximo Quiles", "CFMOTO Gaviota Aspar Team"],
+      [2, "David Almansa", "Liqui Moly Dynavolt Intact GP"],
+      [3, "Brian Uriarte", "Red Bull KTM Ajo"],
+      [4, "Matteo Bertelle", "LEVEL UP - MTA"],
+      [5, "Rico Salmela", "Red Bull KTM Tech3"],
+      [6, "Veda Pratama", "Honda Team Asia"],
+      [7, "Adrián Fernández", "Leopard Racing"],
+      [8, "Guido Pini", "Leopard Racing"],
+      [9, "Joel Esteban", "LEVEL UP - MTA"],
+      [10, "Scott Ogden", "CIP Green Power"],
+      [11, "Ryusei Yamanaka", "AEON Credit - MT Helmets - MSI"],
+      [12, "Adrián Cruces", "CIP Green Power"],
+      [13, "Valentín Perrone", "Red Bull KTM Tech3"],
+      [14, "Hakim Danish", "AEON Credit - MT Helmets - MSI"],
+      [15, "Jesús Ríos", "Rivacold Snipers Team"],
+      [16, "Zen Mitani", "Honda Team Asia"],
+      [17, "Kiattisak Singhapong", "Rivacold Snipers Team"],
+      [18, "Marco Morelli", "CFMOTO Gaviota Aspar Team"],
+      [19, "Eddie O'Shea", "GRYD Racing"],
+      [20, "Ruché Moodley", "CODE Motorsports"]
+    ]}
   ]
 }

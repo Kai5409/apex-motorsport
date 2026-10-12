@@ -247,7 +247,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "10:00"},
       {"n": "Rennen", "day": "So", "t": "09:00"}
     ]},
-  {"s": "f1", "rd": 17, "name": "Großer Preis von Singapur · Sprint", "loc": "Singapur", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
+  {"s": "f1", "rd": 17, "name": "Großer Preis von Singapur · Sprint", "loc": "Singapur", "d0": "2026-10-09", "d1": "2026-10-11", "status": "done", "result": "Max Verstappen (Red Bull)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "10:30"},
       {"n": "Sprint-Quali", "day": "Fr", "t": "14:30"},
@@ -452,7 +452,7 @@
       {"n": "Warm Up", "day": "So", "t": "02:40"},
       {"n": "Rennen", "day": "So", "t": "07:00"}
     ]},
-  {"s": "mgp", "rd": 17, "name": "Großer Preis von Indonesien", "loc": "Mandalika", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
+  {"s": "mgp", "rd": 17, "name": "Großer Preis von Indonesien", "loc": "Mandalika", "d0": "2026-10-09", "d1": "2026-10-11", "status": "done", "result": "Marco Bezzecchi (Aprilia)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "04:45"},
       {"n": "Practice", "day": "Fr", "t": "09:00"},
@@ -631,7 +631,7 @@
       {"n": "Qualifying 2", "day": "So", "t": "09:05"},
       {"n": "Rennen 2", "day": "So", "t": "13:30"}
     ]},
-  {"s": "dtm", "rd": 8, "name": "DTM Hockenheim (Finale)", "loc": "Hockenheimring", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
+  {"s": "dtm", "rd": 8, "name": "DTM Hockenheim (Finale)", "loc": "Hockenheimring", "d0": "2026-10-09", "d1": "2026-10-11", "status": "done", "result": "Sa: Auer · So: Engel",
     "sessions": [
       {"n": "Freies Training", "day": "Fr", "t": "12:05"},
       {"n": "Freies Training 2", "day": "Fr", "t": "15:30"},
@@ -972,7 +972,7 @@
       {"n": "Qualifying", "day": "So", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "So", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 10, "name": "2. NLS Sportwarte-Trophy · Finale", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-10-10", "d1": "2026-10-10", "status": "up",
+  {"s": "nls", "rd": 10, "name": "2. NLS Sportwarte-Trophy · Finale", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-10-10", "d1": "2026-10-10", "status": "done", "result": "Porsche #17 (Menzel/Müller)", "vorlaeufig": true,
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
@@ -1097,7 +1097,7 @@
     "sessions": []},
   {"s": "wsbk", "rd": 10, "name": "WM-Lauf Italien", "loc": "Cremona", "d0": "2026-09-25", "d1": "2026-09-27", "status": "done", "result": "Sa: Lecuona · So: Lecuona",
     "sessions": []},
-  {"s": "wsbk", "rd": 11, "name": "WM-Lauf Estoril", "loc": "Estoril", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
+  {"s": "wsbk", "rd": 11, "name": "WM-Lauf Estoril", "loc": "Estoril", "d0": "2026-10-09", "d1": "2026-10-11", "status": "done", "result": "Sa: Bulega · So: Bulega",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "11:20"},
       {"n": "FP2", "day": "Fr", "t": "16:00"},
@@ -1147,7 +1147,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "06:40"},
       {"n": "Rennen", "day": "So", "t": "05:15"}
     ]},
-  {"s": "moto2", "rd": 17, "name": "Großer Preis von Indonesien", "loc": "Mandalika", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
+  {"s": "moto2", "rd": 17, "name": "Großer Preis von Indonesien", "loc": "Mandalika", "d0": "2026-10-09", "d1": "2026-10-11", "status": "done", "result": "Izan Guevara (Boscoscuro)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "03:50"},
       {"n": "Practice", "day": "Fr", "t": "08:05"},
@@ -1221,7 +1221,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "05:45"},
       {"n": "Rennen", "day": "So", "t": "04:00"}
     ]},
-  {"s": "moto3", "rd": 17, "name": "Großer Preis von Indonesien", "loc": "Mandalika", "d0": "2026-10-09", "d1": "2026-10-11", "status": "up",
+  {"s": "moto3", "rd": 17, "name": "Großer Preis von Indonesien", "loc": "Mandalika", "d0": "2026-10-09", "d1": "2026-10-11", "status": "done", "result": "Máximo Quiles (KTM)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "03:00"},
       {"n": "Practice", "day": "Fr", "t": "07:15"},

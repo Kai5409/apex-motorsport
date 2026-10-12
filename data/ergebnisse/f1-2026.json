@@ -457,5 +457,44 @@
       [18, "Gabriel Bortoleto", "Audi"],
       [19, "Sergio Perez", "Cadillac"]
     ]}
+  ],
+  "f1-17": [
+    {"n": "Sprint", "quelle": "formula1.com", "zeilen": [
+      [1, "Max Verstappen", "Red Bull"],
+      [2, "Lewis Hamilton", "Ferrari"],
+      [3, "Charles Leclerc", "Ferrari"],
+      [4, "Kimi Antonelli", "Mercedes"],
+      [5, "Liam Lawson", "Racing Bulls"],
+      [6, "Oliver Bearman", "Haas"],
+      [7, "Nico Hülkenberg", "Audi"],
+      [8, "Lando Norris", "McLaren"],
+      [9, "Pierre Gasly", "Alpine"],
+      [10, "Esteban Ocon", "Haas"],
+      [11, "Fernando Alonso", "Aston Martin"],
+      [12, "Carlos Sainz", "Williams"],
+      [13, "Arvid Lindblad", "Racing Bulls"],
+      [14, "Oscar Piastri", "McLaren"]
+    ]},
+    {"n": "Rennen", "quelle": "formula1.com", "zeilen": [
+      [1, "Max Verstappen", "Red Bull"],
+      [2, "Charles Leclerc", "Ferrari"],
+      [3, "Kimi Antonelli", "Mercedes"],
+      [4, "Lando Norris", "McLaren"],
+      [5, "Oscar Piastri", "McLaren"],
+      [6, "Lewis Hamilton", "Ferrari"],
+      [7, "Liam Lawson", "Racing Bulls"],
+      [8, "Nico Hülkenberg", "Audi"],
+      [9, "George Russell", "Mercedes"],
+      [10, "Isack Hadjar", "Red Bull"],
+      [11, "Pierre Gasly", "Alpine"],
+      [12, "Oliver Bearman", "Haas"],
+      [13, "Esteban Ocon", "Haas"],
+      [14, "Carlos Sainz", "Williams"],
+      [15, "Arvid Lindblad", "Racing Bulls"],
+      [16, "Fernando Alonso", "Aston Martin"],
+      [17, "Sergio Perez", "Cadillac"],
+      [18, "Alexander Albon", "Williams"],
+      [19, "Valtteri Bottas", "Cadillac"]
+    ]}
   ]
 }

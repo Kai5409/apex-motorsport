@@ -273,5 +273,47 @@
       [17, "Maro Engel", "Mercedes-AMG Ravenol"],
       [18, "Kelvin van der Linde", "Schubert Motorsport"]
     ]}
+  ],
+  "dtm-8": [
+    {"n": "Rennen 1", "quelle": "api.dtm.com · motorsport-total.com · en.wikipedia.org", "zeilen": [
+      [1, "Lucas Auer", "Mercedes-AMG Landgraf"],
+      [2, "Mirko Bortolotti", "TGI by GRT"],
+      [3, "Marco Wittmann", "Schubert Motorsport"],
+      [4, "Maro Engel", "Mercedes-AMG Ravenol"],
+      [5, "Thomas Preining", "Manthey"],
+      [6, "Kelvin van der Linde", "Schubert Motorsport"],
+      [7, "Jules Gounon", "Mercedes-AMG Mann-Filter"],
+      [8, "Arjun Maini", "HRT Ford Racing"],
+      [9, "Marco Mapelli", "Red Bull Team ABT"],
+      [10, "Finn Wiebelhaus", "HRT Ford Racing"],
+      [11, "Ben Dörr", "Dörr Motorsport"],
+      [12, "Thierry Vermeulen", "Emil Frey Racing"],
+      [13, "Maximilian Paul", "TGI by GRT"],
+      [14, "Tom Kalender", "Mercedes-AMG Landgraf"],
+      [15, "Ricardo Feller", "Manthey"],
+      [16, "Nicki Thiim", "Comtoyou Racing"],
+      [17, "Nicolas Baert", "Comtoyou Racing"]
+    ]},
+    {"n": "Rennen 2", "quelle": "api.dtm.com · motorsport-total.com · en.wikipedia.org", "zeilen": [
+      [1, "Maro Engel", "Mercedes-AMG Ravenol"],
+      [2, "Ricardo Feller", "Manthey"],
+      [3, "Thomas Preining", "Manthey"],
+      [4, "Bastian Buus", "Land-Motorsport"],
+      [5, "Ben Dörr", "Dörr Motorsport"],
+      [6, "Matteo Cairoli", "Emil Frey Racing"],
+      [7, "Marco Wittmann", "Schubert Motorsport"],
+      [8, "Arjun Maini", "HRT Ford Racing"],
+      [9, "Marco Mapelli", "Red Bull Team ABT"],
+      [10, "Mirko Bortolotti", "TGI by GRT"],
+      [11, "Finn Wiebelhaus", "HRT Ford Racing"],
+      [12, "Thierry Vermeulen", "Emil Frey Racing"],
+      [13, "Lucas Auer", "Mercedes-AMG Landgraf"],
+      [14, "Nicki Thiim", "Comtoyou Racing"],
+      [15, "Tom Kalender", "Mercedes-AMG Landgraf"],
+      [16, "Timo Glock", "Dörr Motorsport"],
+      [17, "Maximilian Paul", "TGI by GRT"],
+      [18, "Kelvin van der Linde", "Schubert Motorsport"],
+      [19, "Nicolas Baert", "Comtoyou Racing"]
+    ]}
   ]
 }
