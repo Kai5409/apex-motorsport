@@ -8,9 +8,9 @@
         ["Kimi Antonelli", "Mercedes", 340],
         ["George Russell", "Mercedes", 238],
         ["Lewis Hamilton", "Ferrari", 229],
+        ["Max Verstappen", "Red Bull", 221],
         ["Charles Leclerc", "Ferrari", 215],
         ["Lando Norris", "McLaren", 201],
-        ["Max Verstappen", "Red Bull", 221],
         ["Oscar Piastri", "McLaren", 138],
         ["Isack Hadjar", "Red Bull", 97],
         ["Liam Lawson", "Racing Bulls", 75],
@@ -18,8 +18,8 @@
         ["Arvid Lindblad", "Racing Bulls", 38],
         ["Franco Colapinto", "Alpine", 27],
         ["Oliver Bearman", "Haas", 23],
-        ["Gabriel Bortoleto", "Audi", 10],
         ["Nico Hülkenberg", "Audi", 13],
+        ["Gabriel Bortoleto", "Audi", 10],
         ["Esteban Ocon", "Haas", 7],
         ["Fernando Alonso", "Aston Martin", 7],
         ["Carlos Sainz", "Williams", 7],
@@ -78,7 +78,8 @@
         ["Cal Crutchlow", "Castrol Honda LCR", 0],
         ["Jonas Folger", "Red Bull KTM Tech3", 0],
         ["Lorenzo Savadori", "SuperFile Trackhouse MotoGP Team", 0],
-        ["Michele Pirro", "BK8 Gresini Racing MotoGP", 0]
+        ["Michele Pirro", "BK8 Gresini Racing MotoGP", 0],
+        ["Aleix Espargaró", "Honda HRC Castrol", 0]
       ],
       "wertung2": "Teamwertung",
       "drv2": [
@@ -96,8 +97,8 @@
       ]
     },
     "wrc": {
-      "stand": "nach 13 von 13 Rallyes · Sardinien, 04.10.2026 · nicht offiziell",
-      "quelle": "en.wikipedia.org · motorsport-magazin.com",
+      "stand": "nach 13 von 13 Rallyes · Sardinien, 04.10.2026",
+      "quelle": "fia.com",
       "drv": [
         ["Elfyn Evans", "Toyota", 243],
         ["Oliver Solberg", "Toyota", 238],
@@ -123,7 +124,25 @@
         ["Fabrizio Zaldivar", "Škoda", 6],
         ["Roberto Daprà", "Škoda", 6],
         ["Andreas Mikkelsen", "Škoda", 5],
-        ["Jari-Matti Latvala", "Toyota", 4]
+        ["Jari-Matti Latvala", "Toyota", 4],
+        ["Alejandro Galanti", "Toyota", 2],
+        ["Arthur Pelamourgues", "Hyundai", 2],
+        ["Teemu Suninen", "Toyota", 2],
+        ["Matteo Fontana", "Ford", 2],
+        ["Eric Camilli", "Škoda", 1],
+        ["Emil Lindholm", "Škoda", 1],
+        ["Taylor Gill", "Škoda", 1],
+        ["Grégoire Munster", "", 0],
+        ["Jourdan Serderidis", "Ford", 0],
+        ["Romet Jürgenson", "Ford", 0],
+        ["Lorenzo Bertelli", "Toyota", 0]
+      ],
+      "wertung2": "Herstellerwertung",
+      "drv2": [
+        ["Toyota Gazoo Racing WRT", "", 662],
+        ["Hyundai Shell Mobis World Rally Team", "", 440],
+        ["Toyota Gazoo Racing WRT2", "", 251],
+        ["M-Sport Ford World Rally Team", "", 168]
       ]
     },
     "fe": {
@@ -293,7 +312,27 @@
         ["Morris Schuring", "Boutsen VDS #2", 44],
         ["Dean Macdonald", "Garage 59 #59", 39.5],
         ["Ariel Levi", "Tresor Attempto Racing #66", 34.5],
-        ["Benjamin Goethe", "Garage 59 #58", 32]
+        ["Benjamin Goethe", "Garage 59 #58", 32],
+        ["Pereira / Aka", "Tresor Attempto Racing #99", 31],
+        ["Marvin Kirchhöfer", "Garage 59 #59", 31],
+        ["Thomas Preining", "Lionspeed GP #80", 30],
+        ["Tommaso Mosca", "AF Corse #51", 29],
+        ["Niederhauser / Engstler", "Rutronik Racing #96", 28],
+        ["Farfus / Dennis / Marciello", "Rowe Racing #98", 26],
+        ["Mazzola / Øgaard", "Tresor Attempto Racing #66", 25],
+        ["Joseph Loake", "Garage 59 #59", 21.5],
+        ["Haase / Reicher", "Eastalent Racing #84", 20],
+        ["Alessio Picariello", "Boutsen VDS #2", 20],
+        ["Dennis Marschall", "Kessel Racing #74", 18],
+        ["Cairoli / Lappalainen", "Emil Frey Racing #14", 17.5],
+        ["Lismont / Montenegro", "Team WRT #30", 17.5],
+        ["Dustin Blattner", "Kessel Racing #74", 17],
+        ["Kobe Pauwels", "Comtoyou Racing #7", 16.5],
+        ["Rovera / Nielsen", "AF Corse #51", 16],
+        ["Scherer / Drouet / Maini", "HRT Ford Racing #64", 16],
+        ["Amaury Cordeel", "Team WRT #31", 16],
+        ["Schiller / Martin / Götz", "Mercedes-AMG Team GetSpeed #17", 16],
+        ["Andrea Frassineti", "Tresor Attempto Racing #66/#99", 15.5]
       ]
     },
     "nls": {
@@ -342,7 +381,25 @@
         ["BLACK FALCON Team ZIMMERMANN #900", "Porsche 911 GT3 Cup", 36],
         ["SRS Team Sorg Rennsport #901", "Porsche 911 GT3 Cup", 36],
         ["Goroyan RT by Car Collection #4", "Porsche 911 GT3 R", 30],
-        ["Team LIQUI MOLY by BLACK FALCON #902", "Porsche 911 GT3 Cup", 25]
+        ["Team LIQUI MOLY by BLACK FALCON #902", "Porsche 911 GT3 Cup", 25],
+        ["Dinamic GT #54", "Porsche 911 GT3 R", 19],
+        ["BLACK FALCON Team FANATEC #632", "Porsche 911 GT3 Cup", 17],
+        ["Konrad Motorsport #7000", "Lamborghini Huracan GT3", 16],
+        ["JUTA Racing #8", "Audi R8 LMS GT3 EVO II", 15],
+        ["KKraemer Racing #33", "Audi R8 GT3 EVO II", 13],
+        ["Reiter Engineering #66", "KTM X-BOW GTX", 12],
+        ["Max Kruse Racing #11", "Audi R8 LMS GT3", 11],
+        ["PROsport racing #37", "Aston Martin Vantage GT3", 9],
+        ["HRT Ford Racing #64", "Ford Mustang GT3", 8],
+        ["Smyrlis Racing #953", "Porsche 718 Cayman GT4 CS", 6],
+        ["W&S Motorsport #962", "Porsche 718 Cayman GT4 CS", 6],
+        ["Smyrlis Racing #910", "Porsche 911 GT3 Cup", 4],
+        ["équipe vitesse #50", "Audi R8 LMS GT3 EVO II", 3],
+        ["Max Kruse Racing #19", "Audi R8 LMS GT3", 2],
+        ["PROsport racing #176", "Mercedes-AMG GT4", 2],
+        ["ROWE RACING #98", "BMW M4 GT3 EVO", 1],
+        ["Mühlner Motorsport #921", "Porsche 911 GT3 Cup", 1],
+        ["SRS Team Sorg Rennsport #959", "Porsche 718 Cayman GT4 CS", 1]
       ]
     },
     "indycar": {
@@ -368,7 +425,20 @@
         ["Santino Ferrucci", "A.J. Foyt Enterprises", 280],
         ["Louis Foster", "Rahal Letterman Lanigan Racing", 267],
         ["Romain Grosjean", "Dale Coyne Racing", 259],
-        ["Nolan Siegel", "Arrow McLaren", 259]
+        ["Nolan Siegel", "Arrow McLaren", 259],
+        ["Christian Rasmussen", "ECR", 245],
+        ["Dennis Hauger", "Dale Coyne Racing", 228],
+        ["Mick Schumacher", "Rahal Letterman Lanigan Racing", 213],
+        ["Caio Collet", "A.J. Foyt Enterprises", 203],
+        ["Sting Ray Robb", "Juncos Hollinger Racing", 182],
+        ["Conor Daly", "Dreyer & Reinbold Racing", 24],
+        ["Takuma Sato", "Rahal Letterman Lanigan Racing", 20],
+        ["Jack Harvey", "Dreyer & Reinbold Racing", 8],
+        ["Jacob Abel", "Abel Motorsports", 6],
+        ["Helio Castroneves", "Meyer Shank Racing", 5],
+        ["Ed Carpenter", "ECR", 5],
+        ["Ryan Hunter-Reay", "Arrow McLaren", 5],
+        ["Katherine Legge", "HMD Motorsports with A.J. Foyt Racing", 5]
       ]
     },
     "f2": {
@@ -394,7 +464,10 @@
         ["Sebastián Montoya", "Prema Racing", 30],
         ["Emerson Fittipaldi Jr.", "AIX Racing", 28],
         ["Colton Herta", "Hitech", 26],
-        ["Mari Boya", "Prema Racing", 21]
+        ["Mari Boya", "Prema Racing", 21],
+        ["Nico Varrone", "Van Amersfoort Racing", 15],
+        ["Cian Shields", "AIX Racing", 10],
+        ["Hiyu Yamakoshi", "Van Amersfoort Racing", 2]
       ]
     },
     "f3": {
@@ -420,7 +493,21 @@
         ["James Wharton", "Prema Racing", 39],
         ["Yevan David", "AIX Racing", 35],
         ["Nicola Lacorte", "DAMS Lucas Oil", 33],
-        ["Kanato Le", "ART Grand Prix", 30]
+        ["Kanato Le", "ART Grand Prix", 30],
+        ["Louis Sharp", "Prema Racing", 21],
+        ["Gerrard Xie", "DAMS Lucas Oil", 20],
+        ["Alex Powell", "Prema Racing", 14],
+        ["Matteo De Palo", "Trident", 7],
+        ["Brad Benavides", "AIX Racing", 6],
+        ["Christian Ho", "Rodin Motorsport", 2],
+        ["Fionn Mclaughlin", "Hitech", 2],
+        ["Fernando Barrichello", "AIX Racing", 2],
+        ["Jose Garfias", "Prema Racing", 1],
+        ["Nandhavud Bhirombhakdi", "DAMS Lucas Oil", 0],
+        ["Ricardo Escotto", "AIX Racing", 0],
+        ["Patrick Heuzenroeder", "Campos Racing", 0],
+        ["Woohyun Shin", "Hitech", 0],
+        ["Salim Hanna", "AIX Racing", 0]
       ]
     },
     "f1academy": {
@@ -446,7 +533,9 @@
         ["Ella Stevens", "Rodin Motorsport", 4],
         ["Jade Jacquet", "ART Grand Prix", 0],
         ["Autumn Fisher", "Hitech", 0],
-        ["Zoe Florescu", "Hitech", 0]
+        ["Zoe Florescu", "Hitech", 0],
+        ["Wei Shi", "Hitech", 0],
+        ["Alexia Danielsson", "", 0]
       ]
     },
     "wsbk": {
@@ -472,7 +561,14 @@
         ["Danilo Petrucci", "ROKiT BMW Motorrad WorldSBK Team", 61],
         ["Stefano Manzi", "GYTR GRT Yamaha WorldSBK Team", 46],
         ["Jake Dixon", "Honda HRC", 35],
-        ["Michael van der Mark", "ROKiT BMW Motorrad WorldSBK Team", 23]
+        ["Michael van der Mark", "ROKiT BMW Motorrad WorldSBK Team", 23],
+        ["Somkiat Chantra", "Honda HRC", 21],
+        ["Tetsuta Nagashima", "Honda HRC", 7],
+        ["Jonathan Rea", "Honda HRC", 6],
+        ["Bahattin Sofuoglu", "Motoxracing WorldSBK Team", 4],
+        ["Loris Baz", "MGM Optical Express Racing", 3],
+        ["Mattia Rato", "Motoxracing WorldSBK Team", 3],
+        ["Ryan Vickers", "Honda HRC", 1]
       ]
     },
     "moto2": {
@@ -498,7 +594,21 @@
         ["José Antonio Rueda", "Red Bull KTM Ajo", 43],
         ["Adrián Huertas", "Italtrans Racing Team", 42],
         ["Luca Lunetta", "BETA Tools SpeedRS Team", 27],
-        ["Ayumu Sasaki", "Momoven Idrofoglia RW Racing Team", 24]
+        ["Ayumu Sasaki", "Momoven Idrofoglia RW Racing Team", 24],
+        ["Alberto Ferrandez", "BLU CRU Pramac Yamaha Moto2", 17.5],
+        ["Arón Canet", "ELF Marc VDS Racing Team", 17.5],
+        ["Taiyo Furusato", "Idemitsu Honda Team Asia", 17],
+        ["Zonta van den Goorbergh", "Momoven Idrofoglia RW Racing Team", 14],
+        ["Sergio García", "ITALJET Gresini Moto2", 11],
+        ["Ángel Piqueras", "QJMOTOR - JP Financial - MSI", 4],
+        ["Mario Aji", "Idemitsu Honda Team Asia", 3],
+        ["Marcos Ramirez", "KLINT Racing Team", 0],
+        ["Xabi Zurutuza", "KLINT Racing Team", 0],
+        ["Unai Orradre", "QJMOTOR - JP Financial - MSI", 0],
+        ["Jorge Navarro", "REDS Fantic Racing", 0],
+        ["Dennis Foggia", "BETA Tools SpeedRS Team", 0],
+        ["Jacob Roulstone", "Idemitsu Honda Team Asia", 0],
+        ["Milan Pawelec", "Red Bull KTM Ajo", 0]
       ]
     },
     "moto3": {
@@ -524,7 +634,19 @@
         ["Eddie O'Shea", "GRYD Racing", 65],
         ["David Muñoz", "Liqui Moly Dynavolt Intact GP", 61],
         ["Jesús Ríos", "Rivacold Snipers Team", 50],
-        ["Ryusei Yamanaka", "AEON Credit - MT Helmets - MSI", 44]
+        ["Ryusei Yamanaka", "AEON Credit - MT Helmets - MSI", 44],
+        ["Scott Ogden", "CIP Green Power", 36],
+        ["David Gonzalez", "Liqui Moly Dynavolt Intact GP", 7],
+        ["Marcos Uriarte", "CODE Motorsports", 6],
+        ["Cormac Buchanan", "CODE Motorsports", 5],
+        ["Leo Rammerstorfer", "SIC58 Squadra Corse", 4],
+        ["Zen Mitani", "Honda Team Asia", 2],
+        ["Ruché Moodley", "CODE Motorsports", 1],
+        ["Kiattisak Singhapong", "Rivacold Snipers Team", 1],
+        ["Nicola Carraro", "Rivacold Snipers Team", 0],
+        ["Ryota Ogiwara", "CODE Motorsports", 0],
+        ["Leonardo Abruzzo", "CODE Motorsports", 0],
+        ["Eduardo Gutierrez", "CODE Motorsports", 0]
       ]
     },
     "erc": {
@@ -597,7 +719,19 @@
         ["Matt Campbell", "Porsche #6", 1030],
         ["Robin Frijns", "BMW #24", 956],
         ["Colton Herta", "Cadillac #40", 873],
-        ["Scott Dixon", "Acura #60", 845]
+        ["Scott Dixon", "Acura #60", 845],
+        ["Alex Palou", "Acura #93", 809],
+        ["Will Stevens", "Cadillac #10", 756],
+        ["Alex Riberas", "Aston Martin #23", 755],
+        ["Kevin Magnussen", "BMW #25", 704],
+        ["Kaku Ohta", "Acura #93", 643],
+        ["Nico Pino", "Porsche #5/#85", 518],
+        ["Nico Mueller", "Porsche #5", 480],
+        ["Connor Zilisch", "Cadillac #31", 340],
+        ["Rene Rast", "BMW #24", 323],
+        ["Raffaele Marciello", "BMW #25", 252],
+        ["AJ Allmendinger", "Acura #60", 248],
+        ["Marco Sorensen", "Aston Martin #23", 231]
       ],
       "klasse2": "GTD Pro",
       "drv2": [
@@ -620,7 +754,27 @@
         ["Nico Varrone", "Chevrolet #4", 848],
         ["Marvin Kirchhöfer", "Chevrolet #3", 779],
         ["Sebastian Priaulx", "Ford #65", 737],
-        ["Miguel Molina", "Ferrari #033", 717]
+        ["Miguel Molina", "Ferrari #033", 717],
+        ["Dan Harper", "BMW #1", 701],
+        ["Mike Rockenfeller", "Ford #64", 700],
+        ["Kyle Kirkwood", "Lexus #14", 694],
+        ["Alessandro Pier Guidi", "Ferrari #62", 672],
+        ["Max Hesse", "BMW #1", 658],
+        ["Ricardo Feller", "Porsche #911", 658],
+        ["Chaz Mostert", "Mercedes-AMG #75/Lexus #15", 584],
+        ["Franck Perera", "Lamborghini #9", 532],
+        ["Hart / Stolz / Noble", "Mercedes-AMG #48", 512],
+        ["Dean MacDonald", "McLaren #59", 470],
+        ["Mattia Drudi", "Aston Martin #68", 382],
+        ["Habul / Engel / Power", "Mercedes-AMG #75", 350],
+        ["Maxime Martin", "Mercedes-AMG #48", 322],
+        ["Ayhancan Guven", "Porsche #911", 278],
+        ["Hinchcliffe / Bortolotti", "Lamborghini #9", 271],
+        ["Stevenson / Altoè / Bourdais", "Chevrolet #74", 268],
+        ["Mathieu Jaminet", "Porsche #911", 265],
+        ["Alessio Rovera", "Ferrari #033", 258],
+        ["Scott Andrews", "Aston Martin #68", 236],
+        ["Aaron Telitz", "Lexus #15", 234]
       ]
     }
   }
