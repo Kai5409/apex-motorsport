@@ -99,6 +99,7 @@
     "wrc": {
       "stand": "nach 13 von 13 Rallyes · Sardinien, 04.10.2026",
       "quelle": "fia.com",
+      "champion": "World Champion",
       "drv": [
         ["Elfyn Evans", "Toyota", 243],
         ["Oliver Solberg", "Toyota", 238],
@@ -138,6 +139,7 @@
         ["Lorenzo Bertelli", "Toyota", 0]
       ],
       "wertung2": "Herstellerwertung",
+      "champion2": "World Champion",
       "drv2": [
         ["Toyota Gazoo Racing WRT", "", 662],
         ["Hyundai Shell Mobis World Rally Team", "", 440],
@@ -148,6 +150,7 @@
     "fe": {
       "stand": "Endstand · Saison 12 (2025/26) nach 17 Rennen · London, 16.08.2026",
       "quelle": "e-formel.de · fiaformulae.com",
+      "champion": "World Champion",
       "drv": [
         ["Pascal Wehrlein", "Porsche Formula E Team", 169],
         ["Jake Dennis", "Andretti Formula E", 164],
@@ -171,6 +174,7 @@
         ["Zane Maloney", "Lola Yamaha ABT Formula E Team", 3]
       ],
       "wertung2": "Teamwertung",
+      "champion2": "World Champion",
       "drv2": [
         ["Jaguar TCS Racing", "", 288],
         ["Porsche Formula E Team", "", 271],
@@ -187,6 +191,7 @@
     "dtm": {
       "stand": "nach 16 von 16 Rennen · Hockenheim, 11.10.2026",
       "quelle": "dtm.com",
+      "champion": "Champion",
       "drv": [
         ["Thomas Preining", "Manthey", 225],
         ["Maro Engel", "Mercedes-AMG Ravenol", 213],
@@ -212,6 +217,7 @@
         ["Christian Engelhart", "TGI by GRT", 2]
       ],
       "wertung2": "Teamwertung",
+      "champion2": "Champion",
       "drv2": [
         ["Manthey", "", 330],
         ["Winward Racing", "", 309],
@@ -405,6 +411,7 @@
     "indycar": {
       "stand": "Endstand · nach 18 Rennen · Laguna Seca, 06.09.2026",
       "quelle": "indycar.com",
+      "champion": "Champion",
       "drv": [
         ["Álex Palou", "Chip Ganassi Racing", 631],
         ["Kyle Kirkwood", "Andretti Global", 545],
@@ -473,6 +480,7 @@
     "f3": {
       "stand": "Endstand · nach 9 Wochenenden · Madrid, 13.09.2026",
       "quelle": "fiaformula3.com",
+      "champion": "Champion",
       "drv": [
         ["Ugo Ugochukwu", "Campos Racing", 159],
         ["Freddie Slater", "Trident", 145],
@@ -699,6 +707,7 @@
       "stand": "nach 11 von 11 Rennen · Road Atlanta, 03.10.2026",
       "quelle": "imsa.results.alkamelcloud.com",
       "klasse": "GTP",
+      "champion": "Champion",
       "drv": [
         ["Jack Aitken", "Cadillac #31", 3020],
         ["Laurin Heinrich", "Porsche #5/#7/#6", 2859],
@@ -734,6 +743,7 @@
         ["Marco Sorensen", "Aston Martin #23", 231]
       ],
       "klasse2": "GTD Pro",
+      "champion2": "Champion",
       "drv2": [
         ["De Phillippi / Verhagen", "BMW #1", 3017],
         ["Caldarelli / Mitchell", "Lamborghini #9", 2979],

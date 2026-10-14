@@ -3,10 +3,19 @@
    nach dem heutigen Datum vor. Es lädt nur auf der Seite „In der Nähe“ bei Bedarf eigene Dateien nach (die Ortsliste
    beim Tippen ins Suchfeld, die Karte einer anderen Region beim Kartenwechsel) und speichert nur die Einstellung
    „Ergebnisse verbergen“ und die Serienauswahl (gleiche Schlüssel wie in der App) sowie auf der Seite
-   „In der Nähe“ den gewählten Startort. */
+   „In der Nähe“ den gewählten Startort. Es meldet den Service Worker der App an (sw.js im Hauptordner, Bereich
+   wie in der App), damit die Seiten auch ohne vorherigen Besuch der App offline verfügbar werden. */
 (function () {
   "use strict";
   const $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+
+  /* Service Worker: dieses Skript liegt im Hauptordner neben sw.js – Adresse und Bereich daraus, nicht aus der Seite */
+  const skriptUrl = document.currentScript && document.currentScript.src;
+  if (skriptUrl && "serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
+    window.addEventListener("load", () => {
+      try { navigator.serviceWorker.register(new URL("sw.js", skriptUrl).href, { scope: new URL("./", skriptUrl).href }).catch(() => {}); } catch (e) {}
+    });
+  }
   const root = document.documentElement;
   const SPOILER = "apex_spoiler";
   const heute = (() => {
@@ -77,6 +86,16 @@
     document.dispatchEvent(new CustomEvent("apex-saison", { detail: k }));   /* Saisonkarte folgt der Saison */
   }
   $$(".saisonseg button").forEach((b) => b.addEventListener("click", () => saisonZeigen(b.dataset.saison)));
+  /* Farbbalken der Streckenseiten: Serien der gezeigten Saison (data-saisons: je Saison [Kürzel, Farbe]) */
+  const balken = $(".bar.serien[data-saisons]");
+  if (balken) {
+    let BS = null; try { BS = JSON.parse(balken.dataset.saisons); } catch (e) {}
+    document.addEventListener("apex-saison", (ev) => {
+      const l = BS && BS[ev.detail]; if (!l || !l.length) return;
+      balken.title = l.map((x) => x[0]).join(" · ");
+      balken.innerHTML = l.map((x) => `<i style="background:${x[1]}"></i>`).join("");
+    });
+  }
   /* abgeschlossen: alle Termine der Saison liegen vor heute */
   saisons.forEach((s) => { const a = $(".abg", s); if (a && s.dataset.bis && s.dataset.bis < heute) a.hidden = false; });
 
@@ -271,7 +290,7 @@
       const box = $(".sinfo", kartenEl);
       if (!o) { box.innerHTML = `<p class="sleer">Punkt antippen für Rennen und Strecke.</p>`; return; }
       box.innerHTML = `<h3>${escK(o.loc)}</h3>` + o.ev.map((e) =>
-        `<p class="sev ${e.z}"><span class="srd">${e.rd ? "Lauf " + e.rd : "—"}</span><span class="snm">${escK(e.name)}<small>${spanne(e.von, e.bis)}${e.z === "c" ? " · abgesagt" : e.z === "n" ? " · nächstes Rennen" : ""}</small></span></p>`).join("") +
+        `<p class="sev ${e.z}"><span class="srd">${e.rd ? "Lauf " + e.rd : "—"}</span><span class="snm">${e.z === "c" ? `<s>${escK(e.name)}</s>` : escK(e.name)}<small>${spanne(e.von, e.bis)}${e.z === "c" && !/abgesagt/i.test(e.name) ? " · abgesagt" : e.z === "n" ? " · nächstes Rennen" : ""}</small></span></p>`).join("") +
         `<p class="sakt">${o.ev.filter((e) => e.z !== "c").map((e) => `<button type="button" class="szeile" data-id="${e.id}">Im Kalender <span aria-hidden="true">↓</span></button>`).slice(0, 1).join("")}` +
         (o.slug ? `<a href="../strecken/${o.slug}/">Zur Streckenseite <span aria-hidden="true">→</span></a>` : "") + `</p>`;
       ordnerLinks(box);
@@ -378,7 +397,7 @@
       return gl.filter((x) => x.sks.length);
     }
     const knopf = (sk) => { const S = SER[sk], an = AKTIV.has(sk);
-      return `<button class="wf-chip${an ? "" : " aus"}" type="button" data-serie="${sk}" aria-pressed="${an}" title="${escH(S.name)}"><i style="background:${S.color}"></i><span class="wf-l">${escH(S.name)}</span><span class="wf-s">${escH(S.short)}</span></button>`; };
+      return `<button class="wf-chip${an ? "" : " aus"}" type="button" data-serie="${sk}" aria-pressed="${an}" title="${escH(S.name)}"><i style="--c:${S.color}"></i><span class="wf-l">${escH(S.name)}</span><span class="wf-s">${escH(S.short)}</span></button>`; };
     /* „Formel-Serien“, „Sportwagen- & GT-Serien“ (wie „Weitere … -Serien“ auf den Serienseiten) */
     const gruppenWort = (x) => (x.g === "weitere" ? "weiteren Serien" : x.name.split(" & ").map((w) => w + "-").join(" & ") + "Serien");
     /* Knöpfe werden neu gezeichnet – der Tastaturfokus wandert auf den neuen Knopf an gleicher Stelle */

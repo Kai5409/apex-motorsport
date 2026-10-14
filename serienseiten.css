@@ -89,7 +89,7 @@ button{font:inherit;color:inherit}
 .sev .srd{font:500 12.5px var(--mono);color:var(--muted);padding-top:2px}
 .sev .snm small{display:block;font-size:12.5px;color:var(--muted)}
 .sev.n .srd,.sev.n .snm small{color:var(--gold)}
-.sev.c .snm{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--faint)}
+.sev.c .snm s{text-decoration-color:var(--muted)}
 .sakt{display:flex;flex-wrap:wrap;gap:6px 18px;margin:8px 0 0;font-size:13.5px}
 .sakt:empty{display:none}
 .sakt a,.szeile{color:var(--gold);text-underline-offset:3px;text-decoration:underline;background:none;border:0;padding:0;font:inherit;cursor:pointer}
@@ -222,8 +222,7 @@ h2.sec .abg[hidden]{display:none}
 .win .nw{white-space:nowrap}
 .vorl{font-size:11px;border:1px solid currentColor;border-radius:3px;padding:0 4px;margin-left:4px;white-space:nowrap}
 .reveal{display:none;position:relative;z-index:1;background:none;border:0;padding:0;color:var(--gold);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;margin-top:3px}
-.race.cancel .gp{text-decoration:line-through;text-decoration-color:var(--faint);color:var(--muted)}
-.race.cancel .when{color:var(--muted)}
+.race.cancel .gp{text-decoration:line-through;text-decoration-color:var(--muted)}
 .race.cancel .start{color:var(--muted);font-family:var(--text);font-size:13px}
 .race.next{background:linear-gradient(90deg,rgba(216,168,75,.08),transparent 60%)}
 .race.next .rh{box-shadow:inset 3px 0 0 var(--gold)}
@@ -265,6 +264,10 @@ h2.sec .abg[hidden]{display:none}
 .tbl .tm{display:block;font-size:12.5px;color:var(--muted);font-weight:400;overflow:hidden;text-overflow:ellipsis}
 .tbl .pt{font:500 14px var(--mono)}
 .tbl li:first-child .p{color:var(--gold)}
+/* Titel entschieden: Pokal und Text neben dem Namen an Platz 1 (rutscht bei wenig Platz unter den Namen) */
+.tbl li.champz .nm{white-space:normal}
+.champ{display:inline-flex;align-items:center;gap:5px;margin-left:8px;font:500 11.5px var(--mono);letter-spacing:.04em;color:var(--gold);white-space:nowrap;vertical-align:1px}
+.champ .pokal{width:13px;height:13px;flex:none}
 .more{background:none;border:0;color:var(--paper);padding:12px 2px;cursor:pointer;font-size:13.5px;text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
 .wreveal{font-size:13.5px}
 .sp .wert:not(.auf) .wbody{display:none}
@@ -376,9 +379,10 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .wf-leiste{display:flex;flex-wrap:wrap;gap:8px}
 .wf-chip{display:inline-flex;align-items:center;gap:8px;min-height:36px;background:var(--bg2);border:1px solid var(--rule);border-radius:999px;padding:6px 14px 6px 12px;cursor:pointer;font-size:14px;color:var(--paper);white-space:nowrap}
 .wf-chip:hover{border-color:var(--muted)}
-.wf-chip i{width:9px;height:9px;border-radius:50%;display:block;flex:none}
-.wf-chip.aus{color:var(--muted);border-color:var(--rule);opacity:.5}
-.wf-chip.aus i{filter:grayscale(1) brightness(.7)}
+.wf-chip i{width:9px;height:9px;border-radius:50%;display:block;flex:none;background:var(--c)}
+/* ausgeschaltet: Text voll lesbar (--muted), Chip nur umrandet, Farbpunkt als leerer Ring – keine Deckkraft */
+.wf-chip.aus{color:var(--muted);border-color:var(--rule);background:none}
+.wf-chip.aus i{background:none;box-shadow:inset 0 0 0 1.5px var(--c)}
 .wf-s{display:none}
 .wf-grp{position:relative;display:inline-flex;align-items:stretch;min-width:0;border:1px solid var(--rule);border-color:color-mix(in srgb,var(--gf,#ece7dd) 60%,transparent);border-radius:999px}
 .wf-an{display:inline-flex;align-items:center;gap:8px;min-width:0;min-height:36px;background:none;border:0;border-radius:999px;padding:0 14px;font-size:13.5px;font-weight:600;color:var(--paper);cursor:pointer;white-space:nowrap}
@@ -390,8 +394,8 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .wf-grp.offen{border-color:var(--paper)}
 .wf-grp.offen .wf-pf{color:var(--gold);transform:rotate(180deg)}
 .wf-grp.aus{border-color:var(--rule)}
-.wf-grp.aus .wf-an{color:var(--muted);opacity:.55}
-.wf-grp.aus .wf-an::before{filter:grayscale(1) brightness(.7)}
+.wf-grp.aus .wf-an{color:var(--muted)}
+.wf-grp.aus .wf-an::before{background:none;box-shadow:inset 0 0 0 1.5px var(--gf,var(--muted))}
 .wf-panel{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:25;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:12px;background:var(--bg2);border:1px solid var(--rule);border-radius:10px;box-shadow:0 14px 34px rgba(0,0,0,.55)}
 .wf-chips{display:flex;flex-wrap:wrap;gap:8px}
 /* Schalter „Alle …-Serien“: an = alle Serien der Gruppe an, aus = alle aus */
@@ -548,6 +552,7 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .nah .zr{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;background:var(--bg2)}
 .nah .zr button{border:0;background:none;border-radius:999px;padding:7px 13px;font-size:13.5px;color:var(--muted);cursor:pointer;white-space:nowrap}
 .nah .zr button[aria-checked="true"]{background:var(--paper);color:var(--bg);font-weight:600}
+@media (max-width:359px){.nah .zr button{padding-left:9px;padding-right:9px}}
 .nah .filter .wfilter{margin:0;min-width:0}
 .nah .bereich{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-top:24px}
 @media (min-width:980px){
@@ -658,7 +663,7 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .strecke-seite .rh{grid-template-columns:46px 74px minmax(0,1fr) auto 16px}
 .strecke-seite .rb{padding-left:132px}
 .rd.sk{font:600 12px var(--mono);letter-spacing:.02em;text-align:left;white-space:nowrap}
-.race.past .rd.sk,.race.cancel .rd.sk{opacity:.7}
+.race.past .rd.sk{opacity:.7}
 .rlinks{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0}
 .rb .rlinks:first-child{margin-top:0}
 .rlinks .allres{margin:0}
