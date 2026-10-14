@@ -588,8 +588,8 @@ APEX · Saison <span id="fuss-saison">2026</span> · 19 Serien<span id="datensta
    und geprüft. Fehlt eine Datei oder ist sie fehlerhaft, fehlt nur der zugehörige Teil
    (mit kurzem Hinweis) – der Rest der App läuft normal. Einzelne unlesbare Einträge werden
    übersprungen. */
-const DATEN=["serien","sender","termine-2026","termine-2027","wertungen","regeln","zeitzonen","strecken"];
-const SERIES={}, EVENTS=[], STAND={}, REGELN={}, TZLOC={}, KARTE_ORT=new Map(), KARTE_STRECKEN=[];
+const DATEN=["serien","sender","termine-2026","termine-2027","wertungen","regeln","strecken"];
+const SERIES={}, EVENTS=[], STAND={}, REGELN={}, KARTE_ORT=new Map(), KARTE_STRECKEN=[];
 const GRUPPEN={};              /* Seriengruppen aus serien.json (Reihenfolge = Reihenfolge in der App) */
 let STAND_SEASON=null;     /* Jahr, zu dem die gepflegten Wertungen gehoeren (aus wertungen.json) */
 let TV_GEPRUEFT="";        /* Prüfdatum der Senderangaben (aus sender.json) */
@@ -689,12 +689,6 @@ function uebernehmeDaten(d){
     Object.keys(x).forEach(k=>{const v=x[k];
       if(luecke("regeln",istObj(v)&&istText(v.kurz)&&Array.isArray(v.bloecke)&&v.bloecke.every(b=>Array.isArray(b)&&istText(b[0])&&istText(b[1]))))
         REGELN[k]=v;});
-  });
-  teil("zeitzonen",x=>{
-    if(!istObj(x))return false;
-    Object.keys(x).forEach(k=>{let ok=istText(x[k]);
-      if(ok)try{new Intl.DateTimeFormat("en-US",{timeZone:x[k]});}catch(err){ok=false;}
-      if(luecke("zeitzonen",ok))TZLOC[k]=x[k];});
   });
   teil("strecken",x=>{
     if(!istObj(x)||!istObj(x.karte)||!istObj(x.karte.strecken))return false;
@@ -816,8 +810,6 @@ const DOWf=["So","Mo","Di","Mi","Do","Fr","Sa"];
 function pd(iso){const[y,m,d]=iso.split("-").map(Number);return new Date(y,m-1,d);}
 
 /* ── Zeitzonen ── */
-let TZMODE="mesz";
-const LOCAL_TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||"Europe/Berlin";
 /* Ein Intl.DateTimeFormat anzulegen ist teuer – je Sprache und Optionen (samt Zeitzone) nur einmal, danach wiederverwenden */
 const FORMATE=new Map();
 function formatierer(sprache,opt){
@@ -849,18 +841,10 @@ function sessionAbsDate(e,s){
   for(let dt=new Date(a);dt<=b;dt.setDate(dt.getDate()+1)){ if(DOWf[dt.getDay()]===s.day) return new Date(dt); }
   return new Date(a);
 }
+/* Anzeige einer Session: Tag und Uhrzeit wie in den Daten (deutsche Zeit), dazu das Datum */
 function convTime(e,s){
-  if(TZMODE==="mesz"){
-    const d=sessionAbsDate(e,s);
-    return {t:s.t, day:s.day, dt:`${String(d.getDate()).padStart(2,"0")}.${String(d.getMonth()+1).padStart(2,"0")}.`};
-  }
-  const tz = TZMODE==="local"? LOCAL_TZ : (TZLOC[e.loc]||"Europe/Berlin");
-  const d=sessionAbsDate(e,s), parts=s.t.split(":").map(Number);
-  const inst=deZeitpunkt(d.getFullYear(),d.getMonth()+1,d.getDate(),parts[0],parts[1],s.zone);
-  const t=formatierer("de-DE",{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}).format(inst);
-  const day=formatierer("de-DE",{timeZone:tz,weekday:"short"}).format(inst).replace(".","");
-  const dt=formatierer("de-DE",{timeZone:tz,day:"2-digit",month:"2-digit"}).format(inst);
-  return {t,day,dt};
+  const d=sessionAbsDate(e,s);
+  return {t:s.t, day:s.day, dt:`${String(d.getDate()).padStart(2,"0")}.${String(d.getMonth()+1).padStart(2,"0")}.`};
 }
 
 /* ── Kalender-Export (.ics) ── */
