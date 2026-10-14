@@ -1468,6 +1468,9 @@ function ergZeile(e,rid,kopf,panel,laden){
   return `<div class="sess" id="s-${rid}"><div class="sess-row clk" onclick="toggleRes('${rid}'${auf})">${kopf}</div>`+
     `<div class="sess-respanel">${panel}</div></div>`;
 }
+/* Rallyes mit Wertungsprüfungen (WRC, ERC – nicht die Dakar): das Ergebnis steht als Zeile „Gesamtwertung (Rallye)“
+   über den Sessions, die Power Stage ist keine eigene Ergebniszeile (nur mit eigener Liste) */
+const RALLYE_GESAMT=["wrc","erc"];
 function buildSessions(e,evId,status){
   let out="";
   out+=trackInfoHTML(e);
@@ -1480,29 +1483,30 @@ function buildSessions(e,evId,status){
   /* Ergebnislisten gibt es nur für gewertete Events mit Sieger */
   const fertig=status==="done"&&!!e.result;
   const erg=fertig?ergStand(e):{zustand:"keine",listen:[]};
+  const rg=RALLYE_GESAMT.includes(e.s);
   const namen=new Set(e.sessions.map(s=>s.n)), mitRennen=e.sessions.some(s=>isRaceName(s.n));
-  /* Ergebnisse ohne eigene Session: WRC-Gesamtwertung (Rallye) und Rennen ohne Zeitplan oben,
+  /* Ergebnisse ohne eigene Session: Gesamtwertung (Rallye) bei WRC und ERC und Rennen ohne Zeitplan oben,
      weitere Rennen eines Events mit Zeitplan (z. B. zweites Rennen) unter den Sessions */
   let extra="";
   if(fertig){
     let liste=erg.listen.filter(l=>!namen.has(l.n)).map(l=>l.n);
-    if(!liste.length&&e.s==="wrc")liste=["Gesamtwertung"];
+    if(!liste.length&&rg)liste=["Gesamtwertung"];
     else if(!liste.length&&!mitRennen)liste=["Ergebnis"];
     liste.forEach(n=>{
-      const titel=e.s==="wrc"&&n==="Gesamtwertung"?"Gesamtwertung (Rallye)":n;
-      const res=e.s==="wrc"&&n==="Gesamtwertung"?e.resOverall:null;
+      const titel=rg&&n==="Gesamtwertung"?"Gesamtwertung (Rallye)":n;
+      const res=rg&&n==="Gesamtwertung"?e.resOverall:null;
       extra+=ergZeile(e,evId+"-r-"+n.replace(/\W+/g,""),
         `<span class="sess-chev">▶</span><span class="sess-n ovr">${esc(titel)}</span><span class="sess-t"></span><span class="sess-meta"></span><span></span>`,
         ergPanel(e,n,erg,res,!res),true);
     });
   }
-  const unten=mitRennen&&e.s!=="wrc";
+  const unten=mitRennen&&!rg;
   if(!unten){out+=extra;extra="";}
   e.sessions.forEach((s,i)=>{
     const rid=evId+"-s"+i;
     const liste=erg.listen.some(l=>l.n===s.n);
     /* Rennen (außer WRC-Wertungsprüfungen ohne Liste) klappen das Ergebnis auf */
-    const rennen=fertig&&isRaceName(s.n)&&(e.s!=="wrc"||liste||!!s.res);
+    const rennen=fertig&&isRaceName(s.n)&&(!rg||liste||!!s.res);
     const ct=convTime(e,s);
     const cal=s.t?`<button class="scal" title="Diese Session in den Kalender" onclick="event.stopPropagation();exportSession('${e.s}','${e.rd}',${i},'${e.sz||""}')">＋</button>`:`<span></span>`;
     const kopf=`<span class="sess-chev">▶</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}`;
@@ -1755,7 +1759,7 @@ function aboHTML(datei,text,seite){
 const SER_OFFEN=new Set();   /* aufgeklappte Runden (Event-Link-ID), bleiben beim Neuzeichnen offen */
 function serPanel(e){
   const erg=ergStand(e);
-  if(erg.listen.length)return erg.listen.map(l=>(erg.listen.length>1?`<div class="ser-erg-h">${esc(e.s==="wrc"&&l.n==="Gesamtwertung"?"Gesamtwertung (Rallye)":l.n)}</div>`:"")+fmtListe(l)).join("");
+  if(erg.listen.length)return erg.listen.map(l=>(erg.listen.length>1?`<div class="ser-erg-h">${esc(RALLYE_GESAMT.includes(e.s)&&l.n==="Gesamtwertung"?"Gesamtwertung (Rallye)":l.n)}</div>`:"")+fmtListe(l)).join("");
   return ergPanel(e,"",erg,e.resOverall||null,!e.resOverall);
 }
 function serErgebnis(sk,rd,sz){
