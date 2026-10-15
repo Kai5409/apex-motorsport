@@ -474,11 +474,17 @@
     ]},
   {"s": "mgp", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
     "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "03:45"},
+      {"n": "Practice", "day": "Fr", "t": "08:00"},
+      {"n": "FP2", "day": "Sa", "t": "03:10"},
+      {"n": "Qualifying", "day": "Sa", "t": "03:50"},
       {"n": "Sprint", "day": "Sa", "t": "08:00"},
+      {"n": "Warm Up", "day": "So", "t": "03:40"},
       {"n": "Rennen", "day": "So", "t": "08:00"}
     ]},
   {"s": "mgp", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "13:45"},
       {"n": "Practice", "day": "Fr", "t": "18:00"},
       {"n": "FP2", "day": "Sa", "t": "13:00"},
       {"n": "Qualifying", "day": "Sa", "t": "13:40"},
@@ -1164,9 +1170,21 @@
       {"n": "Rennen", "day": "So", "t": "07:15"}
     ]},
   {"s": "moto2", "rd": 18, "name": "Großer Preis von Australien", "loc": "Phillip Island", "d0": "2026-10-23", "d1": "2026-10-25", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "00:50"},
+      {"n": "Practice", "day": "Fr", "t": "05:05"},
+      {"n": "FP2", "day": "Sa", "t": "00:25"},
+      {"n": "Qualifying", "day": "Sa", "t": "04:40"},
+      {"n": "Rennen", "day": "So", "t": "02:15", "zone": "MEZ"}
+    ]},
   {"s": "moto2", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "02:50"},
+      {"n": "Practice", "day": "Fr", "t": "07:05"},
+      {"n": "FP2", "day": "Sa", "t": "02:25"},
+      {"n": "Qualifying", "day": "Sa", "t": "06:40"},
+      {"n": "Rennen", "day": "So", "t": "06:15"}
+    ]},
   {"s": "moto2", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "12:50"},
@@ -1238,9 +1256,21 @@
       {"n": "Rennen", "day": "So", "t": "06:00"}
     ]},
   {"s": "moto3", "rd": 18, "name": "Großer Preis von Australien", "loc": "Phillip Island", "d0": "2026-10-23", "d1": "2026-10-25", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "00:00"},
+      {"n": "Practice", "day": "Fr", "t": "04:15"},
+      {"n": "FP2", "day": "Fr", "t": "23:40"},
+      {"n": "Qualifying", "day": "Sa", "t": "03:45"},
+      {"n": "Rennen", "day": "So", "t": "02:00", "zone": "MESZ"}
+    ]},
   {"s": "moto3", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "FP1", "day": "Fr", "t": "02:00"},
+      {"n": "Practice", "day": "Fr", "t": "06:15"},
+      {"n": "FP2", "day": "Sa", "t": "01:40"},
+      {"n": "Qualifying", "day": "Sa", "t": "05:45"},
+      {"n": "Rennen", "day": "So", "t": "04:00"}
+    ]},
   {"s": "moto3", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "12:00"},
@@ -1294,7 +1324,12 @@
   {"s": "erc", "rd": 6, "name": "Rallye Ceredigion (Wales)", "loc": "Aberystwyth", "d0": "2026-09-04", "d1": "2026-09-06", "status": "done", "result": "Kris Meeke (Toyota)",
     "sessions": []},
   {"s": "erc", "rd": 7, "name": "Rallye Nordportugal · Finale", "loc": "Fafe", "d0": "2026-10-23", "d1": "2026-10-25", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "Etappe 1", "day": "Fr", "t": "20:05"},
+      {"n": "Etappe 2", "day": "Sa", "t": "09:05"},
+      {"n": "Etappe 3", "day": "So", "t": "09:05"},
+      {"n": "Power Stage", "day": "So", "t": "16:05"}
+    ]},
   {"s": "dakar", "rd": 1, "name": "48. Rallye Dakar", "loc": "Saudi-Arabien", "d0": "2026-01-03", "d1": "2026-01-17", "status": "done", "result": "Autos: Nasser Al-Attiyah (Dacia) · Motorräder: Luciano Benavides (KTM)",
     "sessions": []},
   {"s": "imsa", "rd": 1, "name": "24 Stunden von Daytona", "loc": "Daytona", "d0": "2026-01-22", "d1": "2026-01-25", "status": "done", "result": "Porsche #7 (Nasr/Andlauer/Heinrich)",

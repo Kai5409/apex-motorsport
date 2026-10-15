@@ -695,7 +695,7 @@ function pruefeEvent(e,n){
   const sessions=[];
   e.sessions.forEach(s=>{
     if(istObj(s)&&istText(s.n)&&istTag(s.day)&&istZeit(s.t)&&(s.res==null||ergebnisOK(s.res)))
-      sessions.push({n:s.n,day:s.day,t:s.t,res:s.res||null,partial:s.partial||false});
+      sessions.push(Object.assign({n:s.n,day:s.day,t:s.t,res:s.res||null,partial:s.partial||false},s.zone==="MESZ"||s.zone==="MEZ"?{zone:s.zone}:{}));
     else DATEN_LUECKE.add(n);
   });
   /* _jahr: Saisondatei, aus der das Event stammt – die Ergebnislisten liegen in der gleichnamigen Datei */
@@ -892,6 +892,12 @@ function wallToInstant(y,m,d,hh,mm,tz){
   if(off2!==off) inst=new Date(guess.getTime()-off2*60000);
   return inst;
 }
+/* Uhrzeit einer Session (deutsche Zeit) als Zeitpunkt. In der Stunde, die es bei der Umstellung im Oktober
+   zweimal gibt (02:00–02:59), sagt das Feld zone, welche gemeint ist: "MESZ" (die erste) oder "MEZ" (die zweite) */
+function deZeitpunkt(y,m,d,hh,mm,zone){
+  if(zone==="MESZ"||zone==="MEZ")return new Date(Date.UTC(y,m-1,d,hh,mm)-(zone==="MESZ"?120:60)*60000);
+  return wallToInstant(y,m,d,hh,mm,"Europe/Berlin");
+}
 function sessionAbsDate(e,s){
   const a=pd(e.d0),b=pd(e.d1);
   for(let dt=new Date(a);dt<=b;dt.setDate(dt.getDate()+1)){ if(DOWf[dt.getDay()]===s.day) return new Date(dt); }
@@ -904,7 +910,7 @@ function convTime(e,s){
   }
   const tz = TZMODE==="local"? LOCAL_TZ : (TZLOC[e.loc]||"Europe/Berlin");
   const d=sessionAbsDate(e,s), parts=s.t.split(":").map(Number);
-  const inst=wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),parts[0],parts[1],"Europe/Berlin");
+  const inst=deZeitpunkt(d.getFullYear(),d.getMonth()+1,d.getDate(),parts[0],parts[1],s.zone);
   const t=formatierer("de-DE",{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}).format(inst);
   const day=formatierer("de-DE",{timeZone:tz,weekday:"short"}).format(inst).replace(".","");
   const dt=formatierer("de-DE",{timeZone:tz,day:"2-digit",month:"2-digit"}).format(inst);
@@ -923,14 +929,14 @@ function dtZone(inst){return zoneOffsetMin(inst,"Europe/Berlin")===120?"MESZ":"M
 function pad2(n){return String(n).padStart(2,"0");}
 function icsStamp(d){return d.getUTCFullYear()+pad2(d.getUTCMonth()+1)+pad2(d.getUTCDate())+"T"+pad2(d.getUTCHours())+pad2(d.getUTCMinutes())+"00Z";}
 function icsEsc(t){return String(t).replace(/([\\,;])/g,"\\$1").replace(/\n/g,"\\n");}
-/* Zeitpunkt je Session zwischengespeichert (ms). Er gilt, solange Datum des Events, Tag und Uhrzeit der Session gleich
+/* Zeitpunkt je Session zwischengespeichert (ms). Er gilt, solange Datum des Events, Tag, Uhrzeit und zone der Session gleich
    bleiben – sonst wird neu gerechnet; neu geladene Daten beginnen mit leerem Speicher (uebernehmeDaten) */
 let SESS_ZEIT=new WeakMap();
 function sessionInstant(e,s){
-  const k=e.d0+"|"+e.d1+"|"+s.day+"|"+s.t, z=SESS_ZEIT.get(s);
+  const k=e.d0+"|"+e.d1+"|"+s.day+"|"+s.t+"|"+(s.zone||""), z=SESS_ZEIT.get(s);
   if(z&&z.k===k)return new Date(z.t);
   const d=sessionAbsDate(e,s),p=s.t.split(":").map(Number);
-  const t=wallToInstant(d.getFullYear(),d.getMonth()+1,d.getDate(),p[0],p[1],"Europe/Berlin").getTime();
+  const t=deZeitpunkt(d.getFullYear(),d.getMonth()+1,d.getDate(),p[0],p[1],s.zone).getTime();
   SESS_ZEIT.set(s,{k,t}); return new Date(t);
 }
 /* Dauer aus dem Sessionnamen, wenn er eine nennt (Minuten, sonst 0): „Rennen (24h)“, „Rennen (10h)“,
@@ -1297,7 +1303,9 @@ function onAirStand(){
   computeNextSession();
   let o;
   if(live.length){
-    o={live:true,liste:live.map(e=>{const nx=nextSessOf(e);return {e,s:nx?nx.s:null,inst:nx?nx.inst:null};})};
+    /* nach der nächsten Session (wie „Als Nächstes“); Wochenenden ohne weitere Session danach */
+    o={live:true,liste:live.map(e=>{const nx=nextSessOf(e);return {e,s:nx?nx.s:null,inst:nx?nx.inst:null};})
+      .sort((a,b)=>(a.inst==null)-(b.inst==null)||(a.inst!=null&&b.inst!=null?a.inst-b.inst:0))};
   } else if(NEXT_SESS){
     /* Nicht nur die eine naechste Session zeigen, sondern alle Serien,
        deren naechste Session im selben Zeitfenster liegt (72 Stunden) -
@@ -1460,6 +1468,10 @@ function ergZeile(e,rid,kopf,panel,laden){
   return `<div class="sess" id="s-${rid}"><div class="sess-row clk" onclick="toggleRes('${rid}'${auf})">${kopf}</div>`+
     `<div class="sess-respanel">${panel}</div></div>`;
 }
+/* Rallyes mit Wertungsprüfungen (WRC, ERC – nicht die Dakar): das Ergebnis steht als Zeile „Gesamtwertung (Rallye)“
+   über den Sessions, die Power Stage ist keine eigene Ergebniszeile (nur mit eigener Liste) und bekommt keinen Hinweis
+   „Wertung noch nicht erfasst“ */
+const RALLYE_GESAMT=["wrc","erc"];
 function buildSessions(e,evId,status){
   let out="";
   out+=trackInfoHTML(e);
@@ -1472,29 +1484,30 @@ function buildSessions(e,evId,status){
   /* Ergebnislisten gibt es nur für gewertete Events mit Sieger */
   const fertig=status==="done"&&!!e.result;
   const erg=fertig?ergStand(e):{zustand:"keine",listen:[]};
+  const rg=RALLYE_GESAMT.includes(e.s);
   const namen=new Set(e.sessions.map(s=>s.n)), mitRennen=e.sessions.some(s=>isRaceName(s.n));
-  /* Ergebnisse ohne eigene Session: WRC-Gesamtwertung (Rallye) und Rennen ohne Zeitplan oben,
+  /* Ergebnisse ohne eigene Session: Gesamtwertung (Rallye) bei WRC und ERC und Rennen ohne Zeitplan oben,
      weitere Rennen eines Events mit Zeitplan (z. B. zweites Rennen) unter den Sessions */
   let extra="";
   if(fertig){
     let liste=erg.listen.filter(l=>!namen.has(l.n)).map(l=>l.n);
-    if(!liste.length&&e.s==="wrc")liste=["Gesamtwertung"];
+    if(!liste.length&&rg)liste=["Gesamtwertung"];
     else if(!liste.length&&!mitRennen)liste=["Ergebnis"];
     liste.forEach(n=>{
-      const titel=e.s==="wrc"&&n==="Gesamtwertung"?"Gesamtwertung (Rallye)":n;
-      const res=e.s==="wrc"&&n==="Gesamtwertung"?e.resOverall:null;
+      const titel=rg&&n==="Gesamtwertung"?"Gesamtwertung (Rallye)":n;
+      const res=rg&&n==="Gesamtwertung"?e.resOverall:null;
       extra+=ergZeile(e,evId+"-r-"+n.replace(/\W+/g,""),
         `<span class="sess-chev">▶</span><span class="sess-n ovr">${esc(titel)}</span><span class="sess-t"></span><span class="sess-meta"></span><span></span>`,
         ergPanel(e,n,erg,res,!res),true);
     });
   }
-  const unten=mitRennen&&e.s!=="wrc";
+  const unten=mitRennen&&!rg;
   if(!unten){out+=extra;extra="";}
   e.sessions.forEach((s,i)=>{
     const rid=evId+"-s"+i;
     const liste=erg.listen.some(l=>l.n===s.n);
     /* Rennen (außer WRC-Wertungsprüfungen ohne Liste) klappen das Ergebnis auf */
-    const rennen=fertig&&isRaceName(s.n)&&(e.s!=="wrc"||liste||!!s.res);
+    const rennen=fertig&&isRaceName(s.n)&&(!rg||liste||!!s.res);
     const ct=convTime(e,s);
     const cal=s.t?`<button class="scal" title="Diese Session in den Kalender" onclick="event.stopPropagation();exportSession('${e.s}','${e.rd}',${i},'${e.sz||""}')">＋</button>`:`<span></span>`;
     const kopf=`<span class="sess-chev">▶</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}`;
@@ -1503,7 +1516,7 @@ function buildSessions(e,evId,status){
     } else if(s.res){
       out+=ergZeile(e,rid,kopf,fmtRes(s.res,!!s.partial),false);
     } else {
-      const note = (status==="done"&&isRaceName(s.n)&&!(e.abbruch&&verborgen(ergKey(e)))) ? `<div class="sess-flat">${e.abbruch?ABBRUCH:"Wertung noch nicht erfasst"}</div>` : "";
+      const note = (status==="done"&&isRaceName(s.n)&&!rg&&!(e.abbruch&&verborgen(ergKey(e)))) ? `<div class="sess-flat">${e.abbruch?ABBRUCH:"Wertung noch nicht erfasst"}</div>` : "";
       out+=`<div class="sess" id="s-${rid}"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
     }
   });
@@ -1747,7 +1760,7 @@ function aboHTML(datei,text,seite){
 const SER_OFFEN=new Set();   /* aufgeklappte Runden (Event-Link-ID), bleiben beim Neuzeichnen offen */
 function serPanel(e){
   const erg=ergStand(e);
-  if(erg.listen.length)return erg.listen.map(l=>(erg.listen.length>1?`<div class="ser-erg-h">${esc(e.s==="wrc"&&l.n==="Gesamtwertung"?"Gesamtwertung (Rallye)":l.n)}</div>`:"")+fmtListe(l)).join("");
+  if(erg.listen.length)return erg.listen.map(l=>(erg.listen.length>1?`<div class="ser-erg-h">${esc(RALLYE_GESAMT.includes(e.s)&&l.n==="Gesamtwertung"?"Gesamtwertung (Rallye)":l.n)}</div>`:"")+fmtListe(l)).join("");
   return ergPanel(e,"",erg,e.resOverall||null,!e.resOverall);
 }
 function serErgebnis(sk,rd,sz){
