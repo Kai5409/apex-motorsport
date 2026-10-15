@@ -38,7 +38,7 @@
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="F1"><i style="background:#ff3000"></i></span>Singapur</h1>
+      <h1 id="h1"><span class="bar serien" title="F1" data-saisons="{&quot;2026&quot;:[[&quot;F1&quot;,&quot;#ff3000&quot;]],&quot;2027&quot;:[[&quot;F1&quot;,&quot;#ff3000&quot;]]}"><i style="background:#ff3000"></i></span>Singapur</h1>
       <p class="stroff">Marina Bay Street Circuit</p>
       <p class="lead">Termine <span>– alle Rennen in Singapur mit Startzeiten in deutscher Zeit: Formel 1.</span></p>
       <dl class="fakten" style="--n:4"><div><dt>Länge</dt><dd>4,927<small>km</small></dd></div><div><dt>Kurven</dt><dd>19</dd></div><div><dt>Termine 2027</dt><dd>1</dd></div><div><dt>Zeitverschiebung</dt><dd>+6<small>h</small></dd></div></dl>
@@ -72,7 +72,7 @@
         <li><a href="#naehe">In der Nähe</a></li>
       </ul></nav>
       <section class="kal" id="kalender" aria-label="Termine">
-   <div class="saisonwahl"><div class="seg saisonseg" role="group" aria-label="Saison"><button type="button" aria-pressed="true" data-saison="2027">2027</button><button type="button" aria-pressed="false" data-saison="2026">2026</button></div>
+   <div class="saisonwahl"><div class="segs"><div class="seg saisonseg" role="group" aria-label="Saison"><button type="button" aria-pressed="true" data-saison="2027">2027</button><button type="button" aria-pressed="false" data-saison="2026">2026</button></div><div class="seg zeitseg" role="group" aria-label="Zeitangaben"><button type="button" aria-pressed="true" data-zeit="de">Deutsche Zeit</button><button type="button" aria-pressed="false" data-zeit="ort">Ortszeit</button></div></div>
      <button class="switch" type="button" role="switch" aria-checked="false" id="spoiler"><span class="track"></span>Ergebnisse verbergen</button></div>
    <div class="saison" data-saison="2027" data-bis="2027-10-10">
    <div class="sechead"><div><h2 class="sec">Saison 2027<span class="abg" hidden>abgeschlossen</span></h2><p>1 Termin aus 1 Serie</p></div></div>
@@ -93,9 +93,9 @@
       <span class="rd sk" style="color:#ff3000">F1</span>
       <span class="when">09–11<small>Okt</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-17">Großer Preis von Singapur<span class="tag">Sprint</span></button><span class="win" data-nosnippet>Sieger <b>Max Verstappen (Red Bull)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
-      <span class="start">So 14:00<small>MESZ</small></span><span class="chev" aria-hidden="true">▶</span>
+      <span class="start"><span class="zd">So 14:00<small>MESZ</small></span><span class="zo" data-nosnippet>So 20:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
     </div>
-    <div class="rb" id="b-f1-17"><ul class="sess"><li class="n">FP1</li><li class="v">Fr 09.10. · 10:30 MESZ</li><li class="n">Sprint-Quali</li><li class="v">Fr 09.10. · 14:30 MESZ</li><li class="n">Sprint</li><li class="v">Sa 10.10. · 11:00 MESZ</li><li class="n">Qualifying</li><li class="v">Sa 10.10. · 15:00 MESZ</li><li class="n race">Rennen</li><li class="v race">So 11.10. · 14:00 MESZ</li></ul><a class="evcal" href="../../kalender/termine/f1-17.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../formel-1/#r-f1-17">Zur F1-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=f1-17">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li></ul>
+    <div class="rb" id="b-f1-17"><ul class="sess"><li class="n">FP1</li><li class="v"><span class="zd">Fr 09.10. · 10:30 MESZ</span><span class="zo" data-nosnippet>Fr 09.10. · 16:30 Ortszeit</span></li><li class="n">Sprint-Quali</li><li class="v"><span class="zd">Fr 09.10. · 14:30 MESZ</span><span class="zo" data-nosnippet>Fr 09.10. · 20:30 Ortszeit</span></li><li class="n">Sprint</li><li class="v"><span class="zd">Sa 10.10. · 11:00 MESZ</span><span class="zo" data-nosnippet>Sa 10.10. · 17:00 Ortszeit</span></li><li class="n">Qualifying</li><li class="v"><span class="zd">Sa 10.10. · 15:00 MESZ</span><span class="zo" data-nosnippet>Sa 10.10. · 21:00 Ortszeit</span></li><li class="n race">Rennen</li><li class="v race"><span class="zd">So 11.10. · 14:00 MESZ</span><span class="zo" data-nosnippet>So 11.10. · 20:00 Ortszeit</span></li></ul><a class="evcal" href="../../kalender/termine/f1-17.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../formel-1/#r-f1-17">Zur F1-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=f1-17">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li></ul>
    </div>
       </section>
       <section class="strecke-info" id="strecke" aria-labelledby="h-strecke">
@@ -130,7 +130,7 @@
   </div>
 
   <footer>
-    <p>Alle Zeiten in deutscher Zeit (MEZ/MESZ). Angaben ohne Gewähr – Startzeiten künftiger Rennen können sich noch ändern.</p>
+    <p>Zeiten in deutscher Zeit (MEZ/MESZ), mit dem Schalter über den Terminen auch in Ortszeit der Strecke. Angaben ohne Gewähr – Startzeiten künftiger Rennen können sich noch ändern.</p>
     <p><a href="../">Alle Strecken</a> · <a href="../../serien/">Alle Serien</a> · <a href="../../dieses-wochenende/">Dieses Wochenende</a> · <a href="../../in-der-naehe/">In der Nähe</a></p>
     <p>Entfernungen in Luftlinie. Ein auf der Seite „In der Nähe“ gewählter Startort bleibt in diesem Browser gespeichert und wird von APEX nicht übertragen. Nur beim Antippen von „Route planen“ übergibt der Link Start und Ziel an Google Maps; dort gelten die Datenschutzbestimmungen von Google. Kartengrundlage: Natural Earth (gemeinfrei).</p>
     <p>APEX steht in keiner Verbindung zu den Betreibern der Strecke oder den Veranstaltern der Serien. <a href="../../#datenschutz">Datenschutz</a></p>

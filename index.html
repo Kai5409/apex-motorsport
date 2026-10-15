@@ -51,8 +51,6 @@
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--kopf-h,0px) + var(--snav-h,0px) + 12px)}
 body{background:var(--bg);color:var(--paper);font-family:"Inter",system-ui,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-.disp{font-family:"Anton",Impact,"Arial Narrow",sans-serif;letter-spacing:.01em;text-transform:uppercase}
-.mono{font-family:"IBM Plex Mono",monospace}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 #app{max-width:1240px;margin:0 auto;padding:0 26px 130px}
 
@@ -77,11 +75,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .mast-r{text-align:right;font-size:10.5px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;line-height:1.7}
 .mast-r b{color:var(--paper);font-weight:600}
 .mast-z2{min-height:1.7em}
-.tzsw{display:flex;gap:4px;justify-content:flex-end;align-items:center;margin-top:9px}
-.tzsw .tzl{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;color:var(--muted);margin-right:2px}
-.tzsw button{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--muted);transition:all .15s}
-.tzsw button:hover{color:var(--paper)}
-.tzsw button.on{background:var(--paper);color:var(--bg);border-color:var(--paper);font-weight:600}
 
 /* On-Air */
 .onair{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;padding:12px 0;border-bottom:1px solid var(--rule);min-height:50px}
@@ -129,10 +122,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .filterbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:16px 0 2px}
 .filterbar .fl-lab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-right:4px}
 .chip{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;padding:5px 11px 5px 9px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--paper);display:inline-flex;align-items:center;gap:7px;transition:opacity .15s,border-color .15s,background .15s}
-.chip .cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.chip .cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--c)}
 .chip{white-space:nowrap} .chip .cn-s{display:none}
-.chip.off{opacity:.38;border-color:var(--rule);color:var(--muted)}
-.chip.off .cdot{filter:grayscale(1) brightness(.7)}
+/* ausgeschaltet: Text voll lesbar (--muted), Chip nur umrandet, Farbpunkt als leerer Ring – keine Deckkraft */
+.chip.off{border-color:var(--rule);color:var(--muted)}
+.chip.off .cdot{background:none;box-shadow:inset 0 0 0 1.5px var(--c)}
 .chip.allbtn{border-color:var(--paper);color:var(--paper);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px}
 .chip.nur{min-width:0;overflow:hidden}
 
@@ -152,8 +146,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .grp.offen{border-color:var(--paper)}
 .grp.offen .grp-pf{color:var(--red);transform:rotate(180deg)}
 .grp.aus{border-color:var(--rule)}
-.grp.aus .grp-an{color:var(--muted);opacity:.5}
-.grp.aus .grp-an::before{filter:grayscale(1) brightness(.7)}
+.grp.aus .grp-an{color:var(--muted)}
+.grp.aus .grp-an::before{background:none;box-shadow:inset 0 0 0 1.5px var(--gf,var(--muted))}
 .grp-panel{position:absolute;left:0;right:0;top:calc(100% - 6px);z-index:5;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:12px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:8px;box-shadow:0 14px 34px rgba(0,0,0,.55)}
 .grp-chips{display:flex;flex-wrap:wrap;gap:8px}
 /* Schalter „Alle …-Serien“: an = alle Serien der Gruppe an, aus = alle aus */
@@ -170,23 +164,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .grp-h+.ser-block,.grp-h+.std-block{padding-top:18px}
 .grp-h+.tv-row,.grp-h+.rl-block{border-top:0}
 .tv-intro+.grp-h,.rl-intro+.grp-h{margin-top:8px}
-
-/* Toolbar */
-.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 0 2px}
-.search{flex:1;min-width:180px;background:var(--bg2);border:1px solid var(--rule-strong);border-radius:999px;color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;padding:8px 14px;outline:none}
-.search::placeholder{color:var(--muted)}
-.search:focus{border-color:var(--muted)}
-.tbtn{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule-strong);border-radius:999px;color:var(--muted);transition:all .15s;white-space:nowrap}
-.tbtn:hover{color:var(--paper)}
-.tbtn.on{background:var(--gold);color:#241a06;border-color:var(--gold);font-weight:600}
-.tbtn.gold{color:var(--gold);border-color:var(--rule-strong)}
-.tbtn.gold:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
-.searchcnt{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.05em;padding:8px 0 0}
-
-/* Favoriten-Stern */
-.favstar{font-size:16px;line-height:1;color:var(--faint);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .15s;align-self:center}
-.favstar:hover{color:var(--gold);transform:scale(1.15)}
-.favstar.on{color:var(--gold)}
 
 /* Strecken-Infos */
 .trackinfo{display:flex;flex-wrap:wrap;gap:5px 16px;padding:0 0 12px;margin-bottom:4px;border-bottom:1px solid var(--rule)}
@@ -213,8 +190,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .wknd.next::before{border-color:var(--red)}
 .wk-top{display:grid;grid-template-columns:74px 1fr;gap:16px;align-items:start}
 .wk-top>div{min-width:0}
-.wk-date{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:30px;line-height:.92;color:var(--paper);padding-top:6px}
-.wk-date .dow{display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.12em;margin-top:5px;text-transform:uppercase}
 /* Heute-Linie: trennt Vergangenheit und Zukunft; am Handy steht darunter die Live-Info */
 .heute{position:relative;margin:16px 0 0 -30px;border-top:1px solid rgba(255,48,0,.45);scroll-margin-top:calc(var(--kopf-h,0px) + 18px)}
 .heute::before{content:"";position:absolute;left:2px;top:-5px;width:9px;height:9px;border-radius:50%;background:var(--red)}
@@ -372,7 +347,7 @@ a.calbtn{line-height:normal;text-decoration:none}
 .ser-link:hover,.ser-link:focus-visible{text-decoration-color:currentColor}
 .ser-meta{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.08em;margin:10px 0 18px;text-transform:uppercase}
 .ser-round{display:grid;grid-template-columns:40px 78px 1fr auto 14px;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
-.ser-round.cancel{opacity:.4}
+.ser-round.cancel s{text-decoration-color:var(--muted)}
 .ser-round .no{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
 .ser-round .dt{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
 .ser-round .rn{font-size:14.5px;font-weight:600}
@@ -389,20 +364,8 @@ a.calbtn{line-height:normal;text-decoration:none}
 .ser-erg-h{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:12px 0 4px}
 .ser-erg-h:first-child{padding-top:2px}
 
-/* Jahr */
-.cal-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:8px 0 14px;letter-spacing:.04em}
-.cal-row{display:grid;grid-template-columns:88px 52px 1fr 110px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--rule);font-size:13px}
-.cal-row.cancel{opacity:.42}
-.cal-row .cd{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
-.cal-row .cs{font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;letter-spacing:.05em;padding:2px 6px;border-radius:2px;text-align:center;text-transform:uppercase}
-.cal-row .cn{font-weight:500}
-.cal-row .cn .strike{text-decoration:line-through;color:var(--muted)}
-.cal-row .cw{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--gold);text-align:right;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-
 /* Wertung / Standings */
-.std-intro{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin:8px 0 14px;letter-spacing:.04em;line-height:1.7}
 .std-block{padding:30px 0 8px;border-bottom:1px solid var(--rule)}
-.std-gap{height:26px}
 /* Serienleiste über Wertung und Serien (Tippen springt zur Serie).
    PC: alle Serien, klebt unter dem Kopf. Handy: eine schmale klebende Zeile mit Auswahl (.zeile) */
 .snav{position:sticky;top:var(--kopf-h,0px);z-index:30;background:var(--bg);display:flex;flex-wrap:wrap;gap:7px 16px;padding:12px 0 11px;border-bottom:1px solid var(--rule)}
@@ -426,12 +389,14 @@ a.calbtn{line-height:normal;text-decoration:none}
 .std-seg button[aria-pressed="true"]{background:#221f1b;color:var(--paper)}
 .std-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,7vw,54px);line-height:.9;text-transform:uppercase}
 .std-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.06em;margin:8px 0 4px;text-transform:uppercase}
-.std-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.05em;padding:10px 0 0}
 .std-sub{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:18px 0 2px}
 .std-row{display:grid;grid-template-columns:30px 1fr auto 52px;gap:12px;align-items:baseline;padding:8px 0;border-top:1px solid var(--rule)}
 .std-row .sp{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
 .std-row.lead .sp{color:var(--gold)}
 .std-nm{font-size:14.5px;font-weight:600}
+/* Titel entschieden (wertungen.json: champion/champion2): Pokal und Text neben dem Namen an Platz 1 */
+.std-nm .champ{display:inline-flex;align-items:center;gap:4px;margin-left:8px;font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);white-space:nowrap;vertical-align:1px}
+.std-nm .champ svg{width:12px;height:12px;flex-shrink:0}
 .std-nm .tm{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);font-weight:400;margin-top:2px;letter-spacing:.03em}
 .std-wins{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--gold);align-self:center}
 .std-pts{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;text-align:right;line-height:1}
@@ -470,7 +435,6 @@ a.calbtn{line-height:normal;text-decoration:none}
 .legal p{font-size:12.5px;line-height:1.72;color:var(--muted);margin:0 0 6px}
 .legal a{color:var(--muted)}
 .tv-open{display:block;color:var(--muted);font-style:italic}
-.tv-src{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);letter-spacing:.04em;line-height:1.7;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--rule)}
 
 footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.05em;line-height:1.9}
 
@@ -502,19 +466,17 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 @media(max-width:640px){
   #app{padding:0 16px 110px} .nav{gap:18px} .tab{font-size:13px}
   .wk-top{grid-template-columns:58px 1fr}
-  .wk-date{font-size:24px}
   .ev-name{font-size:15px}
-  .sess-row{grid-template-columns:16px 1fr 52px 26px;gap:7px;font-size:10.5px}
+  .sess-row{grid-template-columns:16px minmax(0,1fr) auto auto 24px;gap:7px;font-size:10.5px}
+  .sess-t{white-space:nowrap}
   .sess-meta{display:block;font-size:9.5px}
   .sess-date{display:none}
-  .sess-row .calico{display:none}
   .month-head{font-size:42px}
   .ser-round{grid-template-columns:30px 1fr auto 12px;gap:10px} .ser-round .dt{display:none}
   .ser-erg{padding-left:0}
   .chip .cn-l{display:none} .chip .cn-s{display:inline}
   .grp-n-l{display:none} .grp-n-s{display:inline}
   .filterbar{gap:6px} .filterbar .fl-lab{margin-right:0} .chip{padding:5px 9px 5px 8px;gap:6px}
-  .cal-row{grid-template-columns:72px 44px 1fr;gap:8px} .cal-row .cw{display:none}
   .std-row{grid-template-columns:26px 1fr auto 44px;gap:8px} .std-wins{display:none}
   .tv-row{grid-template-columns:1fr;gap:6px}
   .rl-item{grid-template-columns:1fr;gap:4px}
@@ -531,26 +493,10 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   .grp-an{font-size:10px;gap:3px;padding:0 5px}
 }
 
-/* ── Wochenende / Deep-Link / PWA ── */
+/* ── Deep-Link / PWA ── */
 .installbtn{display:none;margin-top:7px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--paper);border:1px solid var(--rule-strong);padding:4px 9px;align-items:center;gap:6px}
 .installbtn:hover{border-color:var(--paper)}
 .calbtn+.calbtn{margin-left:8px}
-.feedlink{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
-.wke-lead{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding:22px 0 2px}
-.wke-day{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(26px,5vw,42px);text-transform:uppercase;line-height:1;padding:28px 0 10px;border-bottom:2px solid var(--paper)}
-.wke-day .yr{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.1em;margin-left:12px}
-.wke-row{display:grid;grid-template-columns:64px 3px 1fr;gap:13px;padding:12px 0;border-bottom:1px solid var(--rule);cursor:pointer;align-items:stretch}
-.wke-row:hover .wke-sn{color:var(--red)}
-.wke-row.gone{opacity:.42}
-.wke-t{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;padding-top:1px}
-.wke-t .d{display:block;font-size:9px;color:var(--muted);font-weight:400;letter-spacing:.06em;margin-top:2px}
-.wke-bar{border-radius:1px}
-.wke-sn{font-weight:600;font-size:14.5px;line-height:1.25;transition:color .15s}
-.wke-ev{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:4px}
-.wke-tv{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.03em;margin-top:2px}
-.wke-live{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--red);border:1px solid var(--red);padding:1px 5px;margin-left:8px;letter-spacing:.12em;vertical-align:2px;animation:pulse 1.4s infinite}
-.wke-none{padding:44px 0;color:var(--muted);line-height:1.9}
-.wke-none b{color:var(--paper)}
 .ev.flash,.sess.flash{animation:evflash 1.8s ease-out}
 @keyframes evflash{0%{background:rgba(255,48,0,.16)}100%{background:transparent}}
 </style>
@@ -560,7 +506,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <div class="kopf" id="kopf">
   <header class="mast">
     <h1 aria-label="APEX"><span class="mk-word" aria-hidden="true"><i>A</i><i>P</i><i>E</i><i>X</i></span><svg class="mk-line" viewBox="3 3 234 30" aria-hidden="true"><g fill="none" stroke-width="7.4" stroke-linecap="butt"><path d="M5.00,8.00 L5.74,8.25 L6.47,8.51 L7.21,8.76 L7.95,9.01 L8.69,9.25 L9.43,9.50 L10.17,9.74 L10.91,9.99 L11.65,10.23 L12.39,10.46 L13.14,10.70 L13.88,10.94 L14.63,11.17 L15.38,11.40" stroke="var(--red)"/><path d="M15.38,11.40 L16.13,11.63 L16.87,11.86 L17.62,12.09 L18.38,12.31 L19.13,12.53 L19.88,12.75 L20.63,12.97 L21.39,13.19 L22.14,13.41 L22.90,13.62 L23.65,13.84 L24.41,14.05 L25.17,14.26 L25.93,14.46" stroke="var(--paper)"/><path d="M25.93,14.46 L26.69,14.67 L27.45,14.87 L28.21,15.07 L28.97,15.27 L29.73,15.47 L30.50,15.67 L31.26,15.87 L32.03,16.06 L32.79,16.25 L33.56,16.44 L34.33,16.63 L35.09,16.82 L35.86,17.00 L36.63,17.18" stroke="var(--red)"/><path d="M36.63,17.18 L37.40,17.37 L38.17,17.54 L38.94,17.72 L39.72,17.90 L40.49,18.07 L41.26,18.25 L42.04,18.42 L42.81,18.59 L43.59,18.75 L44.36,18.92 L45.14,19.08 L45.92,19.25 L46.69,19.41 L47.47,19.56" stroke="var(--paper)"/><path d="M47.47,19.56 L48.25,19.72 L49.03,19.88 L49.81,20.03 L50.59,20.18 L51.37,20.33 L52.16,20.48 L52.94,20.63 L53.72,20.77 L54.51,20.92 L55.29,21.06 L56.07,21.20 L56.86,21.33 L57.65,21.47 L58.43,21.61" stroke="var(--red)"/><path d="M58.43,21.61 L59.22,21.74 L60.01,21.87 L60.79,22.00 L61.58,22.13 L62.37,22.25 L63.16,22.38 L63.95,22.50 L64.74,22.62 L65.53,22.74 L66.32,22.85 L67.11,22.97 L67.90,23.08 L68.70,23.20 L69.49,23.31" stroke="var(--paper)"/><path d="M69.49,23.31 L70.28,23.41 L71.08,23.52 L71.87,23.63 L72.67,23.73 L73.46,23.83 L74.26,23.93 L75.05,24.03 L75.85,24.13 L76.64,24.22 L77.44,24.31 L78.24,24.40 L79.03,24.49 L79.83,24.58 L80.63,24.67" stroke="var(--red)"/><path d="M80.63,24.67 L81.43,24.75 L82.23,24.83 L83.03,24.91 L83.82,24.99 L84.62,25.07 L85.42,25.15 L86.22,25.22 L87.02,25.29 L87.83,25.36 L88.63,25.43 L89.43,25.50 L90.23,25.56 L91.03,25.63 L91.83,25.69" stroke="var(--paper)"/><path d="M91.83,25.69 L92.64,25.75 L93.44,25.81 L94.24,25.86 L95.04,25.92 L95.85,25.97 L96.65,26.02 L97.45,26.07 L98.26,26.12 L99.06,26.16 L99.86,26.21 L100.67,26.25 L101.47,26.29 L102.28,26.33 L103.08,26.37" stroke="var(--red)"/><path d="M103.08,26.37 L103.89,26.40 L104.69,26.44 L105.50,26.47 L106.30,26.50 L107.11,26.53 L107.91,26.55 L108.72,26.58 L109.52,26.60 L110.33,26.63 L111.13,26.65 L111.94,26.66 L112.75,26.68 L113.55,26.69 L114.36,26.71" stroke="var(--paper)"/><path d="M114.36,26.71 L115.16,26.72 L115.97,26.73 L116.78,26.74 L117.58,26.74 L118.39,26.75 L119.19,26.75 L120.00,26.75 L120.81,26.75 L121.61,26.75 L122.42,26.74 L123.22,26.74 L124.03,26.73 L124.84,26.72 L125.64,26.71" stroke="var(--red)"/><path d="M125.64,26.71 L126.45,26.69 L127.25,26.68 L128.06,26.66 L128.87,26.65 L129.67,26.63 L130.48,26.60 L131.28,26.58 L132.09,26.55 L132.89,26.53 L133.70,26.50 L134.50,26.47 L135.31,26.44 L136.11,26.40 L136.92,26.37" stroke="var(--paper)"/><path d="M136.92,26.37 L137.72,26.33 L138.53,26.29 L139.33,26.25 L140.14,26.21 L140.94,26.16 L141.74,26.12 L142.55,26.07 L143.35,26.02 L144.15,25.97 L144.96,25.92 L145.76,25.86 L146.56,25.81 L147.36,25.75 L148.17,25.69" stroke="var(--red)"/><path d="M148.17,25.69 L148.97,25.63 L149.77,25.56 L150.57,25.50 L151.37,25.43 L152.17,25.36 L152.98,25.29 L153.78,25.22 L154.58,25.15 L155.38,25.07 L156.18,24.99 L156.97,24.91 L157.77,24.83 L158.57,24.75 L159.37,24.67" stroke="var(--paper)"/><path d="M159.37,24.67 L160.17,24.58 L160.97,24.49 L161.76,24.40 L162.56,24.31 L163.36,24.22 L164.15,24.13 L164.95,24.03 L165.74,23.93 L166.54,23.83 L167.33,23.73 L168.13,23.63 L168.92,23.52 L169.72,23.41 L170.51,23.31" stroke="var(--red)"/><path d="M170.51,23.31 L171.30,23.20 L172.10,23.08 L172.89,22.97 L173.68,22.85 L174.47,22.74 L175.26,22.62 L176.05,22.50 L176.84,22.38 L177.63,22.25 L178.42,22.13 L179.21,22.00 L179.99,21.87 L180.78,21.74 L181.57,21.61" stroke="var(--paper)"/><path d="M181.57,21.61 L182.35,21.47 L183.14,21.33 L183.93,21.20 L184.71,21.06 L185.49,20.92 L186.28,20.77 L187.06,20.63 L187.84,20.48 L188.63,20.33 L189.41,20.18 L190.19,20.03 L190.97,19.88 L191.75,19.72 L192.53,19.56" stroke="var(--red)"/><path d="M192.53,19.56 L193.31,19.41 L194.08,19.25 L194.86,19.08 L195.64,18.92 L196.41,18.75 L197.19,18.59 L197.96,18.42 L198.74,18.25 L199.51,18.07 L200.28,17.90 L201.06,17.72 L201.83,17.54 L202.60,17.37 L203.37,17.18" stroke="var(--paper)"/><path d="M203.37,17.18 L204.14,17.00 L204.91,16.82 L205.67,16.63 L206.44,16.44 L207.21,16.25 L207.97,16.06 L208.74,15.87 L209.50,15.67 L210.27,15.47 L211.03,15.27 L211.79,15.07 L212.55,14.87 L213.31,14.67 L214.07,14.46" stroke="var(--red)"/><path d="M214.07,14.46 L214.83,14.26 L215.59,14.05 L216.35,13.84 L217.10,13.62 L217.86,13.41 L218.61,13.19 L219.37,12.97 L220.12,12.75 L220.87,12.53 L221.62,12.31 L222.38,12.09 L223.13,11.86 L223.87,11.63 L224.62,11.40" stroke="var(--paper)"/><path d="M224.62,11.40 L225.37,11.17 L226.12,10.94 L226.86,10.70 L227.61,10.46 L228.35,10.23 L229.09,9.99 L229.83,9.74 L230.57,9.50 L231.31,9.25 L232.05,9.01 L232.79,8.76 L233.53,8.51 L234.26,8.25 L235.00,8.00" stroke="var(--red)"/></g><circle cx="120.0" cy="26.8" r="4.4" fill="none" stroke="var(--gold)" stroke-width="1.7"/><circle cx="120.0" cy="26.8" r="1.9" fill="var(--gold)"/></svg></h1>
-    <div class="mast-r"><span class="mast-lab">Motorsport-Kalender</span> <span class="season" id="season"><b class="ss-yr">2026</b></span><div class="mast-z2"><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ App installieren</button></div></div>
+    <div class="mast-r"><span class="mast-lab">Motorsport-Kalender</span> <span class="season" id="season"><b class="ss-yr">2026</b></span><div class="mast-z2"><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ APEX installieren</button></div></div>
   </header>
   <nav class="nav">
     <button class="tab on" data-v="upcoming" onclick="setView('upcoming')">Aktuell</button>
@@ -642,8 +588,8 @@ APEX · Saison <span id="fuss-saison">2026</span> · 19 Serien<span id="datensta
    und geprüft. Fehlt eine Datei oder ist sie fehlerhaft, fehlt nur der zugehörige Teil
    (mit kurzem Hinweis) – der Rest der App läuft normal. Einzelne unlesbare Einträge werden
    übersprungen. */
-const DATEN=["serien","sender","termine-2026","termine-2027","wertungen","regeln","zeitzonen","strecken"];
-const SERIES={}, EVENTS=[], STAND={}, REGELN={}, TZLOC={}, KARTE_ORT=new Map(), KARTE_STRECKEN=[];
+const DATEN=["serien","sender","termine-2026","termine-2027","wertungen","regeln","strecken"];
+const SERIES={}, EVENTS=[], STAND={}, REGELN={}, KARTE_ORT=new Map(), KARTE_STRECKEN=[];
 const GRUPPEN={};              /* Seriengruppen aus serien.json (Reihenfolge = Reihenfolge in der App) */
 let STAND_SEASON=null;     /* Jahr, zu dem die gepflegten Wertungen gehoeren (aus wertungen.json) */
 let TV_GEPRUEFT="";        /* Prüfdatum der Senderangaben (aus sender.json) */
@@ -735,7 +681,7 @@ function uebernehmeDaten(d){
     STAND_SEASON=x.saison;
     Object.keys(x.serien).forEach(k=>{const v=x.serien[k];
       const ok=istObj(v)&&istText(v.stand)&&tabelleOK(v.drv)&&(v.drv2==null||tabelleOK(v.drv2))
-        &&["quelle","klasse","klasse2","wertung","wertung2"].every(f=>v[f]==null||istText(v[f]));
+        &&["quelle","klasse","klasse2","wertung","wertung2","champion","champion2"].every(f=>v[f]==null||istText(v[f]));
       if(luecke("wertungen",ok))STAND[k]=v; else STAND_LUECKE.add(k);});
   });
   teil("regeln",x=>{
@@ -743,12 +689,6 @@ function uebernehmeDaten(d){
     Object.keys(x).forEach(k=>{const v=x[k];
       if(luecke("regeln",istObj(v)&&istText(v.kurz)&&Array.isArray(v.bloecke)&&v.bloecke.every(b=>Array.isArray(b)&&istText(b[0])&&istText(b[1]))))
         REGELN[k]=v;});
-  });
-  teil("zeitzonen",x=>{
-    if(!istObj(x))return false;
-    Object.keys(x).forEach(k=>{let ok=istText(x[k]);
-      if(ok)try{new Intl.DateTimeFormat("en-US",{timeZone:x[k]});}catch(err){ok=false;}
-      if(luecke("zeitzonen",ok))TZLOC[k]=x[k];});
   });
   teil("strecken",x=>{
     if(!istObj(x)||!istObj(x.karte)||!istObj(x.karte.strecken))return false;
@@ -870,8 +810,6 @@ const DOWf=["So","Mo","Di","Mi","Do","Fr","Sa"];
 function pd(iso){const[y,m,d]=iso.split("-").map(Number);return new Date(y,m-1,d);}
 
 /* ── Zeitzonen ── */
-let TZMODE="mesz";
-const LOCAL_TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||"Europe/Berlin";
 /* Ein Intl.DateTimeFormat anzulegen ist teuer – je Sprache und Optionen (samt Zeitzone) nur einmal, danach wiederverwenden */
 const FORMATE=new Map();
 function formatierer(sprache,opt){
@@ -903,27 +841,11 @@ function sessionAbsDate(e,s){
   for(let dt=new Date(a);dt<=b;dt.setDate(dt.getDate()+1)){ if(DOWf[dt.getDay()]===s.day) return new Date(dt); }
   return new Date(a);
 }
+/* Anzeige einer Session: Tag und Uhrzeit wie in den Daten (deutsche Zeit), dazu das Datum */
 function convTime(e,s){
-  if(TZMODE==="mesz"){
-    const d=sessionAbsDate(e,s);
-    return {t:s.t, day:s.day, dt:`${String(d.getDate()).padStart(2,"0")}.${String(d.getMonth()+1).padStart(2,"0")}.`};
-  }
-  const tz = TZMODE==="local"? LOCAL_TZ : (TZLOC[e.loc]||"Europe/Berlin");
-  const d=sessionAbsDate(e,s), parts=s.t.split(":").map(Number);
-  const inst=deZeitpunkt(d.getFullYear(),d.getMonth()+1,d.getDate(),parts[0],parts[1],s.zone);
-  const t=formatierer("de-DE",{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}).format(inst);
-  const day=formatierer("de-DE",{timeZone:tz,weekday:"short"}).format(inst).replace(".","");
-  const dt=formatierer("de-DE",{timeZone:tz,day:"2-digit",month:"2-digit"}).format(inst);
-  return {t,day,dt};
+  const d=sessionAbsDate(e,s);
+  return {t:s.t, day:s.day, dt:`${String(d.getDate()).padStart(2,"0")}.${String(d.getMonth()+1).padStart(2,"0")}.`};
 }
-function renderTZ(){
-  const el=document.getElementById("tzsw"); if(!el)return;
-  const opt=[["mesz","MEZ/MESZ"],["local","Lokal"],["track","Strecke"]];
-  el.innerHTML='<span class="tzl">ZEIT</span>'+opt.map(o=>`<button class="${TZMODE===o[0]?'on':''}" onclick="setTZ('${o[0]}')">${o[1]}</button>`).join("");
-}
-function setTZ(m){TZMODE=m;renderTZ();rerender();}
-/* MEZ oder MESZ – je nach Datum der Uhrzeit (Umstellung Ende März/Ende Oktober) */
-function dtZone(inst){return zoneOffsetMin(inst,"Europe/Berlin")===120?"MESZ":"MEZ";}
 
 /* ── Kalender-Export (.ics) ── */
 function pad2(n){return String(n).padStart(2,"0");}
@@ -973,34 +895,8 @@ function downloadICS(fn,veventsArr){
 }
 function findEv(sk,rd,sz){return EVENTS.find(e=>e.s===sk&&String(e.rd)===String(rd)&&(e.sz||"")===(sz||""));}
 function exportSession(sk,rd,i,sz){const e=findEv(sk,rd,sz);if(!e)return;downloadICS("apex-"+sk+rd+(sz?"-"+sz:"")+"-s"+i+".ics",[vevent(e,e.sessions[i])]);}
-function exportSeason(){
-  const evs=actEvents().filter(e=>e.status!=="cancel"&&(!FAV_ONLY||isFav(e)));
-  let vs=[]; evs.forEach(e=>e.sessions.filter(s=>s.t).forEach(s=>vs.push(vevent(e,s))));
-  if(vs.length)downloadICS("apex-saison-2026.ics",vs);
-}
 
-/* ── Favoriten (mit abgesichertem Speicher) ── */
-let FAV_ONLY=false, SEARCH="";
-function loadFav(){try{return JSON.parse(localStorage.getItem("apex_fav")||localStorage.getItem("fullgrid_fav")||"[]");}catch(err){return [];}}
-function saveFav(){try{localStorage.setItem("apex_fav",JSON.stringify([...FAV]));}catch(err){}}
-const FAV=new Set(loadFav());
-function evKey(e){return e.s+"-"+e.rd+"-"+e.d0;}
 function evDomId(e){return e.s+e.rd+"_"+(e.sz?e.sz:"")+e.d0.slice(5).replace("-","");}
-function isFav(e){return FAV.has(evKey(e));}
-function toggleFav(key){FAV.has(key)?FAV.delete(key):FAV.add(key);saveFav();renderTimeline();renderToolbar();}
-function toggleFavView(){FAV_ONLY=!FAV_ONLY;renderToolbar();renderTimeline();}
-function renderToolbar(){}
-function matchEv(e){
-  if(!SEARCH)return true;const q=SEARCH;
-  if(SERIES[e.s].name.toLowerCase().includes(q))return true;
-  if((e.name+" "+e.loc).toLowerCase().includes(q))return true;
-  const ks=KARTE_ORT.get(e.loc); if(ks&&(ks.name+" "+ks.offiziell+" "+ks.ort).toLowerCase().includes(q))return true;
-  const ci=circuitFor(e); if(ci&&ci.name.toLowerCase().includes(q))return true;
-  if(e.result&&e.result.toLowerCase().includes(q))return true;
-  const pools=[]; if(e.resOverall)pools.push(e.resOverall);
-  e.sessions.forEach(s=>{if(s.res)pools.push(s.res);});
-  return pools.some(a=>a.some(r=>(r.who+" "+(r.team||"")).toLowerCase().includes(q)));
-}
 
 /* ── Strecken-Infos (statisch; len in km) ── */
 /* Gefahrene Variante: var am Termin (Schlüssel in varianten der Strecke), ohne var die Hauptvariante (erster Eintrag);
@@ -1129,7 +1025,7 @@ function renderFilter(){
   let html=`<span class="fl-lab">Serien</span><div class="grp-leiste">`;
   if(FILTER_NUR&&SERIES[FILTER_NUR]){
     const S0=SERIES[FILTER_NUR];
-    html=`<span class="fl-lab">Serien</span><span class="chip nur" role="status"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">Nur ${S0.name}</span><span class="cn-s">Nur ${S0.short}</span></span>`+
+    html=`<span class="fl-lab">Serien</span><span class="chip nur" role="status"><span class="cdot" style="--c:${S0.color}"></span><span class="cn-l">Nur ${S0.name}</span><span class="cn-s">Nur ${S0.short}</span></span>`+
       `<button class="chip allbtn" onclick="nurZuruecksetzen()" title="Wieder die eigene Serienauswahl zeigen">Zurücksetzen</button>`;
     FILTER_OFFEN=null;
   } else {
@@ -1147,7 +1043,7 @@ function renderFilter(){
           `<button class="grp-alle" type="button" role="switch" aria-checked="${an===n}" onclick="toggleGruppe('${g.key}')"><span class="grp-sw" aria-hidden="true"></span>Alle ${esc(gruppenWort(g))}</button><div class="grp-chips">`;
         g.serien.forEach(sk=>{
           const S0=SERIES[sk],on=ACTIVE.has(sk);
-          html+=`<button class="chip ${on?'':'off'}" type="button" data-serie="${sk}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="background:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
+          html+=`<button class="chip ${on?'':'off'}" type="button" data-serie="${sk}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="--c:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
         });
         html+=`</div></div>`;
       }
@@ -1457,9 +1353,35 @@ const PFEIL_ERG=`<button class="sess-chev" type="button" aria-expanded="false" a
 /* Rennkarte (.ev) oder Ergebniszeile (.sess) auf- bzw. zuklappen, aria-expanded am Pfeil folgt */
 function klappen(el,auf){
   if(!el)return;
+  if(auf&&el.classList.contains("ev"))sessionsBauen(el);
   el.classList.toggle("open",auf);
   const b=el.querySelector(el.classList.contains("sess")?".sess-row .sess-chev":".ev-row .ev-toggle");
   if(b)b.setAttribute("aria-expanded",String(auf));
+}
+/* Sessionlisten der Zeitleiste entstehen erst beim Aufklappen oder danach in Ruhephasen (requestIdleCallback,
+   sonst setTimeout) – Filter- und Saisonwechsel zeichnen nur die Karten. Fertig gebaut ist eine Liste genau so,
+   als wäre sie gleich mitgezeichnet worden. SESSIONS_SOFORT: alle Listen gleich mitzeichnen */
+let SESSIONS_SOFORT=false, VORBAU=0;
+const SESS_BAU=new Map();   /* id der Rennkarte → [Event, Event-ID, Status beim Zeichnen] */
+function sessionsBauen(ev){
+  const box=ev&&ev.querySelector&&ev.querySelector(".sessions[data-bau]"), j=box&&SESS_BAU.get(ev.id);
+  if(!box)return;
+  box.removeAttribute("data-bau"); SESS_BAU.delete(ev.id);
+  if(j)box.innerHTML=buildSessions(j[0],j[1],j[2]);
+}
+function vorbauen(){
+  const nr=++VORBAU;
+  if(SESSIONS_SOFORT||!SESS_BAU.size||typeof document.querySelectorAll!=="function")return;
+  const warten=window.requestIdleCallback?f=>requestIdleCallback(f,{timeout:1500})
+    :f=>setTimeout(()=>{const t0=Date.now();f({didTimeout:false,timeRemaining:()=>Math.max(0,8-(Date.now()-t0))});},40);
+  const schritt=frist=>{
+    if(nr!==VORBAU)return;
+    const offen=document.querySelectorAll("#view-upcoming .sessions[data-bau]");
+    let i=0;
+    while(i<offen.length&&(frist.timeRemaining()>2||(frist.didTimeout&&i<4)))sessionsBauen(offen[i++].parentNode);
+    if(i<offen.length)warten(schritt);
+  };
+  warten(schritt);
 }
 /* Aufklappbare Ergebniszeile; laden=true: beim Öffnen die Ergebnisliste der Serie laden */
 function ergZeile(e,rid,kopf,panel,laden){
@@ -1540,6 +1462,7 @@ function toggleRes(rid,sk,rd,sz){
 function ergNeuZeichnen(e,rid){
   const evId=evDomId(e), ev=document.getElementById("ev-"+evId), box=ev&&ev.querySelector&&ev.querySelector(".sessions");
   if(!box)return;
+  box.removeAttribute("data-bau"); SESS_BAU.delete(ev.id);
   /* Lag der Tastaturfokus in der Liste (Pfeil), bleibt er nach dem Neuzeichnen auf der geöffneten Zeile */
   const fokus=!!document.activeElement&&box.contains(document.activeElement);
   box.innerHTML=buildSessions(e,evId,st(e));
@@ -1601,7 +1524,7 @@ function eventHTML(e,imBlock,letzt,von,bis){
       (z.zeiten?`<span class="ev-zeiten">${z.zeiten}</span>`:"")+
       `<button class="ev-teilen" aria-label="Teilen" title="Teilen" onclick="event.stopPropagation();teilen('${e.s}','${e.rd}','${e.sz||""}')">${TEILEN_SVG}</button>`+
       `<button class="ev-toggle" type="button" aria-expanded="false" aria-label="Sessions anzeigen">+</button></div>`+links+
-      `<div class="sessions">${buildSessions(e,evId,status)}</div></div></div>`+
+      (SESSIONS_SOFORT?`<div class="sessions">${buildSessions(e,evId,status)}</div>`:(SESS_BAU.set("ev-"+evId,[e,evId,status]),`<div class="sessions" data-bau></div>`))+`</div></div>`+
   `</div></div>`;
 }
 /* mitJetzt=false: die Live-Info steht im Block „Dieses Wochenende“ */
@@ -1673,12 +1596,11 @@ function monthGroupsHTML(list,heute){
   const WE=heute?wochenendListe(list):[], WE_SET=new Set(WE), mitJetzt=!WE.length;
   let weDa=false;
   const linieAllein=()=>{offen=false;return `<div class="tl tl-heute">${heuteHTML(mitJetzt)}</div>`;};
-  /* Wochen aller Monate der Reihe nach – für die Lücken zwischen zwei Wochenenden mit Events (nicht bei Suche/Favoriten) */
+  /* Wochen aller Monate der Reihe nach – für die Lücken zwischen zwei Wochenenden mit Events */
   const monate=Object.keys(groups).map(key=>({key,gr:wochenGruppen(groups[key]).map(g=>({g,mo:montag(g[0].d0)}))}));
   const flach=[]; monate.forEach(M=>M.gr.forEach(x=>flach.push(x)));
-  const mitLuecken=!(SEARCH||FAV_ONLY);
   const lueckeVor=i=>{
-    const r=[]; if(!mitLuecken||i<=0||i>=flach.length)return r;
+    const r=[]; if(i<=0||i>=flach.length)return r;
     const d=new Date(flach[i-1].mo); d.setDate(d.getDate()+12);   /* Samstag der Folgewoche */
     while(d<flach[i].mo){r.push(new Date(d)); d.setDate(d.getDate()+7);}
     return r;
@@ -1720,23 +1642,18 @@ function monthGroupsHTML(list,heute){
 }
 function renderTimeline(){
   const host=document.getElementById("view-upcoming");
-  let evs=actEvents().filter(e=>e.status!=="cancel"&&inSeason(e));
-  if(FAV_ONLY) evs=evs.filter(e=>isFav(e));
-  if(SEARCH) evs=evs.filter(matchEv);
+  SESS_BAU.clear();
+  const evs=actEvents().filter(e=>e.status!=="cancel"&&inSeason(e));
   let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
   /* Aktive Serien ohne einen einzigen Termin in dieser Saison */
   const fehlen=termineFehlen(SEASON)?[]:Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)&&!EVENTS.some(e=>e.s===sk&&inSeason(e)&&!e.sonder));
   if(fehlen.length) html+=`<div class="seasonnote">Kalender ${SEASON} noch nicht veröffentlicht: <b>${fehlen.map(k=>SERIES[k].name).join(", ")}</b></div>`;
-  if(SEARCH||FAV_ONLY){
-    const lab=SEARCH?`${evs.length} Treffer für „${SEARCH}"`:`${evs.length} Favorit${evs.length===1?'':'en'}`;
-    html+=`<div class="searchcnt">${lab}${evs.length?'':' — nichts gefunden'}</div>`;
-  }
   /* Das ganze Jahr: vergangene und kommende Events, dazwischen die Heute-Linie */
   if(evs.length||heuteImBlick()) html+=monthGroupsHTML(evs,heuteImBlick()&&!termineFehlen(SEASON));
   const ys=seasonsAll(), nxt=ys[ys.indexOf(SEASON)+1];
-  if(nxt&&!(SEARCH||FAV_ONLY)) html+=`<button class="nextseason" onclick="stepSeason(1)">Weiter zur Saison ${nxt} <span>→</span></button>`;
-  else if(!evs.length&&!termineFehlen(SEASON)) html+=`<div class="emptyhint">${FAV_ONLY?'Noch keine Favoriten markiert — tippe den Stern bei einem Event.':SEARCH?'Keine Treffer.':'Keine Events für die gewählten Serien.'}</div>`;
-  host.innerHTML=html;
+  if(nxt) html+=`<button class="nextseason" onclick="stepSeason(1)">Weiter zur Saison ${nxt} <span>→</span></button>`;
+  else if(!evs.length&&!termineFehlen(SEASON)) html+=`<div class="emptyhint">Keine Events für die gewählten Serien.</div>`;
+  host.innerHTML=html; vorbauen();
 }
 
 /* ═══════ SERIEN ═══════ */
@@ -1794,7 +1711,7 @@ function renderSeries(){
     let n=0;
     evs.forEach(e=>{const status=st(e);
       if(status==="cancel"){
-        html+=`<div class="ser-round cancel"><span class="no">—</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}</span></span><span class="st cancel">Abgesagt</span><span></span></div>`;
+        html+=`<div class="ser-round cancel"><span class="no">—</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn"><s>${e.name}</s><span class="loc">${e.loc}</span></span><span class="st cancel">${/abgesagt/i.test(e.name)?"":"Abgesagt"}</span><span></span></div>`;
         return;}
       n++;
       let txt=status==="done"?"Beendet":status==="next"?"Als Nächstes":status==="live"?"Live":"Geplant";
@@ -1808,20 +1725,6 @@ function renderSeries(){
     html+=`</div>`;});});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
   host.innerHTML=html; snavMessen(); snavBeimScrollen();
-}
-
-/* ═══════ JAHR ═══════ */
-function renderCalendar(){
-  const host=document.getElementById("view-calendar"); if(!host)return;
-  const evs=actEvents().sort((a,b)=>startW(a)-startW(b));
-  let html=`<p class="cal-intro">Alle Rennwochenenden 2026 chronologisch · Gold = Sieger · durchgestrichen = abgesagt</p>`;
-  evs.forEach(e=>{const S0=SERIES[e.s],status=st(e);
-    html+=`<div class="cal-row ${status==='cancel'?'cancel':''}">`+
-      `<span class="cd">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span>`+
-      `<span class="cs" style="background:${S0.color};color:#15110f">${S0.short}</span>`+
-      `<span class="cn">${status==='cancel'?`<span class="strike">${e.name}</span>`:e.name}</span>`+
-      `<span class="cw">${status==='done'&&e.result?e.result.split(" (")[0]:""}</span></div>`;});
-  host.innerHTML=html;
 }
 
 /* ═══════ TV ═══════ */
@@ -1896,47 +1799,6 @@ function renderTV(){
   host.innerHTML=html;
 }
 
-/* ═══════ WERTUNG / STANDINGS ═══════ */
-const PTS={
-  race:{ f1:[25,18,15,12,10,8,6,4,2,1], mgp:[25,20,16,13,11,10,9,8,7,6,5,4,3,2,1],
-         wec:[25,18,15,12,10,8,6,4,2,1], dtm:[25,18,15,12,10,8,6,4,2,1],
-         wrc:[25,18,15,12,10,8,6,4,2,1], fe:[25,18,15,12,10,8,6,4,2,1] },
-  sprint:{ f1:[8,7,6,5,4,3,2,1], mgp:[12,9,7,6,5,4,3,2,1] }
-};
-function parseResult(str){
-  const m=String(str).match(/^(.*?)\s*\((.*)\)\s*$/);
-  return m?{who:m[1].trim(),team:m[2].trim()}:{who:String(str).trim(),team:""};
-}
-function eventScoring(e,sk){
-  const out=[]; let hasRace=false;
-  e.sessions.forEach(s=>{
-    if(!s.res)return;
-    if(s.n==="Sprint"){ out.push({rows:s.res,map:PTS.sprint[sk]||PTS.race[sk]||PTS.race.f1}); }
-    else if(isRaceName(s.n)){ out.push({rows:s.res,map:PTS.race[sk]||PTS.race.f1}); hasRace=true; }
-  });
-  if(sk==="wrc" && e.resOverall){ out.push({rows:e.resOverall,map:PTS.race.wrc}); hasRace=true; }
-  if(!hasRace && e.result){ out.push({rows:[Object.assign({p:1},parseResult(e.result))],map:PTS.race[sk]||PTS.race.f1}); }
-  return out;
-}
-function standings(sk){
-  const drv={},team={};
-  EVENTS.filter(e=>e.s===sk && st(e)==="done").forEach(e=>{
-    eventScoring(e,sk).forEach(r=>{
-      r.rows.forEach(row=>{
-        const pos=typeof row.p==="number"?row.p:null; if(!pos)return;
-        const pts=r.map[pos-1]||0; if(pts<=0)return;
-        const key=row.who;
-        (drv[key]=drv[key]||{name:row.who,team:row.team||"",pts:0,wins:0});
-        drv[key].pts+=pts; if(pos===1)drv[key].wins++;
-        if(row.team){ team[row.team]=(team[row.team]||0)+pts; }
-      });
-    });
-  });
-  return {
-    drv:Object.values(drv).sort((a,b)=>b.pts-a.pts||b.wins-a.wins),
-    team:Object.entries(team).map(([k,v])=>({name:k,pts:v})).sort((a,b)=>b.pts-a.pts)
-  };
-}
 /* ═══════ SERIENLEISTE (Wertung, Serien) ═══════
    PC (breiter als 640 px): Kurznamen der gezeigten Serien, klebt unter dem Kopf, Tippen springt zur
    Serie, die Serie im Bild ist markiert.
@@ -1950,7 +1812,7 @@ function snavHTML(v){
   if(gr.reduce((n,x)=>n+x.sks.length,0)<2)return "";
   const art=snavArt();
   const chips=gr.map(({sks})=>`<span class="snav-g">`+sks.map(sk=>{const S0=SERIES[sk];
-    return `<button type="button" class="chip" data-sk="${sk}" style="--c:${S0.color}" onclick="snavTipp('${v}','${sk}')"><span class="cdot" style="background:${S0.color}"></span>${esc(S0.short)}</button>`;
+    return `<button type="button" class="chip" data-sk="${sk}" style="--c:${S0.color}" onclick="snavTipp('${v}','${sk}')"><span class="cdot" style="--c:${S0.color}"></span>${esc(S0.short)}</button>`;
   }).join("")+`</span>`).join("");
   if(art==="zeile")return `<nav class="snav zeile" id="snav-${v}" aria-label="Zur Serie springen">`+
     `<button type="button" class="snav-akt" aria-expanded="false" aria-controls="snav-wahl-${v}" onclick="snavKlappe('${v}')">`+
@@ -2005,6 +1867,10 @@ function stdLabels(D){
   return [stdKurz(D.wertung||"Fahrerwertung"),stdKurz(D.wertung2||"Fahrerwertung")];
 }
 function stdTab(sk,i){STD_TAB[sk]=i;renderStandings();}
+/* Titel entschieden (wertungen.json: champion/champion2): Pokal in APEX-Gold und Text an Platz 1 der Tabelle –
+   wie Sieger nur im Wertungs-Tab (mit „Ergebnisse verbergen“ verborgen), nie in Titel oder Meta */
+const POKAL='<svg class="pokal" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.5 1.5h7v3.6a3.5 3.5 0 0 1-2.75 3.42V10.5h1.75a.75.75 0 0 1 .75.75V12h-6.5v-.75a.75.75 0 0 1 .75-.75h1.75V8.52A3.5 3.5 0 0 1 4.5 5.1z"/><path fill="none" stroke="currentColor" stroke-width="1.3" d="M4.5 3H2.4v1.2a2.4 2.4 0 0 0 2.4 2.4M11.5 3h2.1v1.2a2.4 2.4 0 0 1-2.4 2.4"/><rect x="4" y="12.8" width="8" height="1.7" rx=".5" fill="currentColor"/></svg>';
+function championHTML(t){return t==="World Champion"||t==="Champion"?`<span class="champ" data-nosnippet>${POKAL}${t}</span>`:"";}
 /* Serien ohne Meisterschaft (Rallye Dakar): Die Wertung ist das Endergebnis der jüngsten Veranstaltung
    mit Ergebnisliste (data/ergebnisse/…, Listen „Gesamtwertung …“), ohne Punkte. Läuft die nächste
    noch oder hat sie noch kein Ergebnis, bleibt die vorige stehen. */
@@ -2061,11 +1927,11 @@ function renderStandings(){
     /* Eine Tabelle je Klasse: drv (+ optional klasse), drv2 (+ klasse2) - z. B. WEC Hypercar & LMGT3.
        wertung/wertung2 ersetzen "Fahrerwertung" in der Unterüberschrift (z. B. Team-/Fahrzeugwertung).
        Sortiert nach Punkten; bei Gleichstand gilt die Reihenfolge aus der Datei. */
-    const tabelle=(liste,klasse,wertung)=>{
+    const tabelle=(liste,klasse,wertung,titel)=>{
       let t=`<div class="std-sub">${wertung||"Fahrerwertung"}${klasse?` · ${klasse}`:""}</div>`;
       [...liste].sort((a,b)=>b[2]-a[2]).forEach(([nm,tm,pts],i)=>{
         t+=`<div class="std-row ${i===0?'lead':''}"><span class="sp">${i+1}</span>`+
-          `<span class="std-nm">${nm}${tm?`<span class="tm">${tm}</span>`:''}</span>`+
+          `<span class="std-nm">${nm}${i===0?championHTML(titel):""}${tm?`<span class="tm">${tm}</span>`:''}</span>`+
           `<span class="std-wins"></span><span class="std-pts">${String(pts).replace(".",",")}<small>PKT</small></span></div>`;
       });
       return t;
@@ -2075,7 +1941,7 @@ function renderStandings(){
       `<button type="button" aria-pressed="${tab===j}" onclick="stdTab('${sk}',${j})">${esc(l)}</button>`).join("")+`</div>`:"";
     html+=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
       `<div class="std-tag">Stand ${D.stand}</div>`+ seg +
-      (tab===1? tabelle(D.drv2,D.klasse2,D.wertung2) : tabelle(D.drv,D.klasse,D.wertung));
+      (tab===1? tabelle(D.drv2,D.klasse2,D.wertung2,D.champion2) : tabelle(D.drv,D.klasse,D.wertung,D.champion));
     html+=`</div>`;
   });});
   if(!any && !html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
@@ -2143,72 +2009,20 @@ function kopfBeimScrollen(){
 let currentView="upcoming";
 function rerender(){if(!BEREIT)return;OPEN_RES=null;
   if(currentView==="upcoming")renderTimeline();
-  else if(currentView==="weekend")renderWeekend();
   else if(currentView==="series")renderSeries();
   else if(currentView==="standings")renderStandings();
-  else if(currentView==="calendar")renderCalendar();
   else if(currentView==="rules")renderRules();
   else renderTV();}
 function setView(v){currentView=v;FILTER_OFFEN=null;
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.dataset.v===v));
   document.querySelectorAll(".view").forEach(x=>x.classList.remove("on"));
   document.getElementById("view-"+v).classList.add("on");
-  renderFilter();renderToolbar();rerender();try{history.replaceState(null,"","#v="+v);}catch(err){}
+  renderFilter();rerender();try{history.replaceState(null,"","#v="+v);}catch(err){}
   kopfMessen();   /* Filterleiste ein/aus ändert die Kopfhöhe – vor dem Sprung messen */
   snavMessen();
   if(v==="upcoming")zumStart(); else scrollen(0,false);
   updateJumpBtn();}
 
-
-/* ═══════ DIESES WOCHENENDE ═══════ */
-function weekendWindow(base){
-  const now=base||NOW(); const d=new Date(now.getFullYear(),now.getMonth(),now.getDate());
-  const dow=d.getDay(); const fri=new Date(d);
-  if(dow===6)fri.setDate(d.getDate()-1); else if(dow===0)fri.setDate(d.getDate()-2); else fri.setDate(d.getDate()+(5-dow));
-  const start=new Date(fri); start.setDate(fri.getDate()-1);           /* ab Donnerstag (WEC/WRC) */
-  const end=new Date(fri); end.setDate(fri.getDate()+2); end.setHours(23,59,59,999);
-  return {start,end};
-}
-function weekendItems(base){
-  const {start,end}=weekendWindow(base); const items=[];
-  actEvents().filter(e=>e.status!=="cancel").forEach(e=>{
-    e.sessions.forEach((s,i)=>{ if(!s.t)return;
-      const inst=sessionInstant(e,s);
-      if(inst>=start&&inst<=end)items.push({e,s,i,inst:inst.getTime()});
-    });
-  });
-  items.sort((a,b)=>a.inst-b.inst);
-  return {items,start,end};
-}
-function renderWeekend(){
-  const host=document.getElementById("view-weekend"); if(!host)return;
-  const {items,start,end}=weekendItems(); const now=Date.now();
-  const dfmt=new Intl.DateTimeFormat("de-DE",{timeZone:"Europe/Berlin",weekday:"long"});
-  const dnum=new Intl.DateTimeFormat("de-DE",{timeZone:"Europe/Berlin",day:"2-digit",month:"2-digit"});
-  const rfmt=new Intl.DateTimeFormat("de-DE",{day:"2-digit",month:"long"});
-  let html=`<div class="wke-lead">Alle Sessions · ${rfmt.format(start)} – ${rfmt.format(end)} · ${items.length} Session${items.length===1?"":"s"}</div>`;
-  if(!items.length){
-    computeNextSession();
-    const nx=NEXT_SESS?`Nächste Session: <b>${NEXT_SESS.s.n} — ${NEXT_SESS.e.name}</b> am ${new Intl.DateTimeFormat("de-DE",{weekday:"long",day:"2-digit",month:"long"}).format(NEXT_SESS.inst)}.`:"";
-    html+=`<div class="wke-none">Dieses Wochenende ist rennfrei.${nx?"<br>"+nx:""}</div>`;
-    host.innerHTML=html; return;
-  }
-  let lastDay="";
-  items.forEach(it=>{
-    const bd=dnum.format(it.inst);
-    if(bd!==lastDay){lastDay=bd;html+=`<div class="wke-day">${dfmt.format(it.inst)}<span class="yr">${bd}.</span></div>`;}
-    const S0=SERIES[it.e.s],ct=convTime(it.e,it.s);
-    const dur=sessDuration(it.e,it.s)*60000;
-    const live=it.inst<=now&&now<it.inst+dur, gone=now>=it.inst+dur;
-    html+=`<div class="wke-row ${gone?'gone':''}" onclick="gotoEvent('${it.e.s}','${it.e.rd}')">`+
-      `<span class="wke-t">${ct.t}<span class="d">${TZMODE==="mesz"?dtZone(new Date(it.inst)):ct.day}</span></span>`+
-      `<span class="wke-bar" style="background:${S0.color}"></span>`+
-      `<span><span class="wke-sn ${isRaceName(it.s.n)?'race':''}">${it.s.n}${live?'<span class="wke-live">LIVE</span>':''}</span>`+
-      `<span class="wke-ev"><b style="color:${S0.color}">${S0.short}</b> · ${it.e.name} · ${it.e.loc}</span>`+
-      `<span class="wke-tv">TV: ${S0.tv}</span></span></div>`;
-  });
-  host.innerHTML=html;
-}
 
 /* ═══════ DEEP-LINKS ═══════ */
 /* si: Index einer Session – sie wird statt des ganzen Events hervorgehoben und ins Bild geholt */
@@ -2218,10 +2032,9 @@ function gotoEvent(sk,rd,sz,sofort,si){
   if(currentView!=="upcoming")setView("upcoming");
   if(FILTER_NUR&&FILTER_NUR!==e.s){nurBeenden();renderFilter();renderTimeline();}
   let el=document.getElementById("ev-"+evDomId(e));
-  if(!el&&(SEARCH||FAV_ONLY||!ACTIVE.has(e.s))){
-    SEARCH="";const si=document.getElementById("search");if(si)si.value="";
-    FAV_ONLY=false;ACTIVE.add(e.s);
-    renderFilter();renderToolbar();renderTimeline();
+  if(!el&&!ACTIVE.has(e.s)){
+    ACTIVE.add(e.s);
+    renderFilter();renderTimeline();
     el=document.getElementById("ev-"+evDomId(e));
   }
   if(el){klappen(el,true);
@@ -2286,42 +2099,6 @@ function applyHash(sofort){
   if(m&&document.getElementById("view-"+m[1]))setView(m[1]);
 }
 if(typeof window!=="undefined"&&window.addEventListener)window.addEventListener("hashchange",applyHash);
-
-/* ═══════ SESSION-ERINNERUNGEN (Favoriten) ═══════ */
-function loadJSON(k,f){try{const v=JSON.parse(localStorage.getItem(k));return v==null?f:v;}catch(err){return f;}}
-let REMIND_MIN=0;  /* Erinnerungs-UI entfernt — Funktion ruht */
-let FIRED=new Set(loadJSON("apex_fired",loadJSON("fullgrid_fired",[])));
-const REMIND_STEPS=[0,15,30,60];
-function renderRemind(){const b=document.getElementById("remtgl");if(!b)return;
-  b.textContent=REMIND_MIN?("Erinnerung: "+REMIND_MIN+" Min vorher"):"Erinnerung: Aus";
-  b.classList.toggle("on",!!REMIND_MIN);}
-function persistRemind(){try{localStorage.setItem("apex_remind",JSON.stringify(REMIND_MIN));}catch(err){}renderRemind();}
-function saveFired(){try{localStorage.setItem("apex_fired",JSON.stringify([...FIRED].slice(-300)));}catch(err){}}
-function cycleRemind(){
-  const next=REMIND_STEPS[(REMIND_STEPS.indexOf(REMIND_MIN)+1)%REMIND_STEPS.length];
-  if(next&&typeof Notification==="undefined"){alert("Dieser Browser unterstützt keine Benachrichtigungen.");return;}
-  if(next&&Notification.permission!=="granted"){
-    Notification.requestPermission().then(p=>{
-      if(p==="granted"){REMIND_MIN=next;persistRemind();remindHint();checkReminders();}
-      else{REMIND_MIN=0;persistRemind();alert("Benachrichtigungen sind blockiert — bitte in den Browser- bzw. App-Einstellungen erlauben.");}
-    });
-  } else {REMIND_MIN=next;persistRemind();if(next)remindHint();checkReminders();}
-}
-function remindHint(){if(REMIND_MIN&&!FAV.size)alert("Tipp: Erinnerungen gelten für deine Favoriten — markiere Events mit dem Stern ☆.");}
-function checkReminders(){
-  if(!REMIND_MIN||typeof Notification==="undefined"||Notification.permission!=="granted"||!FAV.size)return;
-  const now=Date.now(),win=REMIND_MIN*60000;
-  EVENTS.forEach(e=>{ if(e.status==="cancel"||!isFav(e))return;
-    e.sessions.forEach((s,i)=>{ if(!s.t)return;
-      const t=sessionInstant(e,s).getTime(),key=evKey(e)+"#"+i;
-      if(t>now&&t-now<=win&&!FIRED.has(key)){
-        FIRED.add(key);saveFired();
-        const mins=Math.max(1,Math.round((t-now)/60000));
-        try{new Notification("APEX · "+SERIES[e.s].short,{body:s.n+" — "+e.name+" startet in "+mins+" Min ("+s.t+" Uhr "+dtZone(new Date(t))+")",tag:key,icon:"icon-192.png"});}catch(err){}
-      }
-    });
-  });
-}
 
 /* ═══════ PWA ═══════ */
 let DEFERRED_INSTALL=null;
@@ -2418,7 +2195,7 @@ function ordnerLinks(){document.querySelectorAll("a.ordner").forEach(a=>a.setAtt
 function start(){
   BEREIT=true;
   filterLaden(); nurSerieLaden(); spoilerLaden();
-  [ordnerLinks,renderDatenstand,kopfJahre,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderToolbar,renderRemind,renderTZ,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition,checkReminders]
+  [ordnerLinks,renderDatenstand,kopfJahre,injectEventSchema,tagNext,()=>{SEASON=defaultSeason();},renderSeason,renderSpoiler,renderFilter,renderOnAir,rerender,kopfMessen,()=>applyHash(true),startPosition]
     .forEach(f=>{try{f();}catch(err){console.error(err);}});
   window.addEventListener("scroll",updateJumpBtn,{passive:true});
   window.addEventListener("resize",updateJumpBtn,{passive:true});
@@ -2435,7 +2212,7 @@ function start(){
     ["wheel","touchstart","keydown","mousedown"].forEach(t=>window.addEventListener(t,()=>{SELBST_GESCROLLT=true;},{passive:true,once:true}));
   }catch(err){console.error(err);}
   updateJumpBtn();
-  setInterval(()=>{tagNext();renderOnAir();checkReminders();if(currentView==="weekend")renderWeekend();},30000);
+  setInterval(()=>{tagNext();renderOnAir();},30000);
 }
 /* Beim Öffnen: Event-Link (#ev=…) hat Vorrang, sonst Heute-Linie der laufenden Saison */
 let SELBST_GESCROLLT=false;

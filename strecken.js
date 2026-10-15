@@ -1,9 +1,18 @@
-/* APEX – Streckenseiten: Entfernung zum Startort und Kartenausschnitt „In der Nähe“.
+/* APEX – Streckenseiten: Schalter „Deutsche Zeit | Ortszeit“, Entfernung zum Startort und Kartenausschnitt „In der Nähe“.
    Ergänzt serienseiten.js nur auf den Streckenseiten. Lädt nichts nach; der Startort wird nur gelesen
-   (gewählt und lokal gespeichert auf der Seite „In der Nähe“, Schlüssel wie dort). */
+   (gewählt und lokal gespeichert auf der Seite „In der Nähe“, Schlüssel wie dort), die Zeitwahl nicht gespeichert. */
 (function () {
   "use strict";
   const $ = (s) => document.querySelector(s);
+
+  /* Deutsche Zeit oder Ortszeit: beide Angaben stehen in der Seite (.zd, .zo), der Schalter tauscht nur die Anzeige.
+     Beim Öffnen immer deutsche Zeit. */
+  const zeitKnoepfe = Array.from(document.querySelectorAll(".zeitseg button"));
+  zeitKnoepfe.forEach((b) => b.addEventListener("click", () => {
+    document.documentElement.classList.toggle("ortszeit", b.dataset.zeit === "ort");
+    zeitKnoepfe.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  }));
+
   const datenEl = $("#apex-strecke"); if (!datenEl) return;
   const X = JSON.parse(datenEl.textContent);
   const RAD = Math.PI / 180;

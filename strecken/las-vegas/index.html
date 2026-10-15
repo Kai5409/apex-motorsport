@@ -38,7 +38,7 @@
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="F1 · F1 Academy"><i style="background:#ff3000"></i><i style="background:#c7695d"></i></span>Las Vegas</h1>
+      <h1 id="h1"><span class="bar serien" title="F1 Academy · F1" data-saisons="{&quot;2026&quot;:[[&quot;F1 Academy&quot;,&quot;#c7695d&quot;],[&quot;F1&quot;,&quot;#ff3000&quot;]],&quot;2027&quot;:[[&quot;F1&quot;,&quot;#ff3000&quot;]]}"><i style="background:#c7695d"></i><i style="background:#ff3000"></i></span>Las Vegas</h1>
       <p class="stroff">Las Vegas Strip Circuit</p>
       <p class="strort">Las Vegas · Nevada · USA</p>
       <p class="lead">Termine <span>– alle Rennen in Las Vegas mit Startzeiten in deutscher Zeit: Formel 1 und F1 Academy.</span></p>
@@ -73,7 +73,7 @@
         <li><a href="#naehe">In der Nähe</a></li>
       </ul></nav>
       <section class="kal" id="kalender" aria-label="Termine">
-   <div class="saisonwahl"><div class="seg saisonseg" role="group" aria-label="Saison"><button type="button" aria-pressed="false" data-saison="2027">2027</button><button type="button" aria-pressed="true" data-saison="2026">2026</button></div>
+   <div class="saisonwahl"><div class="segs"><div class="seg saisonseg" role="group" aria-label="Saison"><button type="button" aria-pressed="false" data-saison="2027">2027</button><button type="button" aria-pressed="true" data-saison="2026">2026</button></div><div class="seg zeitseg" role="group" aria-label="Zeitangaben"><button type="button" aria-pressed="true" data-zeit="de">Deutsche Zeit</button><button type="button" aria-pressed="false" data-zeit="ort">Ortszeit</button></div></div>
      <button class="switch" type="button" role="switch" aria-checked="false" id="spoiler"><span class="track"></span>Ergebnisse verbergen</button></div>
    <div class="saison" data-saison="2026" data-bis="2026-11-22">
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg" hidden>abgeschlossen</span></h2><p>2 Termine aus 2 Serien · Uhrzeit = Rennstart</p></div></div>
@@ -89,9 +89,9 @@
       <span class="rd sk" style="color:#ff3000">F1</span>
       <span class="when">20–22<small>Nov</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-21">Großer Preis von Las Vegas</button></span>
-      <span class="start">So 05:00<small>MEZ</small></span><span class="chev" aria-hidden="true">▶</span>
+      <span class="start"><span class="zd">So 05:00<small>MEZ</small></span><span class="zo" data-nosnippet>Sa 20:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
     </div>
-    <div class="rb" id="b-f1-21"><ul class="sess"><li class="n">FP1</li><li class="v">Fr 20.11. · 01:30 MEZ</li><li class="n">FP2</li><li class="v">Fr 20.11. · 05:00 MEZ</li><li class="n">FP3</li><li class="v">Sa 21.11. · 01:30 MEZ</li><li class="n">Qualifying</li><li class="v">Sa 21.11. · 05:00 MEZ</li><li class="n race">Rennen</li><li class="v race">So 22.11. · 05:00 MEZ</li></ul><a class="evcal" href="../../kalender/termine/f1-21.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../formel-1/#r-f1-21">Zur F1-Seite <span aria-hidden="true">→</span></a></p></div></li></ul>
+    <div class="rb" id="b-f1-21"><ul class="sess"><li class="n">FP1</li><li class="v"><span class="zd">Fr 20.11. · 01:30 MEZ</span><span class="zo" data-nosnippet>Do 19.11. · 16:30 Ortszeit</span></li><li class="n">FP2</li><li class="v"><span class="zd">Fr 20.11. · 05:00 MEZ</span><span class="zo" data-nosnippet>Do 19.11. · 20:00 Ortszeit</span></li><li class="n">FP3</li><li class="v"><span class="zd">Sa 21.11. · 01:30 MEZ</span><span class="zo" data-nosnippet>Fr 20.11. · 16:30 Ortszeit</span></li><li class="n">Qualifying</li><li class="v"><span class="zd">Sa 21.11. · 05:00 MEZ</span><span class="zo" data-nosnippet>Fr 20.11. · 20:00 Ortszeit</span></li><li class="n race">Rennen</li><li class="v race"><span class="zd">So 22.11. · 05:00 MEZ</span><span class="zo" data-nosnippet>Sa 21.11. · 20:00 Ortszeit</span></li></ul><a class="evcal" href="../../kalender/termine/f1-21.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../formel-1/#r-f1-21">Zur F1-Seite <span aria-hidden="true">→</span></a></p></div></li></ul>
    </div>
    <div class="saison" data-saison="2027" data-bis="2027-11-20">
    <div class="sechead"><div><h2 class="sec">Saison 2027<span class="abg" hidden>abgeschlossen</span></h2><p>1 Termin aus 1 Serie</p></div></div>
@@ -138,7 +138,7 @@
   </div>
 
   <footer>
-    <p>Alle Zeiten in deutscher Zeit (MEZ/MESZ). Angaben ohne Gewähr – Startzeiten künftiger Rennen können sich noch ändern.</p>
+    <p>Zeiten in deutscher Zeit (MEZ/MESZ), mit dem Schalter über den Terminen auch in Ortszeit der Strecke. Angaben ohne Gewähr – Startzeiten künftiger Rennen können sich noch ändern.</p>
     <p><a href="../">Alle Strecken</a> · <a href="../../serien/">Alle Serien</a> · <a href="../../dieses-wochenende/">Dieses Wochenende</a> · <a href="../../in-der-naehe/">In der Nähe</a></p>
     <p>Entfernungen in Luftlinie. Ein auf der Seite „In der Nähe“ gewählter Startort bleibt in diesem Browser gespeichert und wird von APEX nicht übertragen. Nur beim Antippen von „Route planen“ übergibt der Link Start und Ziel an Google Maps; dort gelten die Datenschutzbestimmungen von Google. Kartengrundlage: Natural Earth (gemeinfrei).</p>
     <p>APEX steht in keiner Verbindung zu den Betreibern der Strecke oder den Veranstaltern der Serien. <a href="../../#datenschutz">Datenschutz</a></p>
@@ -149,8 +149,8 @@
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Las Vegas</h2>
     <p class="where"><b style="color:#ff3000">F1</b> · 20.–22. November 2026</p>
-    <div class="racebig"><div class="t">05:00<small>MEZ</small></div><div class="d"><b>Rennstart</b>Sonntag, 22.&nbsp;November</div></div>
-    <ul class="sess"><li class="n">FP1</li><li class="v">Fr 20.11. · 01:30</li><li class="n">FP2</li><li class="v">Fr 20.11. · 05:00</li><li class="n">FP3</li><li class="v">Sa 21.11. · 01:30</li><li class="n">Qualifying</li><li class="v">Sa 21.11. · 05:00</li><li class="n race">Rennen</li><li class="v race">So 22.11. · 05:00</li></ul>
+    <div class="racebig"><div class="t"><span class="zd">05:00<small>MEZ</small></span><span class="zo" data-nosnippet>20:00<small>Ortszeit</small></span></div><div class="d"><b>Rennstart</b><span class="zd">Sonntag, 22.&nbsp;November</span><span class="zo" data-nosnippet>Samstag, 21.&nbsp;November</span></div></div>
+    <ul class="sess"><li class="n">FP1</li><li class="v"><span class="zd">Fr 20.11. · 01:30</span><span class="zo" data-nosnippet>Do 19.11. · 16:30</span></li><li class="n">FP2</li><li class="v"><span class="zd">Fr 20.11. · 05:00</span><span class="zo" data-nosnippet>Do 19.11. · 20:00</span></li><li class="n">FP3</li><li class="v"><span class="zd">Sa 21.11. · 01:30</span><span class="zo" data-nosnippet>Fr 20.11. · 16:30</span></li><li class="n">Qualifying</li><li class="v"><span class="zd">Sa 21.11. · 05:00</span><span class="zo" data-nosnippet>Fr 20.11. · 20:00</span></li><li class="n race">Rennen</li><li class="v race"><span class="zd">So 22.11. · 05:00</span><span class="zo" data-nosnippet>Sa 21.11. · 20:00</span></li></ul>
     <a class="evcal" href="../../kalender/termine/f1-21.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a>
     <a class="zur" href="../../formel-1/#r-f1-21">Zur F1-Seite <span aria-hidden="true">→</span></a>
   </div></template>
