@@ -2,7 +2,7 @@
    Die Seiten sind fertiges HTML; dieses Skript ergänzt nur Bedienung und rückt „Nächstes Rennen“
    nach dem heutigen Datum vor. Es lädt nur auf der Seite „In der Nähe“ bei Bedarf eigene Dateien nach (die Ortsliste
    beim Tippen ins Suchfeld, die Karte einer anderen Region beim Kartenwechsel) und speichert nur die Einstellung
-   „Ergebnisse verbergen“ und die Serienauswahl (gleiche Schlüssel wie in der App) sowie auf der Seite
+   „Ergebnisse verbergen“, die Serienauswahl und das gewählte Design (gleiche Schlüssel wie in der App) sowie auf der Seite
    „In der Nähe“ den gewählten Startort. Es meldet den Service Worker der App an (sw.js im Hauptordner, Bereich
    wie in der App), damit die Seiten auch ohne vorherigen Besuch der App offline verfügbar werden. */
 (function () {
@@ -17,6 +17,36 @@
     });
   }
   const root = document.documentElement;
+
+  /* Design hell/dunkel: das Skript im <head> setzt es vor dem ersten Zeichnen (eigene Wahl unter apex_design, sonst wie Gerät
+     bzw. Browser, auch wenn sich das ändert). Der Knopf ☀/☾ im Kopf wechselt sofort, ohne Neuladen; eine Wahl gleich der
+     Geräteeinstellung löscht den Schlüssel (dann folgt die Seite wieder dem Gerät). Teile mit einer Datei je Design (Karten)
+     hören auf das Ereignis „apex-design“. */
+  const DESIGN = "apex_design";
+  const designMQ = window.matchMedia ? matchMedia("(prefers-color-scheme: light)") : null;
+  const geraetHell = () => !!(designMQ && designMQ.matches);
+  const istHell = () => root.getAttribute("data-design") === "hell";
+  let designWahl = null;
+  try { const v = localStorage.getItem(DESIGN); designWahl = v === "hell" || v === "dunkel" ? v : null; } catch (e) {}
+  /* Kartendatei zum Design: karte/<name>.svg bzw. karte/<name>-hell.svg */
+  const kartenDatei = (d) => (istHell() ? d.replace(/(-hell)?\.svg$/, "-hell.svg") : d.replace(/-hell\.svg$/, ".svg"));
+  function design() {
+    const hell = designWahl ? designWahl === "hell" : geraetHell(), vorher = istHell();
+    root.setAttribute("data-design", hell ? "hell" : "dunkel");
+    const m = $('meta[name="theme-color"]'); if (m) m.setAttribute("content", hell ? "#f6f3ec" : "#141210");
+    $$(".dsw").forEach((b) => { const t = hell ? "Dunkles Design" : "Helles Design"; b.setAttribute("aria-label", t); b.setAttribute("title", t); });
+    if (hell !== vorher) document.dispatchEvent(new CustomEvent("apex-design", { detail: hell }));
+  }
+  $$(".dsw").forEach((b) => b.addEventListener("click", () => {
+    const hell = !istHell();
+    designWahl = hell === geraetHell() ? null : hell ? "hell" : "dunkel";
+    try { if (designWahl) localStorage.setItem(DESIGN, designWahl); else localStorage.removeItem(DESIGN); } catch (e) {}
+    design();
+  }));
+  if (designMQ) { const f = () => { if (!designWahl) design(); }; if (designMQ.addEventListener) designMQ.addEventListener("change", f); else if (designMQ.addListener) designMQ.addListener(f); }
+  addEventListener("storage", (e) => { if (e.key === DESIGN || e.key === null) { designWahl = e.newValue === "hell" || e.newValue === "dunkel" ? e.newValue : null; design(); } });
+  design();
+
   const SPOILER = "apex_spoiler";
   const heute = (() => {
     try { return new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Berlin" }); }
@@ -207,7 +237,7 @@
     E.forEach((x, i) => {
       const cx = xs[i], cy = y(cx);
       let c;
-      if (i === ni) c = `<circle class="halo" cx="${cx}" cy="${cy}" r="13" fill="none" stroke="var(--gold)" stroke-width="2.5"/><circle class="core" cx="${cx}" cy="${cy}" r="5" fill="var(--gold)"/>`;
+      if (i === ni) c = `<circle class="halo" cx="${cx}" cy="${cy}" r="13" fill="none" stroke="var(--gold-fl)" stroke-width="2.5"/><circle class="core" cx="${cx}" cy="${cy}" r="5" fill="var(--gold-fl)"/>`;
       else if (x[2] === "c") c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="var(--bg)" stroke="var(--faint)" stroke-width="1.5"/><line x1="${cx - 5}" y1="${cy + 5}" x2="${cx + 5}" y2="${cy - 5}" stroke="var(--faint)" stroke-width="1.5"/>`;
       else if (x[2] === "d") c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="${x[5] || "var(--serie)"}"/>`;
       else c = `<circle class="core" cx="${cx}" cy="${cy}" r="4.5" fill="var(--bg)" stroke="${x[5] || "var(--paper)"}" stroke-width="1.5"/>`;
@@ -312,7 +342,7 @@
       const A = ansicht === "welt" ? ausschnitt(G, pts, 30, 1.7, 2.4) : ausschnitt(G, pts, 45, 1.05, 1.5);
       const pz = (p) => `left:${((p[0] - A.x0) / A.w * 100).toFixed(2)}%;top:${((p[1] - A.y0) / A.h * 100).toFixed(2)}%`;
       let h = `<div class="sflaeche" style="aspect-ratio:${A.w.toFixed(1)}/${A.h.toFixed(1)}">` +
-        `<img src="${G.datei}" alt="" style="width:${(G.W / A.w * 100).toFixed(2)}%;left:${(-A.x0 / A.w * 100).toFixed(2)}%;top:${(-A.y0 / A.h * 100).toFixed(2)}%">`;
+        `<img src="${kartenDatei(G.datei)}" alt="" style="width:${(G.W / A.w * 100).toFixed(2)}%;left:${(-A.x0 / A.w * 100).toFixed(2)}%;top:${(-A.y0 / A.h * 100).toFixed(2)}%">`;
       /* gefahrene und abgesagte zuerst, damit kommende und das nächste Rennen obenauf liegen */
       const reihe = { c: 0, d: 1, u: 2, n: 3 };
       einzeln.slice().sort((a, b) => reihe[a.z] - reihe[b.z]).forEach((o) => {
@@ -347,6 +377,7 @@
       else if (z) zuZeile(z.dataset.id, true);
     });
     document.addEventListener("apex-saison", (ev) => { if (ev.detail !== saison) karteZeigen(ev.detail); });
+    document.addEventListener("apex-design", () => { if (!kartenEl.hidden && ansicht) zeichnenKarte(); });
     const an = $(".saisonseg button[aria-pressed='true']");
     karteZeigen(an ? an.dataset.saison : (Object.keys(kartenDat.saisons).find((k) => (kartenDat.saisons[k] || []).some((x) => x[0] === NEXT)) || Object.keys(kartenDat.saisons)[0]));
   }
@@ -721,7 +752,7 @@
         return { ...o, zeilen: zs, gruppen: gr, d: START ? km([START.lat, START.lon], [o.lat, o.lon]) : null }; })
         .sort((a, b) => (START ? a.d - b.d : a.zeilen[0].d0 < b.zeilen[0].d0 ? -1 : a.zeilen[0].d0 > b.zeilen[0].d0 ? 1 : a.name.localeCompare(b.name, "de")));
     }
-    const farbe = (g) => (G[g] && G[g].farbe) || "#8d8678";
+    const farbe = (g) => (G[g] && G[g].farbe) || "var(--muted)";
 
     /* Karte: Ausschnitt, Zoom, Verschieben */
     const svg = byId("svg"), dyn = byId("dyn"), box = byId("karte");
@@ -751,7 +782,7 @@
       const ich = START ? proj(START.lat, START.lon) : null, welt = ANSICHT === "welt", sicht = LISTE.filter(sichtbar);
       /* Ringe 300/600 km (echte Kreise auf der Erde, projiziert) – nur mit Startort in der Nähe der Karte, nicht auf der Weltkarte */
       if (ich && !welt && imRand(ANSICHT, ich, 400)) [300, 600].forEach((r) => { const pts = []; for (let b = 0; b <= 360; b += 4) { const [la, lo] = ziel(START.lat, START.lon, b, r); pts.push(proj(la, lo).map((v) => v.toFixed(1)).join(",")); }
-        dyn.append(el("polyline", { points: pts.join(" "), fill: "none", stroke: "var(--gold)", "stroke-opacity": r === 300 ? 0.55 : 0.35, "stroke-width": 1.2 * u, "stroke-dasharray": `${5 * u} ${4 * u}` }));
+        dyn.append(el("polyline", { points: pts.join(" "), fill: "none", stroke: "var(--gold-fl)", "stroke-opacity": r === 300 ? 0.55 : 0.35, "stroke-width": 1.2 * u, "stroke-dasharray": `${5 * u} ${4 * u}` }));
       });
       /* Strecken */
       const sel = AUSGEWAEHLT;
@@ -778,15 +809,15 @@
           if (b[0] < v0[0] || b[2] > v0[2] || b[1] < v0[1] || b[3] > v0[3]) continue;
           const eigen = (q) => Math.abs((q[0] + q[2]) / 2 - x) < 0.01 && Math.abs((q[1] + q[3]) / 2 - y) < 0.01;
           if (belegt.some((q) => !eigen(q) && b[0] < q[2] && b[2] > q[0] && b[1] < q[3] && b[3] > q[1])) continue; belegt.push(b);
-          const tx = el("text", { x: x + dx, y: y + fs * 0.35, "text-anchor": anchor, "font-family": "Inter, system-ui, sans-serif", "font-weight": o.id === sel ? 700 : 600, "font-size": fs, fill: o.id === sel ? "var(--paper)" : "#cfc8bb", "paint-order": "stroke", stroke: "var(--meer)", "stroke-width": 3.2 * u, "stroke-linejoin": "round" });
+          const tx = el("text", { x: x + dx, y: y + fs * 0.35, "text-anchor": anchor, "font-family": "Inter, system-ui, sans-serif", "font-weight": o.id === sel ? 700 : 600, "font-size": fs, fill: o.id === sel ? "var(--paper)" : "var(--paper2)", "paint-order": "stroke", stroke: "var(--meer)", "stroke-width": 3.2 * u, "stroke-linejoin": "round" });
           tx.append(document.createTextNode(o.name + (mitKm ? " " : ""))); if (mitKm) tx.append(el("tspan", { "font-family": "IBM Plex Mono, monospace", "font-weight": 500, fill: "var(--gold)" }, kmText(o.d).replace("≈ ", "")));
           dyn.append(tx); break; } });
       /* Startort */
       if (!ich || !imRand(ANSICHT, ich, 40)) return;
       const [ix, iy] = ich;
-      dyn.append(el("circle", { cx: ix, cy: iy, r: 11 * u, fill: "var(--gold)", "fill-opacity": 0.16 }));
-      dyn.append(el("circle", { cx: ix, cy: iy, r: 5.5 * u, fill: "var(--bg)", stroke: "var(--gold)", "stroke-width": 2.4 * u }));
-      dyn.append(el("circle", { cx: ix, cy: iy, r: 1.8 * u, fill: "var(--gold)" }));
+      dyn.append(el("circle", { cx: ix, cy: iy, r: 11 * u, fill: "var(--gold-fl)", "fill-opacity": 0.16 }));
+      dyn.append(el("circle", { cx: ix, cy: iy, r: 5.5 * u, fill: "var(--bg)", stroke: "var(--gold-fl)", "stroke-width": 2.4 * u }));
+      dyn.append(el("circle", { cx: ix, cy: iy, r: 1.8 * u, fill: "var(--gold-fl)" }));
       if (!welt) dyn.append(el("text", { x: ix, y: iy - 15 * u, "text-anchor": "middle", "font-family": "IBM Plex Mono, monospace", "font-weight": 600, "font-size": 11.5 * u, "letter-spacing": 0.6 * u, fill: "var(--gold)", "paint-order": "stroke", stroke: "var(--meer)", "stroke-width": 3.2 * u }, START.n.toUpperCase()));
     }
 
@@ -909,7 +940,7 @@
       box.style.aspectRatio = k === "welt" ? W + " / " + H : "";
       const info = byId("info"); info.classList.toggle("unter", k === "welt"); if (k === "welt") box.after(info); else box.append(info);
       const bild = byId("basis-bild"); byId("basis-europa").style.display = k === "europa" ? "" : "none"; bild.style.display = k === "europa" ? "none" : ""; bild.textContent = "";
-      if (k !== "europa") bild.append(el("rect", { x: -W, y: -H, width: 3 * W, height: 3 * H, fill: "var(--meer)" }), el("image", { x: 0, y: 0, width: W, height: H, preserveAspectRatio: "none", href: "../" + R.datei }));
+      if (k !== "europa") bild.append(el("rect", { x: -W, y: -H, width: 3 * W, height: 3 * H, fill: "var(--meer)" }), el("image", { x: 0, y: 0, width: W, height: H, preserveAspectRatio: "none", href: kartenDatei("../" + R.datei) }));
       svg.setAttribute("aria-label", (k === "welt" ? "Weltkarte" : "Karte " + R.name) + " – alle Rennstrecken mit Terminen im gewählten Zeitraum");
       ORTE.forEach((o) => { o.xy = proj(o.lat, o.lon); }); LISTE.forEach((o) => { o.xy = proj(o.lat, o.lon); });
       if (k === "welt" && WAHL) wahlmodus(false);
@@ -917,6 +948,7 @@
       const l = kw.querySelector('[data-k="region"]'), lr = linkeRegion(); l.hidden = !lr; if (lr) l.textContent = REGIONEN[lr].name;
       l.setAttribute("aria-checked", String(k !== "welt")); kw.querySelector('[data-k="welt"]').setAttribute("aria-checked", String(k === "welt"));
       rz.hidden = k !== "welt"; legende(); startAusschnitt(); }
+    document.addEventListener("apex-design", () => { const b = byId("basis-bild").querySelector("image"); if (b) b.setAttribute("href", kartenDatei(b.getAttribute("href"))); });
     kw.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const k = b.dataset.k === "welt" ? "welt" : linkeRegion(); if (k && k !== ANSICHT) ansichtSetzen(k); });
     rz.addEventListener("click", (e) => { const b = e.target.closest("button[data-r]"); if (b) ansichtSetzen(b.dataset.r); });
 

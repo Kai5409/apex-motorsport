@@ -23,28 +23,30 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"Yas Marina","item":"https://apexkalender.de/strecken/yas-marina/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/yas-marina/#strecke","name":"Yas Marina Circuit","url":"https://apexkalender.de/strecken/yas-marina/","alternateName":"Yas Marina","address":{"@type":"PostalAddress","addressLocality":"Abu Dhabi","addressCountry":"AE"},"geo":{"@type":"GeoCoordinates","latitude":24.4694,"longitude":54.6056}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">Yas Marina</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="F1 · F2" data-saisons="{&quot;2026&quot;:[[&quot;F1&quot;,&quot;#ff3000&quot;],[&quot;F2&quot;,&quot;#cf5e85&quot;]],&quot;2027&quot;:[[&quot;F1&quot;,&quot;#ff3000&quot;]]}"><i style="background:#ff3000"></i><i style="background:#cf5e85"></i></span>Yas Marina</h1>
+      <h1 id="h1"><span class="bar serien" title="F1 · F2" data-saisons="{&quot;2026&quot;:[[&quot;F1&quot;,&quot;var(--s-f1)&quot;],[&quot;F2&quot;,&quot;var(--s-f2)&quot;]],&quot;2027&quot;:[[&quot;F1&quot;,&quot;var(--s-f1)&quot;]]}"><i style="background:var(--s-f1)"></i><i style="background:var(--s-f2)"></i></span>Yas Marina</h1>
       <p class="stroff">Yas Marina Circuit</p>
       <p class="strort">Abu Dhabi · Vereinigte Arabische Emirate</p>
       <p class="lead">Termine <span>– alle Rennen auf dem Yas Marina Circuit mit Startzeiten in deutscher Zeit: Formel 1 und Formel 2.</span></p>
       <dl class="fakten" style="--n:5"><div><dt>Länge</dt><dd>5,281<small>km</small></dd></div><div><dt>Kurven</dt><dd>16</dd></div><div><dt>Eröffnet</dt><dd>2009</dd></div><div><dt>Termine 2027</dt><dd>1</dd></div><div><dt>Zeitverschiebung</dt><dd>+3<small>h</small></dd></div></dl>
       <span class="chiplab">Serien auf dem Yas Marina Circuit</span>
-      <div class="chips"><a class="chip" href="../../formel-1/"><i style="background:#ff3000"></i>Formel 1</a><a class="chip" href="../../formel-2/"><i style="background:#cf5e85"></i>Formel 2</a></div>
+      <div class="chips"><a class="chip" href="../../formel-1/"><i style="background:var(--s-f1)"></i>Formel 1</a><a class="chip" href="../../formel-2/"><i style="background:var(--s-f2)"></i>Formel 2</a></div>
     </section>
 
     <div class="side">
@@ -52,7 +54,7 @@
   <div class="nextcard" data-id="f2-14" data-von="2026-12-04" data-bis="2026-12-06">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Abu Dhabi · Finale</h2>
-    <p class="where"><b style="color:#cf5e85">F2</b> · 4.–6. Dezember 2026</p>
+    <p class="where"><b style="color:var(--s-f2)">F2</b> · 4.–6. Dezember 2026</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../formel-2/#r-f2-14">Zur F2-Seite <span aria-hidden="true">→</span></a>
   </div>
@@ -79,14 +81,14 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg" hidden>abgeschlossen</span></h2><p>2 Termine aus 2 Serien · Uhrzeit = Rennstart</p></div></div>
    <ul class="races"><li class="race next" id="r-f2-14">
     <div class="rh">
-      <span class="rd sk" style="color:#cf5e85">F2</span>
+      <span class="rd sk" style="color:var(--s-f2)">F2</span>
       <span class="when">04–06<small>Dez</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f2-14">Großer Preis von Abu Dhabi · Finale</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-f2-14"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../formel-2/#r-f2-14">Zur F2-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-f1-23">
     <div class="rh">
-      <span class="rd sk" style="color:#ff3000">F1</span>
+      <span class="rd sk" style="color:var(--s-f1)">F1</span>
       <span class="when">04–06<small>Dez</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-23">Großer Preis von Abu Dhabi</button></span>
       <span class="start"><span class="zd">So 14:00<small>MEZ</small></span><span class="zo" data-nosnippet>So 17:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
@@ -98,7 +100,7 @@
    <p class="prov">Vorläufige Kalender. Startzeiten folgen, sobald die Serien den Zeitplan veröffentlichen.</p>
    <ul class="races"><li class="race" id="r-f1-24-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#ff3000">F1</span>
+      <span class="rd sk" style="color:var(--s-f1)">F1</span>
       <span class="when">10–12<small>Dez</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-24-2027">Großer Preis von Abu Dhabi<span class="tag">Sprint</span></button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -116,14 +118,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die auf dem Yas Marina Circuit fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="f1"><h3><a href="../../formel-1/#sender" style="color:#ff3000">Formel 1</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.</p></div></div><div class="wtvb" data-serie="f2"><h3><a href="../../formel-2/#sender" style="color:#cf5e85">Formel 2</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Deutschland</b> zeigt die Formel 2 live auf Sky Sport F1, auch bei <b>WOW</b>.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> übertragen die Rennen, meist im Stream (ServusTV On, ORF ON), teils auf ORF SPORT+.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Die Serie nennt für die Schweiz keinen eigenen Sender.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="f1"><h3><a href="../../formel-1/#sender" style="color:var(--s-f1)">Formel 1</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.</p></div></div><div class="wtvb" data-serie="f2"><h3><a href="../../formel-2/#sender" style="color:var(--s-f2)">Formel 2</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Deutschland</b> zeigt die Formel 2 live auf Sky Sport F1, auch bei <b>WOW</b>.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> übertragen die Rennen, meist im Stream (ServusTV On, ORF ON), teils auf ORF SPORT+.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Die Serie nennt für die Schweiz keinen eigenen Sender.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:850/584.4" aria-label="Kartenausschnitt mit Yas Marina und Strecken in der Nähe">
           <svg id="minisvg" viewBox="203.2 299.4 850 584.4" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Yas Marina und Strecken in der Nähe">
-            <rect x="193.2" y="289.4" width="870" height="604.4" fill="#121110"/>
+            <rect x="193.2" y="289.4" width="870" height="604.4" fill="var(--meer)"/>
             <image href="../../karte/nahost.svg" x="0" y="0" width="833" height="878"/>
             <g id="minidyn"></g>
           </svg>
@@ -131,7 +133,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../lusail/"><span class="nn"><b>Lusail</b><small>Katar · 10 Termine</small></span><span class="nk">≈ 335 km<small>Luftlinie</small></span><span class="nt"><i style="color:#e172db">MotoGP</i> Großer Preis von Katar · 6.–8. November 2026</span></a></li><li><a href="../sakhir/"><span class="nn"><b>Sakhir</b><small>Bahrain · 2 Termine</small></span><span class="nk">≈ 445 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff3000">F1</i> Großer Preis von Bahrain · 12.–14. März 2027</span></a></li><li><a href="../dschidda/"><span class="nn"><b>Dschidda</b><small>Saudi-Arabien · 3 Termine</small></span><span class="nk">≈ 1.615 km<small>Luftlinie</small></span><span class="nt"><i style="color:#fe958e">F·E</i> Dschidda E-Prix I · Auftakt Saison 13 · 18. Dezember 2026</span></a></li><li><a href="../baku/"><span class="nn"><b>Baku</b><small>Aserbaidschan · 1 Termin</small></span><span class="nk">≈ 1.825 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff3000">F1</i> Großer Preis von Aserbaidschan · 24.–26. September 2027</span></a></li><li><a href="../istanbul-park/"><span class="nn"><b>Istanbul Park</b><small>Türkei · 1 Termin</small></span><span class="nk">≈ 2.965 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff3000">F1</i> Großer Preis der Türkei · 1.–3. Oktober 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../lusail/"><span class="nn"><b>Lusail</b><small>Katar · 10 Termine</small></span><span class="nk">≈ 335 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-mgp)">MotoGP</i> Großer Preis von Katar · 6.–8. November 2026</span></a></li><li><a href="../sakhir/"><span class="nn"><b>Sakhir</b><small>Bahrain · 2 Termine</small></span><span class="nk">≈ 445 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-f1)">F1</i> Großer Preis von Bahrain · 12.–14. März 2027</span></a></li><li><a href="../dschidda/"><span class="nn"><b>Dschidda</b><small>Saudi-Arabien · 3 Termine</small></span><span class="nk">≈ 1.615 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-fe)">F·E</i> Dschidda E-Prix I · Auftakt Saison 13 · 18. Dezember 2026</span></a></li><li><a href="../baku/"><span class="nn"><b>Baku</b><small>Aserbaidschan · 1 Termin</small></span><span class="nk">≈ 1.825 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-f1)">F1</i> Großer Preis von Aserbaidschan · 24.–26. September 2027</span></a></li><li><a href="../istanbul-park/"><span class="nn"><b>Istanbul Park</b><small>Türkei · 1 Termin</small></span><span class="nk">≈ 2.965 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-f1)">F1</i> Großer Preis der Türkei · 1.–3. Oktober 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=nahost">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -148,7 +150,7 @@
 <template class="naechst" data-id="f1-23" data-von="2026-12-04" data-bis="2026-12-06"><div class="nextcard" data-id="f1-23" data-von="2026-12-04" data-bis="2026-12-06">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Abu Dhabi</h2>
-    <p class="where"><b style="color:#ff3000">F1</b> · 4.–6. Dezember 2026</p>
+    <p class="where"><b style="color:var(--s-f1)">F1</b> · 4.–6. Dezember 2026</p>
     <div class="racebig"><div class="t"><span class="zd">14:00<small>MEZ</small></span><span class="zo" data-nosnippet>17:00<small>Ortszeit</small></span></div><div class="d"><b>Rennstart</b><span class="zd">Sonntag, 6.&nbsp;Dezember</span><span class="zo" data-nosnippet>Sonntag, 6.&nbsp;Dezember</span></div></div>
     <ul class="sess"><li class="n">FP1</li><li class="v"><span class="zd">Fr 04.12. · 10:30</span><span class="zo" data-nosnippet>Fr 04.12. · 13:30</span></li><li class="n">FP2</li><li class="v"><span class="zd">Fr 04.12. · 14:00</span><span class="zo" data-nosnippet>Fr 04.12. · 17:00</span></li><li class="n">FP3</li><li class="v"><span class="zd">Sa 05.12. · 11:30</span><span class="zo" data-nosnippet>Sa 05.12. · 14:30</span></li><li class="n">Qualifying</li><li class="v"><span class="zd">Sa 05.12. · 15:00</span><span class="zo" data-nosnippet>Sa 05.12. · 18:00</span></li><li class="n race">Rennen</li><li class="v race"><span class="zd">So 06.12. · 14:00</span><span class="zo" data-nosnippet>So 06.12. · 17:00</span></li></ul>
     <a class="evcal" href="../../kalender/termine/f1-23.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a>
@@ -157,7 +159,7 @@
 <template class="naechst" data-id="f1-24-2027" data-von="2027-12-10" data-bis="2027-12-12"><div class="nextcard" data-id="f1-24-2027" data-von="2027-12-10" data-bis="2027-12-12">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Abu Dhabi</h2>
-    <p class="where"><b style="color:#ff3000">F1</b> · 10.–12. Dezember 2027 · <span class="tag" style="margin:0">Sprint</span></p>
+    <p class="where"><b style="color:var(--s-f1)">F1</b> · 10.–12. Dezember 2027 · <span class="tag" style="margin:0">Sprint</span></p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../formel-1/#r-f1-24-2027">Zur F1-Seite <span aria-hidden="true">→</span></a>
   </div></template>
@@ -167,6 +169,6 @@
     <p class="where">Neue Termine folgen, sobald die Serien ihre Kalender veröffentlichen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[],"linie":null}</script>
-<script type="application/json" id="apex-strecke">{"lat":24.4694,"lon":54.6056,"name":"Yas Marina","np":[628.2,591.6],"box":[203.2,299.4,850,584.4],"pkt":[{"n":"Lusail","x":544.1,"y":567.3,"l":1,"c":"#e172db","slug":"lusail","land":"Katar","km":"≈ 335 km","anz":10,"ns":"MotoGP","nn":"Großer Preis von Katar","nd":"6.–8. November 2026"},{"n":"Sakhir","x":519,"y":552.9,"l":1,"c":"#ff3000","slug":"sakhir","land":"Bahrain","km":"≈ 445 km","anz":2,"ns":"F1","nn":"Großer Preis von Bahrain","nd":"12.–14. März 2027"},{"n":"Dschidda","x":215.8,"y":676.6,"l":1,"c":"#fe958e","slug":"dschidda","land":"Saudi-Arabien","km":"≈ 1.615 km","anz":3,"ns":"F·E","nn":"Dschidda E-Prix I · Auftakt Saison 13","nd":"18. Dezember 2026"}]}</script>
+<script type="application/json" id="apex-strecke">{"lat":24.4694,"lon":54.6056,"name":"Yas Marina","np":[628.2,591.6],"box":[203.2,299.4,850,584.4],"pkt":[{"n":"Lusail","x":544.1,"y":567.3,"l":1,"c":"var(--s-mgp)","slug":"lusail","land":"Katar","km":"≈ 335 km","anz":10,"ns":"MotoGP","nn":"Großer Preis von Katar","nd":"6.–8. November 2026"},{"n":"Sakhir","x":519,"y":552.9,"l":1,"c":"var(--s-f1)","slug":"sakhir","land":"Bahrain","km":"≈ 445 km","anz":2,"ns":"F1","nn":"Großer Preis von Bahrain","nd":"12.–14. März 2027"},{"n":"Dschidda","x":215.8,"y":676.6,"l":1,"c":"var(--s-fe)","slug":"dschidda","land":"Saudi-Arabien","km":"≈ 1.615 km","anz":3,"ns":"F·E","nn":"Dschidda E-Prix I · Auftakt Saison 13","nd":"18. Dezember 2026"}]}</script>
 </body>
 </html>

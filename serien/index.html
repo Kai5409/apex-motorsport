@@ -23,14 +23,16 @@
 <link rel="preload" href="../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Serien","item":"https://apexkalender.de/serien/"}]},{"@type":"ItemList","name":"Rennserien bei APEX","itemListElement":[{"@type":"ListItem","position":1,"name":"Formel 1","url":"https://apexkalender.de/formel-1/"},{"@type":"ListItem","position":2,"name":"Formel E","url":"https://apexkalender.de/formel-e/"},{"@type":"ListItem","position":3,"name":"IndyCar","url":"https://apexkalender.de/indycar/"},{"@type":"ListItem","position":4,"name":"Formel 2","url":"https://apexkalender.de/formel-2/"},{"@type":"ListItem","position":5,"name":"Formel 3","url":"https://apexkalender.de/formel-3/"},{"@type":"ListItem","position":6,"name":"F1 Academy","url":"https://apexkalender.de/f1-academy/"},{"@type":"ListItem","position":7,"name":"MotoGP","url":"https://apexkalender.de/motogp/"},{"@type":"ListItem","position":8,"name":"Superbike-WM","url":"https://apexkalender.de/superbike-wm/"},{"@type":"ListItem","position":9,"name":"Moto2","url":"https://apexkalender.de/moto2/"},{"@type":"ListItem","position":10,"name":"Moto3","url":"https://apexkalender.de/moto3/"},{"@type":"ListItem","position":11,"name":"WEC","url":"https://apexkalender.de/wec/"},{"@type":"ListItem","position":12,"name":"IMSA","url":"https://apexkalender.de/imsa/"},{"@type":"ListItem","position":13,"name":"GT World Challenge Europe","url":"https://apexkalender.de/gt-world-challenge/"},{"@type":"ListItem","position":14,"name":"DTM","url":"https://apexkalender.de/dtm/"},{"@type":"ListItem","position":15,"name":"Nürburgring Langstrecken-Serie","url":"https://apexkalender.de/nls/"},{"@type":"ListItem","position":16,"name":"Porsche Supercup","url":"https://apexkalender.de/porsche-supercup/"},{"@type":"ListItem","position":17,"name":"WRC","url":"https://apexkalender.de/wrc/"},{"@type":"ListItem","position":18,"name":"ERC","url":"https://apexkalender.de/erc/"},{"@type":"ListItem","position":19,"name":"Rallye Dakar","url":"https://apexkalender.de/rallye-dakar/"}]}]}</script>
 </head>
-<body style="--serie:#d8a84b;--serie-text:#141210">
+<body style="--serie:var(--gold-fl);--serie-text:#141210">
 <div class="wrap">
   <header class="top">
-    <a class="logo" href="../" aria-label="APEX – zur Startseite"><img src="../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Zur Zeitleiste</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../">APEX</a><i>›</i><span aria-current="page">Serien</span></nav>
@@ -48,115 +50,115 @@
     <li><a href="#rallye">Rallye</a></li>
   </ul></nav>
 
-  <section class="gruppe" id="formel" aria-labelledby="h-formel" style="--gf:#ff3000">
+  <section class="gruppe" id="formel" aria-labelledby="h-formel" style="--gf:var(--g-formel)">
     <div class="sechead"><div><h2 class="sec" id="h-formel">Formel</h2><p>6 Serien</p></div></div>
     <ul class="slist">
-      <li><a class="scard" href="../formel-1/" data-serie="f1" style="--serie:#ff3000">
+      <li><a class="scard" href="../formel-1/" data-serie="f1" style="--serie:var(--s-f1)">
         <span class="sname">Formel 1</span>
         <span class="skurz">Elf Teams, bis zu 24 Rennen pro Saison, das technisch aufwendigste Reglement im Motorsport.</span>
         <span class="snext"><b>Nächstes Rennen</b> Großer Preis der USA · COTA · 23.–25. Okt. 2026</span>
       </a></li>
-      <li><a class="scard" href="../formel-e/" data-serie="fe" style="--serie:#fe958e">
+      <li><a class="scard" href="../formel-e/" data-serie="fe" style="--serie:var(--s-fe)">
         <span class="sname">Formel E</span>
         <span class="skurz">Elektro-Rennserie, überwiegend auf Stadtkursen, ein Rennen pro Tag.</span>
         <span class="snext"><b>Nächstes Rennen</b> Dschidda E-Prix I · Auftakt Saison 13 · Dschidda · 18. Dez. 2026</span>
       </a></li>
-      <li><a class="scard" href="../indycar/" data-serie="indycar" style="--serie:#ff782b">
+      <li><a class="scard" href="../indycar/" data-serie="indycar" style="--serie:var(--s-indycar)">
         <span class="sname">IndyCar</span>
         <span class="skurz">Amerikas Formelserie auf Ovalen, Rund- und Stadtkursen — Höhepunkt ist das Indy 500.</span>
         <span class="snext"><b>Nächstes Rennen</b> Grand Prix von St. Petersburg · St. Petersburg · 7. Mär. 2027</span>
       </a></li>
-      <li><a class="scard" href="../formel-2/" data-serie="f2" style="--serie:#cf5e85">
+      <li><a class="scard" href="../formel-2/" data-serie="f2" style="--serie:var(--s-f2)">
         <span class="sname">Formel 2</span>
         <span class="skurz">Letzte Stufe vor der Formel 1 — 22 identische Autos, Sprint und Hauptrennen an jedem Wochenende.</span>
         <span class="snext"><b>Nächstes Rennen</b> Großer Preis von Katar · Lusail · 27.–29. Nov. 2026</span>
       </a></li>
-      <li><a class="scard" href="../formel-3/" data-serie="f3" style="--serie:#fbb66f">
+      <li><a class="scard" href="../formel-3/" data-serie="f3" style="--serie:var(--s-f3)">
         <span class="sname">Formel 3</span>
         <span class="skurz">Nachwuchsserie im Rahmen der Formel 1 — 30 identische Autos, Sprint und Hauptrennen.</span>
         <span class="snext"><b>Saison 2026 beendet</b> Kalender 2027 folgt</span>
       </a></li>
-      <li><a class="scard" href="../f1-academy/" data-serie="f1academy" style="--serie:#c7695d">
+      <li><a class="scard" href="../f1-academy/" data-serie="f1academy" style="--serie:var(--s-f1academy)">
         <span class="sname">F1 Academy</span>
         <span class="skurz">Nachwuchsserie der Formel 1 nur für Fahrerinnen, auf Formel-4-Niveau.</span>
         <span class="snext"><b>Nächstes Rennen</b> Großer Preis der USA · COTA · 22.–25. Okt. 2026</span>
       </a></li>
     </ul>
   </section>
-  <section class="gruppe" id="motorrad" aria-labelledby="h-motorrad" style="--gf:#e172db">
+  <section class="gruppe" id="motorrad" aria-labelledby="h-motorrad" style="--gf:var(--g-motorrad)">
     <div class="sechead"><div><h2 class="sec" id="h-motorrad">Motorrad</h2><p>4 Serien</p></div></div>
     <ul class="slist">
-      <li><a class="scard" href="../motogp/" data-serie="mgp" style="--serie:#e172db">
+      <li><a class="scard" href="../motogp/" data-serie="mgp" style="--serie:var(--s-mgp)">
         <span class="sname">MotoGP</span>
         <span class="skurz">Motorrad-Königsklasse, 22 Grands Prix, Sprint an jedem Wochenende.</span>
         <span class="snext"><b>Nächstes Rennen</b> Großer Preis von Australien · Phillip Island · 23.–25. Okt. 2026</span>
       </a></li>
-      <li><a class="scard" href="../superbike-wm/" data-serie="wsbk" style="--serie:#ad88fe">
+      <li><a class="scard" href="../superbike-wm/" data-serie="wsbk" style="--serie:var(--s-wsbk)">
         <span class="sname">Superbike-WM</span>
         <span class="skurz">WM für seriennahe Superbikes — drei Rennen an jedem Wochenende.</span>
         <span class="snext"><b>Nächstes Rennen</b> WM-Lauf Spanien · Finale · Jerez · 16.–18. Okt. 2026</span>
       </a></li>
-      <li><a class="scard" href="../moto2/" data-serie="moto2" style="--serie:#f32a94">
+      <li><a class="scard" href="../moto2/" data-serie="moto2" style="--serie:var(--s-moto2)">
         <span class="sname">Moto2</span>
         <span class="skurz">Mittlere Klasse der Motorrad-WM — Einheitsmotor von Triumph, Rennen an allen 22 Grands Prix.</span>
         <span class="snext"><b>Nächstes Rennen</b> Großer Preis von Australien · Phillip Island · 23.–25. Okt. 2026</span>
       </a></li>
-      <li><a class="scard" href="../moto3/" data-serie="moto3" style="--serie:#f3b7ff">
+      <li><a class="scard" href="../moto3/" data-serie="moto3" style="--serie:var(--s-moto3)">
         <span class="sname">Moto3</span>
         <span class="skurz">Einstiegsklasse der Motorrad-WM — 250er-Einzylinder, oft Entscheidungen in der letzten Kurve.</span>
         <span class="snext"><b>Nächstes Rennen</b> Großer Preis von Australien · Phillip Island · 23.–25. Okt. 2026</span>
       </a></li>
     </ul>
   </section>
-  <section class="gruppe" id="sportwagen" aria-labelledby="h-sportwagen" style="--gf:#3a86ff">
+  <section class="gruppe" id="sportwagen" aria-labelledby="h-sportwagen" style="--gf:var(--g-sportwagen)">
     <div class="sechead"><div><h2 class="sec" id="h-sportwagen">Sportwagen &amp; GT</h2><p>6 Serien</p></div></div>
     <ul class="slist">
-      <li><a class="scard" href="../wec/" data-serie="wec" style="--serie:#3a86ff">
+      <li><a class="scard" href="../wec/" data-serie="wec" style="--serie:var(--s-wec)">
         <span class="sname">WEC</span>
         <span class="skurz">Langstrecken-WM mit mehreren Klassen gleichzeitig auf der Strecke.</span>
         <span class="snext"><b>Nächstes Rennen</b> 6 Stunden von Barcelona · Barcelona · 16.–18. Okt. 2026</span>
       </a></li>
-      <li><a class="scard" href="../imsa/" data-serie="imsa" style="--serie:#33b4fe">
+      <li><a class="scard" href="../imsa/" data-serie="imsa" style="--serie:var(--s-imsa)">
         <span class="sname">IMSA</span>
         <span class="skurz">Nordamerikanische Langstrecken-Meisterschaft: Prototypen und GT3-Fahrzeuge in vier Klassen auf einer Strecke.</span>
         <span class="snext"><b>Nächstes Rennen</b> 24 Stunden von Daytona · Daytona · 28.–31. Jan. 2027</span>
       </a></li>
-      <li><a class="scard" href="../gt-world-challenge/" data-serie="gtwc" style="--serie:#03c4c6">
+      <li><a class="scard" href="../gt-world-challenge/" data-serie="gtwc" style="--serie:var(--s-gtwc)">
         <span class="sname">GT World Challenge Europe</span>
         <span class="skurz">Größte GT3-Serie Europas, geteilt in Sprint Cup und Endurance Cup.</span>
         <span class="snext"><b>Nächstes Rennen</b> Portimão · Endurance · Finale · Portimão · 16.–18. Okt. 2026</span>
       </a></li>
-      <li><a class="scard" href="../dtm/" data-serie="dtm" style="--serie:#6de5f7">
+      <li><a class="scard" href="../dtm/" data-serie="dtm" style="--serie:var(--s-dtm)">
         <span class="sname">DTM</span>
         <span class="skurz">GT3-Sportwagen, acht Wochenenden, zwei eigenständige Rennen pro Wochenende.</span>
         <span class="snext"><b>Nächstes Rennen</b> DTM Spielberg · Red Bull Ring · 23.–25. Apr. 2027</span>
       </a></li>
-      <li><a class="scard" href="../nls/" data-serie="nls" style="--serie:#98bafe">
+      <li><a class="scard" href="../nls/" data-serie="nls" style="--serie:var(--s-nls)">
         <span class="sname">Nürburgring Langstrecken-Serie</span>
         <span class="skurz">Langstrecke auf der Nordschleife — über hundert Autos vom Serienwagen bis zum GT3 gleichzeitig.</span>
         <span class="snext"><b>Nächstes Rennen</b> NLS1 · Nürburgring · 20. Mär. 2027</span>
       </a></li>
-      <li><a class="scard" href="../porsche-supercup/" data-serie="supercup" style="--serie:#1b8fab">
+      <li><a class="scard" href="../porsche-supercup/" data-serie="supercup" style="--serie:var(--s-supercup)">
         <span class="sname">Porsche Supercup</span>
         <span class="skurz">Porsches internationaler Markenpokal im Rahmen der Formel 1 — alle fahren den 911 Cup.</span>
         <span class="snext"><b>Saison 2026 beendet</b> Kalender 2027 folgt</span>
       </a></li>
     </ul>
   </section>
-  <section class="gruppe" id="rallye" aria-labelledby="h-rallye" style="--gf:#37b24d">
+  <section class="gruppe" id="rallye" aria-labelledby="h-rallye" style="--gf:var(--g-rallye)">
     <div class="sechead"><div><h2 class="sec" id="h-rallye">Rallye</h2><p>3 Serien</p></div></div>
     <ul class="slist">
-      <li><a class="scard" href="../wrc/" data-serie="wrc" style="--serie:#37b24d">
+      <li><a class="scard" href="../wrc/" data-serie="wrc" style="--serie:var(--s-wrc)">
         <span class="sname">WRC</span>
         <span class="skurz">Rallye-WM auf Schotter, Asphalt und Schnee — gefahren wird gegen die Uhr.</span>
         <span class="snext"><b>Nächste Rallye</b> Rallye Monte-Carlo · Gap · 21.–24. Jan. 2027</span>
       </a></li>
-      <li><a class="scard" href="../erc/" data-serie="erc" style="--serie:#a1e848">
+      <li><a class="scard" href="../erc/" data-serie="erc" style="--serie:var(--s-erc)">
         <span class="sname">ERC</span>
         <span class="skurz">Rallye-Europameisterschaft mit Rally2-Autos auf Asphalt und Schotter.</span>
         <span class="snext"><b>Nächste Rallye</b> Rallye Nordportugal · Finale · Fafe · 23.–25. Okt. 2026</span>
       </a></li>
-      <li><a class="scard" href="../rallye-dakar/" data-serie="dakar" style="--serie:#5be8ac">
+      <li><a class="scard" href="../rallye-dakar/" data-serie="dakar" style="--serie:var(--s-dakar)">
         <span class="sname">Rallye Dakar</span>
         <span class="skurz">Langstrecken-Rallye durch die Wüste Saudi-Arabiens — zwei Wochen für Autos, Motorräder und Lkw.</span>
         <span class="snext"><b>Nächste Rallye</b> 49. Rallye Dakar · Saudi-Arabien · 1.–15. Jan. 2027</span>

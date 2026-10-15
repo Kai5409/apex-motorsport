@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#141210">
+<script>/* Design vor dem ersten Zeichnen: eigene Wahl (apex_design), sonst wie Gerät bzw. Browser */(function(){var d=null;try{d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;document.documentElement.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -43,9 +44,26 @@
 <style>
 :root{
   /* Text mindestens --muted (5,2:1 auf --bg); --faint (2,3:1) nur für Linien, Punkte und Deko */
-  --bg:#141210; --bg2:#1b1916; --paper:#ece7dd; --muted:#8d8678; --faint:#55504a;
+  --bg:#141210; --bg2:#1b1916; --bg3:#221f1b; --paper:#ece7dd; --muted:#8d8678; --faint:#55504a;
   --rule:rgba(236,231,221,.13); --rule-strong:rgba(236,231,221,.32);
-  --red:#ff3000; --green:#3fae62; --gold:#d8a84b;
+  --red:#ff3000; --green:#3fae62;
+  /* Gold zweigeteilt: --gold für Schrift, --gold-fl für Flächen, Balken, Ringe, Abzeichen, Schalter und Punkte in Grafiken */
+  --gold:#d8a84b; --gold-fl:#d8a84b; --gold-kante:#d8a84b;
+  /* Goldene Knöpfe: Grund, Rand, Grund beim Darüberfahren (--gknopf-hover2: Verweis „Alle Serien im Überblick“) */
+  --gknopf:transparent; --gknopf-rand:rgba(236,231,221,.32); --gknopf-hover:rgba(216,168,75,.08); --gknopf-hover2:rgba(216,168,75,.05);
+  --paper-rgb:236,231,221;   /* Schriftfarbe als Zahlen für halbtransparente Flächen */
+  --hervor:#fff; --kopf-linie:#302e2b; --grp-deckung:60%; --schalter-an:transparent;
+}
+/* Helles Design (Knopf ☀/☾, sonst wie Gerät bzw. Browser) – Schrift mindestens 4,5:1 auf --bg, --bg2 und --bg3 */
+:root[data-design="hell"]{
+  --bg:#f6f3ec; --bg2:#ece7dd; --bg3:#e3ddd1; --paper:#1b1916; --muted:#5e584f; --faint:#b3ab9e;
+  --rule:rgba(27,25,22,.14); --rule-strong:rgba(27,25,22,.34);
+  --red:#c60a00; --green:#117033;
+  --gold:#875800; --gold-fl:#e0a82e; --gold-kante:#c08a12;
+  --gknopf:rgba(224,168,46,.13); --gknopf-rand:rgba(192,138,18,.5); --gknopf-hover:rgba(224,168,46,.22); --gknopf-hover2:rgba(224,168,46,.22);
+  --paper-rgb:27,25,22;
+  --hervor:#1b1916; --kopf-linie:#d8d1c4; --grp-deckung:70%; --schalter-an:var(--gold-fl);
+  color-scheme:light;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--kopf-h,0px) + var(--snav-h,0px) + 12px)}
@@ -58,7 +76,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
    nach oben (top wird per JS gesetzt), das Logo schrumpft dabei auf die kompakte Version. */
 .kopf{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--rule)}
 /* Hintergrund und Linie über die ganze Fensterbreite: als Schatten, damit die Seite nicht breiter wird */
-.kopf::before{content:"";position:absolute;inset:0 0 -1px;z-index:-1;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg),0 1px 0 100vmax #302e2b;clip-path:inset(0 -100vmax -1px)}
+.kopf::before{content:"";position:absolute;inset:0 0 -1px;z-index:-1;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg),0 1px 0 100vmax var(--kopf-linie);clip-path:inset(0 -100vmax -1px)}
+/* Text im festen Kopf nicht markierbar: Markieren ließ die Seite in Chromium um 500–1.300 px nach oben springen */
+#kopf{-webkit-user-select:none;user-select:none}
 .kopf.ohne-filter .nav{border-bottom-color:transparent}
 
 /* Masthead */
@@ -75,6 +95,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .mast-r{text-align:right;font-size:10.5px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;line-height:1.7}
 .mast-r b{color:var(--paper);font-weight:600}
 .mast-z2{min-height:1.7em}
+/* Design-Knopf ☀/☾: links neben der Jahreszahl, in einer Zeile mit ihr (bleibt im kompakten Kopf sichtbar).
+   Im dunklen Design die Sonne, im hellen der Mond; der Rand oben und unten gleicht die Höhe der Zeile aus (Jahreszahl bleibt, wo sie war) */
+.dsw{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;flex:none;padding:0;border:1px solid var(--rule-strong);border-radius:999px;background:none;color:var(--paper);cursor:pointer;vertical-align:middle;transition:border-color .15s}
+.dsw svg{width:16px;height:16px}
+.dsw:hover{border-color:var(--paper)}
+.dsw:focus-visible{outline:2px solid var(--gold-fl);outline-offset:2px}
+:root[data-design="hell"] .dsw-sonne,:root:not([data-design="hell"]) .dsw-mond{display:none}
+.dswz{display:inline-flex;align-items:center;white-space:nowrap;vertical-align:middle}
+.mast-r .dsw{width:26px;height:26px;margin:-2px 8px -2px 6px;color:var(--muted)}
+.mast-r .dsw svg{width:15px;height:15px}
+.mast-r .dsw:hover{color:var(--paper)}
 
 /* On-Air */
 .onair{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;padding:12px 0;border-bottom:1px solid var(--rule);min-height:50px}
@@ -135,7 +166,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
    damit die Zeile am Handy nicht breiter wird. */
 .filterbar{position:relative;flex-wrap:nowrap;padding:14px 0 12px}
 .grp-leiste{display:flex;gap:6px;min-width:0}
-.grp{position:relative;display:inline-flex;align-items:stretch;min-width:0;border:1px solid var(--rule-strong);border-color:color-mix(in srgb,var(--gf,#ece7dd) 60%,transparent);border-radius:999px;transition:opacity .15s,border-color .15s}
+.grp{position:relative;display:inline-flex;align-items:stretch;min-width:0;border:1px solid var(--rule-strong);border-color:color-mix(in srgb,var(--gf,var(--paper)) var(--grp-deckung),transparent);border-radius:999px;transition:opacity .15s,border-color .15s}
 .grp-an{display:inline-flex;align-items:center;gap:7px;min-width:0;height:32px;padding:0 12px 0 12px;border-radius:999px;font-family:"Inter",system-ui,sans-serif;font-size:12px;font-weight:600;color:var(--paper);white-space:nowrap}
 .grp-an::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gf,var(--muted));flex-shrink:0}
 .grp-n-l,.grp-n-s{overflow:hidden;text-overflow:ellipsis}
@@ -155,7 +186,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .grp-alle:hover,.grp-alle[aria-checked="true"]{color:var(--paper)}
 .grp-sw{position:relative;width:30px;height:17px;border-radius:999px;border:1px solid var(--rule-strong);background:var(--bg);flex-shrink:0;transition:background .15s,border-color .15s}
 .grp-sw::after{content:"";position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:var(--muted);transition:transform .15s,background .15s}
-.grp-alle[aria-checked="true"] .grp-sw{background:var(--gold);border-color:var(--gold)}
+.grp-alle[aria-checked="true"] .grp-sw{background:var(--gold-fl);border-color:var(--gold-kante)}
 .grp-alle[aria-checked="true"] .grp-sw::after{transform:translateX(13px);background:var(--bg)}
 
 /* Gruppen als Zwischenüberschriften in Serien, Wertung, Wo schauen?, Regeln */
@@ -222,7 +253,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .wk-top.oh{grid-template-columns:minmax(0,1fr)}
 .we-links{display:flex;flex-wrap:wrap;gap:8px;padding:2px 0 12px 17px}
 .we-link{display:inline-flex;align-items:center;gap:6px;min-height:30px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper);border:1px solid var(--rule-strong);border-radius:999px;padding:5px 12px;text-decoration:none;transition:border-color .15s,background .15s}
-.we-link:hover,.we-link:focus-visible{border-color:var(--paper);background:rgba(236,231,221,.06)}
+.we-link:hover,.we-link:focus-visible{border-color:var(--paper);background:rgba(var(--paper-rgb),.06)}
 .we-fuss{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 18px;padding:14px 0 12px;border-top:1px solid var(--rule)}
 .we-aus{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;color:var(--muted)}
 .std-block.flash{animation:evflash 1.8s ease-out}
@@ -262,14 +293,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ev-note{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-top:4px}
 .ev-win .nw,.ser-round .nw{white-space:nowrap}
 .ev-win .vorl,.ser-round .vorl{font-size:8.5px;border:1px solid currentColor;padding:0 4px;border-radius:2px;white-space:nowrap;opacity:.8}
-.ev-win::before{content:"P1";font-size:8.5px;background:var(--gold);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600;white-space:nowrap;flex-shrink:0;overflow-wrap:normal}
+.ev-win::before{content:"P1";font-size:8.5px;background:var(--gold-fl);color:#241a06;padding:1px 4px;border-radius:2px;font-weight:600;white-space:nowrap;flex-shrink:0;overflow-wrap:normal}
 .ev-toggle{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:20px;color:var(--muted);width:24px;text-align:center;flex-shrink:0;transition:color .15s,transform .2s}
 .ev-row:hover .ev-toggle{color:var(--paper)}
 /* Pfeile der aufklappbaren Zeilen sind Knöpfe (Tastatur, aria-expanded); ein Klick darauf wirkt wie ein Tippen auf die Zeile */
 .ev-toggle,.sess-row .sess-chev{line-height:inherit;padding:0}
 /* Teilen: nur das Symbol (drei verbundene Punkte) */
 .ev-teilen{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;margin-right:-6px;border-radius:50%;color:var(--muted);transition:color .15s,background .15s}
-.ev-teilen:hover,.ev-teilen:focus-visible{color:var(--paper);background:rgba(236,231,221,.08)}
+.ev-teilen:hover,.ev-teilen:focus-visible{color:var(--paper);background:rgba(var(--paper-rgb),.08)}
 .ev-teilen svg{width:17px;height:17px}
 .toast{position:fixed;left:50%;bottom:78px;z-index:70;transform:translateX(-50%) translateY(8px);background:var(--paper);color:var(--bg);font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;border-radius:999px;box-shadow:0 6px 22px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -280,12 +311,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .sess{border-bottom:1px dotted var(--rule)} .sess:last-child{border-bottom:none}
 .sess-row{display:grid;grid-template-columns:20px 1fr 66px 74px 24px;gap:10px;align-items:center;padding:7px 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px}
 .scal{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1;color:var(--muted);text-align:center;width:24px;height:20px;border-radius:5px;border:1px solid var(--rule);transition:color .15s,border-color .15s,background .15s}
-.scal:hover{color:var(--gold);border-color:var(--gold);background:rgba(216,168,75,.08)}
-.calbtn{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:999px;padding:6px 12px;margin:2px 0 12px;transition:border-color .15s,background .15s}
-.calbtn:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
+.scal:hover{color:var(--gold);border-color:var(--gold-fl);background:var(--gknopf-hover)}
+.calbtn{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gknopf-rand);background:var(--gknopf);border-radius:999px;padding:6px 12px;margin:2px 0 12px;transition:border-color .15s,background .15s}
+.calbtn:hover{border-color:var(--gold-fl);background:var(--gknopf-hover)}
 a.calbtn{line-height:normal;text-decoration:none}
 .sess-row.clk{cursor:pointer}
-.sess-row.clk:hover .sess-n{color:#fff}
+.sess-row.clk:hover .sess-n{color:var(--hervor)}
 .sess-chev{color:var(--muted);font-size:10px;transition:transform .2s,color .15s;text-align:center}
 .sess.open .sess-chev{transform:rotate(90deg);color:var(--red)}
 .sess-row.clk:hover .sess-chev{color:var(--paper)}
@@ -314,16 +345,17 @@ a.calbtn{line-height:normal;text-decoration:none}
 .spoiler.an{color:var(--gold)} .spoiler.an .sp-auf{display:none} .spoiler.an .sp-zu{display:inline}
 .sp-sw{position:relative;width:24px;height:13px;border-radius:999px;border:1px solid currentColor;flex-shrink:0}
 .sp-sw::after{content:"";position:absolute;top:2px;left:2px;width:7px;height:7px;border-radius:50%;background:currentColor;transition:transform .15s}
+.spoiler.an .sp-sw{background:var(--schalter-an)}
 .spoiler.an .sp-sw::after{transform:translateX(11px)}
-.aufdecken{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:12px;padding:3px 9px;margin-top:5px;text-align:left;transition:border-color .15s,background .15s}
-.aufdecken:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
+.aufdecken{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gknopf-rand);background:var(--gknopf);border-radius:12px;padding:3px 9px;margin-top:5px;text-align:left;transition:border-color .15s,background .15s}
+.aufdecken:hover{border-color:var(--gold-fl);background:var(--gknopf-hover)}
 .ser-round .aufdecken,.std-block .aufdecken{margin-top:0}
 .std-block .aufdecken{margin:12px 0 10px}
 
 /* Kalender-Abos im Serien-Tab */
 .abo{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:-8px 0 16px}
-.abo-a{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--rule-strong);border-radius:999px;padding:6px 12px;text-decoration:none;transition:border-color .15s,background .15s}
-.abo-a:hover{border-color:var(--gold);background:rgba(216,168,75,.08)}
+.abo-a{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gknopf-rand);background:var(--gknopf);border-radius:999px;padding:6px 12px;text-decoration:none;transition:border-color .15s,background .15s}
+.abo-a:hover{border-color:var(--gold-fl);background:var(--gknopf-hover)}
 .abo-k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
 .abo-k:hover{color:var(--paper)}
 .abo-box{margin:26px 0 0;padding:14px 14px 2px;border:1px solid var(--rule-strong);border-radius:6px}
@@ -334,10 +366,10 @@ a.calbtn{line-height:normal;text-decoration:none}
 .ueb-box{display:block;padding:13px 14px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;line-height:1.7;color:var(--gold);text-decoration:none;transition:border-color .15s,background .15s}
 .ueb-box b{font-weight:600}
 .ueb-t{display:block;color:var(--muted)}
-.ueb-box:hover,.ueb-box:focus-visible{border-color:var(--gold);background:rgba(216,168,75,.05)}
+.ueb-box:hover,.ueb-box:focus-visible{border-color:var(--gold-fl);background:var(--gknopf-hover2)}
 .ueb-box+.abo-box{margin-top:12px}
 .abo-s{color:var(--paper)}
-.abo-s:hover{border-color:var(--paper);background:rgba(236,231,221,.06)}
+.abo-s:hover{border-color:var(--paper);background:rgba(var(--paper-rgb),.06)}
 
 /* Serien */
 .ser-block{padding:34px 0 6px;border-bottom:1px solid var(--rule)}
@@ -357,7 +389,7 @@ a.calbtn{line-height:normal;text-decoration:none}
 /* Gefahrene Runden klappen das Ergebnis auf (wie in der Zeitleiste) */
 .ser-round .sch{font-size:10px;color:var(--muted);text-align:center;transition:transform .2s,color .15s}
 .ser-round.clk{cursor:pointer}
-.ser-round.clk:hover .rn,.ser-round.clk:focus-visible .rn{color:#fff}
+.ser-round.clk:hover .rn,.ser-round.clk:focus-visible .rn{color:var(--hervor)}
 .ser-round.clk:hover .sch{color:var(--paper)}
 .ser-round.offen .sch{transform:rotate(90deg);color:var(--red)}
 .ser-erg{padding:0 0 14px 54px}
@@ -372,7 +404,7 @@ a.calbtn{line-height:normal;text-decoration:none}
 .snav-g{display:flex;flex-wrap:wrap;gap:7px}
 .snav .chip{background:none;cursor:pointer;color:var(--muted);border-color:var(--rule-strong)}
 .snav .chip:hover{color:var(--paper)}
-.snav .chip.akt{color:var(--paper);border-color:var(--c);background:rgba(236,231,221,.07)}
+.snav .chip.akt{color:var(--paper);border-color:var(--c);background:rgba(var(--paper-rgb),.07)}
 .snav .chip:focus-visible,.snav-akt:focus-visible,.std-seg button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .snav.zeile{display:block;padding:6px 0}
 .snav-akt{display:flex;align-items:center;gap:9px;width:100%;min-height:36px;padding:0;background:none;border:0;cursor:pointer;color:var(--paper);text-align:left;font:600 14.5px "Inter",system-ui,sans-serif}
@@ -386,7 +418,7 @@ a.calbtn{line-height:normal;text-decoration:none}
 /* Umschalter zwischen zwei Tabellen einer Serie (Fahrer | Teams, Hypercar | LMGT3 …) */
 .std-seg{display:inline-flex;border:1px solid var(--rule-strong);border-radius:8px;padding:3px;gap:3px;margin:14px 0 2px}
 .std-seg button{background:none;border:0;border-radius:6px;padding:7px 16px;min-height:36px;cursor:pointer;color:var(--muted);font:500 13px "Inter",system-ui,sans-serif}
-.std-seg button[aria-pressed="true"]{background:#221f1b;color:var(--paper)}
+.std-seg button[aria-pressed="true"]{background:var(--bg3);color:var(--paper)}
 .std-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,7vw,54px);line-height:.9;text-transform:uppercase}
 .std-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.06em;margin:8px 0 4px;text-transform:uppercase}
 .std-sub{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:18px 0 2px}
@@ -500,13 +532,14 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
 .ev.flash,.sess.flash{animation:evflash 1.8s ease-out}
 @keyframes evflash{0%{background:rgba(255,48,0,.16)}100%{background:transparent}}
 </style>
+<style id="serienfarben"></style>
 </head>
 <body>
 <div id="app">
   <div class="kopf" id="kopf">
   <header class="mast">
-    <h1 aria-label="APEX"><span class="mk-word" aria-hidden="true"><i>A</i><i>P</i><i>E</i><i>X</i></span><svg class="mk-line" viewBox="3 3 234 30" aria-hidden="true"><g fill="none" stroke-width="7.4" stroke-linecap="butt"><path d="M5.00,8.00 L5.74,8.25 L6.47,8.51 L7.21,8.76 L7.95,9.01 L8.69,9.25 L9.43,9.50 L10.17,9.74 L10.91,9.99 L11.65,10.23 L12.39,10.46 L13.14,10.70 L13.88,10.94 L14.63,11.17 L15.38,11.40" stroke="var(--red)"/><path d="M15.38,11.40 L16.13,11.63 L16.87,11.86 L17.62,12.09 L18.38,12.31 L19.13,12.53 L19.88,12.75 L20.63,12.97 L21.39,13.19 L22.14,13.41 L22.90,13.62 L23.65,13.84 L24.41,14.05 L25.17,14.26 L25.93,14.46" stroke="var(--paper)"/><path d="M25.93,14.46 L26.69,14.67 L27.45,14.87 L28.21,15.07 L28.97,15.27 L29.73,15.47 L30.50,15.67 L31.26,15.87 L32.03,16.06 L32.79,16.25 L33.56,16.44 L34.33,16.63 L35.09,16.82 L35.86,17.00 L36.63,17.18" stroke="var(--red)"/><path d="M36.63,17.18 L37.40,17.37 L38.17,17.54 L38.94,17.72 L39.72,17.90 L40.49,18.07 L41.26,18.25 L42.04,18.42 L42.81,18.59 L43.59,18.75 L44.36,18.92 L45.14,19.08 L45.92,19.25 L46.69,19.41 L47.47,19.56" stroke="var(--paper)"/><path d="M47.47,19.56 L48.25,19.72 L49.03,19.88 L49.81,20.03 L50.59,20.18 L51.37,20.33 L52.16,20.48 L52.94,20.63 L53.72,20.77 L54.51,20.92 L55.29,21.06 L56.07,21.20 L56.86,21.33 L57.65,21.47 L58.43,21.61" stroke="var(--red)"/><path d="M58.43,21.61 L59.22,21.74 L60.01,21.87 L60.79,22.00 L61.58,22.13 L62.37,22.25 L63.16,22.38 L63.95,22.50 L64.74,22.62 L65.53,22.74 L66.32,22.85 L67.11,22.97 L67.90,23.08 L68.70,23.20 L69.49,23.31" stroke="var(--paper)"/><path d="M69.49,23.31 L70.28,23.41 L71.08,23.52 L71.87,23.63 L72.67,23.73 L73.46,23.83 L74.26,23.93 L75.05,24.03 L75.85,24.13 L76.64,24.22 L77.44,24.31 L78.24,24.40 L79.03,24.49 L79.83,24.58 L80.63,24.67" stroke="var(--red)"/><path d="M80.63,24.67 L81.43,24.75 L82.23,24.83 L83.03,24.91 L83.82,24.99 L84.62,25.07 L85.42,25.15 L86.22,25.22 L87.02,25.29 L87.83,25.36 L88.63,25.43 L89.43,25.50 L90.23,25.56 L91.03,25.63 L91.83,25.69" stroke="var(--paper)"/><path d="M91.83,25.69 L92.64,25.75 L93.44,25.81 L94.24,25.86 L95.04,25.92 L95.85,25.97 L96.65,26.02 L97.45,26.07 L98.26,26.12 L99.06,26.16 L99.86,26.21 L100.67,26.25 L101.47,26.29 L102.28,26.33 L103.08,26.37" stroke="var(--red)"/><path d="M103.08,26.37 L103.89,26.40 L104.69,26.44 L105.50,26.47 L106.30,26.50 L107.11,26.53 L107.91,26.55 L108.72,26.58 L109.52,26.60 L110.33,26.63 L111.13,26.65 L111.94,26.66 L112.75,26.68 L113.55,26.69 L114.36,26.71" stroke="var(--paper)"/><path d="M114.36,26.71 L115.16,26.72 L115.97,26.73 L116.78,26.74 L117.58,26.74 L118.39,26.75 L119.19,26.75 L120.00,26.75 L120.81,26.75 L121.61,26.75 L122.42,26.74 L123.22,26.74 L124.03,26.73 L124.84,26.72 L125.64,26.71" stroke="var(--red)"/><path d="M125.64,26.71 L126.45,26.69 L127.25,26.68 L128.06,26.66 L128.87,26.65 L129.67,26.63 L130.48,26.60 L131.28,26.58 L132.09,26.55 L132.89,26.53 L133.70,26.50 L134.50,26.47 L135.31,26.44 L136.11,26.40 L136.92,26.37" stroke="var(--paper)"/><path d="M136.92,26.37 L137.72,26.33 L138.53,26.29 L139.33,26.25 L140.14,26.21 L140.94,26.16 L141.74,26.12 L142.55,26.07 L143.35,26.02 L144.15,25.97 L144.96,25.92 L145.76,25.86 L146.56,25.81 L147.36,25.75 L148.17,25.69" stroke="var(--red)"/><path d="M148.17,25.69 L148.97,25.63 L149.77,25.56 L150.57,25.50 L151.37,25.43 L152.17,25.36 L152.98,25.29 L153.78,25.22 L154.58,25.15 L155.38,25.07 L156.18,24.99 L156.97,24.91 L157.77,24.83 L158.57,24.75 L159.37,24.67" stroke="var(--paper)"/><path d="M159.37,24.67 L160.17,24.58 L160.97,24.49 L161.76,24.40 L162.56,24.31 L163.36,24.22 L164.15,24.13 L164.95,24.03 L165.74,23.93 L166.54,23.83 L167.33,23.73 L168.13,23.63 L168.92,23.52 L169.72,23.41 L170.51,23.31" stroke="var(--red)"/><path d="M170.51,23.31 L171.30,23.20 L172.10,23.08 L172.89,22.97 L173.68,22.85 L174.47,22.74 L175.26,22.62 L176.05,22.50 L176.84,22.38 L177.63,22.25 L178.42,22.13 L179.21,22.00 L179.99,21.87 L180.78,21.74 L181.57,21.61" stroke="var(--paper)"/><path d="M181.57,21.61 L182.35,21.47 L183.14,21.33 L183.93,21.20 L184.71,21.06 L185.49,20.92 L186.28,20.77 L187.06,20.63 L187.84,20.48 L188.63,20.33 L189.41,20.18 L190.19,20.03 L190.97,19.88 L191.75,19.72 L192.53,19.56" stroke="var(--red)"/><path d="M192.53,19.56 L193.31,19.41 L194.08,19.25 L194.86,19.08 L195.64,18.92 L196.41,18.75 L197.19,18.59 L197.96,18.42 L198.74,18.25 L199.51,18.07 L200.28,17.90 L201.06,17.72 L201.83,17.54 L202.60,17.37 L203.37,17.18" stroke="var(--paper)"/><path d="M203.37,17.18 L204.14,17.00 L204.91,16.82 L205.67,16.63 L206.44,16.44 L207.21,16.25 L207.97,16.06 L208.74,15.87 L209.50,15.67 L210.27,15.47 L211.03,15.27 L211.79,15.07 L212.55,14.87 L213.31,14.67 L214.07,14.46" stroke="var(--red)"/><path d="M214.07,14.46 L214.83,14.26 L215.59,14.05 L216.35,13.84 L217.10,13.62 L217.86,13.41 L218.61,13.19 L219.37,12.97 L220.12,12.75 L220.87,12.53 L221.62,12.31 L222.38,12.09 L223.13,11.86 L223.87,11.63 L224.62,11.40" stroke="var(--paper)"/><path d="M224.62,11.40 L225.37,11.17 L226.12,10.94 L226.86,10.70 L227.61,10.46 L228.35,10.23 L229.09,9.99 L229.83,9.74 L230.57,9.50 L231.31,9.25 L232.05,9.01 L232.79,8.76 L233.53,8.51 L234.26,8.25 L235.00,8.00" stroke="var(--red)"/></g><circle cx="120.0" cy="26.8" r="4.4" fill="none" stroke="var(--gold)" stroke-width="1.7"/><circle cx="120.0" cy="26.8" r="1.9" fill="var(--gold)"/></svg></h1>
-    <div class="mast-r"><span class="mast-lab">Motorsport-Kalender</span> <span class="season" id="season"><b class="ss-yr">2026</b></span><div class="mast-z2"><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ APEX installieren</button></div></div>
+    <h1 aria-label="APEX"><span class="mk-word" aria-hidden="true"><i>A</i><i>P</i><i>E</i><i>X</i></span><svg class="mk-line" viewBox="3 3 234 30" aria-hidden="true"><g fill="none" stroke-width="7.4" stroke-linecap="butt"><path d="M5.00,8.00 L5.74,8.25 L6.47,8.51 L7.21,8.76 L7.95,9.01 L8.69,9.25 L9.43,9.50 L10.17,9.74 L10.91,9.99 L11.65,10.23 L12.39,10.46 L13.14,10.70 L13.88,10.94 L14.63,11.17 L15.38,11.40" stroke="var(--red)"/><path d="M15.38,11.40 L16.13,11.63 L16.87,11.86 L17.62,12.09 L18.38,12.31 L19.13,12.53 L19.88,12.75 L20.63,12.97 L21.39,13.19 L22.14,13.41 L22.90,13.62 L23.65,13.84 L24.41,14.05 L25.17,14.26 L25.93,14.46" stroke="var(--paper)"/><path d="M25.93,14.46 L26.69,14.67 L27.45,14.87 L28.21,15.07 L28.97,15.27 L29.73,15.47 L30.50,15.67 L31.26,15.87 L32.03,16.06 L32.79,16.25 L33.56,16.44 L34.33,16.63 L35.09,16.82 L35.86,17.00 L36.63,17.18" stroke="var(--red)"/><path d="M36.63,17.18 L37.40,17.37 L38.17,17.54 L38.94,17.72 L39.72,17.90 L40.49,18.07 L41.26,18.25 L42.04,18.42 L42.81,18.59 L43.59,18.75 L44.36,18.92 L45.14,19.08 L45.92,19.25 L46.69,19.41 L47.47,19.56" stroke="var(--paper)"/><path d="M47.47,19.56 L48.25,19.72 L49.03,19.88 L49.81,20.03 L50.59,20.18 L51.37,20.33 L52.16,20.48 L52.94,20.63 L53.72,20.77 L54.51,20.92 L55.29,21.06 L56.07,21.20 L56.86,21.33 L57.65,21.47 L58.43,21.61" stroke="var(--red)"/><path d="M58.43,21.61 L59.22,21.74 L60.01,21.87 L60.79,22.00 L61.58,22.13 L62.37,22.25 L63.16,22.38 L63.95,22.50 L64.74,22.62 L65.53,22.74 L66.32,22.85 L67.11,22.97 L67.90,23.08 L68.70,23.20 L69.49,23.31" stroke="var(--paper)"/><path d="M69.49,23.31 L70.28,23.41 L71.08,23.52 L71.87,23.63 L72.67,23.73 L73.46,23.83 L74.26,23.93 L75.05,24.03 L75.85,24.13 L76.64,24.22 L77.44,24.31 L78.24,24.40 L79.03,24.49 L79.83,24.58 L80.63,24.67" stroke="var(--red)"/><path d="M80.63,24.67 L81.43,24.75 L82.23,24.83 L83.03,24.91 L83.82,24.99 L84.62,25.07 L85.42,25.15 L86.22,25.22 L87.02,25.29 L87.83,25.36 L88.63,25.43 L89.43,25.50 L90.23,25.56 L91.03,25.63 L91.83,25.69" stroke="var(--paper)"/><path d="M91.83,25.69 L92.64,25.75 L93.44,25.81 L94.24,25.86 L95.04,25.92 L95.85,25.97 L96.65,26.02 L97.45,26.07 L98.26,26.12 L99.06,26.16 L99.86,26.21 L100.67,26.25 L101.47,26.29 L102.28,26.33 L103.08,26.37" stroke="var(--red)"/><path d="M103.08,26.37 L103.89,26.40 L104.69,26.44 L105.50,26.47 L106.30,26.50 L107.11,26.53 L107.91,26.55 L108.72,26.58 L109.52,26.60 L110.33,26.63 L111.13,26.65 L111.94,26.66 L112.75,26.68 L113.55,26.69 L114.36,26.71" stroke="var(--paper)"/><path d="M114.36,26.71 L115.16,26.72 L115.97,26.73 L116.78,26.74 L117.58,26.74 L118.39,26.75 L119.19,26.75 L120.00,26.75 L120.81,26.75 L121.61,26.75 L122.42,26.74 L123.22,26.74 L124.03,26.73 L124.84,26.72 L125.64,26.71" stroke="var(--red)"/><path d="M125.64,26.71 L126.45,26.69 L127.25,26.68 L128.06,26.66 L128.87,26.65 L129.67,26.63 L130.48,26.60 L131.28,26.58 L132.09,26.55 L132.89,26.53 L133.70,26.50 L134.50,26.47 L135.31,26.44 L136.11,26.40 L136.92,26.37" stroke="var(--paper)"/><path d="M136.92,26.37 L137.72,26.33 L138.53,26.29 L139.33,26.25 L140.14,26.21 L140.94,26.16 L141.74,26.12 L142.55,26.07 L143.35,26.02 L144.15,25.97 L144.96,25.92 L145.76,25.86 L146.56,25.81 L147.36,25.75 L148.17,25.69" stroke="var(--red)"/><path d="M148.17,25.69 L148.97,25.63 L149.77,25.56 L150.57,25.50 L151.37,25.43 L152.17,25.36 L152.98,25.29 L153.78,25.22 L154.58,25.15 L155.38,25.07 L156.18,24.99 L156.97,24.91 L157.77,24.83 L158.57,24.75 L159.37,24.67" stroke="var(--paper)"/><path d="M159.37,24.67 L160.17,24.58 L160.97,24.49 L161.76,24.40 L162.56,24.31 L163.36,24.22 L164.15,24.13 L164.95,24.03 L165.74,23.93 L166.54,23.83 L167.33,23.73 L168.13,23.63 L168.92,23.52 L169.72,23.41 L170.51,23.31" stroke="var(--red)"/><path d="M170.51,23.31 L171.30,23.20 L172.10,23.08 L172.89,22.97 L173.68,22.85 L174.47,22.74 L175.26,22.62 L176.05,22.50 L176.84,22.38 L177.63,22.25 L178.42,22.13 L179.21,22.00 L179.99,21.87 L180.78,21.74 L181.57,21.61" stroke="var(--paper)"/><path d="M181.57,21.61 L182.35,21.47 L183.14,21.33 L183.93,21.20 L184.71,21.06 L185.49,20.92 L186.28,20.77 L187.06,20.63 L187.84,20.48 L188.63,20.33 L189.41,20.18 L190.19,20.03 L190.97,19.88 L191.75,19.72 L192.53,19.56" stroke="var(--red)"/><path d="M192.53,19.56 L193.31,19.41 L194.08,19.25 L194.86,19.08 L195.64,18.92 L196.41,18.75 L197.19,18.59 L197.96,18.42 L198.74,18.25 L199.51,18.07 L200.28,17.90 L201.06,17.72 L201.83,17.54 L202.60,17.37 L203.37,17.18" stroke="var(--paper)"/><path d="M203.37,17.18 L204.14,17.00 L204.91,16.82 L205.67,16.63 L206.44,16.44 L207.21,16.25 L207.97,16.06 L208.74,15.87 L209.50,15.67 L210.27,15.47 L211.03,15.27 L211.79,15.07 L212.55,14.87 L213.31,14.67 L214.07,14.46" stroke="var(--red)"/><path d="M214.07,14.46 L214.83,14.26 L215.59,14.05 L216.35,13.84 L217.10,13.62 L217.86,13.41 L218.61,13.19 L219.37,12.97 L220.12,12.75 L220.87,12.53 L221.62,12.31 L222.38,12.09 L223.13,11.86 L223.87,11.63 L224.62,11.40" stroke="var(--paper)"/><path d="M224.62,11.40 L225.37,11.17 L226.12,10.94 L226.86,10.70 L227.61,10.46 L228.35,10.23 L229.09,9.99 L229.83,9.74 L230.57,9.50 L231.31,9.25 L232.05,9.01 L232.79,8.76 L233.53,8.51 L234.26,8.25 L235.00,8.00" stroke="var(--red)"/></g><circle cx="120.0" cy="26.8" r="4.4" fill="none" stroke="var(--gold-fl)" stroke-width="1.7"/><circle cx="120.0" cy="26.8" r="1.9" fill="var(--gold-fl)"/></svg></h1>
+    <div class="mast-r"><span class="mast-lab">Motorsport-Kalender</span> <span class="dswz"><button class="dsw" id="dsw" type="button" aria-label="Helles Design" title="Helles Design" onclick="designUmschalten()"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button><span class="season" id="season"><b class="ss-yr">2026</b></span></span><div class="mast-z2"><span id="mast-date"></span><button class="installbtn" id="installbtn" onclick="installApp()">⤓ APEX installieren</button></div></div>
   </header>
   <nav class="nav">
     <button class="tab on" data-v="upcoming" onclick="setView('upcoming')">Aktuell</button>
@@ -568,8 +601,8 @@ APEX · Saison <span id="fuss-saison">2026</span> · 19 Serien<span id="datensta
       Google Fonts oder anderen externen Anbietern; dabei werden keine Daten an Dritte übertragen.</p>
 
       <h4>Speicherung auf Ihrem Gerät</h4>
-      <p>Ihre Serienauswahl im Filter, die Einstellung „Ergebnisse verbergen“ und der gewählte Startort der Seite
-      „In der Nähe“, den auch die Streckenseiten für die Entfernung nutzen, werden ausschließlich lokal in Ihrem Browser gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
+      <p>Ihre Serienauswahl im Filter, die Einstellung „Ergebnisse verbergen“, das gewählte Design (hell oder dunkel), nur wenn es
+      von der Einstellung des Geräts abweicht, und der gewählte Startort der Seite „In der Nähe“, den auch die Streckenseiten für die Entfernung nutzen, werden ausschließlich lokal in Ihrem Browser gespeichert und nicht an uns oder Dritte übertragen. Sie können diese Daten jederzeit über
       die Einstellungen Ihres Browsers löschen.</p>
 
       <h4>Ihre Rechte</h4>
@@ -636,7 +669,7 @@ function pruefeEvent(e,n){
   if(!SERIES[e.s]){
     /* Ohne Seriendaten: Termine trotzdem zeigen, mit Kürzel statt Name und neutraler Farbe */
     if(!DATEN_FEHLT.has("serien")||!istKey(e.s))return null;
-    SERIES[e.s]={name:e.s.toUpperCase(),short:e.s.toUpperCase(),color:"#8d8678"};
+    SERIES[e.s]={name:e.s.toUpperCase(),short:e.s.toUpperCase(),color:"var(--muted)"};
   }
   const sessions=[];
   e.sessions.forEach(s=>{
@@ -647,22 +680,40 @@ function pruefeEvent(e,n){
   /* _jahr: Saisondatei, aus der das Event stammt – die Ergebnislisten liegen in der gleichnamigen Datei */
   return Object.assign({},e,{sessions,_jahr:n.slice(8)});
 }
+/* Serienfarben als Design-Tokens: --s-<serie> und --g-<gruppe> (erste Abstufung der Gruppe) im <style id="serienfarben"> –
+   dunkel die Farbe aus serien.json, hell die Abstufung an derselben Stelle aus farben_hell der Gruppe. Die Ansichten nutzen
+   nur var(--s-…)/var(--g-…) (SERIES[…].color; die Farbe aus serien.json steht in SERIES[…].hex), so wechselt das Design
+   ohne neues Zeichnen. */
+function farbenSetzen(){
+  const d=[],h=[];
+  Object.keys(GRUPPEN).forEach(g=>{const G=GRUPPEN[g];
+    if(G.farben[0]){d.push(`--g-${g}:${G.farben[0]}`);h.push(`--g-${g}:${G.hell[0]||G.farben[0]}`);}});
+  Object.keys(SERIES).forEach(k=>{const S=SERIES[k], G=GRUPPEN[S.gruppe], c=S.hex;
+    if(!c)return;
+    const i=G?G.farben.map(x=>x.toLowerCase()).indexOf(c.toLowerCase()):-1;
+    d.push(`--s-${k}:${c}`); h.push(`--s-${k}:${i>=0&&G.hell[i]||c}`);});
+  const el=document.getElementById("serienfarben");
+  if(el)el.textContent=`:root{${d.join(";")}}:root[data-design="hell"]{${h.join(";")}}`;
+}
 function uebernehmeDaten(d){
   SESS_ZEIT=new WeakMap(); ONAIR=null; STRECKE_SLUG=null;   /* zwischengespeicherte Werte gelten nur für die bisherigen Daten */
   const teil=(n,f)=>{ if(d[n]==null)return; try{ if(f(d[n])===false)DATEN_FEHLT.add(n); }catch(err){DATEN_FEHLT.add(n);} };
   const luecke=(n,ok)=>{ if(!ok)DATEN_LUECKE.add(n); return ok; };
   teil("serien",x=>{
     if(!istObj(x)||!istObj(x.serien))return false;
-    /* Gruppen (Formel, Motorrad …): name, short, optional farben (Farbfamilie der Gruppe) */
+    /* Gruppen (Formel, Motorrad …): name, short, optional farben (Farbfamilie der Gruppe) und farben_hell (dieselben
+       Abstufungen für das helle Design, gleiche Reihenfolge) */
     if(x.gruppen!=null&&luecke("serien",istObj(x.gruppen)))Object.keys(x.gruppen).forEach(g=>{const v=x.gruppen[g];
-      if(luecke("serien",istKey(g)&&istObj(v)&&istText(v.name)&&istText(v.short)&&(v.farben==null||Array.isArray(v.farben)&&v.farben.every(istFarbe))))
-        GRUPPEN[g]={name:v.name,short:v.short,farben:v.farben||[]};});
+      if(luecke("serien",istKey(g)&&istObj(v)&&istText(v.name)&&istText(v.short)&&(v.farben==null||Array.isArray(v.farben)&&v.farben.every(istFarbe))
+          &&(v.farben_hell==null||Array.isArray(v.farben_hell)&&v.farben_hell.every(istFarbe))))
+        GRUPPEN[g]={name:v.name,short:v.short,farben:v.farben||[],hell:v.farben_hell||[]};});
     /* Serien: gruppe = Kürzel der Gruppe, ausgeblendet = im Filter standardmäßig aus */
     Object.keys(x.serien).forEach(k=>{const v=x.serien[k];
       if(luecke("serien",istKey(k)&&istObj(v)&&istText(v.name)&&istText(v.short)&&istFarbe(v.color)
           &&(v.gruppe==null||istText(v.gruppe))&&(v.ausgeblendet==null||typeof v.ausgeblendet==="boolean")
           &&(v.seite==null||istText(v.seite)&&/^[a-z0-9-]+$/.test(v.seite))))
-        SERIES[k]={name:v.name,short:v.short,color:v.color,gruppe:v.gruppe||"",aus:v.ausgeblendet===true,seite:v.seite||seiteAusName(v.name)};});
+        SERIES[k]={name:v.name,short:v.short,color:`var(--s-${k})`,hex:v.color,gruppe:v.gruppe||"",aus:v.ausgeblendet===true,seite:v.seite||seiteAusName(v.name)};});
+    farbenSetzen();
     return Object.keys(SERIES).length>0;
   });
   DATEN.filter(n=>n.startsWith("termine-")).forEach(n=>teil(n,x=>{
@@ -760,6 +811,35 @@ function aufdeckenWertung(sk){AUFGEDECKT.add("wertung-"+sk);renderStandings();}
 function aufdeckenKnopf(e,art){
   return `<button class="aufdecken" onclick="event.stopPropagation();aufdecken(this,'${e.s}','${e.rd}','${e.sz||""}','${art}')">Ergebnis anzeigen</button>`;
 }
+
+/* ═══════ DESIGN (hell/dunkel) ═══════
+   Ohne eigene Wahl wie Gerät bzw. Browser (prefers-color-scheme, auch wenn es sich ändert). Der Knopf ☀/☾ wechselt sofort,
+   ohne Neuladen – alle Farben sind Tokens (:root bzw. :root[data-design="hell"]). Eine Wahl, die von der Geräteeinstellung
+   abweicht, liegt nur lokal unter apex_design; ist sie gleich, wird der Schlüssel gelöscht. Ohne Speicher gilt die Wahl
+   bis zum Neuladen. Das Skript im <head> setzt das Design schon vor dem ersten Zeichnen. */
+const DESIGN_SPEICHER="apex_design";
+const DESIGN_MQ=typeof matchMedia==="function"?matchMedia("(prefers-color-scheme: light)"):null;
+let DESIGN_WAHL=null;
+try{const v=localStorage.getItem(DESIGN_SPEICHER);DESIGN_WAHL=v==="hell"||v==="dunkel"?v:null;}catch(err){}
+const designGeraetHell=()=>!!(DESIGN_MQ&&DESIGN_MQ.matches);
+function designAnwenden(){
+  const hell=DESIGN_WAHL?DESIGN_WAHL==="hell":designGeraetHell();
+  document.documentElement.setAttribute("data-design",hell?"hell":"dunkel");
+  const m=document.querySelector('meta[name="theme-color"]'); if(m)m.setAttribute("content",hell?"#f6f3ec":"#141210");
+  const b=document.getElementById("dsw"); if(b){const t=hell?"Dunkles Design":"Helles Design"; b.setAttribute("aria-label",t); b.setAttribute("title",t);}
+}
+function designUmschalten(){
+  const hell=document.documentElement.getAttribute("data-design")!=="hell";
+  DESIGN_WAHL=hell===designGeraetHell()?null:hell?"hell":"dunkel";
+  try{if(DESIGN_WAHL)localStorage.setItem(DESIGN_SPEICHER,DESIGN_WAHL);else localStorage.removeItem(DESIGN_SPEICHER);}catch(err){}
+  designAnwenden();
+}
+if(DESIGN_MQ){const f=()=>{if(!DESIGN_WAHL)designAnwenden();};
+  if(DESIGN_MQ.addEventListener)DESIGN_MQ.addEventListener("change",f);else if(DESIGN_MQ.addListener)DESIGN_MQ.addListener(f);}
+/* in einem anderen Fenster umgeschaltet */
+window.addEventListener("storage",ev=>{if(ev.key===DESIGN_SPEICHER||ev.key===null){
+  DESIGN_WAHL=ev.newValue==="hell"||ev.newValue==="dunkel"?ev.newValue:null; designAnwenden();}});
+designAnwenden();
 
 /* ═══════ HELFER ═══════ */
 const NOW = ()=> new Date();
@@ -982,7 +1062,7 @@ function tagNext(){
    Serien in der Reihenfolge ihrer Gruppen (serien.json). Serien ohne bekannte Gruppe landen in
    „Weitere“; fehlen die Gruppen ganz (serien.json nicht lesbar), gibt es eine Gruppe ohne Überschrift. */
 function gruppenListe(){
-  const liste=Object.keys(GRUPPEN).map(g=>({key:g,name:GRUPPEN[g].name,short:GRUPPEN[g].short,farbe:GRUPPEN[g].farben[0]||"",serien:[]}));
+  const liste=Object.keys(GRUPPEN).map(g=>({key:g,name:GRUPPEN[g].name,short:GRUPPEN[g].short,farbe:GRUPPEN[g].farben[0]?`var(--g-${g})`:"",serien:[]}));
   const rest={key:"weitere",name:liste.length?"Weitere":"Serien",short:liste.length?"Weitere":"Serien",farbe:"",serien:[],ohneTitel:!liste.length};
   Object.keys(SERIES).forEach(sk=>{const g=liste.find(x=>x.key===SERIES[sk].gruppe);(g||rest).serien.push(sk);});
   return liste.concat(rest).filter(g=>g.serien.length);

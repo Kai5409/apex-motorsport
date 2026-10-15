@@ -23,27 +23,29 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"ExCeL London","item":"https://apexkalender.de/strecken/london-excel/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/london-excel/#strecke","name":"ExCeL London","url":"https://apexkalender.de/strecken/london-excel/","address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"},"geo":{"@type":"GeoCoordinates","latitude":51.5081,"longitude":0.0289}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">ExCeL London</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="F·E"><i style="background:#fe958e"></i></span>ExCeL London</h1>
+      <h1 id="h1"><span class="bar serien" title="F·E"><i style="background:var(--s-fe)"></i></span>ExCeL London</h1>
       <p class="strort">London · Großbritannien</p>
       <p class="lead">Termine <span>– alle Rennen im ExCeL London mit Startzeiten in deutscher Zeit: Formel E.</span></p>
       <dl class="fakten" style="--n:1"><div><dt>Zeitverschiebung</dt><dd>−1<small>h</small></dd></div></dl>
       <span class="chiplab">Serien im ExCeL London</span>
-      <div class="chips"><a class="chip" href="../../formel-e/"><i style="background:#fe958e"></i>Formel E</a></div>
+      <div class="chips"><a class="chip" href="../../formel-e/"><i style="background:var(--s-fe)"></i>Formel E</a></div>
     </section>
 
     <div class="side">
@@ -76,14 +78,14 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg">abgeschlossen</span></h2><p>2 Termine aus 1 Serie</p></div></div>
    <ul class="races"><li class="race past" id="r-fe-15">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">15<small>Aug</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-15">London E-Prix I</button><span class="win" data-nosnippet>Sieger <b>Pascal Wehrlein (Porsche)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-fe-15"><p class="rlinks"><a class="allres" href="../../formel-e/#r-fe-15">Zur F·E-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=fe-15">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-fe-16">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">16<small>Aug</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-16">London E-Prix II · Finale</button><span class="win" data-nosnippet>Sieger <b>Taylor Barnard (DS Penske)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
@@ -100,14 +102,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die im ExCeL London fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="fe"><h3><a href="../../formel-e/#sender" style="color:#fe958e">Formel E</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="fe"><h3><a href="../../formel-e/#sender" style="color:var(--s-fe)">Formel E</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:355.6/244.5" aria-label="Kartenausschnitt mit ExCeL London und Strecken in der Nähe">
           <svg id="minisvg" viewBox="144.5 211.1 355.6 244.5" preserveAspectRatio="xMidYMid meet" role="img" aria-label="ExCeL London und Strecken in der Nähe">
-            <rect x="134.5" y="201.1" width="375.6" height="264.5" fill="#121110"/>
+            <rect x="134.5" y="201.1" width="375.6" height="264.5" fill="var(--meer)"/>
             <image href="../../karte/europa.svg" x="0" y="0" width="1000" height="860"/>
             <g id="minidyn"></g>
           </svg>
@@ -115,7 +117,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../brands-hatch/"><span class="nn"><b>Brands Hatch</b><small>Großbritannien · 3 Termine</small></span><span class="nk">≈ 23 km<small>Luftlinie</small></span><span class="nt"><i style="color:#03c4c6">GTWC</i> Brands Hatch · Sprint · 1.–2. Mai 2027</span></a></li><li><a href="../silverstone/"><span class="nn"><b>Silverstone</b><small>Großbritannien · 5 Termine</small></span><span class="nk">≈ 95 km<small>Luftlinie</small></span><span class="nt"><i style="color:#3a86ff">WEC</i> 6 Stunden von Silverstone · 23.–25. April 2027</span></a></li><li><a href="../donington/"><span class="nn"><b>Donington Park</b><small>Großbritannien · 1 Termin</small></span><span class="nk">≈ 175 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ad88fe">WSBK</i> WM-Lauf Großbritannien · 9.–11. Juli 2027</span></a></li><li><a href="../zandvoort/"><span class="nn"><b>Zandvoort</b><small>Niederlande · 4 Termine</small></span><span class="nk">≈ 325 km<small>Luftlinie</small></span><span class="nt"><i style="color:#fe958e">F·E</i> Zandvoort E-Prix I · 18. Juni 2027</span></a></li><li><a href="../le-mans/"><span class="nn"><b>Le Mans</b><small>Frankreich · 4 Termine</small></span><span class="nk">≈ 400 km<small>Luftlinie</small></span><span class="nt"><i style="color:#e172db">MotoGP</i> Großer Preis von Frankreich · 14.–16. Mai 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../brands-hatch/"><span class="nn"><b>Brands Hatch</b><small>Großbritannien · 3 Termine</small></span><span class="nk">≈ 23 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-gtwc)">GTWC</i> Brands Hatch · Sprint · 1.–2. Mai 2027</span></a></li><li><a href="../silverstone/"><span class="nn"><b>Silverstone</b><small>Großbritannien · 5 Termine</small></span><span class="nk">≈ 95 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-wec)">WEC</i> 6 Stunden von Silverstone · 23.–25. April 2027</span></a></li><li><a href="../donington/"><span class="nn"><b>Donington Park</b><small>Großbritannien · 1 Termin</small></span><span class="nk">≈ 175 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-wsbk)">WSBK</i> WM-Lauf Großbritannien · 9.–11. Juli 2027</span></a></li><li><a href="../zandvoort/"><span class="nn"><b>Zandvoort</b><small>Niederlande · 4 Termine</small></span><span class="nk">≈ 325 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-fe)">F·E</i> Zandvoort E-Prix I · 18. Juni 2027</span></a></li><li><a href="../le-mans/"><span class="nn"><b>Le Mans</b><small>Frankreich · 4 Termine</small></span><span class="nk">≈ 400 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-mgp)">MotoGP</i> Großer Preis von Frankreich · 14.–16. Mai 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=europa">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -131,6 +133,6 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script type="application/json" id="apex-seite">{"linien":[],"linie":null}</script>
-<script type="application/json" id="apex-strecke">{"lat":51.5081,"lon":0.0289,"name":"ExCeL London","np":[322.3,333.4],"box":[144.5,211.1,355.6,244.5],"pkt":[{"n":"Brands Hatch","x":325.9,"y":338.2,"l":1,"c":"#03c4c6","slug":"brands-hatch","land":"Großbritannien","km":"≈ 23 km","anz":3,"ns":"GTWC","nn":"Brands Hatch · Sprint","nd":"1.–2. Mai 2027"},{"n":"Silverstone","x":306.1,"y":314.7,"l":1,"c":"#3a86ff","slug":"silverstone","land":"Großbritannien","km":"≈ 95 km","anz":5,"ns":"WEC","nn":"6 Stunden von Silverstone","nd":"23.–25. April 2027"},{"n":"Donington Park","x":303.1,"y":292.3,"l":1,"c":"#ad88fe","slug":"donington","land":"Großbritannien","km":"≈ 175 km","anz":1,"ns":"WSBK","nn":"WM-Lauf Großbritannien","nd":"9.–11. Juli 2027"},{"n":"Zandvoort","x":404.3,"y":316.3,"l":1,"c":"#fe958e","slug":"zandvoort","land":"Niederlande","km":"≈ 325 km","anz":4,"ns":"F·E","nn":"Zandvoort E-Prix I","nd":"18. Juni 2027"},{"n":"Le Mans","x":312.7,"y":435.6,"l":1,"c":"#e172db","slug":"le-mans","land":"Frankreich","km":"≈ 400 km","anz":4,"ns":"MotoGP","nn":"Großer Preis von Frankreich","nd":"14.–16. Mai 2027"},{"n":"Spa-Francorchamps","x":426.4,"y":373.9,"l":0,"c":"#3a86ff","slug":"spa-francorchamps","land":"Belgien","km":"≈ 435 km","anz":3,"ns":"WEC","nn":"6 Stunden von Spa-Francorchamps","nd":"13.–15. Mai 2027"},{"n":"Assen","x":439.8,"y":301.9,"l":0,"c":"#ad88fe","slug":"assen","land":"Niederlande","km":"≈ 470 km","anz":4,"ns":"WSBK","nn":"WM-Lauf Niederlande","nd":"16.–18. April 2027"},{"n":"Nürburgring","x":444,"y":377.7,"l":0,"c":"#98bafe","slug":"nuerburgring","land":"Deutschland","km":"≈ 500 km","anz":12,"ns":"NLS","nn":"NLS1","nd":"20. März 2027"},{"n":"Hockenheimring","x":473.3,"y":407.4,"l":0,"c":"#6de5f7","slug":"hockenheimring","land":"Deutschland","km":"≈ 650 km","anz":2,"ns":"DTM","nn":"DTM Hockenheim (Finale)","nd":"9.–11. Oktober 2026"}]}</script>
+<script type="application/json" id="apex-strecke">{"lat":51.5081,"lon":0.0289,"name":"ExCeL London","np":[322.3,333.4],"box":[144.5,211.1,355.6,244.5],"pkt":[{"n":"Brands Hatch","x":325.9,"y":338.2,"l":1,"c":"var(--s-gtwc)","slug":"brands-hatch","land":"Großbritannien","km":"≈ 23 km","anz":3,"ns":"GTWC","nn":"Brands Hatch · Sprint","nd":"1.–2. Mai 2027"},{"n":"Silverstone","x":306.1,"y":314.7,"l":1,"c":"var(--s-wec)","slug":"silverstone","land":"Großbritannien","km":"≈ 95 km","anz":5,"ns":"WEC","nn":"6 Stunden von Silverstone","nd":"23.–25. April 2027"},{"n":"Donington Park","x":303.1,"y":292.3,"l":1,"c":"var(--s-wsbk)","slug":"donington","land":"Großbritannien","km":"≈ 175 km","anz":1,"ns":"WSBK","nn":"WM-Lauf Großbritannien","nd":"9.–11. Juli 2027"},{"n":"Zandvoort","x":404.3,"y":316.3,"l":1,"c":"var(--s-fe)","slug":"zandvoort","land":"Niederlande","km":"≈ 325 km","anz":4,"ns":"F·E","nn":"Zandvoort E-Prix I","nd":"18. Juni 2027"},{"n":"Le Mans","x":312.7,"y":435.6,"l":1,"c":"var(--s-mgp)","slug":"le-mans","land":"Frankreich","km":"≈ 400 km","anz":4,"ns":"MotoGP","nn":"Großer Preis von Frankreich","nd":"14.–16. Mai 2027"},{"n":"Spa-Francorchamps","x":426.4,"y":373.9,"l":0,"c":"var(--s-wec)","slug":"spa-francorchamps","land":"Belgien","km":"≈ 435 km","anz":3,"ns":"WEC","nn":"6 Stunden von Spa-Francorchamps","nd":"13.–15. Mai 2027"},{"n":"Assen","x":439.8,"y":301.9,"l":0,"c":"var(--s-wsbk)","slug":"assen","land":"Niederlande","km":"≈ 470 km","anz":4,"ns":"WSBK","nn":"WM-Lauf Niederlande","nd":"16.–18. April 2027"},{"n":"Nürburgring","x":444,"y":377.7,"l":0,"c":"var(--s-nls)","slug":"nuerburgring","land":"Deutschland","km":"≈ 500 km","anz":12,"ns":"NLS","nn":"NLS1","nd":"20. März 2027"},{"n":"Hockenheimring","x":473.3,"y":407.4,"l":0,"c":"var(--s-dtm)","slug":"hockenheimring","land":"Deutschland","km":"≈ 650 km","anz":2,"ns":"DTM","nn":"DTM Hockenheim (Finale)","nd":"9.–11. Oktober 2026"}]}</script>
 </body>
 </html>

@@ -23,28 +23,30 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"Hockenheimring","item":"https://apexkalender.de/strecken/hockenheimring/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/hockenheimring/#strecke","name":"Hockenheimring Baden-Württemberg","url":"https://apexkalender.de/strecken/hockenheimring/","alternateName":"Hockenheimring","address":{"@type":"PostalAddress","addressLocality":"Hockenheim","addressRegion":"Baden-Württemberg","addressCountry":"DE"},"geo":{"@type":"GeoCoordinates","latitude":49.33,"longitude":8.572}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">Hockenheimring</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1" class="lang"><span class="bar serien" title="DTM" data-saisons="{&quot;2026&quot;:[[&quot;DTM&quot;,&quot;#6de5f7&quot;]],&quot;2027&quot;:[[&quot;DTM&quot;,&quot;#6de5f7&quot;]]}"><i style="background:#6de5f7"></i></span>Hockenheimring</h1>
+      <h1 id="h1" class="lang"><span class="bar serien" title="DTM" data-saisons="{&quot;2026&quot;:[[&quot;DTM&quot;,&quot;var(--s-dtm)&quot;]],&quot;2027&quot;:[[&quot;DTM&quot;,&quot;var(--s-dtm)&quot;]]}"><i style="background:var(--s-dtm)"></i></span>Hockenheimring</h1>
       <p class="stroff">Hockenheimring Baden-Württemberg</p>
       <p class="strort">Hockenheim · Baden-Württemberg</p>
       <p class="lead">Termine <span>– alle Rennen am Hockenheimring mit Startzeiten in deutscher Zeit: DTM.</span></p>
       <dl class="fakten" style="--n:4"><div><dt>Länge</dt><dd>4,574<small>km</small></dd></div><div><dt>Kurven</dt><dd>17</dd></div><div><dt>Eröffnet</dt><dd>1932</dd></div><div><dt>Termine 2027</dt><dd>1</dd></div></dl>
       <span class="chiplab">Serien am Hockenheimring</span>
-      <div class="chips"><a class="chip" href="../../dtm/"><i style="background:#6de5f7"></i>DTM</a></div>
+      <div class="chips"><a class="chip" href="../../dtm/"><i style="background:var(--s-dtm)"></i>DTM</a></div>
     </section>
 
     <div class="side">
@@ -52,7 +54,7 @@
   <div class="nextcard" data-id="dtm-8-2027" data-von="2027-10-08" data-bis="2027-10-10">
     <p class="k">Nächster Termin</p>
     <h2>DTM Hockenheim (Finale)</h2>
-    <p class="where"><b style="color:#6de5f7">DTM</b> · 8.–10. Oktober 2027</p>
+    <p class="where"><b style="color:var(--s-dtm)">DTM</b> · 8.–10. Oktober 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../dtm/#r-dtm-8-2027">Zur DTM-Seite <span aria-hidden="true">→</span></a>
   </div>
@@ -80,7 +82,7 @@
    <p class="prov">Vorläufige Kalender. Startzeiten folgen, sobald die Serien den Zeitplan veröffentlichen.</p>
    <ul class="races"><li class="race next" id="r-dtm-8-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#6de5f7">DTM</span>
+      <span class="rd sk" style="color:var(--s-dtm)">DTM</span>
       <span class="when">08–10<small>Okt</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-dtm-8-2027">DTM Hockenheim (Finale)</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -91,7 +93,7 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg">abgeschlossen</span></h2><p>1 Termin aus 1 Serie · Uhrzeit = Rennstart</p></div></div>
    <ul class="races"><li class="race past" id="r-dtm-8">
     <div class="rh">
-      <span class="rd sk" style="color:#6de5f7">DTM</span>
+      <span class="rd sk" style="color:var(--s-dtm)">DTM</span>
       <span class="when">09–11<small>Okt</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-dtm-8">DTM Hockenheim (Finale)</button><span class="win" data-nosnippet>Sieger <b>Sa: Auer · So: Engel</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start">Sa 13:30<br>So 16:30<small>MESZ</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -109,14 +111,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die am Hockenheimring fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="dtm"><h3><a href="../../dtm/#sender" style="color:#6de5f7">DTM</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>ProSieben</b> zeigt alle 16 Rennen live im Free-TV, dazu <b>Joyn</b> und <b>ran.de</b>.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV On</b> und <b>Red Bull TV</b> streamen alle Rennen kostenlos.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Über ServusTV On und Red Bull TV.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="dtm"><h3><a href="../../dtm/#sender" style="color:var(--s-dtm)">DTM</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>ProSieben</b> zeigt alle 16 Rennen live im Free-TV, dazu <b>Joyn</b> und <b>ran.de</b>.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV On</b> und <b>Red Bull TV</b> streamen alle Rennen kostenlos.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Über ServusTV On und Red Bull TV.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:283.3/194.8" aria-label="Kartenausschnitt mit Hockenheimring und Strecken in der Nähe">
           <svg id="minisvg" viewBox="331.7 310 283.3 194.8" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Hockenheimring und Strecken in der Nähe">
-            <rect x="321.7" y="300" width="303.3" height="214.8" fill="#121110"/>
+            <rect x="321.7" y="300" width="303.3" height="214.8" fill="var(--meer)"/>
             <image href="../../karte/europa.svg" x="0" y="0" width="1000" height="860"/>
             <g id="minidyn"></g>
           </svg>
@@ -124,7 +126,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../nuerburgring/"><span class="nn"><b>Nürburgring</b><small>Deutschland · 12 Termine</small></span><span class="nk">≈ 160 km<small>Luftlinie</small></span><span class="nt"><i style="color:#98bafe">NLS</i> NLS1 · 20. März 2027</span></a></li><li><a href="../norisring/"><span class="nn"><b>Norisring</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 185 km<small>Luftlinie</small></span><span class="nt"><i style="color:#6de5f7">DTM</i> DTM Norisring · 2.–4. Juli 2027</span></a></li><li><a href="../spa-francorchamps/"><span class="nn"><b>Spa-Francorchamps</b><small>Belgien · 3 Termine</small></span><span class="nk">≈ 225 km<small>Luftlinie</small></span><span class="nt"><i style="color:#3a86ff">WEC</i> 6 Stunden von Spa-Francorchamps · 13.–15. Mai 2027</span></a></li><li><a href="../sachsenring/"><span class="nn"><b>Sachsenring</b><small>Deutschland · 4 Termine</small></span><span class="nk">≈ 335 km<small>Luftlinie</small></span><span class="nt"><i style="color:#e172db">MotoGP</i> Großer Preis von Deutschland · 9.–11. Juli 2027</span></a></li><li><a href="../oschersleben/"><span class="nn"><b>Oschersleben</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 355 km<small>Luftlinie</small></span><span class="nt"><i style="color:#6de5f7">DTM</i> DTM Oschersleben · 7.–9. Mai 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../nuerburgring/"><span class="nn"><b>Nürburgring</b><small>Deutschland · 12 Termine</small></span><span class="nk">≈ 160 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-nls)">NLS</i> NLS1 · 20. März 2027</span></a></li><li><a href="../norisring/"><span class="nn"><b>Norisring</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 185 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-dtm)">DTM</i> DTM Norisring · 2.–4. Juli 2027</span></a></li><li><a href="../spa-francorchamps/"><span class="nn"><b>Spa-Francorchamps</b><small>Belgien · 3 Termine</small></span><span class="nk">≈ 225 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-wec)">WEC</i> 6 Stunden von Spa-Francorchamps · 13.–15. Mai 2027</span></a></li><li><a href="../sachsenring/"><span class="nn"><b>Sachsenring</b><small>Deutschland · 4 Termine</small></span><span class="nk">≈ 335 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-mgp)">MotoGP</i> Großer Preis von Deutschland · 9.–11. Juli 2027</span></a></li><li><a href="../oschersleben/"><span class="nn"><b>Oschersleben</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 355 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-dtm)">DTM</i> DTM Oschersleben · 7.–9. Mai 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=europa">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -145,6 +147,6 @@
     <p class="where">Neue Termine folgen, sobald die Serien ihre Kalender veröffentlichen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[],"linie":null}</script>
-<script type="application/json" id="apex-strecke">{"lat":49.33,"lon":8.572,"name":"Hockenheimring","np":[473.3,407.4],"box":[331.7,310,283.3,194.8],"pkt":[{"n":"Nürburgring","x":444,"y":377.7,"l":1,"c":"#98bafe","slug":"nuerburgring","land":"Deutschland","km":"≈ 160 km","anz":12,"ns":"NLS","nn":"NLS1","nd":"20. März 2027"},{"n":"Norisring","x":521,"y":404.5,"l":1,"c":"#6de5f7","slug":"norisring","land":"Deutschland","km":"≈ 185 km","anz":1,"ns":"DTM","nn":"DTM Norisring","nd":"2.–4. Juli 2027"},{"n":"Spa-Francorchamps","x":426.4,"y":373.9,"l":1,"c":"#3a86ff","slug":"spa-francorchamps","land":"Belgien","km":"≈ 225 km","anz":3,"ns":"WEC","nn":"6 Stunden von Spa-Francorchamps","nd":"13.–15. Mai 2027"},{"n":"Sachsenring","x":548.8,"y":364.8,"l":1,"c":"#e172db","slug":"sachsenring","land":"Deutschland","km":"≈ 335 km","anz":4,"ns":"MotoGP","nn":"Großer Preis von Deutschland","nd":"9.–11. Juli 2027"},{"n":"Oschersleben","x":522.6,"y":330,"l":1,"c":"#6de5f7","slug":"oschersleben","land":"Deutschland","km":"≈ 355 km","anz":1,"ns":"DTM","nn":"DTM Oschersleben","nd":"7.–9. Mai 2027"},{"n":"Most","x":565.7,"y":371.8,"l":0,"c":"#ad88fe","slug":"most","land":"Tschechien","km":"≈ 385 km","anz":1,"ns":"WSBK","nn":"WM-Lauf Tschechien","nd":"4.–6. Juni 2027"},{"n":"Zandvoort","x":404.3,"y":316.3,"l":0,"c":"#fe958e","slug":"zandvoort","land":"Niederlande","km":"≈ 440 km","anz":4,"ns":"F·E","nn":"Zandvoort E-Prix I","nd":"18. Juni 2027"},{"n":"Lausitzring","x":570,"y":342.5,"l":0,"c":"#6de5f7","slug":"lausitzring","land":"Deutschland","km":"≈ 450 km","anz":1,"ns":"DTM","nn":"DTM Lausitzring","nd":"18.–20. Juni 2027"},{"n":"Magny-Cours","x":365.9,"y":472.4,"l":0,"c":"#03c4c6","slug":"magny-cours","land":"Frankreich","km":"≈ 485 km","anz":2,"ns":"GTWC","nn":"Magny-Cours · Sprint","nd":"30. Juli – 1. August 2027"},{"n":"Berlin-Tempelhof","x":559.5,"y":316,"l":0,"c":"#fe958e","slug":"berlin-tempelhof","land":"Deutschland","km":"≈ 485 km","anz":2,"ns":"F·E","nn":"Berlin E-Prix I","nd":"8. Mai 2027"},{"n":"Red Bull Ring","x":592.8,"y":465.2,"l":0,"c":"#6de5f7","slug":"red-bull-ring","land":"Österreich","km":"≈ 515 km","anz":5,"ns":"DTM","nn":"DTM Spielberg","nd":"23.–25. April 2027"}]}</script>
+<script type="application/json" id="apex-strecke">{"lat":49.33,"lon":8.572,"name":"Hockenheimring","np":[473.3,407.4],"box":[331.7,310,283.3,194.8],"pkt":[{"n":"Nürburgring","x":444,"y":377.7,"l":1,"c":"var(--s-nls)","slug":"nuerburgring","land":"Deutschland","km":"≈ 160 km","anz":12,"ns":"NLS","nn":"NLS1","nd":"20. März 2027"},{"n":"Norisring","x":521,"y":404.5,"l":1,"c":"var(--s-dtm)","slug":"norisring","land":"Deutschland","km":"≈ 185 km","anz":1,"ns":"DTM","nn":"DTM Norisring","nd":"2.–4. Juli 2027"},{"n":"Spa-Francorchamps","x":426.4,"y":373.9,"l":1,"c":"var(--s-wec)","slug":"spa-francorchamps","land":"Belgien","km":"≈ 225 km","anz":3,"ns":"WEC","nn":"6 Stunden von Spa-Francorchamps","nd":"13.–15. Mai 2027"},{"n":"Sachsenring","x":548.8,"y":364.8,"l":1,"c":"var(--s-mgp)","slug":"sachsenring","land":"Deutschland","km":"≈ 335 km","anz":4,"ns":"MotoGP","nn":"Großer Preis von Deutschland","nd":"9.–11. Juli 2027"},{"n":"Oschersleben","x":522.6,"y":330,"l":1,"c":"var(--s-dtm)","slug":"oschersleben","land":"Deutschland","km":"≈ 355 km","anz":1,"ns":"DTM","nn":"DTM Oschersleben","nd":"7.–9. Mai 2027"},{"n":"Most","x":565.7,"y":371.8,"l":0,"c":"var(--s-wsbk)","slug":"most","land":"Tschechien","km":"≈ 385 km","anz":1,"ns":"WSBK","nn":"WM-Lauf Tschechien","nd":"4.–6. Juni 2027"},{"n":"Zandvoort","x":404.3,"y":316.3,"l":0,"c":"var(--s-fe)","slug":"zandvoort","land":"Niederlande","km":"≈ 440 km","anz":4,"ns":"F·E","nn":"Zandvoort E-Prix I","nd":"18. Juni 2027"},{"n":"Lausitzring","x":570,"y":342.5,"l":0,"c":"var(--s-dtm)","slug":"lausitzring","land":"Deutschland","km":"≈ 450 km","anz":1,"ns":"DTM","nn":"DTM Lausitzring","nd":"18.–20. Juni 2027"},{"n":"Magny-Cours","x":365.9,"y":472.4,"l":0,"c":"var(--s-gtwc)","slug":"magny-cours","land":"Frankreich","km":"≈ 485 km","anz":2,"ns":"GTWC","nn":"Magny-Cours · Sprint","nd":"30. Juli – 1. August 2027"},{"n":"Berlin-Tempelhof","x":559.5,"y":316,"l":0,"c":"var(--s-fe)","slug":"berlin-tempelhof","land":"Deutschland","km":"≈ 485 km","anz":2,"ns":"F·E","nn":"Berlin E-Prix I","nd":"8. Mai 2027"},{"n":"Red Bull Ring","x":592.8,"y":465.2,"l":0,"c":"var(--s-dtm)","slug":"red-bull-ring","land":"Österreich","km":"≈ 515 km","anz":5,"ns":"DTM","nn":"DTM Spielberg","nd":"23.–25. April 2027"}]}</script>
 </body>
 </html>

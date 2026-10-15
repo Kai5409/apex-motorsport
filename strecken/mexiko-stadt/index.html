@@ -23,28 +23,30 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"Mexiko-Stadt","item":"https://apexkalender.de/strecken/mexiko-stadt/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/mexiko-stadt/#strecke","name":"Autódromo Hermanos Rodríguez","url":"https://apexkalender.de/strecken/mexiko-stadt/","alternateName":"Mexiko-Stadt","address":{"@type":"PostalAddress","addressLocality":"Mexiko-Stadt","addressCountry":"MX"},"geo":{"@type":"GeoCoordinates","latitude":19.4028,"longitude":-99.0898}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">Mexiko-Stadt</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="F·E · F1" data-saisons="{&quot;2026&quot;:[[&quot;F·E&quot;,&quot;#fe958e&quot;],[&quot;F1&quot;,&quot;#ff3000&quot;]],&quot;2027&quot;:[[&quot;F·E&quot;,&quot;#fe958e&quot;],[&quot;F1&quot;,&quot;#ff3000&quot;]]}"><i style="background:#fe958e"></i><i style="background:#ff3000"></i></span>Mexiko-Stadt</h1>
+      <h1 id="h1"><span class="bar serien" title="F·E · F1" data-saisons="{&quot;2026&quot;:[[&quot;F·E&quot;,&quot;var(--s-fe)&quot;],[&quot;F1&quot;,&quot;var(--s-f1)&quot;]],&quot;2027&quot;:[[&quot;F·E&quot;,&quot;var(--s-fe)&quot;],[&quot;F1&quot;,&quot;var(--s-f1)&quot;]]}"><i style="background:var(--s-fe)"></i><i style="background:var(--s-f1)"></i></span>Mexiko-Stadt</h1>
       <p class="stroff">Autódromo Hermanos Rodríguez</p>
       <p class="strort">Mexiko-Stadt · Mexiko</p>
       <p class="lead">Termine <span>– alle Rennen in Mexiko-Stadt mit Startzeiten in deutscher Zeit: Formel E und Formel 1.</span></p>
       <dl class="fakten" style="--n:5"><div><dt>Länge</dt><dd>4,304<small>km</small></dd></div><div><dt>Kurven</dt><dd>17</dd></div><div><dt>Eröffnet</dt><dd>1959</dd></div><div><dt>Termine 2027</dt><dd>2</dd></div><div><dt>Zeitverschiebung</dt><dd>−7<small>h</small></dd></div></dl>
       <span class="chiplab">Serien in Mexiko-Stadt</span>
-      <div class="chips"><a class="chip" href="../../formel-e/"><i style="background:#fe958e"></i>Formel E</a><a class="chip" href="../../formel-1/"><i style="background:#ff3000"></i>Formel 1</a></div>
+      <div class="chips"><a class="chip" href="../../formel-e/"><i style="background:var(--s-fe)"></i>Formel E</a><a class="chip" href="../../formel-1/"><i style="background:var(--s-f1)"></i>Formel 1</a></div>
     </section>
 
     <div class="side">
@@ -52,7 +54,7 @@
   <div class="nextcard" data-id="f1-19" data-von="2026-10-30" data-bis="2026-11-01">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Mexiko</h2>
-    <p class="where"><b style="color:#ff3000">F1</b> · 30. Oktober – 1. November 2026</p>
+    <p class="where"><b style="color:var(--s-f1)">F1</b> · 30. Oktober – 1. November 2026</p>
     <div class="racebig"><div class="t"><span class="zd">21:00<small>MEZ</small></span><span class="zo" data-nosnippet>14:00<small>Ortszeit</small></span></div><div class="d"><b>Rennstart</b><span class="zd">Sonntag, 1.&nbsp;November</span><span class="zo" data-nosnippet>Sonntag, 1.&nbsp;November</span></div></div>
     <ul class="sess"><li class="n">FP1</li><li class="v"><span class="zd">Fr 30.10. · 19:30</span><span class="zo" data-nosnippet>Fr 30.10. · 12:30</span></li><li class="n">FP2</li><li class="v"><span class="zd">Fr 30.10. · 23:00</span><span class="zo" data-nosnippet>Fr 30.10. · 16:00</span></li><li class="n">FP3</li><li class="v"><span class="zd">Sa 31.10. · 18:30</span><span class="zo" data-nosnippet>Sa 31.10. · 11:30</span></li><li class="n">Qualifying</li><li class="v"><span class="zd">Sa 31.10. · 22:00</span><span class="zo" data-nosnippet>Sa 31.10. · 15:00</span></li><li class="n race">Rennen</li><li class="v race"><span class="zd">So 01.11. · 21:00</span><span class="zo" data-nosnippet>So 01.11. · 14:00</span></li></ul>
     <a class="evcal" href="../../kalender/termine/f1-19.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a>
@@ -81,14 +83,14 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg" hidden>abgeschlossen</span></h2><p>2 Termine aus 2 Serien · Uhrzeit = Rennstart</p></div></div>
    <ul class="races"><li class="race past" id="r-fe-2">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">10<small>Jan</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-2">Mexiko-Stadt E-Prix</button><span class="win" data-nosnippet>Sieger <b>Nick Cassidy (Citroën)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"><span class="zd">Sa 23:00<small>MEZ</small></span><span class="zo" data-nosnippet>Sa 16:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-fe-2"><ul class="sess"><li class="n">Freies Training</li><li class="v"><span class="zd">Sa 10.01. · 16:30 MEZ</span><span class="zo" data-nosnippet>Sa 10.01. · 09:30 Ortszeit</span></li><li class="n">Qualifying</li><li class="v"><span class="zd">Sa 10.01. · 18:40 MEZ</span><span class="zo" data-nosnippet>Sa 10.01. · 11:40 Ortszeit</span></li><li class="n race">Rennen</li><li class="v race"><span class="zd">Sa 10.01. · 23:00 MEZ</span><span class="zo" data-nosnippet>Sa 10.01. · 16:00 Ortszeit</span></li></ul><a class="evcal" href="../../kalender/termine/fe-2.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../formel-e/#r-fe-2">Zur F·E-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=fe-2">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race next" id="r-f1-19">
     <div class="rh">
-      <span class="rd sk" style="color:#ff3000">F1</span>
+      <span class="rd sk" style="color:var(--s-f1)">F1</span>
       <span class="when">30.–01.<small>Okt/Nov</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-19">Großer Preis von Mexiko</button></span>
       <span class="start"><span class="zd">So 21:00<small>MEZ</small></span><span class="zo" data-nosnippet>So 14:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
@@ -100,14 +102,14 @@
    <p class="prov">Vorläufige Kalender. Startzeiten folgen, sobald die Serien den Zeitplan veröffentlichen.</p>
    <ul class="races"><li class="race" id="r-fe-3-S13">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">16<small>Jan</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-3-S13">Mexiko-Stadt E-Prix</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-fe-3-S13"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../formel-e/#r-fe-3-S13">Zur F·E-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-f1-20-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#ff3000">F1</span>
+      <span class="rd sk" style="color:var(--s-f1)">F1</span>
       <span class="when">29–31<small>Okt</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-20-2027">Großer Preis von Mexiko</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -125,14 +127,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die in Mexiko-Stadt fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="fe"><h3><a href="../../formel-e/#sender" style="color:#fe958e">Formel E</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div></div><div class="wtvb" data-serie="f1"><h3><a href="../../formel-1/#sender" style="color:#ff3000">Formel 1</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="fe"><h3><a href="../../formel-e/#sender" style="color:var(--s-fe)">Formel E</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div></div><div class="wtvb" data-serie="f1"><h3><a href="../../formel-1/#sender" style="color:var(--s-f1)">Formel 1</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:850/584.4" aria-label="Kartenausschnitt mit Mexiko-Stadt und Strecken in der Nähe">
           <svg id="minisvg" viewBox="341.3 698.3 850 584.4" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mexiko-Stadt und Strecken in der Nähe">
-            <rect x="331.3" y="688.3" width="870" height="604.4" fill="#121110"/>
+            <rect x="331.3" y="688.3" width="870" height="604.4" fill="var(--meer)"/>
             <image href="../../karte/nordamerika.svg" x="0" y="0" width="1734" height="1079"/>
             <g id="minidyn"></g>
           </svg>
@@ -140,7 +142,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../cota/"><span class="nn"><b>COTA</b><small>USA · 8 Termine</small></span><span class="nk">≈ 1.200 km<small>Luftlinie</small></span><span class="nt"><i style="color:#c7695d">F1 Academy</i> Großer Preis der USA · 22.–25. Oktober 2026</span></a></li><li><a href="../arlington/"><span class="nn"><b>Arlington</b><small>USA · 1 Termin</small></span><span class="nk">≈ 1.495 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff782b">IndyCar</i> Grand Prix von Arlington · 21. März 2027</span></a></li><li><a href="../st-petersburg/"><span class="nn"><b>St. Petersburg</b><small>USA · 1 Termin</small></span><span class="nk">≈ 1.915 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff782b">IndyCar</i> Grand Prix von St. Petersburg · 7. März 2027</span></a></li><li><a href="../barber/"><span class="nn"><b>Barber</b><small>USA · 1 Termin</small></span><span class="nk">≈ 2.000 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff782b">IndyCar</i> Grand Prix von Alabama · 4. April 2027</span></a></li><li><a href="../sebring/"><span class="nn"><b>Sebring</b><small>USA · 1 Termin</small></span><span class="nk">≈ 2.015 km<small>Luftlinie</small></span><span class="nt"><i style="color:#33b4fe">IMSA</i> 12 Stunden von Sebring · 17.–20. März 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../cota/"><span class="nn"><b>COTA</b><small>USA · 8 Termine</small></span><span class="nk">≈ 1.200 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-f1academy)">F1 Academy</i> Großer Preis der USA · 22.–25. Oktober 2026</span></a></li><li><a href="../arlington/"><span class="nn"><b>Arlington</b><small>USA · 1 Termin</small></span><span class="nk">≈ 1.495 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-indycar)">IndyCar</i> Grand Prix von Arlington · 21. März 2027</span></a></li><li><a href="../st-petersburg/"><span class="nn"><b>St. Petersburg</b><small>USA · 1 Termin</small></span><span class="nk">≈ 1.915 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-indycar)">IndyCar</i> Grand Prix von St. Petersburg · 7. März 2027</span></a></li><li><a href="../barber/"><span class="nn"><b>Barber</b><small>USA · 1 Termin</small></span><span class="nk">≈ 2.000 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-indycar)">IndyCar</i> Grand Prix von Alabama · 4. April 2027</span></a></li><li><a href="../sebring/"><span class="nn"><b>Sebring</b><small>USA · 1 Termin</small></span><span class="nk">≈ 2.015 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-imsa)">IMSA</i> 12 Stunden von Sebring · 17.–20. März 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=nordamerika">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -157,14 +159,14 @@
 <template class="naechst" data-id="fe-3-S13" data-von="2027-01-16" data-bis="2027-01-16"><div class="nextcard" data-id="fe-3-S13" data-von="2027-01-16" data-bis="2027-01-16">
     <p class="k">Nächster Termin</p>
     <h2>Mexiko-Stadt E-Prix</h2>
-    <p class="where"><b style="color:#fe958e">F·E</b> · 16. Januar 2027</p>
+    <p class="where"><b style="color:var(--s-fe)">F·E</b> · 16. Januar 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../formel-e/#r-fe-3-S13">Zur F·E-Seite <span aria-hidden="true">→</span></a>
   </div></template>
 <template class="naechst" data-id="f1-20-2027" data-von="2027-10-29" data-bis="2027-10-31"><div class="nextcard" data-id="f1-20-2027" data-von="2027-10-29" data-bis="2027-10-31">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Mexiko</h2>
-    <p class="where"><b style="color:#ff3000">F1</b> · 29.–31. Oktober 2027</p>
+    <p class="where"><b style="color:var(--s-f1)">F1</b> · 29.–31. Oktober 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../formel-1/#r-f1-20-2027">Zur F1-Seite <span aria-hidden="true">→</span></a>
   </div></template>

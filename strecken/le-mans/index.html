@@ -23,28 +23,30 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"Le Mans","item":"https://apexkalender.de/strecken/le-mans/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/le-mans/#strecke","name":"Circuit des 24 Heures du Mans · Circuit Bugatti","url":"https://apexkalender.de/strecken/le-mans/","alternateName":"Le Mans","address":{"@type":"PostalAddress","addressLocality":"Le Mans","addressRegion":"Pays de la Loire","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":47.933,"longitude":0.233}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">Le Mans</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="MotoGP · Moto2 · Moto3 · WEC" data-saisons="{&quot;2026&quot;:[[&quot;MotoGP&quot;,&quot;#e172db&quot;],[&quot;Moto2&quot;,&quot;#f32a94&quot;],[&quot;Moto3&quot;,&quot;#f3b7ff&quot;],[&quot;WEC&quot;,&quot;#3a86ff&quot;]],&quot;2027&quot;:[[&quot;MotoGP&quot;,&quot;#e172db&quot;],[&quot;Moto2&quot;,&quot;#f32a94&quot;],[&quot;Moto3&quot;,&quot;#f3b7ff&quot;],[&quot;WEC&quot;,&quot;#3a86ff&quot;]]}"><i style="background:#e172db"></i><i style="background:#f32a94"></i><i style="background:#f3b7ff"></i><i style="background:#3a86ff"></i></span>Le Mans</h1>
+      <h1 id="h1"><span class="bar serien" title="MotoGP · Moto2 · Moto3 · WEC" data-saisons="{&quot;2026&quot;:[[&quot;MotoGP&quot;,&quot;var(--s-mgp)&quot;],[&quot;Moto2&quot;,&quot;var(--s-moto2)&quot;],[&quot;Moto3&quot;,&quot;var(--s-moto3)&quot;],[&quot;WEC&quot;,&quot;var(--s-wec)&quot;]],&quot;2027&quot;:[[&quot;MotoGP&quot;,&quot;var(--s-mgp)&quot;],[&quot;Moto2&quot;,&quot;var(--s-moto2)&quot;],[&quot;Moto3&quot;,&quot;var(--s-moto3)&quot;],[&quot;WEC&quot;,&quot;var(--s-wec)&quot;]]}"><i style="background:var(--s-mgp)"></i><i style="background:var(--s-moto2)"></i><i style="background:var(--s-moto3)"></i><i style="background:var(--s-wec)"></i></span>Le Mans</h1>
       <p class="stroff">Circuit des 24 Heures du Mans · Circuit Bugatti</p>
       <p class="strort">Le Mans · Pays de la Loire · Frankreich</p>
       <p class="lead">Termine <span>– alle Rennen in Le Mans mit Startzeiten in deutscher Zeit: MotoGP, Moto2, Moto3 und WEC.</span></p>
       <dl class="fakten" style="--n:3"><div><dt>Circuit Bugatti</dt><dd>4,185<small>km</small></dd></div><div><dt>Kurven</dt><dd>14</dd></div><div><dt>Termine 2027</dt><dd>4</dd></div></dl>
       <span class="chiplab">Serien in Le Mans</span>
-      <div class="chips"><a class="chip" href="../../motogp/"><i style="background:#e172db"></i>MotoGP</a><a class="chip" href="../../moto2/"><i style="background:#f32a94"></i>Moto2</a><a class="chip" href="../../moto3/"><i style="background:#f3b7ff"></i>Moto3</a><a class="chip" href="../../wec/"><i style="background:#3a86ff"></i>WEC</a></div>
+      <div class="chips"><a class="chip" href="../../motogp/"><i style="background:var(--s-mgp)"></i>MotoGP</a><a class="chip" href="../../moto2/"><i style="background:var(--s-moto2)"></i>Moto2</a><a class="chip" href="../../moto3/"><i style="background:var(--s-moto3)"></i>Moto3</a><a class="chip" href="../../wec/"><i style="background:var(--s-wec)"></i>WEC</a></div>
     </section>
 
     <div class="side">
@@ -52,7 +54,7 @@
   <div class="nextcard" data-id="mgp-7-2027" data-von="2027-05-14" data-bis="2027-05-16">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Frankreich</h2>
-    <p class="where"><b style="color:#e172db">MotoGP</b> · 14.–16. Mai 2027</p>
+    <p class="where"><b style="color:var(--s-mgp)">MotoGP</b> · 14.–16. Mai 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../motogp/#r-mgp-7-2027">Zur MotoGP-Seite <span aria-hidden="true">→</span></a>
   </div>
@@ -80,28 +82,28 @@
    <p class="prov">Vorläufige Kalender. Startzeiten folgen, sobald die Serien den Zeitplan veröffentlichen.</p>
    <ul class="races"><li class="race next" id="r-mgp-7-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#e172db">MotoGP</span>
+      <span class="rd sk" style="color:var(--s-mgp)">MotoGP</span>
       <span class="when">14–16<small>Mai</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-mgp-7-2027">Großer Preis von Frankreich</button><span class="loc">Circuit Bugatti</span></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-mgp-7-2027"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../motogp/#r-mgp-7-2027">Zur MotoGP-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-moto2-7-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#f32a94">Moto2</span>
+      <span class="rd sk" style="color:var(--s-moto2)">Moto2</span>
       <span class="when">14–16<small>Mai</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-moto2-7-2027">Großer Preis von Frankreich</button><span class="loc">Circuit Bugatti</span></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-moto2-7-2027"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../moto2/#r-moto2-7-2027">Zur Moto2-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-moto3-7-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#f3b7ff">Moto3</span>
+      <span class="rd sk" style="color:var(--s-moto3)">Moto3</span>
       <span class="when">14–16<small>Mai</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-moto3-7-2027">Großer Preis von Frankreich</button><span class="loc">Circuit Bugatti</span></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-moto3-7-2027"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../moto3/#r-moto3-7-2027">Zur Moto3-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-wec-5-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#3a86ff">WEC</span>
+      <span class="rd sk" style="color:var(--s-wec)">WEC</span>
       <span class="when">06–13<small>Jun</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-wec-5-2027">24 Stunden von Le Mans</button><span class="loc">Circuit de la Sarthe</span></span>
       <span class="start">Sa 16:00<small>MESZ</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -112,28 +114,28 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg">abgeschlossen</span></h2><p>4 Termine aus 4 Serien · Uhrzeit = Rennstart</p></div></div>
    <ul class="races"><li class="race past" id="r-mgp-5">
     <div class="rh">
-      <span class="rd sk" style="color:#e172db">MotoGP</span>
+      <span class="rd sk" style="color:var(--s-mgp)">MotoGP</span>
       <span class="when">08–10<small>Mai</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-mgp-5">Großer Preis von Frankreich</button><span class="loc">Circuit Bugatti</span><span class="win" data-nosnippet>Sieger <b>Jorge Martín (Aprilia)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start">So 14:00<small>MESZ</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-mgp-5"><ul class="sess"><li class="n">FP1</li><li class="v">Fr 08.05. · 10:45 MESZ</li><li class="n">Practice</li><li class="v">Fr 08.05. · 15:00 MESZ</li><li class="n">FP2</li><li class="v">Sa 09.05. · 10:10 MESZ</li><li class="n">Qualifying</li><li class="v">Sa 09.05. · 10:50 MESZ</li><li class="n">Sprint</li><li class="v">Sa 09.05. · 15:00 MESZ</li><li class="n">Warm Up</li><li class="v">So 10.05. · 09:40 MESZ</li><li class="n race">Rennen</li><li class="v race">So 10.05. · 14:00 MESZ</li></ul><a class="evcal" href="../../kalender/termine/mgp-5.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../motogp/#r-mgp-5">Zur MotoGP-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=mgp-5">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-moto2-5">
     <div class="rh">
-      <span class="rd sk" style="color:#f32a94">Moto2</span>
+      <span class="rd sk" style="color:var(--s-moto2)">Moto2</span>
       <span class="when">08–10<small>Mai</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-moto2-5">Großer Preis von Frankreich</button><span class="loc">Circuit Bugatti</span><span class="win" data-nosnippet>Sieger <b>Izan Guevara (Boscoscuro)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-moto2-5"><p class="rlinks"><a class="allres" href="../../moto2/#r-moto2-5">Zur Moto2-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=moto2-5">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-moto3-5">
     <div class="rh">
-      <span class="rd sk" style="color:#f3b7ff">Moto3</span>
+      <span class="rd sk" style="color:var(--s-moto3)">Moto3</span>
       <span class="when">08–10<small>Mai</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-moto3-5">Großer Preis von Frankreich</button><span class="loc">Circuit Bugatti</span><span class="win" data-nosnippet>Sieger <b>Máximo Quiles (KTM)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-moto3-5"><p class="rlinks"><a class="allres" href="../../moto3/#r-moto3-5">Zur Moto3-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=moto3-5">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-wec-3">
     <div class="rh">
-      <span class="rd sk" style="color:#3a86ff">WEC</span>
+      <span class="rd sk" style="color:var(--s-wec)">WEC</span>
       <span class="when">10–14<small>Jun</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-wec-3">24 Stunden von Le Mans</button><span class="loc">Circuit de la Sarthe</span><span class="win" data-nosnippet>Sieger <b>Toyota #7 (Conway/<wbr>Kobayashi/<wbr>de Vries)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start">Sa 16:00<small>MESZ</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -151,14 +153,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die in Le Mans fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="mgp"><h3><a href="../../motogp/#sender" style="color:#e172db">MotoGP</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2 und Moto3.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die komplette Saison im Free-TV.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt einzelne Rennen frei (SRF Info bzw. SRF zwei).</p></div></div><div class="wtvb" data-serie="moto2"><h3><a href="../../moto2/#sender" style="color:#f32a94">Moto2</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.</p></div></div><div class="wtvb" data-serie="moto3"><h3><a href="../../moto3/#sender" style="color:#f3b7ff">Moto3</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto3.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.</p></div></div><div class="wtvb" data-serie="wec"><h3><a href="../../wec/#sender" style="color:#3a86ff">WEC</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Eurosport</b> (Warner Bros. Discovery) hält die Rechte bis mindestens 2030 und zeigt alle acht Rennen inklusive der 24 Stunden von Le Mans.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext">Wie Deutschland über Eurosport.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Wie Deutschland über Eurosport.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="mgp"><h3><a href="../../motogp/#sender" style="color:var(--s-mgp)">MotoGP</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2 und Moto3.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die komplette Saison im Free-TV.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt einzelne Rennen frei (SRF Info bzw. SRF zwei).</p></div></div><div class="wtvb" data-serie="moto2"><h3><a href="../../moto2/#sender" style="color:var(--s-moto2)">Moto2</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.</p></div></div><div class="wtvb" data-serie="moto3"><h3><a href="../../moto3/#sender" style="color:var(--s-moto3)">Moto3</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto3.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.</p></div></div><div class="wtvb" data-serie="wec"><h3><a href="../../wec/#sender" style="color:var(--s-wec)">WEC</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Eurosport</b> (Warner Bros. Discovery) hält die Rechte bis mindestens 2030 und zeigt alle acht Rennen inklusive der 24 Stunden von Le Mans.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext">Wie Deutschland über Eurosport.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Wie Deutschland über Eurosport.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:409.8/281.7" aria-label="Kartenausschnitt mit Le Mans und Strecken in der Nähe">
           <svg id="minisvg" viewBox="107.8 294.7 409.8 281.7" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Le Mans und Strecken in der Nähe">
-            <rect x="97.8" y="284.7" width="429.8" height="301.7" fill="#121110"/>
+            <rect x="97.8" y="284.7" width="429.8" height="301.7" fill="var(--meer)"/>
             <image href="../../karte/europa.svg" x="0" y="0" width="1000" height="860"/>
             <g id="minidyn"></g>
           </svg>
@@ -166,7 +168,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../magny-cours/"><span class="nn"><b>Magny-Cours</b><small>Frankreich · 2 Termine</small></span><span class="nk">≈ 250 km<small>Luftlinie</small></span><span class="nt"><i style="color:#03c4c6">GTWC</i> Magny-Cours · Sprint · 30. Juli – 1. August 2027</span></a></li><li><a href="../brands-hatch/"><span class="nn"><b>Brands Hatch</b><small>Großbritannien · 3 Termine</small></span><span class="nk">≈ 380 km<small>Luftlinie</small></span><span class="nt"><i style="color:#03c4c6">GTWC</i> Brands Hatch · Sprint · 1.–2. Mai 2027</span></a></li><li><a href="../silverstone/"><span class="nn"><b>Silverstone</b><small>Großbritannien · 5 Termine</small></span><span class="nk">≈ 470 km<small>Luftlinie</small></span><span class="nt"><i style="color:#3a86ff">WEC</i> 6 Stunden von Silverstone · 23.–25. April 2027</span></a></li><li><a href="../spa-francorchamps/"><span class="nn"><b>Spa-Francorchamps</b><small>Belgien · 3 Termine</small></span><span class="nk">≈ 500 km<small>Luftlinie</small></span><span class="nt"><i style="color:#3a86ff">WEC</i> 6 Stunden von Spa-Francorchamps · 13.–15. Mai 2027</span></a></li><li><a href="../nuerburgring/"><span class="nn"><b>Nürburgring</b><small>Deutschland · 12 Termine</small></span><span class="nk">≈ 555 km<small>Luftlinie</small></span><span class="nt"><i style="color:#98bafe">NLS</i> NLS1 · 20. März 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../magny-cours/"><span class="nn"><b>Magny-Cours</b><small>Frankreich · 2 Termine</small></span><span class="nk">≈ 250 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-gtwc)">GTWC</i> Magny-Cours · Sprint · 30. Juli – 1. August 2027</span></a></li><li><a href="../brands-hatch/"><span class="nn"><b>Brands Hatch</b><small>Großbritannien · 3 Termine</small></span><span class="nk">≈ 380 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-gtwc)">GTWC</i> Brands Hatch · Sprint · 1.–2. Mai 2027</span></a></li><li><a href="../silverstone/"><span class="nn"><b>Silverstone</b><small>Großbritannien · 5 Termine</small></span><span class="nk">≈ 470 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-wec)">WEC</i> 6 Stunden von Silverstone · 23.–25. April 2027</span></a></li><li><a href="../spa-francorchamps/"><span class="nn"><b>Spa-Francorchamps</b><small>Belgien · 3 Termine</small></span><span class="nk">≈ 500 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-wec)">WEC</i> 6 Stunden von Spa-Francorchamps · 13.–15. Mai 2027</span></a></li><li><a href="../nuerburgring/"><span class="nn"><b>Nürburgring</b><small>Deutschland · 12 Termine</small></span><span class="nk">≈ 555 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-nls)">NLS</i> NLS1 · 20. März 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=europa">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -183,21 +185,21 @@
 <template class="naechst" data-id="moto2-7-2027" data-von="2027-05-14" data-bis="2027-05-16"><div class="nextcard" data-id="moto2-7-2027" data-von="2027-05-14" data-bis="2027-05-16">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Frankreich</h2>
-    <p class="where"><b style="color:#f32a94">Moto2</b> · 14.–16. Mai 2027</p>
+    <p class="where"><b style="color:var(--s-moto2)">Moto2</b> · 14.–16. Mai 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../moto2/#r-moto2-7-2027">Zur Moto2-Seite <span aria-hidden="true">→</span></a>
   </div></template>
 <template class="naechst" data-id="moto3-7-2027" data-von="2027-05-14" data-bis="2027-05-16"><div class="nextcard" data-id="moto3-7-2027" data-von="2027-05-14" data-bis="2027-05-16">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Frankreich</h2>
-    <p class="where"><b style="color:#f3b7ff">Moto3</b> · 14.–16. Mai 2027</p>
+    <p class="where"><b style="color:var(--s-moto3)">Moto3</b> · 14.–16. Mai 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../moto3/#r-moto3-7-2027">Zur Moto3-Seite <span aria-hidden="true">→</span></a>
   </div></template>
 <template class="naechst" data-id="wec-5-2027" data-von="2027-06-06" data-bis="2027-06-13"><div class="nextcard" data-id="wec-5-2027" data-von="2027-06-06" data-bis="2027-06-13">
     <p class="k">Nächster Termin</p>
     <h2>24 Stunden von Le Mans</h2>
-    <p class="where"><b style="color:#3a86ff">WEC</b> · 6.–13. Juni 2027</p>
+    <p class="where"><b style="color:var(--s-wec)">WEC</b> · 6.–13. Juni 2027</p>
     <div class="racebig"><div class="t">16:00<small>MESZ</small></div><div class="d"><b>Rennstart</b>Samstag, 12.&nbsp;Juni</div></div>
     <ul class="sess"><li class="n race">Rennen</li><li class="v race">Sa 12.06. · 16:00</li></ul>
     <a class="evcal" href="../../kalender/termine/wec-5-2027.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a>
@@ -209,6 +211,6 @@
     <p class="where">Neue Termine folgen, sobald die Serien ihre Kalender veröffentlichen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[],"linie":null}</script>
-<script type="application/json" id="apex-strecke">{"lat":47.933,"lon":0.233,"name":"Le Mans","np":[312.7,435.6],"box":[107.8,294.7,409.8,281.7],"pkt":[{"n":"Magny-Cours","x":365.9,"y":472.4,"l":1,"c":"#03c4c6","slug":"magny-cours","land":"Frankreich","km":"≈ 250 km","anz":2,"ns":"GTWC","nn":"Magny-Cours · Sprint","nd":"30. Juli – 1. August 2027"},{"n":"Brands Hatch","x":325.9,"y":338.2,"l":1,"c":"#03c4c6","slug":"brands-hatch","land":"Großbritannien","km":"≈ 380 km","anz":3,"ns":"GTWC","nn":"Brands Hatch · Sprint","nd":"1.–2. Mai 2027"},{"n":"Silverstone","x":306.1,"y":314.7,"l":1,"c":"#3a86ff","slug":"silverstone","land":"Großbritannien","km":"≈ 470 km","anz":5,"ns":"WEC","nn":"6 Stunden von Silverstone","nd":"23.–25. April 2027"},{"n":"Spa-Francorchamps","x":426.4,"y":373.9,"l":1,"c":"#3a86ff","slug":"spa-francorchamps","land":"Belgien","km":"≈ 500 km","anz":3,"ns":"WEC","nn":"6 Stunden von Spa-Francorchamps","nd":"13.–15. Mai 2027"},{"n":"Nürburgring","x":444,"y":377.7,"l":1,"c":"#98bafe","slug":"nuerburgring","land":"Deutschland","km":"≈ 555 km","anz":12,"ns":"NLS","nn":"NLS1","nd":"20. März 2027"},{"n":"Zandvoort","x":404.3,"y":316.3,"l":0,"c":"#fe958e","slug":"zandvoort","land":"Niederlande","km":"≈ 585 km","anz":4,"ns":"F·E","nn":"Zandvoort E-Prix I","nd":"18. Juni 2027"},{"n":"Hockenheimring","x":473.3,"y":407.4,"l":0,"c":"#6de5f7","slug":"hockenheimring","land":"Deutschland","km":"≈ 630 km","anz":2,"ns":"DTM","nn":"DTM Hockenheim (Finale)","nd":"9.–11. Oktober 2026"},{"n":"Assen","x":439.8,"y":301.9,"l":0,"c":"#ad88fe","slug":"assen","land":"Niederlande","km":"≈ 715 km","anz":4,"ns":"WSBK","nn":"WM-Lauf Niederlande","nd":"16.–18. April 2027"},{"n":"Monaco","x":446.5,"y":567.5,"l":0,"c":"#fe958e","slug":"monaco","land":"Monaco","km":"≈ 725 km","anz":3,"ns":"F·E","nn":"Monaco E-Prix I","nd":"1. Mai 2027"},{"n":"Monza","x":485.7,"y":514.1,"l":0,"c":"#3a86ff","slug":"monza","land":"Italien","km":"≈ 735 km","anz":2,"ns":"WEC","nn":"6 Stunden von Monza (Finale)","nd":"6.–8. November 2026"},{"n":"Cremona","x":506.3,"y":529.5,"l":0,"c":"#ad88fe","slug":"cremona","land":"Italien","km":"≈ 835 km","anz":1,"ns":"WSBK","nn":"WM-Lauf Italien","nd":"24.–26. September 2027"}]}</script>
+<script type="application/json" id="apex-strecke">{"lat":47.933,"lon":0.233,"name":"Le Mans","np":[312.7,435.6],"box":[107.8,294.7,409.8,281.7],"pkt":[{"n":"Magny-Cours","x":365.9,"y":472.4,"l":1,"c":"var(--s-gtwc)","slug":"magny-cours","land":"Frankreich","km":"≈ 250 km","anz":2,"ns":"GTWC","nn":"Magny-Cours · Sprint","nd":"30. Juli – 1. August 2027"},{"n":"Brands Hatch","x":325.9,"y":338.2,"l":1,"c":"var(--s-gtwc)","slug":"brands-hatch","land":"Großbritannien","km":"≈ 380 km","anz":3,"ns":"GTWC","nn":"Brands Hatch · Sprint","nd":"1.–2. Mai 2027"},{"n":"Silverstone","x":306.1,"y":314.7,"l":1,"c":"var(--s-wec)","slug":"silverstone","land":"Großbritannien","km":"≈ 470 km","anz":5,"ns":"WEC","nn":"6 Stunden von Silverstone","nd":"23.–25. April 2027"},{"n":"Spa-Francorchamps","x":426.4,"y":373.9,"l":1,"c":"var(--s-wec)","slug":"spa-francorchamps","land":"Belgien","km":"≈ 500 km","anz":3,"ns":"WEC","nn":"6 Stunden von Spa-Francorchamps","nd":"13.–15. Mai 2027"},{"n":"Nürburgring","x":444,"y":377.7,"l":1,"c":"var(--s-nls)","slug":"nuerburgring","land":"Deutschland","km":"≈ 555 km","anz":12,"ns":"NLS","nn":"NLS1","nd":"20. März 2027"},{"n":"Zandvoort","x":404.3,"y":316.3,"l":0,"c":"var(--s-fe)","slug":"zandvoort","land":"Niederlande","km":"≈ 585 km","anz":4,"ns":"F·E","nn":"Zandvoort E-Prix I","nd":"18. Juni 2027"},{"n":"Hockenheimring","x":473.3,"y":407.4,"l":0,"c":"var(--s-dtm)","slug":"hockenheimring","land":"Deutschland","km":"≈ 630 km","anz":2,"ns":"DTM","nn":"DTM Hockenheim (Finale)","nd":"9.–11. Oktober 2026"},{"n":"Assen","x":439.8,"y":301.9,"l":0,"c":"var(--s-wsbk)","slug":"assen","land":"Niederlande","km":"≈ 715 km","anz":4,"ns":"WSBK","nn":"WM-Lauf Niederlande","nd":"16.–18. April 2027"},{"n":"Monaco","x":446.5,"y":567.5,"l":0,"c":"var(--s-fe)","slug":"monaco","land":"Monaco","km":"≈ 725 km","anz":3,"ns":"F·E","nn":"Monaco E-Prix I","nd":"1. Mai 2027"},{"n":"Monza","x":485.7,"y":514.1,"l":0,"c":"var(--s-wec)","slug":"monza","land":"Italien","km":"≈ 735 km","anz":2,"ns":"WEC","nn":"6 Stunden von Monza (Finale)","nd":"6.–8. November 2026"},{"n":"Cremona","x":506.3,"y":529.5,"l":0,"c":"var(--s-wsbk)","slug":"cremona","land":"Italien","km":"≈ 835 km","anz":1,"ns":"WSBK","nn":"WM-Lauf Italien","nd":"24.–26. September 2027"}]}</script>
 </body>
 </html>

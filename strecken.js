@@ -1,5 +1,5 @@
 /* APEX – Streckenseiten: Schalter „Deutsche Zeit | Ortszeit“, Entfernung zum Startort und Kartenausschnitt „In der Nähe“.
-   Ergänzt serienseiten.js nur auf den Streckenseiten. Lädt nichts nach; der Startort wird nur gelesen
+   Ergänzt serienseiten.js nur auf den Streckenseiten. Lädt nichts nach (außer der Kartengrundlage zum gewählten Design); der Startort wird nur gelesen
    (gewählt und lokal gespeichert auf der Seite „In der Nähe“, Schlüssel wie dort), die Zeitwahl nicht gespeichert. */
 (function () {
   "use strict";
@@ -41,15 +41,15 @@
     const w = svg.getBoundingClientRect().width; if (!w) return;
     const B = X.box, u = B[2] / w; dyn.textContent = "";
     const fs = 11.5 * u, sw = 3 * u;
-    const text = (x, y, t, anchor, extra) => el("text", Object.assign({ x, y, "text-anchor": anchor, "font-family": "Inter, system-ui, sans-serif", "font-weight": 600, "font-size": fs, fill: "#cfc8bb", "paint-order": "stroke", stroke: "#121110", "stroke-width": sw, "stroke-linejoin": "round" }, extra || {}), t);
+    const text = (x, y, t, anchor, extra) => el("text", Object.assign({ x, y, "text-anchor": anchor, "font-family": "Inter, system-ui, sans-serif", "font-weight": 600, "font-size": fs, fill: "var(--paper2)", "paint-order": "stroke", stroke: "var(--meer)", "stroke-width": sw, "stroke-linejoin": "round" }, extra || {}), t);
     const [nx, ny] = X.np, titel = X.name.toUpperCase(), tw = titel.length * 12 * u * 0.62;
     const belegt = [[nx - tw / 2, ny - 27 * u, nx + tw / 2, ny - 13 * u], [nx - 11 * u, ny - 11 * u, nx + 11 * u, ny + 11 * u]];
     X.pkt.forEach((p, i) => {
       belegt.push([p.x - 4 * u, p.y - 4 * u, p.x + 4 * u, p.y + 4 * u]);
       const g = el("g", { class: "mpt", "data-i": i, tabindex: 0, role: "button", "aria-label": p.n + ", " + p.km + " Luftlinie" });
       g.append(el("circle", { cx: p.x, cy: p.y, r: 14 * u, fill: "transparent" }));
-      if (i === AUSWAHL) g.append(el("circle", { cx: p.x, cy: p.y, r: 8.5 * u, fill: "none", stroke: "#ece7dd", "stroke-width": 1.5 * u }));
-      g.append(el("circle", { cx: p.x, cy: p.y, r: (p.l || i === AUSWAHL ? 4.2 : 3.2) * u, fill: p.c, stroke: "#121110", "stroke-width": 1.4 * u }));
+      if (i === AUSWAHL) g.append(el("circle", { cx: p.x, cy: p.y, r: 8.5 * u, fill: "none", stroke: "var(--paper)", "stroke-width": 1.5 * u }));
+      g.append(el("circle", { cx: p.x, cy: p.y, r: (p.l || i === AUSWAHL ? 4.2 : 3.2) * u, fill: p.c, stroke: "var(--meer)", "stroke-width": 1.4 * u }));
       dyn.append(g);
     });
     X.pkt.forEach((p, i) => {
@@ -64,9 +64,9 @@
       }
     });
     /* die Strecke selbst */
-    dyn.append(el("circle", { cx: nx, cy: ny, r: 11 * u, fill: "#d8a84b", "fill-opacity": 0.2 }));
-    dyn.append(el("circle", { cx: nx, cy: ny, r: 5.6 * u, fill: "#d8a84b", stroke: "#ece7dd", "stroke-width": 1.6 * u }));
-    dyn.append(text(nx, ny - 15 * u, titel, "middle", { "font-family": "IBM Plex Mono, monospace", "letter-spacing": 0.6 * u, fill: "#ece7dd", "font-size": 12 * u }));
+    dyn.append(el("circle", { cx: nx, cy: ny, r: 11 * u, fill: "var(--gold-fl)", "fill-opacity": 0.2 }));
+    dyn.append(el("circle", { cx: nx, cy: ny, r: 5.6 * u, fill: "var(--gold-fl)", stroke: "var(--paper)", "stroke-width": 1.6 * u }));
+    dyn.append(text(nx, ny - 15 * u, titel, "middle", { "font-family": "IBM Plex Mono, monospace", "letter-spacing": 0.6 * u, fill: "var(--paper)", "font-size": 12 * u }));
   }
   /* Punkt oder Name antippen: Infokarte mit nächstem Termin und Link zur Streckenseite (wie auf „In der Nähe“) */
   const escH = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -84,6 +84,11 @@
   /* Schließen: ×, Escape oder Tippen daneben */
   document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && AUSWAHL >= 0) zeigen(-1); });
   document.addEventListener("click", (ev) => { if (AUSWAHL >= 0 && !ev.composedPath().some((n) => n === svg || n === info)) zeigen(-1); });
+  /* Kartengrundlage zum Design: karte/<region>.svg bzw. karte/<region>-hell.svg (Umschalten ohne Neuladen, Ereignis aus serienseiten.js) */
+  const grund = svg.querySelector("image");
+  const grundSetzen = () => { if (!grund) return; const d = grund.getAttribute("href"), hell = document.documentElement.getAttribute("data-design") === "hell";
+    const n = hell ? d.replace(/(-hell)?\.svg$/, "-hell.svg") : d.replace(/-hell\.svg$/, ".svg"); if (n !== d) grund.setAttribute("href", n); };
+  grundSetzen(); document.addEventListener("apex-design", grundSetzen);
   zeichnen();
   let rz = 0; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(zeichnen, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(zeichnen);

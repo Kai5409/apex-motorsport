@@ -23,28 +23,30 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"Fuji","item":"https://apexkalender.de/strecken/fuji/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/fuji/#strecke","name":"Fuji Speedway","url":"https://apexkalender.de/strecken/fuji/","alternateName":"Fuji","address":{"@type":"PostalAddress","addressLocality":"Oyama","addressCountry":"JP"},"geo":{"@type":"GeoCoordinates","latitude":35.3717,"longitude":138.9267}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">Fuji</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="WEC" data-saisons="{&quot;2026&quot;:[[&quot;WEC&quot;,&quot;#3a86ff&quot;]],&quot;2027&quot;:[[&quot;WEC&quot;,&quot;#3a86ff&quot;]]}"><i style="background:#3a86ff"></i></span>Fuji</h1>
+      <h1 id="h1"><span class="bar serien" title="WEC" data-saisons="{&quot;2026&quot;:[[&quot;WEC&quot;,&quot;var(--s-wec)&quot;]],&quot;2027&quot;:[[&quot;WEC&quot;,&quot;var(--s-wec)&quot;]]}"><i style="background:var(--s-wec)"></i></span>Fuji</h1>
       <p class="stroff">Fuji Speedway</p>
       <p class="strort">Oyama · Japan</p>
       <p class="lead">Termine <span>– alle Rennen auf dem Fuji Speedway mit Startzeiten in deutscher Zeit: WEC.</span></p>
       <dl class="fakten" style="--n:4"><div><dt>Länge</dt><dd>4,563<small>km</small></dd></div><div><dt>Kurven</dt><dd>16</dd></div><div><dt>Termine 2027</dt><dd>1</dd></div><div><dt>Zeitverschiebung</dt><dd>+7<small>h</small></dd></div></dl>
       <span class="chiplab">Serien auf dem Fuji Speedway</span>
-      <div class="chips"><a class="chip" href="../../wec/"><i style="background:#3a86ff"></i>WEC</a></div>
+      <div class="chips"><a class="chip" href="../../wec/"><i style="background:var(--s-wec)"></i>WEC</a></div>
     </section>
 
     <div class="side">
@@ -52,7 +54,7 @@
   <div class="nextcard" data-id="wec-8-2027" data-von="2027-09-24" data-bis="2027-09-26">
     <p class="k">Nächster Termin</p>
     <h2>6 Stunden von Fuji</h2>
-    <p class="where"><b style="color:#3a86ff">WEC</b> · 24.–26. September 2027</p>
+    <p class="where"><b style="color:var(--s-wec)">WEC</b> · 24.–26. September 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../wec/#r-wec-8-2027">Zur WEC-Seite <span aria-hidden="true">→</span></a>
   </div>
@@ -80,7 +82,7 @@
    <p class="prov">Vorläufige Kalender. Startzeiten folgen, sobald die Serien den Zeitplan veröffentlichen.</p>
    <ul class="races"><li class="race next" id="r-wec-8-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#3a86ff">WEC</span>
+      <span class="rd sk" style="color:var(--s-wec)">WEC</span>
       <span class="when">24–26<small>Sep</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-wec-8-2027">6 Stunden von Fuji</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -91,7 +93,7 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg">abgeschlossen</span></h2><p>1 Termin aus 1 Serie · Uhrzeit = Rennstart</p></div></div>
    <ul class="races"><li class="race past" id="r-wec-6">
     <div class="rh">
-      <span class="rd sk" style="color:#3a86ff">WEC</span>
+      <span class="rd sk" style="color:var(--s-wec)">WEC</span>
       <span class="when">25–27<small>Sep</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-wec-6">6 Stunden von Fuji</button><span class="win" data-nosnippet>Sieger <b>Toyota #8 (Buemi/<wbr>Hartley/<wbr>Hirakawa)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"><span class="zd">So 04:00<small>MESZ</small></span><span class="zo" data-nosnippet>So 11:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
@@ -108,14 +110,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die auf dem Fuji Speedway fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="wec"><h3><a href="../../wec/#sender" style="color:#3a86ff">WEC</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Eurosport</b> (Warner Bros. Discovery) hält die Rechte bis mindestens 2030 und zeigt alle acht Rennen inklusive der 24 Stunden von Le Mans.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext">Wie Deutschland über Eurosport.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Wie Deutschland über Eurosport.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="wec"><h3><a href="../../wec/#sender" style="color:var(--s-wec)">WEC</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Eurosport</b> (Warner Bros. Discovery) hält die Rechte bis mindestens 2030 und zeigt alle acht Rennen inklusive der 24 Stunden von Le Mans.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext">Wie Deutschland über Eurosport.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Wie Deutschland über Eurosport.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:850/584.4" aria-label="Kartenausschnitt mit Fuji und Strecken in der Nähe">
           <svg id="minisvg" viewBox="814 -106 850 584.4" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fuji und Strecken in der Nähe">
-            <rect x="804" y="-116" width="870" height="604.4" fill="#121110"/>
+            <rect x="804" y="-116" width="870" height="604.4" fill="var(--meer)"/>
             <image href="../../karte/asien.svg" x="0" y="0" width="1583" height="1585"/>
             <g id="minidyn"></g>
           </svg>
@@ -123,7 +125,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../tokio/"><span class="nn"><b>Tokio</b><small>Japan · 2 Termine</small></span><span class="nk">≈ 85 km<small>Luftlinie</small></span><span class="nt"><i style="color:#fe958e">F·E</i> Tokio E-Prix I · 24. Juli 2027</span></a></li><li><a href="../motegi/"><span class="nn"><b>Motegi</b><small>Japan · 3 Termine</small></span><span class="nk">≈ 175 km<small>Luftlinie</small></span><span class="nt"><i style="color:#e172db">MotoGP</i> Großer Preis von Japan · 15.–17. Oktober 2027</span></a></li><li><a href="../suzuka/"><span class="nn"><b>Suzuka</b><small>Japan · 1 Termin</small></span><span class="nk">≈ 225 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff3000">F1</i> Großer Preis von Japan · 9.–11. April 2027</span></a></li><li><a href="../shanghai/"><span class="nn"><b>Shanghai</b><small>China · 4 Termine</small></span><span class="nk">≈ 1.700 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff3000">F1</i> Großer Preis von China · 16.–18. April 2027</span></a></li><li><a href="../buriram/"><span class="nn"><b>Buriram</b><small>Thailand · 3 Termine</small></span><span class="nk">≈ 4.225 km<small>Luftlinie</small></span><span class="nt"><i style="color:#e172db">MotoGP</i> Großer Preis von Thailand · 5.–7. März 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../tokio/"><span class="nn"><b>Tokio</b><small>Japan · 2 Termine</small></span><span class="nk">≈ 85 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-fe)">F·E</i> Tokio E-Prix I · 24. Juli 2027</span></a></li><li><a href="../motegi/"><span class="nn"><b>Motegi</b><small>Japan · 3 Termine</small></span><span class="nk">≈ 175 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-mgp)">MotoGP</i> Großer Preis von Japan · 15.–17. Oktober 2027</span></a></li><li><a href="../suzuka/"><span class="nn"><b>Suzuka</b><small>Japan · 1 Termin</small></span><span class="nk">≈ 225 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-f1)">F1</i> Großer Preis von Japan · 9.–11. April 2027</span></a></li><li><a href="../shanghai/"><span class="nn"><b>Shanghai</b><small>China · 4 Termine</small></span><span class="nk">≈ 1.700 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-f1)">F1</i> Großer Preis von China · 16.–18. April 2027</span></a></li><li><a href="../buriram/"><span class="nn"><b>Buriram</b><small>Thailand · 3 Termine</small></span><span class="nk">≈ 4.225 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-mgp)">MotoGP</i> Großer Preis von Thailand · 5.–7. März 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=asien">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -144,6 +146,6 @@
     <p class="where">Neue Termine folgen, sobald die Serien ihre Kalender veröffentlichen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[],"linie":null}</script>
-<script type="application/json" id="apex-strecke">{"lat":35.3717,"lon":138.9267,"name":"Fuji","np":[1239,186.2],"box":[814,-106,850,584.4],"pkt":[{"n":"Tokio","x":1259,"y":176.1,"l":1,"c":"#fe958e","slug":"tokio","land":"Japan","km":"≈ 85 km","anz":2,"ns":"F·E","nn":"Tokio E-Prix I","nd":"24. Juli 2027"},{"n":"Motegi","x":1266.1,"y":148.4,"l":1,"c":"#e172db","slug":"motegi","land":"Japan","km":"≈ 175 km","anz":3,"ns":"MotoGP","nn":"Großer Preis von Japan","nd":"15.–17. Oktober 2027"},{"n":"Suzuka","x":1183.2,"y":207.7,"l":1,"c":"#ff3000","slug":"suzuka","land":"Japan","km":"≈ 225 km","anz":1,"ns":"F1","nn":"Großer Preis von Japan","nd":"9.–11. April 2027"},{"n":"Shanghai","x":814.9,"y":330.5,"l":1,"c":"#ff3000","slug":"shanghai","land":"China","km":"≈ 1.700 km","anz":4,"ns":"F1","nn":"Großer Preis von China","nd":"16.–18. April 2027"}]}</script>
+<script type="application/json" id="apex-strecke">{"lat":35.3717,"lon":138.9267,"name":"Fuji","np":[1239,186.2],"box":[814,-106,850,584.4],"pkt":[{"n":"Tokio","x":1259,"y":176.1,"l":1,"c":"var(--s-fe)","slug":"tokio","land":"Japan","km":"≈ 85 km","anz":2,"ns":"F·E","nn":"Tokio E-Prix I","nd":"24. Juli 2027"},{"n":"Motegi","x":1266.1,"y":148.4,"l":1,"c":"var(--s-mgp)","slug":"motegi","land":"Japan","km":"≈ 175 km","anz":3,"ns":"MotoGP","nn":"Großer Preis von Japan","nd":"15.–17. Oktober 2027"},{"n":"Suzuka","x":1183.2,"y":207.7,"l":1,"c":"var(--s-f1)","slug":"suzuka","land":"Japan","km":"≈ 225 km","anz":1,"ns":"F1","nn":"Großer Preis von Japan","nd":"9.–11. April 2027"},{"n":"Shanghai","x":814.9,"y":330.5,"l":1,"c":"var(--s-f1)","slug":"shanghai","land":"China","km":"≈ 1.700 km","anz":4,"ns":"F1","nn":"Großer Preis von China","nd":"16.–18. April 2027"}]}</script>
 </body>
 </html>
