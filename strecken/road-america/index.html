@@ -23,27 +23,29 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"Road America","item":"https://apexkalender.de/strecken/road-america/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/road-america/#strecke","name":"Road America","url":"https://apexkalender.de/strecken/road-america/","address":{"@type":"PostalAddress","addressLocality":"Elkhart Lake","addressRegion":"Wisconsin","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":43.7975,"longitude":-87.9939}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">Road America</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="IMSA" data-saisons="{&quot;2026&quot;:[[&quot;IndyCar&quot;,&quot;#ff782b&quot;],[&quot;IMSA&quot;,&quot;#33b4fe&quot;]],&quot;2027&quot;:[[&quot;IMSA&quot;,&quot;#33b4fe&quot;]]}"><i style="background:#33b4fe"></i></span>Road America</h1>
+      <h1 id="h1"><span class="bar serien" title="IMSA" data-saisons="{&quot;2026&quot;:[[&quot;IndyCar&quot;,&quot;var(--s-indycar)&quot;],[&quot;IMSA&quot;,&quot;var(--s-imsa)&quot;]],&quot;2027&quot;:[[&quot;IMSA&quot;,&quot;var(--s-imsa)&quot;]]}"><i style="background:var(--s-imsa)"></i></span>Road America</h1>
       <p class="strort">Elkhart Lake · Wisconsin · USA</p>
       <p class="lead">Termine <span>– alle Rennen in Road America mit Startzeiten in deutscher Zeit: IndyCar und IMSA.</span></p>
       <dl class="fakten" style="--n:3"><div><dt>Eröffnet</dt><dd>1955</dd></div><div><dt>Termine 2027</dt><dd>1</dd></div><div><dt>Zeitverschiebung</dt><dd>−7<small>h</small></dd></div></dl>
       <span class="chiplab">Serien in Road America</span>
-      <div class="chips"><a class="chip" href="../../indycar/"><i style="background:#ff782b"></i>IndyCar</a><a class="chip" href="../../imsa/"><i style="background:#33b4fe"></i>IMSA</a></div>
+      <div class="chips"><a class="chip" href="../../indycar/"><i style="background:var(--s-indycar)"></i>IndyCar</a><a class="chip" href="../../imsa/"><i style="background:var(--s-imsa)"></i>IMSA</a></div>
     </section>
 
     <div class="side">
@@ -51,7 +53,7 @@
   <div class="nextcard" data-id="imsa-8-2027" data-von="2027-08-05" data-bis="2027-08-08">
     <p class="k">Nächster Termin</p>
     <h2>6 Stunden von Road America</h2>
-    <p class="where"><b style="color:#33b4fe">IMSA</b> · 5.–8. August 2027</p>
+    <p class="where"><b style="color:var(--s-imsa)">IMSA</b> · 5.–8. August 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../imsa/#r-imsa-8-2027">Zur IMSA-Seite <span aria-hidden="true">→</span></a>
   </div>
@@ -78,7 +80,7 @@
    <div class="sechead"><div><h2 class="sec">Saison 2027<span class="abg" hidden>abgeschlossen</span></h2><p>1 Termin aus 1 Serie</p></div></div>
    <ul class="races"><li class="race next" id="r-imsa-8-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#33b4fe">IMSA</span>
+      <span class="rd sk" style="color:var(--s-imsa)">IMSA</span>
       <span class="when">05–08<small>Aug</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-imsa-8-2027">6 Stunden von Road America</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -89,14 +91,14 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg">abgeschlossen</span></h2><p>2 Termine aus 2 Serien</p></div></div>
    <ul class="races"><li class="race past" id="r-indycar-10">
     <div class="rh">
-      <span class="rd sk" style="color:#ff782b">IndyCar</span>
+      <span class="rd sk" style="color:var(--s-indycar)">IndyCar</span>
       <span class="when">21<small>Jun</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-indycar-10">Grand Prix von Road America</button><span class="win" data-nosnippet>Sieger <b>Christian Lundgaard (Arrow McLaren)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-indycar-10"><p class="rlinks"><a class="allres" href="../../indycar/#r-indycar-10">Zur IndyCar-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=indycar-10">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-imsa-8">
     <div class="rh">
-      <span class="rd sk" style="color:#33b4fe">IMSA</span>
+      <span class="rd sk" style="color:var(--s-imsa)">IMSA</span>
       <span class="when">31.–02.<small>Jul/Aug</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-imsa-8">6 Stunden von Road America</button><span class="win" data-nosnippet>Sieger <b>Cadillac #10 (Taylor/<wbr>Albuquerque)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
@@ -113,14 +115,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die in Road America fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="indycar"><h3><a href="../../indycar/#sender" style="color:#ff782b">IndyCar</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport</b> (auch bei <b>WOW</b>) und <b>Motorvision+</b> zeigen die Rennen live, Motorvision+ mit deutschem Kommentar. Dazu kommt der offizielle Stream <b>INDYCAR LIVE</b> mit Trainings, Qualifying und Rennen.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext">Wie in Deutschland: <b>Sky Sport</b>, <b>Motorvision+</b> und der offizielle Stream <b>INDYCAR LIVE</b>.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Wie in Deutschland: <b>Sky Sport</b>, <b>Motorvision+</b> und der offizielle Stream <b>INDYCAR LIVE</b>.</p></div></div><div class="wtvb" data-serie="imsa"><h3><a href="../../imsa/#sender" style="color:#33b4fe">IMSA</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Motorvision TV</b> überträgt die Rennen der WeatherTech Championship mit deutschem Kommentar.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext">In der offiziellen Senderliste ist kein Sender für Österreich genannt. Wo es keine Live-Übertragung im Fernsehen gibt, zeigt IMSA die Rennen im Stream auf <b>IMSA.com/tvlive</b> und bei <b>YouTube</b> (IMSAOfficial) mit dem Kommentar von IMSA Radio.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">In der offiziellen Senderliste ist kein Sender für die Schweiz genannt. Wo es keine Live-Übertragung im Fernsehen gibt, zeigt IMSA die Rennen im Stream auf <b>IMSA.com/tvlive</b> und bei <b>YouTube</b> (IMSAOfficial) mit dem Kommentar von IMSA Radio.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="indycar"><h3><a href="../../indycar/#sender" style="color:var(--s-indycar)">IndyCar</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport</b> (auch bei <b>WOW</b>) und <b>Motorvision+</b> zeigen die Rennen live, Motorvision+ mit deutschem Kommentar. Dazu kommt der offizielle Stream <b>INDYCAR LIVE</b> mit Trainings, Qualifying und Rennen.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext">Wie in Deutschland: <b>Sky Sport</b>, <b>Motorvision+</b> und der offizielle Stream <b>INDYCAR LIVE</b>.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Wie in Deutschland: <b>Sky Sport</b>, <b>Motorvision+</b> und der offizielle Stream <b>INDYCAR LIVE</b>.</p></div></div><div class="wtvb" data-serie="imsa"><h3><a href="../../imsa/#sender" style="color:var(--s-imsa)">IMSA</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Motorvision TV</b> überträgt die Rennen der WeatherTech Championship mit deutschem Kommentar.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext">In der offiziellen Senderliste ist kein Sender für Österreich genannt. Wo es keine Live-Übertragung im Fernsehen gibt, zeigt IMSA die Rennen im Stream auf <b>IMSA.com/tvlive</b> und bei <b>YouTube</b> (IMSAOfficial) mit dem Kommentar von IMSA Radio.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">In der offiziellen Senderliste ist kein Sender für die Schweiz genannt. Wo es keine Live-Übertragung im Fernsehen gibt, zeigt IMSA die Rennen im Stream auf <b>IMSA.com/tvlive</b> und bei <b>YouTube</b> (IMSAOfficial) mit dem Kommentar von IMSA Radio.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:588.2/404.4" aria-label="Kartenausschnitt mit Road America und Strecken in der Nähe">
           <svg id="minisvg" viewBox="725.8 78.2 588.2 404.4" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Road America und Strecken in der Nähe">
-            <rect x="715.8" y="68.2" width="608.2" height="424.4" fill="#121110"/>
+            <rect x="715.8" y="68.2" width="608.2" height="424.4" fill="var(--meer)"/>
             <image href="../../karte/nordamerika.svg" x="0" y="0" width="1734" height="1079"/>
             <g id="minidyn"></g>
           </svg>
@@ -128,7 +130,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../detroit/"><span class="nn"><b>Detroit</b><small>USA · 2 Termine</small></span><span class="nk">≈ 435 km<small>Luftlinie</small></span><span class="nt"><i style="color:#33b4fe">IMSA</i> Detroit Sports Car Classic · 4.–5. Juni 2027</span></a></li><li><a href="../indianapolis/"><span class="nn"><b>Indianapolis</b><small>USA · 3 Termine</small></span><span class="nk">≈ 470 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff782b">IndyCar</i> Grand Prix von Indianapolis · 15. Mai 2027</span></a></li><li><a href="../ctmp/"><span class="nn"><b>CTMP</b><small>Kanada · 1 Termin</small></span><span class="nk">≈ 745 km<small>Luftlinie</small></span><span class="nt"><i style="color:#33b4fe">IMSA</i> Chevrolet Grand Prix · 9.–11. Juli 2027</span></a></li><li><a href="../watkins-glen/"><span class="nn"><b>Watkins Glen</b><small>USA · 1 Termin</small></span><span class="nk">≈ 915 km<small>Luftlinie</small></span><span class="nt"><i style="color:#33b4fe">IMSA</i> 6 Stunden von Watkins Glen · 24.–27. Juni 2027</span></a></li><li><a href="../vir/"><span class="nn"><b>VIR</b><small>USA · 1 Termin</small></span><span class="nk">≈ 1.095 km<small>Luftlinie</small></span><span class="nt"><i style="color:#33b4fe">IMSA</i> GT Challenge VIR · 20.–22. August 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../detroit/"><span class="nn"><b>Detroit</b><small>USA · 2 Termine</small></span><span class="nk">≈ 435 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-imsa)">IMSA</i> Detroit Sports Car Classic · 4.–5. Juni 2027</span></a></li><li><a href="../indianapolis/"><span class="nn"><b>Indianapolis</b><small>USA · 3 Termine</small></span><span class="nk">≈ 470 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-indycar)">IndyCar</i> Grand Prix von Indianapolis · 15. Mai 2027</span></a></li><li><a href="../ctmp/"><span class="nn"><b>CTMP</b><small>Kanada · 1 Termin</small></span><span class="nk">≈ 745 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-imsa)">IMSA</i> Chevrolet Grand Prix · 9.–11. Juli 2027</span></a></li><li><a href="../watkins-glen/"><span class="nn"><b>Watkins Glen</b><small>USA · 1 Termin</small></span><span class="nk">≈ 915 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-imsa)">IMSA</i> 6 Stunden von Watkins Glen · 24.–27. Juni 2027</span></a></li><li><a href="../vir/"><span class="nn"><b>VIR</b><small>USA · 1 Termin</small></span><span class="nk">≈ 1.095 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-imsa)">IMSA</i> GT Challenge VIR · 20.–22. August 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=nordamerika">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -149,6 +151,6 @@
     <p class="where">Neue Termine folgen, sobald die Serien ihre Kalender veröffentlichen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[],"linie":null}</script>
-<script type="application/json" id="apex-strecke">{"lat":43.7975,"lon":-87.9939,"name":"Road America","np":[1019.9,280.4],"box":[725.8,78.2,588.2,404.4],"pkt":[{"n":"Detroit","x":1128.3,"y":311.6,"l":1,"c":"#33b4fe","slug":"detroit","land":"USA","km":"≈ 435 km","anz":2,"ns":"IMSA","nn":"Detroit Sports Car Classic","nd":"4.–5. Juni 2027"},{"n":"Indianapolis","x":1067.8,"y":392,"l":1,"c":"#ff782b","slug":"indianapolis","land":"USA","km":"≈ 470 km","anz":3,"ns":"IndyCar","nn":"Grand Prix von Indianapolis","nd":"15. Mai 2027"},{"n":"CTMP","x":1211.7,"y":248.5,"l":1,"c":"#33b4fe","slug":"ctmp","land":"Kanada","km":"≈ 745 km","anz":1,"ns":"IMSA","nn":"Chevrolet Grand Prix","nd":"9.–11. Juli 2027"},{"n":"Watkins Glen","x":1257,"y":290.5,"l":1,"c":"#33b4fe","slug":"watkins-glen","land":"USA","km":"≈ 915 km","anz":1,"ns":"IMSA","nn":"6 Stunden von Watkins Glen","nd":"24.–27. Juni 2027"},{"n":"VIR","x":1237.1,"y":462.6,"l":1,"c":"#33b4fe","slug":"vir","land":"USA","km":"≈ 1.095 km","anz":1,"ns":"IMSA","nn":"GT Challenge VIR","nd":"20.–22. August 2027"},{"n":"Montréal","x":1307.3,"y":186,"l":0,"c":"#ff3000","slug":"montreal","land":"Kanada","km":"≈ 1.160 km","anz":1,"ns":"F1","nn":"Großer Preis von Kanada","nd":"21.–23. Mai 2027"}]}</script>
+<script type="application/json" id="apex-strecke">{"lat":43.7975,"lon":-87.9939,"name":"Road America","np":[1019.9,280.4],"box":[725.8,78.2,588.2,404.4],"pkt":[{"n":"Detroit","x":1128.3,"y":311.6,"l":1,"c":"var(--s-imsa)","slug":"detroit","land":"USA","km":"≈ 435 km","anz":2,"ns":"IMSA","nn":"Detroit Sports Car Classic","nd":"4.–5. Juni 2027"},{"n":"Indianapolis","x":1067.8,"y":392,"l":1,"c":"var(--s-indycar)","slug":"indianapolis","land":"USA","km":"≈ 470 km","anz":3,"ns":"IndyCar","nn":"Grand Prix von Indianapolis","nd":"15. Mai 2027"},{"n":"CTMP","x":1211.7,"y":248.5,"l":1,"c":"var(--s-imsa)","slug":"ctmp","land":"Kanada","km":"≈ 745 km","anz":1,"ns":"IMSA","nn":"Chevrolet Grand Prix","nd":"9.–11. Juli 2027"},{"n":"Watkins Glen","x":1257,"y":290.5,"l":1,"c":"var(--s-imsa)","slug":"watkins-glen","land":"USA","km":"≈ 915 km","anz":1,"ns":"IMSA","nn":"6 Stunden von Watkins Glen","nd":"24.–27. Juni 2027"},{"n":"VIR","x":1237.1,"y":462.6,"l":1,"c":"var(--s-imsa)","slug":"vir","land":"USA","km":"≈ 1.095 km","anz":1,"ns":"IMSA","nn":"GT Challenge VIR","nd":"20.–22. August 2027"},{"n":"Montréal","x":1307.3,"y":186,"l":0,"c":"var(--s-f1)","slug":"montreal","land":"Kanada","km":"≈ 1.160 km","anz":1,"ns":"F1","nn":"Großer Preis von Kanada","nd":"21.–23. Mai 2027"}]}</script>
 </body>
 </html>

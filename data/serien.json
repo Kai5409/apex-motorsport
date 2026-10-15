@@ -1,29 +1,29 @@
 {
   "gruppen": {
-    "formel": {"name": "Formel", "short": "Formel", "farben": ["#ff3000", "#fe958e", "#ff782b", "#cf5e85", "#fbb66f", "#c7695d"]},
-    "motorrad": {"name": "Motorrad", "short": "Motorrad", "farben": ["#e172db", "#ad88fe", "#f32a94", "#f3b7ff", "#d950aa", "#d18fbe"]},
-    "sportwagen": {"name": "Sportwagen & GT", "short": "Sportwagen", "farben": ["#3a86ff", "#03c4c6", "#6de5f7", "#98bafe", "#1b8fab", "#33b4fe"]},
-    "rallye": {"name": "Rallye", "short": "Rallye", "farben": ["#37b24d", "#a1e848", "#5be8ac", "#9fcd85", "#99be03", "#2fd281"]}
+    "formel": {"name": "Formel", "short": "Formel", "farben": ["#ff3000", "#ff8fb8", "#ffc93c", "#e2477c", "#ffb070", "#d9875e"], "farben_hell": ["#ff3000", "#d56a93", "#af860a", "#e2477c", "#c67b3a", "#c8784f"]},
+    "motorrad": {"name": "Motorrad", "short": "Motorrad", "farben": ["#e172db", "#9b82ff", "#ff3f9e", "#f7cbff", "#d950aa", "#d18fbe"], "farben_hell": ["#d062ca", "#9279f5", "#fb3b9b", "#a77faf", "#d950aa", "#b878a6"]},
+    "sportwagen": {"name": "Sportwagen & GT", "short": "Sportwagen", "farben": ["#3a86ff", "#a9bcf2", "#00c2b8", "#4493a1", "#02a9f7", "#8b79ae"], "farben_hell": ["#3a86ff", "#798abd", "#0c9d95", "#4493a1", "#0294d9", "#8b79ae"]},
+    "rallye": {"name": "Rallye", "short": "Rallye", "farben": ["#37b24d", "#c8ea4a", "#3fdcae", "#9fcd85", "#99be03", "#2fd281"], "farben_hell": ["#20a23d", "#7d9507", "#019e79", "#6c9752", "#7a970a", "#10a15f"]}
   },
   "serien": {
     "f1": {"name": "Formel 1", "short": "F1", "seite": "formel-1", "gruppe": "formel", "color": "#ff3000"},
-    "fe": {"name": "Formel E", "short": "F·E", "seite": "formel-e", "gruppe": "formel", "color": "#fe958e"},
-    "indycar": {"name": "IndyCar", "short": "IndyCar", "seite": "indycar", "gruppe": "formel", "color": "#ff782b"},
-    "f2": {"name": "Formel 2", "short": "F2", "seite": "formel-2", "gruppe": "formel", "color": "#cf5e85", "ausgeblendet": true},
-    "f3": {"name": "Formel 3", "short": "F3", "seite": "formel-3", "gruppe": "formel", "color": "#fbb66f", "ausgeblendet": true},
-    "f1academy": {"name": "F1 Academy", "short": "F1 Academy", "seite": "f1-academy", "gruppe": "formel", "color": "#c7695d", "ausgeblendet": true},
+    "fe": {"name": "Formel E", "short": "F·E", "seite": "formel-e", "gruppe": "formel", "color": "#ff8fb8"},
+    "indycar": {"name": "IndyCar", "short": "IndyCar", "seite": "indycar", "gruppe": "formel", "color": "#ffc93c"},
+    "f2": {"name": "Formel 2", "short": "F2", "seite": "formel-2", "gruppe": "formel", "color": "#e2477c", "ausgeblendet": true},
+    "f3": {"name": "Formel 3", "short": "F3", "seite": "formel-3", "gruppe": "formel", "color": "#ffb070", "ausgeblendet": true},
+    "f1academy": {"name": "F1 Academy", "short": "F1 Academy", "seite": "f1-academy", "gruppe": "formel", "color": "#d9875e", "ausgeblendet": true},
     "mgp": {"name": "MotoGP", "short": "MotoGP", "seite": "motogp", "gruppe": "motorrad", "color": "#e172db"},
-    "wsbk": {"name": "Superbike-WM", "short": "WSBK", "seite": "superbike-wm", "gruppe": "motorrad", "color": "#ad88fe", "titel": "Superbike-WM Kalender {jahre} – WorldSBK Termine"},
-    "moto2": {"name": "Moto2", "short": "Moto2", "seite": "moto2", "gruppe": "motorrad", "color": "#f32a94", "ausgeblendet": true},
-    "moto3": {"name": "Moto3", "short": "Moto3", "seite": "moto3", "gruppe": "motorrad", "color": "#f3b7ff", "ausgeblendet": true},
+    "wsbk": {"name": "Superbike-WM", "short": "WSBK", "seite": "superbike-wm", "gruppe": "motorrad", "color": "#9b82ff", "titel": "Superbike-WM Kalender {jahre} – WorldSBK Termine"},
+    "moto2": {"name": "Moto2", "short": "Moto2", "seite": "moto2", "gruppe": "motorrad", "color": "#ff3f9e", "ausgeblendet": true},
+    "moto3": {"name": "Moto3", "short": "Moto3", "seite": "moto3", "gruppe": "motorrad", "color": "#f7cbff", "ausgeblendet": true},
     "wec": {"name": "WEC", "short": "WEC", "seite": "wec", "gruppe": "sportwagen", "color": "#3a86ff"},
-    "imsa": {"name": "IMSA", "short": "IMSA", "seite": "imsa", "gruppe": "sportwagen", "color": "#33b4fe", "titel": "IMSA Kalender {jahre} – WeatherTech SportsCar Championship"},
-    "gtwc": {"name": "GT World Challenge Europe", "short": "GTWC", "seite": "gt-world-challenge", "gruppe": "sportwagen", "color": "#03c4c6", "titel": "GT World Challenge Europe Kalender {jahre} – GTWC Termine"},
-    "dtm": {"name": "DTM", "short": "DTM", "seite": "dtm", "gruppe": "sportwagen", "color": "#6de5f7"},
-    "nls": {"name": "Nürburgring Langstrecken-Serie", "short": "NLS", "seite": "nls", "gruppe": "sportwagen", "color": "#98bafe", "titel": "NLS Kalender {jahre} – Termine der Nürburgring Langstrecken-Serie"},
-    "supercup": {"name": "Porsche Supercup", "short": "Supercup", "seite": "porsche-supercup", "gruppe": "sportwagen", "color": "#1b8fab", "ausgeblendet": true},
+    "imsa": {"name": "IMSA", "short": "IMSA", "seite": "imsa", "gruppe": "sportwagen", "color": "#a9bcf2", "titel": "IMSA Kalender {jahre} – WeatherTech SportsCar Championship"},
+    "gtwc": {"name": "GT World Challenge Europe", "short": "GTWC", "seite": "gt-world-challenge", "gruppe": "sportwagen", "color": "#00c2b8", "titel": "GT World Challenge Europe Kalender {jahre} – GTWC Termine"},
+    "dtm": {"name": "DTM", "short": "DTM", "seite": "dtm", "gruppe": "sportwagen", "color": "#4493a1"},
+    "nls": {"name": "Nürburgring Langstrecken-Serie", "short": "NLS", "seite": "nls", "gruppe": "sportwagen", "color": "#02a9f7", "titel": "NLS Kalender {jahre} – Termine der Nürburgring Langstrecken-Serie"},
+    "supercup": {"name": "Porsche Supercup", "short": "Supercup", "seite": "porsche-supercup", "gruppe": "sportwagen", "color": "#8b79ae", "ausgeblendet": true},
     "wrc": {"name": "WRC", "short": "WRC", "seite": "wrc", "gruppe": "rallye", "color": "#37b24d", "titel": "WRC Kalender {jahre} – Rallye-WM Termine und Startzeiten"},
-    "erc": {"name": "ERC", "short": "ERC", "seite": "erc", "gruppe": "rallye", "color": "#a1e848"},
-    "dakar": {"name": "Rallye Dakar", "short": "Dakar", "seite": "rallye-dakar", "gruppe": "rallye", "color": "#5be8ac"}
+    "erc": {"name": "ERC", "short": "ERC", "seite": "erc", "gruppe": "rallye", "color": "#c8ea4a"},
+    "dakar": {"name": "Rallye Dakar", "short": "Dakar", "seite": "rallye-dakar", "gruppe": "rallye", "color": "#3fdcae"}
   }
 }

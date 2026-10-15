@@ -23,28 +23,30 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"Miami","item":"https://apexkalender.de/strecken/miami/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/miami/#strecke","name":"Miami International Autodrome","url":"https://apexkalender.de/strecken/miami/","alternateName":"Miami","address":{"@type":"PostalAddress","addressLocality":"Miami Gardens","addressRegion":"Florida","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":25.9576,"longitude":-80.2377}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">Miami</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="F·E · F1" data-saisons="{&quot;2026&quot;:[[&quot;F·E&quot;,&quot;#fe958e&quot;],[&quot;F1&quot;,&quot;#ff3000&quot;],[&quot;F2&quot;,&quot;#cf5e85&quot;]],&quot;2027&quot;:[[&quot;F·E&quot;,&quot;#fe958e&quot;],[&quot;F1&quot;,&quot;#ff3000&quot;]]}"><i style="background:#fe958e"></i><i style="background:#ff3000"></i></span>Miami</h1>
+      <h1 id="h1"><span class="bar serien" title="F·E · F1" data-saisons="{&quot;2026&quot;:[[&quot;F·E&quot;,&quot;var(--s-fe)&quot;],[&quot;F1&quot;,&quot;var(--s-f1)&quot;],[&quot;F2&quot;,&quot;var(--s-f2)&quot;]],&quot;2027&quot;:[[&quot;F·E&quot;,&quot;var(--s-fe)&quot;],[&quot;F1&quot;,&quot;var(--s-f1)&quot;]]}"><i style="background:var(--s-fe)"></i><i style="background:var(--s-f1)"></i></span>Miami</h1>
       <p class="stroff">Miami International Autodrome</p>
       <p class="strort">Miami Gardens · Florida · USA</p>
       <p class="lead">Termine <span>– alle Rennen in Miami mit Startzeiten in deutscher Zeit: Formel E, Formel 1 und Formel 2.</span></p>
       <dl class="fakten" style="--n:4"><div><dt>Grand-Prix-Kurs</dt><dd>5,412<small>km</small></dd></div><div><dt>Kurven</dt><dd>19</dd></div><div><dt>Termine 2027</dt><dd>2</dd></div><div><dt>Zeitverschiebung</dt><dd>−6<small>h</small></dd></div></dl>
       <span class="chiplab">Serien in Miami</span>
-      <div class="chips"><a class="chip" href="../../formel-e/"><i style="background:#fe958e"></i>Formel E</a><a class="chip" href="../../formel-1/"><i style="background:#ff3000"></i>Formel 1</a><a class="chip" href="../../formel-2/"><i style="background:#cf5e85"></i>Formel 2</a></div>
+      <div class="chips"><a class="chip" href="../../formel-e/"><i style="background:var(--s-fe)"></i>Formel E</a><a class="chip" href="../../formel-1/"><i style="background:var(--s-f1)"></i>Formel 1</a><a class="chip" href="../../formel-2/"><i style="background:var(--s-f2)"></i>Formel 2</a></div>
     </section>
 
     <div class="side">
@@ -52,7 +54,7 @@
   <div class="nextcard" data-id="fe-5-S13" data-von="2027-02-20" data-bis="2027-02-20">
     <p class="k">Nächster Termin</p>
     <h2>Miami E-Prix</h2>
-    <p class="where"><b style="color:#fe958e">F·E</b> · 20. Februar 2027</p>
+    <p class="where"><b style="color:var(--s-fe)">F·E</b> · 20. Februar 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../formel-e/#r-fe-5-S13">Zur F·E-Seite <span aria-hidden="true">→</span></a>
   </div>
@@ -80,14 +82,14 @@
    <p class="prov">Vorläufige Kalender. Startzeiten folgen, sobald die Serien den Zeitplan veröffentlichen.</p>
    <ul class="races"><li class="race next" id="r-fe-5-S13">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">20<small>Feb</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-5-S13">Miami E-Prix</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-fe-5-S13"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../formel-e/#r-fe-5-S13">Zur F·E-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-f1-6-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#ff3000">F1</span>
+      <span class="rd sk" style="color:var(--s-f1)">F1</span>
       <span class="when">30.–02.<small>Apr/Mai</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-6-2027">Großer Preis von Miami</button><span class="loc">Grand-Prix-Kurs</span></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -98,21 +100,21 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg">abgeschlossen</span></h2><p>3 Termine aus 3 Serien · Uhrzeit = Rennstart</p></div></div>
    <ul class="races"><li class="race past" id="r-fe-3">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">31<small>Jan</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-3">Miami E-Prix</button><span class="loc">Formel-E-Variante</span><span class="win" data-nosnippet>Sieger <b>Mitch Evans (Jaguar)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"><span class="zd">Sa 22:00<small>MEZ</small></span><span class="zo" data-nosnippet>Sa 16:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-fe-3"><ul class="sess"><li class="n">Freies Training</li><li class="v"><span class="zd">Sa 31.01. · 15:30 MEZ</span><span class="zo" data-nosnippet>Sa 31.01. · 09:30 Ortszeit</span></li><li class="n">Qualifying</li><li class="v"><span class="zd">Sa 31.01. · 17:40 MEZ</span><span class="zo" data-nosnippet>Sa 31.01. · 11:40 Ortszeit</span></li><li class="n race">Rennen</li><li class="v race"><span class="zd">Sa 31.01. · 22:00 MEZ</span><span class="zo" data-nosnippet>Sa 31.01. · 16:00 Ortszeit</span></li></ul><a class="evcal" href="../../kalender/termine/fe-3.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../formel-e/#r-fe-3">Zur F·E-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=fe-3">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-f2-2">
     <div class="rh">
-      <span class="rd sk" style="color:#cf5e85">F2</span>
+      <span class="rd sk" style="color:var(--s-f2)">F2</span>
       <span class="when">01–03<small>Mai</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f2-2">Großer Preis von Miami</button><span class="loc">Grand-Prix-Kurs</span><span class="win" data-nosnippet>Sieger <b>Gabriele Minì (MP Motorsport)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-f2-2"><p class="rlinks"><a class="allres" href="../../formel-2/#r-f2-2">Zur F2-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=f2-2">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-f1-4">
     <div class="rh">
-      <span class="rd sk" style="color:#ff3000">F1</span>
+      <span class="rd sk" style="color:var(--s-f1)">F1</span>
       <span class="when">01–03<small>Mai</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-4">Großer Preis von Miami<span class="tag">Sprint</span></button><span class="loc">Grand-Prix-Kurs</span><span class="win" data-nosnippet>Sieger <b>Kimi Antonelli (Mercedes)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"><span class="zd">So 22:00<small>MESZ</small></span><span class="zo" data-nosnippet>So 16:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
@@ -130,14 +132,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die in Miami fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="fe"><h3><a href="../../formel-e/#sender" style="color:#fe958e">Formel E</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div></div><div class="wtvb" data-serie="f1"><h3><a href="../../formel-1/#sender" style="color:#ff3000">Formel 1</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.</p></div></div><div class="wtvb" data-serie="f2"><h3><a href="../../formel-2/#sender" style="color:#cf5e85">Formel 2</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Deutschland</b> zeigt die Formel 2 live auf Sky Sport F1, auch bei <b>WOW</b>.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> übertragen die Rennen, meist im Stream (ServusTV On, ORF ON), teils auf ORF SPORT+.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Die Serie nennt für die Schweiz keinen eigenen Sender.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="fe"><h3><a href="../../formel-e/#sender" style="color:var(--s-fe)">Formel E</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div></div><div class="wtvb" data-serie="f1"><h3><a href="../../formel-1/#sender" style="color:var(--s-f1)">Formel 1</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.</p></div></div><div class="wtvb" data-serie="f2"><h3><a href="../../formel-2/#sender" style="color:var(--s-f2)">Formel 2</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Deutschland</b> zeigt die Formel 2 live auf Sky Sport F1, auch bei <b>WOW</b>.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> übertragen die Rennen, meist im Stream (ServusTV On, ORF ON), teils auf ORF SPORT+.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Die Serie nennt für die Schweiz keinen eigenen Sender.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:700/481.3" aria-label="Kartenausschnitt mit Miami und Strecken in der Nähe">
           <svg id="minisvg" viewBox="911.7 526.6 700 481.3" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Miami und Strecken in der Nähe">
-            <rect x="901.7" y="516.6" width="720" height="501.3" fill="#121110"/>
+            <rect x="901.7" y="516.6" width="720" height="501.3" fill="var(--meer)"/>
             <image href="../../karte/nordamerika.svg" x="0" y="0" width="1734" height="1079"/>
             <g id="minidyn"></g>
           </svg>
@@ -145,7 +147,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../sebring/"><span class="nn"><b>Sebring</b><small>USA · 1 Termin</small></span><span class="nk">≈ 200 km<small>Luftlinie</small></span><span class="nt"><i style="color:#33b4fe">IMSA</i> 12 Stunden von Sebring · 17.–20. März 2027</span></a></li><li><a href="../st-petersburg/"><span class="nn"><b>St. Petersburg</b><small>USA · 1 Termin</small></span><span class="nk">≈ 310 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff782b">IndyCar</i> Grand Prix von St. Petersburg · 7. März 2027</span></a></li><li><a href="../daytona/"><span class="nn"><b>Daytona</b><small>USA · 1 Termin</small></span><span class="nk">≈ 370 km<small>Luftlinie</small></span><span class="nt"><i style="color:#33b4fe">IMSA</i> 24 Stunden von Daytona · 28.–31. Januar 2027</span></a></li><li><a href="../road-atlanta/"><span class="nn"><b>Road Atlanta</b><small>USA · 1 Termin</small></span><span class="nk">≈ 975 km<small>Luftlinie</small></span><span class="nt"><i style="color:#33b4fe">IMSA</i> Petit Le Mans · Finale · 6.–9. Oktober 2027</span></a></li><li><a href="../barber/"><span class="nn"><b>Barber</b><small>USA · 1 Termin</small></span><span class="nk">≈ 1.045 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff782b">IndyCar</i> Grand Prix von Alabama · 4. April 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../sebring/"><span class="nn"><b>Sebring</b><small>USA · 1 Termin</small></span><span class="nk">≈ 200 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-imsa)">IMSA</i> 12 Stunden von Sebring · 17.–20. März 2027</span></a></li><li><a href="../st-petersburg/"><span class="nn"><b>St. Petersburg</b><small>USA · 1 Termin</small></span><span class="nk">≈ 310 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-indycar)">IndyCar</i> Grand Prix von St. Petersburg · 7. März 2027</span></a></li><li><a href="../daytona/"><span class="nn"><b>Daytona</b><small>USA · 1 Termin</small></span><span class="nk">≈ 370 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-imsa)">IMSA</i> 24 Stunden von Daytona · 28.–31. Januar 2027</span></a></li><li><a href="../road-atlanta/"><span class="nn"><b>Road Atlanta</b><small>USA · 1 Termin</small></span><span class="nk">≈ 975 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-imsa)">IMSA</i> Petit Le Mans · Finale · 6.–9. Oktober 2027</span></a></li><li><a href="../barber/"><span class="nn"><b>Barber</b><small>USA · 1 Termin</small></span><span class="nk">≈ 1.045 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-indycar)">IndyCar</i> Grand Prix von Alabama · 4. April 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=nordamerika">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -162,7 +164,7 @@
 <template class="naechst" data-id="f1-6-2027" data-von="2027-04-30" data-bis="2027-05-02"><div class="nextcard" data-id="f1-6-2027" data-von="2027-04-30" data-bis="2027-05-02">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Miami</h2>
-    <p class="where"><b style="color:#ff3000">F1</b> · 30. April – 2. Mai 2027</p>
+    <p class="where"><b style="color:var(--s-f1)">F1</b> · 30. April – 2. Mai 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../formel-1/#r-f1-6-2027">Zur F1-Seite <span aria-hidden="true">→</span></a>
   </div></template>
@@ -172,6 +174,6 @@
     <p class="where">Neue Termine folgen, sobald die Serien ihre Kalender veröffentlichen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[],"linie":null}</script>
-<script type="application/json" id="apex-strecke">{"lat":25.9576,"lon":-80.2377,"name":"Miami","np":[1261.7,767.3],"box":[911.7,526.6,700,481.3],"pkt":[{"n":"Sebring","x":1226.7,"y":728.8,"l":1,"c":"#33b4fe","slug":"sebring","land":"USA","km":"≈ 200 km","anz":1,"ns":"IMSA","nn":"12 Stunden von Sebring","nd":"17.–20. März 2027"},{"n":"St. Petersburg","x":1193.1,"y":724.5,"l":1,"c":"#ff782b","slug":"st-petersburg","land":"USA","km":"≈ 310 km","anz":1,"ns":"IndyCar","nn":"Grand Prix von St. Petersburg","nd":"7. März 2027"},{"n":"Daytona","x":1226.4,"y":678.5,"l":1,"c":"#33b4fe","slug":"daytona","land":"USA","km":"≈ 370 km","anz":1,"ns":"IMSA","nn":"24 Stunden von Daytona","nd":"28.–31. Januar 2027"},{"n":"Road Atlanta","x":1140.6,"y":546.6,"l":1,"c":"#33b4fe","slug":"road-atlanta","land":"USA","km":"≈ 975 km","anz":1,"ns":"IMSA","nn":"Petit Le Mans · Finale","nd":"6.–9. Oktober 2027"},{"n":"Barber","x":1076.3,"y":571.3,"l":1,"c":"#ff782b","slug":"barber","land":"USA","km":"≈ 1.045 km","anz":1,"ns":"IndyCar","nn":"Grand Prix von Alabama","nd":"4. April 2027"}]}</script>
+<script type="application/json" id="apex-strecke">{"lat":25.9576,"lon":-80.2377,"name":"Miami","np":[1261.7,767.3],"box":[911.7,526.6,700,481.3],"pkt":[{"n":"Sebring","x":1226.7,"y":728.8,"l":1,"c":"var(--s-imsa)","slug":"sebring","land":"USA","km":"≈ 200 km","anz":1,"ns":"IMSA","nn":"12 Stunden von Sebring","nd":"17.–20. März 2027"},{"n":"St. Petersburg","x":1193.1,"y":724.5,"l":1,"c":"var(--s-indycar)","slug":"st-petersburg","land":"USA","km":"≈ 310 km","anz":1,"ns":"IndyCar","nn":"Grand Prix von St. Petersburg","nd":"7. März 2027"},{"n":"Daytona","x":1226.4,"y":678.5,"l":1,"c":"var(--s-imsa)","slug":"daytona","land":"USA","km":"≈ 370 km","anz":1,"ns":"IMSA","nn":"24 Stunden von Daytona","nd":"28.–31. Januar 2027"},{"n":"Road Atlanta","x":1140.6,"y":546.6,"l":1,"c":"var(--s-imsa)","slug":"road-atlanta","land":"USA","km":"≈ 975 km","anz":1,"ns":"IMSA","nn":"Petit Le Mans · Finale","nd":"6.–9. Oktober 2027"},{"n":"Barber","x":1076.3,"y":571.3,"l":1,"c":"var(--s-indycar)","slug":"barber","land":"USA","km":"≈ 1.045 km","anz":1,"ns":"IndyCar","nn":"Grand Prix von Alabama","nd":"4. April 2027"}]}</script>
 </body>
 </html>

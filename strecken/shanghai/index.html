@@ -23,28 +23,30 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"Shanghai","item":"https://apexkalender.de/strecken/shanghai/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/shanghai/#strecke","name":"Shanghai International Circuit","url":"https://apexkalender.de/strecken/shanghai/","alternateName":"Shanghai","address":{"@type":"PostalAddress","addressLocality":"Shanghai","addressCountry":"CN"},"geo":{"@type":"GeoCoordinates","latitude":31.3402,"longitude":121.2193}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">Shanghai</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1"><span class="bar serien" title="F1 · F·E · WSBK" data-saisons="{&quot;2026&quot;:[[&quot;F1&quot;,&quot;#ff3000&quot;],[&quot;F1 Academy&quot;,&quot;#c7695d&quot;],[&quot;F·E&quot;,&quot;#fe958e&quot;]],&quot;2027&quot;:[[&quot;F1&quot;,&quot;#ff3000&quot;],[&quot;F·E&quot;,&quot;#fe958e&quot;],[&quot;WSBK&quot;,&quot;#ad88fe&quot;]]}"><i style="background:#ff3000"></i><i style="background:#fe958e"></i><i style="background:#ad88fe"></i></span>Shanghai</h1>
+      <h1 id="h1"><span class="bar serien" title="F1 · F·E · WSBK" data-saisons="{&quot;2026&quot;:[[&quot;F1&quot;,&quot;var(--s-f1)&quot;],[&quot;F1 Academy&quot;,&quot;var(--s-f1academy)&quot;],[&quot;F·E&quot;,&quot;var(--s-fe)&quot;]],&quot;2027&quot;:[[&quot;F1&quot;,&quot;var(--s-f1)&quot;],[&quot;F·E&quot;,&quot;var(--s-fe)&quot;],[&quot;WSBK&quot;,&quot;var(--s-wsbk)&quot;]]}"><i style="background:var(--s-f1)"></i><i style="background:var(--s-fe)"></i><i style="background:var(--s-wsbk)"></i></span>Shanghai</h1>
       <p class="stroff">Shanghai International Circuit</p>
       <p class="strort">Shanghai · China</p>
       <p class="lead">Termine <span>– alle Rennen in Shanghai mit Startzeiten in deutscher Zeit: Formel 1, F1 Academy, Formel E und Superbike-WM.</span></p>
       <dl class="fakten" style="--n:4"><div><dt>Grand-Prix-Kurs</dt><dd>5,451<small>km</small></dd></div><div><dt>Kurven</dt><dd>16</dd></div><div><dt>Termine 2027</dt><dd>4</dd></div><div><dt>Zeitverschiebung</dt><dd>+6<small>h</small></dd></div></dl>
       <span class="chiplab">Serien in Shanghai</span>
-      <div class="chips"><a class="chip" href="../../formel-1/"><i style="background:#ff3000"></i>Formel 1</a><a class="chip" href="../../f1-academy/"><i style="background:#c7695d"></i>F1 Academy</a><a class="chip" href="../../formel-e/"><i style="background:#fe958e"></i>Formel E</a><a class="chip" href="../../superbike-wm/"><i style="background:#ad88fe"></i>Superbike-WM</a></div>
+      <div class="chips"><a class="chip" href="../../formel-1/"><i style="background:var(--s-f1)"></i>Formel 1</a><a class="chip" href="../../f1-academy/"><i style="background:var(--s-f1academy)"></i>F1 Academy</a><a class="chip" href="../../formel-e/"><i style="background:var(--s-fe)"></i>Formel E</a><a class="chip" href="../../superbike-wm/"><i style="background:var(--s-wsbk)"></i>Superbike-WM</a></div>
     </section>
 
     <div class="side">
@@ -52,7 +54,7 @@
   <div class="nextcard" data-id="f1-5-2027" data-von="2027-04-16" data-bis="2027-04-18">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von China</h2>
-    <p class="where"><b style="color:#ff3000">F1</b> · 16.–18. April 2027</p>
+    <p class="where"><b style="color:var(--s-f1)">F1</b> · 16.–18. April 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../formel-1/#r-f1-5-2027">Zur F1-Seite <span aria-hidden="true">→</span></a>
   </div>
@@ -80,28 +82,28 @@
    <p class="prov">Vorläufige Kalender. Startzeiten folgen, sobald die Serien den Zeitplan veröffentlichen.</p>
    <ul class="races"><li class="race next" id="r-f1-5-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#ff3000">F1</span>
+      <span class="rd sk" style="color:var(--s-f1)">F1</span>
       <span class="when">16–18<small>Apr</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-5-2027">Großer Preis von China</button><span class="loc">Grand-Prix-Kurs</span></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-f1-5-2027"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../formel-1/#r-f1-5-2027">Zur F1-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-fe-18-S13">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">10<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-18-S13">Shanghai E-Prix I</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-fe-18-S13"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../formel-e/#r-fe-18-S13">Zur F·E-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-fe-19-S13">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">11<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-19-S13">Shanghai E-Prix II</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-fe-19-S13"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../formel-e/#r-fe-19-S13">Zur F·E-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-wsbk-12-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#ad88fe">WSBK</span>
+      <span class="rd sk" style="color:var(--s-wsbk)">WSBK</span>
       <span class="when">29–31<small>Okt</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-wsbk-12-2027">WM-Lauf China · Finale</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -112,28 +114,28 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg">abgeschlossen</span></h2><p>4 Termine aus 3 Serien · Uhrzeit = Rennstart</p></div></div>
    <ul class="races"><li class="race past" id="r-f1academy-1">
     <div class="rh">
-      <span class="rd sk" style="color:#c7695d">F1 Academy</span>
+      <span class="rd sk" style="color:var(--s-f1academy)">F1 Academy</span>
       <span class="when">13–15<small>Mär</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1academy-1">Großer Preis von China</button><span class="loc">Grand-Prix-Kurs</span><span class="win" data-nosnippet>Sieger <b>Emma Felbermayr (Rodin Motorsport)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-f1academy-1"><p class="rlinks"><a class="allres" href="../../f1-academy/#r-f1academy-1">Zur F1 Academy-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=f1academy-1">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-f1-2">
     <div class="rh">
-      <span class="rd sk" style="color:#ff3000">F1</span>
+      <span class="rd sk" style="color:var(--s-f1)">F1</span>
       <span class="when">13–15<small>Mär</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-f1-2">Großer Preis von China<span class="tag">Sprint</span></button><span class="loc">Grand-Prix-Kurs</span><span class="win" data-nosnippet>Sieger <b>Kimi Antonelli (Mercedes)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"><span class="zd">So 08:00<small>MEZ</small></span><span class="zo" data-nosnippet>So 15:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-f1-2"><ul class="sess"><li class="n">FP1</li><li class="v"><span class="zd">Fr 13.03. · 04:30 MEZ</span><span class="zo" data-nosnippet>Fr 13.03. · 11:30 Ortszeit</span></li><li class="n">Sprint-Quali</li><li class="v"><span class="zd">Fr 13.03. · 08:30 MEZ</span><span class="zo" data-nosnippet>Fr 13.03. · 15:30 Ortszeit</span></li><li class="n">Sprint</li><li class="v"><span class="zd">Sa 14.03. · 04:30 MEZ</span><span class="zo" data-nosnippet>Sa 14.03. · 11:30 Ortszeit</span></li><li class="n">Qualifying</li><li class="v"><span class="zd">Sa 14.03. · 08:00 MEZ</span><span class="zo" data-nosnippet>Sa 14.03. · 15:00 Ortszeit</span></li><li class="n race">Rennen</li><li class="v race"><span class="zd">So 15.03. · 08:00 MEZ</span><span class="zo" data-nosnippet>So 15.03. · 15:00 Ortszeit</span></li></ul><a class="evcal" href="../../kalender/termine/f1-2.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../formel-1/#r-f1-2">Zur F1-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=f1-2">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-fe-12">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">04<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-12">Shanghai E-Prix I</button><span class="loc">Formel-E-Variante</span><span class="win" data-nosnippet>Sieger <b>Pascal Wehrlein (Porsche)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"><span class="zd">Sa 09:00<small>MESZ</small></span><span class="zo" data-nosnippet>Sa 15:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-fe-12"><ul class="sess"><li class="n">Freies Training</li><li class="v"><span class="zd">Sa 04.07. · 04:30 MESZ</span><span class="zo" data-nosnippet>Sa 04.07. · 10:30 Ortszeit</span></li><li class="n">Qualifying</li><li class="v"><span class="zd">Sa 04.07. · 06:40 MESZ</span><span class="zo" data-nosnippet>Sa 04.07. · 12:40 Ortszeit</span></li><li class="n race">Rennen</li><li class="v race"><span class="zd">Sa 04.07. · 09:00 MESZ</span><span class="zo" data-nosnippet>Sa 04.07. · 15:00 Ortszeit</span></li></ul><a class="evcal" href="../../kalender/termine/fe-12.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../formel-e/#r-fe-12">Zur F·E-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=fe-12">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-fe-13">
     <div class="rh">
-      <span class="rd sk" style="color:#fe958e">F·E</span>
+      <span class="rd sk" style="color:var(--s-fe)">F·E</span>
       <span class="when">05<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-fe-13">Shanghai E-Prix II</button><span class="loc">Formel-E-Variante</span><span class="win" data-nosnippet>Sieger <b>Lucas di Grassi (Lola Yamaha ABT)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"><span class="zd">So 09:00<small>MESZ</small></span><span class="zo" data-nosnippet>So 15:00<small>Ortszeit</small></span></span><span class="chev" aria-hidden="true">▶</span>
@@ -151,14 +153,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die in Shanghai fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="f1"><h3><a href="../../formel-1/#sender" style="color:#ff3000">Formel 1</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.</p></div></div><div class="wtvb" data-serie="f1academy"><h3><a href="../../f1-academy/#sender" style="color:#c7695d">F1 Academy</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Deutschland</b> zeigt die F1 Academy live auf Sky Sport F1, auch bei <b>WOW</b>. Qualifying und Rennen laufen außerdem <b>kostenlos</b> im offiziellen YouTube-Kanal und auf X.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ORF</b> und <b>Sky</b>, dazu der kostenlose Livestream auf YouTube und X.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>Sky</b> und <b>Canal+</b>, dazu der kostenlose Livestream auf YouTube und X.</p></div></div><div class="wtvb" data-serie="fe"><h3><a href="../../formel-e/#sender" style="color:#fe958e">Formel E</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div></div><div class="wtvb" data-serie="wsbk"><h3><a href="../../superbike-wm/#sender" style="color:#ad88fe">Superbike-WM</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>ServusTV On</b> zeigt die Superbike-WM <b>kostenlos</b> als Livestream. Eurosport überträgt seit 2026 nicht mehr.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> überträgt im <b>Free-TV</b>, dazu der Livestream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>Kostenlos</b> als Livestream bei <b>ServusTV On</b>.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="f1"><h3><a href="../../formel-1/#sender" style="color:var(--s-f1)">Formel 1</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Sport F1</b> und <b>WOW</b> zeigen alle Sessions live. <b>RTL</b> überträgt 2026 fünf Rennen frei (2025 waren es sieben).</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> und <b>ORF</b> teilen sich die Saison und wechseln sich pro Rennen ab — komplett im Free-TV. ServusTV startet in Melbourne, der ORF zeigt das Finale.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt alle Qualifyings, Sprints und Rennen live.</p></div></div><div class="wtvb" data-serie="f1academy"><h3><a href="../../f1-academy/#sender" style="color:var(--s-f1academy)">F1 Academy</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky Deutschland</b> zeigt die F1 Academy live auf Sky Sport F1, auch bei <b>WOW</b>. Qualifying und Rennen laufen außerdem <b>kostenlos</b> im offiziellen YouTube-Kanal und auf X.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ORF</b> und <b>Sky</b>, dazu der kostenlose Livestream auf YouTube und X.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>Sky</b> und <b>Canal+</b>, dazu der kostenlose Livestream auf YouTube und X.</p></div></div><div class="wtvb" data-serie="fe"><h3><a href="../../formel-e/#sender" style="color:var(--s-fe)">Formel E</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>DAZN</b> zeigt die komplette Saison. <b>DF1</b> überträgt frei empfangbar, dazu <b>Eurosport</b> als pan-europäischer Sender.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>DAZN</b> und <b>Eurosport</b> — dieselben Rechte wie in Deutschland.</p></div></div><div class="wtvb" data-serie="wsbk"><h3><a href="../../superbike-wm/#sender" style="color:var(--s-wsbk)">Superbike-WM</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>ServusTV On</b> zeigt die Superbike-WM <b>kostenlos</b> als Livestream. Eurosport überträgt seit 2026 nicht mehr.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> überträgt im <b>Free-TV</b>, dazu der Livestream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>Kostenlos</b> als Livestream bei <b>ServusTV On</b>.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:850/584.4" aria-label="Kartenausschnitt mit Shanghai und Strecken in der Nähe">
           <svg id="minisvg" viewBox="389.9 38.3 850 584.4" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Shanghai und Strecken in der Nähe">
-            <rect x="379.9" y="28.299999999999997" width="870" height="604.4" fill="#121110"/>
+            <rect x="379.9" y="28.299999999999997" width="870" height="604.4" fill="var(--meer)"/>
             <image href="../../karte/asien.svg" x="0" y="0" width="1583" height="1585"/>
             <g id="minidyn"></g>
           </svg>
@@ -166,7 +168,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../suzuka/"><span class="nn"><b>Suzuka</b><small>Japan · 1 Termin</small></span><span class="nk">≈ 1.475 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ff3000">F1</i> Großer Preis von Japan · 9.–11. April 2027</span></a></li><li><a href="../fuji/"><span class="nn"><b>Fuji</b><small>Japan · 1 Termin</small></span><span class="nk">≈ 1.700 km<small>Luftlinie</small></span><span class="nt"><i style="color:#3a86ff">WEC</i> 6 Stunden von Fuji · 24.–26. September 2027</span></a></li><li><a href="../tokio/"><span class="nn"><b>Tokio</b><small>Japan · 2 Termine</small></span><span class="nk">≈ 1.785 km<small>Luftlinie</small></span><span class="nt"><i style="color:#fe958e">F·E</i> Tokio E-Prix I · 24. Juli 2027</span></a></li><li><a href="../motegi/"><span class="nn"><b>Motegi</b><small>Japan · 3 Termine</small></span><span class="nk">≈ 1.845 km<small>Luftlinie</small></span><span class="nt"><i style="color:#e172db">MotoGP</i> Großer Preis von Japan · 15.–17. Oktober 2027</span></a></li><li><a href="../buriram/"><span class="nn"><b>Buriram</b><small>Thailand · 3 Termine</small></span><span class="nk">≈ 2.590 km<small>Luftlinie</small></span><span class="nt"><i style="color:#e172db">MotoGP</i> Großer Preis von Thailand · 5.–7. März 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../suzuka/"><span class="nn"><b>Suzuka</b><small>Japan · 1 Termin</small></span><span class="nk">≈ 1.475 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-f1)">F1</i> Großer Preis von Japan · 9.–11. April 2027</span></a></li><li><a href="../fuji/"><span class="nn"><b>Fuji</b><small>Japan · 1 Termin</small></span><span class="nk">≈ 1.700 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-wec)">WEC</i> 6 Stunden von Fuji · 24.–26. September 2027</span></a></li><li><a href="../tokio/"><span class="nn"><b>Tokio</b><small>Japan · 2 Termine</small></span><span class="nk">≈ 1.785 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-fe)">F·E</i> Tokio E-Prix I · 24. Juli 2027</span></a></li><li><a href="../motegi/"><span class="nn"><b>Motegi</b><small>Japan · 3 Termine</small></span><span class="nk">≈ 1.845 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-mgp)">MotoGP</i> Großer Preis von Japan · 15.–17. Oktober 2027</span></a></li><li><a href="../buriram/"><span class="nn"><b>Buriram</b><small>Thailand · 3 Termine</small></span><span class="nk">≈ 2.590 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-mgp)">MotoGP</i> Großer Preis von Thailand · 5.–7. März 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=asien">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -183,21 +185,21 @@
 <template class="naechst" data-id="fe-18-S13" data-von="2027-07-10" data-bis="2027-07-10"><div class="nextcard" data-id="fe-18-S13" data-von="2027-07-10" data-bis="2027-07-10">
     <p class="k">Nächster Termin</p>
     <h2>Shanghai E-Prix I</h2>
-    <p class="where"><b style="color:#fe958e">F·E</b> · 10. Juli 2027</p>
+    <p class="where"><b style="color:var(--s-fe)">F·E</b> · 10. Juli 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../formel-e/#r-fe-18-S13">Zur F·E-Seite <span aria-hidden="true">→</span></a>
   </div></template>
 <template class="naechst" data-id="fe-19-S13" data-von="2027-07-11" data-bis="2027-07-11"><div class="nextcard" data-id="fe-19-S13" data-von="2027-07-11" data-bis="2027-07-11">
     <p class="k">Nächster Termin</p>
     <h2>Shanghai E-Prix II</h2>
-    <p class="where"><b style="color:#fe958e">F·E</b> · 11. Juli 2027</p>
+    <p class="where"><b style="color:var(--s-fe)">F·E</b> · 11. Juli 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../formel-e/#r-fe-19-S13">Zur F·E-Seite <span aria-hidden="true">→</span></a>
   </div></template>
 <template class="naechst" data-id="wsbk-12-2027" data-von="2027-10-29" data-bis="2027-10-31"><div class="nextcard" data-id="wsbk-12-2027" data-von="2027-10-29" data-bis="2027-10-31">
     <p class="k">Nächster Termin</p>
     <h2>WM-Lauf China · Finale</h2>
-    <p class="where"><b style="color:#ad88fe">WSBK</b> · 29.–31. Oktober 2027</p>
+    <p class="where"><b style="color:var(--s-wsbk)">WSBK</b> · 29.–31. Oktober 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../superbike-wm/#r-wsbk-12-2027">Zur WSBK-Seite <span aria-hidden="true">→</span></a>
   </div></template>
@@ -207,6 +209,6 @@
     <p class="where">Neue Termine folgen, sobald die Serien ihre Kalender veröffentlichen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[],"linie":null}</script>
-<script type="application/json" id="apex-strecke">{"lat":31.3402,"lon":121.2193,"name":"Shanghai","np":[814.9,330.5],"box":[389.9,38.3,850,584.4],"pkt":[{"n":"Suzuka","x":1183.2,"y":207.7,"l":1,"c":"#ff3000","slug":"suzuka","land":"Japan","km":"≈ 1.475 km","anz":1,"ns":"F1","nn":"Großer Preis von Japan","nd":"9.–11. April 2027"},{"n":"Fuji","x":1239,"y":186.2,"l":1,"c":"#3a86ff","slug":"fuji","land":"Japan","km":"≈ 1.700 km","anz":1,"ns":"WEC","nn":"6 Stunden von Fuji","nd":"24.–26. September 2027"}]}</script>
+<script type="application/json" id="apex-strecke">{"lat":31.3402,"lon":121.2193,"name":"Shanghai","np":[814.9,330.5],"box":[389.9,38.3,850,584.4],"pkt":[{"n":"Suzuka","x":1183.2,"y":207.7,"l":1,"c":"var(--s-f1)","slug":"suzuka","land":"Japan","km":"≈ 1.475 km","anz":1,"ns":"F1","nn":"Großer Preis von Japan","nd":"9.–11. April 2027"},{"n":"Fuji","x":1239,"y":186.2,"l":1,"c":"var(--s-wec)","slug":"fuji","land":"Japan","km":"≈ 1.700 km","anz":1,"ns":"WEC","nn":"6 Stunden von Fuji","nd":"24.–26. September 2027"}]}</script>
 </body>
 </html>

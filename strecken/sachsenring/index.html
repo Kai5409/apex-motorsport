@@ -23,27 +23,29 @@
 <link rel="preload" href="../../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../serienseiten.css">
-<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")document.documentElement.classList.add("sp")}catch(e){}</script>
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
 <script src="../../serienseiten.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"APEX","item":"https://apexkalender.de/"},{"@type":"ListItem","position":2,"name":"Strecken","item":"https://apexkalender.de/strecken/"},{"@type":"ListItem","position":3,"name":"Sachsenring","item":"https://apexkalender.de/strecken/sachsenring/"}]},{"@type":"Place","@id":"https://apexkalender.de/strecken/sachsenring/#strecke","name":"Sachsenring","url":"https://apexkalender.de/strecken/sachsenring/","address":{"@type":"PostalAddress","addressLocality":"Oberlungwitz","addressRegion":"Sachsen","addressCountry":"DE"},"geo":{"@type":"GeoCoordinates","latitude":50.79167,"longitude":12.68889}}]}</script>
 <script src="../../strecken.js" defer></script>
 </head>
-<body style="--serie:#8d8678;--serie-text:#fff">
+<body style="--serie:var(--muted);--serie-text:#fff">
 <div class="wrap strecke-seite">
   <header class="top">
-    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img src="../../logo-apex-klein.png" alt="APEX" width="480" height="270"></a>
+    <a class="logo" href="../../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
     <a class="toplink" href="../">Alle Strecken</a>
   </header>
   <nav class="crumbs" aria-label="Pfad"><a href="../../">APEX</a><i>›</i><a href="../">Strecken</a><i>›</i><span aria-current="page">Sachsenring</span></nav>
 
   <div class="layout">
     <section class="hero" aria-labelledby="h1">
-      <h1 id="h1" class="lang"><span class="bar serien" title="MotoGP · Moto2 · Moto3 · DTM" data-saisons="{&quot;2026&quot;:[[&quot;MotoGP&quot;,&quot;#e172db&quot;],[&quot;Moto2&quot;,&quot;#f32a94&quot;],[&quot;Moto3&quot;,&quot;#f3b7ff&quot;],[&quot;DTM&quot;,&quot;#6de5f7&quot;]],&quot;2027&quot;:[[&quot;MotoGP&quot;,&quot;#e172db&quot;],[&quot;Moto2&quot;,&quot;#f32a94&quot;],[&quot;Moto3&quot;,&quot;#f3b7ff&quot;],[&quot;DTM&quot;,&quot;#6de5f7&quot;]]}"><i style="background:#e172db"></i><i style="background:#f32a94"></i><i style="background:#f3b7ff"></i><i style="background:#6de5f7"></i></span>Sachsenring</h1>
+      <h1 id="h1" class="lang"><span class="bar serien" title="MotoGP · Moto2 · Moto3 · DTM" data-saisons="{&quot;2026&quot;:[[&quot;MotoGP&quot;,&quot;var(--s-mgp)&quot;],[&quot;Moto2&quot;,&quot;var(--s-moto2)&quot;],[&quot;Moto3&quot;,&quot;var(--s-moto3)&quot;],[&quot;DTM&quot;,&quot;var(--s-dtm)&quot;]],&quot;2027&quot;:[[&quot;MotoGP&quot;,&quot;var(--s-mgp)&quot;],[&quot;Moto2&quot;,&quot;var(--s-moto2)&quot;],[&quot;Moto3&quot;,&quot;var(--s-moto3)&quot;],[&quot;DTM&quot;,&quot;var(--s-dtm)&quot;]]}"><i style="background:var(--s-mgp)"></i><i style="background:var(--s-moto2)"></i><i style="background:var(--s-moto3)"></i><i style="background:var(--s-dtm)"></i></span>Sachsenring</h1>
       <p class="strort">Oberlungwitz · Sachsen</p>
       <p class="lead">Termine <span>– alle Rennen am Sachsenring mit Startzeiten in deutscher Zeit: MotoGP, Moto2, Moto3 und DTM.</span></p>
       <dl class="fakten" style="--n:4"><div><dt>Länge</dt><dd>3,671<small>km</small></dd></div><div><dt>Kurven</dt><dd>13</dd></div><div><dt>Eröffnet</dt><dd>1996</dd></div><div><dt>Termine 2027</dt><dd>4</dd></div></dl>
       <span class="chiplab">Serien am Sachsenring</span>
-      <div class="chips"><a class="chip" href="../../motogp/"><i style="background:#e172db"></i>MotoGP</a><a class="chip" href="../../moto2/"><i style="background:#f32a94"></i>Moto2</a><a class="chip" href="../../moto3/"><i style="background:#f3b7ff"></i>Moto3</a><a class="chip" href="../../dtm/"><i style="background:#6de5f7"></i>DTM</a></div>
+      <div class="chips"><a class="chip" href="../../motogp/"><i style="background:var(--s-mgp)"></i>MotoGP</a><a class="chip" href="../../moto2/"><i style="background:var(--s-moto2)"></i>Moto2</a><a class="chip" href="../../moto3/"><i style="background:var(--s-moto3)"></i>Moto3</a><a class="chip" href="../../dtm/"><i style="background:var(--s-dtm)"></i>DTM</a></div>
     </section>
 
     <div class="side">
@@ -51,7 +53,7 @@
   <div class="nextcard" data-id="mgp-11-2027" data-von="2027-07-09" data-bis="2027-07-11">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Deutschland</h2>
-    <p class="where"><b style="color:#e172db">MotoGP</b> · 9.–11. Juli 2027</p>
+    <p class="where"><b style="color:var(--s-mgp)">MotoGP</b> · 9.–11. Juli 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../motogp/#r-mgp-11-2027">Zur MotoGP-Seite <span aria-hidden="true">→</span></a>
   </div>
@@ -79,28 +81,28 @@
    <p class="prov">Vorläufige Kalender. Startzeiten folgen, sobald die Serien den Zeitplan veröffentlichen.</p>
    <ul class="races"><li class="race next" id="r-mgp-11-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#e172db">MotoGP</span>
+      <span class="rd sk" style="color:var(--s-mgp)">MotoGP</span>
       <span class="when">09–11<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-mgp-11-2027">Großer Preis von Deutschland</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-mgp-11-2027"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../motogp/#r-mgp-11-2027">Zur MotoGP-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-moto2-11-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#f32a94">Moto2</span>
+      <span class="rd sk" style="color:var(--s-moto2)">Moto2</span>
       <span class="when">09–11<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-moto2-11-2027">Großer Preis von Deutschland</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-moto2-11-2027"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../moto2/#r-moto2-11-2027">Zur Moto2-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-moto3-11-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#f3b7ff">Moto3</span>
+      <span class="rd sk" style="color:var(--s-moto3)">Moto3</span>
       <span class="when">09–11<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-moto3-11-2027">Großer Preis von Deutschland</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-moto3-11-2027"><p>Die Sessionzeiten folgen, sobald der offizielle Zeitplan vorliegt.</p><p class="rlinks"><a class="allres" href="../../moto3/#r-moto3-11-2027">Zur Moto3-Seite <span aria-hidden="true">→</span></a></p></div></li><li class="race" id="r-dtm-7-2027">
     <div class="rh">
-      <span class="rd sk" style="color:#6de5f7">DTM</span>
+      <span class="rd sk" style="color:var(--s-dtm)">DTM</span>
       <span class="when">24–26<small>Sep</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-dtm-7-2027">DTM Sachsenring</button></span>
       <span class="start"><small>Zeiten folgen</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -111,28 +113,28 @@
    <div class="sechead"><div><h2 class="sec">Saison 2026<span class="abg">abgeschlossen</span></h2><p>4 Termine aus 4 Serien · Uhrzeit = Rennstart</p></div></div>
    <ul class="races"><li class="race past" id="r-mgp-11">
     <div class="rh">
-      <span class="rd sk" style="color:#e172db">MotoGP</span>
+      <span class="rd sk" style="color:var(--s-mgp)">MotoGP</span>
       <span class="when">10–12<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-mgp-11">Großer Preis von Deutschland</button><span class="win" data-nosnippet>Sieger <b>Marc Márquez (Ducati)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start">So 14:00<small>MESZ</small></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-mgp-11"><ul class="sess"><li class="n">FP1</li><li class="v">Fr 10.07. · 10:45 MESZ</li><li class="n">Practice</li><li class="v">Fr 10.07. · 15:00 MESZ</li><li class="n">FP2</li><li class="v">Sa 11.07. · 10:10 MESZ</li><li class="n">Qualifying</li><li class="v">Sa 11.07. · 10:50 MESZ</li><li class="n">Sprint</li><li class="v">Sa 11.07. · 15:00 MESZ</li><li class="n">Warm Up</li><li class="v">So 12.07. · 09:40 MESZ</li><li class="n race">Rennen</li><li class="v race">So 12.07. · 14:00 MESZ</li></ul><a class="evcal" href="../../kalender/termine/mgp-11.ics"><span aria-hidden="true">＋</span> Ganzes Wochenende in Kalender</a><p class="rlinks"><a class="allres" href="../../motogp/#r-mgp-11">Zur MotoGP-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=mgp-11">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-moto2-11">
     <div class="rh">
-      <span class="rd sk" style="color:#f32a94">Moto2</span>
+      <span class="rd sk" style="color:var(--s-moto2)">Moto2</span>
       <span class="when">10–12<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-moto2-11">Großer Preis von Deutschland</button><span class="win" data-nosnippet>Sieger <b>Iván Ortolá (Kalex)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-moto2-11"><p class="rlinks"><a class="allres" href="../../moto2/#r-moto2-11">Zur Moto2-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=moto2-11">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-moto3-11">
     <div class="rh">
-      <span class="rd sk" style="color:#f3b7ff">Moto3</span>
+      <span class="rd sk" style="color:var(--s-moto3)">Moto3</span>
       <span class="when">10–12<small>Jul</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-moto3-11">Großer Preis von Deutschland</button><span class="win" data-nosnippet>Sieger <b>Brian Uriarte (KTM)</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start"></span><span class="chev" aria-hidden="true">▶</span>
     </div>
     <div class="rb" id="b-moto3-11"><p class="rlinks"><a class="allres" href="../../moto3/#r-moto3-11">Zur Moto3-Seite <span aria-hidden="true">→</span></a> <a class="allres" href="../../#ev=moto3-11">Alle Ergebnisse <span aria-hidden="true">→</span></a></p></div></li><li class="race past" id="r-dtm-7">
     <div class="rh">
-      <span class="rd sk" style="color:#6de5f7">DTM</span>
+      <span class="rd sk" style="color:var(--s-dtm)">DTM</span>
       <span class="when">11–13<small>Sep</small></span>
       <span class="what"><button class="gp" type="button" aria-expanded="false" aria-controls="b-dtm-7">DTM Sachsenring</button><span class="win" data-nosnippet>Sieger <b>Sa: Wittmann · So: Dörr</b></span><button class="reveal" type="button">Ergebnis anzeigen</button></span>
       <span class="start">Sa 13:30<br>So 13:30<small>MESZ</small></span><span class="chev" aria-hidden="true">▶</span>
@@ -149,14 +151,14 @@
       <section class="sender" id="sender" aria-labelledby="h-sender">
         <div class="sechead"><div><h2 class="sec" id="h-sender">Wo schauen?</h2><p>Sender der Serien, die am Sachsenring fahren</p></div>
           <div class="seg" role="group" aria-label="Land"><button type="button" aria-pressed="true" data-l="de" title="Deutschland">DE</button><button type="button" aria-pressed="false" data-l="at" title="Österreich">AT</button><button type="button" aria-pressed="false" data-l="ch" title="Schweiz">CH</button></div></div>
-        <div class="wtv"><div class="wtvb" data-serie="mgp"><h3><a href="../../motogp/#sender" style="color:#e172db">MotoGP</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2 und Moto3.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die komplette Saison im Free-TV.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt einzelne Rennen frei (SRF Info bzw. SRF zwei).</p></div></div><div class="wtvb" data-serie="moto2"><h3><a href="../../moto2/#sender" style="color:#f32a94">Moto2</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.</p></div></div><div class="wtvb" data-serie="moto3"><h3><a href="../../moto3/#sender" style="color:#f3b7ff">Moto3</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto3.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.</p></div></div><div class="wtvb" data-serie="dtm"><h3><a href="../../dtm/#sender" style="color:#6de5f7">DTM</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>ProSieben</b> zeigt alle 16 Rennen live im Free-TV, dazu <b>Joyn</b> und <b>ran.de</b>.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV On</b> und <b>Red Bull TV</b> streamen alle Rennen kostenlos.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Über ServusTV On und Red Bull TV.</p></div></div></div>
+        <div class="wtv"><div class="wtvb" data-serie="mgp"><h3><a href="../../motogp/#sender" style="color:var(--s-mgp)">MotoGP</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2 und Moto3.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die komplette Saison im Free-TV.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext"><b>SRF</b> überträgt einzelne Rennen frei (SRF Info bzw. SRF zwei).</p></div></div><div class="wtvb" data-serie="moto2"><h3><a href="../../moto2/#sender" style="color:var(--s-moto2)">Moto2</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto2.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.</p></div></div><div class="wtvb" data-serie="moto3"><h3><a href="../../moto3/#sender" style="color:var(--s-moto3)">Moto3</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>Sky</b> und <b>WOW</b> zeigen alle Rennwochenenden der Motorrad-WM. <b>DF1</b> und <b>ServusTV On</b> übertragen 12 der 22 Grands Prix kostenlos — inklusive Moto3.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV</b> zeigt die Motorrad-WM im Free-TV, dazu der Stream bei ServusTV On.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Offizielle Partner sind <b>Sky</b>, der Stream <b>ServusTV On</b> sowie SRF, RSI und RTS.</p></div></div><div class="wtvb" data-serie="dtm"><h3><a href="../../dtm/#sender" style="color:var(--s-dtm)">DTM</a></h3><div class="tvland on" data-land="de"><h4 class="tvl">Deutschland</h4><p class="tvtext"><b>ProSieben</b> zeigt alle 16 Rennen live im Free-TV, dazu <b>Joyn</b> und <b>ran.de</b>.</p></div><div class="tvland" data-land="at"><h4 class="tvl">Österreich</h4><p class="tvtext"><b>ServusTV On</b> und <b>Red Bull TV</b> streamen alle Rennen kostenlos.</p></div><div class="tvland" data-land="ch"><h4 class="tvl">Schweiz</h4><p class="tvtext">Über ServusTV On und Red Bull TV.</p></div></div></div>
       </section>
       <section class="naehe" id="naehe" aria-labelledby="h-naehe">
         <div class="sechead"><div><h2 class="sec" id="h-naehe">In der Nähe</h2><p>Weitere Strecken mit Terminen – Entfernung in Luftlinie</p></div></div>
         <div class="miniwrap">
         <figure class="mini" style="aspect-ratio:224/154" aria-label="Kartenausschnitt mit Sachsenring und Strecken in der Nähe">
           <svg id="minisvg" viewBox="436.8 287.8 224 154" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Sachsenring und Strecken in der Nähe">
-            <rect x="426.8" y="277.8" width="244" height="174" fill="#121110"/>
+            <rect x="426.8" y="277.8" width="244" height="174" fill="var(--meer)"/>
             <image href="../../karte/europa.svg" x="0" y="0" width="1000" height="860"/>
             <g id="minidyn"></g>
           </svg>
@@ -164,7 +166,7 @@
         <div class="miniinfo" id="miniinfo" role="dialog" aria-label="Strecke" hidden></div>
         </div>
         <p class="minicap">Punktfarbe: Serie des nächsten Termins dort · Punkt antippen für Termine und Streckenseite</p>
-        <ul class="nahliste"><li><a href="../most/"><span class="nn"><b>Most</b><small>Tschechien · 1 Termin</small></span><span class="nk">≈ 70 km<small>Luftlinie</small></span><span class="nt"><i style="color:#ad88fe">WSBK</i> WM-Lauf Tschechien · 4.–6. Juni 2027</span></a></li><li><a href="../lausitzring/"><span class="nn"><b>Lausitzring</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 120 km<small>Luftlinie</small></span><span class="nt"><i style="color:#6de5f7">DTM</i> DTM Lausitzring · 18.–20. Juni 2027</span></a></li><li><a href="../oschersleben/"><span class="nn"><b>Oschersleben</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 170 km<small>Luftlinie</small></span><span class="nt"><i style="color:#6de5f7">DTM</i> DTM Oschersleben · 7.–9. Mai 2027</span></a></li><li><a href="../norisring/"><span class="nn"><b>Norisring</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 190 km<small>Luftlinie</small></span><span class="nt"><i style="color:#6de5f7">DTM</i> DTM Norisring · 2.–4. Juli 2027</span></a></li><li><a href="../berlin-tempelhof/"><span class="nn"><b>Berlin-Tempelhof</b><small>Deutschland · 2 Termine</small></span><span class="nk">≈ 195 km<small>Luftlinie</small></span><span class="nt"><i style="color:#fe958e">F·E</i> Berlin E-Prix I · 8. Mai 2027</span></a></li></ul>
+        <ul class="nahliste"><li><a href="../most/"><span class="nn"><b>Most</b><small>Tschechien · 1 Termin</small></span><span class="nk">≈ 70 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-wsbk)">WSBK</i> WM-Lauf Tschechien · 4.–6. Juni 2027</span></a></li><li><a href="../lausitzring/"><span class="nn"><b>Lausitzring</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 120 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-dtm)">DTM</i> DTM Lausitzring · 18.–20. Juni 2027</span></a></li><li><a href="../oschersleben/"><span class="nn"><b>Oschersleben</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 170 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-dtm)">DTM</i> DTM Oschersleben · 7.–9. Mai 2027</span></a></li><li><a href="../norisring/"><span class="nn"><b>Norisring</b><small>Deutschland · 1 Termin</small></span><span class="nk">≈ 190 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-dtm)">DTM</i> DTM Norisring · 2.–4. Juli 2027</span></a></li><li><a href="../berlin-tempelhof/"><span class="nn"><b>Berlin-Tempelhof</b><small>Deutschland · 2 Termine</small></span><span class="nk">≈ 195 km<small>Luftlinie</small></span><span class="nt"><i style="color:var(--s-fe)">F·E</i> Berlin E-Prix I · 8. Mai 2027</span></a></li></ul>
         <a class="maplink" href="../../in-der-naehe/#karte=europa">Alle Strecken auf der Karte „In der Nähe“ <span aria-hidden="true">→</span></a>
       </section>
     </div>
@@ -181,21 +183,21 @@
 <template class="naechst" data-id="moto2-11-2027" data-von="2027-07-09" data-bis="2027-07-11"><div class="nextcard" data-id="moto2-11-2027" data-von="2027-07-09" data-bis="2027-07-11">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Deutschland</h2>
-    <p class="where"><b style="color:#f32a94">Moto2</b> · 9.–11. Juli 2027</p>
+    <p class="where"><b style="color:var(--s-moto2)">Moto2</b> · 9.–11. Juli 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../moto2/#r-moto2-11-2027">Zur Moto2-Seite <span aria-hidden="true">→</span></a>
   </div></template>
 <template class="naechst" data-id="moto3-11-2027" data-von="2027-07-09" data-bis="2027-07-11"><div class="nextcard" data-id="moto3-11-2027" data-von="2027-07-09" data-bis="2027-07-11">
     <p class="k">Nächster Termin</p>
     <h2>Großer Preis von Deutschland</h2>
-    <p class="where"><b style="color:#f3b7ff">Moto3</b> · 9.–11. Juli 2027</p>
+    <p class="where"><b style="color:var(--s-moto3)">Moto3</b> · 9.–11. Juli 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../moto3/#r-moto3-11-2027">Zur Moto3-Seite <span aria-hidden="true">→</span></a>
   </div></template>
 <template class="naechst" data-id="dtm-7-2027" data-von="2027-09-24" data-bis="2027-09-26"><div class="nextcard" data-id="dtm-7-2027" data-von="2027-09-24" data-bis="2027-09-26">
     <p class="k">Nächster Termin</p>
     <h2>DTM Sachsenring</h2>
-    <p class="where"><b style="color:#6de5f7">DTM</b> · 24.–26. September 2027</p>
+    <p class="where"><b style="color:var(--s-dtm)">DTM</b> · 24.–26. September 2027</p>
     <div class="racebig"><div class="t leer">Startzeiten folgen</div></div>
     <a class="zur" href="../../dtm/#r-dtm-7-2027">Zur DTM-Seite <span aria-hidden="true">→</span></a>
   </div></template>
@@ -205,6 +207,6 @@
     <p class="where">Neue Termine folgen, sobald die Serien ihre Kalender veröffentlichen.</p>
   </div></template>
 <script type="application/json" id="apex-seite">{"linien":[],"linie":null}</script>
-<script type="application/json" id="apex-strecke">{"lat":50.79167,"lon":12.68889,"name":"Sachsenring","np":[548.8,364.8],"box":[436.8,287.8,224,154],"pkt":[{"n":"Most","x":565.7,"y":371.8,"l":1,"c":"#ad88fe","slug":"most","land":"Tschechien","km":"≈ 70 km","anz":1,"ns":"WSBK","nn":"WM-Lauf Tschechien","nd":"4.–6. Juni 2027"},{"n":"Lausitzring","x":570,"y":342.5,"l":1,"c":"#6de5f7","slug":"lausitzring","land":"Deutschland","km":"≈ 120 km","anz":1,"ns":"DTM","nn":"DTM Lausitzring","nd":"18.–20. Juni 2027"},{"n":"Oschersleben","x":522.6,"y":330,"l":1,"c":"#6de5f7","slug":"oschersleben","land":"Deutschland","km":"≈ 170 km","anz":1,"ns":"DTM","nn":"DTM Oschersleben","nd":"7.–9. Mai 2027"},{"n":"Norisring","x":521,"y":404.5,"l":1,"c":"#6de5f7","slug":"norisring","land":"Deutschland","km":"≈ 190 km","anz":1,"ns":"DTM","nn":"DTM Norisring","nd":"2.–4. Juli 2027"},{"n":"Berlin-Tempelhof","x":559.5,"y":316,"l":1,"c":"#fe958e","slug":"berlin-tempelhof","land":"Deutschland","km":"≈ 195 km","anz":2,"ns":"F·E","nn":"Berlin E-Prix I","nd":"8. Mai 2027"},{"n":"Brünn","x":620.8,"y":406.1,"l":0,"c":"#e172db","slug":"bruenn","land":"Tschechien","km":"≈ 320 km","anz":3,"ns":"MotoGP","nn":"Großer Preis von Tschechien","nd":"16.–18. Juli 2027"},{"n":"Hockenheimring","x":473.3,"y":407.4,"l":0,"c":"#6de5f7","slug":"hockenheimring","land":"Deutschland","km":"≈ 335 km","anz":2,"ns":"DTM","nn":"DTM Hockenheim (Finale)","nd":"9.–11. Oktober 2026"},{"n":"Nürburgring","x":444,"y":377.7,"l":0,"c":"#98bafe","slug":"nuerburgring","land":"Deutschland","km":"≈ 410 km","anz":12,"ns":"NLS","nn":"NLS1","nd":"20. März 2027"},{"n":"Assen","x":439.8,"y":301.9,"l":0,"c":"#ad88fe","slug":"assen","land":"Niederlande","km":"≈ 485 km","anz":4,"ns":"WSBK","nn":"WM-Lauf Niederlande","nd":"16.–18. April 2027"}]}</script>
+<script type="application/json" id="apex-strecke">{"lat":50.79167,"lon":12.68889,"name":"Sachsenring","np":[548.8,364.8],"box":[436.8,287.8,224,154],"pkt":[{"n":"Most","x":565.7,"y":371.8,"l":1,"c":"var(--s-wsbk)","slug":"most","land":"Tschechien","km":"≈ 70 km","anz":1,"ns":"WSBK","nn":"WM-Lauf Tschechien","nd":"4.–6. Juni 2027"},{"n":"Lausitzring","x":570,"y":342.5,"l":1,"c":"var(--s-dtm)","slug":"lausitzring","land":"Deutschland","km":"≈ 120 km","anz":1,"ns":"DTM","nn":"DTM Lausitzring","nd":"18.–20. Juni 2027"},{"n":"Oschersleben","x":522.6,"y":330,"l":1,"c":"var(--s-dtm)","slug":"oschersleben","land":"Deutschland","km":"≈ 170 km","anz":1,"ns":"DTM","nn":"DTM Oschersleben","nd":"7.–9. Mai 2027"},{"n":"Norisring","x":521,"y":404.5,"l":1,"c":"var(--s-dtm)","slug":"norisring","land":"Deutschland","km":"≈ 190 km","anz":1,"ns":"DTM","nn":"DTM Norisring","nd":"2.–4. Juli 2027"},{"n":"Berlin-Tempelhof","x":559.5,"y":316,"l":1,"c":"var(--s-fe)","slug":"berlin-tempelhof","land":"Deutschland","km":"≈ 195 km","anz":2,"ns":"F·E","nn":"Berlin E-Prix I","nd":"8. Mai 2027"},{"n":"Brünn","x":620.8,"y":406.1,"l":0,"c":"var(--s-mgp)","slug":"bruenn","land":"Tschechien","km":"≈ 320 km","anz":3,"ns":"MotoGP","nn":"Großer Preis von Tschechien","nd":"16.–18. Juli 2027"},{"n":"Hockenheimring","x":473.3,"y":407.4,"l":0,"c":"var(--s-dtm)","slug":"hockenheimring","land":"Deutschland","km":"≈ 335 km","anz":2,"ns":"DTM","nn":"DTM Hockenheim (Finale)","nd":"9.–11. Oktober 2026"},{"n":"Nürburgring","x":444,"y":377.7,"l":0,"c":"var(--s-nls)","slug":"nuerburgring","land":"Deutschland","km":"≈ 410 km","anz":12,"ns":"NLS","nn":"NLS1","nd":"20. März 2027"},{"n":"Assen","x":439.8,"y":301.9,"l":0,"c":"var(--s-wsbk)","slug":"assen","land":"Niederlande","km":"≈ 485 km","anz":4,"ns":"WSBK","nn":"WM-Lauf Niederlande","nd":"16.–18. April 2027"}]}</script>
 </body>
 </html>
