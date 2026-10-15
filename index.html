@@ -1469,7 +1469,8 @@ function ergZeile(e,rid,kopf,panel,laden){
     `<div class="sess-respanel">${panel}</div></div>`;
 }
 /* Rallyes mit Wertungsprüfungen (WRC, ERC – nicht die Dakar): das Ergebnis steht als Zeile „Gesamtwertung (Rallye)“
-   über den Sessions, die Power Stage ist keine eigene Ergebniszeile (nur mit eigener Liste) */
+   über den Sessions, die Power Stage ist keine eigene Ergebniszeile (nur mit eigener Liste) und bekommt keinen Hinweis
+   „Wertung noch nicht erfasst“ */
 const RALLYE_GESAMT=["wrc","erc"];
 function buildSessions(e,evId,status){
   let out="";
@@ -1515,7 +1516,7 @@ function buildSessions(e,evId,status){
     } else if(s.res){
       out+=ergZeile(e,rid,kopf,fmtRes(s.res,!!s.partial),false);
     } else {
-      const note = (status==="done"&&isRaceName(s.n)&&!(e.abbruch&&verborgen(ergKey(e)))) ? `<div class="sess-flat">${e.abbruch?ABBRUCH:"Wertung noch nicht erfasst"}</div>` : "";
+      const note = (status==="done"&&isRaceName(s.n)&&!rg&&!(e.abbruch&&verborgen(ergKey(e)))) ? `<div class="sess-flat">${e.abbruch?ABBRUCH:"Wertung noch nicht erfasst"}</div>` : "";
       out+=`<div class="sess" id="s-${rid}"><div class="sess-row"><span class="sess-chev" style="opacity:.25">·</span><span class="sess-n ${isRaceName(s.n)?'race':''}">${s.n}</span><span class="sess-t">${ct.t} Uhr</span><span class="sess-meta">${ct.day}<span class="sess-date"> ${ct.dt||""}</span></span>${cal}</div>${note}</div>`;
     }
   });
