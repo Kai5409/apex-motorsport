@@ -218,5 +218,41 @@
       [27, "Shahin / Pera / Lietz", "Porsche #92", "LMGT3"],
       [28, "Zelger / Cressoni / Hodenius", "Mercedes-AMG #79", "LMGT3"]
     ]}
+  ],
+  "wec-7": [
+    {"n": "Rennen (6h)", "quelle": "fiawec.alkamelsystems.com (Final Classification) · en.wikipedia.org", "zeilen": [
+      [1, "Buemi / Hartley / Hirakawa", "Toyota #8", "Hypercar"],
+      [2, "Conway / Kobayashi / de Vries", "Toyota #7", "Hypercar"],
+      [3, "Fuoco / Molina / Nielsen", "Ferrari #50", "Hypercar"],
+      [4, "Bamber / Bourdais / Aitken", "Cadillac #38", "Hypercar"],
+      [5, "Ye / Kubica / Hanson", "Ferrari #83", "Hypercar"],
+      [6, "Stevens / Nato / Lynn", "Cadillac #12", "Hypercar"],
+      [7, "Magnussen / Marciello / Vanthoor", "BMW #15", "Hypercar"],
+      [8, "Gounon / Martins", "Alpine #36", "Hypercar"],
+      [9, "Riberas / Sørensen", "Aston Martin #009", "Hypercar"],
+      [10, "Milesi / Habsburg", "Alpine #35", "Hypercar"],
+      [11, "Jaminet / Chatin / Juncadella", "Genesis #19", "Hypercar"],
+      [12, "di Resta / Cassidy / Quinn", "Peugeot #93", "Hypercar"],
+      [13, "Duval / Jakobsen / Pourchaire", "Peugeot #94", "Hypercar"],
+      [14, "Frijns / Rast / van der Linde", "BMW #20", "Hypercar"],
+      [15, "Pier Guidi / Calado / Giovinazzi", "Ferrari #51", "Hypercar"],
+      [16, "Lotterer / Derani / Jaubert", "Genesis #17", "Hypercar"],
+      [17, "Shahin / Pera / Lietz", "Porsche #92", "LMGT3"],
+      [18, "Au / Fleming / Kirchhöfer", "McLaren #10", "LMGT3"],
+      [19, "McIntosh / Thompson / Harper", "BMW #69", "LMGT3"],
+      [20, "Dempsey / Yoluç / Eastwood", "Corvette #34", "LMGT3"],
+      [21, "Hériau / Mann / Rovera", "Ferrari #21", "LMGT3"],
+      [22, "Berry / Andrade / Martin", "Mercedes-AMG #61", "LMGT3"],
+      [23, "Keating / Edgar / Catsburg", "Corvette #33", "LMGT3"],
+      [24, "Zelger / Cressoni / Hodenius", "Mercedes-AMG #79", "LMGT3"],
+      [25, "Newell / Barrichello / Adam", "Aston Martin #23", "LMGT3"],
+      [26, "Leung / Gelael / Farfus", "BMW #32", "LMGT3"],
+      [27, "West / Gehrsitz / Goethe", "McLaren #58", "LMGT3"],
+      [28, "Flohr / Castellacci / Rigon", "Ferrari #54", "LMGT3"],
+      [29, "Umbrărescu / Schmid / López", "Lexus #87", "LMGT3"],
+      [30, "Van Rompuy / David / Masson", "Lexus #78", "LMGT3"],
+      [31, "James / Robichon / Drudi", "Aston Martin #27", "LMGT3"],
+      [32, "Cottingham / Boguslavskiy / Güven", "Porsche #91", "LMGT3"]
+    ]}
   ]
 }
