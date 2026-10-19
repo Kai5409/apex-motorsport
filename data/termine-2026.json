@@ -560,7 +560,7 @@
       {"n": "Hyperpole", "day": "Sa", "t": "07:20"},
       {"n": "Rennen (6h)", "day": "So", "t": "04:00"}
     ]},
-  {"s": "wec", "rd": 7, "name": "6 Stunden von Barcelona", "loc": "Barcelona", "d0": "2026-10-16", "d1": "2026-10-18", "status": "up",
+  {"s": "wec", "rd": 7, "name": "6 Stunden von Barcelona", "loc": "Barcelona", "d0": "2026-10-16", "d1": "2026-10-18", "status": "done", "result": "Toyota #8 (Buemi/Hartley/Hirakawa)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "11:30"},
       {"n": "FP2", "day": "Fr", "t": "16:30"},
@@ -924,7 +924,7 @@
       {"n": "Qualifying 2 · Gruppe B", "day": "So", "t": "11:30"},
       {"n": "Rennen 2", "day": "So", "t": "16:00"}
     ]},
-  {"s": "gtwc", "rd": 10, "name": "Portimão · Endurance · Finale", "loc": "Portimão", "d0": "2026-10-16", "d1": "2026-10-18", "status": "up",
+  {"s": "gtwc", "rd": 10, "name": "Portimão · Endurance · Finale", "loc": "Portimão", "d0": "2026-10-16", "d1": "2026-10-18", "status": "done", "result": "Mercedes-AMG #17 (Aron/Götz/Schiller)",
     "sessions": [
       {"n": "Freies Training 1", "day": "Fr", "t": "09:45"},
       {"n": "Freies Training 2", "day": "Fr", "t": "13:45"},
@@ -1113,7 +1113,7 @@
       {"n": "Warm Up", "day": "So", "t": "10:15"},
       {"n": "Sprint", "day": "So", "t": "12:10"},
       {"n": "Rennen 2", "day": "So", "t": "16:30"}]},
-  {"s": "wsbk", "rd": 12, "name": "WM-Lauf Spanien · Finale", "loc": "Jerez", "d0": "2026-10-16", "d1": "2026-10-18", "status": "up",
+  {"s": "wsbk", "rd": 12, "name": "WM-Lauf Spanien · Finale", "loc": "Jerez", "d0": "2026-10-16", "d1": "2026-10-18", "status": "done", "result": "Sa: Bulega · So: Bulega",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "10:35"},
       {"n": "FP2", "day": "Fr", "t": "15:00"},
