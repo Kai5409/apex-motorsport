@@ -1078,8 +1078,8 @@
       {"n": "Freies Training", "day": "Do", "t": "19:25"},
       {"n": "Qualifying", "day": "Do", "t": "23:30"},
       {"n": "Rennen 1", "day": "Sa", "t": "00:50"},
-      {"n": "Sprint", "day": "Sa", "t": "21:45"},
-      {"n": "Rennen 2", "day": "So", "t": "16:40"}
+      {"n": "Sprint", "day": "So", "t": "01:00"},
+      {"n": "Rennen 2", "day": "So", "t": "18:00"}
     ]},
   {"s": "f1academy", "rd": 6, "name": "Großer Preis von Las Vegas · Finale", "loc": "Las Vegas", "d0": "2026-11-19", "d1": "2026-11-21", "status": "up",
     "sessions": []},
@@ -1269,7 +1269,7 @@
       {"n": "Practice", "day": "Fr", "t": "06:15"},
       {"n": "FP2", "day": "Sa", "t": "01:40"},
       {"n": "Qualifying", "day": "Sa", "t": "05:45"},
-      {"n": "Rennen", "day": "So", "t": "04:00"}
+      {"n": "Rennen", "day": "So", "t": "05:00"}
     ]},
   {"s": "moto3", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
