@@ -496,5 +496,28 @@
       [18, "Alexander Albon", "Williams"],
       [19, "Valtteri Bottas", "Cadillac"]
     ]}
+  ],
+  "f1-18": [
+    {"n": "Rennen", "quelle": "formula1.com · en.wikipedia.org", "zeilen": [
+      [1, "Kimi Antonelli", "Mercedes"],
+      [2, "Charles Leclerc", "Ferrari"],
+      [3, "Max Verstappen", "Red Bull"],
+      [4, "Lewis Hamilton", "Ferrari"],
+      [5, "Lando Norris", "McLaren"],
+      [6, "Isack Hadjar", "Red Bull"],
+      [7, "Oscar Piastri", "McLaren"],
+      [8, "George Russell", "Mercedes"],
+      [9, "Liam Lawson", "Racing Bulls"],
+      [10, "Pierre Gasly", "Alpine"],
+      [11, "Nico Hülkenberg", "Audi"],
+      [12, "Arvid Lindblad", "Racing Bulls"],
+      [13, "Gabriel Bortoleto", "Audi"],
+      [14, "Esteban Ocon", "Haas"],
+      [15, "Lance Stroll", "Aston Martin"],
+      [16, "Fernando Alonso", "Aston Martin"],
+      [17, "Alexander Albon", "Williams"],
+      [18, "Carlos Sainz", "Williams"],
+      [19, "Sergio Perez", "Cadillac"]
+    ]}
   ]
 }
