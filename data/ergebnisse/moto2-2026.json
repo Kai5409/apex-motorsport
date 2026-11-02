@@ -52,5 +52,31 @@
       [21, "Sergio García", "ITALJET Gresini Moto2"],
       [22, "Deniz Öncü", "ELF Marc VDS Racing Team"]
     ]}
+  ],
+  "moto2-19": [
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "David Alonso", "CFMOTO RCB Aspar Team"],
+      [2, "Daniel Holgado", "CFMOTO RCB Aspar Team"],
+      [3, "Ángel Piqueras", "QJMOTOR - MSI"],
+      [4, "Izan Guevara", "BLU CRU Pramac Yamaha Moto2"],
+      [5, "Manuel González", "Liqui Moly Dynavolt Intact GP"],
+      [6, "Adrián Huertas", "Italtrans Racing Team"],
+      [7, "Collin Veijer", "Red Bull KTM Ajo"],
+      [8, "Iván Ortolá", "QJMOTOR - MSI"],
+      [9, "Celestino Vietti", "BETA Tools SpeedRS Team"],
+      [10, "Álex Escrig", "KLINT Racing Team"],
+      [11, "José Antonio Rueda", "Red Bull KTM Ajo"],
+      [12, "Alonso López", "ITALJET Gresini Moto2"],
+      [13, "Daniel Muñoz", "Italtrans Racing Team"],
+      [14, "Filip Salač", "OnlyFans American Racing Team"],
+      [15, "Senna Agius", "Liqui Moly Dynavolt Intact GP"],
+      [16, "Tony Arbolino", "REDS Fantic Racing"],
+      [17, "Barry Baltus", "REDS Fantic Racing"],
+      [18, "Joe Roberts", "OnlyFans American Racing Team"],
+      [19, "Xabi Zurutuza", "KLINT Racing Team"],
+      [20, "Alberto Ferrandez", "BLU CRU Pramac Yamaha Moto2"],
+      [21, "Zonta van den Goorbergh", "Momoven Idrofoglia RW Racing Team"],
+      [22, "Matteo Ferrari", "ITALJET Gresini Moto2"]
+    ]}
   ]
 }
