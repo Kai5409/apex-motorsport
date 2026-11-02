@@ -717,5 +717,45 @@
       [16, "Diogo Moreira", "Pro Honda LCR"],
       [17, "Maverick Viñales", "Red Bull KTM Tech3"]
     ]}
+  ],
+  "mgp-19": [
+    {"n": "Sprint", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "Pedro Acosta", "Red Bull KTM Factory Racing"],
+      [2, "Marc Márquez", "Ducati Lenovo Team"],
+      [3, "Marco Bezzecchi", "Aprilia Racing"],
+      [4, "Ai Ogura", "SuperFile Trackhouse MotoGP Team"],
+      [5, "Fabio Di Giannantonio", "Pertamina Enduro VR46 Racing Team"],
+      [6, "Francesco Bagnaia", "Ducati Lenovo Team"],
+      [7, "Brad Binder", "Red Bull KTM Factory Racing"],
+      [8, "Diogo Moreira", "Pro Honda LCR"],
+      [9, "Enea Bastianini", "Red Bull KTM Tech3"],
+      [10, "Johann Zarco", "Castrol Honda LCR"],
+      [11, "Fabio Quartararo", "Monster Energy Yamaha MotoGP Team"],
+      [12, "Álex Rins", "Monster Energy Yamaha MotoGP Team"],
+      [13, "Luca Marini", "Honda HRC Castrol"],
+      [14, "Augusto Fernández", "Prima Pramac Yamaha MotoGP"],
+      [15, "Maverick Viñales", "Red Bull KTM Tech3"],
+      [16, "Joan Mir", "Honda HRC Castrol"],
+      [17, "Franco Morbidelli", "Pertamina Enduro VR46 Racing Team"],
+      [18, "Iker Lecuona", "BK8 Gresini Racing MotoGP"]
+    ]},
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "Marc Márquez", "Ducati Lenovo Team"],
+      [2, "Pedro Acosta", "Red Bull KTM Factory Racing"],
+      [3, "Álex Márquez", "BK8 Gresini Racing MotoGP"],
+      [4, "Ai Ogura", "SuperFile Trackhouse MotoGP Team"],
+      [5, "Enea Bastianini", "Red Bull KTM Tech3"],
+      [6, "Marco Bezzecchi", "Aprilia Racing"],
+      [7, "Luca Marini", "Honda HRC Castrol"],
+      [8, "Fabio Di Giannantonio", "Pertamina Enduro VR46 Racing Team"],
+      [9, "Brad Binder", "Red Bull KTM Factory Racing"],
+      [10, "Franco Morbidelli", "Pertamina Enduro VR46 Racing Team"],
+      [11, "Fabio Quartararo", "Monster Energy Yamaha MotoGP Team"],
+      [12, "Álex Rins", "Monster Energy Yamaha MotoGP Team"],
+      [13, "Francesco Bagnaia", "Ducati Lenovo Team"],
+      [14, "Maverick Viñales", "Red Bull KTM Tech3"],
+      [15, "Iker Lecuona", "BK8 Gresini Racing MotoGP"],
+      [16, "Jack Miller", "Prima Pramac Yamaha MotoGP"]
+    ]}
   ]
 }

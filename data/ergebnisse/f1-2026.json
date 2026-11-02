@@ -519,5 +519,26 @@
       [18, "Carlos Sainz", "Williams"],
       [19, "Sergio Perez", "Cadillac"]
     ]}
+  ],
+  "f1-19": [
+    {"n": "Rennen", "quelle": "formula1.com · en.wikipedia.org", "zeilen": [
+      [1, "Max Verstappen", "Red Bull"],
+      [2, "Lewis Hamilton", "Ferrari"],
+      [3, "Kimi Antonelli", "Mercedes"],
+      [4, "Charles Leclerc", "Ferrari"],
+      [5, "Lando Norris", "McLaren"],
+      [6, "George Russell", "Mercedes"],
+      [7, "Liam Lawson", "Racing Bulls"],
+      [8, "Gabriel Bortoleto", "Audi"],
+      [9, "Isack Hadjar", "Red Bull"],
+      [10, "Ryo Hirakawa", "Haas"],
+      [11, "Alexander Albon", "Williams"],
+      [12, "Carlos Sainz", "Williams"],
+      [13, "Oscar Piastri", "McLaren"],
+      [14, "Nico Hülkenberg", "Audi"],
+      [15, "Franco Colapinto", "Alpine"],
+      [16, "Sergio Perez", "Cadillac"],
+      [17, "Pierre Gasly", "Alpine"]
+    ]}
   ]
 }

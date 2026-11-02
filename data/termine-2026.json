@@ -263,7 +263,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "23:00"},
       {"n": "Rennen", "day": "So", "t": "21:00"}
     ]},
-  {"s": "f1", "rd": 19, "name": "Großer Preis von Mexiko", "loc": "Mexiko-Stadt", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
+  {"s": "f1", "rd": 19, "name": "Großer Preis von Mexiko", "loc": "Mexiko-Stadt", "d0": "2026-10-30", "d1": "2026-11-01", "status": "done", "result": "Max Verstappen (Red Bull)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "19:30"},
       {"n": "FP2", "day": "Fr", "t": "23:00"},
@@ -472,7 +472,7 @@
       {"n": "Warm Up", "day": "So", "t": "00:40"},
       {"n": "Rennen", "day": "So", "t": "04:00"}
     ]},
-  {"s": "mgp", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
+  {"s": "mgp", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "done", "result": "Marc Márquez (Ducati)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "03:45"},
       {"n": "Practice", "day": "Fr", "t": "08:00"},
@@ -1177,7 +1177,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "04:40"},
       {"n": "Rennen", "day": "So", "t": "02:15", "zone": "MEZ"}
     ]},
-  {"s": "moto2", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
+  {"s": "moto2", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "done", "result": "David Alonso (Kalex)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "02:50"},
       {"n": "Practice", "day": "Fr", "t": "07:05"},
@@ -1263,7 +1263,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "03:45"},
       {"n": "Rennen", "day": "So", "t": "02:00", "zone": "MESZ"}
     ]},
-  {"s": "moto3", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "up",
+  {"s": "moto3", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "done", "result": "Máximo Quiles (KTM)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "02:00"},
       {"n": "Practice", "day": "Fr", "t": "06:15"},

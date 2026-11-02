@@ -48,5 +48,29 @@
       [19, "Eddie O'Shea", "GRYD Racing"],
       [20, "Ruché Moodley", "CODE Motorsports"]
     ]}
+  ],
+  "moto3-19": [
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "Máximo Quiles", "CFMOTO Gaviota Aspar Team"],
+      [2, "Veda Pratama", "Honda Team Asia"],
+      [3, "Álvaro Carpe", "Red Bull KTM Ajo"],
+      [4, "Hakim Danish", "AEON Credit - MT Helmets - MSI"],
+      [5, "David Almansa", "Liqui Moly Dynavolt Intact GP"],
+      [6, "Joel Esteban", "LEVEL UP - MTA"],
+      [7, "Adrián Fernández", "Leopard Racing"],
+      [8, "David Muñoz", "Liqui Moly Dynavolt Intact GP"],
+      [9, "Brian Uriarte", "Red Bull KTM Ajo"],
+      [10, "Eddie O'Shea", "GRYD Racing"],
+      [11, "Ryusei Yamanaka", "AEON Credit - MT Helmets - MSI"],
+      [12, "Guido Pini", "Leopard Racing"],
+      [13, "Zen Mitani", "Honda Team Asia"],
+      [14, "Adrián Cruces", "CIP Green Power"],
+      [15, "Valentín Perrone", "Red Bull KTM Tech3"],
+      [16, "Casey O'Gorman", "SIC58 Squadra Corse"],
+      [17, "Kiattisak Singhapong", "Rivacold Snipers Team"],
+      [18, "Leo Rammerstorfer", "SIC58 Squadra Corse"],
+      [19, "Ruché Moodley", "CODE Motorsports"],
+      [20, "Marco Morelli", "CFMOTO Gaviota Aspar Team"]
+    ]}
   ]
 }
