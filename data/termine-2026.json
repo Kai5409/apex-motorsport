@@ -484,13 +484,13 @@
     ]},
   {"s": "mgp", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
-      {"n": "FP1", "day": "Fr", "t": "13:45"},
-      {"n": "Practice", "day": "Fr", "t": "18:00"},
-      {"n": "FP2", "day": "Sa", "t": "13:00"},
-      {"n": "Qualifying", "day": "Sa", "t": "13:40"},
-      {"n": "Sprint", "day": "Sa", "t": "18:00"},
-      {"n": "Warm Up", "day": "So", "t": "13:40"},
-      {"n": "Rennen", "day": "So", "t": "18:00"}
+      {"n": "FP1", "day": "Fr", "t": "12:45"},
+      {"n": "Practice", "day": "Fr", "t": "17:00"},
+      {"n": "FP2", "day": "Sa", "t": "12:00"},
+      {"n": "Qualifying", "day": "Sa", "t": "12:40"},
+      {"n": "Sprint", "day": "Sa", "t": "17:00"},
+      {"n": "Warm Up", "day": "So", "t": "12:40"},
+      {"n": "Rennen", "day": "So", "t": "17:00"}
     ]},
   {"s": "mgp", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
     "sessions": [
@@ -570,7 +570,10 @@
     ]},
   {"s": "wec", "rd": 8, "name": "6 Stunden von Monza (Finale)", "loc": "Monza", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
-      {"n": "Hyperpole", "day": "Sa", "t": "14:20"},
+      {"n": "FP1", "day": "Fr", "t": "10:30"},
+      {"n": "FP2", "day": "Fr", "t": "14:30"},
+      {"n": "FP3", "day": "Sa", "t": "10:30"},
+      {"n": "Hyperpole", "day": "Sa", "t": "15:20"},
       {"n": "Rennen (6h)", "day": "So", "t": "11:00"}
     ]},
   {"s": "dtm", "rd": 1, "name": "DTM Spielberg", "loc": "Red Bull Ring", "d0": "2026-04-24", "d1": "2026-04-26", "status": "done", "result": "Sa: Preining · So: Engel",
@@ -1187,11 +1190,11 @@
     ]},
   {"s": "moto2", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
-      {"n": "FP1", "day": "Fr", "t": "12:50"},
-      {"n": "Practice", "day": "Fr", "t": "17:05"},
-      {"n": "FP2", "day": "Sa", "t": "12:15"},
-      {"n": "Qualifying", "day": "Sa", "t": "16:40"},
-      {"n": "Rennen", "day": "So", "t": "16:15"}
+      {"n": "FP1", "day": "Fr", "t": "11:50"},
+      {"n": "Practice", "day": "Fr", "t": "16:05"},
+      {"n": "FP2", "day": "Sa", "t": "11:15"},
+      {"n": "Qualifying", "day": "Sa", "t": "15:45"},
+      {"n": "Rennen", "day": "So", "t": "15:15"}
     ]},
   {"s": "moto2", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
     "sessions": [
@@ -1273,11 +1276,11 @@
     ]},
   {"s": "moto3", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
     "sessions": [
-      {"n": "FP1", "day": "Fr", "t": "12:00"},
-      {"n": "Practice", "day": "Fr", "t": "16:15"},
-      {"n": "FP2", "day": "Sa", "t": "11:30"},
-      {"n": "Qualifying", "day": "Sa", "t": "15:45"},
-      {"n": "Rennen", "day": "So", "t": "15:00"}
+      {"n": "FP1", "day": "Fr", "t": "11:00"},
+      {"n": "Practice", "day": "Fr", "t": "15:15"},
+      {"n": "FP2", "day": "Sa", "t": "10:30"},
+      {"n": "Qualifying", "day": "Sa", "t": "14:50"},
+      {"n": "Rennen", "day": "So", "t": "14:00"}
     ]},
   {"s": "moto3", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
     "sessions": [
