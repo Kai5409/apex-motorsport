@@ -1559,7 +1559,7 @@ const TEILEN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 /* Sieger mit mehreren Fahrern („Buemi/Hartley/Hirakawa“): Umbruch nur nach „/“ oder Leerzeichen, nie mitten im Namen
    (auch nicht am Bindestrich wie in „Al-Attiyah“) */
 function siegerText(e){
-  return String(e.result).split(/(\s+)/).map(w=>w.split("/").map(x=>x.includes("-")?`<span class="nw">${x}</span>`:x).join("/<wbr>")).join("");
+  return String(e.result).split(/(\s+)/).map(w=>w.split("/").map(x=>x.includes("-")?`<span class="nw">${x}</span>`:x).join("&#47;<wbr>")).join("");
 }
 /* Ergebnis offiziell noch vorläufig (vorlaeufig:true am Event): Zusatz hinter dem Sieger */
 function vorlText(e){return e.vorlaeufig===true?' <span class="vorl">vorläufig</span>':"";}
