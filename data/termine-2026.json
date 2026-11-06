@@ -1084,7 +1084,7 @@
       {"n": "Sprint", "day": "So", "t": "01:00"},
       {"n": "Rennen 2", "day": "So", "t": "18:00"}
     ]},
-  {"s": "f1academy", "rd": 6, "name": "Großer Preis von Las Vegas · Finale", "loc": "Las Vegas", "d0": "2026-11-19", "d1": "2026-11-21", "status": "up",
+  {"s": "f1academy", "rd": 6, "name": "Großer Preis von Las Vegas · Finale", "loc": "Las Vegas", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
     "sessions": []},
   {"s": "wsbk", "rd": 1, "name": "WM-Lauf Australien", "loc": "Phillip Island", "d0": "2026-02-20", "d1": "2026-02-22", "status": "done", "result": "Sa: Bulega · So: Bulega",
     "sessions": []},
