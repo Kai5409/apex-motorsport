@@ -204,6 +204,25 @@
     }));
   });
 
+  /* Wertung je Saison: folgt dem Saison-Umschalter (Ereignis „apex-saison“) – Stand-Zeile (.wst), Tabelle (.wquelle,
+     data-saisons = Saisons, die sie zeigen) und Verweis auf eine spätere Saison (.wspaeter, stellt den Umschalter um) */
+  const wert = $(".wert");
+  function wertungZeigen(k) {
+    if (!wert || !$$(".wst", wert).some((x) => x.dataset.saison === k)) return;
+    $$(".wst", wert).forEach((x) => { x.hidden = x.dataset.saison !== k; });
+    $$(".wquelle", wert).forEach((x) => { x.hidden = !String(x.dataset.saisons).split(" ").includes(k); });
+    $$(".wspaeter", wert).forEach((x) => { x.hidden = x.dataset.saison !== k; });
+    festPruefen();
+  }
+  if (wert) {
+    document.addEventListener("apex-saison", (ev) => wertungZeigen(ev.detail));
+    $$(".wspaeter", wert).forEach((a) => a.addEventListener("click", (ev) => {
+      ev.preventDefault(); saisonZeigen(a.dataset.zu); wert.scrollIntoView({ block: "start" });
+    }));
+    const an = $(".saisonseg button[aria-pressed='true']");
+    wertungZeigen(an ? an.dataset.saison : (($$(".wst", wert).find((x) => !x.hidden) || {}).dataset || {}).saison);
+  }
+
   /* Wertung und lange Zeitpläne: erst gekürzt, auf Wunsch alles */
   $$(".more").forEach((b) => {
     const liste = b.previousElementSibling; if (!liste) return;

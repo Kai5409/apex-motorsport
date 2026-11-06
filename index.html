@@ -421,6 +421,9 @@ a.calbtn{line-height:normal;text-decoration:none}
 .std-seg button[aria-pressed="true"]{background:var(--bg3);color:var(--paper)}
 .std-title{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:clamp(30px,7vw,54px);line-height:.9;text-transform:uppercase}
 .std-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.06em;margin:8px 0 4px;text-transform:uppercase}
+/* Wertung einer früheren Saison: zweite Zeile „Saison 2027 noch ohne Wertung“; Verweis auf die Wertung einer späteren Saison */
+.std-tag.std-ohne{margin-top:0}
+.std-spaeter{margin:14px 0 10px}
 .std-sub{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:18px 0 2px}
 .std-row{display:grid;grid-template-columns:30px 1fr auto 52px;gap:12px;align-items:baseline;padding:8px 0;border-top:1px solid var(--rule)}
 .std-row .sp{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
@@ -621,14 +624,15 @@ APEX · Saison <span id="fuss-saison">2026</span> · 19 Serien<span id="datensta
    und geprüft. Fehlt eine Datei oder ist sie fehlerhaft, fehlt nur der zugehörige Teil
    (mit kurzem Hinweis) – der Rest der App läuft normal. Einzelne unlesbare Einträge werden
    übersprungen. */
-const DATEN=["serien","sender","termine-2026","termine-2027","wertungen","regeln","strecken"];
+const DATEN=["serien","sender","termine-2026","termine-2027","wertungen-2026","wertungen-2027","regeln","strecken"];
+/* STAND[jahr][serie]: Wertungen je Saison aus wertungen-<jahr>.json – Saison = Jahr der Termindatei (Formel E Saison 13
+   steht in termine-2027.json und gehört zu wertungen-2027.json, auch wenn sie im Dezember 2026 beginnt) */
 const SERIES={}, EVENTS=[], STAND={}, REGELN={}, KARTE_ORT=new Map(), KARTE_STRECKEN=[];
 const GRUPPEN={};              /* Seriengruppen aus serien.json (Reihenfolge = Reihenfolge in der App) */
-let STAND_SEASON=null;     /* Jahr, zu dem die gepflegten Wertungen gehoeren (aus wertungen.json) */
 let TV_GEPRUEFT="";        /* Prüfdatum der Senderangaben (aus sender.json) */
 const DATEN_FEHLT=new Set();   /* Dateien, die nicht geladen oder nicht gelesen werden konnten */
 const DATEN_LUECKE=new Set();  /* Dateien, aus denen einzelne Einträge übersprungen wurden */
-const STAND_LUECKE=new Set();  /* Serien, deren Wertung übersprungen wurde */
+const STAND_LUECKE=new Set();  /* „<jahr>:<serie>“: Wertungen, die übersprungen wurden */
 let BEREIT=false;
 let DATEN_STAND=0;         /* jüngste Änderung der geladenen Datendateien (Last-Modified), für „Stand …“ in der Fußzeile */
 
@@ -727,14 +731,16 @@ function uebernehmeDaten(d){
       if(luecke("sender",!!SERIES[k]&&istObj(v)&&istText(v.tv)&&(v.tvd==null||istObj(v.tvd)&&Object.values(v.tvd).every(istText)))){
         SERIES[k].tv=v.tv; if(v.tvd)SERIES[k].tvd=v.tvd;}});
   });
-  teil("wertungen",x=>{
-    if(!istObj(x)||!Number.isInteger(x.saison)||!istObj(x.serien))return false;
-    STAND_SEASON=x.saison;
+  DATEN.filter(n=>n.startsWith("wertungen-")).forEach(n=>teil(n,x=>{
+    const j=+n.slice(10);
+    if(!istObj(x)||x.saison!==j||!istObj(x.serien))return false;
+    const W={};
     Object.keys(x.serien).forEach(k=>{const v=x.serien[k];
       const ok=istObj(v)&&istText(v.stand)&&tabelleOK(v.drv)&&(v.drv2==null||tabelleOK(v.drv2))
         &&["quelle","klasse","klasse2","wertung","wertung2","champion","champion2"].every(f=>v[f]==null||istText(v[f]));
-      if(luecke("wertungen",ok))STAND[k]=v; else STAND_LUECKE.add(k);});
-  });
+      if(luecke(n,ok))W[k]=v; else STAND_LUECKE.add(j+":"+k);});
+    STAND[j]=W;
+  }));
   teil("regeln",x=>{
     if(!istObj(x))return false;
     Object.keys(x).forEach(k=>{const v=x[k];
@@ -757,9 +763,9 @@ function uebernehmeDaten(d){
   });
 }
 /* Kurzer Hinweis statt Inhalt, wenn eine Datendatei fehlt oder Einträge übersprungen wurden */
-const DATEN_TEXT={serien:"Die Seriendaten",sender:"Die Senderangaben",wertungen:"Die Wertungen",regeln:"Die Regeltexte"};
+const DATEN_TEXT={serien:"Die Seriendaten",sender:"Die Senderangaben",regeln:"Die Regeltexte"};
 function ladeHinweis(n){
-  const was=n.startsWith("termine-")?"Die Termine "+n.slice(8):DATEN_TEXT[n];
+  const was=n.startsWith("termine-")?"Die Termine "+n.slice(8):n.startsWith("wertungen-")?"Die Wertungen "+n.slice(10):DATEN_TEXT[n];
   if(DATEN_FEHLT.has(n))return `<div class="seasonnote">${was} konnten gerade nicht geladen werden. Bitte die Seite später neu laden.</div>`;
   if(DATEN_LUECKE.has(n))return `<div class="seasonnote">${was} konnten nicht vollständig gelesen werden – einzelne Einträge fehlen.</div>`;
   return "";
@@ -1559,7 +1565,7 @@ const TEILEN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 /* Sieger mit mehreren Fahrern („Buemi/Hartley/Hirakawa“): Umbruch nur nach „/“ oder Leerzeichen, nie mitten im Namen
    (auch nicht am Bindestrich wie in „Al-Attiyah“) */
 function siegerText(e){
-  return String(e.result).split(/(\s+)/).map(w=>w.split("/").map(x=>x.includes("-")?`<span class="nw">${x}</span>`:x).join("/<wbr>")).join("");
+  return String(e.result).split(/(\s+)/).map(w=>w.split("/").map(x=>x.includes("-")?`<span class="nw">${x}</span>`:x).join("&#47;<wbr>")).join("");
 }
 /* Ergebnis offiziell noch vorläufig (vorlaeufig:true am Event): Zusatz hinter dem Sieger */
 function vorlText(e){return e.vorlaeufig===true?' <span class="vorl">vorläufig</span>':"";}
@@ -1576,12 +1582,14 @@ function weZusatz(e){
   if(rennen.length)zeiten=rennen.map(s=>{const ct=convTime(e,s);return `<span class="we-z"><span>${esc(s.n)}</span>${ct.day} ${ct.t}</span>`;}).join("");
   else if(!e.sessions.some(s=>s.t))zeiten=`<span class="we-z we-leer">Zeiten folgen</span>`;
   const seite=S0.seite?`<a class="we-link" href="${ordnerHref(S0.seite+"/")}">Serienseite <span aria-hidden="true">→</span></a>`:"";
-  /* Wertung nur, wenn sie gepflegt ist und zur Saison des Events gehört; eigenständige Rennen zählen nicht zur Wertung */
-  const wert=STAND[e.s]&&!e.sonder&&STAND_SEASON===evYear(e)?`<a class="we-link" href="#v=standings" onclick="event.preventDefault();zuWertung('${e.s}')">Wertung <span aria-hidden="true">→</span></a>`:"";
+  /* Wertung nur, wenn die Saison des Events (Termindatei) für die Serie eine hat – der Verweis öffnet genau diese Saison;
+     eigenständige Rennen zählen nicht zur Wertung */
+  const wert=wertungVon(e.s,+e._jahr)&&!e.sonder?`<a class="we-link" href="#v=standings" onclick="event.preventDefault();zuWertung('${e.s}',${+e._jahr})">Wertung <span aria-hidden="true">→</span></a>`:"";
   return {zeiten,links:seite||wert?`<div class="we-links">${seite}${wert}</div>`:""};
 }
-/* Zur Wertung der Serie (Tab „Wertung“), kurz hervorgehoben */
-function zuWertung(sk){
+/* Zur Wertung der Serie (Tab „Wertung“), kurz hervorgehoben; j: Saison, die der Jahresumschalter dafür zeigen soll */
+function zuWertung(sk,j){
+  if(j!=null&&j!==SEASON&&seasonsAll().includes(j)){SEASON=j;OPEN_RES=null;renderSeason();}
   setView("standings");
   const el=document.getElementById("std-"+sk); if(!el)return;
   ohneAnimation(()=>{try{el.scrollIntoView({behavior:"instant",block:"start"});}catch(err){el.scrollIntoView(true);}});
@@ -1951,57 +1959,113 @@ function stdTab(sk,i){STD_TAB[sk]=i;renderStandings();}
    wie Sieger nur im Wertungs-Tab (mit „Ergebnisse verbergen“ verborgen), nie in Titel oder Meta */
 const POKAL='<svg class="pokal" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.5 1.5h7v3.6a3.5 3.5 0 0 1-2.75 3.42V10.5h1.75a.75.75 0 0 1 .75.75V12h-6.5v-.75a.75.75 0 0 1 .75-.75h1.75V8.52A3.5 3.5 0 0 1 4.5 5.1z"/><path fill="none" stroke="currentColor" stroke-width="1.3" d="M4.5 3H2.4v1.2a2.4 2.4 0 0 0 2.4 2.4M11.5 3h2.1v1.2a2.4 2.4 0 0 1-2.4 2.4"/><rect x="4" y="12.8" width="8" height="1.7" rx=".5" fill="currentColor"/></svg>';
 function championHTML(t){return t==="World Champion"||t==="Champion"?`<span class="champ" data-nosnippet>${POKAL}${t}</span>`:"";}
-/* Serien ohne Meisterschaft (Rallye Dakar): Die Wertung ist das Endergebnis der jüngsten Veranstaltung
-   mit Ergebnisliste (data/ergebnisse/…, Listen „Gesamtwertung …“), ohne Punkte. Läuft die nächste
-   noch oder hat sie noch kein Ergebnis, bleibt die vorige stehen. */
+/* ── Wertungen je Saison (Entscheidung 06.11.2026) ──
+   Der Jahresumschalter wählt die Saison J. Je Serie: a) Wertung der Saison J (wertungen-J.json) wie gepflegt;
+   b) sonst die der jüngsten früheren Saison mit Wertung: „Endstand 2026 · Ort, Datum“ (Formel E „Endstand Saison 12“;
+   läuft jene Saison laut Daten noch, „Stand 2026 · …“), darunter „Saison 2027 noch ohne Wertung“ – Pokal wie in der
+   Saison selbst; c) gar keine: „Wertung noch nicht gepflegt“. Hat eine spätere Saison schon eine Wertung, steht unter
+   dem Block ein Verweis „Wertung 2027 →“ (Formel E „Wertung Saison 13 →“), der den Jahresumschalter umstellt.
+   Fehlt die Datei der Saison J, steht nur der Lade-Hinweis; die anderen Saisons bleiben unberührt. */
+const WJAHRE=DATEN.filter(n=>n.startsWith("wertungen-")).map(n=>+n.slice(10)).sort((a,b)=>a-b);
+function wertungFehlt(j){return DATEN_FEHLT.has("wertungen-"+j);}
+function wertungVon(sk,j){const W=STAND[j];return W&&W[sk]||null;}
+/* Bezeichnung der Saison j (Jahr der Termindatei) einer Serie: das Jahr, bei Serien mit Saisonkennung „S13“ (Formel E)
+   „Saison 12“, „Saison 13“ … (Events ohne Kennung gehören zur Saison davor) */
+function saisonText(sk,j){
+  const e=EVENTS.find(x=>x.s===sk&&/^S\d+$/.test(x.sz||""));
+  return e?"Saison "+(+e.sz.slice(1)+j-(+e._jahr)):String(j);
+}
+function saisonOhne(sk,j){const t=saisonText(sk,j);return (/^Saison /.test(t)?t:"Saison "+t)+" noch ohne Wertung";}
+/* Saison j einer Serie nach den Daten beendet: alle Termine der Termindatei beendet oder abgesagt */
+function saisonBeendet(sk,j){const ev=EVENTS.filter(e=>e.s===sk&&+e._jahr===j);return ev.length>0&&ev.every(e=>e.status==="done"||e.status==="cancel");}
+/* Stand-Zeile einer früheren Saison: „Endstand 2026 · Ort, Datum“ (Teil ab dem Datum bleibt) bzw. „Stand 2026 · …“ */
+function standFrueher(sk,j,stand){
+  if(!saisonBeendet(sk,j))return "Stand "+saisonText(sk,j)+" · "+stand;
+  const teile=String(stand).split(" · "), k=teile.findIndex(x=>/\d{2}\.\d{2}\.\d{4}$/.test(x));
+  return ["Endstand "+saisonText(sk,j)].concat(k>=0?teile.slice(k):[]).join(" · ");
+}
+function stdKopf(sk){const S0=SERIES[sk];return `<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`;}
+/* Verweis auf die Wertung der nächsten späteren Saison, wenn es sie schon gibt */
+function spaeterHTML(sk,J){
+  const hat=j=>!wertungFehlt(j)&&(wertungVon(sk,j)||WERTUNG_AUS_ERGEBNIS.includes(sk)&&ergWertung(sk,j).zustand==="ok");
+  const j=WJAHRE.find(x=>x>J&&hat(x));
+  return j?`<a class="we-link std-spaeter" href="#v=standings" onclick="event.preventDefault();zuWertung('${sk}',${j})">Wertung ${saisonText(sk,j)} <span aria-hidden="true">→</span></a>`:"";
+}
+/* Serien ohne Meisterschaft (Rallye Dakar): Die Wertung der Saison j ist das Endergebnis der jüngsten beendeten
+   Veranstaltung dieser Saison mit Ergebnisliste (data/ergebnisse/…, Listen „Gesamtwertung …“), ohne Punkte.
+   Ergebnis: {zustand:"ok",e,listen} | {zustand:"laedt"} | {zustand:"fehlt"} | {zustand:"keine"} */
 const WERTUNG_AUS_ERGEBNIS=["dakar"];
-function ergWertungHTML(sk){
-  const S0=SERIES[sk], kopf=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`;
-  const evs=EVENTS.filter(e=>e.s===sk&&e.result&&!e.abbruch&&st(e)==="done").sort((a,b)=>a.d1<b.d1?1:a.d1>b.d1?-1:0);
+function ergWertung(sk,j){
+  const evs=EVENTS.filter(e=>e.s===sk&&+e._jahr===j&&e.result&&!e.abbruch&&st(e)==="done").sort((a,b)=>a.d1<b.d1?1:a.d1>b.d1?-1:0);
   for(const e of evs){
     const erg=ergStand(e);
     if(erg.zustand==="offen"||erg.zustand==="laedt"){
       ladeErgebnisse(e).then(()=>{if(currentView==="standings")renderStandings();});
-      return kopf+`<div class="std-tag">Gesamtwertung wird geladen …</div></div>`;
+      return {zustand:"laedt"};
     }
-    if(erg.zustand==="fehlt")return kopf+`<div class="std-tag">Wertung konnte gerade nicht geladen werden</div></div>`;
+    if(erg.zustand==="fehlt")return {zustand:"fehlt"};
     const listen=erg.listen.filter(l=>/^Gesamtwertung( |$)/.test(l.n));
-    if(!listen.length)continue;
-    const tag=`<div class="std-tag">Gesamtwertung · Endergebnis ${esc(e.name)}, ${e.d1.split("-").reverse().join(".")}</div>`;
-    if(verborgen("wertung-"+sk))return kopf+tag+`<button class="aufdecken" onclick="aufdeckenWertung('${sk}')">Wertung anzeigen</button></div>`;
-    const tab=STD_TAB[sk]>0&&STD_TAB[sk]<listen.length?STD_TAB[sk]:0, l=listen[tab];
-    const seg=listen.length>1?`<div class="std-seg" role="group" aria-label="Wertung wählen">`+listen.map((x,j)=>
-      `<button type="button" aria-pressed="${tab===j}" onclick="stdTab('${sk}',${j})">${esc(x.n.replace(/^Gesamtwertung\s*/,"")||x.n)}</button>`).join("")+`</div>`:"";
-    let t=`<div class="std-sub">${esc(l.n)}</div>`;
-    l.zeilen.forEach(z=>{
-      t+=`<div class="std-row ${z[0]===1?'lead':''}"><span class="sp">${z[0]}</span>`+
-        `<span class="std-nm">${esc(z[1])}${z[2]?`<span class="tm">${esc(z[2])}</span>`:''}</span>`+
-        `<span class="std-wins"></span><span class="std-pts"></span></div>`;
-    });
-    return kopf+tag+seg+t+`</div>`;
+    if(listen.length)return {zustand:"ok",e,listen};
   }
-  return kopf+`<div class="std-tag">Wertung noch nicht gepflegt</div></div>`;
+  return {zustand:"keine"};
+}
+/* Läuft die Veranstaltung der Saison J noch oder hat sie noch kein Ergebnis, steht die der jüngsten früheren Saison
+   da („Ergebnis 2026 · …“, darunter „Saison 2027 noch ohne Wertung“) */
+function ergWertungHTML(sk,J){
+  const kopf=stdKopf(sk), spaeter=spaeterHTML(sk,J);
+  let q=ergWertung(sk,J), frueher=null;
+  if(q.zustand==="keine")for(const j of WJAHRE.filter(x=>x<J).reverse()){const r=ergWertung(sk,j);if(r.zustand!=="keine"){q=r;frueher=j;break;}}
+  if(q.zustand==="laedt")return kopf+`<div class="std-tag">Gesamtwertung wird geladen …</div></div>`;
+  if(q.zustand==="fehlt")return kopf+`<div class="std-tag">Wertung konnte gerade nicht geladen werden</div></div>`;
+  if(q.zustand==="keine")return kopf+`<div class="std-tag">Wertung noch nicht gepflegt</div>${spaeter}</div>`;
+  const {e,listen}=q, datum=e.d1.split("-").reverse().join(".");
+  const tag=frueher!==null
+    ?`<div class="std-tag">Ergebnis ${saisonText(sk,frueher)} · ${esc(e.name)}, ${datum}</div><div class="std-tag std-ohne">${saisonOhne(sk,J)}</div>`
+    :`<div class="std-tag">Gesamtwertung · Endergebnis ${esc(e.name)}, ${datum}</div>`;
+  if(verborgen("wertung-"+sk))return kopf+tag+`<button class="aufdecken" onclick="aufdeckenWertung('${sk}')">Wertung anzeigen</button>${spaeter}</div>`;
+  const tab=STD_TAB[sk]>0&&STD_TAB[sk]<listen.length?STD_TAB[sk]:0, l=listen[tab];
+  const seg=listen.length>1?`<div class="std-seg" role="group" aria-label="Wertung wählen">`+listen.map((x,j)=>
+    `<button type="button" aria-pressed="${tab===j}" onclick="stdTab('${sk}',${j})">${esc(x.n.replace(/^Gesamtwertung\s*/,"")||x.n)}</button>`).join("")+`</div>`:"";
+  let t=`<div class="std-sub">${esc(l.n)}</div>`;
+  l.zeilen.forEach(z=>{
+    t+=`<div class="std-row ${z[0]===1?'lead':''}"><span class="sp">${z[0]}</span>`+
+      `<span class="std-nm">${esc(z[1])}${z[2]?`<span class="tm">${esc(z[2])}</span>`:''}</span>`+
+      `<span class="std-wins"></span><span class="std-pts"></span></div>`;
+  });
+  return kopf+tag+seg+t+spaeter+`</div>`;
+}
+/* Quelle der Wertung einer Serie in der Saison J (Regel a–c oben): {j,D,frueher} | {luecke} | {ohne} | null */
+function wertungQuelle(sk,J){
+  const D=wertungVon(sk,J); if(D)return {j:J,D,frueher:false};
+  if(STAND_LUECKE.has(J+":"+sk))return {luecke:true};
+  for(const j of WJAHRE.filter(x=>x<J).reverse()){
+    /* frühere Saison nicht lesbar: nur „noch ohne Wertung“, kein Lade-Hinweis in dieser Saison */
+    if(wertungFehlt(j)||STAND_LUECKE.has(j+":"+sk))return {ohne:true};
+    const W=wertungVon(sk,j); if(W)return {j,D:W,frueher:true};
+  }
+  return null;
 }
 function renderStandings(){
   const host=document.getElementById("view-standings");
-  if(DATEN_FEHLT.has("wertungen")){host.innerHTML=ladeHinweis("serien")+ladeHinweis("wertungen");return;}
-  if(SEASON!==null&&SEASON!==STAND_SEASON){
-    host.innerHTML=`<div class="seasonnote">Die Saison ${SEASON} hat noch nicht begonnen – Wertungen erscheinen nach den ersten Rennen. Die aktuellen Stände findest du unter <button class="linkbtn" onclick="SEASON=${STAND_SEASON};renderSeason();rerender();">${STAND_SEASON}</button>.</div>`;
-    return;
-  }
-  let html=snavHTML("standings")+ladeHinweis("serien")+ladeHinweis("wertungen"), any=false;
+  if(SEASON===null)SEASON=defaultSeason();
+  const J=SEASON;
+  if(wertungFehlt(J)){host.innerHTML=ladeHinweis("serien")+ladeHinweis("wertungen-"+J);return;}
+  let html=snavHTML("standings")+ladeHinweis("serien")+ladeHinweis("wertungen-"+J), any=false;
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
-    const S0=SERIES[sk], D=STAND[sk];
-    if(!D&&WERTUNG_AUS_ERGEBNIS.includes(sk)){html+=ergWertungHTML(sk);any=true;return;}
-    if(!D){
-      html+=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
-        `<div class="std-tag">${STAND_LUECKE.has(sk)?"Wertung konnte gerade nicht geladen werden":"Wertung noch nicht gepflegt"}</div></div>`;
+    const q=wertungQuelle(sk,J);
+    if(!(q&&q.D)&&WERTUNG_AUS_ERGEBNIS.includes(sk)){html+=ergWertungHTML(sk,J);any=true;return;}
+    const spaeter=spaeterHTML(sk,J);
+    if(!q||!q.D){
+      html+=stdKopf(sk)+
+        `<div class="std-tag">${q&&q.luecke?"Wertung konnte gerade nicht geladen werden":q&&q.ohne?saisonOhne(sk,J):"Wertung noch nicht gepflegt"}</div>${spaeter}</div>`;
       return;
     }
     any=true;
+    const D=q.D;
+    const tag=q.frueher?`<div class="std-tag">${standFrueher(sk,q.j,D.stand)}</div><div class="std-tag std-ohne">${saisonOhne(sk,J)}</div>`
+      :`<div class="std-tag">Stand ${D.stand}</div>`;
     if(verborgen("wertung-"+sk)){
-      html+=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
-        `<div class="std-tag">Stand ${D.stand}</div><button class="aufdecken" onclick="aufdeckenWertung('${sk}')">Wertung anzeigen</button></div>`;
+      html+=stdKopf(sk)+tag+`<button class="aufdecken" onclick="aufdeckenWertung('${sk}')">Wertung anzeigen</button>${spaeter}</div>`;
       return;
     }
     /* Eine Tabelle je Klasse: drv (+ optional klasse), drv2 (+ klasse2) - z. B. WEC Hypercar & LMGT3.
@@ -2019,10 +2083,9 @@ function renderStandings(){
     const zwei=!!(D.drv2&&D.drv2.length), tab=zwei&&STD_TAB[sk]===1?1:0;
     const seg=zwei?`<div class="std-seg" role="group" aria-label="Wertung wählen">`+stdLabels(D).map((l,j)=>
       `<button type="button" aria-pressed="${tab===j}" onclick="stdTab('${sk}',${j})">${esc(l)}</button>`).join("")+`</div>`:"";
-    html+=`<div class="std-block" id="std-${sk}"><div class="std-title" style="color:${S0.color}">${serienName(sk)}</div>`+
-      `<div class="std-tag">Stand ${D.stand}</div>`+ seg +
+    html+=stdKopf(sk)+tag+ seg +
       (tab===1? tabelle(D.drv2,D.klasse2,D.wertung2,D.champion2) : tabelle(D.drv,D.klasse,D.wertung,D.champion));
-    html+=`</div>`;
+    html+=spaeter+`</div>`;
   });});
   if(!any && !html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
   host.innerHTML=html; snavMessen(); snavBeimScrollen();

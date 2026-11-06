@@ -310,6 +310,10 @@ h2.sec .abg[hidden]{display:none}
 .js .wtab:not(.on){display:none}
 .js .wtab .tsub,html:not(.js) .wtab:nth-child(2) .tsub{margin-top:0}
 .sp .wert:not(.auf) .wreveal{display:inline-block}
+/* Wertung je Saison: Verweis auf die Wertung einer späteren Saison (nur mit JavaScript) */
+.wspaeter{display:inline-block;margin-top:14px;font-size:13.5px;color:var(--paper);text-decoration-color:var(--faint);text-underline-offset:3px}
+.wspaeter:hover{text-decoration-color:var(--paper)}
+.wspaeter[hidden]{display:none}
 
 /* Sender */
 .seg{display:inline-flex;border:1px solid var(--rule);border-radius:8px;padding:3px;gap:3px}
