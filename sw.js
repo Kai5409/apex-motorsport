@@ -1,11 +1,11 @@
 /* APEX Service Worker — Netzwerk zuerst (frische Daten), Cache als Offline-Fallback */
-const CACHE = "apex-v71";
+const CACHE = "apex-v72";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png",
               "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon-32.png",
               "./favicon-16.png", "./apex-2026.ics",
               "./data/serien.json", "./data/sender.json",
               "./data/termine-2026.json", "./data/termine-2027.json",
-              "./data/wertungen.json", "./data/regeln.json",
+              "./data/wertungen-2026.json", "./data/wertungen-2027.json", "./data/regeln.json",
               "./data/strecken.json",
               "./fonts/anton-latin-400-normal.woff2",
               "./fonts/ibm-plex-mono-latin-400-normal.woff2",
