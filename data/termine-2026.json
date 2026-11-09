@@ -462,7 +462,7 @@
       {"n": "Warm Up", "day": "So", "t": "04:40"},
       {"n": "Rennen", "day": "So", "t": "09:00"}
     ]},
-  {"s": "mgp", "rd": 18, "name": "Großer Preis von Australien", "loc": "Phillip Island", "d0": "2026-10-23", "d1": "2026-10-25", "status": "up",
+  {"s": "mgp", "rd": 18, "name": "Großer Preis von Australien", "loc": "Phillip Island", "d0": "2026-10-23", "d1": "2026-10-25", "status": "done", "result": "Marc Márquez (Ducati) · nur Sprint, Rennen abgesagt",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "01:45"},
       {"n": "Practice", "day": "Fr", "t": "06:00"},
@@ -470,7 +470,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "01:50"},
       {"n": "Sprint", "day": "Sa", "t": "06:00"},
       {"n": "Warm Up", "day": "So", "t": "00:40"},
-      {"n": "Rennen", "day": "So", "t": "04:00"}
+      {"n": "Rennen", "day": "So", "t": "04:00", "abgesagt": "Wetter"}
     ]},
   {"s": "mgp", "rd": 19, "name": "Großer Preis von Malaysia", "loc": "Sepang", "d0": "2026-10-30", "d1": "2026-11-01", "status": "done", "result": "Marc Márquez (Ducati)",
     "sessions": [
