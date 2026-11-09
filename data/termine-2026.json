@@ -271,7 +271,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "22:00"},
       {"n": "Rennen", "day": "So", "t": "21:00"}
     ]},
-  {"s": "f1", "rd": 20, "name": "Großer Preis von São Paulo", "loc": "Interlagos", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
+  {"s": "f1", "rd": 20, "name": "Großer Preis von São Paulo", "loc": "Interlagos", "d0": "2026-11-06", "d1": "2026-11-08", "status": "done", "result": "Lando Norris (McLaren)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "16:30"},
       {"n": "FP2", "day": "Fr", "t": "20:00"},
@@ -482,7 +482,7 @@
       {"n": "Warm Up", "day": "So", "t": "03:40"},
       {"n": "Rennen", "day": "So", "t": "08:00"}
     ]},
-  {"s": "mgp", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
+  {"s": "mgp", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "done", "result": "Marco Bezzecchi (Aprilia)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "12:45"},
       {"n": "Practice", "day": "Fr", "t": "17:00"},
@@ -568,7 +568,7 @@
       {"n": "Hyperpole", "day": "Sa", "t": "16:00"},
       {"n": "Rennen (6h)", "day": "So", "t": "12:00"}
     ]},
-  {"s": "wec", "rd": 8, "name": "6 Stunden von Monza (Finale)", "loc": "Monza", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
+  {"s": "wec", "rd": 8, "name": "6 Stunden von Monza (Finale)", "loc": "Monza", "d0": "2026-11-06", "d1": "2026-11-08", "status": "done", "result": "Cadillac #38 (Bamber/Bourdais/Aitken)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "10:30"},
       {"n": "FP2", "day": "Fr", "t": "14:30"},
@@ -1188,7 +1188,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "06:40"},
       {"n": "Rennen", "day": "So", "t": "06:15"}
     ]},
-  {"s": "moto2", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
+  {"s": "moto2", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "done", "result": "Daniel Holgado (Kalex)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "11:50"},
       {"n": "Practice", "day": "Fr", "t": "16:05"},
@@ -1274,7 +1274,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "05:45"},
       {"n": "Rennen", "day": "So", "t": "05:00"}
     ]},
-  {"s": "moto3", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "up",
+  {"s": "moto3", "rd": 20, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-06", "d1": "2026-11-08", "status": "done", "result": "David Almansa (KTM)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "11:00"},
       {"n": "Practice", "day": "Fr", "t": "15:15"},

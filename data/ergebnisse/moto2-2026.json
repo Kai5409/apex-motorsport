@@ -78,5 +78,32 @@
       [21, "Zonta van den Goorbergh", "Momoven Idrofoglia RW Racing Team"],
       [22, "Matteo Ferrari", "ITALJET Gresini Moto2"]
     ]}
+  ],
+  "moto2-20": [
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+        [1, "Daniel Holgado", "CFMOTO Power Electronics Aspar Team"],
+        [2, "Iván Ortolá", "QJMOTOR - MSI"],
+        [3, "Álex Escrig", "KLINT Racing Team"],
+        [4, "David Alonso", "CFMOTO Power Electronics Aspar Team"],
+        [5, "Daniel Muñoz", "Italtrans Racing Team"],
+        [6, "Manuel González", "LIQUI MOLY Dynavolt Intact GP"],
+        [7, "Senna Agius", "LIQUI MOLY Dynavolt Intact GP"],
+        [8, "José Antonio Rueda", "Red Bull KTM Ajo"],
+        [9, "Filip Salač", "OnlyFans American Racing Team"],
+        [10, "Celestino Vietti", "BETA Tools SpeedRS Team"],
+        [11, "Alonso López", "ITALJET Gresini Moto2"],
+        [12, "Adrián Huertas", "Italtrans Racing Team"],
+        [13, "Joe Roberts", "OnlyFans American Racing Team"],
+        [14, "Ayumu Sasaki", "Momoven Idrofoglia RW Racing Team"],
+        [15, "Barry Baltus", "REDS Fantic Racing"],
+        [16, "Luca Lunetta", "BETA Tools SpeedRS Team"],
+        [17, "Xabi Zurutuza", "KLINT Racing Team"],
+        [18, "Tony Arbolino", "REDS Fantic Racing"],
+        [19, "Alberto Ferrandez", "BLU CRU Pramac Yamaha Moto2"],
+        [20, "Ángel Piqueras", "QJMOTOR - MSI"],
+        [21, "Deniz Öncü", "ELF Marc VDS Racing Team"],
+        [22, "Mario Aji", "Idemitsu Honda Team Asia"],
+        [23, "Matteo Ferrari", "ITALJET Gresini Moto2"]
+    ]}
   ]
 }

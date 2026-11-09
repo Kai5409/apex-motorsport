@@ -757,5 +757,41 @@
       [15, "Iker Lecuona", "BK8 Gresini Racing MotoGP"],
       [16, "Jack Miller", "Prima Pramac Yamaha MotoGP"]
     ]}
+  ],
+  "mgp-20": [
+    {"n": "Sprint", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+        [1, "Marc Márquez", "Ducati Lenovo Team"],
+        [2, "Fabio Di Giannantonio", "Pertamina Enduro VR46 Racing Team"],
+        [3, "Jorge Martín", "Aprilia Racing"],
+        [4, "Raúl Fernández", "SuperFile Trackhouse MotoGP Team"],
+        [5, "Johann Zarco", "Castrol Honda LCR"],
+        [6, "Pedro Acosta", "Red Bull KTM Factory Racing"],
+        [7, "Ai Ogura", "SuperFile Trackhouse MotoGP Team"],
+        [8, "Enea Bastianini", "Red Bull KTM Tech3"],
+        [9, "Iker Lecuona", "BK8 Gresini Racing MotoGP"],
+        [10, "Diogo Moreira", "Pro Honda LCR"],
+        [11, "Fermín Aldeguer", "BK8 Gresini Racing MotoGP"],
+        [12, "Brad Binder", "Red Bull KTM Factory Racing"],
+        [13, "Luca Marini", "Honda HRC Castrol"],
+        [14, "Franco Morbidelli", "Pertamina Enduro VR46 Racing Team"],
+        [15, "Maverick Viñales", "Red Bull KTM Tech3"],
+        [16, "Jake Dixon", "Honda HRC Castrol"]
+    ]},
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+        [1, "Marco Bezzecchi", "Aprilia Racing"],
+        [2, "Marc Márquez", "Ducati Lenovo Team"],
+        [3, "Raúl Fernández", "SuperFile Trackhouse MotoGP Team"],
+        [4, "Ai Ogura", "SuperFile Trackhouse MotoGP Team"],
+        [5, "Enea Bastianini", "Red Bull KTM Tech3"],
+        [6, "Pedro Acosta", "Red Bull KTM Factory Racing"],
+        [7, "Jorge Martín", "Aprilia Racing"],
+        [8, "Fabio Di Giannantonio", "Pertamina Enduro VR46 Racing Team"],
+        [9, "Johann Zarco", "Castrol Honda LCR"],
+        [10, "Iker Lecuona", "BK8 Gresini Racing MotoGP"],
+        [11, "Franco Morbidelli", "Pertamina Enduro VR46 Racing Team"],
+        [12, "Fermín Aldeguer", "BK8 Gresini Racing MotoGP"],
+        [13, "Maverick Viñales", "Red Bull KTM Tech3"],
+        [14, "Jake Dixon", "Honda HRC Castrol"]
+    ]}
   ]
 }
