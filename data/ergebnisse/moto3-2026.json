@@ -72,5 +72,31 @@
       [19, "Ruché Moodley", "CODE Motorsports"],
       [20, "Marco Morelli", "CFMOTO Gaviota Aspar Team"]
     ]}
+  ],
+  "moto3-20": [
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+        [1, "David Almansa", "Liqui Moly Dynavolt Intact GP"],
+        [2, "Adrián Fernández", "Leopard Racing"],
+        [3, "Máximo Quiles", "CFMOTO Gaviota Aspar Team"],
+        [4, "Veda Pratama", "Honda Team Asia"],
+        [5, "Álvaro Carpe", "Red Bull KTM Ajo"],
+        [6, "Joel Kelso", "GRYD Racing"],
+        [7, "Hakim Danish", "AEON Credit - MT Helmets - MSI"],
+        [8, "David Muñoz", "Liqui Moly Dynavolt Intact GP"],
+        [9, "Ryusei Yamanaka", "AEON Credit - MT Helmets - MSI"],
+        [10, "Scott Ogden", "CIP Green Power"],
+        [11, "Guido Pini", "Leopard Racing"],
+        [12, "Rico Salmela", "Red Bull KTM Tech3"],
+        [13, "Zen Mitani", "Honda Team Asia"],
+        [14, "Brian Uriarte", "Red Bull KTM Ajo"],
+        [15, "Marco Morelli", "CFMOTO Gaviota Aspar Team"],
+        [16, "Valentín Perrone", "Red Bull KTM Tech3"],
+        [17, "Jesús Ríos", "Rivacold Snipers Team"],
+        [18, "Casey O'Gorman", "SIC58 Squadra Corse"],
+        [19, "Kiattisak Singhapong", "Rivacold Snipers Team"],
+        [20, "Leo Rammerstorfer", "SIC58 Squadra Corse"],
+        [21, "Ruché Moodley", "CODE Motorsports"],
+        [22, "Kgopotso Mononyane", "CODE Motorsports"]
+    ]}
   ]
 }
