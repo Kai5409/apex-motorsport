@@ -275,11 +275,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .wluecke{position:relative;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 12px;margin-top:8px;padding:12px 0 11px;border-bottom:1px dashed var(--rule-strong);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .wluecke::before{content:"";position:absolute;left:-24.5px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--bg);border:1.5px solid var(--faint)}
 .wluecke+.heute{margin-top:22px}
+/* Kommendes leeres Wochenende: im Filter ausgeblendete Serien, die dort fahren – eigene Zeile, ohne Großbuchstaben */
+.wl-aus{flex-basis:100%;text-transform:none;letter-spacing:.04em}
 /* Handy: Tag und Uhrzeit vorne in fester Breite, danach „Event — Session“ und die Serie */
 .jetzt .onair-ev{display:grid;grid-template-columns:8.2ch 4px minmax(0,1fr);column-gap:9px;align-items:start;width:100%;line-height:1.45}
 .onair-zt{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;color:var(--paper);white-space:nowrap;padding-top:1px}
 .jetzt .onair-bar{align-self:stretch;width:4px;height:auto;min-height:13px;margin:3px 0}
 .jetzt .onair-tx{min-width:0}
+/* Rennfreies Wochenende (Live-Info unter der Heute-Linie) und Events ohne Zeiten: breitere vordere Spalte –
+   Wochentag und Datum, darunter die Uhrzeit bzw. der Zeitraum des Events; rechts neben der Überschrift der Abstand */
+.jetzt .onair-ev.breit{grid-template-columns:10.5ch 4px minmax(0,1fr)}
+.onair-zt small{display:block;font-size:11px;color:var(--muted);font-weight:400}
+.onair-lab.mit-abstand{width:100%}
+.onair-rel{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;color:var(--paper);border:1px solid var(--rule-strong);border-radius:999px;padding:1px 9px}
 
 .ev{border-top:1px solid var(--rule)} .ev:first-child{border-top:none}
 .ev-row{display:flex;align-items:center;gap:13px;padding:9px 0;cursor:pointer}
@@ -1250,24 +1258,44 @@ function wochenendZeitraum(){
    in diesen Zeitraum fällt – sonst zeigte die Seite ein anderes Wochenende */
 function imWochenende(liste){
   const z=wochenendZeitraum(); if(!z)return false;
-  return liste.some(x=>x.inst!=null?x.inst>=z.von&&x.inst<z.bis:x.e.d0<=z.d1&&x.e.d1>=z.d0);
+  return liste.some(x=>x.inst!=null&&!x.ev?x.inst>=z.von&&x.inst<z.bis:x.e.d0<=z.d1&&x.e.d1>=z.d0);
 }
 /* Live-Info: in der Zeitleiste (#jetzt) – im Block „Dieses Wochenende“ ohne eigenen Verweis auf die Wochenendseite
-   (der Block hat unten „Alle Sessions im Zeitplan“), sonst unter der Heute-Linie */
+   (der Block hat unten „Alle Sessions im Zeitplan“), sonst unter der Heute-Linie (rennfreies Wochenende: mit Datum und Abstand) */
 function renderOnAir(){
-  const el=document.getElementById("jetzt"); if(el)el.innerHTML=onAirHTML(true,!!(el.closest&&el.closest(".we-block")));
+  const el=document.getElementById("jetzt"); if(!el)return;
+  const imBlock=!!(el.closest&&el.closest(".we-block"));
+  el.innerHTML=onAirHTML(true,imBlock,!imBlock);
+}
+/* Zeitraum eines Events ohne Zeiten: „20.–22.11.“, eintägig „Sa 21.11.“ (umbruch: über den Monatswechsel zweizeilig) */
+function evZeitraum(e,umbruch){
+  const a=pd(e.d0),b=pd(e.d1),p=n=>String(n).padStart(2,"0");
+  if(e.d0===e.d1)return `${DOWf[a.getDay()]} ${p(a.getDate())}.${p(a.getMonth()+1)}.`;
+  if(a.getMonth()===b.getMonth())return `${p(a.getDate())}.–${p(b.getDate())}.${p(b.getMonth()+1)}.`;
+  return `${p(a.getDate())}.${p(a.getMonth()+1)}.–${umbruch?"<br>":""}${p(b.getDate())}.${p(b.getMonth()+1)}.`;
+}
+/* Abstand eines Zeitpunkts zu heute in Kalendertagen (deutsche Zeit) – zählt nicht live herunter */
+function abstandHTML(inst){
+  let n;
+  try{const f=formatierer("sv-SE",{timeZone:"Europe/Berlin",year:"numeric",month:"2-digit",day:"2-digit"}),
+    tag=t=>{const x=f.format(new Date(t)).split("-").map(Number);return Date.UTC(x[0],x[1]-1,x[2]);};
+    n=Math.round((tag(inst)-tag(NOW().getTime()))/864e5);}catch(err){return "";}
+  return `<span class="onair-rel">${n<=0?"heute":n===1?"morgen":"in "+n+" Tagen"}</span>`;
 }
 /* Ein Eintrag: Link zum Event in der Zeitleiste (zuSession). Schmal (Handy): Tag und Uhrzeit vorne in fester Breite,
    danach „Event — Session“ und die Serie. Breit wie bisher: „Event — Session“ mit Serie und Zeit, laufende
-   Wochenenden mit Event, Serie und nächster Session. s = Session (null: Wochenende läuft ohne weitere Session) */
-function onAirEintrag(e,s,live,schmal){
-  const S0=SERIES[e.s], ct=s&&convTime(e,s), i=s?e.sessions.indexOf(s):null;
+   Wochenenden mit Event, Serie und nächster Session. s = Session (null: Wochenende läuft ohne weitere Session bzw.,
+   wenn nicht live, kommendes Event ohne Zeiten: Zeitraum vorne, „<Serie> · Zeiten folgen“).
+   breit: vordere Spalte breiter; frei (rennfreies Wochenende): Wochentag und Datum, darunter die Uhrzeit */
+function onAirEintrag(e,s,live,schmal,breit,frei){
+  const S0=SERIES[e.s], ct=s&&convTime(e,s), i=s?e.sessions.indexOf(s):null, ev=!live&&!s;
   let zt="", nm, meta;
-  if(schmal){zt=s?`${ct.day} ${ct.t}`:"läuft"; nm=s?`${e.name} — ${s.n}`:e.name; meta=S0.short+(s?"":" · Wochenende läuft");}
+  if(schmal){zt=ev?evZeitraum(e,true):s?(frei?`${ct.day} ${ct.dt}<small>${ct.t}</small>`:`${ct.day} ${ct.t}`):"läuft"; nm=s?`${e.name} — ${s.n}`:e.name; meta=S0.short+(ev?" · Zeiten folgen":s?"":" · Wochenende läuft");}
   else if(live){nm=e.name; meta=s?`${S0.short} · ${s.n} ${ct.t}`:`${S0.short} · Wochenende läuft`;}
+  else if(ev){nm=e.name; meta=`${S0.short} · ${evZeitraum(e)} · Zeiten folgen`;}
   else{nm=`${e.name} — ${s.n}`; meta=`${S0.short} · ${ct.day} ${ct.t}`;}
   const bar=`<span class="onair-bar" style="background:${S0.color}"></span>`;
-  return `<a class="onair-ev" href="#ev=${e.s}-${e.rd}${e.sz?"-"+e.sz:""}" onclick="event.preventDefault();zuSession('${e.s}','${e.rd}','${e.sz||""}',${i})">`+
+  return `<a class="onair-ev${breit?" breit":""}" href="#ev=${e.s}-${e.rd}${e.sz?"-"+e.sz:""}" onclick="event.preventDefault();zuSession('${e.s}','${e.rd}','${e.sz||""}',${i})">`+
     (schmal?`<span class="onair-zt">${zt}</span>${bar}<span class="onair-tx">`:bar)+
     `<span class="nm">${nm}</span> <span class="meta">${meta}</span>${schmal?"</span>":""}</a>`;
 }
@@ -1288,10 +1316,12 @@ function onAirStand(){
     /* nach der nächsten Session (wie „Als Nächstes“); Wochenenden ohne weitere Session danach */
     o={live:true,liste:live.map(e=>{const nx=nextSessOf(e);return {e,s:nx?nx.s:null,inst:nx?nx.inst:null};})
       .sort((a,b)=>(a.inst==null)-(b.inst==null)||(a.inst!=null&&b.inst!=null?a.inst-b.inst:0))};
-  } else if(NEXT_SESS){
+  } else {
     /* Nicht nur die eine naechste Session zeigen, sondern alle Serien,
-       deren naechste Session im selben Zeitfenster liegt (72 Stunden) -
-       damit an einem Wochenende mit mehreren Serien auch alle auftauchen. */
+       deren naechster Eintrag im selben Zeitfenster liegt (72 Stunden) -
+       damit an einem Wochenende mit mehreren Serien auch alle auftauchen.
+       Je Serie das frühere von: nächste Session mit Uhrzeit, nächstes kommendes Event ohne eine einzige
+       Session mit Uhrzeit (ev; Zeitpunkt d0 00:00 deutscher Zeit) */
     const FENSTER = 72*3600*1000;
     const proSerie = [];
     Object.keys(SERIES).forEach(sk=>{
@@ -1299,27 +1329,35 @@ function onAirStand(){
       let best=null;
       EVENTS.filter(e=>e.s===sk && e.status!=="cancel").forEach(e=>{
         const nx=nextSessOf(e);
-        if(nx && (!best || nx.inst<best.inst)) best={inst:nx.inst,e,s:nx.s};
+        if(nx){ if(!best || nx.inst<best.inst) best={inst:nx.inst,e,s:nx.s}; }
+        else if(!e.sessions.some(x=>x.t) && endW(e)>=now){
+          const [y,m,d]=e.d0.split("-").map(Number), inst=wallToInstant(y,m,d,0,0,"Europe/Berlin").getTime();
+          if(!best || inst<best.inst) best={inst,e,s:null,ev:true};
+        }
       });
       if(best) proSerie.push(best);
     });
-    proSerie.sort((a,b)=>a.inst-b.inst);
-    const grenze = proSerie[0].inst + FENSTER;
-    o={live:false,liste:proSerie.filter(x=>x.inst<=grenze)};
-  } else o={live:false,liste:[]};
+    if(proSerie.length){
+      proSerie.sort((a,b)=>a.inst-b.inst);
+      const grenze = proSerie[0].inst + FENSTER;
+      o={live:false,liste:proSerie.filter(x=>x.inst<=grenze)};
+    } else o={live:false,liste:[]};
+  }
   o.auswahl=auswahl; o.wochenende=o.liste.length>0&&imWochenende(o.liste);
   ONAIR=o; Promise.resolve().then(()=>{ONAIR=null;});
   return o;
 }
-function onAirHTML(schmal,ohneLink){
+/* frei: Live-Info unter der Heute-Linie (rennfreies Wochenende) – Einträge mit Datum, Abstand neben der Überschrift */
+function onAirHTML(schmal,ohneLink,frei){
   const o=onAirStand();
   if(o.live){
     let html=`<span class="onair-lab live"><span class="pulse"></span>Jetzt live</span>`;
     o.liste.forEach(x=>{ html+=onAirEintrag(x.e,x.s,true,schmal); });
     return html+(o.wochenende&&!ohneLink?wochenendLink():"");
   } else if(o.liste.length){
-    let html=`<span class="onair-lab soon">${o.liste.length>1?"Als Nächstes":"Nächste Session"}</span>`;
-    o.liste.forEach(x=>{ html+=onAirEintrag(x.e,x.s,false,schmal); });
+    const nurEv=o.liste.every(x=>x.ev), breit=!!frei||o.liste.some(x=>x.ev);
+    let html=`<span class="onair-lab soon${frei?" mit-abstand":""}">${o.liste.length>1?"Als Nächstes":nurEv?"Nächstes Event":"Nächste Session"}${frei?abstandHTML(o.liste[0].inst):""}</span>`;
+    o.liste.forEach(x=>{ html+=onAirEintrag(x.e,x.s,false,schmal,breit,frei); });
     return html+(o.wochenende&&!ohneLink?wochenendLink():"");
   } else {
     const fehlt=DATEN.some(n=>n.startsWith("termine-")&&DATEN_FEHLT.has(n));
@@ -1618,7 +1656,7 @@ function eventHTML(e,imBlock,letzt,von,bis){
 /* mitJetzt=false: die Live-Info steht im Block „Dieses Wochenende“ */
 function heuteHTML(mitJetzt){
   const lab=NOW().toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"}).replace(".,",",");
-  return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div>`+(mitJetzt===false?"":`<div class="jetzt" id="jetzt">${onAirHTML(true)}</div>`);
+  return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div>`+(mitJetzt===false?"":`<div class="jetzt" id="jetzt">${onAirHTML(true,false,true)}</div>`);
 }
 /* Events des Wochenendes, das die Seite „Dieses Wochenende“ gerade zeigt (Donnerstag bis Sonntag, wochenendZeitraum) */
 function wochenendListe(list){
@@ -1666,14 +1704,36 @@ function gruppeHTML(g){
   return `<div class="wgrp ${z}"><div class="wg-kopf"><span class="wg-tit">${spanneHTML(von,bis)}</span><span class="wg-anz">${g.length} Event${g.length===1?"":"s"}</span></div>`+
     g.map(e=>eventHTML(e,false,false,von,bis)).join("")+`</div>`;
 }
-/* Rennfreie Wochenenden: aufeinanderfolgende leere Wochenenden als eine schmale Zeile („2 Wochenenden ohne Rennen · 17.–25. Okt.“) */
+/* Rennfreie Wochenenden: aufeinanderfolgende leere Wochenenden als eine schmale Zeile („2 Wochenenden ohne Rennen · 17.–25. Okt.“).
+   Kommende leere Wochenenden (Sonntag heute oder später), an denen im Filter ausgeblendete Serien fahren, stehen einzeln
+   mit dem Hinweis „ausgeblendet: MotoGP, Moto2, Moto3“ (ab vier Serien „ausgeblendet: N Serien“) */
 const MONK=["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."];
 function montag(d0){const d=pd(d0);d.setDate(d.getDate()-(d.getDay()+6)%7);return d;}
-function lueckeHTML(sams){
-  if(!sams.length)return "";
+/* Ausgeblendete Serien mit mindestens einem nicht abgesagten Event in der Woche dieses Samstags (Montag bis Sonntag,
+   nach dem ersten Tag des Events wie wochenGruppen), in der Reihenfolge von serien.json */
+function ausgeblendetAm(sa){
+  const mo=new Date(sa); mo.setDate(mo.getDate()-5); const k=mo.getTime();
+  const da=new Set(EVENTS.filter(e=>!ACTIVE.has(e.s)&&SERIES[e.s]&&e.status!=="cancel"&&montag(e.d0).getTime()===k).map(e=>e.s));
+  return Object.keys(SERIES).filter(sk=>da.has(sk));
+}
+function lueckeZeile(sams,aus){
   const a=sams[0], b=new Date(sams[sams.length-1]); b.setDate(b.getDate()+1);
   const zr=a.getMonth()===b.getMonth()?`${a.getDate()}.–${b.getDate()}. ${MONK[b.getMonth()]}`:`${a.getDate()}. ${MONK[a.getMonth()]} – ${b.getDate()}. ${MONK[b.getMonth()]}`;
-  return `<div class="wluecke"><span>${sams.length===1?"Ohne Rennen":sams.length+" Wochenenden ohne Rennen"}</span><span>${zr}</span></div>`;
+  return `<div class="wluecke"><span>${sams.length===1?"Ohne Rennen":sams.length+" Wochenenden ohne Rennen"}</span><span>${zr}</span>`+
+    (aus.length?`<span class="wl-aus">ausgeblendet: ${aus.length>=4?aus.length+" Serien":aus.map(sk=>esc(SERIES[sk].short)).join(", ")}</span>`:"")+`</div>`;
+}
+function lueckeHTML(sams){
+  if(!sams.length)return "";
+  const heute=NOW(); heute.setHours(0,0,0,0);
+  let html="", zusammen=[];
+  const raus=()=>{if(zusammen.length)html+=lueckeZeile(zusammen,[]); zusammen=[];};
+  sams.forEach(sa=>{
+    const so=new Date(sa); so.setDate(so.getDate()+1);
+    const aus=so>=heute?ausgeblendetAm(sa):[];
+    if(aus.length){raus(); html+=lueckeZeile([sa],aus);} else zusammen.push(sa);
+  });
+  raus();
+  return html;
 }
 function monthGroupsHTML(list,heute){
   const groups={};

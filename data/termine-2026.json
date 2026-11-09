@@ -1047,9 +1047,19 @@
   {"s": "f2", "rd": 12, "name": "Großer Preis von Aserbaidschan", "loc": "Baku", "d0": "2026-09-24", "d1": "2026-09-26", "status": "done", "result": "Fr: Alex Dunne (Rodin Motorsport) · Sa: Rafael Câmara (Invicta Racing)",
     "sessions": []},
   {"s": "f2", "rd": 13, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2026-11-27", "d1": "2026-11-29", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "12:00"},
+      {"n": "Qualifying", "day": "Fr", "t": "16:00"},
+      {"n": "Sprint", "day": "Sa", "t": "17:40"},
+      {"n": "Rennen", "day": "So", "t": "13:00"}
+    ]},
   {"s": "f2", "rd": 14, "name": "Großer Preis von Abu Dhabi · Finale", "loc": "Yas Marina", "d0": "2026-12-04", "d1": "2026-12-06", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "08:05"},
+      {"n": "Qualifying", "day": "Fr", "t": "12:00"},
+      {"n": "Sprint", "day": "Sa", "t": "13:15"},
+      {"n": "Rennen", "day": "So", "t": "10:15"}
+    ]},
   {"s": "f3", "rd": 1, "name": "Großer Preis von Australien", "loc": "Albert Park", "d0": "2026-03-06", "d1": "2026-03-08", "status": "done", "result": "Ugo Ugochukwu (Campos Racing)",
     "sessions": []},
   {"s": "f3", "rd": 2, "name": "Großer Preis von Monaco", "loc": "Monaco", "d0": "2026-06-04", "d1": "2026-06-07", "status": "done", "result": "Brando Badoer (Rodin Motorsport)",
@@ -1085,7 +1095,12 @@
       {"n": "Rennen 2", "day": "So", "t": "18:00"}
     ]},
   {"s": "f1academy", "rd": 6, "name": "Großer Preis von Las Vegas · Finale", "loc": "Las Vegas", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
-    "sessions": []},
+    "sessions": [
+      {"n": "Freies Training", "day": "Fr", "t": "03:00"},
+      {"n": "Qualifying", "day": "Fr", "t": "06:30"},
+      {"n": "Sprint", "day": "Sa", "t": "03:15"},
+      {"n": "Rennen", "day": "So", "t": "01:20"}
+    ]},
   {"s": "wsbk", "rd": 1, "name": "WM-Lauf Australien", "loc": "Phillip Island", "d0": "2026-02-20", "d1": "2026-02-22", "status": "done", "result": "Sa: Bulega · So: Bulega",
     "sessions": []},
   {"s": "wsbk", "rd": 2, "name": "WM-Lauf Portugal", "loc": "Portimão", "d0": "2026-03-27", "d1": "2026-03-29", "status": "done", "result": "Sa: Bulega · So: Bulega",
