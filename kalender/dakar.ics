@@ -18,12 +18,12 @@ DESCRIPTION:APEX · Rallye Dakar · Lauf 1 · Saudi-Arabien — ganztägig\, Ses
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-dakar1-2027-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
-DTSTART;VALUE=DATE:20270101
-DTEND;VALUE=DATE:20270116
+DTSTAMP:20261109T200724Z
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270124
 TRANSP:TRANSPARENT
 SUMMARY:Dakar · 49. Rallye Dakar
-LOCATION:Saudi-Arabien
-DESCRIPTION:APEX · Rallye Dakar · Lauf 1 · Saudi-Arabien — ganztägig\, Sessionzeiten liegen nicht vor
+LOCATION:Portugal / Marokko
+DESCRIPTION:APEX · Rallye Dakar · Lauf 1 · Portugal / Marokko — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 END:VCALENDAR
