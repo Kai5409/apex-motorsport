@@ -121,6 +121,8 @@
     "sessions": []},
   {"s": "wrc", "rd": 15, "sz": "2027", "prov": true, "name": "Rallye Saudi-Arabien · Finale", "loc": "Saudi-Arabien", "d0": "2027-11-25", "d1": "2027-11-28", "status": "up",
     "sessions": []},
+  {"s": "mgp", "rd": 90, "sz": "2027", "sonder": "test", "name": "Valencia-Test", "loc": "Valencia", "d0": "2026-12-01", "d1": "2026-12-01", "status": "up",
+    "sessions": []},
   {"s": "mgp", "rd": 1, "sz": "2027", "prov": true, "name": "Großer Preis von Thailand", "loc": "Buriram", "d0": "2027-03-05", "d1": "2027-03-07", "status": "up",
     "sessions": []},
   {"s": "mgp", "rd": 2, "sz": "2027", "prov": true, "name": "Großer Preis von Katar", "loc": "Lusail", "d0": "2027-03-12", "d1": "2027-03-14", "status": "up",

@@ -876,7 +876,7 @@ function defaultSeason(){
   return ys.find(v=>v>y)||ys[ys.length-1]||y;
 }
 function inSeason(e){ if(SEASON===null)SEASON=defaultSeason(); return evYear(e)===SEASON; }
-function seasonIsProv(y){const ev=EVENTS.filter(e=>evYear(e)===y);return ev.length>0&&ev.every(e=>e.prov);}
+function seasonIsProv(y){const ev=EVENTS.filter(e=>evYear(e)===y&&!istTest(e));return ev.length>0&&ev.every(e=>e.prov);}
 function renderSeason(){
   const el=document.getElementById("season"); if(!el)return;
   if(SEASON===null)SEASON=defaultSeason();
@@ -1057,8 +1057,10 @@ function st(e){if(e.status==="cancel")return"cancel";const now=NOW();
   if(now>endW(e))return"done";if(now>=startW(e)&&now<=endW(e))return"live";
   if(e.status==="done")return"done";return e._next?"next":"up";}
 const ABBRUCH="Rennen abgebrochen – nicht gewertet";
-/* Eigenständige Rennen ohne Meisterschaftswertung (z. B. 24h Nürburgring unter NLS) */
-function sonderText(e){return "Eigenständiges Rennen – zählt nicht zur "+SERIES[e.s].short+"-Wertung";}
+/* Eigenständige Rennen ohne Meisterschaftswertung (z. B. 24h Nürburgring unter NLS); Testfahrten (sonder "test"):
+   kein Lauf, keine Wertung, kein Sieger – ohne Sessionzeiten ganztägig */
+function istTest(e){return e.sonder==="test";}
+function sonderText(e){return istTest(e)?"Test – keine Wertung":"Eigenständiges Rennen – zählt nicht zur "+SERIES[e.s].short+"-Wertung";}
 function isRaceName(n){return /^Rennen|^Sprint$|^Rennen \(|^Power Stage/.test(n);}
 function actEvents(){return EVENTS.filter(e=>ACTIVE.has(e.s));}
 
@@ -1285,14 +1287,15 @@ function abstandHTML(inst){
 /* Ein Eintrag: Link zum Event in der Zeitleiste (zuSession). Schmal (Handy): Tag und Uhrzeit vorne in fester Breite,
    danach „Event — Session“ und die Serie. Breit wie bisher: „Event — Session“ mit Serie und Zeit, laufende
    Wochenenden mit Event, Serie und nächster Session. s = Session (null: Wochenende läuft ohne weitere Session bzw.,
-   wenn nicht live, kommendes Event ohne Zeiten: Zeitraum vorne, „<Serie> · Zeiten folgen“).
+   wenn nicht live, kommendes Event ohne Zeiten: Zeitraum vorne, „<Serie> · Zeiten folgen“, ganztägige Tests
+   „<Serie> · Test · ganztägig“).
    breit: vordere Spalte breiter; frei (rennfreies Wochenende): Wochentag und Datum, darunter die Uhrzeit */
 function onAirEintrag(e,s,live,schmal,breit,frei){
   const S0=SERIES[e.s], ct=s&&convTime(e,s), i=s?e.sessions.indexOf(s):null, ev=!live&&!s;
   let zt="", nm, meta;
-  if(schmal){zt=ev?evZeitraum(e,true):s?(frei?`${ct.day} ${ct.dt}<small>${ct.t}</small>`:`${ct.day} ${ct.t}`):"läuft"; nm=s?`${e.name} — ${s.n}`:e.name; meta=S0.short+(ev?" · Zeiten folgen":s?"":" · Wochenende läuft");}
-  else if(live){nm=e.name; meta=s?`${S0.short} · ${s.n} ${ct.t}`:`${S0.short} · Wochenende läuft`;}
-  else if(ev){nm=e.name; meta=`${S0.short} · ${evZeitraum(e)} · Zeiten folgen`;}
+  if(schmal){zt=ev?evZeitraum(e,true):s?(frei?`${ct.day} ${ct.dt}<small>${ct.t}</small>`:`${ct.day} ${ct.t}`):"läuft"; nm=s?`${e.name} — ${s.n}`:e.name; meta=S0.short+(!s&&istTest(e)?" · Test · ganztägig":ev?" · Zeiten folgen":s?"":" · Wochenende läuft");}
+  else if(live){nm=e.name; meta=s?`${S0.short} · ${s.n} ${ct.t}`:`${S0.short} · ${istTest(e)?"Test · ganztägig":"Wochenende läuft"}`;}
+  else if(ev){nm=e.name; meta=`${S0.short} · ${evZeitraum(e)} · ${istTest(e)?"Test · ganztägig":"Zeiten folgen"}`;}
   else{nm=`${e.name} — ${s.n}`; meta=`${S0.short} · ${ct.day} ${ct.t}`;}
   const bar=`<span class="onair-bar" style="background:${S0.color}"></span>`;
   return `<a class="onair-ev${breit?" breit":""}" href="#ev=${e.s}-${e.rd}${e.sz?"-"+e.sz:""}" onclick="event.preventDefault();zuSession('${e.s}','${e.rd}','${e.sz||""}',${i})">`+
@@ -1523,10 +1526,12 @@ function buildSessions(e,evId,status){
   out+=trackInfoHTML(e);
   const hasTimes=e.sessions.some(s=>s.t);
   /* Ganzes Wochenende: fertige Kalenderdatei je Event (kalender/termine/, wie auf den Serienseiten; abgesagte Events haben keine) */
-  if(hasTimes&&e.status!=="cancel"){
-    out+=`<a class="calbtn" href="kalender/termine/${ergKey(e)}.ics">＋ Ganzes Wochenende in Kalender</a>`;
+  /* Tests haben immer eine Datei – ohne Sessionzeiten einen Ganztagstermin */
+  if((hasTimes||istTest(e))&&e.status!=="cancel"){
+    out+=`<a class="calbtn" href="kalender/termine/${ergKey(e)}.ics">${istTest(e)?"＋ Test in Kalender":"＋ Ganzes Wochenende in Kalender"}</a>`;
   }
-  if(e.prov) out+=`<div class="sess-flat prov-note">${hasTimes?"Weitere Sessionzeiten folgen":"Sessionzeiten folgen"}, sobald der offizielle Zeitplan vorliegt.</div>`;
+  if(istTest(e)&&!hasTimes) out+=`<div class="sess-flat prov-note">Ganztägig – Uhrzeiten nicht veröffentlicht</div>`;
+  else if(e.prov) out+=`<div class="sess-flat prov-note">${hasTimes?"Weitere Sessionzeiten folgen":"Sessionzeiten folgen"}, sobald der offizielle Zeitplan vorliegt.</div>`;
   /* Ergebnislisten gibt es nur für gewertete Events mit Sieger */
   const fertig=status==="done"&&!!e.result;
   const erg=fertig?ergStand(e):{zustand:"keine",listen:[]};
@@ -1619,7 +1624,7 @@ function weZusatz(e){
   const S0=SERIES[e.s], rennen=e.sessions.filter(s=>s.t&&isRaceName(s.n));
   let zeiten="";
   if(rennen.length)zeiten=rennen.map(s=>{const ct=convTime(e,s);return `<span class="we-z"><span>${esc(s.n)}</span>${ct.day} ${ct.t}</span>`;}).join("");
-  else if(!e.sessions.some(s=>s.t))zeiten=`<span class="we-z we-leer">Zeiten folgen</span>`;
+  else if(!e.sessions.some(s=>s.t))zeiten=`<span class="we-z we-leer">${istTest(e)?"Ganztägig":"Zeiten folgen"}</span>`;
   const seite=S0.seite?`<a class="we-link" href="${ordnerHref(S0.seite+"/")}">Serienseite <span aria-hidden="true">→</span></a>`:"";
   /* Wertung nur, wenn die Saison des Events (Termindatei) für die Serie eine hat – der Verweis öffnet genau diese Saison;
      eigenständige Rennen zählen nicht zur Wertung */
@@ -1647,7 +1652,7 @@ function eventHTML(e,imBlock,letzt,von,bis){
     `<div><div class="ev" id="ev-${evId}"><div class="ev-row" onclick="toggleEv('${evId}')">`+
       `<span class="ev-bar" style="background:${S0.color}"></span>`+
       `<span class="ev-body"><span class="ev-name">${e.name}</span>`+
-      `<span class="ev-sub">${tag}<span class="ser" style="color:${S0.color}">${S0.name}</span> · ${e.sonder?`<span class="sonder">${sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}${z.zeiten?`<span class="ev-zeiten-m">${z.zeiten}</span>`:""}</span>`+
+      `<span class="ev-sub">${tag}<span class="ser" style="color:${S0.color}">${S0.name}</span> · ${e.sonder?`<span class="sonder">${istTest(e)?"Test":sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}${z.zeiten?`<span class="ev-zeiten-m">${z.zeiten}</span>`:""}</span>`+
       (z.zeiten?`<span class="ev-zeiten">${z.zeiten}</span>`:"")+
       `<button class="ev-teilen" aria-label="Teilen" title="Teilen" onclick="event.stopPropagation();teilen('${e.s}','${e.rd}','${e.sz||""}')">${TEILEN_SVG}</button>`+
       `<button class="ev-toggle" type="button" aria-expanded="false" aria-label="Sessions anzeigen">+</button></div>`+links+
@@ -1869,7 +1874,7 @@ function renderSeries(){
       /* Runden mit Sieger klappen ihr Ergebnis auf */
       const erg=status==="done"&&!!e.result, id=evDomId(e), auf=erg&&SER_OFFEN.has(ergKey(e));
       const klick=erg?` id="sr-${id}" role="button" tabindex="0" aria-expanded="${auf}" aria-controls="se-${id}" onclick="serErgebnis('${e.s}','${e.rd}','${e.sz||""}')" onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();serErgebnis('${e.s}','${e.rd}','${e.sz||""}');}"`:"";
-      html+=`<div class="ser-round${erg?" clk":""}${auf?" offen":""}"${klick}><span class="no">${e.sonder||String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}${e.sonder?` · ${sonderText(e)}`:""}</span></span>${right}<span class="sch">${erg?"▶":""}</span></div>`;
+      html+=`<div class="ser-round${erg?" clk":""}${auf?" offen":""}"${klick}><span class="no">${istTest(e)?"T":e.sonder||String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}${e.sonder?` · ${sonderText(e)}`:""}</span></span>${right}<span class="sch">${erg?"▶":""}</span></div>`;
       if(erg)html+=`<div class="ser-erg" id="se-${id}"${auf?"":" hidden"}>${auf?serPanel(e):""}</div>`;});
     html+=`</div>`;});});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
@@ -2349,7 +2354,7 @@ function ortLD(e){
 function injectEventSchema(){
   try{
     const BASIS="https://apexkalender.de/";
-    const list=EVENTS.filter(e=>e.status!=="cancel").map((e,i)=>{
+    const list=EVENTS.filter(e=>e.status!=="cancel"&&!istTest(e)).map((e,i)=>{
       const S0=SERIES[e.s];
       const von=new Date(e.d0), bis=new Date(e.d1||e.d0);
       const fmt=d=>`${String(d.getDate()).padStart(2,"0")}.${String(d.getMonth()+1).padStart(2,"0")}.${d.getFullYear()}`;
