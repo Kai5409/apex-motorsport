@@ -718,6 +718,25 @@
       [17, "Maverick Viñales", "Red Bull KTM Tech3"]
     ]}
   ],
+  "mgp-18": [
+    {"n": "Sprint", "quelle": "motogp.com · crash.net", "zeilen": [
+      [1, "Marc Márquez", "Ducati Lenovo Team"],
+      [2, "Álex Márquez", "BK8 Gresini Racing MotoGP"],
+      [3, "Fabio Di Giannantonio", "Pertamina Enduro VR46 Racing Team"],
+      [4, "Marco Bezzecchi", "Aprilia Racing"],
+      [5, "Pedro Acosta", "Red Bull KTM Factory Racing"],
+      [6, "Brad Binder", "Red Bull KTM Factory Racing"],
+      [7, "Jack Miller", "Prima Pramac Yamaha MotoGP"],
+      [8, "Diogo Moreira", "Pro Honda LCR"],
+      [9, "Iker Lecuona", "BK8 Gresini Racing MotoGP"],
+      [10, "Fabio Quartararo", "Monster Energy Yamaha MotoGP Team"],
+      [11, "Enea Bastianini", "Red Bull KTM Tech3"],
+      [12, "Álex Rins", "Monster Energy Yamaha MotoGP Team"],
+      [13, "Ai Ogura", "SuperFile Trackhouse MotoGP Team"],
+      [14, "Franco Morbidelli", "Pertamina Enduro VR46 Racing Team"],
+      [15, "Augusto Fernández", "Prima Pramac Yamaha MotoGP"]
+    ]}
+  ],
   "mgp-19": [
     {"n": "Sprint", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
       [1, "Pedro Acosta", "Red Bull KTM Factory Racing"],
