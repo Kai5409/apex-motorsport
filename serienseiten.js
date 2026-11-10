@@ -142,7 +142,22 @@
   const veil = $("#veil"), abo = $("#abo");
   let aboVon = null;   /* Knopf oder Textlink, der die Auswahl geöffnet hat (Fokus kehrt dorthin zurück) */
   function aboZu() { if (veil && veil.classList.contains("on")) { veil.classList.remove("on"); const z = aboVon && aboVon.isConnected ? aboVon : abo; if (z) z.focus(); } }
-  function aboAuf(von) { aboVon = von; veil.classList.add("on"); const o = $(".opt", veil); if (o) o.focus(); }
+  /* Umschalter „Alle Sessions | Ohne Trainings“: tauscht alle vier Wege und den Text gemeinsam (data-ohne = Ziel bzw. Text
+     ohne Trainings). Beim Öffnen immer „Alle Sessions“, die Wahl wird nicht gespeichert. */
+  const umKnoepfe = veil ? $$(".um [data-um]", veil) : [], umZiele = veil ? $$("[data-ohne]", veil) : [];
+  umZiele.forEach((x) => { x.dataset.alle = x.id === "abotext" ? x.textContent : x.id === "copyabo" ? x.dataset.url : x.getAttribute("href"); });
+  function umfang(ohne) {
+    umKnoepfe.forEach((b) => { const an = (b.dataset.um === "ohne") === ohne; b.setAttribute("aria-checked", an ? "true" : "false"); b.tabIndex = an ? 0 : -1; });
+    umZiele.forEach((x) => { const w = ohne ? x.dataset.ohne : x.dataset.alle; if (x.id === "abotext") x.textContent = w; else if (x.id === "copyabo") x.dataset.url = w; else x.setAttribute("href", w); });
+  }
+  umKnoepfe.forEach((b) => {
+    b.addEventListener("click", () => umfang(b.dataset.um === "ohne"));
+    b.addEventListener("keydown", (ev) => {
+      if (!/^Arrow/.test(ev.key)) return;
+      ev.preventDefault(); const ziel = umKnoepfe.find((x) => x !== b); if (ziel) { umfang(ziel.dataset.um === "ohne"); ziel.focus(); }
+    });
+  });
+  function aboAuf(von) { aboVon = von; if (umKnoepfe.length) umfang(false); veil.classList.add("on"); const o = $(".opt", veil); if (o) o.focus(); }
   if (veil && abo) {
     abo.addEventListener("click", (ev) => { ev.preventDefault(); aboAuf(abo); });
     /* Textlink im Hinweis „Kalender … noch nicht veröffentlicht“ (auch in nachgeladenen Karten): dieselbe Auswahl */

@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:APEX · Rallye Dakar (ohne Trainings)
+X-WR-CALDESC:Rallye Dakar — Rennen\, Sprints und Qualifying in deutscher Zeit
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-dakar1-ganztag@apex-motorsport
+DTSTAMP:20260929T043445Z
+DTSTART;VALUE=DATE:20260103
+DTEND;VALUE=DATE:20260118
+TRANSP:TRANSPARENT
+SUMMARY:Dakar · 48. Rallye Dakar
+LOCATION:Saudi-Arabien
+DESCRIPTION:APEX · Rallye Dakar · Lauf 1 · Saudi-Arabien — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-dakar1-2027-ganztag@apex-motorsport
+DTSTAMP:20261109T200724Z
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270124
+TRANSP:TRANSPARENT
+SUMMARY:Dakar · 49. Rallye Dakar
+LOCATION:Portugal / Marokko
+DESCRIPTION:APEX · Rallye Dakar · Lauf 1 · Portugal / Marokko — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+END:VCALENDAR

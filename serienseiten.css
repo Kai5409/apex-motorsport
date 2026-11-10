@@ -357,6 +357,12 @@ footer a:hover{color:var(--paper)}
 .sheet p{color:var(--muted);font-size:14px;margin:8px 0 16px}
 .opt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:var(--bg);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;margin:0 0 8px;cursor:pointer;font-size:15px;text-align:left;color:var(--paper);text-decoration:none}
 .opt:hover{border-color:var(--muted)}
+/* Fenster „Mit Kalender verbinden“: Umschalter „Alle Sessions | Ohne Trainings“ und Hinweis zum Wechsel (nur mit JavaScript) */
+.um{display:grid;grid-template-columns:1fr 1fr;gap:3px;border:1px solid var(--rule);border-radius:10px;padding:3px;margin:0 0 14px;background:var(--bg)}
+.um button{border:0;background:none;border-radius:7px;padding:9px 6px;font-size:14px;color:var(--muted);cursor:pointer}
+.um button[aria-checked="true"]{background:var(--serie);color:var(--serie-text);font-weight:600}
+.sheet .umhinweis{font-size:12.5px;line-height:1.45;border-top:1px solid var(--rule);margin:12px 0 0;padding-top:10px}
+html:not(.js) .um,html:not(.js) .umhinweis{display:none}
 .opt span{color:var(--muted);font-size:13px}
 .close{width:100%;background:none;border:0;color:var(--muted);padding:12px;margin-top:4px;cursor:pointer;font-size:14px}
 
@@ -768,3 +774,35 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .nt i{font:normal 600 12px var(--mono);margin-right:4px}
 .maplink{display:inline-block;margin:14px 0 0;color:var(--gold);font-size:14.5px;text-underline-offset:3px}
 @media (max-width:560px){.nn small{display:block;margin:2px 0 0}}
+
+/* Seite „Nicht gefunden“ (404.html): Kopf mit Logo groß in der Mitte, Design-Knopf links, „Alle Serien“ rechts */
+.wrap.f404{max-width:900px}
+.top.mitte{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 0 4px}
+.top.mitte .dsw{margin:0}
+.top.mitte .logo img{height:clamp(78px,20vw,110px);margin:0}
+.top.mitte .re{display:flex;justify-content:flex-end}
+.f404 .held{display:block;padding:34px 0 40px}
+.f404 .code{display:flex;align-items:center;gap:10px;margin:0;font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.f404 .code::before{content:"";width:18px;height:3px;background:var(--gold-fl)}
+.f404 h1{font-size:clamp(38px,8vw,64px);line-height:1;letter-spacing:.01em;margin:12px 0 14px;text-wrap:balance}
+.f404 .text{color:var(--paper2);max-width:56ch;margin:0}
+.f404 .pfad{display:inline-block;margin:12px 0 0;font:12.5px/1.4 var(--mono);color:var(--muted);background:var(--bg2);border:1px solid var(--rule);border-radius:4px;padding:3px 8px;overflow-wrap:anywhere;max-width:100%}
+.f404 .pfad[hidden]{display:none}
+.ziele{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:26px}
+@media (min-width:720px){.ziele{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ziel{display:flex;flex-direction:column;gap:4px;padding:14px;border:1px solid var(--rule);border-radius:8px;text-decoration:none;min-width:0;transition:border-color .15s}
+.ziel:hover{border-color:var(--muted)}
+.ziel b{font:400 19px/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em;overflow-wrap:anywhere}
+.ziel span{font-size:13px;line-height:1.4;color:var(--muted)}
+.fserien{margin-top:30px}
+.fserien h2{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.fserien .gr{display:grid;grid-template-columns:140px minmax(0,1fr);gap:8px 14px;align-items:start;margin-bottom:12px}
+.fserien .gn{font:12px/28px var(--mono);color:var(--muted)}
+.fserien .chips{gap:6px}
+.fserien .chip{gap:7px;background:none;padding:4px 11px 4px 9px;font-size:13px;line-height:18px}
+.fserien .chip i{width:8px;height:8px}
+.fserien .chip:hover{border-color:var(--serie)}
+@media (max-width:560px){.fserien .gr{grid-template-columns:1fr;gap:6px}.fserien .gn{line-height:1.2}}
+.f404 .fuss{margin:34px 0 0;padding-top:14px;border-top:1px solid var(--rule);font-size:12.5px;line-height:1.6;color:var(--muted)}
+.f404 .fuss a{text-underline-offset:3px}
+.f404 .fuss a:hover{color:var(--paper)}
