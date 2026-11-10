@@ -357,6 +357,12 @@ footer a:hover{color:var(--paper)}
 .sheet p{color:var(--muted);font-size:14px;margin:8px 0 16px}
 .opt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:var(--bg);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;margin:0 0 8px;cursor:pointer;font-size:15px;text-align:left;color:var(--paper);text-decoration:none}
 .opt:hover{border-color:var(--muted)}
+/* Fenster „Mit Kalender verbinden“: Umschalter „Alle Sessions | Ohne Trainings“ und Hinweis zum Wechsel (nur mit JavaScript) */
+.um{display:grid;grid-template-columns:1fr 1fr;gap:3px;border:1px solid var(--rule);border-radius:10px;padding:3px;margin:0 0 14px;background:var(--bg)}
+.um button{border:0;background:none;border-radius:7px;padding:9px 6px;font-size:14px;color:var(--muted);cursor:pointer}
+.um button[aria-checked="true"]{background:var(--serie);color:var(--serie-text);font-weight:600}
+.sheet .umhinweis{font-size:12.5px;line-height:1.45;border-top:1px solid var(--rule);margin:12px 0 0;padding-top:10px}
+html:not(.js) .um,html:not(.js) .umhinweis{display:none}
 .opt span{color:var(--muted);font-size:13px}
 .close{width:100%;background:none;border:0;color:var(--muted);padding:12px;margin-top:4px;cursor:pointer;font-size:14px}
 

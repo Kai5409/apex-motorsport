@@ -444,11 +444,13 @@
 <div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="h-abo">
   <div class="sheet">
     <h3 id="h-abo">Mit Kalender verbinden</h3>
-    <p>Alle MotoGP-Sessions erscheinen in deinem Kalender und aktualisieren sich automatisch, wenn sich Startzeiten ändern.</p>
-    <a class="opt" href="webcal://apexkalender.de/kalender/mgp.ics">iPhone / Apple Kalender <span>öffnet den Kalender</span></a>
-    <a class="opt" href="https://calendar.google.com/calendar/render?cid=webcal%3A%2F%2Fapexkalender.de%2Fkalender%2Fmgp.ics" target="_blank" rel="noopener noreferrer">Google Kalender <span>im Browser</span></a>
-    <a class="opt" href="https://outlook.live.com/calendar/0/addfromweb?url=https%3A%2F%2Fapexkalender.de%2Fkalender%2Fmgp.ics&amp;name=APEX%20%C2%B7%20MotoGP" target="_blank" rel="noopener noreferrer">Outlook <span>im Browser</span></a>
-    <button class="opt" type="button" id="copyabo" data-url="https://apexkalender.de/kalender/mgp.ics">Link kopieren <span>für andere Kalender</span></button>
+    <p id="abotext" data-ohne="Alle MotoGP-Sessions außer den Trainings erscheinen in deinem Kalender und aktualisieren sich automatisch, wenn sich Startzeiten ändern.">Alle MotoGP-Sessions erscheinen in deinem Kalender und aktualisieren sich automatisch, wenn sich Startzeiten ändern.</p>
+    <div class="um" role="radiogroup" aria-label="Umfang des Kalenders"><button type="button" role="radio" aria-checked="true" data-um="alle">Alle Sessions</button><button type="button" role="radio" aria-checked="false" tabindex="-1" data-um="ohne">Ohne Trainings</button></div>
+    <a class="opt" href="webcal://apexkalender.de/kalender/mgp.ics" data-ohne="webcal://apexkalender.de/kalender/mgp-ohne-training.ics">iPhone / Apple Kalender <span>öffnet den Kalender</span></a>
+    <a class="opt" href="https://calendar.google.com/calendar/render?cid=webcal%3A%2F%2Fapexkalender.de%2Fkalender%2Fmgp.ics" data-ohne="https://calendar.google.com/calendar/render?cid=webcal%3A%2F%2Fapexkalender.de%2Fkalender%2Fmgp-ohne-training.ics" target="_blank" rel="noopener noreferrer">Google Kalender <span>im Browser</span></a>
+    <a class="opt" href="https://outlook.live.com/calendar/0/addfromweb?url=https%3A%2F%2Fapexkalender.de%2Fkalender%2Fmgp.ics&amp;name=APEX%20%C2%B7%20MotoGP" data-ohne="https://outlook.live.com/calendar/0/addfromweb?url=https%3A%2F%2Fapexkalender.de%2Fkalender%2Fmgp-ohne-training.ics&amp;name=APEX%20%C2%B7%20MotoGP%20(ohne%20Trainings)" target="_blank" rel="noopener noreferrer">Outlook <span>im Browser</span></a>
+    <button class="opt" type="button" id="copyabo" data-url="https://apexkalender.de/kalender/mgp.ics" data-ohne="https://apexkalender.de/kalender/mgp-ohne-training.ics">Link kopieren <span>für andere Kalender</span></button>
+    <p class="umhinweis">Schon verbunden? Für den Wechsel den bisherigen APEX-Kalender in der Kalender-App entfernen, sonst stehen Termine doppelt.</p>
     <button class="close" type="button" id="closeabo">Schließen</button>
   </div>
 </div>
