@@ -266,4 +266,94 @@ SUMMARY:IndyCar · Grand Prix von Detroit
 LOCATION:Detroit
 DESCRIPTION:APEX · IndyCar · Lauf 8 · Detroit — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar9-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270613
+DTEND;VALUE=DATE:20270614
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Gateway 500
+LOCATION:Gateway
+DESCRIPTION:APEX · IndyCar · Lauf 9 · Gateway — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar10-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270627
+DTEND;VALUE=DATE:20270628
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Road America
+LOCATION:Road America
+DESCRIPTION:APEX · IndyCar · Lauf 10 · Road America — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar11-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270704
+DTEND;VALUE=DATE:20270705
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Indy 200 Mid-Ohio
+LOCATION:Mid-Ohio
+DESCRIPTION:APEX · IndyCar · Lauf 11 · Mid-Ohio — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar12-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270718
+DTEND;VALUE=DATE:20270719
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Barcelona
+LOCATION:Barcelona
+DESCRIPTION:APEX · IndyCar · Lauf 12 · Barcelona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar13-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270801
+DTEND;VALUE=DATE:20270802
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Portland
+LOCATION:Portland
+DESCRIPTION:APEX · IndyCar · Lauf 13 · Portland — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar14-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270815
+DTEND;VALUE=DATE:20270816
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Indy Markham
+LOCATION:Markham
+DESCRIPTION:APEX · IndyCar · Lauf 14 · Markham — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar15-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270828
+DTEND;VALUE=DATE:20270829
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Milwaukee Mile · Rennen 1
+LOCATION:Milwaukee
+DESCRIPTION:APEX · IndyCar · Lauf 15 · Milwaukee — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar16-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270829
+DTEND;VALUE=DATE:20270830
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Milwaukee Mile · Rennen 2
+LOCATION:Milwaukee
+DESCRIPTION:APEX · IndyCar · Lauf 16 · Milwaukee — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-indycar17-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270905
+DTEND;VALUE=DATE:20270906
+TRANSP:TRANSPARENT
+SUMMARY:IndyCar · Grand Prix von Monterey · Finale
+LOCATION:Laguna Seca
+DESCRIPTION:APEX · IndyCar · Lauf 17 · Laguna Seca — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR

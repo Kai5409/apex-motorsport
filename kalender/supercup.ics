@@ -86,4 +86,84 @@ SUMMARY:Supercup · Großer Preis von Italien · Finale
 LOCATION:Monza
 DESCRIPTION:APEX · Porsche Supercup · Lauf 8 · Monza — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup1-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270603
+DTEND;VALUE=DATE:20270607
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Monaco
+LOCATION:Monaco
+DESCRIPTION:APEX · Porsche Supercup · Lauf 1 · Monaco — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup2-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270618
+DTEND;VALUE=DATE:20270621
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Portugal
+LOCATION:Portimão
+DESCRIPTION:APEX · Porsche Supercup · Lauf 2 · Portimão — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup3-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270709
+DTEND;VALUE=DATE:20270712
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Österreich
+LOCATION:Red Bull Ring
+DESCRIPTION:APEX · Porsche Supercup · Lauf 3 · Red Bull Ring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup4-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270723
+DTEND;VALUE=DATE:20270726
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Belgien
+LOCATION:Spa-Francorchamps
+DESCRIPTION:APEX · Porsche Supercup · Lauf 4 · Spa-Francorchamps — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup5-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270730
+DTEND;VALUE=DATE:20270802
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Ungarn
+LOCATION:Hungaroring
+DESCRIPTION:APEX · Porsche Supercup · Lauf 5 · Hungaroring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup6-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270903
+DTEND;VALUE=DATE:20270906
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Italien
+LOCATION:Monza
+DESCRIPTION:APEX · Porsche Supercup · Lauf 6 · Monza — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup7-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20270910
+DTEND;VALUE=DATE:20270913
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis von Spanien
+LOCATION:Madring
+DESCRIPTION:APEX · Porsche Supercup · Lauf 7 · Madring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-supercup8-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151946Z
+DTSTART;VALUE=DATE:20271001
+DTEND;VALUE=DATE:20271004
+TRANSP:TRANSPARENT
+SUMMARY:Supercup · Großer Preis der Türkei · Finale
+LOCATION:Istanbul Park
+DESCRIPTION:APEX · Porsche Supercup · Lauf 8 · Istanbul Park — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR
