@@ -127,4 +127,74 @@ SUMMARY:F1 Academy · Großer Preis der Niederlande
 LOCATION:Zandvoort
 DESCRIPTION:APEX · F1 Academy · Lauf 4 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy1-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151736Z
+DTSTART;VALUE=DATE:20270319
+DTEND;VALUE=DATE:20270322
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von Saudi-Arabien
+LOCATION:Dschidda
+DESCRIPTION:APEX · F1 Academy · Lauf 1 · Dschidda — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy2-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151736Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270419
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von China
+LOCATION:Shanghai
+DESCRIPTION:APEX · F1 Academy · Lauf 2 · Shanghai — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy3-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151736Z
+DTSTART;VALUE=DATE:20270521
+DTEND;VALUE=DATE:20270524
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von Kanada
+LOCATION:Montréal
+DESCRIPTION:APEX · F1 Academy · Lauf 3 · Montréal — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy4-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151736Z
+DTSTART;VALUE=DATE:20270702
+DTEND;VALUE=DATE:20270705
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von Großbritannien
+LOCATION:Silverstone
+DESCRIPTION:APEX · F1 Academy · Lauf 4 · Silverstone — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy5-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151736Z
+DTSTART;VALUE=DATE:20270730
+DTEND;VALUE=DATE:20270802
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von Ungarn
+LOCATION:Hungaroring
+DESCRIPTION:APEX · F1 Academy · Lauf 5 · Hungaroring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy6-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151736Z
+DTSTART;VALUE=DATE:20271022
+DTEND;VALUE=DATE:20271025
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis der USA
+LOCATION:COTA
+DESCRIPTION:APEX · F1 Academy · Lauf 6 · COTA — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-f1academy7-2027-ganztag@apex-motorsport
+DTSTAMP:20261111T151736Z
+DTSTART;VALUE=DATE:20271118
+DTEND;VALUE=DATE:20271121
+TRANSP:TRANSPARENT
+SUMMARY:F1 Academy · Großer Preis von Las Vegas · Finale
+LOCATION:Las Vegas
+DESCRIPTION:APEX · F1 Academy · Lauf 7 · Las Vegas — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
 END:VCALENDAR
