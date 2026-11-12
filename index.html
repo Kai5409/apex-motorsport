@@ -633,8 +633,8 @@ APEX · Saison <span id="fuss-saison">2026</span> · 19 Serien<span id="datensta
    (mit kurzem Hinweis) – der Rest der App läuft normal. Einzelne unlesbare Einträge werden
    übersprungen. */
 const DATEN=["serien","sender","termine-2026","termine-2027","wertungen-2026","wertungen-2027","regeln","strecken"];
-/* STAND[jahr][serie]: Wertungen je Saison aus wertungen-<jahr>.json – Saison = Jahr der Termindatei (Formel E Saison 13
-   steht in termine-2027.json und gehört zu wertungen-2027.json, auch wenn sie im Dezember 2026 beginnt) */
+/* STAND[jahr][serie]: Wertungen je Saison aus wertungen-<jahr>.json – Saison = Jahr der Termindatei (Formel E mit der
+   Saisonkennung S13 steht in termine-2027.json und gehört zu wertungen-2027.json) */
 const SERIES={}, EVENTS=[], STAND={}, REGELN={}, KARTE_ORT=new Map(), KARTE_STRECKEN=[];
 const GRUPPEN={};              /* Seriengruppen aus serien.json (Reihenfolge = Reihenfolge in der App) */
 let TV_GEPRUEFT="";        /* Prüfdatum der Senderangaben (aus sender.json) */
@@ -2027,21 +2027,24 @@ const POKAL='<svg class="pokal" viewBox="0 0 16 16" aria-hidden="true" focusable
 function championHTML(t){return t==="World Champion"||t==="Champion"?`<span class="champ" data-nosnippet>${POKAL}${t}</span>`:"";}
 /* ── Wertungen je Saison (Entscheidung 06.11.2026) ──
    Der Jahresumschalter wählt die Saison J. Je Serie: a) Wertung der Saison J (wertungen-J.json) wie gepflegt;
-   b) sonst die der jüngsten früheren Saison mit Wertung: „Endstand 2026 · Ort, Datum“ (Formel E „Endstand Saison 12“;
+   b) sonst die der jüngsten früheren Saison mit Wertung: „Endstand 2026 · Ort, Datum“ (Formel E „Endstand 2025/26“;
    läuft jene Saison laut Daten noch, „Stand 2026 · …“), darunter „Saison 2027 noch ohne Wertung“ – Pokal wie in der
    Saison selbst; c) gar keine: „Wertung noch nicht gepflegt“. Hat eine spätere Saison schon eine Wertung, steht unter
-   dem Block ein Verweis „Wertung 2027 →“ (Formel E „Wertung Saison 13 →“), der den Jahresumschalter umstellt.
+   dem Block ein Verweis „Wertung 2027 →“, der den Jahresumschalter umstellt.
    Fehlt die Datei der Saison J, steht nur der Lade-Hinweis; die anderen Saisons bleiben unberührt. */
 const WJAHRE=DATEN.filter(n=>n.startsWith("wertungen-")).map(n=>+n.slice(10)).sort((a,b)=>a-b);
 function wertungFehlt(j){return DATEN_FEHLT.has("wertungen-"+j);}
 function wertungVon(sk,j){const W=STAND[j];return W&&W[sk]||null;}
-/* Bezeichnung der Saison j (Jahr der Termindatei) einer Serie: das Jahr, bei Serien mit Saisonkennung „S13“ (Formel E)
-   „Saison 12“, „Saison 13“ … (Events ohne Kennung gehören zur Saison davor) */
+/* Bezeichnung der Saison j (Jahr der Termindatei) einer Serie: das Jahr. Serien mit Saisonkennung „S13“ (Formel E)
+   heißen nach den Jahren ihrer Termine ohne Tests – „2027“, über den Jahreswechsel „2025/26“ */
 function saisonText(sk,j){
-  const e=EVENTS.find(x=>x.s===sk&&/^S\d+$/.test(x.sz||""));
-  return e?"Saison "+(+e.sz.slice(1)+j-(+e._jahr)):String(j);
+  if(!EVENTS.some(x=>x.s===sk&&/^S\d+$/.test(x.sz||"")))return String(j);
+  const ev=EVENTS.filter(x=>x.s===sk&&+x._jahr===j&&x.sonder!=="test");
+  if(!ev.length)return String(j);
+  const y0=Math.min(...ev.map(x=>+x.d0.slice(0,4))), y1=Math.max(...ev.map(x=>+x.d1.slice(0,4)));
+  return y0===y1?String(y0):y0+"/"+String(y1).slice(2);
 }
-function saisonOhne(sk,j){const t=saisonText(sk,j);return (/^Saison /.test(t)?t:"Saison "+t)+" noch ohne Wertung";}
+function saisonOhne(sk,j){return "Saison "+saisonText(sk,j)+" noch ohne Wertung";}
 /* Saison j einer Serie nach den Daten beendet: alle Termine der Termindatei beendet oder abgesagt */
 function saisonBeendet(sk,j){const ev=EVENTS.filter(e=>e.s===sk&&+e._jahr===j);return ev.length>0&&ev.every(e=>e.status==="done"||e.status==="cancel");}
 /* Stand-Zeile einer früheren Saison: „Endstand 2026 · Ort, Datum“ (Teil ab dem Datum bleibt) bzw. „Stand 2026 · …“ */
