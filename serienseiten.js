@@ -398,7 +398,7 @@
       saison = k; orte = orteVon(k); gewaehlt = null;
       kartenEl.hidden = orte.length < KARTE_MIN;
       if (kartenEl.hidden) { festPruefen(); return; }
-      $("#h-skarte").textContent = "Saison " + k + " auf der Karte";
+      $("#h-skarte").textContent = "Saison " + ((kartenDat.namen || {})[k] || k) + " auf der Karte";
       /* Start: Weltkarte, wenn Rennen außerhalb Europas, sonst Europa */
       ansicht = orte.some((o) => !o.eu) ? "welt" : "europa";
       zeichnenKarte(); festPruefen();
