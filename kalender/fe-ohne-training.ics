@@ -280,73 +280,73 @@ DESCRIPTION:APEX · Formel E · Lauf 16 · ExCeL London — ganztägig\, Session
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe1-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
-DTSTART;VALUE=DATE:20261218
-DTEND;VALUE=DATE:20261219
-TRANSP:TRANSPARENT
-SUMMARY:F·E · Dschidda E-Prix I · Auftakt Saison 13
-LOCATION:Dschidda
-DESCRIPTION:APEX · Formel E · Lauf 1 · Dschidda — ganztägig\, Sessionzeiten liegen nicht vor
-END:VEVENT
-BEGIN:VEVENT
-UID:apex-fe2-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
-DTSTART;VALUE=DATE:20261219
-DTEND;VALUE=DATE:20261220
-TRANSP:TRANSPARENT
-SUMMARY:F·E · Dschidda E-Prix II
-LOCATION:Dschidda
-DESCRIPTION:APEX · Formel E · Lauf 2 · Dschidda — ganztägig\, Sessionzeiten liegen nicht vor
-END:VEVENT
-BEGIN:VEVENT
-UID:apex-fe3-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+DTSTAMP:20261112T120927Z
 DTSTART;VALUE=DATE:20270116
 DTEND;VALUE=DATE:20270117
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Mexiko-Stadt E-Prix
 LOCATION:Mexiko-Stadt
-DESCRIPTION:APEX · Formel E · Lauf 3 · Mexiko-Stadt — ganztägig\, Sessionzeiten liegen nicht vor
+DESCRIPTION:APEX · Formel E · Lauf 1 · Mexiko-Stadt — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
-UID:apex-fe4-S13-ganztag@apex-motorsport
-DTSTAMP:20261006T165230Z
+UID:apex-fe2-S13-ganztag@apex-motorsport
+DTSTAMP:20261112T120927Z
 DTSTART;VALUE=DATE:20270206
 DTEND;VALUE=DATE:20270207
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Austin E-Prix
 LOCATION:COTA
-DESCRIPTION:APEX · Formel E · Lauf 4 · COTA — ganztägig\, Sessionzeiten liegen nicht vor
+DESCRIPTION:APEX · Formel E · Lauf 2 · COTA — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
-UID:apex-fe5-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+UID:apex-fe3-S13-ganztag@apex-motorsport
+DTSTAMP:20261112T120927Z
 DTSTART;VALUE=DATE:20270220
 DTEND;VALUE=DATE:20270221
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Miami E-Prix
 LOCATION:Miami
-DESCRIPTION:APEX · Formel E · Lauf 5 · Miami — ganztägig\, Sessionzeiten liegen nicht vor
+DESCRIPTION:APEX · Formel E · Lauf 3 · Miami — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
-UID:apex-fe6-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
+UID:apex-fe4-S13-ganztag@apex-motorsport
+DTSTAMP:20261112T120927Z
 DTSTART;VALUE=DATE:20270313
 DTEND;VALUE=DATE:20270314
 TRANSP:TRANSPARENT
 SUMMARY:F·E · São Paulo E-Prix
 LOCATION:São Paulo
-DESCRIPTION:APEX · Formel E · Lauf 6 · São Paulo — ganztägig\, Sessionzeiten liegen nicht vor
+DESCRIPTION:APEX · Formel E · Lauf 4 · São Paulo — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
-UID:apex-fe7-S13-ganztag@apex-motorsport
-DTSTAMP:20260929T043445Z
-DTSTART;VALUE=DATE:20270417
-DTEND;VALUE=DATE:20270418
+UID:apex-fe5-S13-ganztag@apex-motorsport
+DTSTAMP:20261112T120927Z
+DTSTART;VALUE=DATE:20270403
+DTEND;VALUE=DATE:20270404
 TRANSP:TRANSPARENT
 SUMMARY:F·E · Sanya E-Prix
 LOCATION:Sanya
-DESCRIPTION:APEX · Formel E · Lauf 7 · Sanya — ganztägig\, Sessionzeiten liegen nicht vor
+DESCRIPTION:APEX · Formel E · Lauf 5 · Sanya — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe6-S13-ganztag@apex-motorsport
+DTSTAMP:20261112T120927Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270417
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Dschidda E-Prix I
+LOCATION:Dschidda
+DESCRIPTION:APEX · Formel E · Lauf 6 · Dschidda — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-fe7-S13-ganztag@apex-motorsport
+DTSTAMP:20261112T120927Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+TRANSP:TRANSPARENT
+SUMMARY:F·E · Dschidda E-Prix II
+LOCATION:Dschidda
+DESCRIPTION:APEX · Formel E · Lauf 7 · Dschidda — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-fe8-S13-ganztag@apex-motorsport
