@@ -268,6 +268,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .wgrp.next .wg-kopf::before{border-color:var(--red)}
 .wg-tit{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-size:22px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
 .wgrp.done .wg-tit{color:var(--muted)}
+.wgrp.udw .wg-tit{white-space:nowrap}
 .wg-anz{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .wgrp .wknd::before,.we-block .wknd::before{display:none}
 .wgrp .wknd:last-child{border-bottom:none}
@@ -1710,7 +1711,7 @@ function wochenGruppen(evs){
 }
 /* Ein Wochenende in der Zeitleiste: Kopf mit Zeitraum und Anzahl, darunter die Events wie bisher.
    Der Punkt auf der Zeitleiste sitzt am Kopf und zeigt den Stand des Wochenendes (gefahren, läuft, als Nächstes).
-   Events unter der Woche (g.udw): eigener Kasten, im Kopf vor der Anzahl „unter der Woche“ */
+   Events unter der Woche (g.udw): eigener Kasten, im Kopf „unter der Woche“, ab zwei Events mit Anzahl */
 function gruppeHTML(g){
   let von=g.reduce((a,e)=>e.d0<a?e.d0:a,g[0].d0), bis=g.reduce((a,e)=>e.d1>a?e.d1:a,g[0].d1);
   if(g.length>1){   /* lange Events (z. B. Dakar) dehnen den Zeitraum nicht über die Woche aus */
@@ -1720,7 +1721,7 @@ function gruppeHTML(g){
     if(bis>iso(so))bis=iso(so); if(von<iso(mo))von=iso(mo);
   }
   const zs=g.map(st), z=zs.includes("live")?"live":zs.includes("next")?"next":zs.every(x=>x==="done")?"done":"";
-  return `<div class="wgrp ${z}${g.udw?" udw":""}"><div class="wg-kopf"><span class="wg-tit">${spanneHTML(von,bis)}</span><span class="wg-anz">${g.udw?"unter der Woche · ":""}${g.length} Event${g.length===1?"":"s"}</span></div>`+
+  return `<div class="wgrp ${z}${g.udw?" udw":""}"><div class="wg-kopf"><span class="wg-tit">${spanneHTML(von,bis)}</span><span class="wg-anz">${g.udw?"unter der Woche"+(g.length>1?" · ":""):""}${g.udw&&g.length===1?"":g.length+" Event"+(g.length===1?"":"s")}</span></div>`+
     g.map(e=>eventHTML(e,false,false,von,bis)).join("")+`</div>`;
 }
 /* Rennfreie Wochenenden: aufeinanderfolgende leere Wochenenden als eine schmale Zeile („2 Wochenenden ohne Rennen · 17.–25. Okt.“).
