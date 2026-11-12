@@ -1257,10 +1257,11 @@ function wochenendZeitraum(){
     d0:iso(k),d1:iso(new Date(k.getTime()+3*864e5))};
 }
 /* „Ganzes Wochenende ansehen“ nur, wenn eine angezeigte Session (bzw. ein laufendes Event ohne weitere Session)
-   in diesen Zeitraum fällt – sonst zeigte die Seite ein anderes Wochenende */
+   in diesen Zeitraum fällt – sonst zeigte die Seite ein anderes Wochenende. Events unter der Woche (unterDerWoche)
+   zählen nicht: Sie stehen nicht auf der Seite */
 function imWochenende(liste){
   const z=wochenendZeitraum(); if(!z)return false;
-  return liste.some(x=>x.inst!=null&&!x.ev?x.inst>=z.von&&x.inst<z.bis:x.e.d0<=z.d1&&x.e.d1>=z.d0);
+  return liste.some(x=>!unterDerWoche(x.e)&&(x.inst!=null&&!x.ev?x.inst>=z.von&&x.inst<z.bis:x.e.d0<=z.d1&&x.e.d1>=z.d0));
 }
 /* Live-Info: in der Zeitleiste (#jetzt) – im Block „Dieses Wochenende“ ohne eigenen Verweis auf die Wochenendseite
    (der Block hat unten „Alle Sessions im Zeitplan“), sonst unter der Heute-Linie (rennfreies Wochenende: mit Datum und Abstand) */
@@ -1664,10 +1665,18 @@ function heuteHTML(mitJetzt){
   const lab=NOW().toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"}).replace(".,",",");
   return `<div class="heute" id="heute"><span class="heute-lab">Heute · ${lab}</span></div>`+(mitJetzt===false?"":`<div class="jetzt" id="jetzt">${onAirHTML(true,false,true)}</div>`);
 }
-/* Events des Wochenendes, das die Seite „Dieses Wochenende“ gerade zeigt (Donnerstag bis Sonntag, wochenendZeitraum) */
+/* Unter der Woche: ein Event, das nicht zum Wochenende gehört. Zum Wochenende gehört ein Event, das den Samstag oder
+   Sonntag berührt oder den Freitag berührt und frühestens am Donnerstag beginnt (dieselbe Regel hat die Seite
+   „Dieses Wochenende“). Solche Events stehen in der Zeitleiste in einem eigenen Kasten und nicht im Block */
+function unterDerWoche(e){
+  const a=pd(e.d0), w=(a.getDay()+6)%7, tage=Math.round((pd(e.d1)-a)/864e5);   /* w: Montag 0 … Sonntag 6 */
+  return !(w+tage>=5||w===4||(w===3&&tage>=1));
+}
+/* Events des Wochenendes, das die Seite „Dieses Wochenende“ gerade zeigt (Donnerstag bis Sonntag, wochenendZeitraum) –
+   ohne Events unter der Woche */
 function wochenendListe(list){
   const z=wochenendZeitraum(); if(!z)return [];
-  return list.filter(e=>e.d0<=z.d1&&e.d1>=z.d0);
+  return list.filter(e=>e.d0<=z.d1&&e.d1>=z.d0&&!unterDerWoche(e));
 }
 const TAGMON=d=>{const x=pd(d);return {t:x.getDate(),m:x.getMonth(),y:x.getFullYear()};};
 function spanneHTML(von,bis){
@@ -1681,7 +1690,7 @@ function wochenendHTML(WE){
   const z=wochenendZeitraum();
   let von=WE.reduce((a,e)=>e.d0<a?e.d0:a,WE[0].d0), bis=WE.reduce((a,e)=>e.d1>a?e.d1:a,WE[0].d1);
   if(z){if(von<z.d0)von=z.d0; if(bis>z.d1)bis=z.d1;}
-  const aus=z?[...new Set(EVENTS.filter(e=>!ACTIVE.has(e.s)&&e.status!=="cancel"&&inSeason(e)&&e.d0<=z.d1&&e.d1>=z.d0).map(e=>SERIES[e.s].short))]:[];
+  const aus=z?[...new Set(EVENTS.filter(e=>!ACTIVE.has(e.s)&&e.status!=="cancel"&&inSeason(e)&&e.d0<=z.d1&&e.d1>=z.d0&&!unterDerWoche(e)).map(e=>SERIES[e.s].short))]:[];
   return `<div class="we-block" id="wochenende" aria-label="Dieses Wochenende">`+
     `<div class="we-kopf"><span class="we-lab">Dieses Wochenende</span><span class="we-anz">${WE.length} Event${WE.length===1?"":"s"}</span></div>`+
     `<div class="we-titel">${spanneHTML(von,bis)}</div>`+
@@ -1690,14 +1699,18 @@ function wochenendHTML(WE){
     `<div class="we-fuss"><a class="onair-we" href="${ordnerHref("dieses-wochenende/")}">Ganzes Wochenende ansehen <span aria-hidden="true">→</span></a>`+
     (aus.length?`<span class="we-aus">Ebenfalls an diesem Wochenende, im Filter ausgeblendet: ${aus.map(esc).join(", ")}</span>`:"")+`</div></div>`;
 }
-/* Events eines Monats nach Kalenderwoche (Montag bis Sonntag) gruppiert, in zeitlicher Reihenfolge */
+/* Events eines Monats nach Kalenderwoche (Montag bis Sonntag) gruppiert, in zeitlicher Reihenfolge. Events unter der
+   Woche (unterDerWoche) bilden je Woche eine eigene Gruppe (udw) vor der Gruppe des Wochenendes */
 function wochenGruppen(evs){
   const m=new Map();
-  evs.forEach(e=>{const d=pd(e.d0);d.setDate(d.getDate()-(d.getDay()+6)%7);const k=d.getTime();if(!m.has(k))m.set(k,[]);m.get(k).push(e);});
-  return [...m.values()];
+  evs.forEach(e=>{const d=pd(e.d0);d.setDate(d.getDate()-(d.getDay()+6)%7);const k=d.getTime();if(!m.has(k))m.set(k,[[],[]]);m.get(k)[unterDerWoche(e)?0:1].push(e);});
+  const r=[];
+  m.forEach(([u,w])=>{if(u.length){u.udw=true;r.push(u);} if(w.length)r.push(w);});
+  return r;
 }
 /* Ein Wochenende in der Zeitleiste: Kopf mit Zeitraum und Anzahl, darunter die Events wie bisher.
-   Der Punkt auf der Zeitleiste sitzt am Kopf und zeigt den Stand des Wochenendes (gefahren, läuft, als Nächstes) */
+   Der Punkt auf der Zeitleiste sitzt am Kopf und zeigt den Stand des Wochenendes (gefahren, läuft, als Nächstes).
+   Events unter der Woche (g.udw): eigener Kasten, im Kopf vor der Anzahl „unter der Woche“ */
 function gruppeHTML(g){
   let von=g.reduce((a,e)=>e.d0<a?e.d0:a,g[0].d0), bis=g.reduce((a,e)=>e.d1>a?e.d1:a,g[0].d1);
   if(g.length>1){   /* lange Events (z. B. Dakar) dehnen den Zeitraum nicht über die Woche aus */
@@ -1707,7 +1720,7 @@ function gruppeHTML(g){
     if(bis>iso(so))bis=iso(so); if(von<iso(mo))von=iso(mo);
   }
   const zs=g.map(st), z=zs.includes("live")?"live":zs.includes("next")?"next":zs.every(x=>x==="done")?"done":"";
-  return `<div class="wgrp ${z}"><div class="wg-kopf"><span class="wg-tit">${spanneHTML(von,bis)}</span><span class="wg-anz">${g.length} Event${g.length===1?"":"s"}</span></div>`+
+  return `<div class="wgrp ${z}${g.udw?" udw":""}"><div class="wg-kopf"><span class="wg-tit">${spanneHTML(von,bis)}</span><span class="wg-anz">${g.udw?"unter der Woche · ":""}${g.length} Event${g.length===1?"":"s"}</span></div>`+
     g.map(e=>eventHTML(e,false,false,von,bis)).join("")+`</div>`;
 }
 /* Rennfreie Wochenenden: aufeinanderfolgende leere Wochenenden als eine schmale Zeile („2 Wochenenden ohne Rennen · 17.–25. Okt.“).
@@ -1715,11 +1728,11 @@ function gruppeHTML(g){
    mit dem Hinweis „ausgeblendet: MotoGP, Moto2, Moto3“ (ab vier Serien „ausgeblendet: N Serien“) */
 const MONK=["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."];
 function montag(d0){const d=pd(d0);d.setDate(d.getDate()-(d.getDay()+6)%7);return d;}
-/* Ausgeblendete Serien mit mindestens einem nicht abgesagten Event in der Woche dieses Samstags (Montag bis Sonntag,
-   nach dem ersten Tag des Events wie wochenGruppen), in der Reihenfolge von serien.json */
+/* Ausgeblendete Serien mit mindestens einem nicht abgesagten Event am Wochenende dieses Samstags (Woche Montag bis Sonntag,
+   nach dem ersten Tag des Events wie wochenGruppen, ohne Events unter der Woche), in der Reihenfolge von serien.json */
 function ausgeblendetAm(sa){
   const mo=new Date(sa); mo.setDate(mo.getDate()-5); const k=mo.getTime();
-  const da=new Set(EVENTS.filter(e=>!ACTIVE.has(e.s)&&SERIES[e.s]&&e.status!=="cancel"&&montag(e.d0).getTime()===k).map(e=>e.s));
+  const da=new Set(EVENTS.filter(e=>!ACTIVE.has(e.s)&&SERIES[e.s]&&e.status!=="cancel"&&montag(e.d0).getTime()===k&&!unterDerWoche(e)).map(e=>e.s));
   return Object.keys(SERIES).filter(sk=>da.has(sk));
 }
 function lueckeZeile(sams,aus){
@@ -1750,13 +1763,15 @@ function monthGroupsHTML(list,heute){
   const WE=heute?wochenendListe(list):[], WE_SET=new Set(WE), mitJetzt=!WE.length;
   let weDa=false;
   const linieAllein=()=>{offen=false;return `<div class="tl tl-heute">${heuteHTML(mitJetzt)}</div>`;};
-  /* Wochen aller Monate der Reihe nach – für die Lücken zwischen zwei Wochenenden mit Events */
+  /* Wochen aller Monate der Reihe nach – für die Lücken zwischen zwei Wochenenden mit Events. Eine Woche, die nur
+     Events unter der Woche hat, hat ein rennfreies Wochenende: Die Zeile steht nach ihrem Kasten */
   const monate=Object.keys(groups).map(key=>({key,gr:wochenGruppen(groups[key]).map(g=>({g,mo:montag(g[0].d0)}))}));
   const flach=[]; monate.forEach(M=>M.gr.forEach(x=>flach.push(x)));
+  const weWochen=new Set(flach.filter(x=>!x.g.udw).map(x=>x.mo.getTime()));
   const lueckeVor=i=>{
     const r=[]; if(i<=0||i>=flach.length)return r;
-    const d=new Date(flach[i-1].mo); d.setDate(d.getDate()+12);   /* Samstag der Folgewoche */
-    while(d<flach[i].mo){r.push(new Date(d)); d.setDate(d.getDate()+7);}
+    const d=new Date(flach[i-1].mo); d.setDate(d.getDate()+5);   /* Samstage ab der Woche davor, ohne Wochen mit Wochenend-Events */
+    while(d<flach[i].mo){const mo=new Date(d); mo.setDate(mo.getDate()-5); if(!weWochen.has(mo.getTime()))r.push(new Date(d)); d.setDate(d.getDate()+7);}
     return r;
   };
   const mnr=d=>d.getFullYear()*12+d.getMonth();
