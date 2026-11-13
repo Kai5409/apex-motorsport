@@ -1,9 +1,10 @@
 /* APEX – Serienseiten und Serienübersicht: Interaktionen.
    Die Seiten sind fertiges HTML; dieses Skript ergänzt nur Bedienung und rückt „Nächstes Rennen“
-   nach dem heutigen Datum vor. Es lädt nur auf der Seite „In der Nähe“ bei Bedarf eigene Dateien nach (die Ortsliste
-   beim Tippen ins Suchfeld, die Karte einer anderen Region beim Kartenwechsel) und speichert nur die Einstellung
-   „Ergebnisse verbergen“, die Serienauswahl und das gewählte Design (gleiche Schlüssel wie in der App) sowie auf der Seite
-   „In der Nähe“ den gewählten Startort. Es meldet den Service Worker der App an (sw.js im Hauptordner, Bereich
+   nach dem heutigen Datum vor. Es lädt nur eigene Dateien nach: auf der Seite „In der Nähe“ bei Bedarf die Ortsliste
+   (beim Tippen ins Suchfeld) und die Karte einer anderen Region (beim Kartenwechsel), auf der Seite „Änderungen“ und den
+   Serienseiten die Meldungen (data/aenderungen.json). Es speichert nur die Einstellung „Ergebnisse verbergen“, die
+   Serienauswahl und das gewählte Design (gleiche Schlüssel wie in der App), auf der Seite „In der Nähe“ den gewählten
+   Startort und auf der Seite „Änderungen“, welche Meldungen in der Zeitleiste ausgeblendet sind. Es meldet den Service Worker der App an (sw.js im Hauptordner, Bereich
    wie in der App), damit die Seiten auch ohne vorherigen Besuch der App offline verfügbar werden. */
 (function () {
   "use strict";
@@ -1045,5 +1046,147 @@
       const x = d.kand.find((k) => k[0] >= heute);
       el.innerHTML = x ? x[1] : d.ende;
     });
+  }
+
+  /* Seite „Änderungen“ (aenderungen/): alle Meldungen der letzten 14 Tage aus data/aenderungen.json, neueste oben,
+     Serienfilter wie in der App (gleicher Speicher). Eine Meldung erscheint, sobald eine ihrer Serien eingeblendet ist.
+     Die Liste „Betroffene Termine“ (bisher → jetzt) entsteht aus den Angaben je Event; formuliert ist nur der Absatz.
+     „×“ der Leiste in der App (apex_aend_aus) blendet hier nichts aus – die Meldung bekommt nur den Hinweis darauf.
+     Lädt nur die eigene Datei data/aenderungen.json nach. */
+  const aendListe = $("#aend-liste");
+  if (aendListe) {
+    const DAT = (() => { try { return JSON.parse($("#apex-aend").textContent); } catch (e) { return {}; } })();
+    const SER = DAT.serien || {}, TAGE = 14, AUS = "apex_aend_aus";
+    const MONK = ["Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."];
+    const ART = { veroeffentlicht: "Kalender veröffentlicht", geaendert: "Kalender geändert", abgesagt: "Abgesagt", neu: "Neu im Kalender", umbenannt: "Umbenannt" };
+    const escH = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const iso = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    const pd = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+    const plus = (s, n) => { const d = pd(s); d.setDate(d.getDate() + n); return iso(d); };
+    const datumLang = (s) => { const d = pd(s); return String(d.getDate()).padStart(2, "0") + "." + String(d.getMonth() + 1).padStart(2, "0") + "." + d.getFullYear(); };
+    function spanne(z) {
+      const a = pd(z.d0), b = pd(z.d1);
+      if (z.d0 === z.d1) return `${a.getDate()}. ${MONK[a.getMonth()]} ${a.getFullYear()}`;
+      if (a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear()) return `${a.getDate()}.–${b.getDate()}. ${MONK[b.getMonth()]} ${b.getFullYear()}`;
+      return `${a.getDate()}. ${MONK[a.getMonth()]}${a.getFullYear() !== b.getFullYear() ? " " + a.getFullYear() : ""} – ${b.getDate()}. ${MONK[b.getMonth()]} ${b.getFullYear()}`;
+    }
+    const ausLaden = () => { try { const v = JSON.parse(localStorage.getItem(AUS) || "[]"); return new Set(Array.isArray(v) ? v : []); } catch (e) { return new Set(); } };
+    let ALLE = null;
+    const FL = serienFilter($("#wfilter"), DAT, { serien: () => Object.keys(SER), immerGruppen: true, geaendert: () => zeichnen() });
+
+    /* Kurzform für die große Datumsspalte wie im Serienkalender: „16“ + „Apr 2027“ */
+    const MONS = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
+    function gross(z) {
+      const a = pd(z.d0), b = pd(z.d1 || z.d0), tag = String(a.getDate()).padStart(2, "0");
+      const bis = z.d1 && z.d1 !== z.d0 ? "–" + String(b.getDate()).padStart(2, "0") : "";
+      return `${tag}${bis}<small>${MONS[b.getMonth()]} ${b.getFullYear()}</small>`;
+    }
+    /* Sachliche Kennzeichnung je Termin, ohne Einordnung */
+    const NEU_ART = { neu: 1, veroeffentlicht: 1 };
+    const datumAnders = (ev) => !!(ev.vorher && ev.vorher.d0 && ev.jetzt && (ev.vorher.d0 !== ev.jetzt.d0 || (ev.vorher.d1 || ev.vorher.d0) !== (ev.jetzt.d1 || ev.jetzt.d0)));
+    function kennung(ev, art) {
+      if (ev.abgesagt) return ["abgesagt", "abg"];
+      if (datumAnders(ev)) return [ev.jetzt.d0 > ev.vorher.d0 || (ev.jetzt.d0 === ev.vorher.d0 && ev.jetzt.d1 > ev.vorher.d1) ? "verschoben" : "vorgezogen", "neu"];
+      if (ev.vorher && ev.vorher.loc) return [ev.notiz || "neuer Ort", "neu"];
+      return [ev.notiz || (NEU_ART[art] ? "neu" : "Datum unverändert"), NEU_ART[art] ? "neu" : "gl"];
+    }
+    /* Zeile unter dem Namen: bisheriges Datum bzw. bisheriger Ort durchgestrichen, sonst „Datum unverändert“ */
+    function bisherHTML(ev, art) {
+      if (ev.vorher && ev.vorher.d0 && (ev.abgesagt || datumAnders(ev))) return `<span class="loc">bisher <s>${spanne({ d0: ev.vorher.d0, d1: ev.vorher.d1 || ev.vorher.d0 })}</s></span>`;
+      if (ev.vorher && ev.vorher.loc) return `<span class="loc">bisher <s>${escH(ev.vorher.loc)}</s>${ev.jetzt && ev.jetzt.loc ? " · jetzt " + escH(ev.jetzt.loc) : ""}</span>`;
+      return NEU_ART[art] ? "" : `<span class="loc">Datum unverändert</span>`;
+    }
+    const zielVon = (ev) => (ev.rd != null ? ev.s + "-" + ev.rd + (ev.sz ? "-" + ev.sz : "") : "");
+    const tagVon = (ev) => (ev.abgesagt && ev.vorher && ev.vorher.d0 ? ev.vorher : ev.jetzt && ev.jetzt.d0 ? ev.jetzt : ev.vorher && ev.vorher.d0 ? ev.vorher : null);
+    const sortiert = (a) => (Array.isArray(a.events) ? a.events : []).filter((ev) => ev && typeof ev.name === "string" && tagVon(ev)).sort((x, y) => (tagVon(x).d0 < tagVon(y).d0 ? -1 : tagVon(x).d0 > tagVon(y).d0 ? 1 : 0));
+    const textVon = (a) => a.text || "";
+    const quelleHTML = (a) => (a.quelle && a.quelle.url ? `<p class="aq">Quelle: <a href="${escH(a.quelle.url)}" rel="noopener" target="_blank">${escH(a.quelle.name || a.quelle.url)}</a>${a.quelle.datum ? ` · Mitteilung vom ${datumLang(a.quelle.datum)}` : ""}</p>` : "");
+    const ausHTML = (a, aus) => (aus ? `<p class="aaus">In der Zeitleiste ausgeblendet · <button type="button" data-zeigen="${escH(a.id)}">wieder zeigen</button></p>` : "");
+    function serienZeile(a, sks) {
+      return sks.map((sk) => `<a href="../${SER[sk].seite}/" style="color:${SER[sk].color}">${escH(SER[sk].name)}</a>`).join(`<i aria-hidden="true">·</i>`);
+    }
+    function datumWort(s) { const d = pd(s); return d.getDate() + ". " + ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"][d.getMonth()] + " " + d.getFullYear(); }
+
+    /* Eine Meldung wie ein Abschnitt der Serienseite: mit Anton-Überschrift, darunter die betroffenen Termine als
+       Kalenderzeilen (Lauf · großes neues Datum · Name mit bisherigem Datum · Kennzeichnung) */
+    function eintragA(a, aus, sks, haupt) {
+      const zeilen = sortiert(a).map((ev) => {
+        const z = zielVon(ev), S = SER[ev.s], [k, kk] = kennung(ev, a.art), geaendert = ev.abgesagt || datumAnders(ev) || !!(ev.vorher && ev.vorher.loc);
+        const lauf = ev.rd != null && ev.rd > 0 && ev.rd < 90 ? ev.rd : "";
+        const bisher = bisherHTML(ev, a.art);
+        const name = z && S && S.seite ? `<a class="gp" href="../${S.seite}/#r-${z}">${escH(ev.name)}</a>` : `<span class="gp">${escH(ev.name)}</span>`;
+        return `<li class="race ae-r${ev.abgesagt ? " cancel" : ""}${geaendert ? " ae-neu" : ""}"><div class="rh">` +
+          `<span class="rd">${lauf}</span><span class="when">${gross(tagVon(ev))}</span>` +
+          `<span class="what">${name}${bisher}</span><span class="start"><span class="ae-k ae-${kk}">${escH(k)}</span></span></div></li>`;
+      }).join("") + (Array.isArray(a.weitere) ? a.weitere : []).filter((w) => w && typeof w.was === "string" && typeof w.jetzt === "string").map((w) =>
+        `<li class="race ae-r ae-w"><div class="rh"><span class="rd"></span><span class="when ae-wn">${escH(w.jetzt)}</span>` +
+        `<span class="what"><span class="gp">${escH(w.was)}</span>${w.vorher ? `<span class="loc">bisher <s>${escH(w.vorher)}</s></span>` : ""}</span><span class="start"><span class="ae-k ae-neu">umbenannt</span></span></div></li>`).join("");
+      const text = textVon(a);
+      return `<section class="ae" id="a-${escH(a.id)}" style="--ae-c:${SER[haupt].color}">` +
+        `<div class="ae-kopf"><p class="ae-ser">${serienZeile(a, sks)}</p><h2 class="sec">${escH(a.titel)}</h2>` +
+        `<p class="ae-meta">${datumWort(a.datum)} · ${ART[a.art] || ""}</p></div>` +
+        (text ? `<p class="ae-text">${escH(text)}</p>` : "") +
+        (zeilen ? `<ul class="races ae-races">${zeilen}</ul>` : "") + quelleHTML(a) + ausHTML(a, aus) + `</section>`;
+    }
+
+    function eintrag(a, aus) {
+      const sks = a.serien.filter((sk) => SER[sk] && SER[sk].seite), haupt = sks.find((sk) => FL.aktiv.has(sk)) || sks[0];
+      return eintragA(a, aus, sks, haupt);
+    }
+    function zeichnen() {
+      if (!ALLE) return;
+      const h = heute, aus = ausLaden();
+      const zeit = ALLE.filter((a) => a.datum <= h && plus(a.datum, TAGE - 1) >= h && a.serien.some((sk) => SER[sk] && SER[sk].seite))
+        .sort((a, b) => (a.datum < b.datum ? 1 : a.datum > b.datum ? -1 : 0));
+      const sicht = zeit.filter((a) => a.serien.some((sk) => FL.aktiv.has(sk))), weg = zeit.filter((a) => !sicht.includes(a));
+      const wegSer = [...new Set(weg.flatMap((a) => a.serien.filter((sk) => SER[sk])))].map((sk) => SER[sk].short);
+      let html = sicht.length ? sicht.map((a) => eintrag(a, aus.has(a.id))).join("")
+        : `<p class="aen-leer">${zeit.length ? "Für die gewählten Serien gibt es" : "Es gibt"} in den letzten 14 Tagen keine Änderungen.</p>`;
+      if (weg.length) html += `<p class="aen-weg">Im Filter ausgeblendet: ${weg.length} Meldung${weg.length === 1 ? "" : "en"} (${wegSer.map(escH).join(", ")})</p>`;
+      aendListe.innerHTML = html;
+      ordnerLinks(aendListe);
+    }
+    aendListe.addEventListener("click", (ev) => {
+      const b = ev.target.closest("[data-zeigen]"); if (!b) return;
+      const v = [...ausLaden()].filter((x) => x !== b.dataset.zeigen);
+      try { localStorage.setItem(AUS, JSON.stringify(v)); } catch (e) {}
+      zeichnen();
+    });
+    addEventListener("storage", (ev) => { if (ev.key === AUS) zeichnen(); });
+    fetch(aendListe.dataset.quelle, { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then((d) => {
+        ALLE = (d && Array.isArray(d.eintraege) ? d.eintraege : []).filter((a) => a && typeof a.id === "string" && /^\d{4}-\d{2}-\d{2}$/.test(a.datum || "") && Array.isArray(a.serien) && typeof a.titel === "string");
+        FL.zeichnen(); zeichnen();
+        /* Sprung zum Eintrag (#a-…) aus der Leiste – erst nach dem Zeichnen vorhanden */
+        const ziel = location.hash && document.getElementById(location.hash.slice(1));
+        if (ziel) { ziel.scrollIntoView({ block: "start" }); ziel.classList.add("flash"); }
+      })
+      .catch(() => { aendListe.innerHTML = `<p class="aen-leer">Die Meldungen konnten nicht geladen werden.</p>`; });
+    FL.zeichnen(); zeichnen();
+  }
+
+  /* Hinweis „Änderungen“ auf den Serienseiten (unter der Unterzeile): die neueste Meldung der letzten 14 Tage, die diese
+     Serie betrifft (auch Meldungen mehrerer Serien), als einzeilige Leiste wie in der App – ohne „×“ und ohne Filter; bei
+     mehreren „+N weitere“. Tippen führt zur Seite „Änderungen“. Ohne passende Meldung bleibt der Platz leer und verborgen.
+     Lädt nur die eigene Datei data/aenderungen.json nach. */
+  const aendHinweis = $("#aend-hinweis");
+  if (aendHinweis && aendHinweis.dataset.serie && window.fetch) {
+    const sk = aendHinweis.dataset.serie, seite = aendHinweis.dataset.seite || "../aenderungen/";
+    const escH = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const bis = (s) => { const a = s.split("-").map(Number), d = new Date(Date.UTC(a[0], a[1] - 1, a[2] + 13)); return d.toISOString().slice(0, 10); };
+    fetch(aendHinweis.dataset.quelle, { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then((d) => {
+        const L = (d && Array.isArray(d.eintraege) ? d.eintraege : [])
+          .filter((a) => a && typeof a.id === "string" && /^[a-z0-9-]+$/.test(a.id) && /^\d{4}-\d{2}-\d{2}$/.test(a.datum || "") && Array.isArray(a.serien) && a.serien.includes(sk) && typeof a.titel === "string" && a.titel)
+          .filter((a) => a.datum <= heute && bis(a.datum) >= heute)
+          .sort((a, b) => (a.datum < b.datum ? 1 : a.datum > b.datum ? -1 : 0));
+        if (!L.length) return;
+        aendHinweis.innerHTML = `<div class="aend" role="region" aria-label="Änderungen"><span class="aend-lab" aria-hidden="true">Änderungen</span>` +
+          `<a class="aend-ev" href="${seite}#a-${L[0].id}"><i class="aend-bar"></i><span class="aend-tit">${escH(L[0].titel)}</span><span class="aend-pf" aria-hidden="true">›</span></a>` +
+          (L.length > 1 ? `<a class="aend-mehr" href="${seite}" aria-label="Alle ${L.length} Meldungen">+${L.length - 1}<span class="aend-mw"> weitere</span></a>` : "") + `</div>`;
+        ordnerLinks(aendHinweis);
+        aendHinweis.hidden = false;
+      })
+      .catch(() => {});
   }
 })();
