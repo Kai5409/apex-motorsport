@@ -1,0 +1,22 @@
+{
+  "eintraege": [
+    {
+      "id": "2026-11-12-fe-kalender",
+      "datum": "2026-11-12",
+      "serien": ["fe"],
+      "art": "geaendert",
+      "titel": "Kalender 2027 geändert",
+      "text": "Saisonauftakt jetzt in Mexiko-Stadt, Dschidda in den April verlegt, Sanya rückt zwei Wochen vor. Weil damit alle Rennen 2027 liegen, heißt die Saison jetzt „2027“ statt „Saison 13“.",
+      "events": [
+        {"s": "fe", "rd": 1, "sz": "S13", "name": "Mexiko-Stadt E-Prix", "jetzt": {"d0": "2027-01-16", "d1": "2027-01-16"}, "notiz": "jetzt Saisonauftakt"},
+        {"s": "fe", "rd": 5, "sz": "S13", "name": "Sanya E-Prix", "vorher": {"d0": "2027-04-17", "d1": "2027-04-17"}, "jetzt": {"d0": "2027-04-03", "d1": "2027-04-03"}},
+        {"s": "fe", "rd": 6, "sz": "S13", "name": "Dschidda E-Prix I", "vorher": {"d0": "2026-12-18", "d1": "2026-12-18"}, "jetzt": {"d0": "2027-04-16", "d1": "2027-04-16"}},
+        {"s": "fe", "rd": 7, "sz": "S13", "name": "Dschidda E-Prix II", "vorher": {"d0": "2026-12-19", "d1": "2026-12-19"}, "jetzt": {"d0": "2027-04-17", "d1": "2027-04-17"}}
+      ],
+      "weitere": [
+        {"was": "Name der Saison", "vorher": "Saison 13", "jetzt": "Saison 2027"}
+      ],
+      "quelle": {"url": "https://www.fiaformulae.com/en/news/races/formula-e-announce-2027-calendar-update-for-jeddah-and-sanya-e-prix", "name": "fiaformulae.com", "datum": "2026-11-12"}
+    }
+  ]
+}

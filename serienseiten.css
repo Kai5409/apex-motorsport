@@ -806,3 +806,58 @@ html:not(.js) .chev,html:not(.js) .switch,html:not(.js) .seg,html:not(.js) .line
 .f404 .fuss{margin:34px 0 0;padding-top:14px;border-top:1px solid var(--rule);font-size:12.5px;line-height:1.6;color:var(--muted)}
 .f404 .fuss a{text-underline-offset:3px}
 .f404 .fuss a:hover{color:var(--paper)}
+
+/* Seite „Änderungen“ (aenderungen/): Meldungen der letzten 14 Tage, je Meldung ein Abschnitt wie der Kalender der Serienseite */
+.aen-liste{margin:30px 0 0;max-width:860px}
+.aen-leer{margin:0;border-left:3px solid var(--gold-fl);padding:4px 0 4px 14px;max-width:62ch;color:var(--paper2)}
+.aen-weg{margin:22px 0 0;font-size:13px;color:var(--muted)}
+.ae-ser{margin:0;font-size:13px;font-weight:600;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.ae-ser a{text-decoration:none}
+.ae-ser a:hover{text-decoration:underline;text-underline-offset:3px}
+.ae-ser i{font-style:normal;color:var(--faint)}
+.ae-text{margin:12px 0 0;max-width:62ch;font-size:15px;line-height:1.55;color:var(--paper2)}
+.aq{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
+.aq a{color:var(--muted);text-decoration-color:var(--faint);text-underline-offset:3px}
+.aq a:hover{color:var(--paper)}
+.aaus{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
+.aaus button{font:inherit;color:var(--gold);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.ae-k{font:500 11px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;font-style:normal;color:var(--muted);white-space:nowrap}
+.ae-k.ae-neu{color:var(--gold)}
+.ae-k.ae-abg{color:var(--live)}
+.ae{scroll-margin-top:16px}
+.ae.flash{animation:hl 1.6s ease-out}
+
+.ae+.ae{margin-top:46px}
+.ae-kopf{border-left:3px solid var(--ae-c);padding-left:14px}
+.ae-kopf h2.sec{margin-top:6px}
+.ae-meta{margin:8px 0 0;color:var(--muted);font-size:13.5px}
+.ae-races{margin-top:16px}
+.ae-r .rh{cursor:default}
+.ae-r .gp{font-size:15px}
+.ae-r a.gp{text-decoration:none;color:inherit}
+.ae-r a.gp:hover{text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
+.ae-r .loc s{text-decoration-thickness:1px}
+.ae-r.ae-neu .rh,.ae-r.ae-w .rh{box-shadow:inset 3px 0 0 var(--ae-c)}
+.ae-r.ae-neu,.ae-r.ae-w{background:linear-gradient(90deg,color-mix(in srgb,var(--ae-c) 9%,transparent),transparent 60%)}
+.ae-r.cancel .when{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.ae-wn{font-size:18px}
+.ae-r .rh{grid-template-columns:30px 92px minmax(0,1fr) auto}
+
+@media (max-width:640px){
+  .ae-r .rh{grid-template-columns:22px 70px minmax(0,1fr);gap:10px}
+  .ae-r .start{grid-column:3;text-align:left;margin-top:-6px}
+  .ae-wn{font-size:16px}
+}
+
+/* Hinweis „Änderungen“ auf den Serienseiten (unter der Unterzeile): dieselbe einzeilige Leiste wie in der App, ohne „×“ */
+.aend{position:relative;display:flex;align-items:center;gap:6px;margin:22px 0 0;max-width:62ch;padding:9px 10px 7px 12px;border:1px solid var(--faint);border-radius:6px}
+.aend-lab{position:absolute;left:8px;top:-8px;padding:0 6px;background:var(--bg);font:600 9.5px/15px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.aend-ev{display:flex;align-items:center;gap:10px;flex:1;min-width:0;min-height:34px;color:inherit;text-decoration:none;border-radius:4px}
+.aend-bar{width:4px;height:20px;border-radius:1px;flex:none;background:var(--serie)}
+.aend-tit{min-width:0;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.aend-pf{color:var(--muted);font-size:16px;line-height:1;transition:transform .15s,color .15s;flex:none}
+.aend-ev:hover .aend-tit{text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:3px}
+.aend-ev:hover .aend-pf,.aend-ev:focus-visible .aend-pf{color:var(--gold);transform:translateX(2px)}
+.aend-mehr{flex:none;font:500 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--faint);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.aend-mehr:hover{color:var(--paper);border-color:var(--paper)}
+@media (max-width:640px){.aend-mw{display:none}.aend-mehr{padding:4px 8px}.aend-ev{gap:8px}}

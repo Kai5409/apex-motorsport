@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Änderungen – Kalender und Termine der letzten 14 Tage | APEX</title>
+<meta name="description" content="Kalender veröffentlicht, Termine verlegt, Rennen abgesagt: die Kalendermeldungen der letzten 14 Tage bei APEX.">
+<meta name="robots" content="noindex, follow">
+<meta name="generator" content="APEX-Serienseiten">
+<meta name="theme-color" content="#141210">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../serienseiten.css">
+<style>:root{--g-formel:#ff3000;--g-motorrad:#e172db;--g-sportwagen:#3a86ff;--g-rallye:#37b24d;--s-f1:#ff3000;--s-fe:#ff8fb8;--s-indycar:#ffc93c;--s-f2:#e2477c;--s-f3:#ffb070;--s-f1academy:#d9875e;--s-mgp:#e172db;--s-wsbk:#9b82ff;--s-moto2:#ff3f9e;--s-moto3:#f7cbff;--s-wec:#3a86ff;--s-imsa:#a9bcf2;--s-gtwc:#00c2b8;--s-dtm:#4493a1;--s-nls:#02a9f7;--s-supercup:#8b79ae;--s-wrc:#37b24d;--s-erc:#c8ea4a;--s-dakar:#3fdcae}:root[data-design="hell"]{--g-formel:#ff3000;--g-motorrad:#d062ca;--g-sportwagen:#3a86ff;--g-rallye:#20a23d;--s-f1:#ff3000;--s-fe:#d56a93;--s-indycar:#af860a;--s-f2:#e2477c;--s-f3:#c67b3a;--s-f1academy:#c8784f;--s-mgp:#d062ca;--s-wsbk:#9279f5;--s-moto2:#fb3b9b;--s-moto3:#a77faf;--s-wec:#3a86ff;--s-imsa:#798abd;--s-gtwc:#0c9d95;--s-dtm:#4493a1;--s-nls:#0294d9;--s-supercup:#8b79ae;--s-wrc:#20a23d;--s-erc:#7d9507;--s-dakar:#019e79}</style>
+<script>(function(){var r=document.documentElement,d=null;r.classList.add("js");try{if(localStorage.getItem("apex_spoiler")==="1")r.classList.add("sp");d=localStorage.getItem("apex_design")}catch(e){}var h=d==="hell"||d!=="dunkel"&&!!window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches;r.setAttribute("data-design",h?"hell":"dunkel");if(h){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f3ec")}})();</script>
+<script src="../serienseiten.js" defer></script>
+</head>
+<body style="--serie:var(--gold-fl);--serie-text:#141210">
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="../" aria-label="APEX – zur Startseite"><img class="logo-d" src="../logo-apex-klein.png" alt="APEX" width="480" height="270" loading="lazy"><img class="logo-h" src="../logo-apex-klein-hell.png" alt="APEX" width="480" height="270" loading="lazy"></a>
+    <button class="dsw" type="button" aria-label="Helles Design" title="Helles Design"><svg class="dsw-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><svg class="dsw-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
+    <a class="toplink" href="../">Zur Zeitleiste</a>
+  </header>
+  <nav class="crumbs" aria-label="Pfad"><a href="../">APEX</a><i>›</i><span aria-current="page">Änderungen</span></nav>
+
+  <section class="hero" aria-labelledby="h1">
+    <h1 id="h1"><span class="bar"></span>Änderungen</h1>
+    <p class="lead">Meldungen der letzten 14 Tage.</p>
+  </section>
+  <div class="wfilter" id="wfilter" role="group" aria-label="Serien" hidden></div>
+  <div id="aend-liste" class="aen-liste" data-quelle="../data/aenderungen.json"><p class="aen-leer">Meldungen werden geladen …</p></div>
+  <noscript><p class="aen-leer">Die Meldungen benötigen JavaScript.</p></noscript>
+
+  <footer>
+    <p>Gezeigt werden Kalendermeldungen der letzten 14 Tage: veröffentlichte und geänderte Kalender, abgesagte und neu aufgenommene Rennen. Sessionzeiten, Tests und Ergebnisse stehen nicht hier.</p>
+    <p><a href="../">Zur Zeitleiste</a> – alle Termine aller Serien</p>
+    <p><a href="../serien/">Alle Serien</a> – Kalender, Wertungen und Sender je Serie</p>
+    <p>APEX steht in keiner Verbindung zu den dargestellten Rennserien oder deren Rechteinhabern. <a href="../#datenschutz">Datenschutz</a></p>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="application/json" id="apex-aend">{"gruppen":{"formel":{"name":"Formel","short":"Formel","farbe":"var(--g-formel)"},"motorrad":{"name":"Motorrad","short":"Motorrad","farbe":"var(--g-motorrad)"},"sportwagen":{"name":"Sportwagen \u0026 GT","short":"Sportwagen","farbe":"var(--g-sportwagen)"},"rallye":{"name":"Rallye","short":"Rallye","farbe":"var(--g-rallye)"}},"serien":{"f1":{"name":"Formel 1","short":"F1","color":"var(--s-f1)","gruppe":"formel","aus":false,"seite":"formel-1"},"fe":{"name":"Formel E","short":"F·E","color":"var(--s-fe)","gruppe":"formel","aus":false,"seite":"formel-e"},"indycar":{"name":"IndyCar","short":"IndyCar","color":"var(--s-indycar)","gruppe":"formel","aus":false,"seite":"indycar"},"f2":{"name":"Formel 2","short":"F2","color":"var(--s-f2)","gruppe":"formel","aus":true,"seite":"formel-2"},"f3":{"name":"Formel 3","short":"F3","color":"var(--s-f3)","gruppe":"formel","aus":true,"seite":"formel-3"},"f1academy":{"name":"F1 Academy","short":"F1 Academy","color":"var(--s-f1academy)","gruppe":"formel","aus":true,"seite":"f1-academy"},"mgp":{"name":"MotoGP","short":"MotoGP","color":"var(--s-mgp)","gruppe":"motorrad","aus":false,"seite":"motogp"},"wsbk":{"name":"Superbike-WM","short":"WSBK","color":"var(--s-wsbk)","gruppe":"motorrad","aus":false,"seite":"superbike-wm"},"moto2":{"name":"Moto2","short":"Moto2","color":"var(--s-moto2)","gruppe":"motorrad","aus":true,"seite":"moto2"},"moto3":{"name":"Moto3","short":"Moto3","color":"var(--s-moto3)","gruppe":"motorrad","aus":true,"seite":"moto3"},"wec":{"name":"WEC","short":"WEC","color":"var(--s-wec)","gruppe":"sportwagen","aus":false,"seite":"wec"},"imsa":{"name":"IMSA","short":"IMSA","color":"var(--s-imsa)","gruppe":"sportwagen","aus":false,"seite":"imsa"},"gtwc":{"name":"GT World Challenge Europe","short":"GTWC","color":"var(--s-gtwc)","gruppe":"sportwagen","aus":false,"seite":"gt-world-challenge"},"dtm":{"name":"DTM","short":"DTM","color":"var(--s-dtm)","gruppe":"sportwagen","aus":false,"seite":"dtm"},"nls":{"name":"Nürburgring Langstrecken-Serie","short":"NLS","color":"var(--s-nls)","gruppe":"sportwagen","aus":false,"seite":"nls"},"supercup":{"name":"Porsche Supercup","short":"Supercup","color":"var(--s-supercup)","gruppe":"sportwagen","aus":true,"seite":"porsche-supercup"},"wrc":{"name":"WRC","short":"WRC","color":"var(--s-wrc)","gruppe":"rallye","aus":false,"seite":"wrc"},"erc":{"name":"ERC","short":"ERC","color":"var(--s-erc)","gruppe":"rallye","aus":false,"seite":"erc"},"dakar":{"name":"Rallye Dakar","short":"Dakar","color":"var(--s-dakar)","gruppe":"rallye","aus":false,"seite":"rallye-dakar"}}}</script>
+</body>
+</html>

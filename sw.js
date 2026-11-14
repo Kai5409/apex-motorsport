@@ -1,12 +1,12 @@
 /* APEX Service Worker — Netzwerk zuerst (frische Daten), Cache als Offline-Fallback */
-const CACHE = "apex-v83";
+const CACHE = "apex-v84";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png",
               "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon-32.png",
               "./favicon-16.png", "./apex-2026.ics",
               "./data/serien.json", "./data/sender.json",
               "./data/termine-2026.json", "./data/termine-2027.json",
               "./data/wertungen-2026.json", "./data/wertungen-2027.json", "./data/regeln.json",
-              "./data/strecken.json",
+              "./data/strecken.json", "./data/aenderungen.json",
               "./fonts/anton-latin-400-normal.woff2",
               "./fonts/ibm-plex-mono-latin-400-normal.woff2",
               "./fonts/ibm-plex-mono-latin-500-normal.woff2",
@@ -16,7 +16,7 @@ const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", 
               "./fonts/inter-latin-600-normal.woff2",
               "./fonts/inter-latin-700-normal.woff2",
               "./serienseiten.css", "./serienseiten.js", "./logo-apex-klein.png", "./logo-apex-klein-hell.png", "./strecken.js", "./karte/europa.svg", "./karte/europa-hell.svg",
-              "./serien/", "./dieses-wochenende/", "./in-der-naehe/", "./strecken/", "./formel-1/", "./formel-e/", "./indycar/", "./formel-2/", "./formel-3/",
+              "./serien/", "./dieses-wochenende/", "./in-der-naehe/", "./aenderungen/", "./strecken/", "./formel-1/", "./formel-e/", "./indycar/", "./formel-2/", "./formel-3/",
               "./f1-academy/", "./motogp/", "./superbike-wm/", "./moto2/", "./moto3/", "./wec/", "./imsa/",
               "./gt-world-challenge/", "./dtm/", "./nls/", "./porsche-supercup/", "./wrc/", "./erc/",
               "./rallye-dakar/"];
