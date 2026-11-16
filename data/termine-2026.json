@@ -976,12 +976,12 @@
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 9, "name": "66. ADAC ACAS Cup", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-09-13", "d1": "2026-09-13", "status": "done", "result": "Porsche #44 (Heinemann/Schuring)", "vorlaeufig": true,
+  {"s": "nls", "rd": 9, "name": "66. ADAC ACAS Cup", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-09-13", "d1": "2026-09-13", "status": "done", "result": "Porsche #44 (Heinemann/Schuring)",
     "sessions": [
       {"n": "Qualifying", "day": "So", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "So", "t": "12:00"}
     ]},
-  {"s": "nls", "rd": 10, "name": "2. NLS Sportwarte-Trophy · Finale", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-10-10", "d1": "2026-10-10", "status": "done", "result": "Porsche #17 (Menzel/Müller)", "vorlaeufig": true,
+  {"s": "nls", "rd": 10, "name": "2. NLS Sportwarte-Trophy · Finale", "loc": "Nürburgring", "var": "nordschleife-sprintstrecke", "d0": "2026-10-10", "d1": "2026-10-10", "status": "done", "result": "Porsche #17 (Menzel/Müller)",
     "sessions": [
       {"n": "Qualifying", "day": "Sa", "t": "08:30"},
       {"n": "Rennen (4h)", "day": "Sa", "t": "12:00"}
