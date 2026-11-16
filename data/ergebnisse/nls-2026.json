@@ -308,7 +308,7 @@
     ]}
   ],
   "nls-9": [
-    {"n": "Rennen (4h)", "quelle": "nuerburgring-langstrecken-serie.de (Vorläufiges Ergebnis)", "gekuerzt": true, "vorlaeufig": true, "zeilen": [
+    {"n": "Rennen (4h)", "quelle": "nuerburgring-langstrecken-serie.de (Offizielles Ergebnis)", "gekuerzt": true, "zeilen": [
       [1, "Heinemann / Schuring", "Falken Motorsports #44", "SP9 Pro"],
       [2, "Menzel / Schuring", "Dunlop Motorsport #17", "SP9 Pro"],
       [3, "Assenheimer / Müller / Pereira", "48 LOSCH Motorsport by BLACK FALCON #48", "SP9 Pro-Am"],
@@ -352,7 +352,7 @@
     ]}
   ],
   "nls-10": [
-    {"n": "Rennen (4h)", "quelle": "nuerburgring-langstrecken-serie.de (Vorläufiges Ergebnis)", "gekuerzt": true, "vorlaeufig": true, "zeilen": [
+    {"n": "Rennen (4h)", "quelle": "nuerburgring-langstrecken-serie.de (Offizielles Ergebnis)", "gekuerzt": true, "zeilen": [
       [1, "Menzel / Müller", "Dunlop Motorsport #17", "SP9 Pro"],
       [2, "Heinemann / Müller", "Falken Motorsports #44", "SP9 Pro"],
       [3, "Pepper / Tramnitz", "Schubert Motorsport #77", "SP9 Pro"],
@@ -360,10 +360,10 @@
       [5, "Assenheimer / Müller / Pereira", "48 LOSCH Motorsport by BLACK FALCON #48", "SP9 Pro-Am"],
       [6, "Zsigo / Kranz / Jahn", "Gamota Racing #23", "SP9 Pro-Am"],
       [7, "Christodoulou / Palette / Böckmann", "PROsport racing #26", "SP9 Pro-Am"],
-      [8, "Hardt / 'Benjamin Hites' / Koslowski", "BLACK FALCON Team ZIMMERMANN #900", "CUP2"],
-      [9, "Joos / Leib / Brück", "Team Joos Sportwagentechnik #2", "SP9 Pro-Am"],
-      [10, "Kolb / Stippler", "Haupt Racing Team #64", "SP9 Pro"],
-      [11, "Bastian / Scheerbarth", "Mühlner Motorsport #904", "CUP2"],
+      [8, "Bastian / Scheerbarth", "Mühlner Motorsport #904", "CUP2"],
+      [9, "Hardt / 'Benjamin Hites' / Koslowski", "BLACK FALCON Team ZIMMERMANN #900", "CUP2"],
+      [10, "Joos / Leib / Brück", "Team Joos Sportwagentechnik #2", "SP9 Pro-Am"],
+      [11, "Kolb / Stippler", "Haupt Racing Team #64", "SP9 Pro"],
       [12, "Veremenko / 'SELV'", "JUTA Racing #8", "SP9 Am"],
       [13, "Zsigo / Walter / Fetzer", "Gamota Racing #36", "SP9 Am"],
       [14, "Rennhofer / Wassertheurer", "Team LIQUI MOLY by BLACK FALCON #902", "CUP2"],
