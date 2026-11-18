@@ -499,7 +499,7 @@
       {"n": "FP2", "day": "Sa", "t": "11:10"},
       {"n": "Qualifying", "day": "Sa", "t": "11:50"},
       {"n": "Sprint", "day": "Sa", "t": "16:00"},
-      {"n": "Warm Up", "day": "So", "t": "10:40"},
+      {"n": "Warm Up", "day": "So", "t": "10:00"},
       {"n": "Rennen", "day": "So", "t": "14:00"}
     ]},
   {"s": "mgp", "rd": 22, "name": "Großer Preis von Valencia", "loc": "Valencia", "d0": "2026-11-27", "d1": "2026-11-29", "status": "up",
@@ -1303,7 +1303,7 @@
       {"n": "Practice", "day": "Fr", "t": "14:15"},
       {"n": "FP2", "day": "Sa", "t": "09:40"},
       {"n": "Qualifying", "day": "Sa", "t": "13:45"},
-      {"n": "Rennen", "day": "So", "t": "15:30"}
+      {"n": "Rennen", "day": "So", "t": "11:00"}
     ]},
   {"s": "moto3", "rd": 22, "name": "Großer Preis von Valencia", "loc": "Valencia", "d0": "2026-11-27", "d1": "2026-11-29", "status": "up",
     "sessions": [
