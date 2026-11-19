@@ -136,6 +136,8 @@ h1{font-family:var(--display);font-weight:400;font-size:clamp(58px,15vw,112px);l
 h1.lang{font-size:clamp(40px,10.5vw,92px)}
 /* Abstand zum Namen mindestens 24 px: Umlaut-Punkte (Ü) ragen über die Zeile hinaus */
 h1 .bar{display:block;width:64px;height:6px;background:var(--serie);margin:0 0 max(24px,.3em)}
+/* Zusatz unter dem Namen („Kalender & Zeitplan“, Streckenseiten „Termine & Zeitplan“): Teil der Überschrift, kleine gedämpfte Schrift */
+h1 .h1zus{display:block;margin:10px 0 0;font:500 17px/1.3 var(--text);letter-spacing:0;text-transform:none;color:var(--muted)}
 .lead{font-size:clamp(17px,2.4vw,20px);line-height:1.4;margin:14px 0 0;max-width:36ch}
 .lead span{color:var(--muted)}
 
