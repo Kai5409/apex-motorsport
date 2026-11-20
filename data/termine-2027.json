@@ -528,5 +528,17 @@
   {"s": "elms", "rd": 5, "sz": "2027", "prov": true, "name": "4 Stunden von Silverstone", "loc": "Silverstone", "d0": "2027-09-03", "d1": "2027-09-05", "status": "up",
     "sessions": []},
   {"s": "elms", "rd": 6, "sz": "2027", "prov": true, "name": "4 Stunden von Portimão · Finale", "loc": "Portimão", "d0": "2027-10-14", "d1": "2027-10-16", "status": "up",
+    "sessions": []},
+  {"s": "gtmasters", "rd": 1, "sz": "2027", "prov": true, "name": "Red Bull Ring", "loc": "Red Bull Ring", "d0": "2027-04-23", "d1": "2027-04-25", "status": "up",
+    "sessions": []},
+  {"s": "gtmasters", "rd": 2, "sz": "2027", "prov": true, "name": "Lausitzring", "loc": "Lausitzring", "d0": "2027-06-18", "d1": "2027-06-20", "status": "up",
+    "sessions": []},
+  {"s": "gtmasters", "rd": 3, "sz": "2027", "prov": true, "name": "Nürburgring", "loc": "Nürburgring", "var": null, "d0": "2027-07-09", "d1": "2027-07-11", "status": "up",
+    "sessions": []},
+  {"s": "gtmasters", "rd": 4, "sz": "2027", "prov": true, "name": "Zandvoort", "loc": "Zandvoort", "d0": "2027-08-06", "d1": "2027-08-08", "status": "up",
+    "sessions": []},
+  {"s": "gtmasters", "rd": 5, "sz": "2027", "prov": true, "name": "Sachsenring", "loc": "Sachsenring", "d0": "2027-09-24", "d1": "2027-09-26", "status": "up",
+    "sessions": []},
+  {"s": "gtmasters", "rd": 6, "sz": "2027", "prov": true, "name": "Hockenheimring · Finale", "loc": "Hockenheimring", "d0": "2027-10-08", "d1": "2027-10-10", "status": "up",
     "sessions": []}
 ]
