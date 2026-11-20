@@ -1,6 +1,18 @@
 {
   "eintraege": [
     {
+      "id": "2026-11-20-gtwcau-adelaide",
+      "datum": "2026-11-20",
+      "serien": ["gtwcau"],
+      "art": "geaendert",
+      "titel": "Finale Adelaide: Termine in deutscher Zeit",
+      "text": "Der Zeitplan für das Finale in Adelaide ist veröffentlicht. Weil die Sessions in Australien am Vormittag liegen, läuft das Wochenende in deutscher Zeit vom 25. bis 28.11., beide Rennen starten jeweils am Vorabend um 23:40 Uhr.",
+      "events": [
+        {"s": "gtwcau", "rd": 6, "name": "Adelaide · Finale", "vorher": {"d0": "2026-11-26", "d1": "2026-11-29"}, "jetzt": {"d0": "2026-11-25", "d1": "2026-11-28"}, "notiz": "Tage in deutscher Zeit"}
+      ],
+      "quelle": {"url": "https://www.gt-world-challenge-australia.com/event/28/adelaide-grand-final", "name": "gt-world-challenge-australia.com", "datum": "2026-11-20"}
+    },
+    {
       "id": "2026-11-12-fe-kalender",
       "datum": "2026-11-12",
       "serien": ["fe"],

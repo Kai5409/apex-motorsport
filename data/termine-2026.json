@@ -1448,8 +1448,14 @@
     "sessions": []},
   {"s": "gtwcau", "rd": 5, "name": "Sydney Motorsport Park", "loc": "Sydney Motorsport Park", "d0": "2026-09-18", "d1": "2026-09-20", "status": "done", "result": "Sa: Targett/Smollen (Mercedes-AMG) · So: Feeney/Schumacher (Audi)",
     "sessions": []},
-  {"s": "gtwcau", "rd": 6, "name": "Adelaide · Finale", "loc": "Adelaide", "d0": "2026-11-26", "d1": "2026-11-29", "status": "up",
-    "sessions": []},
+  {"s": "gtwcau", "rd": 6, "name": "Adelaide · Finale", "loc": "Adelaide", "d0": "2026-11-25", "d1": "2026-11-28", "status": "up",
+    "sessions": [
+      {"n": "Training 1", "day": "Mi", "t": "22:50"},
+      {"n": "Training 2", "day": "Do", "t": "02:55"},
+      {"n": "Qualifying 1", "day": "Fr", "t": "01:45"},
+      {"n": "Rennen 1", "day": "Fr", "t": "23:40"},
+      {"n": "Rennen 2", "day": "Sa", "t": "23:40"}
+    ]},
   {"s": "igtc", "rd": 1, "name": "Bathurst 12 Hour", "loc": "Bathurst", "d0": "2026-02-11", "d1": "2026-02-15", "status": "done", "result": "Mercedes-AMG #888 (Engel/Grenier/Martin)",
     "sessions": []},
   {"s": "igtc", "rd": 4, "name": "Suzuka 1000km", "loc": "Suzuka", "d0": "2026-09-11", "d1": "2026-09-13", "status": "done", "result": "Porsche #8 (Picariello/Heinrich/Andlauer)",

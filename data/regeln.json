@@ -246,7 +246,43 @@
       ["Fahrer", "Zwei Fahrer teilen sich ein Auto. Mindestens einer der beiden muss als Silber- oder Bronze-Fahrer eingestuft sein."],
       ["Wochenende", "Auf zwei freie Trainings folgen zwei Qualifyings, eines für jedes Rennen. Rennen 1 läuft am Samstag, Rennen 2 am Sonntag."],
       ["Rennen", "Ein Rennen dauert eine Stunde. Zwischen der 25. und 35. Minute muss jedes Auto zum Pflichtstopp an die Box, dort wechseln die Fahrer. Ab 2027 gibt es nur noch diese Sprintrennen, und beim Stopp werden zusätzlich die Reifen gewechselt."],
+      ["Punkte", "Punkte gibt es für das gemeinsame Ergebnis im Rennen; zusätzlich bekommt jeder Fahrer Punkte für sein eigenes Qualifying."],
       ["Autos", "Es fahren GT3-Sportwagen mit über 550 PS von Audi, BMW, Ford, Lamborghini, Mercedes-AMG und Porsche, alle auf Einheitsreifen von Pirelli."]
+    ]
+  },
+  "gtwcam": {
+    "kurz": "Nordamerikanische GT3-Serie der SRO: sieben Wochenenden, seit 2026 mit einem Drei-Stunden-Rennen.",
+    "bloecke": [
+      ["Serie", "Die GT World Challenge America ist der nordamerikanische Ableger der GT World Challenge der SRO, zu der auch die Serien in Europa, Asien und Australien gehören. Es fahren ausschließlich GT3-Sportwagen."],
+      ["Rennformat", "Eine Saison hat sieben Wochenenden über je drei Tage. Seit 2026 gibt es statt zwei Rennen über 90 Minuten ein einziges Rennen über drei Stunden, es läuft am Sonntag."],
+      ["Saisonfinale", "Den Abschluss bildet ein Acht-Stunden-Rennen, das zugleich zur Intercontinental GT Challenge zählt: bis 2026 in Indianapolis, 2027 auf dem Circuit of the Americas in Texas."],
+      ["Klassen", "Zwei Fahrer teilen sich ein Auto. Nach der FIA-Einstufung der beiden Fahrer startet jedes Auto in einer von drei Klassen: Pro, Pro-Am oder Am. Die Titel werden getrennt nach Klassen vergeben, eine Gesamtwertung der Fahrer gibt es nicht – APEX zeigt die Wertung der Pro-Klasse."]
+    ]
+  },
+  "gtwcas": {
+    "kurz": "Asiatische GT3-Serie der SRO: sechs Wochenenden mit je zwei Ein-Stunden-Rennen.",
+    "bloecke": [
+      ["Serie", "Die GT World Challenge Asia ist der asiatische Ableger der GT World Challenge der SRO. Es fahren ausschließlich GT3-Sportwagen, Stationen sind Strecken in Südostasien, Japan und China."],
+      ["Rennformat", "Eine Saison hat sechs Wochenenden mit je zwei Rennen über eine Stunde, also zwölf Rennen. Zwei Fahrer teilen sich ein Auto und wechseln sich beim Pflichtboxenstopp ab."],
+      ["Klassen", "Nach der FIA-Einstufung der Fahrer starten die Autos in den Klassen Pro-Am, Silver, Silver-Am und Am."],
+      ["Wertung", "Anders als in Amerika und Australien gibt es eine Gesamtwertung der Fahrer über alle Klassen – sie zeigt APEX. Dazu kommen Wertungen je Klasse, ein China Cup und eine Teamwertung."]
+    ]
+  },
+  "gtwcau": {
+    "kurz": "Australische GT3-Serie der SRO: sechs Wochenenden mit je zwei Ein-Stunden-Rennen.",
+    "bloecke": [
+      ["Serie", "Die GT World Challenge Australia ist der australische Ableger der GT World Challenge der SRO. Es fahren GT3-Sportwagen; 2026 endet die Saison im Rahmen der Supercars beim Grand Final in Adelaide."],
+      ["Rennformat", "Eine Saison hat sechs Wochenenden über je drei Tage mit je zwei Rennen über 60 Minuten."],
+      ["Klassen", "Fahrerwertungen gibt es nur getrennt nach Klassen: Pro-Am, Am und Trophy. APEX zeigt die Pro-Am-Wertung, die höchste Klasse. Dazu kommt eine Teamwertung."],
+      ["Nachwuchs", "Über die SRO GT Academy kann ein als Silber eingestufter Fahrer einen bezahlten Startplatz bei den 24 Stunden von Spa im folgenden Jahr gewinnen."]
+    ]
+  },
+  "igtc": {
+    "kurz": "Weltweite Langstreckenwertung der SRO für GT3-Hersteller über fünf große Klassiker.",
+    "bloecke": [
+      ["Serie", "Die Intercontinental GT Challenge umfasst fünf Langstreckenrennen auf vier Kontinenten: das 12-Stunden-Rennen in Bathurst, die 24-Stunden-Rennen am Nürburgring und in Spa, die 1000 km von Suzuka und ein Acht-Stunden-Rennen in Amerika. Einige Rennen stehen für sich, andere gehören zugleich zu einer anderen Serie – APEX führt sie dort mit dem Hinweis „zählt auch zur IGTC“."],
+      ["Hersteller", "Die Serie richtet sich an die Hersteller: Sie setzen keine eigenen Werksautos ein, sondern unterstützen Kundenteams. Der Herstellertitel ist der wichtigste Titel. Je Hersteller zählen in jedem Rennen nur die beiden bestplatzierten Autos."],
+      ["Fahrer", "Die Fahrer bekommen Punkte nach dem Gesamtergebnis, unabhängig von ihrer Klasse; gewertet werden die ersten zehn. Für als Bronze eingestufte Fahrer gibt es eine eigene Wertung, den Independent Cup."]
     ]
   }
 }

@@ -7,6 +7,33 @@ X-WR-CALNAME:APEX · GT World Challenge Australia (ohne Trainings)
 X-WR-CALDESC:GT World Challenge Australia — Rennen\, Sprints und Qualifying in deutscher Zeit
 X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VEVENT
+UID:apex-gtwcau6-Qualifying1@apex-motorsport
+DTSTAMP:20261120T234500Z
+DTSTART:20261127T004500Z
+DTEND:20261127T014500Z
+SUMMARY:GTWC Australien · Adelaide · Finale — Qualifying 1
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau6-Rennen1@apex-motorsport
+DTSTAMP:20261120T234500Z
+DTSTART:20261127T224000Z
+DTEND:20261128T001000Z
+SUMMARY:GTWC Australien · Adelaide · Finale — Rennen 1
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau6-Rennen2@apex-motorsport
+DTSTAMP:20261120T234500Z
+DTSTART:20261128T224000Z
+DTEND:20261129T001000Z
+SUMMARY:GTWC Australien · Adelaide · Finale — Rennen 2
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide
+END:VEVENT
+BEGIN:VEVENT
 UID:apex-gtwcau1-ganztag@apex-motorsport
 DTSTAMP:20261120T161855Z
 DTSTART;VALUE=DATE:20260327
@@ -55,16 +82,6 @@ TRANSP:TRANSPARENT
 SUMMARY:GTWC Australien · Sydney Motorsport Park
 LOCATION:Sydney Motorsport Park
 DESCRIPTION:APEX · GT World Challenge Australia · Lauf 5 · Sydney Motorsport Park — ganztägig\, Sessionzeiten liegen nicht vor
-END:VEVENT
-BEGIN:VEVENT
-UID:apex-gtwcau6-ganztag@apex-motorsport
-DTSTAMP:20261120T161855Z
-DTSTART;VALUE=DATE:20261126
-DTEND;VALUE=DATE:20261130
-TRANSP:TRANSPARENT
-SUMMARY:GTWC Australien · Adelaide · Finale
-LOCATION:Adelaide
-DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide — ganztägig\, Sessionzeiten liegen nicht vor
 END:VEVENT
 BEGIN:VEVENT
 UID:apex-gtwcau1-2027-ganztag@apex-motorsport
