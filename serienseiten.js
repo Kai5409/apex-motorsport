@@ -443,8 +443,8 @@
      opt.serien() = gezeigte Serien, opt.geaendert() = nach jeder Änderung der Auswahl */
   const FILTER = "apex_filter";
   function serienFilter(leiste, DAT, opt) {
-    const SER = DAT.serien || {}, GRP = DAT.gruppen || {}, ALLE = Object.keys(SER), AKTIV = new Set();
-    let offen = null, gezeigtOffen = null;
+    const SER = DAT.serien || {}, GRP = DAT.gruppen || {}, FAM = DAT.familien || {}, ALLE = Object.keys(SER), AKTIV = new Set();
+    let offen = null, gezeigtOffen = null, famOffen = null;
     function filterLaden() {
       let alt = null; try { alt = JSON.parse(localStorage.getItem(FILTER) || "null"); } catch (e) { alt = null; }
       if (!alt || typeof alt !== "object" || Array.isArray(alt)) alt = {};
@@ -467,7 +467,25 @@
     /* „Formel-Serien“, „Sportwagen- & GT-Serien“ (wie „Weitere … -Serien“ auf den Serienseiten) */
     const gruppenWort = (x) => (x.g === "weitere" ? "weiteren Serien" : x.name.split(" & ").map((w) => w + "-").join(" & ") + "Serien");
     /* Knöpfe werden neu gezeichnet – der Tastaturfokus wandert auf den neuen Knopf an gleicher Stelle */
+    /* Familie (z. B. GT World Challenge): in der Gruppenauswahl ein Knopf an der Stelle ihres ersten Mitglieds; Tippen klappt
+       darunter einen eingerückten Bereich auf (oben „Alle …“, darunter die Mitglieder mit fl) – wie in der App */
+    const famKnopf = (f, fs) => { const F = FAM[f] || { name: f, short: f }, an = fs.filter((sk) => AKTIV.has(sk)).length, auf = famOffen === f;
+      return `<button class="wf-chip wf-fam${an ? "" : " aus"}${auf ? " offen" : ""}" type="button" data-fam="${f}" aria-expanded="${auf}" title="${escH(F.name)}"><i style="--c:${SER[fs[0]].color}"></i><span class="wf-l">${escH(F.name)}</span><span class="wf-s">${escH(F.short)}</span>${an && an < fs.length ? `<span class="wf-fz">${an}/${fs.length}</span>` : ""}<span class="wf-pf" aria-hidden="true">▾</span></button>`; };
+    const famMitglied = (sk) => { const S = SER[sk], an = AKTIV.has(sk);
+      return `<button class="wf-chip${an ? "" : " aus"}" type="button" data-serie="${sk}" aria-pressed="${an}" title="${escH(S.name)}"><i style="--c:${S.color}"></i><span class="wf-l">${escH(S.fl)}</span><span class="wf-s">${escH(S.fl)}</span></button>`; };
+    function chipsMitFamilien(sks) {
+      let h = "", block = ""; const gesehen = new Set();
+      sks.forEach((sk) => {
+        const f = SER[sk].fam; if (!f) { h += knopf(sk); return; }
+        if (gesehen.has(f)) return; gesehen.add(f);
+        const fs = sks.filter((x) => SER[x].fam === f); h += famKnopf(f, fs);
+        if (famOffen === f) { const F = FAM[f] || { name: f }, an = fs.filter((x) => AKTIV.has(x)).length;
+          block = `<div class="wf-fpanel" role="group" aria-label="${escH(F.name)}"><button class="switch wf-falle" type="button" role="switch" aria-checked="${an === fs.length}" data-fam="${f}"><span class="track"></span>Alle ${escH(F.name)}</button><div class="wf-chips">${fs.map(famMitglied).join("")}</div></div>`; }
+      });
+      return `<div class="wf-chips">${h}</div>${block}`;
+    }
     const fokusWahl = (el) => el.dataset.serie ? `.wf-chip[data-serie="${el.dataset.serie}"]`
+      : el.classList.contains("wf-falle") ? ".wf-falle" : el.dataset.fam ? `.wf-fam[data-fam="${el.dataset.fam}"]`
       : el.classList.contains("wf-alle") ? ".wf-alle" : el.closest(".wf-grp") ? `.wf-grp[data-g="${el.closest(".wf-grp").dataset.g}"] .wf-an` : null;
     function filterZeichnen() {
       if (!leiste) return;
@@ -487,7 +505,7 @@
             (st === "teil" ? `<span class="wf-z" aria-hidden="true">${an}/${n}</span>` : "") + `</div>` +
             (auf ? `<div class="wf-panel" id="wf-panel" role="group" aria-label="${escH(x.name)}">` +
               `<button class="switch wf-alle" type="button" role="switch" aria-checked="${an === n}"><span class="track"></span>Alle ${escH(gruppenWort(x))}</button>` +
-              `<div class="wf-chips">${x.sks.map(knopf).join("")}</div></div>` : "");
+              `${chipsMitFamilien(x.sks)}</div>` : "");
         }).join("") + "</div>";
       } else offen = null;
       leiste.innerHTML = h; gezeigtOffen = offen;
@@ -504,16 +522,24 @@
       else x.sks.forEach((sk) => AKTIV.add(sk));
       geaendert();
     }
+    function familieUmschalten(f) {
+      const fs = gezeigteSerien().filter((sk) => SER[sk].fam === f); if (!fs.length) return;
+      if (fs.every((sk) => AKTIV.has(sk))) { if (fs.length >= AKTIV.size) { hinweis(MIND_EINE); return; } fs.forEach((sk) => AKTIV.delete(sk)); }
+      else fs.forEach((sk) => AKTIV.add(sk));
+      geaendert();
+    }
     function geaendert() { filterSpeichern(); filterZeichnen(); opt.geaendert(); }
     if (leiste) leiste.addEventListener("click", (ev) => {
-      const chip = ev.target.closest(".wf-chip"), alle = ev.target.closest(".wf-alle"), an = ev.target.closest(".wf-an");
-      if (chip) serieUmschalten(chip.dataset.serie);
+      const chip = ev.target.closest(".wf-chip"), alle = ev.target.closest(".wf-alle"), an = ev.target.closest(".wf-an"), falle = ev.target.closest(".wf-falle");
+      if (chip && chip.dataset.fam) { famOffen = famOffen === chip.dataset.fam ? null : chip.dataset.fam; filterZeichnen(); }
+      else if (falle) familieUmschalten(falle.dataset.fam);
+      else if (chip) serieUmschalten(chip.dataset.serie);
       else if (alle) gruppeUmschalten(offen);
-      else if (an) { const g = an.closest(".wf-grp").dataset.g; offen = offen === g ? null : g; filterZeichnen(); }
+      else if (an) { const g = an.closest(".wf-grp").dataset.g; offen = offen === g ? null : g; famOffen = null; filterZeichnen(); }
     });
     /* Auswahl schließen: nochmals Tippen auf den Gruppenknopf (oben), Tippen außerhalb des Filters oder Esc (wie in der App) */
-    document.addEventListener("click", (ev) => { if (offen && leiste && !leiste.contains(ev.target)) { offen = null; filterZeichnen(); } }, true);
-    document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && offen) { offen = null; filterZeichnen(); } });
+    document.addEventListener("click", (ev) => { if (offen && leiste && !leiste.contains(ev.target)) { offen = null; famOffen = null; filterZeichnen(); } }, true);
+    document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && offen) { offen = null; famOffen = null; filterZeichnen(); } });
     /* Auswahl aus der App übernehmen: anderer Tab (storage) oder Rückkehr aus dem Browser-Zwischenspeicher */
     const abgleichen = () => { filterLaden(); filterZeichnen(); opt.geaendert(); };
     addEventListener("storage", (ev) => { if (ev.key === FILTER || ev.key === null) abgleichen(); });
@@ -589,7 +615,8 @@
 
     /* Serienauswahl und „Trainings ausblenden“ wirken nur auf den Zeitplan (Trainings per CSS, Klasse am <html>).
        „Auf dem Programm“ und „Wo läuft was?“ zeigen immer alle Serien des Wochenendes; ausgeblendete gedämpft. */
-    const sichtbar = (x) => FL.aktiv.has(x.dataset.serie);
+    /* data-auch: das Event zählt auch zu diesen Serien – sichtbar, wenn eine davon ausgewählt ist */
+    const sichtbar = (x) => FL.aktiv.has(x.dataset.serie) || (x.dataset.auch || "").split(" ").some((sk) => FL.aktiv.has(sk));
     function filtern() {
       root.classList.toggle("ohnetraining", ohneTraining);
       let zeilen = 0;
@@ -757,10 +784,10 @@
     /* Rennwochenenden: gleiche Strecke + gleiche Woche = eine Zeile (z. B. MotoGP mit Moto2 und Moto3) */
     function wochenKey(x) { const d = new Date(x + "T12:00:00"); const t = (d.getDay() + 6) % 7; d.setDate(d.getDate() - t); return d.toISOString().slice(0, 10); }
     const ZEILEN = (() => { const m = new Map();
-      N.termine.forEach(([v, sk, n, d0, d1]) => { if (!ORT_BY[v] || !S[sk]) return; const k = v + "|" + wochenKey(d1); let z = m.get(k);
-        if (!z) { z = { v, d0, d1, ev: [] }; m.set(k, z); } z.d0 = d0 < z.d0 ? d0 : z.d0; z.d1 = d1 > z.d1 ? d1 : z.d1; z.ev.push({ s: sk, n }); });
+      N.termine.forEach(([v, sk, n, d0, d1, auch]) => { if (!ORT_BY[v] || !S[sk]) return; const k = v + "|" + wochenKey(d1); let z = m.get(k);
+        if (!z) { z = { v, d0, d1, ev: [] }; m.set(k, z); } z.d0 = d0 < z.d0 ? d0 : z.d0; z.d1 = d1 > z.d1 ? d1 : z.d1; z.ev.push({ s: sk, n, auch: Array.isArray(auch) ? auch.filter((x) => S[x]) : [] }); });
       return [...m.values()].map((z) => {
-        const serien = [...new Set(z.ev.map((e) => e.s))].sort((a, b) => (S[a].aus - S[b].aus) || (SK.indexOf(a) - SK.indexOf(b)));
+        const serien = [...new Set(z.ev.flatMap((e) => [e.s].concat(e.auch)))].sort((a, b) => (S[a].aus - S[b].aus) || (SK.indexOf(a) - SK.indexOf(b)));
         const haupt = serien[0], namen = z.ev.filter((e) => e.s === haupt).map((e) => e.n);
         let name = namen[0]; if (namen.length > 1) { name = namen[0].replace(/\s+I{1,3}$/, "") + " · " + namen.length + " Rennen"; }
         return { v: z.v, d0: z.d0, d1: z.d1, serien, haupt, name };

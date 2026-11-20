@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="APEX">
 <title>APEX — Motorsport-Kalender 2026 & 2027 | F1, MotoGP, WEC, DTM, WRC & mehr</title>
-<meta name="description" content="Motorsport-Kalender 2026 und 2027 für 22 Serien: Formel 1, MotoGP, WEC, DTM, WRC und mehr – Zeitplan in MEZ/MESZ, Wertungen und TV-Sender für DE, AT und CH.">
+<meta name="description" content="Motorsport-Kalender 2026 und 2027 für 26 Serien: Formel 1, MotoGP, WEC, DTM, WRC und mehr – Zeitplan in MEZ/MESZ, Wertungen und TV-Sender für DE, AT und CH.">
 <meta name="keywords" content="Formel 1 Kalender 2027, F1 Kalender 2027, F1 2027 Termine, Formel 1 2027 Rennkalender, Motorsport Kalender 2027, WEC Kalender 2027, Le Mans 2027, DTM Kalender 2027, DTM 2027 Termine, Formel E Kalender 2027, Formel E Saison 13, GT World Challenge 2027, 24h Spa 2027, NLS Kalender 2026, NLS Kalender 2027, Nürburgring Langstrecken-Serie, Nordschleife Rennen, 24h Nürburgring 2026, 24h Nürburgring 2027, 24h Qualifiers, NLS Speed-Trophäe, MotoGP Kalender 2027, WRC Kalender 2027, Formel 1 Kalender 2026, MotoGP Kalender 2026, Motorsport Kalender, F1 Sessionzeiten, Rennkalender Deutschland, Wo läuft F1 im TV, Formel 1 Qualifying erklärt, MotoGP Regeln, WRC Power Stage, Formel E Attack Mode, DTM Regeln, IndyCar Kalender 2026, IndyCar 2027, Indy 500, Formel 2 Kalender 2026, Formel 3 Kalender 2026, F1 Academy Kalender, Superbike-WM Kalender 2026, WSBK 2026, Moto2 Kalender 2026, Moto3 Kalender 2026, Porsche Supercup 2026, ERC Rallye-EM 2026, Rallye Dakar 2027, IMSA Kalender 2026, IMSA 2027, Rolex 24 Daytona">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://apexkalender.de/">
@@ -21,14 +21,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="APEX">
 <meta property="og:title" content="APEX — Motorsport-Kalender 2026 & 2027">
-<meta property="og:description" content="Motorsport-Kalender 2026 und 2027 für 22 Serien: Formel 1, MotoGP, WEC, DTM, WRC und mehr – Zeitplan in MEZ/MESZ, Wertungen und TV-Sender für DE, AT und CH.">
+<meta property="og:description" content="Motorsport-Kalender 2026 und 2027 für 26 Serien: Formel 1, MotoGP, WEC, DTM, WRC und mehr – Zeitplan in MEZ/MESZ, Wertungen und TV-Sender für DE, AT und CH.">
 <meta property="og:image" content="https://apexkalender.de/logo-apex.png">
 <meta property="og:url" content="https://apexkalender.de/">
 <meta property="og:locale" content="de_DE">
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="APEX — Motorsport-Kalender 2026 & 2027">
-<meta name="twitter:description" content="Motorsport-Kalender 2026 und 2027 für 22 Serien: Formel 1, MotoGP, WEC, DTM, WRC und mehr – Zeitplan in MEZ/MESZ, Wertungen und TV-Sender für DE, AT und CH.">
+<meta name="twitter:description" content="Motorsport-Kalender 2026 und 2027 für 26 Serien: Formel 1, MotoGP, WEC, DTM, WRC und mehr – Zeitplan in MEZ/MESZ, Wertungen und TV-Sender für DE, AT und CH.">
 <meta name="twitter:image" content="https://apexkalender.de/logo-apex.png">
 <style>
 /* Schriften lokal ausgeliefert - kein Abruf von Google-Servern, keine Datenuebertragung an Dritte. */
@@ -40,6 +40,9 @@
 @font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/inter-latin-500-normal.woff2") format("woff2")}
 @font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/inter-latin-600-normal.woff2") format("woff2")}
 @font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/inter-latin-700-normal.woff2") format("woff2")}
+.fam .fam-pf{font-size:9px;color:var(--muted);margin-left:2px}.fam .fam-z{font-size:9.5px;color:var(--gold)}.fam.fam-offen{border-color:var(--paper);color:var(--paper)}
+.fam-panel{display:flex;flex-direction:column;gap:10px;align-self:stretch;margin:-2px 0 0 12px;padding:10px 0 2px 12px;border-left:2px solid var(--rule-strong)}
+.auch{color:var(--muted)}
 </style>
 <style>
 :root{
@@ -588,7 +591,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   <button class="jumpnow" id="jumpnow" onclick="jumpToNow()">↓ Heute</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <footer>
-APEX · Saison <span id="fuss-saison">2026</span> · 22 Serien<span id="datenstand"></span><br>
+APEX · Saison <span id="fuss-saison">2026</span> · 26 Serien<span id="datenstand"></span><br>
     Alle Zeiten in deutscher Zeit (MEZ/MESZ), ohne Gewähr — Startzeiten künftiger Rennen können sich noch verschieben.<br>
     <a class="legal-link ordner" href="serien/">Alle Serien</a> · <a class="legal-link ordner" href="strecken/">Alle Strecken</a> · <a class="legal-link ordner" href="dieses-wochenende/">Dieses Wochenende</a> · <a class="legal-link ordner" href="in-der-naehe/">In der Nähe</a> · <a class="legal-link ordner" href="aenderungen/">Änderungen</a> ·
     <button class="legal-link" onclick="toggleLegal()" aria-expanded="false" aria-controls="legal">Datenschutz</button>
@@ -745,7 +748,8 @@ function uebernehmeDaten(d){
       if(luecke("serien",istKey(k)&&istObj(v)&&istText(v.name)&&istText(v.short)&&istFarbe(v.color)
           &&(v.gruppe==null||istText(v.gruppe))&&(v.ausgeblendet==null||typeof v.ausgeblendet==="boolean")
           &&(v.seite==null||istText(v.seite)&&/^[a-z0-9-]+$/.test(v.seite))))
-        SERIES[k]={name:v.name,short:v.short,color:`var(--s-${k})`,hex:v.color,gruppe:v.gruppe||"",aus:v.ausgeblendet===true,seite:v.seite||seiteAusName(v.name)};});
+        SERIES[k]={name:v.name,short:v.short,color:`var(--s-${k})`,hex:v.color,gruppe:v.gruppe||"",aus:v.ausgeblendet===true,seite:v.seite||seiteAusName(v.name),familie:istText(v.familie)&&istObj(x.familien)&&istObj(x.familien[v.familie])?v.familie:"",famLabel:istText(v.fam_label)?v.fam_label:v.name};});
+    FAMILIEN=istObj(x.familien)?x.familien:{};
     farbenSetzen();
     return Object.keys(SERIES).length>0;
   });
@@ -1093,7 +1097,17 @@ const ABBRUCH="Rennen abgebrochen – nicht gewertet";
 function istTest(e){return e.sonder==="test";}
 function sonderText(e){return istTest(e)?"Test – keine Wertung":"Eigenständiges Rennen – zählt nicht zur "+SERIES[e.s].short+"-Wertung";}
 function isRaceName(n){return /^Rennen|^Sprint$|^Rennen \(|^Power Stage/.test(n);}
-function actEvents(){return EVENTS.filter(e=>ACTIVE.has(e.s));}
+/* Familien (serien.json → familien) und „zählt auch zu“ (Event-Feld auch: [{s, rd}]) – ein Event ist sichtbar, wenn seine Serie oder eine der auch-Serien eingeblendet ist */
+let FAMILIEN={};
+const auchListe=e=>(Array.isArray(e.auch)?e.auch:[]).filter(a=>a&&SERIES[a.s]);
+const auchVon=e=>auchListe(e).map(a=>a.s);
+const auchRd=(e,sk)=>{const a=auchListe(e).find(x=>x.s===sk);return a?a.rd:null;};
+const gehoertZu=(e,sk)=>e.s===sk||auchRd(e,sk)!=null;
+/* Familienmitglieder heißen in Karten und Leisten mit ihrem Kürzel (GTWC Amerika …), damit nichts umbricht */
+const serienName2=sk=>SERIES[sk].familie?SERIES[sk].short:SERIES[sk].name;
+const sichtbar=e=>ACTIVE.has(e.s)||auchVon(e).some(sk=>ACTIVE.has(sk));
+const kuerzel=e=>[SERIES[e.s].short].concat(auchVon(e).map(sk=>SERIES[sk].short)).join(" + ");
+function actEvents(){return EVENTS.filter(sichtbar);}
 
 /* markiere je Serie das nächste Event */
 function tagNext(){
@@ -1129,6 +1143,7 @@ function serienGruppiert(f){
    oder Esc schließt sie). Darin oben der Schalter „Alle …-Serien“, darunter die einzelnen Serien.
    Teilauswahl steht am Knopf („2/4“). */
 let FILTER_OFFEN=null;   /* Gruppe, deren Serien gerade aufgeklappt sind */
+let FAM_OFFEN=null;      /* aufgeklappte Familie in der offenen Gruppe */
 let FILTER_GEZEIGT=null; /* zuletzt gezeichnete offene Gruppe (Fokus nach dem Schließen) */
 /* „Formel-Serien“, „Sportwagen- & GT-Serien“ (wie „Weitere … -Serien“ auf den Serienseiten) */
 function gruppenWort(g){
@@ -1140,6 +1155,7 @@ function filterFokus(el){
   const f=document.activeElement;
   if(!f||f===document.body||!el.contains||!el.contains(f)||!f.dataset)return null;
   if(f.dataset.serie)return `.chip[data-serie="${f.dataset.serie}"]`;
+  if(f.dataset.fam)return `.chip[data-fam="${f.dataset.fam}"]`;
   if(f.classList.contains("grp-alle"))return ".grp-alle";
   if(f.dataset.g)return `.grp-an[data-g="${f.dataset.g}"]`;
   return null;
@@ -1168,11 +1184,23 @@ function renderFilter(){
       if(offen){
         html+=`<div class="grp-panel" id="grp-panel" role="group" aria-label="${esc(g.name)}">`+
           `<button class="grp-alle" type="button" role="switch" aria-checked="${an===n}" onclick="toggleGruppe('${g.key}')"><span class="grp-sw" aria-hidden="true"></span>Alle ${esc(gruppenWort(g))}</button><div class="grp-chips">`;
+        const famGezeigt=new Set(); let famBlock="";
         g.serien.forEach(sk=>{
-          const S0=SERIES[sk],on=ACTIVE.has(sk);
+          const S0=SERIES[sk],on=ACTIVE.has(sk),f=S0.familie;
+          if(f){
+            /* Familie (z. B. GT World Challenge) als ein Knopf; Tippen klappt ihre Serien darunter auf */
+            if(famGezeigt.has(f))return; famGezeigt.add(f);
+            const fs=g.serien.filter(x=>SERIES[x].familie===f), fan=fs.filter(x=>ACTIVE.has(x)).length, F=FAMILIEN[f], fo=FAM_OFFEN===f;
+            html+=`<button class="chip fam ${fan?'':'off'}${fo?' fam-offen':''}" type="button" data-fam="${f}" onclick="klappeFamilie('${f}')" aria-expanded="${fo}" title="${esc(F.name)}"><span class="cdot" style="--c:${SERIES[fs[0]].color}"></span><span class="cn-l">${esc(F.name)}</span><span class="cn-s">${esc(F.short)}</span>${fan&&fan<fs.length?`<span class="fam-z">${fan}/${fs.length}</span>`:""}<span class="fam-pf" aria-hidden="true">${fo?'▴':'▾'}</span></button>`;
+            if(fo){
+              famBlock=`<div class="fam-panel" role="group" aria-label="${esc(F.name)}"><button class="grp-alle" type="button" role="switch" aria-checked="${fan===fs.length}" onclick="toggleFamilie('${f}')"><span class="grp-sw" aria-hidden="true"></span>Alle ${esc(F.name)}</button><div class="grp-chips">`+
+                fs.map(x=>{const X=SERIES[x],xo=ACTIVE.has(x);return `<button class="chip ${xo?'':'off'}" type="button" data-serie="${x}" onclick="toggleSeries('${x}')" aria-pressed="${xo}" title="${X.name}" aria-label="${X.name}"><span class="cdot" style="--c:${X.color}"></span><span class="cn-l">${esc(X.famLabel)}</span><span class="cn-s">${esc(X.famLabel)}</span></button>`;}).join("")+`</div></div>`;
+            }
+            return;
+          }
           html+=`<button class="chip ${on?'':'off'}" type="button" data-serie="${sk}" onclick="toggleSeries('${sk}')" aria-pressed="${on}" title="${S0.name}" aria-label="${S0.name}"><span class="cdot" style="--c:${S0.color}"></span><span class="cn-l">${S0.name}</span><span class="cn-s">${S0.short}</span></button>`;
         });
-        html+=`</div></div>`;
+        html+=`</div>${famBlock}</div>`;
       }
     });
     html+=`</div>`;
@@ -1203,7 +1231,15 @@ function toggleGruppe(key){
 }
 /* Auswahl einer Gruppe auf- bzw. zuklappen (der Fokus bleibt über renderFilter() auf dem Knopf) */
 function klappeGruppe(key){
-  FILTER_OFFEN=FILTER_OFFEN===key?null:key; renderFilter();
+  FILTER_OFFEN=FILTER_OFFEN===key?null:key; FAM_OFFEN=null; renderFilter();
+}
+/* Familie auf-/zuklappen, alle Serien der Familie an/aus */
+function klappeFamilie(f){FAM_OFFEN=FAM_OFFEN===f?null:f; renderFilter();}
+function toggleFamilie(f){
+  const fs=Object.keys(SERIES).filter(sk=>SERIES[sk].familie===f);
+  if(fs.every(sk=>ACTIVE.has(sk))){ if(fs.length>=ACTIVE.size){kurzerHinweis(MIND_EINE);return;} fs.forEach(sk=>ACTIVE.delete(sk)); }
+  else fs.forEach(sk=>ACTIVE.add(sk));
+  filterGeaendert();
 }
 function filterGeaendert(){
   const a=ankerMerken();
@@ -1325,10 +1361,10 @@ function abstandHTML(inst){
 function onAirEintrag(e,s,live,schmal,breit,frei){
   const S0=SERIES[e.s], ct=s&&convTime(e,s), i=s?e.sessions.indexOf(s):null, ev=!live&&!s;
   let zt="", nm, meta;
-  if(schmal){zt=ev?evZeitraum(e,true):s?(frei?`${ct.day} ${ct.dt}<small>${ct.t}</small>`:`${ct.day} ${ct.t}`):"läuft"; nm=s?`${e.name} — ${s.n}`:e.name; meta=S0.short+(!s&&istTest(e)?" · Test · ganztägig":ev?" · Zeiten folgen":s?"":" · Wochenende läuft");}
-  else if(live){nm=e.name; meta=s?`${S0.short} · ${s.n} ${ct.t}`:`${S0.short} · ${istTest(e)?"Test · ganztägig":"Wochenende läuft"}`;}
-  else if(ev){nm=e.name; meta=`${S0.short} · ${evZeitraum(e)} · ${istTest(e)?"Test · ganztägig":"Zeiten folgen"}`;}
-  else{nm=`${e.name} — ${s.n}`; meta=`${S0.short} · ${ct.day} ${ct.t}`;}
+  if(schmal){zt=ev?evZeitraum(e,true):s?(frei?`${ct.day} ${ct.dt}<small>${ct.t}</small>`:`${ct.day} ${ct.t}`):"läuft"; nm=s?`${e.name} — ${s.n}`:e.name; meta=kuerzel(e)+(!s&&istTest(e)?" · Test · ganztägig":ev?" · Zeiten folgen":s?"":" · Wochenende läuft");}
+  else if(live){nm=e.name; meta=s?`${kuerzel(e)} · ${s.n} ${ct.t}`:`${kuerzel(e)} · ${istTest(e)?"Test · ganztägig":"Wochenende läuft"}`;}
+  else if(ev){nm=e.name; meta=`${kuerzel(e)} · ${evZeitraum(e)} · ${istTest(e)?"Test · ganztägig":"Zeiten folgen"}`;}
+  else{nm=`${e.name} — ${s.n}`; meta=`${kuerzel(e)} · ${ct.day} ${ct.t}`;}
   const bar=`<span class="onair-bar" style="background:${S0.color}"></span>`;
   return `<a class="onair-ev${breit?" breit":""}" href="#ev=${e.s}-${e.rd}${e.sz?"-"+e.sz:""}" onclick="event.preventDefault();zuSession('${e.s}','${e.rd}','${e.sz||""}',${i})">`+
     (schmal?`<span class="onair-zt">${zt}</span>${bar}<span class="onair-tx">`:bar)+
@@ -1362,7 +1398,7 @@ function onAirStand(){
     Object.keys(SERIES).forEach(sk=>{
       if(!ACTIVE.has(sk)) return;
       let best=null;
-      EVENTS.filter(e=>e.s===sk && e.status!=="cancel").forEach(e=>{
+      EVENTS.filter(e=>gehoertZu(e,sk) && e.status!=="cancel").forEach(e=>{
         const nx=nextSessOf(e);
         if(nx){ if(!best || nx.inst<best.inst) best={inst:nx.inst,e,s:nx.s}; }
         else if(!e.sessions.some(x=>x.t) && endW(e)>=now){
@@ -1374,6 +1410,8 @@ function onAirStand(){
     });
     if(proSerie.length){
       proSerie.sort((a,b)=>a.inst-b.inst);
+      /* ein Event, das auch zu einer zweiten eingeblendeten Serie zählt, steht nur einmal da */
+      for(let i=proSerie.length-1;i>0;i--) if(proSerie.slice(0,i).some(x=>x.e===proSerie[i].e&&x.s===proSerie[i].s)) proSerie.splice(i,1);
       const grenze = proSerie[0].inst + FENSTER;
       o={live:false,liste:proSerie.filter(x=>x.inst<=grenze)};
     } else o={live:false,liste:[]};
@@ -1683,9 +1721,9 @@ function eventHTML(e,imBlock,letzt,von,bis){
   const tag=(von&&(e.d0!==von||e.d1!==bis))?`<span class="ev-tag">${dows(e)} ${dayRange(e)}.</span> · `:"";
   return `<div class="wknd ${status}${letzt?" we-letzt":""}"><div class="wk-top oh">`+
     `<div><div class="ev" id="ev-${evId}"><div class="ev-row" onclick="toggleEv('${evId}')">`+
-      `<span class="ev-bar" style="background:${S0.color}"></span>`+
+      `<span class="ev-bar" style="background:${auchVon(e).length?`linear-gradient(${S0.color} 0 50%,${SERIES[auchVon(e)[0]].color} 50% 100%)`:S0.color}"></span>`+
       `<span class="ev-body"><span class="ev-name">${e.name}</span>`+
-      `<span class="ev-sub">${tag}<span class="ser" style="color:${S0.color}">${S0.name}</span> · ${e.sonder?`<span class="sonder">${istTest(e)?"Test":sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}${z.zeiten?`<span class="ev-zeiten-m">${z.zeiten}</span>`:""}</span>`+
+      `<span class="ev-sub">${tag}<span class="ser" style="color:${S0.color}">${serienName2(e.s)}</span>${auchListe(e).map(a=>` · <span class="auch">zählt auch zur <span class="ser" style="color:${SERIES[a.s].color}">${SERIES[a.s].short}</span> (Lauf ${a.rd})</span>`).join("")} · ${e.sonder?`<span class="sonder">${istTest(e)?"Test":sonderText(e)}</span>`:`Lauf ${e.rd}`} · ${e.loc}</span>${win}${z.zeiten?`<span class="ev-zeiten-m">${z.zeiten}</span>`:""}</span>`+
       (z.zeiten?`<span class="ev-zeiten">${z.zeiten}</span>`:"")+
       `<button class="ev-teilen" aria-label="Teilen" title="Teilen" onclick="event.stopPropagation();teilen('${e.s}','${e.rd}','${e.sz||""}')">${TEILEN_SVG}</button>`+
       `<button class="ev-toggle" type="button" aria-expanded="false" aria-label="Sessions anzeigen">+</button></div>`+links+
@@ -1770,7 +1808,7 @@ function wochenendHTML(WE){
   const z=wochenendZeitraum();
   let von=WE.reduce((a,e)=>e.d0<a?e.d0:a,WE[0].d0), bis=WE.reduce((a,e)=>e.d1>a?e.d1:a,WE[0].d1);
   if(z){if(von<z.d0)von=z.d0; if(bis>z.d1)bis=z.d1;}
-  const aus=z?[...new Set(EVENTS.filter(e=>!ACTIVE.has(e.s)&&e.status!=="cancel"&&inSeason(e)&&e.d0<=z.d1&&e.d1>=z.d0&&!unterDerWoche(e)).map(e=>SERIES[e.s].short))]:[];
+  const aus=z?[...new Set(EVENTS.filter(e=>!sichtbar(e)&&e.status!=="cancel"&&inSeason(e)&&e.d0<=z.d1&&e.d1>=z.d0&&!unterDerWoche(e)).map(e=>SERIES[e.s].short))]:[];
   return `<div class="we-block" id="wochenende" aria-label="Dieses Wochenende">`+
     `<div class="we-kopf"><span class="we-lab">Dieses Wochenende</span><span class="we-anz">${WE.length} Event${WE.length===1?"":"s"}</span></div>`+
     `<div class="we-titel">${spanneHTML(von,bis)}</div>`+
@@ -1812,7 +1850,7 @@ function montag(d0){const d=pd(d0);d.setDate(d.getDate()-(d.getDay()+6)%7);retur
    nach dem ersten Tag des Events wie wochenGruppen, ohne Events unter der Woche), in der Reihenfolge von serien.json */
 function ausgeblendetAm(sa){
   const mo=new Date(sa); mo.setDate(mo.getDate()-5); const k=mo.getTime();
-  const da=new Set(EVENTS.filter(e=>!ACTIVE.has(e.s)&&SERIES[e.s]&&e.status!=="cancel"&&montag(e.d0).getTime()===k&&!unterDerWoche(e)).map(e=>e.s));
+  const da=new Set(EVENTS.filter(e=>!sichtbar(e)&&SERIES[e.s]&&e.status!=="cancel"&&montag(e.d0).getTime()===k&&!unterDerWoche(e)).map(e=>e.s));
   return Object.keys(SERIES).filter(sk=>da.has(sk));
 }
 function lueckeZeile(sams,aus){
@@ -1895,7 +1933,7 @@ function renderTimeline(){
   const evs=actEvents().filter(e=>e.status!=="cancel"&&inSeason(e));
   let html=ladeHinweis("serien")+ladeHinweis("termine-"+SEASON);
   /* Aktive Serien ohne einen einzigen Termin in dieser Saison */
-  const fehlen=termineFehlen(SEASON)?[]:Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)&&!EVENTS.some(e=>e.s===sk&&inSeason(e)&&!e.sonder));
+  const fehlen=termineFehlen(SEASON)?[]:Object.keys(SERIES).filter(sk=>ACTIVE.has(sk)&&!EVENTS.some(e=>gehoertZu(e,sk)&&inSeason(e)&&!e.sonder));
   if(fehlen.length) html+=`<div class="seasonnote">Kalender ${SEASON} noch nicht veröffentlicht: <b>${fehlen.map(k=>SERIES[k].name).join(", ")}</b></div>`;
   /* Das ganze Jahr: vergangene und kommende Events, dazwischen die Heute-Linie */
   if(evs.length||heuteImBlick()) html+=monthGroupsHTML(evs,heuteImBlick()&&!termineFehlen(SEASON));
@@ -1949,11 +1987,11 @@ function renderSeries(){
   if(Object.keys(SERIES).length)html+=`<div class="abo-box"><p><b>Kalender verbinden</b> · Alle Sessions in deutscher Zeit direkt auf dem Handy, in Google oder Outlook – aktualisiert sich selbst. Für alle Serien oder unten je Serie.</p>${aboHTML("apex-2026.ics","Alle Serien mit Kalender verbinden")}</div>`;
   const leer=termineFehlen(SEASON)?"Termine gerade nicht verfügbar":`Kalender ${SEASON} noch nicht veröffentlicht`;
   serienGruppiert(sk=>ACTIVE.has(sk)).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
-    const S0=SERIES[sk],evs=EVENTS.filter(e=>e.s===sk&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
+    const S0=SERIES[sk],evs=EVENTS.filter(e=>gehoertZu(e,sk)&&inSeason(e)).sort((a,b)=>startW(a)-startW(b));
     const abo=aboHTML("kalender/"+sk+".ics","Mit Kalender verbinden",S0.seite);
     if(!evs.length){html+=`<div class="ser-block" id="ser-${sk}"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div><div class="ser-meta">${leer}</div>${abo}</div>`;return;}
     /* Eigenständige Rennen (sonder) zählen nicht als Lauf */
-    const lauf=evs.filter(e=>!e.sonder);
+    const lauf=evs.filter(e=>e.s!==sk||!e.sonder);
     const done=lauf.filter(e=>st(e)==="done").length,canc=lauf.filter(e=>e.status==="cancel").length;
     html+=`<div class="ser-block" id="ser-${sk}"><div class="ser-title" style="color:${S0.color}">${serienName(sk)}</div>`+
       `<div class="ser-meta">${lauf.length?`${lauf.length-canc} Läufe · ${done} gefahren · ${lauf.length-canc-done} offen${canc?` · ${canc} abgesagt`:''}`:leer}</div>`+abo;
@@ -1967,9 +2005,10 @@ function renderSeries(){
       let c=status==="done"?"done":(status==="next"||status==="live")?"next":"up";
       const right=(status==="done"&&(e.result||e.abbruch))?siegerSerie(e):`<span class="st ${c}">${txt}</span>`;
       /* Runden mit Sieger klappen ihr Ergebnis auf */
-      const erg=status==="done"&&!!e.result, id=evDomId(e), auf=erg&&SER_OFFEN.has(ergKey(e));
+      /* Läufe einer anderen Serie, die auch hier zählen (auch): eigene Rundennummer, Ergebnis bei der Hauptserie */
+      const fremd=e.s!==sk, erg=!fremd&&status==="done"&&!!e.result, id=evDomId(e), auf=erg&&SER_OFFEN.has(ergKey(e));
       const klick=erg?` id="sr-${id}" role="button" tabindex="0" aria-expanded="${auf}" aria-controls="se-${id}" onclick="serErgebnis('${e.s}','${e.rd}','${e.sz||""}')" onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();serErgebnis('${e.s}','${e.rd}','${e.sz||""}');}"`:"";
-      html+=`<div class="ser-round${erg?" clk":""}${auf?" offen":""}"${klick}><span class="no">${istTest(e)?"T":e.sonder||String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}${e.sonder?` · ${sonderText(e)}`:""}</span></span>${right}<span class="sch">${erg?"▶":""}</span></div>`;
+      html+=`<div class="ser-round${erg?" clk":""}${auf?" offen":""}"${klick}><span class="no">${istTest(e)?"T":fremd?String(auchRd(e,sk)).padStart(2,"0"):e.sonder||String(e.rd).padStart(2,"0")}</span><span class="dt">${dayRange(e)}. ${MONABK[pd(e.d0).getMonth()]}</span><span class="rn">${e.name}<span class="loc">${e.loc}${fremd?` · ${e.sonder?"im Kalender":"Lauf"} der ${SERIES[e.s].short}`:e.sonder?` · ${sonderText(e)}`:""}</span></span>${right}<span class="sch">${erg?"▶":""}</span></div>`;
       if(erg)html+=`<div class="ser-erg" id="se-${id}"${auf?"":" hidden"}>${auf?serPanel(e):""}</div>`;});
     html+=`</div>`;});});
   if(!html)html=`<div class="emptyhint">Keine Serien ausgewählt.</div>`;
@@ -2004,7 +2043,7 @@ function toggleRule(sk){
 
 function renderRules(){
   const host=document.getElementById("view-rules"); if(!host)return;
-  let html=`<p class="rl-intro">22 Serien, 22 sehr unterschiedliche Reglements.<br>
+  let html=`<p class="rl-intro">26 Serien, 26 sehr unterschiedliche Reglements.<br>
     Tippe eine Serie an, um Format, Qualifying, Punkte und Besonderheiten zu lesen.</p>`+ladeHinweis("regeln");
   serienGruppiert(sk=>!!REGELN[sk]).forEach(({g,sks})=>{html+=gruppenKopf(g);sks.forEach(sk=>{
     const S0=SERIES[sk], R=REGELN[sk]; if(!R)return;
@@ -2339,7 +2378,7 @@ function gotoEvent(sk,rd,sz,sofort,si){
   if(currentView!=="upcoming")setView("upcoming");
   if(FILTER_NUR&&FILTER_NUR!==e.s){nurBeenden();renderFilter();renderTimeline();}
   let el=document.getElementById("ev-"+evDomId(e));
-  if(!el&&!ACTIVE.has(e.s)){
+  if(!el&&!sichtbar(e)){
     ACTIVE.add(e.s);
     renderFilter();renderTimeline();
     el=document.getElementById("ev-"+evDomId(e));

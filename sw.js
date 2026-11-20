@@ -1,5 +1,5 @@
 /* APEX Service Worker — Netzwerk zuerst (frische Daten), Cache als Offline-Fallback */
-const CACHE = "apex-v90";
+const CACHE = "apex-v91";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png",
               "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon-32.png",
               "./favicon-16.png", "./apex-2026.ics",
@@ -18,7 +18,7 @@ const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", 
               "./serienseiten.css", "./serienseiten.js", "./logo-apex-klein.png", "./logo-apex-klein-hell.png", "./strecken.js", "./karte/europa.svg", "./karte/europa-hell.svg",
               "./serien/", "./dieses-wochenende/", "./in-der-naehe/", "./aenderungen/", "./strecken/", "./formel-1/", "./formel-e/", "./indycar/", "./formel-2/", "./formel-3/",
               "./f1-academy/", "./motogp/", "./superbike-wm/", "./moto2/", "./moto3/", "./wec/", "./european-le-mans-series/", "./imsa/",
-              "./gt-world-challenge/", "./dtm/", "./adac-gt-masters/", "./nls/", "./porsche-supercup/", "./porsche-carrera-cup-deutschland/", "./wrc/", "./erc/",
+              "./gt-world-challenge/", "./gt-world-challenge-america/", "./gt-world-challenge-asia/", "./gt-world-challenge-australia/", "./intercontinental-gt-challenge/", "./dtm/", "./adac-gt-masters/", "./nls/", "./porsche-supercup/", "./porsche-carrera-cup-deutschland/", "./wrc/", "./erc/",
               "./rallye-dakar/"];
 
 self.addEventListener("install", e => {

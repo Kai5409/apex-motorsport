@@ -114,5 +114,13 @@
   "Watkins Glen": "America/New_York",
   "CTMP": "America/Toronto",
   "VIR": "America/New_York",
-  "Road Atlanta": "America/New_York"
+  "Road Atlanta": "America/New_York",
+  "Sonoma": "America/Los_Angeles",
+  "Okayama": "Asia/Tokyo",
+  "Peking": "Asia/Shanghai",
+  "The Bend": "Australia/Adelaide",
+  "Queensland Raceway": "Australia/Brisbane",
+  "Hidden Valley": "Australia/Darwin",
+  "Sydney Motorsport Park": "Australia/Sydney",
+  "Bathurst": "Australia/Sydney"
 }

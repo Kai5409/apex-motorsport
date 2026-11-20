@@ -1,0 +1,108 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:APEX · Intercontinental GT Challenge
+X-WR-CALDESC:Intercontinental GT Challenge — alle Sessions in deutscher Zeit
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-nls0-Rennen24h@apex-motorsport
+DTSTAMP:20260927T231300Z
+DTSTART:20260516T130000Z
+DTEND:20260517T130000Z
+SUMMARY:NLS · 54. ADAC RAVENOL 24h Nürburgring — Rennen (24h)
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Eigenständiges Rennen – zählt nicht zur NLS-Wertung · Nürburgring
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc4-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260625
+DTEND;VALUE=DATE:20260629
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Europa · 24 Stunden von Spa · Endurance
+LOCATION:Spa-Francorchamps
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 4 · Spa-Francorchamps — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcam7-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261011
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · Indianapolis 8 Hour · Finale
+LOCATION:Indianapolis
+DESCRIPTION:APEX · GT World Challenge America · Lauf 7 · Indianapolis — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-igtc1-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260211
+DTEND;VALUE=DATE:20260216
+TRANSP:TRANSPARENT
+SUMMARY:IGTC · Bathurst 12 Hour
+LOCATION:Bathurst
+DESCRIPTION:APEX · Intercontinental GT Challenge · Lauf 1 · Bathurst — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-igtc4-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260914
+TRANSP:TRANSPARENT
+SUMMARY:IGTC · Suzuka 1000km
+LOCATION:Suzuka
+DESCRIPTION:APEX · Intercontinental GT Challenge · Lauf 4 · Suzuka — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwc4-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270624
+DTEND;VALUE=DATE:20270628
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Europa · 24 Stunden von Spa · Endurance
+LOCATION:Spa-Francorchamps
+DESCRIPTION:APEX · GT World Challenge Europe · Lauf 4 · Spa-Francorchamps — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-nls0-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270527
+DTEND;VALUE=DATE:20270531
+TRANSP:TRANSPARENT
+SUMMARY:NLS · ADAC RAVENOL 24h Nürburgring
+LOCATION:Nürburgring
+DESCRIPTION:APEX · Nürburgring Langstrecken-Serie · Eigenständiges Rennen · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcam2-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270507
+DTEND;VALUE=DATE:20270509
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · Texas 8 Hour
+LOCATION:COTA
+DESCRIPTION:APEX · GT World Challenge America · Lauf 2 · COTA — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-igtc1-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270211
+DTEND;VALUE=DATE:20270215
+TRANSP:TRANSPARENT
+SUMMARY:IGTC · Bathurst 12 Hour
+LOCATION:Bathurst
+DESCRIPTION:APEX · Intercontinental GT Challenge · Lauf 1 · Bathurst — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-igtc5-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270903
+DTEND;VALUE=DATE:20270906
+TRANSP:TRANSPARENT
+SUMMARY:IGTC · Suzuka 1000km
+LOCATION:Suzuka
+DESCRIPTION:APEX · Intercontinental GT Challenge · Lauf 5 · Suzuka — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+END:VCALENDAR
