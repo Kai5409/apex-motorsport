@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:apex-elms90-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T145902Z
+DTSTART;VALUE=DATE:20270308
+DTEND;VALUE=DATE:20270310
+TRANSP:TRANSPARENT
+SUMMARY:ELMS · Barcelona-Test
+LOCATION:Barcelona
+DESCRIPTION:APEX · European Le Mans Series · Test – keine Wertung · Barcelona — ganztägig\, Uhrzeiten sind nicht veröffentlicht
+END:VEVENT
+END:VCALENDAR

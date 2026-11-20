@@ -166,6 +166,24 @@
         "ch": "In der offiziellen Senderliste ist kein Sender für die Schweiz genannt. Wo es keine Live-Übertragung im Fernsehen gibt, zeigt IMSA die Rennen im Stream auf <b>IMSA.com/tvlive</b> und bei <b>YouTube</b> (IMSAOfficial) mit dem Kommentar von IMSA Radio.",
         "note": "Stand: offizielle Senderliste „International Coverage“ auf imsa.com. Geprüft am 10.10.2026."
       }
+    },
+    "carreracup": {
+      "tv": "Joyn (Stream) · YouTube",
+      "tvd": {
+        "de": "Laut Serie streamt TV-Partner <b>ProSieben</b> die Rennen kostenlos auf <b>Joyn</b>. Außerdem laufen beide Rennen jedes Wochenendes live im <b>Porsche Motorsport Hub</b> und auf den <b>Facebook</b>- und <b>YouTube</b>-Kanälen der Serie.",
+        "at": "In den offiziellen Angaben ist kein Sender für Österreich genannt. Live im <b>Porsche Motorsport Hub</b> und auf den <b>Facebook</b>- und <b>YouTube</b>-Kanälen der Serie.",
+        "ch": "In den offiziellen Angaben ist kein Sender für die Schweiz genannt. Live im <b>Porsche Motorsport Hub</b> und auf den <b>Facebook</b>- und <b>YouTube</b>-Kanälen der Serie.",
+        "note": "Stand: Angaben der Serie auf racing.porsche.com zum Saisonfinale 2026; die Übertragung 2027 ist noch nicht veröffentlicht. Geprüft am 20.11.2026."
+      }
+    },
+    "elms": {
+      "tv": "Kostenloser Stream (YouTube, FIAWEC.tv)",
+      "tvd": {
+        "de": "Laut ACO laufen die Rennen weltweit <b>kostenlos</b> auf dem <b>YouTube</b>-Kanal der ELMS und auf <b>FIAWEC.tv</b>. Ein Fernsehsender für Deutschland ist in den offiziellen Angaben nicht genannt.",
+        "at": "Wie in Deutschland: <b>kostenlos</b> auf dem <b>YouTube</b>-Kanal der ELMS und auf <b>FIAWEC.tv</b>.",
+        "ch": "Wie in Deutschland: <b>kostenlos</b> auf dem <b>YouTube</b>-Kanal der ELMS und auf <b>FIAWEC.tv</b>.",
+        "note": "Stand: Seite der ELMS auf lemans.org (ACO); die Senderliste der Serie (europeanlemansseries.com) war nicht abrufbar. Geprüft am 20.11.2026."
+      }
     }
   }
 }
