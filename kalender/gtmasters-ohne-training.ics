@@ -1,0 +1,129 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:APEX · ADAC GT Masters (ohne Trainings)
+X-WR-CALDESC:ADAC GT Masters — Rennen\, Sprints und Qualifying in deutscher Zeit
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-gtmasters1-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20260424
+DTEND;VALUE=DATE:20260427
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Red Bull Ring
+LOCATION:Red Bull Ring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 1 · Red Bull Ring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters2-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20260522
+DTEND;VALUE=DATE:20260525
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Zandvoort
+LOCATION:Zandvoort
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 2 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters3-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20260619
+DTEND;VALUE=DATE:20260622
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Lausitzring
+LOCATION:Lausitzring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 3 · Lausitzring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters4-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20260710
+DTEND;VALUE=DATE:20260713
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Nürburgring
+LOCATION:Nürburgring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 4 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters5-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20260904
+DTEND;VALUE=DATE:20260907
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Salzburgring
+LOCATION:Salzburgring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 5 · Salzburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters6-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261012
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Hockenheimring · Finale
+LOCATION:Hockenheimring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 6 · Hockenheimring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters1-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20270423
+DTEND;VALUE=DATE:20270426
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Red Bull Ring
+LOCATION:Red Bull Ring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 1 · Red Bull Ring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters2-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20270618
+DTEND;VALUE=DATE:20270621
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Lausitzring
+LOCATION:Lausitzring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 2 · Lausitzring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters3-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20270709
+DTEND;VALUE=DATE:20270712
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Nürburgring
+LOCATION:Nürburgring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 3 · Nürburgring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters4-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20270806
+DTEND;VALUE=DATE:20270809
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Zandvoort
+LOCATION:Zandvoort
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 4 · Zandvoort — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters5-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20270924
+DTEND;VALUE=DATE:20270927
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Sachsenring
+LOCATION:Sachsenring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 5 · Sachsenring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtmasters6-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T154527Z
+DTSTART;VALUE=DATE:20271008
+DTEND;VALUE=DATE:20271011
+TRANSP:TRANSPARENT
+SUMMARY:GT Masters · Hockenheimring · Finale
+LOCATION:Hockenheimring
+DESCRIPTION:APEX · ADAC GT Masters · Lauf 6 · Hockenheimring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+END:VCALENDAR

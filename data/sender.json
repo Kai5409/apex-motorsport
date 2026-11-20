@@ -184,6 +184,15 @@
         "ch": "Wie in Deutschland: <b>kostenlos</b> auf dem <b>YouTube</b>-Kanal der ELMS und auf <b>FIAWEC.tv</b>.",
         "note": "Stand: Seite der ELMS auf lemans.org (ACO); die Senderliste der Serie (europeanlemansseries.com) war nicht abrufbar. Geprüft am 20.11.2026."
       }
+    },
+    "gtmasters": {
+      "tv": "SPORT1 (ausgewählte Rennen frei) · Stream",
+      "tvd": {
+        "de": "Laut ADAC zeigt TV-Partner <b>SPORT1</b> ausgewählte Rennen live im Free-TV. Alle Rennen laufen live und auf Abruf <b>kostenlos</b> im Stream auf <b>sport1.de</b>, <b>Joyn</b> und <b>ServusTV On</b> sowie auf Deutsch und Englisch auf dem <b>YouTube</b>-Kanal ADAC Motorsports, dort auch die Qualifyings.",
+        "at": "In den offiziellen Angaben ist kein Sender für Österreich genannt. Laut ADAC laufen alle Rennen <b>kostenlos</b> im Stream auf <b>ServusTV On</b> und auf dem <b>YouTube</b>-Kanal ADAC Motorsports.",
+        "ch": "In den offiziellen Angaben ist kein Sender für die Schweiz genannt. Laut ADAC laufen alle Rennen <b>kostenlos</b> auf dem <b>YouTube</b>-Kanal ADAC Motorsports.",
+        "note": "Stand: Angaben des ADAC auf adac-motorsport.de zur Saison 2026; die Übertragung 2027 ist noch nicht veröffentlicht. Geprüft am 20.11.2026."
+      }
     }
   }
 }

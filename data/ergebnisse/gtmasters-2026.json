@@ -1,0 +1,33 @@
+{
+  "gtmasters-6": [
+    {"n": "Rennen 1", "quelle": "adac-motorsport.de · en.wikipedia.org", "zeilen": [
+      [1, "Blum / Kalus", "Haupt Racing Team #2", "Silver"],
+      [2, "Hirsiger / Zulauf", "LIQUI MOLY Team Engstler Motorsport #63", "Silver"],
+      [3, "Primm / Rogalski", "HGL Racing #77", "Silver"],
+      [4, "Dybionka / Gjerdrum", "Haupt Racing Team #1", "Silver"],
+      [5, "Kastelic / Lefterov", "razoon - more than racing #14", "Silver"],
+      [6, "Zimmermann / Fourie", "FK Performance Motorsport #11", "Silver"],
+      [7, "Tweraser / Fulín", "FULLINRACE ACADEMY #44", "Pro-Am"],
+      [8, "S. Holzem / J. Holzem", "Schubert Motorsport #56", "Silver"],
+      [9, "Gjerdrum / Rauer", "FK Performance Motorsport #10", "Silver"],
+      [10, "Brown / Hütter", "LIQUI MOLY Team Engstler Motorsport #19", "Silver"],
+      [11, "Nielsen / Ellerine", "FK Performance Motorsport #12", "Silver"],
+      [12, "Detout / Day", "Comtoyou Racing #39", "Silver"],
+      [13, "Karklys / Southern", "LIQUI MOLY Team Engstler Motorsport #163", "Silver"]
+    ]},
+    {"n": "Rennen 2", "quelle": "adac-motorsport.de · en.wikipedia.org", "zeilen": [
+      [1, "Hirsiger / Zulauf", "LIQUI MOLY Team Engstler Motorsport #63", "Silver"],
+      [2, "Zimmermann / Fourie", "FK Performance Motorsport #11", "Silver"],
+      [3, "Kastelic / Lefterov", "razoon - more than racing #14", "Silver"],
+      [4, "Dybionka / Gjerdrum", "Haupt Racing Team #1", "Silver"],
+      [5, "Gjerdrum / Rauer", "FK Performance Motorsport #10", "Silver"],
+      [6, "Primm / Rogalski", "HGL Racing #77", "Silver"],
+      [7, "Karklys / Southern", "LIQUI MOLY Team Engstler Motorsport #163", "Silver"],
+      [8, "Tweraser / Fulín", "FULLINRACE ACADEMY #44", "Pro-Am"],
+      [9, "S. Holzem / J. Holzem", "Schubert Motorsport #56", "Silver"],
+      [10, "Nielsen / Ellerine", "FK Performance Motorsport #12", "Silver"],
+      [11, "Brown / Hütter", "LIQUI MOLY Team Engstler Motorsport #19", "Silver"],
+      [12, "Detout / Day", "Comtoyou Racing #39", "Silver"]
+    ]}
+  ]
+}

@@ -238,5 +238,15 @@
       ["Klassen", "Es starten Prototypen der Klassen LMP2 und LMP3 und GT3-Autos der Klasse LMGT3; LMP2-Teams mit Amateurfahrern werden zusätzlich in LMP2 Pro/Am gewertet. Die Fahrer reichen von als Bronze eingestuften Amateuren bis zu Profis."],
       ["Le Mans", "Neben den Titeln geht es um automatische Einladungen zu den 24 Stunden von Le Mans im folgenden Jahr."]
     ]
+  },
+  "gtmasters": {
+    "kurz": "GT3-Serie des ADAC für Nachwuchstalente und Amateure: zwei Fahrer je Auto, zwei Rennen an jedem Wochenende.",
+    "bloecke": [
+      ["Serie", "Das ADAC GT Masters ist eine GT3-Serie des ADAC und wird seit 2007 ausgetragen. Eine Saison hat sechs Wochenenden mit je zwei Rennen, 2027 fünf davon im Rahmen der DTM. Die Serie gilt als Sprungbrett in die DTM, das Programm „Road to DTM“ fördert die besten Nachwuchsfahrer."],
+      ["Fahrer", "Zwei Fahrer teilen sich ein Auto. Mindestens einer der beiden muss als Silber- oder Bronze-Fahrer eingestuft sein."],
+      ["Wochenende", "Auf zwei freie Trainings folgen zwei Qualifyings, eines für jedes Rennen. Rennen 1 läuft am Samstag, Rennen 2 am Sonntag."],
+      ["Rennen", "Ein Rennen dauert eine Stunde. Zwischen der 25. und 35. Minute muss jedes Auto zum Pflichtstopp an die Box, dort wechseln die Fahrer. Ab 2027 gibt es nur noch diese Sprintrennen, und beim Stopp werden zusätzlich die Reifen gewechselt."],
+      ["Autos", "Es fahren GT3-Sportwagen mit über 550 PS von Audi, BMW, Ford, Lamborghini, Mercedes-AMG und Porsche, alle auf Einheitsreifen von Pirelli."]
+    ]
   }
 }

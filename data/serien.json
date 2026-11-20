@@ -2,7 +2,7 @@
   "gruppen": {
     "formel": {"name": "Formel", "short": "Formel", "farben": ["#ff3000", "#ff8fb8", "#ffc93c", "#e2477c", "#ffb070", "#d9875e"], "farben_hell": ["#ff3000", "#d56a93", "#af860a", "#e2477c", "#c67b3a", "#c8784f"]},
     "motorrad": {"name": "Motorrad", "short": "Motorrad", "farben": ["#e172db", "#9b82ff", "#ff3f9e", "#f7cbff", "#d950aa", "#d18fbe"], "farben_hell": ["#d062ca", "#9279f5", "#fb3b9b", "#a77faf", "#d950aa", "#b878a6"]},
-    "sportwagen": {"name": "Sportwagen & GT", "short": "Sportwagen", "farben": ["#3a86ff", "#a9bcf2", "#00c2b8", "#4493a1", "#02a9f7", "#8b79ae", "#788ba1", "#9a73b8"], "farben_hell": ["#3a86ff", "#798abd", "#0c9d95", "#4493a1", "#0294d9", "#8b79ae", "#788ba1", "#9a73b8"]},
+    "sportwagen": {"name": "Sportwagen & GT", "short": "Sportwagen", "farben": ["#3a86ff", "#a9bcf2", "#00c2b8", "#4493a1", "#02a9f7", "#8b79ae", "#788ba1", "#9a73b8", "#a0d8f8"], "farben_hell": ["#3a86ff", "#798abd", "#0c9d95", "#4493a1", "#0294d9", "#8b79ae", "#788ba1", "#9a73b8", "#5c92b0"]},
     "rallye": {"name": "Rallye", "short": "Rallye", "farben": ["#37b24d", "#c8ea4a", "#3fdcae", "#9fcd85", "#99be03", "#2fd281"], "farben_hell": ["#20a23d", "#7d9507", "#019e79", "#6c9752", "#7a970a", "#10a15f"]}
   },
   "serien": {
@@ -21,6 +21,7 @@
     "imsa": {"name": "IMSA", "short": "IMSA", "seite": "imsa", "gruppe": "sportwagen", "color": "#a9bcf2", "titel": "IMSA Kalender {jahre} – WeatherTech Termine und Zeitplan"},
     "gtwc": {"name": "GT World Challenge Europe", "short": "GTWC", "seite": "gt-world-challenge", "gruppe": "sportwagen", "color": "#00c2b8", "titel": "GT World Challenge Europe Kalender {jahre} – GTWC Zeitplan"},
     "dtm": {"name": "DTM", "short": "DTM", "seite": "dtm", "gruppe": "sportwagen", "color": "#4493a1"},
+    "gtmasters": {"name": "ADAC GT Masters", "short": "GT Masters", "seite": "adac-gt-masters", "gruppe": "sportwagen", "color": "#a0d8f8"},
     "nls": {"name": "Nürburgring Langstrecken-Serie", "short": "NLS", "seite": "nls", "gruppe": "sportwagen", "color": "#02a9f7", "titel": "NLS Kalender {jahre} – Zeitplan der Nürburgring Langstrecken-Serie"},
     "supercup": {"name": "Porsche Supercup", "short": "Supercup", "seite": "porsche-supercup", "gruppe": "sportwagen", "color": "#8b79ae", "ausgeblendet": true},
     "carreracup": {"name": "Porsche Carrera Cup Deutschland", "short": "Carrera Cup", "seite": "porsche-carrera-cup-deutschland", "gruppe": "sportwagen", "color": "#9a73b8", "ausgeblendet": true},
