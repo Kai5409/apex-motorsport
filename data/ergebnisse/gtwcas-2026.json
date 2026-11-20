@@ -1,0 +1,82 @@
+{
+  "gtwcas-5": [
+    {"n": "Rennen 1", "quelle": "gt-world-challenge-asia.com", "zeilen": [
+      [1, "Liu / Shinohara", "Harmony Racing #96", "Silver"],
+      [2, "Aoki / Miyake", "TEAM 5ZIGEN #500", "Silver"],
+      [3, "Stuvik / Nandy", "Absolute Racing #29", "Silver"],
+      [4, "Liu / Guven", "Phantom Global Racing #37", "Pro-Am"],
+      [5, "Huang / Ghiretti", "Absolute Racing #911", "Pro-Am"],
+      [6, "Chen / Liang", "Craft-Bamboo Racing #77", "Silver-Am"],
+      [7, "Li / Seppanen", "Climax Racing #81", "Silver-Am"],
+      [8, "Song / Leitch", "Harmony Racing #72", "Pro-Am"],
+      [9, "Lee / Oosten", "GTO with KRC #10", "Silver-Am"],
+      [10, "Nagai / Kotaka", "Porsche Center Okazaki #18", "Pro-Am"],
+      [11, "Cheng / Yu", "FAW Audi Sport Asia Team Phantom #16", "Silver"],
+      [12, "Ruan / Krohn", "TEAM KRC #89", "Pro-Am"],
+      [13, "Santoso / Zhou", "Climax Racing #8", "Am"],
+      [14, "Oh / Joon", "HZO Fortis Racing by Absolute Racing #20", "Am"],
+      [15, "Li / Sturm", "Absolute Racing #918", "Pro-Am"]
+    ]},
+    {"n": "Rennen 2", "quelle": "gt-world-challenge-asia.com", "zeilen": [
+      [1, "Huang / Ghiretti", "Absolute Racing #911", "Pro-Am"],
+      [2, "Lu / Hartog", "Origine Motorsport #11", "Pro-Am"],
+      [3, "Cheng / Yu", "FAW Audi Sport Asia Team Phantom #16", "Silver"],
+      [4, "Liu / Shinohara", "Harmony Racing #96", "Silver"],
+      [5, "Stuvik / Nandy", "Absolute Racing #29", "Silver"],
+      [6, "Li / Sturm", "Absolute Racing #918", "Pro-Am"],
+      [7, "Ruan / Krohn", "TEAM KRC #89", "Pro-Am"],
+      [8, "Porter / Macpherson", "AMAC Motorsport #51", "Am"],
+      [9, "Nagai / Kotaka", "Porsche Center Okazaki #18", "Pro-Am"],
+      [10, "Liu / Wang", "Origine Motorsport #22", "Am"],
+      [11, "Song / Leitch", "Harmony Racing #72", "Pro-Am"],
+      [12, "Santoso / Zhou", "Climax Racing #8", "Am"],
+      [13, "Lee / Oosten", "GTO with KRC #10", "Silver-Am"],
+      [14, "Liu / Guven", "Phantom Global Racing #37", "Pro-Am"],
+      [15, "Pato / Evans", "Audi Sport Asia Team Phantom #15", "Pro-Am"],
+      [16, "Li / Seppanen", "Climax Racing #81", "Silver-Am"],
+      [17, "Chen / Liang", "Craft-Bamboo Racing #77", "Silver-Am"]
+    ]}
+  ],
+  "gtwcas-6": [
+    {"n": "Rennen 1", "quelle": "gt-world-challenge-asia.com", "zeilen": [
+      [1, "Liu / Chen", "Harmony Racing #96", "Silver"],
+      [2, "Nandy", "Absolute Racing #29", "Silver"],
+      [3, "Lu / Heinrich", "Origine Motorsport #11", "Pro-Am"],
+      [4, "Liu / Hartog", "Phantom Global Racing #37", "Pro-Am"],
+      [5, "Moh / Liang", "Craft-Bamboo Racing #77", "Silver-Am"],
+      [6, "Cheng / Yu", "FAW Audi Sport Asia Team Phantom #16", "Silver"],
+      [7, "Huang / Ghiretti", "Absolute Racing #911", "Pro-Am"],
+      [8, "Ruan / Tramnitz", "TEAM KRC #89", "Pro-Am"],
+      [9, "Song / Leitch", "Harmony Racing #72", "Pro-Am"],
+      [10, "Li / Seppanen", "Climax Racing #81", "Silver-Am"],
+      [11, "Pato / Evans", "Audi Sport Asia Team Phantom #15", "Pro-Am"],
+      [12, "Lee / Oosten", "GTO with KRC #10", "Silver-Am"],
+      [13, "Tse / Picariello", "Absolute Racing #918", "Pro-Am"],
+      [14, "Zhou / Santoso", "Climax Racing #8", "Am"],
+      [15, "Liu / Wang", "Origine Motorsport #22", "Am"],
+      [16, "Oh / Joon", "HZO Fortis Racing by Absolute Racing #20", "Am"],
+      [17, "Porter / Macpherson", "AMAC Motorsport #51", "Am"],
+      [18, "Aoki / Miyake", "TEAM 5ZIGEN #500", "Silver"]
+    ]},
+    {"n": "Rennen 2", "quelle": "gt-world-challenge-asia.com", "zeilen": [
+      [1, "Lu / Heinrich", "Origine Motorsport #11", "Pro-Am"],
+      [2, "Huang / Ghiretti", "Absolute Racing #911", "Pro-Am"],
+      [3, "Li / Seppanen", "Climax Racing #81", "Silver-Am"],
+      [4, "Ruan / Tramnitz", "TEAM KRC #89", "Pro-Am"],
+      [5, "Liu / Hartog", "Phantom Global Racing #37", "Pro-Am"],
+      [6, "Tse / Picariello", "Absolute Racing #918", "Pro-Am"],
+      [7, "Lee / Oosten", "GTO with KRC #10", "Silver-Am"],
+      [8, "Moh / Liang", "Craft-Bamboo Racing #77", "Silver-Am"],
+      [9, "Aoki / Miyake", "TEAM 5ZIGEN #500", "Silver"],
+      [10, "Cheng / Yu", "FAW Audi Sport Asia Team Phantom #16", "Silver"],
+      [11, "Song / Leitch", "Harmony Racing #72", "Pro-Am"],
+      [12, "Nandy", "Absolute Racing #29", "Silver"],
+      [13, "Oh / Joon", "HZO Fortis Racing by Absolute Racing #20", "Am"],
+      [14, "Liu / Wang", "Origine Motorsport #22", "Am"],
+      [15, "Liu / Chen", "Harmony Racing #96", "Silver"],
+      [16, "Nagai / Kotaka", "Porsche Center Okazaki #18", "Pro-Am"],
+      [17, "Porter / Macpherson", "AMAC Motorsport #51", "Am"],
+      [18, "Zhou / Santoso", "Climax Racing #8", "Am"]
+    ]}
+  ]
+}

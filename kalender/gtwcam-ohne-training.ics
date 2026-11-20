@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:APEX · GT World Challenge America (ohne Trainings)
+X-WR-CALDESC:GT World Challenge America — Rennen\, Sprints und Qualifying in deutscher Zeit
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-gtwcam1-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260327
+DTEND;VALUE=DATE:20260330
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · Sonoma
+LOCATION:Sonoma
+DESCRIPTION:APEX · GT World Challenge America · Lauf 1 · Sonoma — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcam2-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260424
+DTEND;VALUE=DATE:20260427
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · COTA
+LOCATION:COTA
+DESCRIPTION:APEX · GT World Challenge America · Lauf 2 · COTA — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcam3-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260508
+DTEND;VALUE=DATE:20260511
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · Sebring
+LOCATION:Sebring
+DESCRIPTION:APEX · GT World Challenge America · Lauf 3 · Sebring — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcam4-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260612
+DTEND;VALUE=DATE:20260615
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · Road Atlanta
+LOCATION:Road Atlanta
+DESCRIPTION:APEX · GT World Challenge America · Lauf 4 · Road Atlanta — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcam5-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260828
+DTEND;VALUE=DATE:20260831
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · Road America
+LOCATION:Road America
+DESCRIPTION:APEX · GT World Challenge America · Lauf 5 · Road America — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcam6-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20260928
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · Barber
+LOCATION:Barber
+DESCRIPTION:APEX · GT World Challenge America · Lauf 6 · Barber — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcam7-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261011
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · Indianapolis 8 Hour · Finale
+LOCATION:Indianapolis
+DESCRIPTION:APEX · GT World Challenge America · Lauf 7 · Indianapolis — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcam2-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270507
+DTEND;VALUE=DATE:20270509
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Amerika · Texas 8 Hour
+LOCATION:COTA
+DESCRIPTION:APEX · GT World Challenge America · Lauf 2 · COTA — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+END:VCALENDAR

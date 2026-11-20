@@ -1,0 +1,129 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:APEX · GT World Challenge Australia
+X-WR-CALDESC:GT World Challenge Australia — alle Sessions in deutscher Zeit
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-gtwcau1-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260327
+DTEND;VALUE=DATE:20260330
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Phillip Island
+LOCATION:Phillip Island
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 1 · Phillip Island — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau2-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260508
+DTEND;VALUE=DATE:20260511
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · The Bend
+LOCATION:The Bend
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 2 · The Bend — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau3-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260612
+DTEND;VALUE=DATE:20260615
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Queensland Raceway
+LOCATION:Queensland Raceway
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 3 · Queensland Raceway — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau4-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260724
+DTEND;VALUE=DATE:20260727
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Hidden Valley
+LOCATION:Hidden Valley
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 4 · Hidden Valley — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau5-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260918
+DTEND;VALUE=DATE:20260921
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Sydney Motorsport Park
+LOCATION:Sydney Motorsport Park
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 5 · Sydney Motorsport Park — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau6-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20261126
+DTEND;VALUE=DATE:20261130
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Adelaide · Finale
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau1-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270419
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Phillip Island
+LOCATION:Phillip Island
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 1 · Phillip Island — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau2-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270528
+DTEND;VALUE=DATE:20270531
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · The Bend
+LOCATION:The Bend
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 2 · The Bend — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau3-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270723
+DTEND;VALUE=DATE:20270726
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Sydney Motorsport Park
+LOCATION:Sydney Motorsport Park
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 3 · Sydney Motorsport Park — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau4-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270924
+DTEND;VALUE=DATE:20270927
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Queensland Raceway
+LOCATION:Queensland Raceway
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 4 · Queensland Raceway — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau5-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20271029
+DTEND;VALUE=DATE:20271101
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Bathurst
+LOCATION:Bathurst
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 5 · Bathurst — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau6-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20271125
+DTEND;VALUE=DATE:20271129
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Australien · Adelaide · Finale
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+END:VCALENDAR

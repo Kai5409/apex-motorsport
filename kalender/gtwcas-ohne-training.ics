@@ -1,0 +1,129 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:APEX · GT World Challenge Asia (ohne Trainings)
+X-WR-CALDESC:GT World Challenge Asia — Rennen\, Sprints und Qualifying in deutscher Zeit
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-gtwcas1-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260403
+DTEND;VALUE=DATE:20260406
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Sepang
+LOCATION:Sepang
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 1 · Sepang — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas2-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260504
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Mandalika
+LOCATION:Mandalika
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 2 · Mandalika — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas3-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260709
+DTEND;VALUE=DATE:20260713
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Fuji
+LOCATION:Fuji
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 3 · Fuji — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas4-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20260827
+DTEND;VALUE=DATE:20260831
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Okayama
+LOCATION:Okayama
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 4 · Okayama — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas5-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261005
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Peking
+LOCATION:Peking
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 5 · Peking — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas6-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261102
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Shanghai · Finale
+LOCATION:Shanghai
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 6 · Shanghai — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas1-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270402
+DTEND;VALUE=DATE:20270405
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Sepang
+LOCATION:Sepang
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 1 · Sepang — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas2-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270503
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Buriram
+LOCATION:Buriram
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 2 · Buriram — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas3-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270611
+DTEND;VALUE=DATE:20270614
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Suzuka
+LOCATION:Suzuka
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 3 · Suzuka — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas4-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20270709
+DTEND;VALUE=DATE:20270712
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Fuji
+LOCATION:Fuji
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 4 · Fuji — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas5-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20271001
+DTEND;VALUE=DATE:20271004
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Peking
+LOCATION:Peking
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 5 · Peking — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcas6-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T161855Z
+DTSTART;VALUE=DATE:20271022
+DTEND;VALUE=DATE:20271025
+TRANSP:TRANSPARENT
+SUMMARY:GTWC Asien · Shanghai · Finale
+LOCATION:Shanghai
+DESCRIPTION:APEX · GT World Challenge Asia · Lauf 6 · Shanghai — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+END:VCALENDAR
