@@ -220,5 +220,23 @@
       ["Punkte", "Gewertet wird in jeder Klasse getrennt, für Fahrer, Teams und Hersteller. Punkte gibt es schon im Qualifying – 35 für die Pole – und im Rennen: 350 für den Sieg, 320 für Platz 2, 300 für Platz 3, danach in kleineren Schritten bis weit nach hinten."],
       ["Michelin Endurance Cup", "Die fünf Langstreckenrennen – Daytona, Sebring, Watkins Glen, Road America und Petit Le Mans – bilden zusätzlich den Michelin Endurance Cup. Hier wird auch zwischendurch gewertet, in Daytona etwa nach 6, 12 und 18 Stunden: In jeder Klasse bekommt der Erste 5 Punkte, der Zweite 4, der Dritte 3 und jedes weitere Auto 2."]
     ]
+  },
+  "carreracup": {
+    "kurz": "Porsches deutscher Markenpokal: alle fahren den 911 Cup, zwei Sprintrennen an jedem Wochenende.",
+    "bloecke": [
+      ["Serie", "Den Carrera Cup Deutschland gibt es seit 1990. Eine Saison hat acht Wochenenden, die meisten im Rahmen der DTM; 2026 und 2027 beginnt sie in Imola beim Lauf der Langstrecken-WM. Höchstens 32 Autos stehen am Start, feste Starter und Gaststarter."],
+      ["Wochenende", "Auf ein freies Training folgt das Qualifying mit zwei Wertungen (Qualifying 1 und Qualifying 2), jedes der beiden Rennen hat seine eigene Pole-Position. Rennen 1 läuft meist am Samstag, Rennen 2 am Sonntag, jedes über 30 Minuten plus eine Runde."],
+      ["Punkte", "In jedem Rennen bekommen die ersten 15 25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 und 1 Punkt."],
+      ["Auto", "Alle fahren den Porsche 911 Cup der Generation 992.2. Eine Traktionskontrolle gibt es nicht, das Antiblockiersystem (ABS) ist seit 2026 wieder erlaubt."],
+      ["Wertungen", "Neben der Gesamtwertung gibt es eigene Wertungen für ProAm-Fahrer ohne professionellen Rennsport-Hintergrund, für Rookies in ihrer ersten vollen Saison und für Teams. ProAm-Autos tragen dunkelblaue Startnummern, Rookies orangefarbene Aufkleber."]
+    ]
+  },
+  "elms": {
+    "kurz": "Europäische Langstreckenserie des ACO: Prototypen und GT3-Autos in vier Klassen, sechs Rennen über je vier Stunden.",
+    "bloecke": [
+      ["Serie", "Die European Le Mans Series gibt es seit 2013. Veranstalter ist der Automobile Club de l’Ouest (ACO), der auch die 24 Stunden von Le Mans ausrichtet. Eine Saison hat sechs 4-Stunden-Rennen auf europäischen Strecken, von Barcelona bis Portimão."],
+      ["Klassen", "Es starten Prototypen der Klassen LMP2 und LMP3 und GT3-Autos der Klasse LMGT3; LMP2-Teams mit Amateurfahrern werden zusätzlich in LMP2 Pro/Am gewertet. Die Fahrer reichen von als Bronze eingestuften Amateuren bis zu Profis."],
+      ["Le Mans", "Neben den Titeln geht es um automatische Einladungen zu den 24 Stunden von Le Mans im folgenden Jahr."]
+    ]
   }
 }

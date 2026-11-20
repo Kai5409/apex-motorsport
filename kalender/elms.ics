@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:APEX · European Le Mans Series
+X-WR-CALDESC:European Le Mans Series — alle Sessions in deutscher Zeit
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:apex-elms1-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T145902Z
+DTSTART;VALUE=DATE:20270312
+DTEND;VALUE=DATE:20270315
+TRANSP:TRANSPARENT
+SUMMARY:ELMS · 4 Stunden von Barcelona
+LOCATION:Barcelona
+DESCRIPTION:APEX · European Le Mans Series · Lauf 1 · Barcelona — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-elms2-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T145902Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270503
+TRANSP:TRANSPARENT
+SUMMARY:ELMS · 4 Stunden von Le Castellet
+LOCATION:Paul Ricard
+DESCRIPTION:APEX · European Le Mans Series · Lauf 2 · Paul Ricard — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-elms3-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T145902Z
+DTSTART;VALUE=DATE:20270702
+DTEND;VALUE=DATE:20270705
+TRANSP:TRANSPARENT
+SUMMARY:ELMS · 4 Stunden von Imola
+LOCATION:Imola
+DESCRIPTION:APEX · European Le Mans Series · Lauf 3 · Imola — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-elms4-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T145902Z
+DTSTART;VALUE=DATE:20270820
+DTEND;VALUE=DATE:20270823
+TRANSP:TRANSPARENT
+SUMMARY:ELMS · 4 Stunden von Spa-Francorchamps
+LOCATION:Spa-Francorchamps
+DESCRIPTION:APEX · European Le Mans Series · Lauf 4 · Spa-Francorchamps — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-elms5-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T145902Z
+DTSTART;VALUE=DATE:20270903
+DTEND;VALUE=DATE:20270906
+TRANSP:TRANSPARENT
+SUMMARY:ELMS · 4 Stunden von Silverstone
+LOCATION:Silverstone
+DESCRIPTION:APEX · European Le Mans Series · Lauf 5 · Silverstone — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-elms6-2027-ganztag@apex-motorsport
+DTSTAMP:20261120T145902Z
+DTSTART;VALUE=DATE:20271014
+DTEND;VALUE=DATE:20271017
+TRANSP:TRANSPARENT
+SUMMARY:ELMS · 4 Stunden von Portimão · Finale
+LOCATION:Portimão
+DESCRIPTION:APEX · European Le Mans Series · Lauf 6 · Portimão — ganztägig\, Sessionzeiten liegen nicht vor
+END:VEVENT
+END:VCALENDAR

@@ -836,6 +836,44 @@
         ["Kai Pfister", "Proton Competition", 0],
         ["Jorge Ramírez", "RGB Racing Team", 0]
       ]
+    },
+    "carreracup": {
+      "stand": "nach 8 von 8 Wochenenden · Hockenheim, 11.10.2026",
+      "quelle": "racing.porsche.com",
+      "champion": "Champion",
+      "drv": [
+        ["Keagan Masters", "Proton Competition", 230],
+        ["Flynt Schuring", "Schumacher CLRT", 217],
+        ["Theo Oeverhaus", "ID Racing", 204],
+        ["Alexander Tauscher", "Target", 202],
+        ["Matheus Ferreira", "Team GP Elite", 167],
+        ["Marcus Amand", "Proton Competition / Forch Racing by Atlas Ward", 140],
+        ["Wouter Boerekamps", "Team GP Elite", 124],
+        ["Chester Kieffer", "Schumacher CLRT", 123],
+        ["Sam Jongejan", "Team75 Bernhard", 98],
+        ["Dirk Schouten", "Looping by CarTech", 94],
+        ["Niels Langeveld", "Laptime-Performance", 86],
+        ["Joseph Warhurst", "Target", 83],
+        ["Gustav Burton", "Forch Racing by Atlas Ward", 71],
+        ["Robert de Haan", "Proton Competition", 60],
+        ["Sebastian Freymuth", "Laptime-Performance", 53],
+        ["Daniel Ros", "Team Proton", 53],
+        ["Caleb Sumich", "Target", 44],
+        ["Gian Luca Tüccaroglu", "Team75 Bernhard", 36],
+        ["Louis Perrot", "Forch Racing by Atlas Ward", 32],
+        ["Gustav Bergström", "Team Proton", 26],
+        ["Montego Maassen", "Forch Racing by Atlas Ward", 21],
+        ["Janne Stiak", "Forch Racing by Atlas Ward", 16],
+        ["Dylan Yip", "Team Proton", 16],
+        ["Nick Ho", "Team GP Elite", 15],
+        ["Jonas Greif", "GP Elite", 10],
+        ["Max Mutschlechner", "Target Competition", 7],
+        ["William Siverholm", "Team Proton", 4],
+        ["David Dziwok", "GP Elite", 4],
+        ["Hoang Dat Sawer", "GP Elite", 2],
+        ["Alexandra Vateva", "Target Competition", 1],
+        ["Milan Marczak", "Team Proton", 1]
+      ]
     }
   }
 }
