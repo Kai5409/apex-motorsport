@@ -1,0 +1,28 @@
+{
+  "gtwcam-7": [
+    {"n": "Rennen (8h)", "quelle": "gt-world-challenge-america.com · intercontinentalgtchallenge.com", "unvollstaendig": true, "zeilen": [
+      [1, "Washington / Pera / Guven", "GMG Racing #32", "Pro-Am"],
+      [2, "Coleman / Telitz / Fleming", "Archangel Motorsports #69", "Pro-Am"],
+      [3, "Rothberg / De Phillippi / Foley", "Turner Motorsport #29", "Pro"],
+      [4, "Perez Companc / Nielsen / Schandorff", "AF Corse USA #12", "Pro"],
+      [5, "Stephens / Grenier / Martin", "Mercedes-AMG Team JMF Motorsports #34", "Pro"],
+      [6, "Musial Jr. / Yardley / Heinrich", "Wright Motorsports #31", "Pro-Am"],
+      [7, "Dyszelski / Arrow / Heylen", "RS1 #28", "Pro-Am"],
+      [8, "Bohn / A. Renauer / R. Renauer", "Herberth Motorsport #91", "Pro-Am"],
+      [9, "Merrill / Schuring / Estre", "Wright Motorsports #120", "Pro"],
+      [10, "Li / Fjordbach / Ye", "High Class Racing #86", "Pro-Am"],
+      [11, "McCann Jr. / Vanier / Picariello", "McCann Racing #8", "Pro"],
+      [12, "Clark / Kern / Braun", "Kellymoss #017", "Pro-Am"],
+      [13, "DeBoer / Eriksson / Ericsson", "Random Vandals Racing #99", "Pro-Am"],
+      [14, "Stewart / Krohn / Lee", "Riley Technologies #14", "Pro-Am"],
+      [15, "Williams / Dontje / Morad", "TR3 Racing #9", "Pro-Am"],
+      [16, "Elghanayan / Siljehaug / Spinelli", "Chicago Performance and Tuning Co. #64", "Pro-Am"],
+      [17, "Austin / Keating / Dempsey", "MAD Joker Racing #11", "Am"],
+      [18, "Schreibman / Negri / Simonsen", "AF Corse USA #163", "Am"],
+      [19, "Zelger / Babini / Fontana", "Tsunami RT #79", "Pro-Am"],
+      [20, "Klein / Charlaix / Boisson", "GetSpeed Team PCX Racing #999", "Pro-Am"],
+      [21, "Green / Morrow / Grunewald", "Scuderia Corsa #67", "Am"],
+      [22, "Gilliland / Jeansonne / Hartog", "Kellymoss #88", "Pro-Am"]
+    ]}
+  ]
+}

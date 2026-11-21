@@ -1,0 +1,51 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//APEX//Motorsport-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:apex-gtwcau6-Training1@apex-motorsport
+DTSTAMP:20261120T234500Z
+DTSTART:20261125T215000Z
+DTEND:20261125T225000Z
+SUMMARY:GTWC Australien · Adelaide · Finale — Training 1
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau6-Training2@apex-motorsport
+DTSTAMP:20261120T234500Z
+DTSTART:20261126T015500Z
+DTEND:20261126T025500Z
+SUMMARY:GTWC Australien · Adelaide · Finale — Training 2
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau6-Qualifying1@apex-motorsport
+DTSTAMP:20261120T234500Z
+DTSTART:20261127T004500Z
+DTEND:20261127T014500Z
+SUMMARY:GTWC Australien · Adelaide · Finale — Qualifying 1
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau6-Rennen1@apex-motorsport
+DTSTAMP:20261120T234500Z
+DTSTART:20261127T224000Z
+DTEND:20261128T001000Z
+SUMMARY:GTWC Australien · Adelaide · Finale — Rennen 1
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide
+END:VEVENT
+BEGIN:VEVENT
+UID:apex-gtwcau6-Rennen2@apex-motorsport
+DTSTAMP:20261120T234500Z
+DTSTART:20261128T224000Z
+DTEND:20261129T001000Z
+SUMMARY:GTWC Australien · Adelaide · Finale — Rennen 2
+LOCATION:Adelaide
+DESCRIPTION:APEX · GT World Challenge Australia · Lauf 6 · Adelaide
+END:VEVENT
+END:VCALENDAR

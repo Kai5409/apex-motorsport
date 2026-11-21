@@ -193,6 +193,42 @@
         "ch": "In den offiziellen Angaben ist kein Sender für die Schweiz genannt. Laut ADAC laufen alle Rennen <b>kostenlos</b> auf dem <b>YouTube</b>-Kanal ADAC Motorsports.",
         "note": "Stand: Angaben des ADAC auf adac-motorsport.de zur Saison 2026; die Übertragung 2027 ist noch nicht veröffentlicht. Geprüft am 20.11.2026."
       }
+    },
+    "gtwcam": {
+      "tv": "Kostenloser Stream (YouTube, Twitch)",
+      "tvd": {
+        "de": "Laut SRO America laufen alle Rennwochenenden <b>kostenlos</b> live auf dem <b>YouTube</b>-Kanal <b>GT World</b> und auf dem <b>Twitch</b>-Kanal von SRO Motorsports, auf YouTube auch zum Nachschauen. Ein Fernsehsender für Deutschland ist in den offiziellen Angaben nicht genannt.",
+        "at": "Wie in Deutschland: <b>kostenlos</b> auf YouTube (GT World) und Twitch. Ein Fernsehsender für Österreich ist in den offiziellen Angaben nicht genannt.",
+        "ch": "Wie in Deutschland: <b>kostenlos</b> auf YouTube (GT World) und Twitch. Ein Fernsehsender für die Schweiz ist in den offiziellen Angaben nicht genannt.",
+        "note": "Stand: Angaben von SRO America auf gt-world-challenge-america.com zur Saison 2026 (im US-Fernsehen nur Zusammenfassungen bei FOX Sports FS1). Geprüft am 20.11.2026."
+      }
+    },
+    "gtwcas": {
+      "tv": "Kostenloser Stream (YouTube)",
+      "tvd": {
+        "de": "Laut Serie laufen Qualifying und beide Rennen <b>kostenlos</b> live auf dem <b>YouTube</b>-Kanal <b>GT World</b>. Ein Fernsehsender für Deutschland ist in den offiziellen Angaben nicht genannt.",
+        "at": "Wie in Deutschland: <b>kostenlos</b> auf YouTube (GT World). Ein Fernsehsender für Österreich ist in den offiziellen Angaben nicht genannt.",
+        "ch": "Wie in Deutschland: <b>kostenlos</b> auf YouTube (GT World). Ein Fernsehsender für die Schweiz ist in den offiziellen Angaben nicht genannt.",
+        "note": "Stand: Vorschau der Serie zum Saisonauftakt 2026 auf gt-world-challenge-asia.com (dazu chinesische Streamingplattformen). Geprüft am 20.11.2026."
+      }
+    },
+    "gtwcau": {
+      "tv": "Kostenloser Stream (YouTube)",
+      "tvd": {
+        "de": "Laut Serie laufen alle Rennen weltweit <b>kostenlos</b> live auf dem <b>YouTube</b>-Kanal <b>GT World</b>. Ein Fernsehsender für Deutschland ist in den offiziellen Angaben nicht genannt.",
+        "at": "Wie in Deutschland: <b>kostenlos</b> auf YouTube (GT World). Ein Fernsehsender für Österreich ist in den offiziellen Angaben nicht genannt.",
+        "ch": "Wie in Deutschland: <b>kostenlos</b> auf YouTube (GT World). Ein Fernsehsender für die Schweiz ist in den offiziellen Angaben nicht genannt.",
+        "note": "Stand: Angaben der Serie auf gt-world-challenge-australia.com zur Saison 2026 (in Australien bei Kayo und Fox Sports). Geprüft am 20.11.2026."
+      }
+    },
+    "igtc": {
+      "tv": "Kostenloser Stream (YouTube)",
+      "tvd": {
+        "de": "Laut Serie liefen beim Saisonfinale 2026 in Indianapolis Qualifying, Pole-Shootout und Rennen <b>kostenlos</b> live auf dem <b>YouTube</b>-Kanal <b>GT World</b>. Ein Fernsehsender für Deutschland ist in den offiziellen Angaben nicht genannt. Für die 24-Stunden-Rennen am Nürburgring und in Spa gelten die Angaben bei NLS und GT World Challenge Europe.",
+        "at": "Wie in Deutschland: <b>kostenlos</b> auf YouTube (GT World). Ein Fernsehsender für Österreich ist in den offiziellen Angaben nicht genannt.",
+        "ch": "Wie in Deutschland: <b>kostenlos</b> auf YouTube (GT World). Ein Fernsehsender für die Schweiz ist in den offiziellen Angaben nicht genannt.",
+        "note": "Stand: Vorschau der Serie zum Saisonfinale 2026 auf intercontinentalgtchallenge.com; Angaben für Bathurst und Suzuka 2027 noch nicht veröffentlicht. Geprüft am 20.11.2026."
+      }
     }
   }
 }
