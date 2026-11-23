@@ -564,5 +564,28 @@
       [19, "Carlos Sainz", "Williams"],
       [20, "Rafael Câmara", "Haas"]
     ]}
+  ],
+  "f1-21": [
+    {"n": "Rennen", "quelle": "formula1.com · en.wikipedia.org", "zeilen": [
+      [1, "Max Verstappen", "Red Bull"],
+      [2, "Lando Norris", "McLaren"],
+      [3, "Oscar Piastri", "McLaren"],
+      [4, "Kimi Antonelli", "Mercedes"],
+      [5, "Pierre Gasly", "Alpine"],
+      [6, "Franco Colapinto", "Alpine"],
+      [7, "Lewis Hamilton", "Ferrari"],
+      [8, "Carlos Sainz", "Williams"],
+      [9, "George Russell", "Mercedes"],
+      [10, "Charles Leclerc", "Ferrari"],
+      [11, "Nico Hülkenberg", "Audi"],
+      [12, "Gabriel Bortoleto", "Audi"],
+      [13, "Oliver Bearman", "Haas"],
+      [14, "Liam Lawson", "Racing Bulls"],
+      [15, "Isack Hadjar", "Red Bull"],
+      [16, "Rafael Câmara", "Haas"],
+      [17, "Lance Stroll", "Aston Martin"],
+      [18, "Valtteri Bottas", "Cadillac"],
+      [19, "Fernando Alonso", "Aston Martin"]
+    ]}
   ]
 }

@@ -514,5 +514,33 @@
         [22, "Mario Aji", "Idemitsu Honda Team Asia"],
         [23, "Matteo Ferrari", "ITALJET Gresini Moto2"]
     ]}
+  ],
+  "moto2-21": [
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "Daniel Muñoz", "Italtrans Racing Team"],
+      [2, "Alonso López", "ITALJET Gresini Moto2"],
+      [3, "Senna Agius", "LIQUI MOLY Dynavolt Intact GP"],
+      [4, "David Alonso", "CFMOTO Power Electronics Aspar Team"],
+      [5, "Iván Ortolá", "QJMOTOR - MSI"],
+      [6, "Daniel Holgado", "CFMOTO Power Electronics Aspar Team"],
+      [7, "Izan Guevara", "BLU CRU Pramac Yamaha Moto2"],
+      [8, "Adrián Huertas", "Italtrans Racing Team"],
+      [9, "Collin Veijer", "Red Bull KTM Ajo"],
+      [10, "Zonta van den Goorbergh", "Momoven Idrofoglia RW Racing Team"],
+      [11, "Álex Escrig", "KLINT Racing Team"],
+      [12, "Ángel Piqueras", "QJMOTOR - MSI"],
+      [13, "Alberto Ferrandez", "BLU CRU Pramac Yamaha Moto2"],
+      [14, "Arón Canet", "ELF Marc VDS Racing Team"],
+      [15, "Xabi Zurutuza", "KLINT Racing Team"],
+      [16, "Deniz Öncü", "ELF Marc VDS Racing Team"],
+      [17, "Celestino Vietti", "BETA Tools SpeedRS Team"],
+      [18, "Mario Aji", "Idemitsu Honda Team Asia"],
+      [19, "Tony Arbolino", "REDS Fantic Racing"],
+      [20, "Ayumu Sasaki", "Momoven Idrofoglia RW Racing Team"],
+      [21, "Joe Roberts", "OnlyFans American Racing Team"],
+      [22, "Matteo Ferrari", "ITALJET Gresini Moto2"],
+      [23, "Luca Lunetta", "BETA Tools SpeedRS Team"],
+      [24, "Taiyo Furusato", "Idemitsu Honda Team Asia"]
+    ]}
   ]
 }
