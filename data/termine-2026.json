@@ -279,7 +279,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "19:00"},
       {"n": "Rennen", "day": "So", "t": "18:00"}
     ]},
-  {"s": "f1", "rd": 21, "name": "Großer Preis von Las Vegas", "loc": "Las Vegas", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
+  {"s": "f1", "rd": 21, "name": "Großer Preis von Las Vegas", "loc": "Las Vegas", "d0": "2026-11-20", "d1": "2026-11-22", "status": "done", "result": "Max Verstappen (Red Bull)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "01:30"},
       {"n": "FP2", "day": "Fr", "t": "05:00"},
@@ -492,7 +492,7 @@
       {"n": "Warm Up", "day": "So", "t": "12:40"},
       {"n": "Rennen", "day": "So", "t": "17:00"}
     ]},
-  {"s": "mgp", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
+  {"s": "mgp", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "done", "result": "Marco Bezzecchi (Aprilia)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "11:45"},
       {"n": "Practice", "day": "Fr", "t": "16:00"},
@@ -1094,7 +1094,7 @@
       {"n": "Sprint", "day": "So", "t": "01:00"},
       {"n": "Rennen 2", "day": "So", "t": "18:00"}
     ]},
-  {"s": "f1academy", "rd": 6, "name": "Großer Preis von Las Vegas · Finale", "loc": "Las Vegas", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
+  {"s": "f1academy", "rd": 6, "name": "Großer Preis von Las Vegas · Finale", "loc": "Las Vegas", "d0": "2026-11-20", "d1": "2026-11-22", "status": "done", "result": "Alisha Palmowski (Campos Racing)",
     "sessions": [
       {"n": "Freies Training", "day": "Fr", "t": "03:00"},
       {"n": "Qualifying", "day": "Fr", "t": "06:30"},
@@ -1211,7 +1211,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "15:45"},
       {"n": "Rennen", "day": "So", "t": "15:15"}
     ]},
-  {"s": "moto2", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
+  {"s": "moto2", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "done", "result": "Daniel Muñoz (Kalex)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "10:50"},
       {"n": "Practice", "day": "Fr", "t": "15:05"},
@@ -1297,7 +1297,7 @@
       {"n": "Qualifying", "day": "Sa", "t": "14:50"},
       {"n": "Rennen", "day": "So", "t": "14:00"}
     ]},
-  {"s": "moto3", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "up",
+  {"s": "moto3", "rd": 21, "name": "Großer Preis von Portugal", "loc": "Portimão", "d0": "2026-11-20", "d1": "2026-11-22", "status": "done", "result": "Máximo Quiles (KTM)",
     "sessions": [
       {"n": "FP1", "day": "Fr", "t": "10:00"},
       {"n": "Practice", "day": "Fr", "t": "14:15"},

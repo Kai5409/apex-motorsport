@@ -812,5 +812,45 @@
         [13, "Maverick Viñales", "Red Bull KTM Tech3"],
         [14, "Jake Dixon", "Honda HRC Castrol"]
     ]}
+  ],
+  "mgp-21": [
+    {"n": "Sprint", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "Marco Bezzecchi", "Aprilia Racing"],
+      [2, "Raúl Fernández", "SuperFile Trackhouse MotoGP Team"],
+      [3, "Álex Márquez", "BK8 Gresini Racing MotoGP"],
+      [4, "Pedro Acosta", "Red Bull KTM Factory Racing"],
+      [5, "Jorge Martín", "Aprilia Racing"],
+      [6, "Ai Ogura", "SuperFile Trackhouse MotoGP Team"],
+      [7, "Fabio Di Giannantonio", "Pertamina Enduro VR46 Racing Team"],
+      [8, "Fabio Quartararo", "Monster Energy Yamaha MotoGP Team"],
+      [9, "Iker Lecuona", "Ducati Lenovo Team"],
+      [10, "Jack Miller", "Prima Pramac Yamaha MotoGP"],
+      [11, "Enea Bastianini", "Red Bull KTM Tech3"],
+      [12, "Jake Dixon", "Honda HRC Castrol"],
+      [13, "Pol Espargaró", "Red Bull KTM Tech3"],
+      [14, "Álex Rins", "Monster Energy Yamaha MotoGP Team"],
+      [15, "Luca Marini", "Honda HRC Castrol"],
+      [16, "Franco Morbidelli", "Pertamina Enduro VR46 Racing Team"]
+    ]},
+    {"n": "Rennen", "quelle": "motogp.com · en.wikipedia.org", "zeilen": [
+      [1, "Marco Bezzecchi", "Aprilia Racing"],
+      [2, "Jorge Martín", "Aprilia Racing"],
+      [3, "Raúl Fernández", "SuperFile Trackhouse MotoGP Team"],
+      [4, "Fabio Di Giannantonio", "Pertamina Enduro VR46 Racing Team"],
+      [5, "Ai Ogura", "SuperFile Trackhouse MotoGP Team"],
+      [6, "Fermín Aldeguer", "BK8 Gresini Racing MotoGP"],
+      [7, "Brad Binder", "Red Bull KTM Factory Racing"],
+      [8, "Marc Márquez", "Ducati Lenovo Team"],
+      [9, "Luca Marini", "Honda HRC Castrol"],
+      [10, "Iker Lecuona", "Ducati Lenovo Team"],
+      [11, "Enea Bastianini", "Red Bull KTM Tech3"],
+      [12, "Fabio Quartararo", "Monster Energy Yamaha MotoGP Team"],
+      [13, "Jack Miller", "Prima Pramac Yamaha MotoGP"],
+      [14, "Álex Rins", "Monster Energy Yamaha MotoGP Team"],
+      [15, "Franco Morbidelli", "Pertamina Enduro VR46 Racing Team"],
+      [16, "Pol Espargaró", "Red Bull KTM Tech3"],
+      [17, "Jake Dixon", "Honda HRC Castrol"],
+      [18, "Augusto Fernández", "Prima Pramac Yamaha MotoGP"]
+    ]}
   ]
 }
